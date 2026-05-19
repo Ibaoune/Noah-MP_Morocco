@@ -8,21 +8,10 @@
 lisf/lis/LIS
 lisf/ldt/LDT
 lisf/lvt/LVT
+**/make/LIS
+**/make/LDT
+**/make/LVT
 
-# Ignore build configurations (machine-specific)
-lisf/lis/make/configure.lis
-lisf/ldt/make/configure.ldt
-lisf/lvt/make/configure.lvt
-
-lisf/lis/make/LIS_misc.h
-lisf/ldt/make/LDT_misc.h
-lisf/lvt/make/LVT_misc.h
-
-lisf/lis/make/LIS_NetCDF_inc.h
-lisf/ldt/make/LDT_NetCDF_inc.h
-lisf/lvt/make/LVT_NetCDF_inc.h
-
-lisf/lis/make/LIS_plugins.h
 
 # Ignore large output files and log outputs
 OUTPUT/

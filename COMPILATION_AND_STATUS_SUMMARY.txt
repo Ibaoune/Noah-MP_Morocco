@@ -3,6 +3,7 @@ LISF (LIS, LDT, LVT) COMPILATION AND STATUS SUMMARY FOR NOAH-MP MOROCCO STUDY
 ================================================================================
 
 Date/Time: 2026-05-20
+Author: M. El Aabaribaoune (@um6p)
 Project Directory: /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco
 
 Summary of Accomplishments:

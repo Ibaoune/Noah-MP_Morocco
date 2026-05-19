@@ -1,0 +1,28 @@
+# Configured for HPC Toubkal by M. El Aabaribaoune (@um6p)
+FC              = mpif90
+FC77            = mpif90
+LD              = mpif90
+CC              = mpicc
+AR              = ar
+MOD_ESMF        = /srv/software/easybuild/software/ESMF/8.7.0-foss-2024a/mod
+LIB_ESMF        = /srv/software/easybuild/software/ESMF/8.7.0-foss-2024a/lib
+INC_JPEG2000      = /srv/software/easybuild/software/JasPer/4.2.4-GCCcore-13.3.0/include/
+LIB_JPEG2000      = /srv/software/easybuild/software/JasPer/4.2.4-GCCcore-13.3.0/lib64/
+INC_ECCODES     = /srv/software/easybuild/software/ecCodes/2.38.3-gompi-2024a/include/
+LIB_ECCODES     = /srv/software/easybuild/software/ecCodes/2.38.3-gompi-2024a/lib/
+INC_NETCDF      = /srv/software/easybuild/software/netCDF/4.9.2-gompi-2024a/include/ -I/srv/software/easybuild/software/netCDF-Fortran/4.6.1-gompi-2024a/include/
+LIB_NETCDF      = /srv/software/easybuild/software/netCDF/4.9.2-gompi-2024a/lib/ -L/srv/software/easybuild/software/netCDF-Fortran/4.6.1-gompi-2024a/lib/
+INC_HDF4        = 
+LIB_HDF4        = 
+INC_HDF5        = /srv/software/easybuild/software/HDF5/1.14.5-gompi-2024a/include/
+LIB_HDF5        = /srv/software/easybuild/software/HDF5/1.14.5-gompi-2024a/lib/
+INC_HDFEOS      = 
+LIB_HDFEOS      = 
+INC_FORTRANGIS1 = 
+INC_FORTRANGIS2 = 
+LIB_FORTRANGIS  = 
+LIB_GDAL        = 
+CFLAGS          = -c  -DGFORTRAN 
+FFLAGS77        = -c -pass-exit-codes -O2  -fbacktrace -fno-range-check -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DHIDE_MPI -I$(MOD_ESMF)  -I$(INC_ECCODES) -I$(INC_NETCDF)  -I$(INC_HDF5) 
+FFLAGS          =  -c -pass-exit-codes -ffree-line-length-0 -O2  -fbacktrace -fno-range-check -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DHIDE_MPI -I$(MOD_ESMF)  -I$(INC_ECCODES) -I$(INC_NETCDF)  -I$(INC_HDF5) 
+LDFLAGS         =  -L$(LIB_ESMF) -lesmf -lpioc -lflexiblas -lstdc++ -lz -lmpi -L$(LIB_ECCODES) -leccodes_f90 -leccodes -L$(LIB_JPEG2000) -ljasper -L$(LIB_NETCDF) -lnetcdff -lnetcdf -L$(LIB_HDF5) -lhdf5_fortran -lhdf5_hl -lhdf5 -ldl
