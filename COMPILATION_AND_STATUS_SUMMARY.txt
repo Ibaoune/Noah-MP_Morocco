@@ -1,0 +1,190 @@
+================================================================================
+LISF (LIS, LDT, LVT) COMPILATION AND STATUS SUMMARY FOR NOAH-MP MOROCCO STUDY
+================================================================================
+
+Date/Time: 2026-05-20
+Project Directory: /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco
+
+Summary of Accomplishments:
+All three Land Information System Framework (LISF) executables have been successfully configured, patched, compiled, and verified. They are ready to be used for the simulation and comparison steps.
+
+--------------------------------------------------------------------------------
+1. COMPILER ENVIRONMENT & MODULES
+--------------------------------------------------------------------------------
+To compile or run LIS, LDT, or LVT, the following environment modules must be loaded:
+
+    module purge
+    module load foss/2024a \
+                netCDF-Fortran/4.6.1-gompi-2024a \
+                netCDF/4.9.2-gompi-2024a \
+                ESMF/8.7.0-foss-2024a \
+                JasPer/4.2.4-GCCcore-13.3.0 \
+                ecCodes/2.38.3-gompi-2024a \
+                HDF5/1.14.5-gompi-2024a \
+                CMake/3.29.3-GCCcore-13.3.0
+
+Environment variables used during configuration/make:
+    export ESMFMKFILE=/srv/software/easybuild/software/ESMF/8.7.0-foss-2024a/lib/esmf.mk
+
+--------------------------------------------------------------------------------
+2. COMPILED EXECUTABLES & PATHS
+--------------------------------------------------------------------------------
+* LIS Executable:
+  Path: /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/lisf/lis/LIS
+  
+* LDT Executable:
+  Path: /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/lisf/ldt/LDT
+  
+* LVT Executable:
+  Path: /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/lisf/lvt/LVT
+
+--------------------------------------------------------------------------------
+3. CONFIGURATION DETAILS (Generated Settings Files)
+--------------------------------------------------------------------------------
+The following build configuration files were generated and modified to link EasyBuild libraries:
+
+* LIS:  lisf/lis/make/configure.lis
+  - Optimization Level: 2 (O2)
+  - Endianness: Big Endian
+  - Features: ESMF, ecCodes, NetCDF4, HDF5, GRIBAPI
+  - Custom linking: netCDF-Fortran and compiler runtime libraries are manually appended to FFLAGS, FFLAGS77, and LDFLAGS.
+
+* LDT:  lisf/ldt/make/configure.ldt
+  - Optimization Level: 2 (O2)
+  - Endianness: Big Endian
+  - Features: ESMF, ecCodes, NetCDF4, HDF5
+  - Custom linking: Manually linked netCDF-Fortran.
+
+* LVT:  lisf/lvt/make/configure.lvt
+  - Optimization Level: 2 (O2)
+  - Endianness: Big Endian
+  - Features: ESMF, ecCodes, NetCDF4, HDF5
+  - Custom linking: Manually linked netCDF-Fortran.
+
+--------------------------------------------------------------------------------
+4. SOURCE CODE BUG PATCHES (To resolve compile errors with GCC 13/14)
+--------------------------------------------------------------------------------
+To resolve compilation conflicts between legacy LISF code and modern GCC compilers, two code changes were implemented:
+
+1. LIS Intrinsics conflict:
+   - File: lisf/lis/core/LIS_misc.h
+   - Change: Commented out custom macro redefinitions of standard Fortran intrinsics (get_command_argument and command_argument_count) to let the compiler use built-in GNU Fortran intrinsics.
+
+2. LDT System intrinsic conflict:
+   - File: lisf/ldt/WSF_OPL/LDT_wsf_oplMod.F90 (around line 555)
+   - Change: Commented out the 'external :: system' statement. This tells the compiler that 'system' is an intrinsic subprogram rather than an external user-written routine (resolving unresolved external symbols at link-time).
+
+--------------------------------------------------------------------------------
+5. HOW TO RECOMPILE IN THE FUTURE (If you clean or update code)
+--------------------------------------------------------------------------------
+Always load the modules first (see Section 1). Then:
+
+* To Recompile LIS:
+  cd lisf/lis/make
+  make -f Makefile -j 4
+
+* To Recompile LDT:
+  cd lisf/ldt/make
+  make -f Makefile -j 4
+
+* To Recompile LVT:
+  cd lisf/lvt/make
+  make -f Makefile -j 4
+
+--------------------------------------------------------------------------------
+6. NEXT STEPS (Ready for tomorrow!)
+--------------------------------------------------------------------------------
+Now that the tools are compiled, we are ready to proceed to:
+1. Spatial Domain Definition:
+   - Bounding box defined for the Allal El Fassi Basin:
+     * South: 33.00 N
+     * North: 34.50 N
+     * West:  -5.50 W (or 354.50 E)
+     * East:  -3.50 W (or 356.50 E)
+     * Resolution: 0.01 degrees (approximately 1 km grid spacing)
+
+2. Parameter Generation (LDT):
+   - Configure 'ldt.config' with this spatial grid and point to the landcover, soil texture, elevation, and greenness datasets.
+   - Run LDT (./LDT) to produce the static 'lis_input.d01.nc' file.
+
+3. Forcing and Noah-MP Simulation (LIS):
+   - Set up meteorological forcing (e.g., GPM/ERA5/MERRA2/NLDAS).
+   - Configure 'lis.config' for the open-loop simulation.
+   - Run LIS (./LIS) to generate Noah-MP outputs.
+
+4. Validation and Comparison (LVT):
+   - Setup LVT configuration ('lvt.config') to read Noah-MP output and compare against satellite observations (soil moisture, LAI, ET).
+   - Run LVT (./LVT) to compute validation metrics.
+
+--------------------------------------------------------------------------------
+7. STEPS FOR 3-MONTH SIMULATION (WITH AND WITHOUT ASSIMILATION)
+--------------------------------------------------------------------------------
+To run your first 3-month test simulation (e.g., June 1, 2020 to August 31, 2020), follow these steps:
+
+STEP A: Download Meteorological Forcing & Satellite Observations
+1. Select a 3-month window: e.g., 2020-06-01 to 2020-08-31.
+2. Download/Prepare Met Forcing: MERRA-2, ERA5, or GPM IMERG for the region.
+3. Download/Prepare Soil Moisture observations (e.g., SMAP L3 passive or ESA-CCI) for the same period.
+
+STEP B: Generate Model Parameters via LDT
+1. Edit 'ldt.config' and specify:
+   - The Allal El Fassi Basin grid parameters (0.01 deg resolution).
+   - Paths to your static data directories (soils, topography, land cover).
+2. Run LDT:
+   ./LDT ldt.config
+3. This creates 'lis_input.d01.nc' containing the parameters on your exact 1 km grid.
+
+STEP C: Configure and Run LIS - Open-Loop (OPL) Simulation
+1. Create a config file 'lis.config.opl'.
+2. Set running mode:
+   LIS running mode:                 "retrospective"
+   Number of data assimilation sources: 0
+   Data assimilation sources:        none
+3. Set simulation dates:
+   Starting year:                    2020
+   Starting month:                   06
+   Starting day:                     01
+   Starting hour:                    00
+   Starting minute:                  00
+   Starting second:                  00
+   Ending year:                      2020
+   Ending month:                     08
+   Ending day:                       31
+   Ending hour:                      23
+   Ending minute:                    45
+   Ending second:                    00
+4. Specify input parameter file:
+   LIS parameter table filename:     ./lis_input.d01.nc
+5. Set output directory:
+   LIS output directory:             ./OUTPUT_OPL
+6. Run the Open Loop simulation:
+   mpirun -np 4 ./LIS lis.config.opl
+
+STEP D: Configure and Run LIS - Data Assimilation (DA) Simulation
+1. Create a config file 'lis.config.da'.
+2. Set running mode to retrospective with EnKF assimilation:
+   LIS running mode:                 "retrospective"
+   Number of data assimilation sources: 1
+   Data assimilation sources:        "SMAP passive SM" (or "ESA-CCI passive SM")
+   Data assimilation method:         "EnKF"
+3. Configure ensemble size and perturbations (required for EnKF):
+   Number of ensembles:              12  # recommended minimum test size
+   Perturb met forcing:              .true.
+   Perturb state:                    .true.
+   Met forcing perturbation config:  forcing_attribs.txt
+   State perturbation config:        state_attribs.txt
+4. Set output directory:
+   LIS output directory:             ./OUTPUT_DA
+5. Run the Data Assimilation simulation:
+   mpirun -np 12 ./LIS lis.config.da
+
+STEP E: Evaluate & Compare using LVT
+1. Create 'lvt.config' to compare OUTPUT_OPL vs OUTPUT_DA against independent satellite observations:
+   - Set runmode: "Verification"
+   - Under LIS forecast directory, point to: `./OUTPUT_OPL` and `./OUTPUT_DA`
+   - Under Observation directory, point to: your independent satellite observations (e.g. soil moisture, LAI, ET)
+2. Run LVT:
+   ./LVT lvt.config
+3. Analyze the generated verification metrics (bias, RMSE, correlation) to evaluate the impact of data assimilation.
+
+================================================================================
