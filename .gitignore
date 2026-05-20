@@ -1,29 +1,15 @@
-# Ignore object files and compiler modules
-*.o
-*.mod
-*.d
-*.a
-
-# Ignore compiled executables
-lisf/lis/LIS
-lisf/ldt/LDT
-lisf/lvt/LVT
-**/make/LIS
-**/make/LDT
-**/make/LVT
-
-
-# Ignore large output files and log outputs
-OUTPUT/
+# Download directories
+input/
 OUTPUT_OPL/
 OUTPUT_DA/
-ldtlog
-ldtlog.*
-lislog
-lislog.*
-lvtlog
-lvtlog.*
 
-# Ignore system files
-.DS_Store
-.ipynb_checkpoints/
+# Log files
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Executable outputs
+*.exe
+*.nc

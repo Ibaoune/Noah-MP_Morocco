@@ -1,0 +1,178 @@
+#Overall driver options
+Running mode:                           retrospective
+Map projection of the LIS domain:       latlon
+Number of nests:                        1
+Number of surface model types:          1
+Surface model types:                    LSM
+Surface model output interval:          1da
+Land surface model:                     "Noah-MP.3.6"
+Number of met forcing sources:          1
+Blending method for forcings:           overlay
+Met forcing sources:                    "MERRA2"
+Topographic correction method (met forcing):  "lapse-rate and slope-aspect"
+Enable spatial downscaling of precipitation:  0
+Spatial upscaling method (met forcing):       none
+Spatial interpolation method (met forcing):   bilinear
+Temporal interpolation method (met forcing):  "linear"
+
+#Runtime options
+Forcing variables list file:            ./input/forcing_variables.txt
+Output methodology:                     "2d gridspace"
+Output model restart files:             1
+Output data format:                     netcdf
+Output naming style:                    "3 level hierarchy"
+Start mode:                             coldstart
+Starting year:                          2020
+Starting month:                         06
+Starting day:                           01
+Starting hour:                          00
+Starting minute:                        00
+Starting second:                        00
+Ending year:                            2020
+Ending month:                           08
+Ending day:                             31
+Ending hour:                            23
+Ending minute:                          45
+Ending second:                          00
+Undefined value:                       -9999
+Output directory:                       "OUTPUT_DA"
+Diagnostic output file:                 "OUTPUT_DA/lislog"
+Number of ensembles per tile:           12
+
+#The following options are used for subgrid tiling based on vegetation
+Maximum number of surface type tiles per grid:    1
+Minimum cutoff percentage (surface type tiles):   0.05
+Maximum number of soil texture tiles per grid:    1
+Minimum cutoff percentage (soil texture tiles):   0.05
+Maximum number of soil fraction tiles per grid:   1
+Minimum cutoff percentage (soil fraction tiles):  0.05
+Maximum number of elevation bands per grid:       1
+Minimum cutoff percentage (elevation bands):      0.05
+Maximum number of slope bands per grid:           1
+Minimum cutoff percentage (slope bands):          0.05
+Maximum number of aspect bands per grid:          1
+Minimum cutoff percentage (aspect bands):         0.05
+
+#Processor layout
+Number of processors along x:           2
+Number of processors along y:           6
+Halo size along x:                      0
+Halo size along y:                      0
+
+#Routing
+Routing model:                          "none"
+
+#---------------------DATA ASSIMILATION ----------------------------------
+#Data assimilation options
+Number of data assimilation instances:               1
+Data assimilation algorithm:                          "EnKF"
+Data assimilation set:                                "NASA SMAP soil moisture"
+Data assimilation exclude analysis increments:        0 
+Data assimilation output interval for diagnostics:    "1da"
+Data assimilation number of observation types:        1
+Data assimilation output ensemble spread:             1
+Data assimilation scaling strategy:                  "none"
+Data assimilation output processed observations:      1 
+Data assimilation output innovations:                 1 
+Number of state variables:                            4
+Data assimilation use a trained forward model:  0 
+Data assimilation trained forward model output file:  none
+
+Apply perturbation bias correction:        0
+Bias estimation algorithm:                "none"  
+
+#Perturbation options
+Perturbations start mode:                 "coldstart"
+Perturbations restart output interval:    "1mo"
+Perturbations restart filename:           "none"
+
+Forcing perturbation algorithm:           "GMAO scheme"
+Forcing perturbation frequency:           "1hr"
+Forcing attributes file:                  ./input/pert_package/forcing_attribs.txt
+Forcing perturbation attributes file:     ./input/pert_package/forcing_pertattribs.txt
+
+State perturbation algorithm:             "GMAO scheme"
+State perturbation frequency:              "3hr"
+State attributes file:                    ./input/pert_package/noahmp_sm_attribs.txt
+State perturbation attributes file:       ./input/pert_package/noahmp_sm_pertattribs.txt
+
+Observation perturbation algorithm:       "GMAO scheme"
+Observation perturbation frequency:         "1da"
+Observation attributes file:                 ./input/pert_package/smap_attribs.txt
+Observation perturbation attributes file:    ./input/pert_package/smap_pertattribs.txt
+
+NASA SMAP soil moisture observation directory:  ./input/RS_DATA/SMAP/SPL3SMP.009
+NASA SMAP soil moisture data designation: SPL3SMP 
+NASA SMAP soil moisture Composite Release ID (e.g., R16): "R19"
+NASA SMAP use scaled standard deviation model: 0
+
+#The following options list the choice of parameter maps to be used
+LIS domain and parameter data file:     ./lis_input.d01.nc
+Landmask data source:                   LDT
+Landcover data source:                  LDT
+Soil texture data source:               LDT
+Soil fraction data source:              none
+Soil color data source:                 none
+Elevation data source:                  LDT
+Slope data source:                      LDT
+Aspect data source:                     LDT
+Curvature data source:                  none
+LAI data source:                        none
+SAI data source:                        none
+Albedo data source:                     LDT
+Max snow albedo data source:            LDT
+Greenness data source:                  LDT
+Roughness data source:                  none
+Porosity data source:                   none
+Ksat data source:                       none
+B parameter data source:                none
+Quartz data source:                     none
+Emissivity data source:                 none
+
+#--------------------------------FORCINGS----------------------------------
+MERRA2 forcing directory:       ./input/MET_FORCING/MERRA2/
+MERRA2 use lowest model level forcing:     1
+MERRA2 use corrected total precipitation:  1
+
+#-----------------------LAND SURFACE MODELS--------------------------
+Noah-MP.3.6 model timestep:                15mn
+Noah-MP.3.6 restart output interval:       1mo
+Noah-MP.3.6 restart file:                  none
+Noah-MP.3.6 restart file format:           netcdf
+Noah-MP.3.6 soil parameter table:          ./input/LS_PARAMETERS/noahmp_parms/SOILPARM.TBL
+Noah-MP.3.6 general parameter table:       ./input/LS_PARAMETERS/noahmp_parms/GENPARM.TBL
+Noah-MP.3.6 MP parameter table:            ./input/LS_PARAMETERS/noahmp_parms/MPTABLE.TBL
+Noah-MP.3.6 number of soil layers:         4
+Noah-MP.3.6 thickness of soil layers:      0.1  0.3  0.6  1.0
+Noah-MP.3.6 dynamic vegetation option:                      4
+Noah-MP.3.6 canopy stomatal resistance option:              1
+Noah-MP.3.6 soil moisture factor for stomatal resistance:   1
+Noah-MP.3.6 runoff and groundwater option:                  1
+Noah-MP.3.6 surface layer drag coefficient option:          1
+Noah-MP.3.6 supercooled liquid water option:                1
+Noah-MP.3.6 frozen soil permeability option:                1
+Noah-MP.3.6 radiation transfer option:                      3
+Noah-MP.3.6 snow surface albedo option:                     2
+Noah-MP.3.6 rainfall & snowfall option:                     1
+Noah-MP.3.6 lower boundary of soil temperature option:      2
+Noah-MP.3.6 snow&soil temperature time scheme option:       1
+Noah-MP.3.6 glacier option:                                 1
+Noah-MP.3.6 surface resistance option:                      1
+Noah-MP.3.6 soil configuration option:                      1
+Noah-MP.3.6 soil pedotransfer function option:              1
+Noah-MP.3.6 crop model option:                              0
+Noah-MP.3.6 urban physics option:                           0
+Noah-MP.3.6 reference height of temperature and humidity: 6.0
+Noah-MP.3.6 initial surface skin temperature:           288.0
+Noah-MP.3.6 initial snow water equivalent:                0.0
+Noah-MP.3.6 initial snow depth:                           0.0
+Noah-MP.3.6 initial total canopy surface water:           0.0
+Noah-MP.3.6 initial soil temperatures:                  288.0  288.0  288.0  288.0
+Noah-MP.3.6 initial total soil moistures:               0.20  0.20  0.20  0.20
+Noah-MP.3.6 initial leaf area index:                      0.5
+Noah-MP.3.6 initial water table depth:                    2.5
+Noah-MP.3.6 initial water in the aquifer:                 4900.0
+Noah-MP.3.6 initial water in aquifer and saturated soil:  4900.0
+
+#---------------------------MODEL OUTPUT CONFIGURATION-----------------------
+Model output attributes file:           './MODEL_OUTPUT_LIST.TBL'
