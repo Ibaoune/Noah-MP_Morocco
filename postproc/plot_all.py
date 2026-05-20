@@ -7,9 +7,12 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import matplotlib.patheffects as path_effects
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
 
 # -----------------
-# 1. SETUP PATHS
+# 1. SETUP PATHS & CONFIG
 # -----------------
 os.makedirs("postproc", exist_ok=True)
 ldt_nc_path = "lis_input.d01.nc"
@@ -27,35 +30,68 @@ landmask = ds_ldt.variables["LANDMASK"][:]
 lat_min, lat_max = 33.0, 34.5
 lon_min, lon_max = -5.5, -3.5
 
+# Reference cities with coordinates
+cities = {
+    "Fes": (-5.0003, 34.0331),
+    "Meknes": (-5.5403, 33.8965),
+    "Taza": (-4.0100, 34.2200),
+    "Rabat": (-6.8333, 34.0167)
+}
+
+def add_geospatial_context(ax, fig):
+    """Add country boundaries, coastlines, reference cities, and a Morocco inset map."""
+    # Add cartopy features
+    ax.add_feature(cfeature.BORDERS, linewidth=0.8, edgecolor='black', linestyle=':', zorder=4)
+    ax.add_feature(cfeature.COASTLINE, linewidth=0.8, edgecolor='black', zorder=4)
+    ax.add_feature(cfeature.RIVERS, linewidth=0.5, edgecolor='blue', alpha=0.5, zorder=4)
+    
+    # Plot gridlines with labels
+    gl = ax.gridlines(draw_labels=True, linewidth=0.5, color='gray', alpha=0.5, linestyle='--')
+    gl.top_labels = False
+    gl.right_labels = False
+    gl.xlabel_style = {'size': 10}
+    gl.ylabel_style = {'size': 10}
+    
+    # Plot reference cities to help locate the domain
+    for city, coord in cities.items():
+        # Only plot cities inside or very close to the boundaries
+        if lon_min - 1.5 <= coord[0] <= lon_max + 0.5 and lat_min - 0.5 <= coord[1] <= lat_max + 0.5:
+            ax.plot(coord[0], coord[1], 'ro', markersize=6, markeredgecolor='black', markeredgewidth=1.0, zorder=6)
+            txt = ax.text(coord[0] + 0.04, coord[1] + 0.02, city, fontsize=10, fontweight='bold', zorder=7)
+            # Add a white halo outline to the text for readability over colorful backgrounds
+            txt.set_path_effects([path_effects.withStroke(linewidth=3, foreground='white')])
+
 # -----------------
+
 # FIGURE 1: TOPOGRAPHY (ELEVATION)
 # -----------------
-print("Plotting Topography...")
-plt.figure(figsize=(10, 8), dpi=300)
-# Mask elevations outside landmask to show clean basin shape
-elevation_masked = np.where(landmask == 1, elevation, np.nan)
-im = plt.pcolormesh(lons_ldt, lats_ldt, elevation_masked, cmap="terrain", shading="auto")
-# Draw a clean border line around the landmask
-plt.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=0.8)
+print("Plotting Topography with geospatial context...")
+fig = plt.figure(figsize=(10, 8), dpi=300)
+ax = plt.axes(projection=ccrs.PlateCarree())
+ax.set_extent([lon_min, lon_max, lat_min, lat_max], crs=ccrs.PlateCarree())
 
-plt.colorbar(im, label="Elevation (m above sea level)")
-plt.xlabel("Longitude (°E)", fontsize=12)
-plt.ylabel("Latitude (°N)", fontsize=12)
-plt.title("Morocco Domain - Topography & Elevation (Noah-MP Grid)", fontsize=14, fontweight="bold", pad=15)
-plt.xlim(lon_min, lon_max)
-plt.ylim(lat_min, lat_max)
-plt.grid(True, linestyle="--", alpha=0.5)
-plt.tight_layout()
+# Mask elevations outside landmask
+elevation_masked = np.where(landmask == 1, elevation, np.nan)
+im = ax.pcolormesh(lons_ldt, lats_ldt, elevation_masked, cmap="terrain", shading="auto", zorder=2, transform=ccrs.PlateCarree())
+ax.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=0.8, zorder=3, transform=ccrs.PlateCarree())
+
+# Add custom colorbar
+cbar = plt.colorbar(im, ax=ax, orientation='vertical', pad=0.03, shrink=0.8)
+cbar.set_label("Elevation (m above sea level)", fontsize=11, fontweight='bold')
+
+plt.title("Morocco Basin Domain - Topography & Elevation", fontsize=13, fontweight="bold", pad=15)
+add_geospatial_context(ax, fig)
 plt.savefig("postproc/basin_topography.png", bbox_inches="tight")
 plt.close()
 print("Saved basin_topography.png")
 
+
 # -----------------
 # FIGURE 2: LAND COVER TYPES
 # -----------------
-print("Plotting Landcover...")
+print("Plotting Landcover with geospatial context...")
 lc_fractions = ds_ldt.variables["LANDCOVER"][:]
-dominant_lc = np.argmax(lc_fractions, axis=0) + 1  # 1-indexed for classes
+dominant_lc = np.argmax(lc_fractions, axis=0) + 1
 dominant_lc = np.where(landmask == 1, dominant_lc, np.nan)
 
 modis_labels = {
@@ -89,31 +125,31 @@ lc_mapped = np.zeros_like(dominant_lc) * np.nan
 for idx, cls in enumerate(present_classes):
     lc_mapped[dominant_lc == cls] = idx
 
-plt.figure(figsize=(11, 8), dpi=300)
-im = plt.pcolormesh(lons_ldt, lats_ldt, lc_mapped, cmap=cmap, norm=norm, shading="auto")
-plt.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=0.8)
+fig = plt.figure(figsize=(11, 8), dpi=300)
+ax = plt.axes(projection=ccrs.PlateCarree())
+ax.set_extent([lon_min, lon_max, lat_min, lat_max], crs=ccrs.PlateCarree())
 
+im = ax.pcolormesh(lons_ldt, lats_ldt, lc_mapped, cmap=cmap, norm=norm, shading="auto", zorder=2, transform=ccrs.PlateCarree())
+ax.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=0.8, zorder=3, transform=ccrs.PlateCarree())
+
+# Custom Legend
 handles = []
 for idx, cls in enumerate(present_classes):
     patch = plt.Rectangle((0,0),1,1, color=cmap(idx), label=f"{cls}: {modis_labels.get(cls, 'Unknown')}")
     handles.append(patch)
 
-plt.legend(handles=handles, bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0., fontsize=10)
-plt.xlabel("Longitude (°E)", fontsize=12)
-plt.ylabel("Latitude (°N)", fontsize=12)
-plt.title("Morocco Domain - Dominant Land Cover Types (MODIS)", fontsize=14, fontweight="bold", pad=15)
-plt.xlim(lon_min, lon_max)
-plt.ylim(lat_min, lat_max)
-plt.grid(True, linestyle="--", alpha=0.5)
-plt.tight_layout()
+ax.legend(handles=handles, bbox_to_anchor=(1.05, 0.9), loc='upper left', borderaxespad=0., fontsize=9)
+plt.title("Morocco Basin Domain - Dominant Land Cover Types (MODIS)", fontsize=13, fontweight="bold", pad=15)
+add_geospatial_context(ax, fig)
 plt.savefig("postproc/basin_landcover.png", bbox_inches="tight")
 plt.close()
 print("Saved basin_landcover.png")
 
+
 # -----------------
 # FIGURE 3: SOIL TEXTURE TYPES
 # -----------------
-print("Plotting Soil Texture...")
+print("Plotting Soil Texture with geospatial context...")
 tex_fractions = ds_ldt.variables["TEXTURE"][:]
 dominant_tex = np.argmax(tex_fractions, axis=0) + 1
 dominant_tex = np.where(landmask == 1, dominant_tex, np.nan)
@@ -148,31 +184,31 @@ tex_mapped = np.zeros_like(dominant_tex) * np.nan
 for idx, cls in enumerate(present_tex):
     tex_mapped[dominant_tex == cls] = idx
 
-plt.figure(figsize=(11, 8), dpi=300)
-im = plt.pcolormesh(lons_ldt, lats_ldt, tex_mapped, cmap=cmap_tex, norm=norm_tex, shading="auto")
-plt.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=0.8)
+fig = plt.figure(figsize=(11, 8), dpi=300)
+ax = plt.axes(projection=ccrs.PlateCarree())
+ax.set_extent([lon_min, lon_max, lat_min, lat_max], crs=ccrs.PlateCarree())
 
+im = ax.pcolormesh(lons_ldt, lats_ldt, tex_mapped, cmap=cmap_tex, norm=norm_tex, shading="auto", zorder=2, transform=ccrs.PlateCarree())
+ax.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=0.8, zorder=3, transform=ccrs.PlateCarree())
+
+# Custom Legend
 handles_tex = []
 for idx, cls in enumerate(present_tex):
     patch = plt.Rectangle((0,0),1,1, color=cmap_tex(idx), label=f"{cls}: {usda_labels.get(cls, 'Unknown')}")
     handles_tex.append(patch)
 
-plt.legend(handles=handles_tex, bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0., fontsize=10)
-plt.xlabel("Longitude (°E)", fontsize=12)
-plt.ylabel("Latitude (°N)", fontsize=12)
-plt.title("Morocco Domain - Dominant Soil Texture Classes (STATSGO/STAS)", fontsize=14, fontweight="bold", pad=15)
-plt.xlim(lon_min, lon_max)
-plt.ylim(lat_min, lat_max)
-plt.grid(True, linestyle="--", alpha=0.5)
-plt.tight_layout()
+ax.legend(handles=handles_tex, bbox_to_anchor=(1.05, 0.9), loc='upper left', borderaxespad=0., fontsize=9)
+plt.title("Morocco Basin Domain - Dominant Soil Texture Classes", fontsize=13, fontweight="bold", pad=15)
+add_geospatial_context(ax, fig)
 plt.savefig("postproc/basin_soil_texture.png", bbox_inches="tight")
 plt.close()
 print("Saved basin_soil_texture.png")
 
+
 # -----------------
 # FIGURE 4: SMAP SOIL MOISTURE OBSERVATIONS
 # -----------------
-print("Plotting SMAP Observations...")
+print("Plotting SMAP Observations with geospatial context...")
 try:
     with h5py.File(smap_h5_path, "r") as f:
         smap_lats = f["Soil_Moisture_Retrieval_Data_AM/latitude"][:]
@@ -187,33 +223,32 @@ try:
         val_lons = smap_lons[smap_mask]
         val_sm = smap_sm[smap_mask]
 
-    plt.figure(figsize=(10, 8), dpi=300)
+    fig = plt.figure(figsize=(10, 8), dpi=300)
+    ax = plt.axes(projection=ccrs.PlateCarree())
+    ax.set_extent([lon_min, lon_max, lat_min, lat_max], crs=ccrs.PlateCarree())
     
-    # Plot masked topography as background in greyscale/terrain for clean overlay
-    plt.pcolormesh(lons_ldt, lats_ldt, elevation_masked, cmap="gist_earth", alpha=0.4, shading="auto")
-    plt.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=0.8)
+    # Plot masked topography as background in clean greyscale
+    im_bg = ax.pcolormesh(lons_ldt, lats_ldt, elevation_masked, cmap="gist_earth", alpha=0.35, shading="auto", zorder=2, transform=ccrs.PlateCarree())
+    ax.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=0.8, zorder=3, transform=ccrs.PlateCarree())
     
-    # Overlay SMAP observations
-    sc = plt.scatter(val_lons, val_lats, c=val_sm, cmap="YlGnBu", s=250, edgecolor='black', alpha=0.9, zorder=3)
-    plt.colorbar(sc, label="SMAP Soil Moisture (m³/m³)")
+    # Overlay SMAP observations as colored circles
+    sc = ax.scatter(val_lons, val_lats, c=val_sm, cmap="YlGnBu", s=250, edgecolor='black', alpha=0.9, zorder=5, transform=ccrs.PlateCarree())
+    cbar = plt.colorbar(sc, ax=ax, orientation='vertical', pad=0.03, shrink=0.8)
+    cbar.set_label("SMAP Soil Moisture (m³/m³)", fontsize=11, fontweight='bold')
     
-    plt.xlabel("Longitude (°E)", fontsize=12)
-    plt.ylabel("Latitude (°N)", fontsize=12)
-    plt.title("SMAP L3 Soil Moisture Observations - June 1, 2020", fontsize=14, fontweight="bold", pad=15)
-    plt.xlim(lon_min, lon_max)
-    plt.ylim(lat_min, lat_max)
-    plt.grid(True, linestyle="--", alpha=0.5)
-    plt.tight_layout()
+    plt.title("SMAP L3 Soil Moisture Observations - June 1, 2020", fontsize=13, fontweight="bold", pad=15)
+    add_geospatial_context(ax, fig)
     plt.savefig("postproc/smap_observation.png", bbox_inches="tight")
     plt.close()
     print("Saved smap_observation.png")
 except Exception as e:
     print("Error plotting SMAP observations:", e)
 
+
 # -----------------
 # FIGURE 5: MERRA-2 TEMPERATURE SNAPSHOT
 # -----------------
-print("Plotting MERRA-2 Forcing Snapshot...")
+print("Plotting MERRA-2 Forcing Snapshot with geospatial context...")
 try:
     ds_merra = nc.Dataset(merra_nc_path, "r")
     m_lats = ds_merra.variables["lat"][:]
@@ -230,25 +265,24 @@ try:
     t2m_snap = m_t2m[14, lat_indices, :][:, lon_indices] - 273.15
     lon_mesh, lat_mesh = np.meshgrid(cropped_lons, cropped_lats)
     
-    plt.figure(figsize=(10, 8), dpi=300)
-    im = plt.pcolormesh(lon_mesh, lat_mesh, t2m_snap, cmap="coolwarm", shading="auto")
-    plt.colorbar(im, label="Air Temperature at 2m (°C)")
+    fig = plt.figure(figsize=(10, 8), dpi=300)
+    ax = plt.axes(projection=ccrs.PlateCarree())
+    ax.set_extent([lon_min, lon_max, lat_min, lat_max], crs=ccrs.PlateCarree())
+    
+    im = ax.pcolormesh(lon_mesh, lat_mesh, t2m_snap, cmap="coolwarm", shading="auto", zorder=2, transform=ccrs.PlateCarree())
+    cbar = plt.colorbar(im, ax=ax, orientation='vertical', pad=0.03, shrink=0.8)
+    cbar.set_label("Air Temperature at 2m (°C)", fontsize=11, fontweight='bold')
     
     # Overlay model boundary outline
-    plt.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=1.0, linestyles='--')
+    ax.contour(lons_ldt, lats_ldt, landmask, colors='black', linewidths=1.2, linestyles='--', zorder=3, transform=ccrs.PlateCarree())
     
-    plt.xlabel("Longitude (°E)", fontsize=12)
-    plt.ylabel("Latitude (°N)", fontsize=12)
-    plt.title("MERRA-2 Forcing: Air Temperature Snapshot (June 4, 2020 14:00 UTC)", fontsize=14, fontweight="bold", pad=15)
-    plt.xlim(lon_min, lon_max)
-    plt.ylim(lat_min, lat_max)
-    plt.grid(True, linestyle="--", alpha=0.5)
-    plt.tight_layout()
+    plt.title("MERRA-2 Forcing: Air Temperature Snapshot (June 4, 2020 14:00 UTC)", fontsize=13, fontweight="bold", pad=15)
+    add_geospatial_context(ax, fig)
     plt.savefig("postproc/merra2_temperature.png", bbox_inches="tight")
     plt.close()
     print("Saved merra2_temperature.png")
 except Exception as e:
     print("Error plotting MERRA-2 temperature:", e)
 
-print("All plots generated successfully!")
+print("All geospatial plots generated successfully!")
 ds_ldt.close()
