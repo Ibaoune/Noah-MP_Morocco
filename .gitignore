@@ -31,3 +31,6 @@ slurm_*.err
 fort.*
 SMAP_filelist.dat
 ldtlog.*
+
+# Postprocessing output figures
+postproc/*.png
