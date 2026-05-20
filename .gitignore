@@ -13,3 +13,21 @@ __pycache__/
 # Executable outputs
 *.exe
 *.nc
+
+# Compiled LISF binaries
+lisf/lis/LIS
+lisf/lis/make/LIS
+lisf/ldt/LDT
+lisf/ldt/make/LDT
+lisf/lvt/LVT
+lisf/lvt/make/LVT
+
+# SLURM logs
+slurm_logs/
+slurm_*.out
+slurm_*.err
+
+# Fortran/LIS temporary files
+fort.*
+SMAP_filelist.dat
+ldtlog.*

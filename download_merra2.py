@@ -12,10 +12,12 @@ OUT_DIR = "input/MET_FORCING/MERRA2"
 # Ensure directories exist
 os.makedirs(f"{OUT_DIR}/M2T1NXFLX", exist_ok=True)
 os.makedirs(f"{OUT_DIR}/M2T1NXSLV", exist_ok=True)
+os.makedirs(f"{OUT_DIR}/M2T1NXRAD", exist_ok=True)
 
 # NASA GES DISC URLs
 BASE_FLX_URL = "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2T1NXFLX.5.12.4"
 BASE_SLV_URL = "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2T1NXSLV.5.12.4"
+BASE_RAD_URL = "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2T1NXRAD.5.12.4"
 
 # User credentials from netrc will be used automatically by requests,
 # but we can also set up a session to handle redirects correctly.
@@ -86,6 +88,16 @@ if __name__ == "__main__":
             download_file(slv_url, slv_dest)
         except Exception as e:
             print(f"[ERROR] Failed to download SLV for {date_str}: {e}", file=sys.stderr)
+
+        # 3. Radiation (M2T1NXRAD) — required by LIS MERRA2 reader
+        rad_filename = f"MERRA2_400.tavg1_2d_rad_Nx.{date_str}.nc4"
+        rad_url = f"{BASE_RAD_URL}/{yr}/{mo}/{rad_filename}"
+        rad_dest = f"{OUT_DIR}/M2T1NXRAD/{rad_filename}"
+        
+        try:
+            download_file(rad_url, rad_dest)
+        except Exception as e:
+            print(f"[ERROR] Failed to download RAD for {date_str}: {e}", file=sys.stderr)
             
         current_date += timedelta(days=1)
         
