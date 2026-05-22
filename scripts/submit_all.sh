@@ -43,6 +43,18 @@ echo "[OPL T5] 128 tasks (8x16) on 4 nodes"
 sbatch --nodes=4 --ntasks=128 scripts/jobs/job_scalability.sh \
     configs/scalability/lis.config.opl.128tasks_4nodes OPL_128tasks_4nodes 128
 
+echo "[OPL T6] 256 tasks (16x16) on 8 nodes"
+sbatch --nodes=8 --ntasks=256 scripts/jobs/job_scalability.sh \
+    configs/scalability/lis.config.opl.256tasks_8nodes OPL_256tasks_8nodes 256
+
+echo "[OPL T7] 512 tasks (16x32) on 16 nodes"
+sbatch --nodes=16 --ntasks=512 scripts/jobs/job_scalability.sh \
+    configs/scalability/lis.config.opl.512tasks_16nodes OPL_512tasks_16nodes 512
+
+echo "[OPL T8] 896 tasks (32x28) on 28 nodes"
+sbatch --nodes=28 --ntasks=896 scripts/jobs/job_scalability.sh \
+    configs/scalability/lis.config.opl.896tasks_28nodes OPL_896tasks_28nodes 896
+
 echo ""
 echo ">>> DA Tests <<<"
 echo ""
@@ -67,9 +79,21 @@ echo "[DA T5] 128 tasks (8x16) on 4 nodes"
 sbatch --nodes=4 --ntasks=128 scripts/jobs/job_scalability.sh \
     configs/scalability/lis.config.da.128tasks_4nodes DA_128tasks_4nodes 128
 
+echo "[DA T6] 256 tasks (16x16) on 8 nodes"
+sbatch --nodes=8 --ntasks=256 scripts/jobs/job_scalability.sh \
+    configs/scalability/lis.config.da.256tasks_8nodes DA_256tasks_8nodes 256
+
+echo "[DA T7] 512 tasks (16x32) on 16 nodes"
+sbatch --nodes=16 --ntasks=512 scripts/jobs/job_scalability.sh \
+    configs/scalability/lis.config.da.512tasks_16nodes DA_512tasks_16nodes 512
+
+echo "[DA T8] 896 tasks (32x28) on 28 nodes"
+sbatch --nodes=28 --ntasks=896 scripts/jobs/job_scalability.sh \
+    configs/scalability/lis.config.da.896tasks_28nodes DA_896tasks_28nodes 896
+
 echo ""
 echo "============================================="
-echo " All 10 tests submitted!"
+echo " All 16 tests submitted!"
 echo " Monitor with: squeue -u \$USER"
 echo " Results in:   experiments/scalability/timing_results.csv"
 echo " Logs in:      logs/slurm/"

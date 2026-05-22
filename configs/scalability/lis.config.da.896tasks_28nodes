@@ -37,9 +37,9 @@ Ending hour:                            00
 Ending minute:                          00
 Ending second:                          00
 Undefined value:                       -9999
-Output directory:                       "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability/OPL_4tasks_1node"
-Diagnostic output file:                 "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability/OPL_4tasks_1node/lislog"
-Number of ensembles per tile:           1
+Output directory:                       "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability/DA_896tasks_28nodes"
+Diagnostic output file:                 "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability/DA_896tasks_28nodes/lislog"
+Number of ensembles per tile:           12
 
 #The following options are used for subgrid tiling based on vegetation
 Maximum number of surface type tiles per grid:    1
@@ -56,8 +56,8 @@ Maximum number of aspect bands per grid:          1
 Minimum cutoff percentage (aspect bands):         0.05
 
 #Processor layout
-Number of processors along x:           2
-Number of processors along y:           2
+Number of processors along x:           32
+Number of processors along y:           28
 Halo size along x:                      0
 Halo size along y:                      0
 
@@ -66,22 +66,53 @@ Routing model:                          "none"
 
 #---------------------DATA ASSIMILATION ----------------------------------
 #Data assimilation options
-Number of data assimilation instances:                0
-Data assimilation algorithm:                          "none"
-Data assimilation set:                                "none"
+Number of data assimilation instances:               1
+Data assimilation algorithm:                          "EnKF"
+Data assimilation set:                                "SMAP(NASA) soil moisture"
 Data assimilation exclude analysis increments:        0 
 Data assimilation output interval for diagnostics:    "1da"
-Data assimilation number of observation types:        0
-Data assimilation output ensemble spread:             0
+Data assimilation number of observation types:        1
+Data assimilation output ensemble spread:             1
 Data assimilation scaling strategy:                  "none"
-Data assimilation output processed observations:      0 
-Data assimilation output innovations:                 0 
-Number of state variables:                            0
-Data assimilation use a trained forward model:        0 
+Data assimilation observation domain file:            ./dat./data/lis_input.d01.nc
+Data assimilation output processed observations:      1 
+Data assimilation output innovations:                 1 
+Number of state variables:                            4
+Data assimilation use a trained forward model:  0 
 Data assimilation trained forward model output file:  none
 
 Apply perturbation bias correction:        0
-Bias estimation algorithm:                "none"
+Bias estimation algorithm:                "none"  
+
+#Perturbation options
+Perturbations start mode:                 "coldstart"
+Perturbations restart output interval:    "1mo"
+Perturbations restart filename:           "none"
+
+Forcing perturbation algorithm:           "GMAO scheme"
+Forcing perturbation frequency:           "1hr"
+Forcing attributes file:                  ./data/pert_package/forcing_attribs.txt
+Forcing perturbation attributes file:     ./data/pert_package/forcing_pertattribs.txt
+
+State perturbation algorithm:             "GMAO scheme"
+State perturbation frequency:              "3hr"
+State attributes file:                    ./data/pert_package/noahmp_sm_attribs.txt
+State perturbation attributes file:       ./data/pert_package/noahmp_sm_pertattribs.txt
+
+Observation perturbation algorithm:       "GMAO scheme"
+Observation perturbation frequency:         "1da"
+Observation attributes file:                 ./data/pert_package/smap_attribs.txt
+Observation perturbation attributes file:    ./data/pert_package/smap_pertattribs.txt
+
+SMAP(NASA) soil moisture data directory:  ./data/observations/SMAP/SPL3SMP.009
+SMAP(NASA) soil moisture data designation: SPL3SMP 
+SMAP(NASA) soil moisture Composite Release ID: "R19"
+SMAP(NASA) soil moisture use scaled standard deviation model: 0
+SMAP(NASA) model CDF file: none
+SMAP(NASA) observation CDF file: none
+SMAP(NASA) soil moisture number of bins in the CDF: 0
+SMAP(NASA) CDF read option: 0
+
 #-----------------------LAND SURFACE MODELS--------------------------
 Noah-MP.3.6 model timestep:               15mn
 Noah-MP.3.6 restart output interval:      1mo
@@ -153,26 +184,6 @@ Soil color data source:                 none
 Elevation data source:                  LDT
 Slope data source:                      none
 Aspect data source:                     none
-
-Forcing perturbation algorithm:           "none"
-State perturbation algorithm:             "none"
-Observation perturbation algorithm:       "none"
-
-Perturbations start mode:                 "coldstart"
-Perturbations restart output interval:    "1mo"
-Perturbations restart filename:           "none"
-
-Forcing perturbation frequency:           "1hr"
-Forcing attributes file:                  "none"
-Forcing perturbation attributes file:     "none"
-
-State perturbation frequency:              "3hr"
-State attributes file:                    "none"
-State perturbation attributes file:       "none"
-
-Observation perturbation frequency:         "1da"
-Observation attributes file:                 "none"
-Observation perturbation attributes file:    "none"
 Curvature data source:                  none
 LAI data source:                        none
 SAI data source:                        none

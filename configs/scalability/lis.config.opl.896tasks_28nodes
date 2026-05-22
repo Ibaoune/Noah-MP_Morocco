@@ -37,8 +37,8 @@ Ending hour:                            00
 Ending minute:                          00
 Ending second:                          00
 Undefined value:                       -9999
-Output directory:                       "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability/OPL_4tasks_1node"
-Diagnostic output file:                 "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability/OPL_4tasks_1node/lislog"
+Output directory:                       "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability/OPL_896tasks_28nodes"
+Diagnostic output file:                 "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability/OPL_896tasks_28nodes/lislog"
 Number of ensembles per tile:           1
 
 #The following options are used for subgrid tiling based on vegetation
@@ -56,8 +56,8 @@ Maximum number of aspect bands per grid:          1
 Minimum cutoff percentage (aspect bands):         0.05
 
 #Processor layout
-Number of processors along x:           2
-Number of processors along y:           2
+Number of processors along x:           32
+Number of processors along y:           28
 Halo size along x:                      0
 Halo size along y:                      0
 
