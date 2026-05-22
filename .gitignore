@@ -1,36 +1,30 @@
-# Download directories
-input/
-OUTPUT_OPL/
-OUTPUT_DA/
+# Reorganized NoahMP_Morocco Git Ignore
 
-# Log files
-*.log
+# Input and Output data directories (large files)
+data/
+experiments/
+logs/
+
+# Older/temporary run files
+fort.*
+ldtlog.*
+SMAP_filelist.dat
+
+# Compiled LISF binaries (under src/)
+src/lisf/lis/LIS
+src/lisf/lis/make/LIS
+src/lisf/ldt/LDT
+src/lisf/ldt/make/LDT
+src/lisf/lvt/LVT
+src/lisf/lvt/make/LVT
+*.o
+*.mod
+*.d
 
 # Python cache
 __pycache__/
 *.pyc
 
-# Executable outputs
-*.exe
-*.nc
-
-# Compiled LISF binaries
-lisf/lis/LIS
-lisf/lis/make/LIS
-lisf/ldt/LDT
-lisf/ldt/make/LDT
-lisf/lvt/LVT
-lisf/lvt/make/LVT
-
-# SLURM logs
-slurm_logs/
-slurm_*.out
-slurm_*.err
-
-# Fortran/LIS temporary files
-fort.*
-SMAP_filelist.dat
-ldtlog.*
-
-# Postprocessing output figures
-postproc/*.png
+# Figures
+postproc/figures/
+*.png
