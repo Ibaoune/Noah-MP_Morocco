@@ -351,7 +351,71 @@ Il est rédigé de manière pédagogique afin qu'un **utilisateur débutant** pu
   ```
 
 ---
+
+## 13. Assimilation de données conjointe (SMAP + MODIS LAI) et format des observations
+
+### Problème 13.1 : Routine d'initialisation manquante pour "MODIS LAI" (setup routine not defined)
+* **Contexte :** Lors du lancement de la simulation de DA conjointe avec `job_3_lis_da_sebou.sh`, l'exécution plante immédiatement avec le message : `setup routine for DA obs MODIS LAI is not defined`.
+* **Le Problème :** Le nom de jeu de données `"MODIS LAI"` n'est pas un nom de plugin reconnu/enregistré dans le code source de LIS (dans `src/lisf/lis/plugins/LIS_pluginIndices.F90`). Le plugin officiel pour le produit MODIS LAI s'appelle `"MCD15A2H LAI"`.
+* **L'Explication :** LIS cherche la clé d'enregistrement `"MODIS LAI"` et, ne la trouvant pas, s'arrête avec une erreur de segmentation. De plus, le plugin `"MCD15A2H LAI"` s'attend à lire des fichiers NetCDF4 (`.nc4`) globaux (de dimensions `86400 x 43200` représentant une grille géographique de 500m de résolution de -180 à +180 de longitude et -90 à +90 de latitude) nommés `MCD15A2H.006_LAI_YYYYDOY.nc4`, alors que les fichiers téléchargés sont des dalles brutes au format HDF4 (`MOD15A2H.A*.hdf`) en projection sinusoïdale MODIS.
+* **La Solution :**
+  1. Remplacer `"MODIS LAI"` par `"MCD15A2H LAI"` dans les fichiers de configuration `lis.config.da_sebou` et `lis.config.da_joint`, et configurer les paramètres de MCD15A2H spécifiques (version, QC flags, etc.).
+  2. Écrire un script de prétraitement Python (`scripts/fix/preprocess_modis_lai.py`) utilisant GDAL (`osgeo.gdal`) pour projeter la dalle `h17v05` en coordonnées géographiques (EPSG:4326) et l'insérer dans une grille globale de dimensions `86400 x 43200` compressée avec NetCDF4.
+
+### Problème 13.2 : Python `netCDF4` module non disponible dans l'environnement `arch_toubkal.env`
+* **Contexte :** La première version du script de prétraitement utilisait `import netCDF4 as nc` → `ModuleNotFoundError: No module named 'netCDF4'`.
+* **L'Explication :** L'environnement `arch_toubkal.env` charge des modules HPC compilés pour LIS/Fortran (foss/2024a, netCDF-Fortran, ESMF, etc.), mais les liaisons Python de netCDF4 ne sont pas incluses dans ces modules.
+* **La Solution :** Réécrire le script pour n'utiliser que `osgeo.gdal` + `numpy` (disponibles via `module load GDAL/3.7.1-foss-2023a`) pour créer les fichiers NetCDF4, en exploitant le pilote GDAL `netCDF` avec l'option `FORMAT=NC4` et `COMPRESS=DEFLATE`.
+
+### Problème 13.3 : Noms de variables `Band1`/`Band2` au lieu de `Lai_500m`/`FparLai_QC`
+* **Contexte :** Le pilote GDAL netCDF nomme automatiquement les bandes `Band1`, `Band2`, etc., alors que LIS (dans `read_MCD15A2H_LAI_data`) cherche explicitement les variables `Lai_500m` et `FparLai_QC` via `nf90_inq_varid`.
+* **La Solution :** Utiliser `ncrename` de la suite NCO (disponible via `module load NCO/5.0.3-foss-2021b`) pour renommer les variables après la création GDAL. Le chemin complet `/srv/software/easybuild/software/NCO/5.0.3-foss-2021b/bin/ncrename` est codé en dur dans le script pour éviter les problèmes de variable `$PATH` dans les sous-processus Python :
+  ```bash
+  ncrename -v Band1,Lai_500m -v Band2,FparLai_QC tmp_file.nc4 output.nc4
+  ```
+* **Vérification :** Le fichier final est vérifié via `gdal.Open()` qui retourne les deux subdatasets `Lai_500m [43200x86400]` et `FparLai_QC [43200x86400]`.
+
+### Résultat final
+* **Fichiers produits :** `data/observations/MODIS_LAI/processed/YYYY/MCD15A2H.006_LAI_YYYYDOY.nc4`
+* **Format :** NetCDF4, DEFLATE compressé (ZLEVEL=4), ~15 MB par fichier (1 dalle `h17v05` sur fond de `255`)
+* **Job de preprocessing :** `scripts/jobs/job_preprocess_modis_lai.sh` (SLURM, nœud CPU unique, 12h)
+* **Configurations mises à jour :** `configs/lis.config.da_sebou`, `configs/lis.config.da_joint`
+* **Paramètres ajoutés :**
+  ```
+  Data assimilation set:             "SMAP(NASA) soil moisture" "MCD15A2H LAI"
+  MCD15A2H LAI data directory:       ./data/observations/MODIS_LAI/processed
+  MCD15A2H LAI data version:         6
+  MCD15A2H LAI apply QC flags:       1
+  MCD15A2H LAI apply temporal smoother: 0
+  ```
+  ```
+
+---
+
+### 14. GDAL SetNoDataValue Error on NetCDF Generation
+
+**Symptoms:**
+- The MODIS LAI preprocessing script (`preprocess_modis_lai.py`) crashes with a GDAL exception:
+  ```text
+  netcdf error #-122 : NetCDF: Attempt to define fill value when data already exists.
+  at (/srv/software/easybuild/build/GDAL/3.7.1/foss-2023a/gdal-3.7.1/frmts/netcdf/netcdfdataset.cpp,SetNoDataValue,1566)
+  ```
+- Resulting files end up as `.tmp.nc4` because `ncrename` fails to run after the crash.
+- `DA-LAI` and `DA-Joint` jobs fail instantly with `MPI_ABORT` because the required processed NC4 observation files do not exist.
+
+**Cause:**
+- GDAL's NetCDF driver enforces strict mode transitions (define mode vs. data mode). 
+- In the Python script, `b1.WriteArray(lai_arr)` was called *before* `b1.SetNoDataValue(FILL_BYTE)`. Calling `WriteArray` causes the NetCDF driver to leave define mode, so attempting to set the `_FillValue` attribute afterwards triggers an error because NetCDF does not allow redefining fill values once data is written.
+
+**Resolution / Actions Taken:**
+1. Modified `scripts/fix/preprocess_modis_lai.py` to correctly sequence the GDAL API calls:
+   ```python
+   # Correct order: Set metadata/attributes first, then write data
+   b1.SetNoDataValue(FILL_BYTE)
+   b1.WriteArray(lai_arr)
+   ```
+2. Deleted all broken `*.tmp.nc4` intermediate files.
+3. Resubmitted the preprocessing job and queued `DA-LAI` and `DA-Joint` to run automatically upon its success using `sbatch --dependency=afterok:$PREP_JOB`.
+
+---
 *Fin du journal. Ces documentations assurent la pérennité du projet et évitent de "réinventer la roue" ou de rester bloqué de longues heures sur des problèmes d'architecture lors des prochains travaux de recherche ou lors du passage de relais à un étudiant/chercheur.*
-
-
-

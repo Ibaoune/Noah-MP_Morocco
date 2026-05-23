@@ -1,6 +1,156 @@
 # Sebou Basin Experiment Setup Guide
 
-This document describes the detailed scientific setup, datasets, and configuration variables for running a joint data assimilation experiment (SMAP Soil Moisture + MODIS LAI) using the Noah-MP land surface model in NASA LIS over the expanded upstream Sebou Basin, Morocco.
+This document describes the scientific setup, datasets, and step-by-step workflow for running land surface model experiments (Open-Loop and three data assimilation variants) using Noah-MP/LIS over the Sebou River basin, Morocco.
+
+---
+
+## 1. Domain Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Region | Upstream Sebou River basin + Saïss plain |
+| South-West corner | `33.0° N, 7.0° W` |
+| North-East corner | `35.0° N, 4.0° W` |
+| Resolution | `0.01°` (~1 km) |
+| Grid size | 200 × 300 = ~60,000 active land cells |
+| Simulation period | January 1, 2015 — December 31, 2020 (6 years, matching Nie et al., 2022) |
+| Timestep | 15 minutes |
+
+---
+
+## 2. Scientific Objectives
+
+The experiments address two key research questions for Q1 publications:
+1. **Hydrology (Paper 1):** *Can joint soil moisture and LAI assimilation improve streamflow, AET estimation, and root-zone soil moisture representation?*
+2. **Agriculture (Paper 2):** *Does assimilation reduce irrigation water allocation uncertainties and crop stress detection times?*
+
+---
+
+## 3. Experiment Design
+
+Four experiments are defined, all on the same Sebou basin domain, to allow controlled comparison:
+
+| Label | Name | DA Instances | Config | Output |
+|-------|------|-------------|--------|--------|
+| **OPL** | Open-Loop | None | `lis.config.opl_sebou` | `experiments/OPL_sebou/` |
+| **DA-SM** | SMAP SM assimilation | 1: SMAP(NASA) soil moisture | `lis.config.da_sm_sebou` | `experiments/DA_SM_sebou/` |
+| **DA-LAI** | MODIS LAI assimilation | 1: MCD15A2H LAI | `lis.config.da_lai_sebou` | `experiments/DA_LAI_sebou/` |
+| **DA-Joint** | Joint SM + LAI assimilation | 2: SMAP SM + MCD15A2H LAI | `lis.config.da_joint` | `experiments/DA_Joint_sebou/` |
+
+All DA experiments use **EnKF with 20 ensemble members** and GMAO-scheme perturbations on forcing (precipitation, radiation) and state variables (soil moisture layers, LAI).
+
+---
+
+## 4. Data Download Instructions
+
+Three Python scripts in `scripts/download/` query NASA's Common Metadata Repository (CMR):
+
+| Dataset | Script | SLURM job |
+|---------|--------|-----------|
+| MERRA-2 forcing | `download_merra2.py` | `job_download_data.sh` |
+| SMAP SPL3SMP v009 | `download_smap.py` | `job_download_data.sh` |
+| MODIS MOD15A2H v061 tile h17v05 | `download_modis_lai.py` | `job_download_data.sh` |
+
+```bash
+sbatch scripts/jobs/job_download_data.sh
+```
+*All scripts are configured for the target period (2015-01-01 to 2020-12-31).*
+
+---
+
+## 5. Parameter Processing (LDT)
+
+```bash
+sbatch scripts/jobs/job_1_ldt_sebou.sh
+```
+
+**Status: ✅ Completed** — generated `data/lis_input.d01_sebou.nc`.
+
+Domain parameter maps (saved in `postproc/figures/`):
+- **Topography:** [sebou_topography.png](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_topography.png)
+- **Land Cover (MODIS IGBP):** [sebou_landcover.png](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_landcover.png)
+- **Soil Texture (STATSGO):** [sebou_soil_texture.png](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_soil_texture.png)
+
+---
+
+## 6. MODIS LAI Preprocessing (Required for DA-LAI and DA-Joint)
+
+The LIS `"MCD15A2H LAI"` plugin reads global NetCDF4 files (`86400 × 43200` grid, EPSG:4326, 500 m resolution), not raw MODIS HDF tile files. A preprocessing step is required:
+
+```bash
+sbatch scripts/jobs/job_preprocess_modis_lai.sh
+```
+
+This runs `scripts/fix/preprocess_modis_lai.py` which:
+- Warps each HDF tile from Sinusoidal to EPSG:4326 using GDAL
+- Stamps the tile into a global grid (filled with `255` outside the tile)
+- Saves compressed NetCDF4 files to `data/observations/MODIS_LAI/processed/YYYY/MCD15A2H.006_LAI_YYYYDOY.nc4`
+- Renames variables from `Band1/Band2` to `Lai_500m/FparLai_QC` using `ncrename`
+
+**Status: 🔄 Running** — SLURM job 7053114 submitted.
+
+---
+
+## 7. Running the Experiments
+
+### Step 1 — Open-Loop (no assimilation)
+```bash
+sbatch scripts/jobs/job_2_lis_opl_sebou.sh
+# Output → experiments/OPL_sebou/
+```
+
+### Step 2a — DA-SM (SMAP Soil Moisture only)
+```bash
+sbatch scripts/jobs/job_3a_lis_da_sm_sebou.sh
+# Output → experiments/DA_SM_sebou/
+```
+
+### Step 2b — DA-LAI (MODIS LAI only, requires preprocessing)
+```bash
+# Wait for job_preprocess_modis_lai.sh to complete, then:
+sbatch scripts/jobs/job_3b_lis_da_lai_sebou.sh
+# Output → experiments/DA_LAI_sebou/
+```
+
+### Step 2c — DA-Joint (SMAP SM + MODIS LAI, requires preprocessing)
+```bash
+# Wait for job_preprocess_modis_lai.sh to complete, then:
+sbatch scripts/jobs/job_3c_lis_da_joint_sebou.sh
+# Output → experiments/DA_Joint_sebou/
+```
+
+> **Tip:** For the 3-day test run (2020-06-01 to 2020-06-04), the configs are already set. For the full 2015-2020 production run, update the `Ending year/month/day` fields in the config files.
+
+---
+
+## 8. Perturbation Attributes
+
+| File | Used in |
+|------|---------|
+| `data/pert_package/forcing_attribs.txt` | All DA experiments |
+| `data/pert_package/forcing_pertattribs.txt` | All DA experiments |
+| `data/pert_package/noahmp_sm_attribs.txt` | DA-SM |
+| `data/pert_package/noahmp_sm_pertattribs.txt` | DA-SM |
+| `data/pert_package/smap_attribs.txt` | DA-SM, DA-Joint |
+| `data/pert_package/smap_pertattribs.txt` | DA-SM, DA-Joint |
+| `data/pert_package/noahmp_lai_attribs.txt` | DA-LAI, DA-Joint |
+| `data/pert_package/noahmp_lai_pertattribs.txt` | DA-LAI, DA-Joint |
+| `data/pert_package/modis_lai_attribs.txt` | DA-LAI, DA-Joint |
+| `data/pert_package/modis_lai_pertattribs.txt` | DA-LAI, DA-Joint |
+
+---
+
+## 9. Verification & Validation Strategy
+
+### Hydrology Focus (Paper 1)
+- **River Discharge:** Route runoff via HYMAP; compare with ABHS gauge records.
+- **Evapotranspiration (ET):** Compare against FAO WaPOR (250 m) or GLEAM v3.
+- **Terrestrial Water Storage:** Validate against GRACE/GRACE-FO monthly anomalies.
+
+### Agriculture Focus (Paper 2)
+- **Irrigation Volumes:** Compare with ABHS regional water withdrawal estimates.
+- **Crop Productivity:** Correlate simulated GPP anomalies with provincial wheat/barley yield statistics (Ministry of Agriculture of Morocco).
+
 
 ---
 

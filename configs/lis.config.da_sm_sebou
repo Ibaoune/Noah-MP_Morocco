@@ -24,21 +24,21 @@ Output model restart files:             1
 Output data format:                     netcdf
 Output naming style:                    "3 level hierarchy"
 Start mode:                             coldstart
-Starting year:                          2015
-Starting month:                         01
+Starting year:                          2020
+Starting month:                         06
 Starting day:                           01
 Starting hour:                          00
 Starting minute:                        00
 Starting second:                        00
-Ending year:                            2025
-Ending month:                           12
-Ending day:                             31
-Ending hour:                            23
-Ending minute:                          45
+Ending year:                            2020
+Ending month:                           06
+Ending day:                             04
+Ending hour:                            00
+Ending minute:                          00
 Ending second:                          00
 Undefined value:                       -9999
-Output directory:                       "experiments/DA_Joint_sebou"
-Diagnostic output file:                 "experiments/DA_Joint_sebou/lislog"
+Output directory:                       "experiments/DA_SM_sebou"
+Diagnostic output file:                 "experiments/DA_SM_sebou/lislog"
 Number of ensembles per tile:           20
 
 #The following options are used for subgrid tiling based on vegetation
@@ -55,22 +55,22 @@ Minimum cutoff percentage (slope bands):          0.05
 Maximum number of aspect bands per grid:          1
 Minimum cutoff percentage (aspect bands):         0.05
 
-#Processor layout (supports 128 to 256 parallel tasks)
+#Processor layout (configured for 128 parallel tasks on 4 nodes)
 Number of processors along x:           8
 Number of processors along y:           16
 Halo size along x:                      0
 Halo size along y:                      0
 
-#Routing (can configure routing model for paper 1)
+#Routing
 Routing model:                          "none"
 
 #---------------------DATA ASSIMILATION ----------------------------------
-#Data assimilation options
-Number of data assimilation instances:               2
-Data assimilation algorithm:                          "EnKF" "EnKF"
-Data assimilation set:                                "SMAP(NASA) soil moisture" "MCD15A2H LAI"
-Data assimilation exclude analysis increments:        0 0
-Data assimilation set attributes file:                 ./data/pert_package/smap_attribs.txt ./data/pert_package/modis_lai_attribs.txt
+#Data assimilation options — SM only (1 instance)
+Number of data assimilation instances:               1
+Data assimilation algorithm:                          "EnKF"
+Data assimilation set:                                "SMAP(NASA) soil moisture"
+Data assimilation exclude analysis increments:        0
+Data assimilation set attributes file:                 ./data/pert_package/smap_attribs.txt
 
 # SMAP(NASA) Soil Moisture Options
 SMAP(NASA) soil moisture data directory:              ./data/observations/SMAP/SPL3SMP.009
@@ -82,30 +82,23 @@ SMAP(NASA) observation CDF file:                      none
 SMAP(NASA) soil moisture number of bins in the CDF:   0
 SMAP(NASA) CDF read option:                           0
 
-# MCD15A2H LAI Options
-MCD15A2H LAI data directory:                           ./data/observations/MODIS_LAI/processed
-MCD15A2H LAI data version:                             6
-MCD15A2H LAI apply temporal smoother:                  0
-MCD15A2H LAI apply climatological fill values:         0
-MCD15A2H LAI apply QC flags:                           1
-
-Data assimilation output interval for diagnostics:    "1da" "1da"
-Data assimilation number of observation types:        1 1
-Data assimilation output ensemble spread:             1 1
-Data assimilation scaling strategy:                   "none" "none"
-Data assimilation observation domain file:            ./data/lis_input.d01_sebou.nc ./data/lis_input.d01_sebou.nc
-Data assimilation output processed observations:      1 1
-Data assimilation output innovations:                 1 1
+Data assimilation output interval for diagnostics:    "1da"
+Data assimilation number of observation types:        1
+Data assimilation output ensemble spread:             1
+Data assimilation scaling strategy:                   "none"
+Data assimilation observation domain file:            ./data/lis_input.d01_sebou.nc
+Data assimilation output processed observations:      1
+Data assimilation output innovations:                 1
 Number of state variables:                            5
-Data assimilation use a trained forward model:        0 
+Data assimilation use a trained forward model:        0
 Data assimilation trained forward model output file:  none
 
 Apply perturbation bias correction:        0
-Bias estimation algorithm:                "none" "none" 
-Bias estimation attributes file:          "none" "none"
-Bias estimation restart output frequency:  "1mo" "1mo"
-Bias estimation start mode:               "coldstart" "coldstart"
-Bias estimation restart file:             "none" "none"
+Bias estimation algorithm:                "none"
+Bias estimation attributes file:          "none"
+Bias estimation restart output frequency:  "1mo"
+Bias estimation start mode:               "coldstart"
+Bias estimation restart file:             "none"
 
 #Perturbation options
 Perturbations start mode:                 "coldstart"
@@ -117,15 +110,15 @@ Forcing perturbation frequency:           "1hr"
 Forcing attributes file:                  ./data/pert_package/forcing_attribs.txt
 Forcing perturbation attributes file:     ./data/pert_package/forcing_pertattribs.txt
 
-State perturbation algorithm:             "GMAO scheme" "GMAO scheme"
-State perturbation frequency:              "3hr" "3hr"
-State attributes file:                    ./data/pert_package/noahmp_lai_attribs.txt ./data/pert_package/noahmp_lai_attribs.txt
-State perturbation attributes file:       ./data/pert_package/noahmp_lai_pertattribs.txt ./data/pert_package/noahmp_lai_pertattribs.txt
+State perturbation algorithm:             "GMAO scheme"
+State perturbation frequency:              "3hr"
+State attributes file:                    ./data/pert_package/noahmp_sm_attribs.txt
+State perturbation attributes file:       ./data/pert_package/noahmp_sm_pertattribs.txt
 
-Observation perturbation algorithm:       "GMAO scheme" "GMAO scheme"
-Observation perturbation frequency:         "1da" "1da"
-Observation attributes file:               ./data/pert_package/smap_attribs.txt ./data/pert_package/modis_lai_attribs.txt
-Observation perturbation attributes file:  ./data/pert_package/smap_pertattribs.txt ./data/pert_package/modis_lai_pertattribs.txt
+Observation perturbation algorithm:       "GMAO scheme"
+Observation perturbation frequency:         "1da"
+Observation attributes file:               ./data/pert_package/smap_attribs.txt
+Observation perturbation attributes file:  ./data/pert_package/smap_pertattribs.txt
 
 #--------------------------------FORCINGS----------------------------------
 MERRA2 forcing directory:       ./data/met_forcing/MERRA2/

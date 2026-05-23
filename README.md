@@ -26,41 +26,56 @@ NoahMP_Morocco/
 │       └── lvt/              #     Land Verification Toolkit
 │
 ├── configs/                  # Configuration files
-│   ├── ldt.config            #   LDT config (generate lis_input.d01.nc)
-│   ├── lis.config.opl        #   LIS Open-Loop experiment
-│   ├── lis.config.da         #   LIS Data Assimilation (EnKF + SMAP)
+│   ├── ldt.config            #   LDT config (original Morocco domain)
+│   ├── ldt.config.sebou      #   LDT config (Sebou basin domain)
+│   ├── lis.config.opl        #   Open-Loop experiment (original domain)
+│   ├── lis.config.opl_sebou  #   Open-Loop experiment (Sebou basin)
+│   ├── lis.config.da         #   DA: SMAP SM only (original domain)
+│   ├── lis.config.da_sm_sebou   #   DA: SMAP SM only (Sebou basin)
+│   ├── lis.config.da_lai_sebou  #   DA: MODIS LAI only (Sebou basin)
+│   ├── lis.config.da_sebou   #   DA: SMAP SM + MCD15A2H LAI — joint test (Sebou)
+│   ├── lis.config.da_joint   #   DA: joint long-run config (2015-2020)
 │   ├── MODEL_OUTPUT_LIST.TBL #   Output variable selection
 │   └── forcing_variables.txt #   Forcing variable definitions
 │
 ├── scripts/                  # All executable scripts
 │   ├── jobs/                 #   SLURM job scripts
-│   │   ├── job_1_ldt.sh      #     Step 1: Run LDT
-│   │   ├── job_2_lis_opl.sh  #     Step 2: Open-Loop simulation
-│   │   ├── job_3_lis_da.sh   #     Step 3: Data Assimilation
-│   │   └── job_scalability.sh#     Scalability testing
+│   │   ├── job_1_ldt.sh               #     Step 1: LDT (original domain)
+│   │   ├── job_1_ldt_sebou.sh         #     Step 1: LDT (Sebou basin)
+│   │   ├── job_2_lis_opl.sh           #     Step 2: Open-Loop
+│   │   ├── job_2_lis_opl_sebou.sh     #     Step 2: Open-Loop (Sebou)
+│   │   ├── job_3a_lis_da_sm_sebou.sh  #     Step 3a: DA — SMAP SM only
+│   │   ├── job_3b_lis_da_lai_sebou.sh #     Step 3b: DA — MODIS LAI only
+│   │   ├── job_3c_lis_da_joint_sebou.sh #   Step 3c: DA — Joint (SM + LAI)
+│   │   ├── job_preprocess_modis_lai.sh#     Preprocess HDF → NetCDF4
+│   │   └── job_scalability.sh         #     Scalability testing
 │   ├── download/             #   Data download scripts
 │   │   ├── download_smap.py
 │   │   ├── download_merra2.py
-│   │   ├── download_parameters.py
+│   │   ├── download_modis_lai.py
 │   │   └── reorganize_merra2.sh
-│   ├── fix/                  #   Data fix/correction scripts
-│   │   ├── fix_gtopo.py
-│   │   └── fix_mptable.py
-│   ├── submit_all.sh         #   Submit scalability tests
-│   └── generate_configs.sh   #   Generate scalability configs
+│   └── fix/                  #   Data fix/correction scripts
+│       ├── fix_gtopo.py
+│       ├── fix_mptable.py
+│       └── preprocess_modis_lai.py    #     HDF tile → global NetCDF4
 │
 ├── data/                     # Input data
 │   ├── met_forcing/MERRA2/   #   MERRA-2 meteorological forcing
 │   ├── land_params/          #   Land surface parameters
 │   │   ├── noah_2dparms/     #     NoahMP tables (VEGPARM, SOILPARM, etc.)
 │   │   └── topo_parms/       #     Topography (GTOPO30)
-│   ├── observations/SMAP/    #   SMAP soil moisture (SPL3SMP v009)
+│   ├── observations/
+│   │   ├── SMAP/             #     SMAP soil moisture (SPL3SMP v009)
+│   │   └── MODIS_LAI/        #     MODIS MOD15A2H LAI (tile h17v05)
+│   │       └── processed/    #       Preprocessed global NetCDF4 files
 │   ├── pert_package/         #   Perturbation attributes (DA)
-│   └── lis_input.d01.nc      #   Domain/parameter file (LDT output)
+│   └── lis_input.d01_sebou.nc#   Sebou domain/parameter file (LDT output)
 │
 ├── experiments/              # Model outputs (by experiment)
-│   ├── OPL/                  #   Open-Loop results
-│   ├── DA/                   #   Data Assimilation results
+│   ├── OPL_sebou/            #   Open-Loop results
+│   ├── DA_SM_sebou/          #   SMAP SM assimilation results
+│   ├── DA_LAI_sebou/         #   MODIS LAI assimilation results
+│   ├── DA_Joint_sebou/       #   Joint SM+LAI assimilation results
 │   └── scalability/          #   Scalability test results
 │
 ├── postproc/                 # Post-processing & visualization
@@ -85,22 +100,36 @@ NoahMP_Morocco/
 source arch/arch_toubkal.env
 ```
 
-### 2. Generate domain parameters (LDT)
+### 2. Generate domain parameters (LDT — Sebou Basin)
 
 ```bash
-sbatch scripts/jobs/job_1_ldt.sh
+sbatch scripts/jobs/job_1_ldt_sebou.sh
 ```
 
 ### 3. Run Open-Loop simulation
 
 ```bash
-sbatch --nodes=1 --ntasks=32 scripts/jobs/job_2_lis_opl.sh
+sbatch scripts/jobs/job_2_lis_opl_sebou.sh
 ```
 
-### 4. Run Data Assimilation (EnKF + SMAP)
+### 4. Preprocess MODIS LAI observations
+
+Required before running DA-LAI or DA-Joint experiments:
+```bash
+sbatch scripts/jobs/job_preprocess_modis_lai.sh
+```
+
+### 5. Run Data Assimilation experiments
 
 ```bash
-sbatch --nodes=2 --ntasks=64 scripts/jobs/job_3_lis_da.sh
+# 3a — SMAP Soil Moisture assimilation only
+sbatch scripts/jobs/job_3a_lis_da_sm_sebou.sh
+
+# 3b — MODIS LAI assimilation only (needs preprocessing step above)
+sbatch scripts/jobs/job_3b_lis_da_lai_sebou.sh
+
+# 3c — Joint assimilation: SMAP SM + MODIS LAI
+sbatch scripts/jobs/job_3c_lis_da_joint_sebou.sh
 ```
 
 ## Domain
@@ -117,17 +146,21 @@ sbatch --nodes=2 --ntasks=64 scripts/jobs/job_3_lis_da.sh
 
 ## Experiments
 
-| Experiment | Description | Config |
-|------------|-------------|--------|
-| **OPL** | Open-Loop (no data assimilation) | `configs/lis.config.opl` |
-| **DA** | EnKF with SMAP soil moisture (12 ensembles) | `configs/lis.config.da` |
+| # | Experiment | Description | Config | Output Dir |
+|---|------------|-------------|--------|------------|
+| **OPL** | Open-Loop | No assimilation (ensemble mean) | `lis.config.opl_sebou` | `experiments/OPL_sebou/` |
+| **DA-SM** | SM Assimilation | EnKF + SMAP soil moisture (20 ens.) | `lis.config.da_sm_sebou` | `experiments/DA_SM_sebou/` |
+| **DA-LAI** | LAI Assimilation | EnKF + MODIS MCD15A2H LAI (20 ens.) | `lis.config.da_lai_sebou` | `experiments/DA_LAI_sebou/` |
+| **DA-Joint** | Joint Assimilation | EnKF + SMAP SM **+** MODIS LAI (20 ens.) | `lis.config.da_joint` | `experiments/DA_Joint_sebou/` |
 
 ## Forcing & Observations
 
-- **Meteorological forcing:** MERRA-2 (NASA, hourly)
-- **Observations:** SMAP L3 soil moisture (SPL3SMP v009, daily)
-- **Land surface model:** NoahMP v3.6
-- **Data assimilation:** Ensemble Kalman Filter (EnKF, 12 members)
+- **Meteorological forcing:** MERRA-2 (NASA, hourly, 2015–2020)
+- **Soil Moisture Observations:** SMAP L3 SPL3SMP v009 (daily, 2015–2020)
+- **LAI Observations:** MODIS MOD15A2H v061, tile `h17v05` (8-day, 2015–2020), preprocessed to global NetCDF4
+- **Land surface model:** NoahMP v3.6 with dynamic vegetation (`option=2`)
+- **Data assimilation:** Ensemble Kalman Filter (EnKF, 20 members)
+- **Perturbations:** GMAO scheme — precipitation, radiation, soil moisture state, LAI state
 
 ## Dependencies
 
