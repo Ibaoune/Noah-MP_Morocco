@@ -5,9 +5,10 @@ import sys
 from datetime import datetime, timedelta
 
 # Configurations
-START_DATE = datetime(2020, 6, 1)
-END_DATE = datetime(2020, 8, 31)
+START_DATE = datetime(2015, 1, 1)
+END_DATE = datetime(2020, 12, 31)
 OUT_DIR = "data/met_forcing/MERRA2"
+
 
 # Ensure directories exist
 os.makedirs(f"{OUT_DIR}/M2T1NXFLX", exist_ok=True)

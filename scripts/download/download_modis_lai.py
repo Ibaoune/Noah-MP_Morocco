@@ -10,9 +10,10 @@ from datetime import datetime, timedelta
 
 # Configurations
 START_DATE = datetime(2015, 1, 1)
-END_DATE = datetime(2025, 12, 31)
+END_DATE = datetime(2020, 12, 31)
 OUT_DIR = "data/observations/MODIS_LAI"
 TILE = "h17v05"
+
 
 # Ensure output directory exists
 os.makedirs(OUT_DIR, exist_ok=True)
@@ -74,9 +75,11 @@ if __name__ == "__main__":
             "version": "061",
             "temporal": f"{t_start},{t_end}",
             "readable_granule_name[]": f"*{TILE}*",
+            "options[readable_granule_name][pattern]": "true",
             "page_size": 200,
             "page_num": page_num
         }
+
         
         try:
             r = requests.get(CMR_URL, params=params).json()

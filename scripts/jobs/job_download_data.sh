@@ -38,8 +38,9 @@ echo "=================================================="
 # Ensure directories are ready
 mkdir -p data/met_forcing/MERRA2
 mkdir -p data/observations/SMAP/SPL3SMP.009
-mkdir -p data/observations/MODIS_LA
+mkdir -p data/observations/MODIS_LAI
 mkdir -p logs
+
 
 # Run download scripts in parallel, redirecting output to log files
 echo "Launching MERRA-2 download script..."
