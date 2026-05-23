@@ -9,8 +9,9 @@
 # SBATCH --error=logs/slurm/slurm_ldt_sebou_%j.log
 # SBATCH --nodes=1
 # SBATCH --time=02:00:00
-# SBATCH --mem=32G
+# SBATCH --mem=128G
 # SBATCH --account=empowermed-ahl6xm8o7mg-DEFAULT-CPU
+
 set -x
 
 # Detect repository root directory relative to the submission path
