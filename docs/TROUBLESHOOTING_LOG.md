@@ -330,6 +330,28 @@ Il est rédigé de manière pédagogique afin qu'un **utilisateur débutant** pu
   ```
 
 ---
+
+## 12. Requêtes NASA CMR API et Recherche par Joker (Wildcard Search)
+
+### Problème 12.1 : Recherche de granules MODIS LAI retournant 0 résultat (Found 0 granules)
+* **Contexte :** Lors de l'exécution de `download_modis_lai.py`, l'API NASA CMR retournait 0 granule trouvé pour la tuile `h17v05`, bien que le produit soit disponible pour la période cible.
+* **Le Problème :** Le dictionnaire des paramètres de requête HTTP comprenait `"readable_granule_name[]": "*h17v05*"` mais l'API de recherche traitait les astérisques de manière littérale, ne trouvant aucun nom de fichier contenant textuellement des astérisques.
+* **L'Explication :** Par défaut, l'API de recherche des granules de NASA CMR (Common Metadata Repository) traite les filtres textuels comme des correspondances littérales. Pour lui indiquer d'interpréter les jokers `*` et `?` dans les requêtes de motifs (pattern matching), il faut explicitement passer l'option booléenne `"options[readable_granule_name][pattern]": "true"`.
+* **La Solution :** Ajouter le paramètre d'option d'activation de motif dans la requête HTTP :
+  ```python
+  params = {
+      "short_name": "MOD15A2H",
+      "version": "061",
+      "temporal": f"{t_start},{t_end}",
+      "readable_granule_name[]": f"*{TILE}*",
+      "options[readable_granule_name][pattern]": "true",
+      "page_size": 200,
+      "page_num": page_num
+  }
+  ```
+
+---
 *Fin du journal. Ces documentations assurent la pérennité du projet et évitent de "réinventer la roue" ou de rester bloqué de longues heures sur des problèmes d'architecture lors des prochains travaux de recherche ou lors du passage de relais à un étudiant/chercheur.*
+
 
 
