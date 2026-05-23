@@ -1,0 +1,200 @@
+#Overall driver options
+Running mode:                           retrospective
+Map projection of the LIS domain:       latlon
+Number of nests:                        1
+Number of surface model types:          1
+Surface model types:                    LSM
+Surface model output interval:          1da
+Land surface model:                     "NoahMP.3.6"
+Radiative transfer model:               "none"
+Number of application models:           0
+Number of met forcing sources:          1
+Blending method for forcings:           overlay
+Met forcing sources:                    "MERRA2"
+Topographic correction method (met forcing):  "none"
+Enable spatial downscaling of precipitation:  0
+Spatial upscaling method (met forcing):       none
+Spatial interpolation method (met forcing):   bilinear
+Temporal interpolation method (met forcing):  "linear"
+
+#Runtime options
+Forcing variables list file:            ./configs/forcing_variables.txt
+Output methodology:                     "2d gridspace"
+Output model restart files:             1
+Output data format:                     netcdf
+Output naming style:                    "3 level hierarchy"
+Start mode:                             coldstart
+Starting year:                          2020
+Starting month:                         06
+Starting day:                           01
+Starting hour:                          00
+Starting minute:                        00
+Starting second:                        00
+Ending year:                            2020
+Ending month:                           06
+Ending day:                             04
+Ending hour:                            00
+Ending minute:                          00
+Ending second:                          00
+Undefined value:                       -9999
+Output directory:                       "experiments/DA_sebou"
+Diagnostic output file:                 "experiments/DA_sebou/lislog"
+Number of ensembles per tile:           20
+
+#The following options are used for subgrid tiling based on vegetation
+Maximum number of surface type tiles per grid:    1
+Minimum cutoff percentage (surface type tiles):   0.05
+Maximum number of soil texture tiles per grid:    1
+Minimum cutoff percentage (soil texture tiles):   0.05
+Maximum number of soil fraction tiles per grid:   1
+Minimum cutoff percentage (soil fraction tiles):  0.05
+Maximum number of elevation bands per grid:       1
+Minimum cutoff percentage (elevation bands):      0.05
+Maximum number of slope bands per grid:           1
+Minimum cutoff percentage (slope bands):          0.05
+Maximum number of aspect bands per grid:          1
+Minimum cutoff percentage (aspect bands):         0.05
+
+#Processor layout (configured for 128 parallel tasks on 4 nodes)
+Number of processors along x:           8
+Number of processors along y:           16
+Halo size along x:                      0
+Halo size along y:                      0
+
+#Routing
+Routing model:                          "none"
+
+#---------------------DATA ASSIMILATION ----------------------------------
+#Data assimilation options
+Number of data assimilation instances:               2
+
+# Instance 1: SMAP Soil Moisture
+Data assimilation algorithm(1):                       "EnKF"
+Data assimilation set(1):                             "SMAP(NASA) soil moisture"
+Data assimilation exclude analysis increments(1):     0 
+Data assimilation set(1) attributes file:             ./data/pert_package/smap_attribs.txt
+SMAP(NASA) soil moisture data directory(1):           ./data/observations/SMAP/SPL3SMP.009
+SMAP(NASA) soil moisture data designation(1):         SPL3SMP 
+SMAP(NASA) soil moisture Composite Release ID(1):     "R19"
+SMAP(NASA) soil moisture use scaled standard deviation model(1): 0
+SMAP(NASA) model CDF file(1):                         none
+SMAP(NASA) observation CDF file(1):                   none
+SMAP(NASA) soil moisture number of bins in the CDF(1): 0
+SMAP(NASA) CDF read option(1):                        0
+
+# Instance 2: MODIS LAI
+Data assimilation algorithm(2):                       "EnKF"
+Data assimilation set(2):                             "MODIS LAI"
+Data assimilation exclude analysis increments(2):     0
+Data assimilation set(2) attributes file:             ./data/pert_package/modis_lai_attribs.txt
+MODIS LAI data directory(2):                          ./data/observations/MODIS_LAI
+MODIS LAI data designation(2):                        MODIS_LAI
+
+Data assimilation output interval for diagnostics:    "1da"
+Data assimilation output ensemble spread:             1
+Data assimilation scaling strategy:                   "none"
+Data assimilation observation domain file:             ./data/lis_input.d01_sebou.nc
+Data assimilation output processed observations:      1 
+Data assimilation output innovations:                  1 
+Number of state variables:                            5
+Data assimilation use a trained forward model:        0 
+Data assimilation trained forward model output file:  none
+
+Apply perturbation bias correction:        0
+Bias estimation algorithm:                "none"  
+
+#Perturbation options
+Perturbations start mode:                 "coldstart"
+Perturbations restart output interval:    "1mo"
+Perturbations restart filename:           "none"
+
+Forcing perturbation algorithm:           "GMAO scheme"
+Forcing perturbation frequency:           "1hr"
+Forcing attributes file:                  ./data/pert_package/forcing_attribs.txt
+Forcing perturbation attributes file:     ./data/pert_package/forcing_pertattribs.txt
+
+State perturbation algorithm:             "GMAO scheme"
+State perturbation frequency:              "3hr"
+State attributes file:                    ./data/pert_package/noahmp_lai_attribs.txt
+State perturbation attributes file:       ./data/pert_package/noahmp_lai_pertattribs.txt
+
+Observation perturbation algorithm(1):     "GMAO scheme"
+Observation perturbation frequency(1):       "1da"
+Observation attributes file(1):               ./data/pert_package/smap_attribs.txt
+Observation perturbation attributes file(1):  ./data/pert_package/smap_pertattribs.txt
+
+Observation perturbation algorithm(2):     "GMAO scheme"
+Observation perturbation frequency(2):       "1da"
+Observation attributes file(2):               ./data/pert_package/modis_lai_attribs.txt
+Observation perturbation attributes file(2):  ./data/pert_package/modis_lai_pertattribs.txt
+
+#--------------------------------FORCINGS----------------------------------
+MERRA2 forcing directory:       ./data/met_forcing/MERRA2/
+MERRA2 use lowest model level forcing:     1
+MERRA2 use corrected total precipitation:  1
+
+#-----------------------LAND SURFACE MODELS--------------------------
+Noah-MP.3.6 model timestep:                15mn
+Noah-MP.3.6 restart output interval:       1mo
+Noah-MP.3.6 restart file:                  none
+Noah-MP.3.6 restart file format:           netcdf
+Noah-MP.3.6 soil parameter table:          ./data/land_params/noah_2dparms/SOILPARM.TBL
+Noah-MP.3.6 general parameter table:       ./data/land_params/noah_2dparms/GENPARM.TBL
+Noah-MP.3.6 MP parameter table:            ./data/land_params/noah_2dparms/MPTABLE.TBL
+Noah-MP.3.6 number of soil layers:         4
+Noah-MP.3.6 thickness of soil layers:      0.1  0.3  0.6  1.0
+Noah-MP.3.6 dynamic vegetation option:                      2   # Dynamic phenology enabled
+Noah-MP.3.6 canopy stomatal resistance option:              1
+Noah-MP.3.6 soil moisture factor for stomatal resistance:   1
+Noah-MP.3.6 runoff and groundwater option:                  1
+Noah-MP.3.6 surface layer drag coefficient option:          1
+Noah-MP.3.6 supercooled liquid water option:                1
+Noah-MP.3.6 frozen soil permeability option:                1
+Noah-MP.3.6 radiation transfer option:                      3
+Noah-MP.3.6 snow surface albedo option:                     2
+Noah-MP.3.6 rainfall & snowfall option:                     1
+Noah-MP.3.6 lower boundary of soil temperature option:      2
+Noah-MP.3.6 snow&soil temperature time scheme option:       1
+Noah-MP.3.6 glacier option:                                 1
+Noah-MP.3.6 surface resistance option:                      1
+Noah-MP.3.6 soil configuration option:                      1
+Noah-MP.3.6 soil pedotransfer function option:              1
+Noah-MP.3.6 crop model option:                              0
+Noah-MP.3.6 urban physics option:                           0
+Noah-MP.3.6 reference height of temperature and humidity: 6.0
+Noah-MP.3.6 initial surface skin temperature:           288.0
+Noah-MP.3.6 initial snow water equivalent:                0.0
+Noah-MP.3.6 initial snow depth:                           0.0
+Noah-MP.3.6 initial total canopy surface water:           0.0
+Noah-MP.3.6 initial soil temperatures:                  288.0  288.0  288.0  288.0
+Noah-MP.3.6 initial total soil moistures:               0.20  0.20  0.20  0.20
+Noah-MP.3.6 initial leaf area index:                      0.5
+Noah-MP.3.6 initial water table depth:                    2.5
+Noah-MP.3.6 initial water in the aquifer:                 4900.0
+Noah-MP.3.6 initial water in aquifer and saturated soil:  4900.0
+
+#The following options list the choice of parameter maps to be used
+LIS domain and parameter data file:     ./data/lis_input.d01_sebou.nc
+Landmask data source:                   LDT
+Landcover data source:                  LDT
+Soil texture data source:               LDT
+Soil fraction data source:              none
+Soil color data source:                 none
+Elevation data source:                  LDT
+Slope data source:                      none
+Aspect data source:                     none
+Curvature data source:                  none
+LAI data source:                        none
+SAI data source:                        none
+Albedo data source:                     LDT
+Max snow albedo data source:            LDT
+Greenness data source:                  LDT
+Roughness data source:                  none
+Porosity data source:                   none
+Ksat data source:                       none
+B parameter data source:                none
+Quartz data source:                     none
+Emissivity data source:                 none
+
+#---------------------------MODEL OUTPUT CONFIGURATION-----------------------
+Model output attributes file:           './configs/MODEL_OUTPUT_LIST.TBL'
