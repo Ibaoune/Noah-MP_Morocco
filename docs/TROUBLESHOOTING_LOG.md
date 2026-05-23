@@ -301,5 +301,35 @@ Il est rédigé de manière pédagogique afin qu'un **utilisateur débutant** pu
   ```
 
 ---
+
+## 10. Automatisation des Configurations et Corruption des Chemins
+
+### Problème 10.1 : Corruption des chemins cibles dans les fichiers de configuration générés
+* **Contexte :** Lors de l'automatisation de la génération des configurations pour les tests de scalabilité, les chemins cibles dans `lis.config` et `ldt.config` ont été corrompus.
+* **Le Problème :** Des chemins comme `./data/lis_input.d01.nc` ont été transformés en `./dat./data/lis_input.d01.nc`, causant des erreurs d'initialisation fatales lors de l'exécution de LDT et LIS.
+* **L'Explication :** Le script d'automatisation `scripts/generate_configs.sh` utilisait des remplacements `sed` successifs et redondants. Le remplacement de `data/` par un autre chemin et de `./` par un autre a créé des collisions de motifs, appliquant les modifications deux fois.
+* **La Solution :** Corriger le script `scripts/generate_configs.sh` en veillant à ce que les motifs de remplacement soient uniques et n'entrent pas en collision (par exemple, en ciblant des expressions plus précises et en éliminant les lignes redondantes).
+
+---
+
+## 11. Soumission SLURM et Répertoire de Travail ($SLURM_SUBMIT_DIR)
+
+### Problème 11.1 : Échec immédiat du Job de téléchargement (Exit Code 2)
+* **Contexte :** Lors de la soumission du job SLURM de téléchargement (`scripts/jobs/job_download_data.sh`), le job s'est terminé instantanément avec un code de sortie 2, sans télécharger de données.
+* **Le Problème :** Le fichier de log d'erreur SLURM indiquait : `arch/arch_toubkal.env: No such file or directory` et `python3: can't open file 'scripts/download/...': [Errno 2] No such file or directory`.
+* **L'Explication :** L'utilisateur a soumis le job en étant positionné dans le dossier `scripts/jobs/` en exécutant `sbatch job_download_data.sh`. Par défaut, SLURM définit `$SLURM_SUBMIT_DIR` sur le répertoire depuis lequel la commande `sbatch` a été lancée. Le script exécutait `cd $SLURM_SUBMIT_DIR`, maintenant le répertoire de travail dans le sous-dossier `scripts/jobs`, où les répertoires `arch/` et `scripts/` n'existent pas.
+* **La Solution :** Remplacer le simple `cd $SLURM_SUBMIT_DIR` dans les scripts de jobs par un bloc de détection automatique robuste qui recherche le fichier d'environnement d'architecture `arch/arch_toubkal.env` dans les répertoires parents successifs et se déplace automatiquement à la racine du dépôt :
+  ```bash
+  if [ -f "arch/arch_toubkal.env" ]; then
+      cd .
+  elif [ -f "../../arch/arch_toubkal.env" ]; then
+      cd ../..
+  elif [ -f "../arch/arch_toubkal.env" ]; then
+      cd ..
+  fi
+  ```
+
+---
 *Fin du journal. Ces documentations assurent la pérennité du projet et évitent de "réinventer la roue" ou de rester bloqué de longues heures sur des problèmes d'architecture lors des prochains travaux de recherche ou lors du passage de relais à un étudiant/chercheur.*
+
 
