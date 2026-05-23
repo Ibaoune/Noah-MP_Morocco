@@ -74,7 +74,7 @@ Data assimilation output interval for diagnostics:    "1da"
 Data assimilation number of observation types:        1
 Data assimilation output ensemble spread:             1
 Data assimilation scaling strategy:                  "none"
-Data assimilation observation domain file:            ./dat./data/lis_input.d01.nc
+Data assimilation observation domain file:            ./data/lis_input.d01.nc
 Data assimilation output processed observations:      1 
 Data assimilation output innovations:                 1 
 Number of state variables:                            4
@@ -175,7 +175,7 @@ Noah-MP.3.6 initial recharge to or from the water table when shallow:           
 Noah-MP.3.6 initial reference height of temperature and humidity:                  10.0
 
 #The following options list the choice of parameter maps to be used
-LIS domain and parameter data file:     ./dat./data/lis_input.d01.nc
+LIS domain and parameter data file:     ./data/lis_input.d01.nc
 Landmask data source:                   LDT
 Landcover data source:                  LDT
 Soil texture data source:               LDT

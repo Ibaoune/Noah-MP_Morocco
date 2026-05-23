@@ -51,12 +51,6 @@ for layout in "${LAYOUTS[@]}"; do
         -e "s/^Number of processors along y:.*/Number of processors along y:           ${npy}/" \
         -e "s|^Output directory:.*|Output directory:                       \"$OUTPUT_DIR/OPL_${label}\"|" \
         -e "s|^Diagnostic output file:.*|Diagnostic output file:                 \"$OUTPUT_DIR/OPL_${label}/lislog\"|" \
-        -e 's|./input/forcing_variables.txt|./configs/forcing_variables.txt|' \
-        -e 's|./input/noah_2dparms/|./data/land_params/noah_2dparms/|g' \
-        -e 's|./lis_input.d01.nc|./data/lis_input.d01.nc|g' \
-        -e 's|./input/MET_FORCING/MERRA2/|./data/met_forcing/MERRA2/|' \
-        -e "s|'./MODEL_OUTPUT_LIST.TBL'|'./configs/MODEL_OUTPUT_LIST.TBL'|" \
-        -e 's|./input/LS_PARAMETERS/noahmp_parms/|./data/land_params/noah_2dparms/|g' \
         "$BASEDIR/configs/lis.config.opl" > "$CONFIG_DIR/$outname"
 done
 
@@ -76,14 +70,6 @@ for layout in "${LAYOUTS[@]}"; do
         -e "s/^Number of processors along y:.*/Number of processors along y:           ${npy}/" \
         -e "s|^Output directory:.*|Output directory:                       \"$OUTPUT_DIR/DA_${label}\"|" \
         -e "s|^Diagnostic output file:.*|Diagnostic output file:                 \"$OUTPUT_DIR/DA_${label}/lislog\"|" \
-        -e 's|./input/forcing_variables.txt|./configs/forcing_variables.txt|' \
-        -e 's|./input/noah_2dparms/|./data/land_params/noah_2dparms/|g' \
-        -e 's|./lis_input.d01.nc|./data/lis_input.d01.nc|g' \
-        -e 's|./input/MET_FORCING/MERRA2/|./data/met_forcing/MERRA2/|' \
-        -e 's|./input/pert_package/|./data/pert_package/|g' \
-        -e 's|./input/RS_DATA/SMAP/SPL3SMP.009|./data/observations/SMAP/SPL3SMP.009|' \
-        -e "s|'./MODEL_OUTPUT_LIST.TBL'|'./configs/MODEL_OUTPUT_LIST.TBL'|" \
-        -e 's|./input/LS_PARAMETERS/noahmp_parms/|./data/land_params/noah_2dparms/|g' \
         "$BASEDIR/configs/lis.config.da" > "$CONFIG_DIR/$outname"
 done
 
