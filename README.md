@@ -73,7 +73,8 @@ NoahMP_Morocco/
 │
 └── docs/                     # Documentation
     ├── TROUBLESHOOTING_LOG.md
-    └── COMPILATION_AND_STATUS_SUMMARY.txt
+    ├── COMPILATION_AND_STATUS_SUMMARY.txt
+    └── EXPERIMENT_SETUP.md
 ```
 
 ## Quick Start
@@ -173,4 +174,16 @@ A comprehensive scalability analysis was conducted on the Toubkal cluster to opt
 ### Scalability Performance Plot
 The scalability curves are plotted below:
 ![Scalability Performance](postproc/figures/lis_scalability_performance.png)
+
+## Sebou Basin Joint DA Experiment
+
+An expanded multi-year experiment has been designed over the entire upstream Sebou River basin (`33.0° N — 35.0° N` and `4.0° W — 7.0° W` at 1 km resolution) for the period 2015–2025. 
+
+### Main Research Axes
+*   **Hydrology Focus (Paper 1):** Assimilation of SMAP soil moisture and MODIS LAI into Noah-MP to improve root-zone soil moisture, evapotranspiration (ET), baseflow, and streamflow routing (using HYMAP).
+*   **Agriculture Focus (Paper 2):** Ingesting observations to assess dynamic crop water stress, GPP, and dynamic sprinkler/drip irrigation allocation volumes.
+
+For detailed configurations, datasets, and job launch instructions, please refer to the dedicated guide:
+*   [docs/EXPERIMENT_SETUP.md](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/docs/EXPERIMENT_SETUP.md)
+
 

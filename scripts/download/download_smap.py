@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 # Configurations
 START_DATE = datetime(2020, 6, 1)
 END_DATE = datetime(2020, 8, 31)
-OUT_DIR = "input/RS_DATA/SMAP/SPL3SMP.009"
+OUT_DIR = "data/observations/SMAP/SPL3SMP.009"
 
 # NASA CMR API URL
 CMR_URL = "https://cmr.earthdata.nasa.gov/search/granules.json"
