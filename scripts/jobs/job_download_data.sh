@@ -4,13 +4,13 @@
 # SLURM script to run all 3 download processes (MERRA-2, SMAP, and MODIS LAI) in parallel/sequence.
 #
 ######################
-# SBATCH --job-name=download_data
-# SBATCH --output=logs/slurm/slurm_download_%j.log
-# SBATCH --error=logs/slurm/slurm_download_%j.log
-# SBATCH --nodes=1
-# SBATCH --time=24:00:00
-# SBATCH --mem=16G
-# SBATCH --account=empowermed-ahl6xm8o7mg-DEFAULT-CPU
+#SBATCH --job-name=download_data
+#SBATCH --output=logs/slurm/slurm_download_%j.log
+#SBATCH --error=logs/slurm/slurm_download_%j.log
+#SBATCH --nodes=1
+#SBATCH --time=24:00:00
+#SBATCH --mem=16G
+#SBATCH --account=empowermed-ahl6xm8o7mg-DEFAULT-CPU
 set -x
 
 # Detect repository root directory relative to the submission path

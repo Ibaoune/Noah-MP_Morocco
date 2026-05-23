@@ -4,13 +4,14 @@
 # Job 1: Run LDT to generate domain and parameter file for Sebou Basin (lis_input.d01_sebou.nc)
 #
 ######################
-# SBATCH --job-name=ldt_sebou
-# SBATCH --output=logs/slurm/slurm_ldt_sebou_%j.log
-# SBATCH --error=logs/slurm/slurm_ldt_sebou_%j.log
-# SBATCH --nodes=1
-# SBATCH --time=02:00:00
-# SBATCH --mem=128G
-# SBATCH --account=empowermed-ahl6xm8o7mg-DEFAULT-CPU
+#SBATCH --job-name=ldt_sebou
+#SBATCH --output=logs/slurm/slurm_ldt_sebou_%j.log
+#SBATCH --error=logs/slurm/slurm_ldt_sebou_%j.log
+#SBATCH --nodes=1
+#SBATCH --time=02:00:00
+#SBATCH --mem=128G
+#SBATCH --account=empowermed-ahl6xm8o7mg-DEFAULT-CPU
+
 
 set -x
 
