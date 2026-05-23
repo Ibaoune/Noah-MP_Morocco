@@ -12,7 +12,7 @@ The domain is expanded to cover the entire upstream Sebou River basin feeding th
     *   North-East Corner: `35.0° N, 4.0° W`
 *   **Resolution:** `0.01°` (~1 km spatial grid)
 *   **Grid Dimensions:** $200 \times 300$ grid points (~60,000 active cells)
-*   **Simulation Period:** January 1, 2015 — December 31, 2025 (10-year multi-year analysis).
+*   **Simulation Period:** January 1, 2015 — December 31, 2020 (6-year study period matching Nie et al., 2022).
 
 ---
 
@@ -36,7 +36,7 @@ To submit the downloading process to the Toubkal cluster:
 ```bash
 sbatch scripts/jobs/job_download_data.sh
 ```
-*Note: Before submitting, open the download scripts and verify the `START_DATE` and `END_DATE` configurations to match your desired target period.*
+*Note: The download scripts have been configured for the target study period (2015-01-01 to 2020-12-31).*
 
 ---
 
@@ -47,8 +47,15 @@ To process the elevation (DEM), soil textures, and land cover types:
 ```bash
 sbatch scripts/jobs/job_1_ldt_sebou.sh
 ```
-This job generates the central parameter file:
+
+### Status: Completed
+This step was successfully run on Toubkal and generated the central parameter file:
 *   `data/lis_input.d01_sebou.nc`
+
+Visualizations of the domain parameters are saved under `postproc/figures/` and can be viewed directly:
+- **Topography Map:** [sebou_topography.png](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_topography.png)
+- **Land Cover Map (MODIS IGBP):** [sebou_landcover.png](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_landcover.png)
+- **Soil Texture Map (STATSGO):** [sebou_soil_texture.png](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_soil_texture.png)
 
 ---
 

@@ -177,7 +177,12 @@ The scalability curves are plotted below:
 
 ## Sebou Basin Joint DA Experiment
 
-An expanded multi-year experiment has been designed over the entire upstream Sebou River basin (`33.0° N — 35.0° N` and `4.0° W — 7.0° W` at 1 km resolution) for the period 2015–2025. 
+An expanded multi-year experiment has been designed over the entire upstream Sebou River basin (`33.0° N — 35.0° N` and `4.0° W — 7.0° W` at 1 km resolution) for the period 2015–2020, matching the study period in Nie et al. (2022).
+
+### Current Status
+*   **Domain parameters (LDT):** Successfully processed. Generated the NetCDF parameter file `data/lis_input.d01_sebou.nc`.
+*   **Domain parameter maps:** Visualizations for [Topography](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_topography.png), [Land Cover](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_landcover.png), and [Soil Texture](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/postproc/figures/sebou_soil_texture.png) have been plotted and saved to `postproc/figures/`.
+*   **Forcings & Observations downloads:** Staged and running on Toubkal.
 
 ### Main Research Axes
 *   **Hydrology Focus (Paper 1):** Assimilation of SMAP soil moisture and MODIS LAI into Noah-MP to improve root-zone soil moisture, evapotranspiration (ET), baseflow, and streamflow routing (using HYMAP).
@@ -185,5 +190,6 @@ An expanded multi-year experiment has been designed over the entire upstream Seb
 
 For detailed configurations, datasets, and job launch instructions, please refer to the dedicated guide:
 *   [docs/EXPERIMENT_SETUP.md](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/docs/EXPERIMENT_SETUP.md)
+
 
 
