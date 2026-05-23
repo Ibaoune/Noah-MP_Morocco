@@ -13,7 +13,19 @@
 # SBATCH --account=empowermed-ahl6xm8o7mg-DEFAULT-CPU
 set -x
 
-cd $SLURM_SUBMIT_DIR
+# Detect repository root directory relative to the submission path
+if [ -f "arch/arch_toubkal.env" ]; then
+    echo "Already in repository root: $(pwd)"
+elif [ -f "../../arch/arch_toubkal.env" ]; then
+    echo "Navigating to repository root: $(pwd)/../.."
+    cd ../..
+elif [ -f "../arch/arch_toubkal.env" ]; then
+    echo "Navigating to repository root: $(pwd)/.."
+    cd ..
+else
+    echo "ERROR: Could not locate repository root containing arch/arch_toubkal.env"
+    exit 1
+fi
 
 # Load required modules
 source arch/arch_toubkal.env
