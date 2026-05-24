@@ -1,4 +1,5 @@
 # Journal de Traçabilité et Guide de Dépannage : LISF / Noah-MP (Bassin Allal El Fassi)
+**Auteur:** M. EL Aabaribaoune (@um6p)
 
 Ce document a été conçu pour conserver la **traçabilité** de l'ensemble des défis techniques rencontrés lors de l'implémentation du framework LISF (LIS, LDT, LVT) sur le cluster HPC Toubkal. 
 Il est rédigé de manière pédagogique afin qu'un **utilisateur débutant** puisse comprendre les efforts fournis, reproduire les solutions, et s'approprier l'architecture du projet sans rester bloqué sur des problèmes techniques complexes.

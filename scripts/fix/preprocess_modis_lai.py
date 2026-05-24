@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Author: M. EL Aabaribaoune (@um6p) / Antigravity (Google DeepMind)
+# Author: M. EL Aabaribaoune (@um6p)
 #
 # preprocess_modis_lai.py
 #

@@ -1,4 +1,5 @@
 # Sebou Basin Experiment Setup Guide
+**Author:** M. EL Aabaribaoune (@um6p)
 
 This document describes the scientific setup, datasets, and step-by-step workflow for running land surface model experiments (Open-Loop and three data assimilation variants) using Noah-MP/LIS over the Sebou River basin, Morocco.
 
