@@ -74,8 +74,9 @@ Data assimilation set attributes file:                 ./data/pert_package/modis
 
 # MCD15A2H LAI Options
 MCD15A2H LAI data directory:                           ./data/observations/MODIS_LAI/processed
-MCD15A2H LAI data version:                             6
+MCD15A2H LAI data version:                             006
 MCD15A2H LAI apply temporal smoother:                  0
+MCD15A2H LAI apply temporal smoother between 8-day intervals: 0
 MCD15A2H LAI apply climatological fill values:         0
 MCD15A2H LAI apply QC flags:                           1
 

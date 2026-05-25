@@ -24,17 +24,17 @@ Output model restart files:             1
 Output data format:                     netcdf
 Output naming style:                    "3 level hierarchy"
 Start mode:                             coldstart
-Starting year:                          2015
-Starting month:                         01
+Starting year:                          2020
+Starting month:                         06
 Starting day:                           01
 Starting hour:                          00
 Starting minute:                        00
 Starting second:                        00
-Ending year:                            2025
-Ending month:                           12
-Ending day:                             31
-Ending hour:                            23
-Ending minute:                          45
+Ending year:                            2020
+Ending month:                           06
+Ending day:                             04
+Ending hour:                            00
+Ending minute:                          00
 Ending second:                          00
 Undefined value:                       -9999
 Output directory:                       "experiments/DA_Joint_sebou"
@@ -55,7 +55,7 @@ Minimum cutoff percentage (slope bands):          0.05
 Maximum number of aspect bands per grid:          1
 Minimum cutoff percentage (aspect bands):         0.05
 
-#Processor layout (supports 128 to 256 parallel tasks)
+#Processor layout (configured for 128 parallel tasks on 4 nodes)
 Number of processors along x:           8
 Number of processors along y:           16
 Halo size along x:                      0
@@ -84,8 +84,9 @@ SMAP(NASA) CDF read option:                           0
 
 # MCD15A2H LAI Options
 MCD15A2H LAI data directory:                           ./data/observations/MODIS_LAI/processed
-MCD15A2H LAI data version:                             6
+MCD15A2H LAI data version:                             006
 MCD15A2H LAI apply temporal smoother:                  0
+MCD15A2H LAI apply temporal smoother between 8-day intervals: 0
 MCD15A2H LAI apply climatological fill values:         0
 MCD15A2H LAI apply QC flags:                           1
 

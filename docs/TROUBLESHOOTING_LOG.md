@@ -392,31 +392,39 @@ Il est rédigé de manière pédagogique afin qu'un **utilisateur débutant** pu
   ```
 
 ---
+### 15. Crash à `03:00` (Model Time) lors de l'Assimilation LAI (MCD15A2H)
 
-### 14. GDAL SetNoDataValue Error on NetCDF Generation
+**Symptômes:**
+- Les simulations `DA-LAI` et `DA-Joint` s'arrêtent net (crash) après 3 heures de simulation (généralement à `03:00` model time, le moment de la première perturbation d'état EnKF).
+- Le log `lislog.0000` s'arrête brusquement et le fichier standard output (SLURM) se remplit d'erreurs répétées : `Error in the return code, Prgm Stopping...` suivies d'une fin d'exécution MPI.
+- Étrangement, un message d'avertissement apparaît plus tôt (à `00:00`) : `[WARN] Missing LAI file: VEGPARM.TBL ... ./data/land_params/noah_2dparms/` (nom de fichier contenant des caractères aléatoires / garbage memory).
 
-**Symptoms:**
-- The MODIS LAI preprocessing script (`preprocess_modis_lai.py`) crashes with a GDAL exception:
-  ```text
-  netcdf error #-122 : NetCDF: Attempt to define fill value when data already exists.
-  at (/srv/software/easybuild/build/GDAL/3.7.1/foss-2023a/gdal-3.7.1/frmts/netcdf/netcdfdataset.cpp,SetNoDataValue,1566)
-  ```
-- Resulting files end up as `.tmp.nc4` because `ncrename` fails to run after the crash.
-- `DA-LAI` and `DA-Joint` jobs fail instantly with `MPI_ABORT` because the required processed NC4 observation files do not exist.
+**Causes Techniques (2 Bugs distincts) :**
+1. **Uninitialized Memory (Garbage String) pour le nom de fichier MODIS :**
+   Dans les fichiers de configuration `lis.config.da_lai_sebou` et `lis.config.da_joint`, la version des données MCD15A2H était définie sur `6`.
+   Cependant, le code source LIS (`read_MCD15A2Hlai.F90`) effectue une vérification stricte du format texte via l'instruction `if(version.eq."006")`. Si la condition n'est pas remplie, la variable `filename` n'est *jamais initialisée* et hérite du reste de mémoire (souvent le nom du précédent fichier de paramètre lu, ex: `VEGPARM.TBL`).
+2. **ESMF State Variables Mismatch pour la perturbation EnKF :**
+   Dans nos fichiers de configuration des attributs de perturbation d'état (`data/pert_package/noahmp_lai_attribs.txt` et `noahmp_lai_pertattribs.txt`), nous avions défini le paramètre à perturber comme `Leaf Area Index`.
+   Néanmoins, le modèle Noah-MP (dans `noahmp36_updatevegvars.F90`) n'enregistre pas la variable avec ce nom-là, mais l'enregistre avec le string exact `"LAI"`.
+   À `03:00`, lorsque le module d'assimilation EnKF essaie de lire l'état pour le perturber, l'appel `ESMF_StateGet(LSM_State, "Leaf Area Index")` échoue car il ne trouve aucune variable avec ce nom. LIS détecte un code d'erreur de retour non nul et s'interrompt brusquement.
 
-**Cause:**
-- GDAL's NetCDF driver enforces strict mode transitions (define mode vs. data mode). 
-- In the Python script, `b1.WriteArray(lai_arr)` was called *before* `b1.SetNoDataValue(FILL_BYTE)`. Calling `WriteArray` causes the NetCDF driver to leave define mode, so attempting to set the `_FillValue` attribute afterwards triggers an error because NetCDF does not allow redefining fill values once data is written.
-
-**Resolution / Actions Taken:**
-1. Modified `scripts/fix/preprocess_modis_lai.py` to correctly sequence the GDAL API calls:
-   ```python
-   # Correct order: Set metadata/attributes first, then write data
-   b1.SetNoDataValue(FILL_BYTE)
-   b1.WriteArray(lai_arr)
+**Résolution / Actions Mises en Place :**
+1. **Fix de la Version MODIS :** Modification de `lis.config.da_lai_sebou` et `lis.config.da_joint` :
+   ```text
+   MCD15A2H LAI data version:                             006
    ```
-2. Deleted all broken `*.tmp.nc4` intermediate files.
-3. Resubmitted the preprocessing job and queued `DA-LAI` and `DA-Joint` to run automatically upon its success using `sbatch --dependency=afterok:$PREP_JOB`.
+2. **Fix de l'Attribut de Perturbation d'État :** Modification des fichiers `noahmp_lai_attribs.txt` et `noahmp_lai_pertattribs.txt` :
+   Remplacement complet de `Leaf Area Index` par `LAI` :
+   ```text
+   LAI
+     0.01  10.0
+   ```
+   Et dans le fichier de perturbation :
+   ```text
+   LAI
+     0  0.05     2.0             1        43200   0    0    0.0 0.0 0.0 0.0 1.0
+   ```
+3. Suite à ces correctifs, les jobs ont été soumis à nouveau et ont complété leurs 3 jours de simulation avec succès.
 
 ---
 *Fin du journal. Ces documentations assurent la pérennité du projet et évitent de "réinventer la roue" ou de rester bloqué de longues heures sur des problèmes d'architecture lors des prochains travaux de recherche ou lors du passage de relais à un étudiant/chercheur.*
