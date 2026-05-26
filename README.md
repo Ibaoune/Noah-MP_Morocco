@@ -224,5 +224,11 @@ An expanded multi-year experiment has been designed over the entire upstream Seb
 For detailed configurations, datasets, and job launch instructions, please refer to the dedicated guide:
 *   [docs/EXPERIMENT_SETUP.md](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/docs/EXPERIMENT_SETUP.md)
 
+## Evaluation and Post-Processing
+
+A dedicated Python module is provided to extract variables, compute spatial averages, and visualize spatial/temporal impacts across Data Assimilation setups. 
+*   **DA Analysis script:** `scripts/plot_da_comparison.py` extracts Surface/Root-Zone Soil Moisture, Evapotranspiration, Runoff, and LAI to generate spatial difference maps (`Δ DA - OPL`) and basin-averaged temporal comparisons.
+*   **Result Plots:** Are deposited into `experiments/plots/` upon successful execution.
+
 
 

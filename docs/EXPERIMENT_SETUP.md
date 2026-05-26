@@ -238,3 +238,9 @@ To publish in Q1 journals, you will validate the outputs (`experiments/DA_joint/
 ### Agriculture Focus
 *   **Irrigation Volumes:** Enable the Noah-MP sprinkler irrigation module and compare simulated seasonal water applications against ABHS regional water withdrawal estimates.
 *   **Crop Productivity:** Correlate simulated GPP (Gross Primary Productivity) anomalies during the growing season with provincial wheat/barley crop yield statistics from the **Ministry of Agriculture of Morocco**.
+
+### Evaluation Tooling
+A custom Python visualization module (`scripts/plot_da_comparison.py`) has been provided to automatically parse the LIS NetCDF outputs across the four experiments (OPL, DA SMAP, DA LAI, DA Joint).
+*   **Time Series:** Computes and plots the daily basin-averaged response of key hydrological variables (SSM, RZSM, Evapotranspiration, Runoff, LAI).
+*   **Spatial Maps:** Generates detailed `Δ DA Joint - OPL` difference maps to visually inspect the exact spatial impact of the assimilated satellite retrievals.
+*   **Note on LAI:** LAI plotting requires the `LAI` parameter in `configs/MODEL_OUTPUT_LIST.TBL` to be enabled (set to `1`) prior to running the simulations.

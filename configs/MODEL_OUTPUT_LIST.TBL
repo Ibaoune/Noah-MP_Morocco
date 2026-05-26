@@ -108,7 +108,7 @@ Porosity:     0  -       -    3 0 0 1 999 1       # Porosity
 Soilcolor:    0  -       -    0 0 0 1 188 1       # Soil color
 Elevation:    0  m       -    0 0 0 1 189 10      # Elevation
 Slope:        0  -       -    0 0 0 1 999 10      # Slope
-LAI:          0  -       -    0 0 0 1 190 100     # LAI
+LAI:          1  -       -    0 0 0 1 190 100     # LAI
 SAI:          0  -       -    0 0 0 1 191 100     # SAI
 Snfralbedo:   0  -       -    0 0 0 1 192 100     # Snow fraction albedo
 Mxsnalbedo:   0  -       -    0 0 0 1 192 100     # Maximum snow albedo

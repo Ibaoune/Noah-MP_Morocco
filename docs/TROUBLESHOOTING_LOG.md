@@ -427,4 +427,27 @@ Il est rédigé de manière pédagogique afin qu'un **utilisateur débutant** pu
 3. Suite à ces correctifs, les jobs ont été soumis à nouveau et ont complété leurs 3 jours de simulation avec succès.
 
 ---
+
+## 16. Post-Traitement : Analyse DA et Paramétrage LAI (26 Mai 2026)
+
+**Symptômes / Besoins :**
+* Le besoin de visualiser l'impact de l'assimilation de données (Data Assimilation) sur l'hydrologie (Soil Moisture, Evapotranspiration, Runoff) et sur le LAI.
+* L'extraction du LAI a échoué via le script Python `KeyError: 'LAI_tavg'`, et l'affichage des variables ne montrait aucune donnée LAI dans les fichiers NetCDF.
+* Passage d'une simulation de test (3 jours) à une simulation de production (3 mois, JJA 2020).
+
+**Explication :**
+* Le tableau des paramètres de sortie (`configs/MODEL_OUTPUT_LIST.TBL`) de LIS contrôle quelles variables sont écrites dans les fichiers NetCDF. La variable `LAI` était désactivée (flag `0`).
+* Les simulations à plus long terme nécessitent de s'assurer de la présence des forçages atmosphériques (MERRA-2) et des observations (SMAP, MODIS) pour toute la période, et une allocation appropriée des nœuds (4 nœuds / 128 cœurs) pour des temps de traitement optimaux.
+
+**Résolution / Actions Mises en Place :**
+1. **Activation de l'Output LAI :** Dans `configs/MODEL_OUTPUT_LIST.TBL`, le flag a été modifié pour activer l'écriture de LAI :
+   ```text
+   LAI:          1  -       -    0 0 0 1 190 100     # LAI
+   ```
+2. **Expansion Temporelle (3 Mois) :** Modification des fichiers de configuration (`lis.config.*`) pour `Ending month: 08` et `Ending day: 31`.
+3. **Script Python Consolidé :** Développement du script `scripts/plot_da_comparison.py` qui traite les 4 expériences et génère :
+   * Des séries temporelles spatialisées sur l'ensemble du bassin.
+   * Des cartes de différences spatiales (Δ DA Joint - Open Loop).
+
+---
 *Fin du journal. Ces documentations assurent la pérennité du projet et évitent de "réinventer la roue" ou de rester bloqué de longues heures sur des problèmes d'architecture lors des prochains travaux de recherche ou lors du passage de relais à un étudiant/chercheur.*

@@ -42,6 +42,6 @@ echo ""
 echo "=================================================="
 echo "  Preprocessing complete:  $(date)"
 echo "  Output files:"
-find data/observations/MODIS_LAI/processed -name "*.nc4" | sort | head -20
+find data/observations/MODIS_LAI/processed -name "*.nc4" | sort | head -20 || true
 echo "  Total NC4 files: $(find data/observations/MODIS_LAI/processed -name '*.nc4' | wc -l)"
 echo "=================================================="
