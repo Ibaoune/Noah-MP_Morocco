@@ -450,4 +450,22 @@ Il est rédigé de manière pédagogique afin qu'un **utilisateur débutant** pu
    * Des cartes de différences spatiales (Δ DA Joint - Open Loop).
 
 ---
+
+## 17. Préparation au Run de 10 ans : Bugs SMAP et ET (30 Mai 2026)
+
+**Symptômes / Besoins :**
+* Après avoir exécuté les simulations de 3 mois, l'assimilation des observations SMAP n'a pas été effectuée (aucun incrément `_incr.a01.d01.nc` généré).
+* L'extraction du partitionnement de l'évapotranspiration (Transpiration de la canopée `TVeg` vs. Évaporation du sol nu `ESoil`) a échoué.
+* Le but est d'aligner l'évaluation sur l'article de *Nie et al. (2022) sur le suivi de la sécheresse au MENA*.
+
+**Explication :**
+* **SMAP :** Le fichier de configuration `lis.config.da_joint` demande spécifiquement le suffixe `_R19` pour identifier les fichiers SMAP (paramètre : `SMAP(NASA) soil moisture Composite Release ID: "R19"`). Cependant, les fichiers téléchargés n'ont pas ce suffixe (`SMAP_L3_SM_P_20200601.h5`). Le module d'assimilation EnKF a donc ignoré ces fichiers.
+* **Évapotranspiration :** Les variables `TVeg` et `ESoil` sont désactivées (flag `0`) par défaut dans le tableau `MODEL_OUTPUT_LIST.TBL`.
+
+**Résolution / Actions à faire avant le Run final :**
+1. **Renommer les fichiers SMAP ou modifier config :** Modifier le paramètre de configuration LIS ou ajouter `_R19` au nom des fichiers d'observation téléchargés.
+2. **Activer `TVeg` et `ESoil` :** Dans `configs/MODEL_OUTPUT_LIST.TBL`, changer le flag de `0` à `1` pour ces deux variables.
+3. **Nouveau Script Python :** Création du script `scripts/plot_da_increments.py` pour visualiser la correction temporelle (Incréments EnKF) apportée par l'assimilation de LAI, aligné avec la *Figure A* de *Nie et al. (2022)*.
+
+---
 *Fin du journal. Ces documentations assurent la pérennité du projet et évitent de "réinventer la roue" ou de rester bloqué de longues heures sur des problèmes d'architecture lors des prochains travaux de recherche ou lors du passage de relais à un étudiant/chercheur.*

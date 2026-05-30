@@ -228,6 +228,7 @@ For detailed configurations, datasets, and job launch instructions, please refer
 
 A dedicated Python module is provided to extract variables, compute spatial averages, and visualize spatial/temporal impacts across Data Assimilation setups. 
 *   **DA Analysis script:** `scripts/plot_da_comparison.py` extracts Surface/Root-Zone Soil Moisture, Evapotranspiration, Runoff, and LAI to generate spatial difference maps (`Δ DA - OPL`) and basin-averaged temporal comparisons.
+*   **DA Increments script:** `scripts/plot_da_increments.py` parses EnKF assimilation diagnostics (`*_incr.*.nc`) to visualize temporal adjustments applied by the filter (aligning with Nie et al. 2022).
 *   **Result Plots:** Are deposited into `experiments/plots/` upon successful execution.
 
 
