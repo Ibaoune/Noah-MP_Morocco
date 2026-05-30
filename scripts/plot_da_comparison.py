@@ -30,7 +30,7 @@ OUT_DIR = os.path.join(BASE_DIR, 'plots')
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # Variables to extract
-VARIABLES = ['SoilMoist_tavg', 'LAI_tavg', 'Evap_tavg', 'Qs_tavg', 'Qsb_tavg']
+VARIABLES = ['SoilMoist_tavg', 'LAI_inst', 'Evap_tavg', 'Qs_tavg', 'Qsb_tavg']
 FILL_VALUE = -9999.0
 
 # Soil layer thicknesses in meters for Noah-MP (0.1, 0.3, 0.6, 1.0)
@@ -96,7 +96,7 @@ print("Computing spatial means and plotting time series...")
 plot_vars = {
     'SSM': 'Surface Soil Moisture (m³/m³)',
     'RZSM': 'Root Zone Soil Moisture (m³/m³)',
-    'LAI_tavg': 'Leaf Area Index (-)',
+    'LAI_inst': 'Leaf Area Index (-)',
     'Evap_tavg': 'Total Evapotranspiration (kg m⁻² s⁻¹)',
     'Total_Runoff': 'Total Runoff (kg m⁻² s⁻¹)'
 }
@@ -138,7 +138,7 @@ if 'Open-Loop' in datasets and 'DA Joint' in datasets:
     ds_opl = datasets['Open-Loop'].mean(dim='time').compute()
     ds_joint = datasets['DA Joint'].mean(dim='time').compute()
     
-    map_vars = ['SSM', 'RZSM', 'LAI_tavg', 'Evap_tavg']
+    map_vars = ['SSM', 'RZSM', 'LAI_inst', 'Evap_tavg']
     
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
     axes = axes.flatten()
@@ -168,7 +168,7 @@ if 'Open-Loop' in datasets and 'DA MODIS LAI' in datasets:
     ds_lai_da = datasets['DA MODIS LAI'].mean(dim='time').compute()
     
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
-    diff_lai = ds_lai_da['LAI_tavg'] - ds_opl['LAI_tavg']
+    diff_lai = ds_lai_da['LAI_inst'] - ds_opl['LAI_inst']
     vmax = np.nanpercentile(np.abs(diff_lai.values), 98)
     if np.isnan(vmax) or vmax == 0: vmax = 1e-5
     
