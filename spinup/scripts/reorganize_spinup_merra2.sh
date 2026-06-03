@@ -1,4 +1,5 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
 # Script to reorganize MERRA2 files for the 2015-2020 Spin-Up
 # LIS expects: <base>/MERRA2_400/Y<YYYY>/M<MM>/<filename>
 

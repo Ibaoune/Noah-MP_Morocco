@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 check_spinup_stability.py
+Author: M. EL Aabaribaoune (@um6p)
 
 This script evaluates the stability of the Noah-MP spin-up over the Sebou-Saïss basin.
 It compares the final years of Cycle 2 and Cycle 3 to verify that prognostic variables
