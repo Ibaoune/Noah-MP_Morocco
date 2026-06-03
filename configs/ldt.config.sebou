@@ -27,10 +27,10 @@ Number of processors along y:       1
 # LIS domain: 1km resolution = 0.01 deg
 # Sebou River Basin (expanded domain)
 Map projection of the LIS domain:    latlon 
-Run domain lower left lat:          33.00
+Run domain lower left lat:          32.50
 Run domain lower left lon:          -7.00
-Run domain upper right lat:         35.00
-Run domain upper right lon:         -4.00
+Run domain upper right lat:         35.50
+Run domain upper right lon:         -3.50
 Run domain resolution (dx):         0.01
 Run domain resolution (dy):         0.01
 
