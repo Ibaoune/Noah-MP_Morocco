@@ -1,3 +1,5 @@
+# Author: M. El Aabaribaoune (@um6p)
+
 import os
 
 we = ["w180", "w140", "w100", "w060", "w020", "e020", "e060", "e100", "e140"]

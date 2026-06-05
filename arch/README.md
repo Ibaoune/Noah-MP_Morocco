@@ -1,5 +1,7 @@
 # Architecture & Environment — Toubkal HPC (UM6P)
 
+**Author:** M. El Aabaribaoune (@um6p)
+
 This directory contains environment configuration files for building and
 running LISF (LIS/LDT/LVT) on different HPC systems.
 

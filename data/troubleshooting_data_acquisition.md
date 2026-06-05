@@ -1,5 +1,7 @@
 # Troubleshooting Data Acquisition
 
+**Author:** M. El Aabaribaoune (@um6p)
+
 This document provides solutions to common issues encountered during the data download and preprocessing workflow.
 
 ## 1. Earthdata Authentication Failures (IMERG, SMAP, MODIS)

@@ -1,3 +1,5 @@
+# Author: M. El Aabaribaoune (@um6p)
+
 import os
 import markdown
 from weasyprint import HTML, CSS

@@ -1,3 +1,5 @@
+# Author: M. El Aabaribaoune (@um6p)
+
 import re
 
 def fix_mptable(filename):

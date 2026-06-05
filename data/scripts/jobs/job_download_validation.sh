@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Author: M. El Aabaribaoune (@um6p)
+
 #SBATCH --job-name=dl_valid
 #SBATCH --output=../../logs/download/dl_valid_%j.out
 #SBATCH --error=../../logs/download/dl_valid_%j.err

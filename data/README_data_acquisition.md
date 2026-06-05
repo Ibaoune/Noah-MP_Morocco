@@ -1,5 +1,7 @@
 # Data Acquisition and Preprocessing Workflow
 
+**Author:** M. El Aabaribaoune (@um6p)
+
 This document outlines the end-to-end workflow for acquiring and preprocessing all necessary forcing, assimilation, and validation datasets for the LIS/Noah-MP simulations over the Sebou-Saïss basin (Morocco) for the 2015-2020 period. This setup strictly follows the configuration detailed in Nie et al. (2022).
 
 ## 1. Datasets Overview

@@ -462,10 +462,26 @@ Il est rédigé de manière pédagogique afin qu'un **utilisateur débutant** pu
 * **SMAP :** Le fichier de configuration `lis.config.da_joint` demande spécifiquement le suffixe `_R19` pour identifier les fichiers SMAP (paramètre : `SMAP(NASA) soil moisture Composite Release ID: "R19"`). Cependant, les fichiers téléchargés n'ont pas ce suffixe (`SMAP_L3_SM_P_20200601.h5`). Le module d'assimilation EnKF a donc ignoré ces fichiers.
 * **Évapotranspiration :** Les variables `TVeg` et `ESoil` sont désactivées (flag `0`) par défaut dans le tableau `MODEL_OUTPUT_LIST.TBL`.
 
-**Résolution / Actions à faire avant le Run final :**
-1. **Renommer les fichiers SMAP ou modifier config :** Modifier le paramètre de configuration LIS ou ajouter `_R19` au nom des fichiers d'observation téléchargés.
-2. **Activer `TVeg` et `ESoil` :** Dans `configs/MODEL_OUTPUT_LIST.TBL`, changer le flag de `0` à `1` pour ces deux variables.
+**Résolution / Actions Mises en Place :**
+1. **Correction SMAP :** Dans les fichiers `lis.config.da_joint` et `lis.config.da_sm_sebou`, le filtre `SMAP(NASA) soil moisture Composite Release ID` a été changé de `"R19"` à `"none"`. De plus, le fichier d'attributs de perturbation d'état pour SMAP a été corrigé (`noahmp_sm_pertattribs.txt` au lieu de dupliquer celui du LAI).
+2. **Activation `TVeg` et `ESoil` :** Dans `configs/MODEL_OUTPUT_LIST.TBL`, le flag a été passé de `0` à `1` pour activer l'extraction des composantes de l'ET.
 3. **Nouveau Script Python :** Création du script `scripts/plot_da_increments.py` pour visualiser la correction temporelle (Incréments EnKF) apportée par l'assimilation de LAI, aligné avec la *Figure A* de *Nie et al. (2022)*.
+
+---
+
+## 18. Pre-Production Assessment & Spin-up Workflow (1 Juin 2026)
+
+**Symptômes / Besoins :**
+* Le besoin de s'assurer que le setup expérimental est complet et robuste pour une simulation de production de 5 ans (2015-2020), en suivant la méthodologie de *Nie et al. (2022)*.
+* Les runs précédents démarraient en `coldstart` (états du sol arbitraires), ce qui invalide l'analyse hydrologique (notamment le Deep Soil Moisture et les nappes).
+
+**Évaluation & Actions Réalisées :**
+* **Ce qui est fait :** L'exécutable LIS intègre bien la végétation dynamique (activée) et HyMAP (désactivé pour l'instant). Les observations MODIS LAI sont prêtes (2014-2020). Les bugs SMAP (nom de fichier et perturbations d'états) sont corrigés.
+* **Ce qui reste à faire (Workflow Final) :**
+  1. **Télécharger Forçages :** Lancer `job_4a_download_merra2.sh` pour récupérer MERRA-2 (2015-2020).
+  2. **Spin-up (Open-Loop) :** Lancer `job_4c_lis_spinup.sh` (basé sur `lis.config.spinup_sebou`) sur 2015-2020 pour équilibrer les états du sol. Le fichier restart généré à la fin sera utilisé pour initialiser les runs DA.
+  3. **CDF Matching SMAP :** Lancer `job_4b_ldt_cdf.sh` (nécessitera la configuration de `ldt.config.cdf`) pour calculer les paramètres de correction de biais entre la climatologie SMAP et celle du Noah-MP (Spin-up).
+  4. **Production DA :** Changer `Start mode` à `restart` dans les configs DA et pointer vers le fichier généré à l'étape 2.
 
 ---
 *Fin du journal. Ces documentations assurent la pérennité du projet et évitent de "réinventer la roue" ou de rester bloqué de longues heures sur des problèmes d'architecture lors des prochains travaux de recherche ou lors du passage de relais à un étudiant/chercheur.*

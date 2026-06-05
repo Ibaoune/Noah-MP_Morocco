@@ -49,27 +49,22 @@ NoahMP_Morocco/
 │   │   ├── job_3c_lis_da_joint_sebou.sh #   Step 3c: DA — Joint (SM + LAI)
 │   │   ├── job_preprocess_modis_lai.sh#     Preprocess HDF → NetCDF4
 │   │   └── job_scalability.sh         #     Scalability testing
-│   ├── download/             #   Data download scripts
-│   │   ├── download_smap.py
-│   │   ├── download_merra2.py
-│   │   ├── download_modis_lai.py
-│   │   └── reorganize_merra2.sh
 │   └── fix/                  #   Data fix/correction scripts
 │       ├── fix_gtopo.py
 │       ├── fix_mptable.py
 │       └── preprocess_modis_lai.py    #     HDF tile → global NetCDF4
 │
-├── data/                     # Input data
-│   ├── met_forcing/MERRA2/   #   MERRA-2 meteorological forcing
-│   ├── land_params/          #   Land surface parameters
-│   │   ├── noah_2dparms/     #     NoahMP tables (VEGPARM, SOILPARM, etc.)
-│   │   └── topo_parms/       #     Topography (GTOPO30)
-│   ├── observations/
-│   │   ├── SMAP/             #     SMAP soil moisture (SPL3SMP v009)
-│   │   └── MODIS_LAI/        #     MODIS MOD15A2H LAI (tile h17v05)
-│   │       └── processed/    #       Preprocessed global NetCDF4 files
+├── data/                     # Centralized Data Acquisition & Preprocessing
+│   ├── scripts/              #   Data acquisition and preprocessing scripts
+│   ├── logs/                 #   Data acquisition SLURM logs
+│   ├── reports/              #   Automated inventory CSVs
+│   ├── forcing/              #   Meteorological forcing (IMERG, GDAS)
+│   ├── assimilation/         #   Assimilation datasets (SMAP, MODIS)
+│   ├── validation/           #   Validation datasets (ASCAT, LAI, GRACE)
+│   ├── land_params/          #   NoahMP parameters & Topography
 │   ├── pert_package/         #   Perturbation attributes (DA)
-│   └── lis_input.d01_sebou.nc#   Sebou domain/parameter file (LDT output)
+│   ├── lis_input.d01_sebou.nc#   Sebou domain/parameter file (LDT output)
+│   └── README_data_acquisition.md # Detailed data workflow documentation
 │
 ├── experiments/              # Model outputs (by experiment)
 │   ├── OPL_sebou/            #   Open-Loop results

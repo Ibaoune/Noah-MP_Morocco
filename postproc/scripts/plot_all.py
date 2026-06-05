@@ -1,3 +1,5 @@
+# Author: M. El Aabaribaoune (@um6p)
+
 import os
 import glob
 import h5py

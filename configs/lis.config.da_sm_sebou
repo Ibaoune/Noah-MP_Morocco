@@ -75,7 +75,7 @@ Data assimilation set attributes file:                 ./data/pert_package/smap_
 # SMAP(NASA) Soil Moisture Options
 SMAP(NASA) soil moisture data directory:              ./data/observations/SMAP/SPL3SMP.009
 SMAP(NASA) soil moisture data designation:            SPL3SMP 
-SMAP(NASA) soil moisture Composite Release ID:        "R19"
+SMAP(NASA) soil moisture Composite Release ID:        "none"
 SMAP(NASA) soil moisture use scaled standard deviation model: 0
 SMAP(NASA) model CDF file:                            none
 SMAP(NASA) observation CDF file:                      none

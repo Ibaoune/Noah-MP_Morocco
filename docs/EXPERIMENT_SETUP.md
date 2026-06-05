@@ -244,3 +244,16 @@ A custom Python visualization module (`scripts/plot_da_comparison.py`) has been 
 *   **Time Series:** Computes and plots the daily basin-averaged response of key hydrological variables (SSM, RZSM, Evapotranspiration, Runoff, LAI).
 *   **Spatial Maps:** Generates detailed `Δ DA Joint - OPL` difference maps to visually inspect the exact spatial impact of the assimilated satellite retrievals.
 *   **Note on LAI:** LAI plotting requires the `LAI` parameter in `configs/MODEL_OUTPUT_LIST.TBL` to be enabled (set to `1`) prior to running the simulations.
+
+---
+
+## 7. Pre-Production Workflow (2015-2020)
+
+Before running the final 5-year Data Assimilation experiments, the following sequence of scripts must be executed to prepare the forcings and initialize the model states correctly (Spin-up).
+
+1.  **Download Forcing:** Run `sbatch scripts/jobs/job_4a_download_merra2.sh` to download the remaining MERRA-2 data for 2015-2020.
+2.  **Spin-up:** Run `sbatch scripts/jobs/job_4c_lis_spinup.sh` to execute an Open-Loop simulation for the 5-year period. This equilibrates the deep soil moisture and groundwater states. The `lis.config.spinup_sebou` is configured to save a restart file (`LIS_RST_NOAHMP36...`) at the end of the run.
+3.  **CDF Matching (SMAP):** Run `sbatch scripts/jobs/job_4b_ldt_cdf.sh`. *(Note: You must first configure `ldt.config.cdf` to point to the output history of the Spin-up run. This computes the bias correction scaling factors for SMAP).*
+4.  **Production DA Initialization:** Once the Spin-up is complete, modify your Data Assimilation configs (`lis.config.da_*`) as follows:
+    *   Change `Start mode: coldstart` to `Start mode: restart`
+    *   Set `Noah-MP.3.6 restart file:` to point to the file generated in step 2.
