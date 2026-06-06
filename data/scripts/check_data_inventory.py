@@ -90,14 +90,14 @@ def main():
         {
             "name": "CGLS ASCAT Soil Moisture",
             "path": os.path.join(DATA_DIR, 'validation/soil_moisture/ASCAT/raw'),
-            "ext": ".nc",
+            "ext": "_nc",
             "expected": expected_daily,
             "version": "v3.1.1"
         },
         {
             "name": "Copernicus LAI 300m",
             "path": os.path.join(DATA_DIR, 'validation/vegetation/Copernicus_LAI/raw'),
-            "ext": ".nc",
+            "ext": "_nc",
             "expected": expected_daily // 10, # 10-day product approx
             "version": "v1.0.1/v2.0.1"
         }

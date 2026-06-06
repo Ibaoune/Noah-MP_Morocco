@@ -28,3 +28,6 @@ __pycache__/
 # Figures
 postproc/figures/
 *.png
+input/
+scripts/venv/
+scripts/unrar

@@ -28,9 +28,9 @@ LIB_CMEM        =
 LIB_LAPACK      = 
 INC_PETSC       = 
 LIB_PETSC       = 
-CFLAGS          = -c  -DGFORTRAN -DLINUX -DLIS_JULES -DSM_NOAHMP_3_6
-FFLAGS77        = -c -O2  -fbacktrace -DSPMD -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DLINUX  -I$(MOD_ESMF) -I$(INC_ECCODES) -I$(INC_NETCDF) -I$(INC_HDF5) -DLIS_JULES -DSM_NOAHMP_3_6
-FFLAGS          = -c -ffree-line-length-0 -O2  -fbacktrace -DSPMD -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DLINUX  -I$(MOD_ESMF) -I$(INC_ECCODES) -I$(INC_NETCDF) -I$(INC_HDF5) -DLIS_JULES -DSM_NOAHMP_3_6
+CFLAGS          = -c  -DGFORTRAN -DLINUX -DLIS_JULES -DSM_NOAHMP_4_0_1
+FFLAGS77        = -c -O2  -fbacktrace -DSPMD -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DLINUX  -I$(MOD_ESMF) -I$(INC_ECCODES) -I$(INC_NETCDF) -I$(INC_HDF5) -DLIS_JULES -DSM_NOAHMP_4_0_1
+FFLAGS          = -c -ffree-line-length-0 -O2  -fbacktrace -DSPMD -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DLINUX  -I$(MOD_ESMF) -I$(INC_ECCODES) -I$(INC_NETCDF) -I$(INC_HDF5) -DLIS_JULES -DSM_NOAHMP_4_0_1
 LDFLAGS         =  -L$(LIB_ESMF) -lesmf -lpioc -lflexiblas -lstdc++ -lz -lmpi -L$(LIB_ECCODES) -leccodes_f90 -leccodes -L$(LIB_JPEG2000) -ljasper -L$(LIB_NETCDF) -lnetcdff -lnetcdf -L$(LIB_HDF5) -lhdf5_fortran -lhdf5_hl -lhdf5 -lz
 LIS_LIB_FLAGS   = -lesmf -lpioc -lflexiblas -lstdc++ -lz -leccodes_f90 -leccodes -ljasper -lnetcdff -lnetcdf -lhdf5_fortran -lhdf5_hl -lhdf5
 LIS_LIB_PATHS   = -L$(LIB_ESMF) -L$(LIB_ECCODES) -L$(LIB_JPEG2000) -L$(LIB_NETCDF) -L$(LIB_HDF5)

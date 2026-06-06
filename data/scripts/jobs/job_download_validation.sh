@@ -3,8 +3,8 @@
 # Author: M. El Aabaribaoune (@um6p)
 
 #SBATCH --job-name=dl_valid
-#SBATCH --output=../../logs/download/dl_valid_%j.out
-#SBATCH --error=../../logs/download/dl_valid_%j.err
+#SBATCH --output=logs/download/dl_valid_%j.out
+#SBATCH --error=logs/download/dl_valid_%j.err
 #SBATCH --time=06:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -15,7 +15,7 @@
 # Load environment
 source ~/.bashrc
 
-cd ../download
+cd scripts/download
 
 echo "=== Starting validation dataset downloads ==="
 /home/mohammad.elaabaribao/.conda/envs/env_py3.10.13/bin/python download_gleam.py

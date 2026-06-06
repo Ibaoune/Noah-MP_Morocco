@@ -1,7 +1,7 @@
 # NoahMP-LIS Morocco — Soil Moisture Data Assimilation
 
 Land surface modeling and soil moisture data assimilation over Morocco
-using NASA's **Land Information System (LIS)** with **NoahMP 3.6** and
+using NASA's **Land Information System (LIS)** with **NoahMP 4.0.1** and
 **SMAP** satellite observations via Ensemble Kalman Filter (EnKF).
 
 **Author:** M. EL Aabaribaoune (@um6p)  
@@ -49,10 +49,15 @@ NoahMP_Morocco/
 │   │   ├── job_3c_lis_da_joint_sebou.sh #   Step 3c: DA — Joint (SM + LAI)
 │   │   ├── job_preprocess_modis_lai.sh#     Preprocess HDF → NetCDF4
 │   │   └── job_scalability.sh         #     Scalability testing
-│   └── fix/                  #   Data fix/correction scripts
-│       ├── fix_gtopo.py
-│       ├── fix_mptable.py
-│       └── preprocess_modis_lai.py    #     HDF tile → global NetCDF4
+│   ├── fix/                  #   Data fix/correction scripts
+│   │   ├── fix_gtopo.py
+│   │   ├── fix_mptable.py
+│   │   └── preprocess_modis_lai.py    #     HDF tile → global NetCDF4
+│   └── utils/                #   Utility and setup scripts
+│       ├── create_test_config.py
+│       ├── migrate.sh
+│       ├── update_param_paths.py
+│       └── upgrade_configs.py
 │
 ├── data/                     # Centralized Data Acquisition & Preprocessing
 │   ├── scripts/              #   Data acquisition and preprocessing scripts
@@ -79,6 +84,7 @@ NoahMP_Morocco/
 │
 ├── logs/                     # Centralized logs
 │   ├── slurm/                #   SLURM job logs
+│   ├── slurm_archive/        #   Archived generic execution logs
 │   └── *.log                 #   Download & run logs
 │
 └── docs/                     # Documentation
@@ -131,11 +137,11 @@ sbatch scripts/jobs/job_3c_lis_da_joint_sebou.sh
 
 | Parameter | Value |
 |-----------|-------|
-| Region | Morocco (central) |
-| Latitude | 33.00°N — 34.50°N |
-| Longitude | 5.50°W — 3.50°W |
+| Region | Sebou River basin & Saïss plain |
+| Latitude | 32.50°N — 35.50°N |
+| Longitude | 7.00°W — 3.50°W |
 | Resolution | 0.01° (~1 km) |
-| Grid size | 200 × 150 = 30,000 cells |
+| Grid size | 300 × 350 = 105,000 cells |
 | Period | Jun — Aug 2020 |
 | Timestep | 15 min |
 
@@ -150,10 +156,10 @@ sbatch scripts/jobs/job_3c_lis_da_joint_sebou.sh
 
 ## Forcing & Observations
 
-- **Meteorological forcing:** MERRA-2 (NASA, hourly, 2015–2020)
+- **Meteorological forcing:** GDAS (NASA, 2015–2020) and GPM IMERG Final V07
 - **Soil Moisture Observations:** SMAP L3 SPL3SMP v009 (daily, 2015–2020)
 - **LAI Observations:** MODIS MOD15A2H v061, tile `h17v05` (8-day, 2015–2020), preprocessed to global NetCDF4
-- **Land surface model:** NoahMP v3.6 with dynamic vegetation (`option=2`)
+- **Land surface model:** NoahMP v4.0.1 with dynamic vegetation (`option=2`)
 - **Data assimilation:** Ensemble Kalman Filter (EnKF, 20 members)
 - **Perturbations:** GMAO scheme — precipitation, radiation, soil moisture state, LAI state
 
@@ -205,7 +211,7 @@ The scalability curves are plotted below:
 
 ## Sebou Basin Joint DA Experiment
 
-An expanded multi-year experiment has been designed over the entire upstream Sebou River basin (`33.0° N — 35.0° N` and `4.0° W — 7.0° W` at 1 km resolution) for the period 2015–2020, matching the study period in Nie et al. (2022).
+An expanded multi-year experiment has been designed over the entire upstream Sebou River basin (`32.5° N — 35.5° N` and `7.0° W — 3.5° W` at 1 km resolution) for the period 2015–2020, matching the study period in Nie et al. (2022).
 
 ### Current Status
 *   **Domain parameters (LDT):** Successfully processed. Generated the NetCDF parameter file `data/lis_input.d01_sebou.nc`.

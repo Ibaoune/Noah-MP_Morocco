@@ -26,7 +26,7 @@ This document outlines the end-to-end workflow for acquiring and preprocessing a
 
 The LIS framework requires forcing and observational data to be in specific formats (typically NetCDF, occasionally GRIB/HDF depending on the exact reader compiled) and remapped to the target domain.
 
-- **IMERG**: Sub-setted to the domain bounding box (`-7.0W, 33.0N` to `-4.0W, 35.0N`) and stored as `.nc4` files. Handled directly during the download phase.
+- **IMERG**: Sub-setted to the domain bounding box (`-7.0W, 32.5N` to `-3.5W, 35.5N`) and stored as `.nc4` files. Handled directly during the download phase.
 - **GDAS**: Extracted from GRIB2, sub-setted to the bounding box, longitudes shifted to -180/180 if required, and output as NetCDF.
 - **SMAP SPL3SMP_E**: Extracted from HDF5, quality-controlled (filtering frozen soil and high vegetation water content), regridded to 0.01° using nearest-neighbor or bilinear interpolation, and stored as NetCDF. Bias correction (CDF matching/anomaly rescaling) files are generated from these regridded datasets.
 - **MODIS LAI**: Extracted from HDF-EOS (Sinusoidal projection), quality-controlled, reprojected to geographic coordinates (EPSG:4326), regridded to 0.01°, and stored as NetCDF.
