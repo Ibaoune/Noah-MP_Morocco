@@ -1,0 +1,5 @@
+#nfields
+1
+#name  varmin  varmax
+MODIS LAI
+  0.01 10.0
