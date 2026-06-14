@@ -1,13 +1,19 @@
 """
-fig01_spatial_context.py
+===============================================================================
+Script: fig01_spatial_context.py
+Author: M. El Aabaribaoune (@um6p)
 
-Objective: Generate Figure 1 for the SSM-DA evaluation publication.
-Establish the spatial context by identifying regions where vegetation-soil-irrigation 
-interactions are likely to influence water balances.
+Objective: Generate supplementary spatial context maps for publication.
 
-This script maps:
-- Main land cover classes (MODIS MCD12Q1).
-- Irrigation intensity/fraction (FAO GMIA or GRIPC).
+Description:
+    Establishes the spatial context by identifying regions where vegetation, 
+    soil, and irrigation interactions are likely to influence water balances.
+    Specifically, this script plots the main land cover classes and highlights 
+    the irrigation intensity fraction.
+
+Dependencies:
+    matplotlib, cartopy, xarray, rasterio
+===============================================================================
 """
 
 import os
@@ -67,7 +73,7 @@ def plot_spatial_context():
     gl2.left_labels = False # Avoid duplicate labels in the middle
 
     plt.tight_layout()
-    output_path = os.path.join(config.DIR_FIGURES, "fig01_spatial_context.png")
+    output_path = os.path.join(config.DIR_FIGURES_DOMAIN, "fig01_spatial_context.png")
     plt.savefig(output_path)
     print(f"Figure 1 saved to: {output_path}")
 

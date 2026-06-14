@@ -28,7 +28,9 @@ DIR_OBS_INSITU = os.path.join(PROJECT_ROOT, "data/validation/streamflow")
 
 # Output directory for figures
 DIR_FIGURES = os.path.join(PROJECT_ROOT, "scripts/postproc/postproc_00/figures")
+DIR_FIGURES_DOMAIN = os.path.join(DIR_FIGURES, "domain")
 os.makedirs(DIR_FIGURES, exist_ok=True)
+os.makedirs(DIR_FIGURES_DOMAIN, exist_ok=True)
 
 # ==========================================
 # 2. STUDY DOMAIN EXTENT (North Morocco Basin)

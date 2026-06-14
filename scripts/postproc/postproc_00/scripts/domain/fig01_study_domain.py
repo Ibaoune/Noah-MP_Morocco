@@ -1,15 +1,19 @@
 """
-fig01_study_domain.py
+===============================================================================
+Script: fig01_study_domain.py
+Author: M. El Aabaribaoune (@um6p)
 
-Objective: Generate Figure 1 for the publication.
-Contextualize the physiographic and hydroclimatic characteristics of the NorthMor basin.
-This script plots:
-- The 30m SRTM DEM (background)
-- Basin boundaries and river network
-- Validation stations
-- MODIS IGBP land cover
+Objective: Generate supplementary domain overview visualizations.
 
-Note: Requires cartopy, rasterio, geopandas, and matplotlib.
+Description:
+    Contextualizes the physiographic and hydroclimatic characteristics of the 
+    NorthMor basin. This script plots the 30m SRTM DEM (background) alongside 
+    basin boundaries, the river network, validation stations, and MODIS IGBP 
+    land cover overlays.
+
+Dependencies:
+    matplotlib, cartopy, rasterio, geopandas
+===============================================================================
 """
 
 import os
@@ -67,7 +71,7 @@ def plot_study_domain():
     plt.title("Figure 1: NorthMor Basin Study Domain", fontweight='bold')
     # plt.legend(loc='lower right')
     
-    output_path = os.path.join(config.DIR_FIGURES, "fig01_study_domain.png")
+    output_path = os.path.join(config.DIR_FIGURES_DOMAIN, "fig01_study_domain.png")
     plt.savefig(output_path)
     print(f"Figure 1 saved to: {output_path}")
 

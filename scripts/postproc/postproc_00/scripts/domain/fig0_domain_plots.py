@@ -1,4 +1,24 @@
-# Author: M. El Aabaribaoune (@um6p)
+"""
+===============================================================================
+Script: fig0_domain_plots.py
+Author: M. El Aabaribaoune (@um6p)
+
+Objective: Generate comprehensive domain context and spatial feature figures.
+
+Description:
+    This script is the main entry point for producing study domain maps for the 
+    NorthMor basin experiments. It generates geospatial plots including:
+    - Dominant Land Cover Types (MODIS IGBP)
+    - Dominant Soil Texture Classes (STATSGOFAO)
+    - Topography & Elevation (SRTM 30m)
+    - Hydrological Basins & In-Situ Stations Overlay
+    - SMAP L3 Soil Moisture Observations context
+    - MERRA-2 Air Temperature forcing snapshot
+
+Dependencies:
+    numpy, netCDF4, h5py, matplotlib, cartopy, geopandas
+===============================================================================
+"""
 
 import os
 import glob
@@ -85,7 +105,7 @@ cbar.set_label("Elevation (m above sea level)", fontsize=11, fontweight='bold')
 
 plt.title("Study Region - Topography & Elevation (Source: SRTM 30m)", fontsize=11, fontweight="bold", pad=15)
 add_geospatial_context(ax, fig)
-plt.savefig(os.path.join(cfg.DIR_FIGURES, "Fig0_c_topography.png"), bbox_inches="tight")
+plt.savefig(os.path.join(cfg.DIR_FIGURES_DOMAIN, "Fig0_c_topography.png"), bbox_inches="tight")
 plt.close()
 print("Saved Fig0_c_topography.png")
 
@@ -145,7 +165,7 @@ for idx, cls in enumerate(present_classes):
 ax.legend(handles=handles, bbox_to_anchor=(1.05, 0.9), loc='upper left', borderaxespad=0., fontsize=9)
 plt.title("Study Region - Dominant Land Cover Types (Source: MODIS IGBP)", fontsize=11, fontweight="bold", pad=15)
 add_geospatial_context(ax, fig)
-plt.savefig(os.path.join(cfg.DIR_FIGURES, "Fig0_a_landcover.png"), bbox_inches="tight")
+plt.savefig(os.path.join(cfg.DIR_FIGURES_DOMAIN, "Fig0_a_landcover.png"), bbox_inches="tight")
 plt.close()
 print("Saved Fig0_a_landcover.png")
 
@@ -204,7 +224,7 @@ for idx, cls in enumerate(present_tex):
 ax.legend(handles=handles_tex, bbox_to_anchor=(1.05, 0.9), loc='upper left', borderaxespad=0., fontsize=9)
 plt.title("Study Region - Dominant Soil Texture Classes (Source: STATSGOFAO)", fontsize=11, fontweight="bold", pad=15)
 add_geospatial_context(ax, fig)
-plt.savefig(os.path.join(cfg.DIR_FIGURES, "Fig0_b_soil_texture.png"), bbox_inches="tight")
+plt.savefig(os.path.join(cfg.DIR_FIGURES_DOMAIN, "Fig0_b_soil_texture.png"), bbox_inches="tight")
 plt.close()
 print("Saved Fig0_b_soil_texture.png")
 
@@ -242,7 +262,7 @@ try:
     
     plt.title("SMAP L3 Soil Moisture Observations - June 1, 2020", fontsize=13, fontweight="bold", pad=15)
     add_geospatial_context(ax, fig)
-    plt.savefig(os.path.join(cfg.DIR_FIGURES, "smap_observation.png"), bbox_inches="tight")
+    plt.savefig(os.path.join(cfg.DIR_FIGURES_DOMAIN, "smap_observation.png"), bbox_inches="tight")
     plt.close()
     print("Saved smap_observation.png")
 except Exception as e:
@@ -282,7 +302,7 @@ try:
     
     plt.title("MERRA-2 Forcing: Air Temperature Snapshot (June 4, 2020 14:00 UTC)", fontsize=13, fontweight="bold", pad=15)
     add_geospatial_context(ax, fig)
-    plt.savefig(os.path.join(cfg.DIR_FIGURES, "merra2_temperature.png"), bbox_inches="tight")
+    plt.savefig(os.path.join(cfg.DIR_FIGURES_DOMAIN, "merra2_temperature.png"), bbox_inches="tight")
     plt.close()
     print("Saved merra2_temperature.png")
 except Exception as e:
@@ -339,7 +359,7 @@ try:
 
     plt.title("Study Region - Hydrological Basins & In-Situ Stations", fontsize=11, fontweight="bold", pad=15)
     add_geospatial_context(ax, fig)
-    plt.savefig(os.path.join(cfg.DIR_FIGURES, "Fig0_d_basins_and_insitudata.png"), bbox_inches="tight")
+    plt.savefig(os.path.join(cfg.DIR_FIGURES_DOMAIN, "Fig0_d_basins_and_insitudata.png"), bbox_inches="tight")
     plt.close()
     print("Saved Fig0_d_basins_and_insitudata.png")
 
