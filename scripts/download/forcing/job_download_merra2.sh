@@ -13,8 +13,17 @@
 # ==============================================================================
 # Script Name   : job_download_merra2.sh
 # Author        : M. El Aabaribaoune (@um6p)
-# Description   : SLURM job array script to download MERRA-2.
-#                 Each task downloads 1 month of data.
+# Description   : SLURM job array script to download NASA MERRA-2 forcing data.
+#                 This script is designed to be submitted one year at a time.
+#                 It uses a job array (1-12) where each task handles exactly 1 month.
+#                 If YEAR=2000 and month=1, it will also download MERRA-2 Constants.
+#                 This granular approach prevents API timeouts and allows easy retries.
+#
+# Usage         : sbatch --export=ALL,YEAR=YYYY --array=1-12 job_download_merra2.sh
+# Example       : sbatch --export=ALL,YEAR=2010 --array=1-12 job_download_merra2.sh
+#
+# Dependencies  : Requires python scripts `download_merra2.py`, `download_merra2_const.py`.
+#                 Logs are saved to the `logs/` subdirectory.
 # ==============================================================================
 
 year=${YEAR:-2020}

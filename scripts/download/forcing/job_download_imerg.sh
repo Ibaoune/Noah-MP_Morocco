@@ -13,8 +13,17 @@
 # ==============================================================================
 # Script Name   : job_download_imerg.sh
 # Author        : M. El Aabaribaoune (@um6p)
-# Description   : SLURM job array script to download IMERG.
-#                 Each task downloads 1 month of data.
+# Description   : SLURM job array script to download NASA GPM IMERG forcing data.
+#                 This script is designed to be submitted one year at a time.
+#                 It uses a job array (1-12) where each task handles exactly 1 month.
+#                 This granular approach prevents memory issues, speeds up downloads 
+#                 via parallelization, and allows easy retries of failed months.
+#
+# Usage         : sbatch --export=ALL,YEAR=YYYY --array=1-12 job_download_imerg.sh
+# Example       : sbatch --export=ALL,YEAR=2010 --array=1-12 job_download_imerg.sh
+#
+# Dependencies  : Requires python script `download_imerg.py` and Earthdata credentials.
+#                 Logs are saved to the `logs/` subdirectory.
 # ==============================================================================
 
 year=${YEAR:-2020}
