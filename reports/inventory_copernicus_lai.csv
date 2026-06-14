@@ -1,0 +1,6 @@
+date,file_name,product,file_size_mb,status
+2020-02-01T00:00:00.000000Z,c_gls_LAI300-RT6_202002100000_GLOBE_OLCI_V2.0.1_nc,Copernicus_LAI,1682.6,Success
+2020-02-01T00:00:00.000000Z,c_gls_LAI300-RT0_202002100000_GLOBE_PROBAV_V1.0.1_nc,Copernicus_LAI,1372.68,Success
+2020-02-01T00:00:00.000000Z,c_gls_LAI300-RT1_202002100000_GLOBE_PROBAV_V1.0.1_nc,Copernicus_LAI,0.0,"Failed: HTTPSConnectionPool(host='identity.dataspace.copernicus.eu', port=443): Max retries exceeded with url: /auth/realms/CDSE/protocol/openid-connect/token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x14b2ff884160>: Failed to establish a new connection: [Errno -2] Name or service not known'))"
+2020-02-01T00:00:00.000000Z,c_gls_LAI300_202002100000_GLOBE_PROBAV_V1.0.1_nc,Copernicus_LAI,1429.13,Success
+2020-02-01T00:00:00.000000Z,c_gls_LAI300-RT2_202002100000_GLOBE_PROBAV_V1.0.1_nc,Copernicus_LAI,0.0,"Failed: HTTPSConnectionPool(host='identity.dataspace.copernicus.eu', port=443): Max retries exceeded with url: /auth/realms/CDSE/protocol/openid-connect/token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x14b2ff8841f0>: Failed to establish a new connection: [Errno -2] Name or service not known'))"

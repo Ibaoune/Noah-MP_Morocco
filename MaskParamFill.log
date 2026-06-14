@@ -1,0 +1,3718 @@
+ Checking/filling mask values for: LANDCOVER
+  -- Filling in discrete dataset's missing values --
+  -- Number of data layers:           20
+  -- Missing/water value:    17.0000000    
+ Checking/filling mask values for: TEXTURE
+  -- Filling in discrete dataset's missing values --
+  -- Number of data layers:           16
+  -- Missing/water value:    14.0000000    
+ Checking/filling mask values for: GREENNESS
+  -- Filling in independent continuous dataset's missing values --
+  -- Number of data layers:           12
+  -- Missing/water value:   -9999.00000    
+ value needs filling:            1         141         108
+ filling value with neighbor:         141         108  0.189280391    
+ filling value with neighbor:         141         108  0.189280391    
+ value needs filling:            1         141         109
+ filling value with neighbor:         141         109  0.189280391    
+ filling value with neighbor:         141         109  0.189280391    
+ value needs filling:            2         141         108
+ filling value with neighbor:         141         108  0.276391774    
+ filling value with neighbor:         141         108  0.276391774    
+ value needs filling:            2         141         109
+ filling value with neighbor:         141         109  0.276391774    
+ filling value with neighbor:         141         109  0.276391774    
+ value needs filling:            3         141         108
+ filling value with neighbor:         141         108  0.348195910    
+ filling value with neighbor:         141         108  0.348195910    
+ value needs filling:            3         141         109
+ filling value with neighbor:         141         109  0.348195910    
+ filling value with neighbor:         141         109  0.348195910    
+ value needs filling:            4         141         108
+ filling value with neighbor:         141         108  0.256391764    
+ filling value with neighbor:         141         108  0.256391764    
+ value needs filling:            4         141         109
+ filling value with neighbor:         141         109  0.256391764    
+ filling value with neighbor:         141         109  0.256391764    
+ value needs filling:            5         141         108
+ filling value with neighbor:         141         108  0.130364880    
+ filling value with neighbor:         141         108  0.130364880    
+ value needs filling:            5         141         109
+ filling value with neighbor:         141         109  0.130364880    
+ filling value with neighbor:         141         109  0.130364880    
+ value needs filling:            6         141         108
+ filling value with neighbor:         141         108   6.63917661E-02
+ filling value with neighbor:         141         108   6.63917661E-02
+ value needs filling:            6         141         109
+ filling value with neighbor:         141         109   6.63917661E-02
+ filling value with neighbor:         141         109   6.63917661E-02
+ value needs filling:            7         141         108
+ filling value with neighbor:         141         108   3.92803848E-02
+ filling value with neighbor:         141         108   3.92803848E-02
+ value needs filling:            7         141         109
+ filling value with neighbor:         141         109   3.92803848E-02
+ filling value with neighbor:         141         109   3.92803848E-02
+ value needs filling:            8         141         108
+ filling value with neighbor:         141         108   1.10844998E-02
+ filling value with neighbor:         141         108   1.10844998E-02
+ value needs filling:            8         141         109
+ filling value with neighbor:         141         109   1.10844998E-02
+ filling value with neighbor:         141         109   1.10844998E-02
+ value needs filling:            9         141         108
+ filling value with neighbor:         141         108   9.99999978E-03
+ filling value with neighbor:         141         108   9.99999978E-03
+ value needs filling:            9         141         109
+ filling value with neighbor:         141         109   9.99999978E-03
+ filling value with neighbor:         141         109   9.99999978E-03
+ value needs filling:           10         141         108
+ filling value with neighbor:         141         108   1.21689988E-02
+ filling value with neighbor:         141         108   1.21689988E-02
+ value needs filling:           10         141         109
+ filling value with neighbor:         141         109   1.21689988E-02
+ filling value with neighbor:         141         109   1.21689988E-02
+ value needs filling:           11         141         108
+ filling value with neighbor:         141         108   2.92803813E-02
+ filling value with neighbor:         141         108   2.92803813E-02
+ value needs filling:           11         141         109
+ filling value with neighbor:         141         109   2.92803813E-02
+ filling value with neighbor:         141         109   2.92803813E-02
+ value needs filling:           12         141         108
+ filling value with neighbor:         141         108   5.81958815E-02
+ filling value with neighbor:         141         108   5.81958815E-02
+ value needs filling:           12         141         109
+ filling value with neighbor:         141         109   5.81958815E-02
+ filling value with neighbor:         141         109   5.81958815E-02
+ Checking/filling mask values for: SHDMAX
+  -- Filling in independent continuous dataset's missing values --
+  -- Number of data layers:            1
+  -- Missing/water value:   -9999.00000    
+ value needs filling:            1         141         108
+ filling value with neighbor:         141         108  0.348195910    
+ filling value with neighbor:         141         108  0.348195910    
+ value needs filling:            1         141         109
+ filling value with neighbor:         141         109  0.348195910    
+ filling value with neighbor:         141         109  0.348195910    
+ Checking/filling mask values for: SHDMIN
+  -- Filling in independent continuous dataset's missing values --
+  -- Number of data layers:            1
+  -- Missing/water value:   -9999.00000    
+ value needs filling:            1         141         108
+ filling value with neighbor:         141         108   9.99999978E-03
+ filling value with neighbor:         141         108   9.99999978E-03
+ value needs filling:            1         141         109
+ filling value with neighbor:         141         109   9.99999978E-03
+ filling value with neighbor:         141         109   9.99999978E-03
+ Checking/filling mask values for: MXSNALBEDO
+  -- Filling in independent continuous dataset's missing values --
+  -- Number of data layers:            1
+  -- Missing/water value:   -9999.00000    
+ Checking/filling mask values for: ALBEDO
+  -- Filling in independent continuous dataset's missing values --
+  -- Number of data layers:           12
+  -- Missing/water value:   -9999.00000    
+ value needs filling:            1         141         108
+ filling value with neighbor:         141         108  0.202523753    
+ filling value with neighbor:         141         108  0.202523753    
+ value needs filling:            1         141         109
+ filling value with neighbor:         141         109  0.202523753    
+ filling value with neighbor:         141         109  0.202523753    
+ value needs filling:            2         141         108
+ filling value with neighbor:         141         108  0.200719625    
+ filling value with neighbor:         141         108  0.200719625    
+ value needs filling:            2         141         109
+ filling value with neighbor:         141         109  0.200719625    
+ filling value with neighbor:         141         109  0.200719625    
+ value needs filling:            3         141         108
+ filling value with neighbor:         141         108  0.201804116    
+ filling value with neighbor:         141         108  0.201804116    
+ value needs filling:            3         141         109
+ filling value with neighbor:         141         109  0.201804116    
+ filling value with neighbor:         141         109  0.201804116    
+ value needs filling:            4         141         108
+ filling value with neighbor:         141         108  0.194692731    
+ filling value with neighbor:         141         108  0.194692731    
+ value needs filling:            4         141         109
+ filling value with neighbor:         141         109  0.194692731    
+ filling value with neighbor:         141         109  0.194692731    
+ value needs filling:            5         141         108
+ filling value with neighbor:         141         108  0.202888623    
+ filling value with neighbor:         141         108  0.202888623    
+ value needs filling:            5         141         109
+ filling value with neighbor:         141         109  0.202888623    
+ filling value with neighbor:         141         109  0.202888623    
+ value needs filling:            6         141         108
+ filling value with neighbor:         141         108  0.191804111    
+ filling value with neighbor:         141         108  0.191804111    
+ value needs filling:            6         141         109
+ filling value with neighbor:         141         109  0.191804111    
+ filling value with neighbor:         141         109  0.191804111    
+ value needs filling:            7         141         108
+ filling value with neighbor:         141         108  0.191804111    
+ filling value with neighbor:         141         108  0.191804111    
+ value needs filling:            7         141         109
+ filling value with neighbor:         141         109  0.191804111    
+ filling value with neighbor:         141         109  0.191804111    
+ value needs filling:            8         141         108
+ filling value with neighbor:         141         108  0.201804116    
+ filling value with neighbor:         141         108  0.201804116    
+ value needs filling:            8         141         109
+ filling value with neighbor:         141         109  0.201804116    
+ filling value with neighbor:         141         109  0.201804116    
+ value needs filling:            9         141         108
+ filling value with neighbor:         141         108  0.191804111    
+ filling value with neighbor:         141         108  0.191804111    
+ value needs filling:            9         141         109
+ filling value with neighbor:         141         109  0.191804111    
+ filling value with neighbor:         141         109  0.191804111    
+ value needs filling:           10         141         108
+ filling value with neighbor:         141         108  0.206496865    
+ filling value with neighbor:         141         108  0.206496865    
+ value needs filling:           10         141         109
+ filling value with neighbor:         141         109  0.206496865    
+ filling value with neighbor:         141         109  0.206496865    
+ value needs filling:           11         141         108
+ filling value with neighbor:         141         108  0.205412373    
+ filling value with neighbor:         141         108  0.205412373    
+ value needs filling:           11         141         109
+ filling value with neighbor:         141         109  0.205412373    
+ filling value with neighbor:         141         109  0.205412373    
+ value needs filling:           12         141         108
+ filling value with neighbor:         141         108  0.192523748    
+ filling value with neighbor:         141         108  0.192523748    
+ value needs filling:           12         141         109
+ filling value with neighbor:         141         109  0.192523748    
+ filling value with neighbor:         141         109  0.192523748    
+ Checking/filling mask values for: ELEVATION
+  -- Filling in independent continuous dataset's missing values --
+  -- Number of data layers:            1
+  -- Missing/water value:   -9999.00000    
+ Checking/filling mask values for: SLOPETYPE
+  -- Filling in discrete dataset's missing values --
+  -- Number of data layers:            1
+  -- Missing/water value:    0.00000000    
+ value needs filling:           14          41
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           15          41
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          41
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          41
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          41
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          41
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          41
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           15          42
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          42
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          42
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          42
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          42
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          42
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           15          43
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          43
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          43
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          43
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          43
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          43
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          44
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          44
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          44
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          44
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          44
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          45
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          45
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          45
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          45
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          45
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          46
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          46
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          46
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          46
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          46
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          47
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          47
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          47
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          47
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          47
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          48
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          48
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          48
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          48
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          48
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          49
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          49
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          49
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          49
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          49
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          50
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          50
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          50
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          50
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          51
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          51
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          51
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          51
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          51
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           16          52
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          52
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          52
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          52
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          52
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           17          53
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           18          53
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          53
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          53
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           19          54
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          54
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           20          55
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:           27          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           28          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           29          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           30          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           31          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           32          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           33          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           34          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           35          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           36          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           37          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          61
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           28          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           29          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           30          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           31          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           32          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           33          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           34          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           35          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           36          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           37          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          62
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           28          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           29          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           30          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           31          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           32          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           33          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           34          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           35          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           36          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           37          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          63
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           29          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           30          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           31          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           32          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           33          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           34          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           35          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           36          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           37          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          64
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           29          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           30          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           31          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           32          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           33          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           34          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           35          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           36          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           37          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          65
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           31          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           32          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           33          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           34          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           35          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           36          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           37          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          66
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           34          67
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           35          67
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           36          67
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           37          67
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          67
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          67
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          67
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           35          68
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           36          68
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           37          68
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          68
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          68
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          68
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           38          69
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           39          69
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           40          69
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:           76         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           77         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           78         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           79         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          101         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          102         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          103         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          104         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          105         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          106         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          107         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          108         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          109         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          110         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          111         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          112         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          113         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          114         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          115         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          116         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          117         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          118         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          119         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          120         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          121         101
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          122         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          123         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          124         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          125         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          126         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          127         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          128         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          129         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          130         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          131         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          132         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          133         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          134         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          135         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          136         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          137         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          138         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          139         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          140         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          141         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          142         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          143         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          144         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          145         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          146         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          147         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          148         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          149         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          150         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          151         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          152         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          153         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          154         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          155         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          156         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          157         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          158         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          159         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          160         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          161         101
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          162         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          163         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          164         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          165         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          166         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          167         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          168         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          169         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          170         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          171         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          172         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          173         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          174         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          175         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          176         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         101
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           77         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           78         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           79         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          101         102
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          102         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          103         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          104         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          105         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          106         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          107         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          108         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          109         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          110         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          111         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          112         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          113         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          114         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          115         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          116         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          117         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          118         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          119         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          120         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          121         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          122         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          123         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          124         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          125         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          126         102
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          127         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          128         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          129         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          130         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          131         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          132         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          133         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          134         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          135         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          136         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          137         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          138         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          139         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          140         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          141         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          142         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          143         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          144         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          145         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          146         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          147         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          148         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          149         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          150         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          151         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          152         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          153         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          154         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          155         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          156         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          157         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          158         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          159         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          160         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          161         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          162         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          163         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          164         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          165         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          166         102
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          167         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          168         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          169         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          170         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          171         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          172         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          173         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          174         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          175         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          176         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         102
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           77         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           78         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           79         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          101         103
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          102         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          103         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          104         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          105         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          106         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          107         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          108         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          109         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          110         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          111         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          112         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          113         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          114         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          115         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          116         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          117         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          118         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          119         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          120         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          121         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          122         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          123         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          124         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          125         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          126         103
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          127         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          128         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          129         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          130         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          131         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          132         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          133         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          134         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          135         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          136         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          137         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          138         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          139         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          140         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          141         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          142         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          143         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          144         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          145         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          146         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          147         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          151         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          152         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          153         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          154         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          155         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          164         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          165         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          166         103
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          167         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          168         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          169         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          170         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          171         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          172         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          173         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          174         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          175         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          176         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         103
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           78         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           79         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          101         104
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          102         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          103         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          104         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          105         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          106         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          107         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          108         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          109         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          110         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          111         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          112         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          113         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          114         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          115         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          116         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          117         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          118         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          119         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          120         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          121         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          122         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          123         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          124         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          125         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          126         104
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          127         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          128         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          129         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          130         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          131         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          132         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          133         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          134         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          135         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          136         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          137         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          138         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          139         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          140         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          141         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          142         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          143         104
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          167         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          168         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          169         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          170         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          171         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          172         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          173         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          174         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          175         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          176         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         104
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           78         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           79         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          101         105
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          102         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          103         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          104         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          105         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          106         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          107         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          108         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          118         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          119         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          120         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          121         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          122         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          123         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          124         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          125         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          126         105
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          127         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          128         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          129         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          130         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          131         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          132         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          135         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          136         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          137         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          138         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          139         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          140         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          141         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          142         105
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          168         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          169         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          170         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          171         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          172         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          173         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          174         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          175         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          176         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         105
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           79         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          101         106
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          102         106
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          103         106
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          104         106
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          105         106
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          122         106
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          126         106
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          127         106
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          128         106
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    2.00000000    
+ value needs filling:          138         106
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          139         106
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          140         106
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          141         106
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          142         106
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          170         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          171         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          172         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          173         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          174         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          175         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          176         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         106
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           79         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          101         107
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          102         107
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          103         107
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    2.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          140         107
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          141         107
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          142         107
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          172         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          173         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          174         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          175         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          176         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         107
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           79         108
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         108
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          101         108
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ ... found neighbor-value:    3.00000000    
+ value needs filling:          141         108
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          175         108
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          176         108
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         108
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         108
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         108
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         108
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         109
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          141         109
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ ... found neighbor-value:    4.00000000    
+ value needs filling:          176         109
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         109
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         109
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         109
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         109
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:           80         110
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         110
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         110
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         110
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         110
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         111
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         111
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         111
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         111
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          177         112
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          178         112
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         112
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         112
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          179         113
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         113
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ value needs filling:          180         114
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ ... found neighbor-value:    1.00000000    
+ Checking/filling mask values for: TBOT
+  -- Filling in independent continuous dataset's missing values --
+  -- Number of data layers:            1
+  -- Missing/water value:   -9999.00000    
+ value needs filling:            1          47          73
+ filling value with average:          47          73   294.309998    
+ value needs filling:            1          48          73
+ filling value with average:          48          73   294.341858    
+ value needs filling:            1          49          73
+ filling value with average:          49          73   294.071289    
