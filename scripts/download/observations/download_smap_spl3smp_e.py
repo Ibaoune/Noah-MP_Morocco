@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
 
+# =============================================================================
+# Noah-MP Observation Data Downloader: SMAP SPL3SMP_E
+# =============================================================================
 # Author: M. El Aabaribaoune (@um6p)
-
-"""
-download_smap_spl3smp_e.py
-
-Script to download SMAP Enhanced L3 Radiometer Global Daily 9 km Soil Moisture (SPL3SMP_E)
-for the Sebou-Saïss basin, Morocco.
-Target Period: 2015-01-01 to 2020-12-31
-Bounding Box: 33.0N to 35.0N, 7.0W to 4.0W
-Uses the `earthaccess` python package for downloading.
-"""
+# Last Updated: 2026-06-14
+#
+# Description:
+#   Python script to automate the download of the NASA SMAP Enhanced L3 
+#   Radiometer Global Daily 9 km EASE-Grid Soil Moisture (SPL3SMP_E) dataset.
+#   It uses the 'earthaccess' library for robust authentication and fetching 
+#   over the Sebou-Saïss basin (Morocco).
+#
+# Output:
+#   Raw HDF5 files are saved to: data/observations/SMAP_SPL3SMP_E/raw/
+#   An inventory CSV is saved to: data/reports/inventory_smap_spl3smp_e.csv
+#
+# Dependencies:
+#   - earthaccess
+#   - pandas
+# =============================================================================
 
 import os
 import logging

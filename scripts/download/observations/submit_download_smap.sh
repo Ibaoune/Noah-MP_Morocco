@@ -2,9 +2,13 @@
 # =============================================================================
 # submit_download_smap.sh
 #
-# SLURM job to download NASA SMAP L3 Soil Moisture (SPL3SMP_E).
-# Uses a job array (1-12) where each task downloads data for a single month.
-# The YEAR must be provided.
+# Description:
+#   SLURM job script to download NASA SMAP L3 Soil Moisture (SPL3SMP_E) data
+#   for the Sebou-Saïss basin. To ensure stability, this script uses a job 
+#   array (1-12) where each task independently downloads data for a single month.
+#
+# Author: M. El Aabaribaoune (@um6p)
+# Last Updated: 2026-06-14
 #
 # Usage:
 #   sbatch --export=ALL,YEAR=2020 submit_download_smap.sh
