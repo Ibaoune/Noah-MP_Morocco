@@ -7,7 +7,7 @@
 # 3-day test run: 2020-06-01 to 2020-06-04
 #
 # Prerequisites:
-#   - job_1_ldt_sebou.sh must have completed (data/lis_input.d01_sebou.nc)
+#   - job_1_ldt_sebou.sh must have completed (data/lis_input/lis_input.d01_sebou.nc)
 #   - job_preprocess_modis_lai.sh must have completed
 #     (data/observations/MODIS_LAI/processed/ must be populated)
 #   - SMAP data must be downloaded
@@ -40,8 +40,8 @@ echo " Start:  $(date)"
 echo "=================================================="
 
 # Pre-flight checks
-if [ ! -f "data/lis_input.d01_sebou.nc" ]; then
-    echo "ERROR: data/lis_input.d01_sebou.nc not found!"
+if [ ! -f "data/lis_input/lis_input.d01_sebou.nc" ]; then
+    echo "ERROR: data/lis_input/lis_input.d01_sebou.nc not found!"
     exit 1
 fi
 

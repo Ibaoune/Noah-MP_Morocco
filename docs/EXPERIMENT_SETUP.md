@@ -12,8 +12,8 @@ This document describes the scientific setup, datasets, and step-by-step workflo
 | Region | Upstream Sebou River basin + Saïss plain |
 | South-West corner | `32.5° N, 7.0° W` |
 | North-East corner | `35.5° N, 3.5° W` |
-| Resolution | `0.01°` (~1 km) |
-| Grid size | 300 × 350 = ~105,000 active land cells |
+| Resolution | `0.05°` (~5 km) |
+| Grid size | 60 × 70 = 4,200 grid points |
 | Simulation period | January 1, 2015 — December 31, 2020 (6 years, matching Nie et al., 2022) |
 | Timestep | 15 minutes |
 
@@ -161,8 +161,8 @@ The domain is expanded to cover the entire upstream Sebou River basin feeding th
 *   **Bounding Box coordinates:**
     *   South-West Corner: `32.5° N, 7.0° W`
     *   North-East Corner: `35.5° N, 3.5° W`
-*   **Resolution:** `0.01°` (~1 km spatial grid)
-*   **Grid Dimensions:** $300 \times 350$ grid points (~105,000 active cells)
+*   **Resolution:** `0.05°` (~5 km spatial grid)
+*   **Grid Dimensions:** $60 \times 70$ grid points (4,200 total cells)
 *   **Simulation Period:** January 1, 2015 — December 31, 2020 (6-year study period matching Nie et al., 2022).
 
 ---

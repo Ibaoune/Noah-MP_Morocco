@@ -72,7 +72,7 @@ def download_file(url, dest_path):
             local_size = os.path.getsize(dest_path)
             if remote_size == local_size and local_size > 0:
                 print(f"[SKIP] Already downloaded: {os.path.basename(dest_path)}")
-                return
+                return True
         except Exception:
             pass
 
@@ -81,9 +81,14 @@ def download_file(url, dest_path):
     response = session.get(url, stream=True, verify=True)
     if response.status_code == 401:
         print("[ERROR] Unauthorized. Check your Earthdata credentials in download_merra2.py or .netrc.", file=sys.stderr)
-        return
-        
+        return False
     response.raise_for_status()
+    
+    content_type = response.headers.get('Content-Type', '')
+    if 'text/html' in content_type:
+        print(f"[ERROR] NASA returned an HTML page (auth or 404 issue) instead of data for {url}", file=sys.stderr)
+        return False
+
     total_length = int(response.headers.get('content-length', 0))
     dl = 0
     with open(dest_path, 'wb') as f:
@@ -97,11 +102,13 @@ def download_file(url, dest_path):
                     sys.stdout.flush()
     sys.stdout.write("\n")
     print(f"[COMPLETE] {os.path.basename(dest_path)}")
+    return True
 
 if __name__ == "__main__":
     print(f"Starting MERRA-2 download from {START_DATE.strftime('%Y-%m-%d')} to {END_DATE.strftime('%Y-%m-%d')}...")
     
     current_date = START_DATE
+    failures = 0
     while current_date <= END_DATE:
         yr = current_date.strftime("%Y")
         mo = current_date.strftime("%m")
@@ -114,9 +121,10 @@ if __name__ == "__main__":
         flx_dest = f"{OUT_DIR}/M2T1NXFLX/{flx_filename}"
         
         try:
-            download_file(flx_url, flx_dest)
+            if not download_file(flx_url, flx_dest): failures += 1
         except Exception as e:
             print(f"[ERROR] Failed to download FLX for {date_str}: {e}", file=sys.stderr)
+            failures += 1
             
         # 2. Single-level Met (M2T1NXSLV)
         slv_filename = f"MERRA2_400.tavg1_2d_slv_Nx.{date_str}.nc4"
@@ -124,9 +132,10 @@ if __name__ == "__main__":
         slv_dest = f"{OUT_DIR}/M2T1NXSLV/{slv_filename}"
         
         try:
-            download_file(slv_url, slv_dest)
+            if not download_file(slv_url, slv_dest): failures += 1
         except Exception as e:
             print(f"[ERROR] Failed to download SLV for {date_str}: {e}", file=sys.stderr)
+            failures += 1
 
         # 3. Radiation (M2T1NXRAD) — required by LIS MERRA2 reader
         rad_filename = f"MERRA2_400.tavg1_2d_rad_Nx.{date_str}.nc4"
@@ -134,10 +143,14 @@ if __name__ == "__main__":
         rad_dest = f"{OUT_DIR}/M2T1NXRAD/{rad_filename}"
         
         try:
-            download_file(rad_url, rad_dest)
+            if not download_file(rad_url, rad_dest): failures += 1
         except Exception as e:
             print(f"[ERROR] Failed to download RAD for {date_str}: {e}", file=sys.stderr)
+            failures += 1
             
         current_date += timedelta(days=1)
         
     print("MERRA-2 forcing download complete.")
+    if failures > 0:
+        print(f"[CRITICAL] {failures} downloads failed! Exiting with status 1.", file=sys.stderr)
+        sys.exit(1)

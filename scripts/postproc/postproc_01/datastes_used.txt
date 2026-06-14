@@ -1,0 +1,56 @@
+DATASETS REQUIRED FOR POST-PROCESSING EXERCISE
+================================================
+
+1. LIS Open Loop Outputs
+   - Variable: SoilMoist_tavg, Qs_tavg, Qsb_tavg
+   - Version/Source: Local Noah-MP Simulation
+   - Frequency: Daily/3-Hourly
+   - Status for 3-days test: DOWNLOADED / AVAILABLE
+
+2. LIS Data Assimilation Outputs
+   - Variable: SoilMoist_tavg, Qs_tavg, Qsb_tavg
+   - Version/Source: Local Noah-MP EnKF DA Simulation
+   - Frequency: Daily/3-Hourly
+   - Status for 3-days test: DOWNLOADED / AVAILABLE
+
+3. HyMAP Routed Streamflow (OL and DA)
+   - Variable: RiverFlow_tavg
+   - Version/Source: Local HyMAP Offline Routing Simulation
+   - Frequency: Daily
+   - Status for 3-days test: MISSING (Not yet run for the 3 days)
+
+4. MNT Relief Data
+   - Variable: Elevation
+   - Version/Source: SRTM 30m / NASA
+   - Frequency: Static
+   - Status for 3-days test: AVAILABLE (Part of LIS inputs)
+
+5. Land Cover
+   - Variable: Land cover classification
+   - Version/Source: MODIS IGBP / NASA
+   - Frequency: Static
+   - Status for 3-days test: AVAILABLE (Part of LIS inputs)
+
+6. Irrigation Maps
+   - Variable: Area Equipped for Irrigation (%)
+   - Version/Source: FAO GMIA v5.0
+   - Frequency: Static
+   - Status for 3-days test: DOWNLOADED / AVAILABLE (Located in /data/land_params/GMIA)
+
+7. Precipitation Forcing
+   - Variable: Total Precipitation
+   - Version/Source: IMERG v06
+   - Frequency: Half-hourly / Daily
+   - Status for 3-days test: DOWNLOADED / AVAILABLE (Part of LIS forcing)
+
+8. GLDAS Intercomparison Data
+   - Variable: Soil Moisture, Runoff
+   - Version/Source: GLDAS_NOAH025_3H v2.1, GLDAS_VIC10_3H v2.1, GLDAS_CLSM10_3H v2.1, GLDAS_CLSM025_DA1_D v2.2 / GES DISC
+   - Frequency: 3-Hourly / Daily
+   - Status for 3-days test: MISSING (Not downloaded in /data/observations)
+
+9. In Situ Streamflow Observations
+   - Variable: Daily Discharge
+   - Version/Source: Gauging stations / Local Agencies
+   - Frequency: Daily
+   - Status for 3-days test: MISSING (Not provided in /data/validation/streamflow)

@@ -32,8 +32,8 @@ echo " Job ID: $SLURM_JOB_ID"
 echo " Start:  $(date)"
 echo "=================================================="
 
-if [ ! -f "data/lis_input.d01_sebou.nc" ]; then
-    echo "ERROR: data/lis_input.d01_sebou.nc not found!"
+if [ ! -f "data/lis_input/lis_input.d01_sebou.nc" ]; then
+    echo "ERROR: data/lis_input/lis_input.d01_sebou.nc not found!"
     echo "Please run job_1_ldt_sebou.sh first."
     exit 1
 fi

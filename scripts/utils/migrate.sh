@@ -125,7 +125,7 @@ echo "[5/7] Moving data..."
 
 # Met forcing (keep MET_FORCING which has 89G, remove empty met_forcing)
 if [ -d "input/MET_FORCING" ]; then
-    mv input/MET_FORCING/MERRA2 data/met_forcing/MERRA2
+    mv input/MET_FORCING/MERRA2 data/forcing/MERRA2
 fi
 # Remove empty duplicate
 rm -rf input/met_forcing 2>/dev/null || true
@@ -142,8 +142,8 @@ rm -rf input/RS_DATA 2>/dev/null || true
 if [ -d "input/noah_2dparms" ]; then
     mv input/noah_2dparms data/land_params/noah_2dparms
 fi
-if [ -d "input/topo_parms" ]; then
-    mv input/topo_parms data/land_params/topo_parms
+if [ -d "data/land_params/topo_parms" ]; then
+    mv data/land_params/topo_parms data/land_params/topo_parms
 fi
 
 # Perturbation package (DA)
@@ -223,8 +223,8 @@ sed -i \
     -e 's|"OUTPUT_OPL"|"experiments/OPL"|' \
     -e 's|"OUTPUT_OPL/lislog"|"experiments/OPL/lislog"|' \
     -e 's|./input/noah_2dparms/|./data/land_params/noah_2dparms/|g' \
-    -e 's|./lis_input.d01.nc|./data/lis_input.d01.nc|g' \
-    -e 's|./input/MET_FORCING/MERRA2/|./data/met_forcing/MERRA2/|' \
+    -e 's|./lis_input.d01.nc|./data/lis_input/lis_input.d01.nc|g' \
+    -e 's|./input/MET_FORCING/MERRA2/|./data/forcing/MERRA2/|' \
     -e "s|'./MODEL_OUTPUT_LIST.TBL'|'./configs/MODEL_OUTPUT_LIST.TBL'|" \
     -e 's|./input/LS_PARAMETERS/noahmp_parms/|./data/land_params/noah_2dparms/|g' \
     configs/lis.config.opl
@@ -237,8 +237,8 @@ sed -i \
     -e 's|"OUTPUT_DA"|"experiments/DA"|' \
     -e 's|"OUTPUT_DA/lislog"|"experiments/DA/lislog"|' \
     -e 's|./input/noah_2dparms/|./data/land_params/noah_2dparms/|g' \
-    -e 's|./lis_input.d01.nc|./data/lis_input.d01.nc|g' \
-    -e 's|./input/MET_FORCING/MERRA2/|./data/met_forcing/MERRA2/|' \
+    -e 's|./lis_input.d01.nc|./data/lis_input/lis_input.d01.nc|g' \
+    -e 's|./input/MET_FORCING/MERRA2/|./data/forcing/MERRA2/|' \
     -e 's|./input/pert_package/|./data/pert_package/|g' \
     -e 's|./input/RS_DATA/SMAP/SPL3SMP.009|./data/observations/SMAP/SPL3SMP.009|' \
     -e "s|'./MODEL_OUTPUT_LIST.TBL'|'./configs/MODEL_OUTPUT_LIST.TBL'|" \
@@ -249,9 +249,9 @@ echo "   Updated configs/lis.config.da"
 
 # --- ldt.config ---
 sed -i \
-    -e 's|./lis_input.d01.nc|./data/lis_input.d01.nc|' \
+    -e 's|./lis_input.d01.nc|./data/lis_input/lis_input.d01.nc|' \
     -e 's|./input/noah_2dparms/|./data/land_params/noah_2dparms/|g' \
-    -e 's|./input/topo_parms/|./data/land_params/topo_parms/|g' \
+    -e 's|./data/land_params/topo_parms/|./data/land_params/topo_parms/|g' \
     configs/ldt.config
 
 echo "   Updated configs/ldt.config"

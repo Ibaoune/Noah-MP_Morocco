@@ -47,4 +47,4 @@ if [ $? -ne 0 ]; then
     echo "Error running LDT! Check logs/ldt_run_sebou.log"
     exit 1
 fi
-echo "LDT completed successfully. Generated data/lis_input.d01_sebou.nc."
+echo "LDT completed successfully. Generated data/lis_input/lis_input.d01_sebou.nc."

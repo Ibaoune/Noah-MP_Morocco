@@ -1,0 +1,44 @@
+DATASETS REQUIRED FOR POST-PROCESSING EXERCISE 02 (SSM-DA Validation)
+====================================================================
+
+1. LIS Open Loop Outputs
+   - Variable: SoilMoist_tavg, Evap_tavg, TVeg_tavg, GPP_tavg, NPP_tavg, LAI_tavg
+   - Version/Source: Local Noah-MP Simulation
+   - Frequency: Daily/3-Hourly
+   - Status: AVAILABLE
+
+2. LIS Data Assimilation Outputs
+   - Variable: SoilMoist_tavg, Evap_tavg, TVeg_tavg, GPP_tavg, NPP_tavg, LAI_tavg
+   - Version/Source: Local Noah-MP EnKF DA Simulation
+   - Frequency: Daily/3-Hourly
+   - Status: AVAILABLE
+
+3. Land Cover
+   - Variable: Land cover classification
+   - Version/Source: MODIS MCD12Q1 (IGBP) / NASA
+   - Frequency: Yearly/Static
+   - Status: AVAILABLE (Part of LIS inputs)
+
+4. Irrigation Maps
+   - Variable: Irrigation Area/Intensity
+   - Version/Source: FAO GMIA v5.0 (or GRIPC/GIAM)
+   - Frequency: Static
+   - Status: AVAILABLE (Located in /data/land_params/GMIA)
+
+5. WaPOR (FAO)
+   - Variable: Evaporation (E), Transpiration (T), Evapotranspiration (ET), Net Primary Productivity (NPP)
+   - Version/Source: FAO WaPOR (250m)
+   - Frequency: Monthly
+   - Status: MISSING (Needs to be downloaded to Toubkal)
+
+6. FLUXSAT
+   - Variable: Gross Primary Productivity (GPP)
+   - Version/Source: FLUXSAT
+   - Frequency: Monthly
+   - Status: MISSING (Needs to be downloaded to Toubkal)
+
+7. MODIS LAI
+   - Variable: Leaf Area Index
+   - Version/Source: MODIS MCD15A2H Version 6 (500 m)
+   - Frequency: 8-day / Monthly
+   - Status: AVAILABLE (Found in /data/observations_archive/MODIS_LAI)

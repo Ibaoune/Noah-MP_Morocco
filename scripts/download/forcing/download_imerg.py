@@ -96,45 +96,45 @@ def main():
     )
     logging.info(f"Found {len(results)} granules.")
     
-    # 3. Download granules
-    logging.info(f"Downloading to {RAW_DIR}...")
+    # 3. Download granules directly into YYYYMM directory to avoid race conditions
+    start_dt = pd.to_datetime(START_DATE)
+    yyyymm = start_dt.strftime("%Y%m")
+    month_dir = os.path.join(RAW_DIR, yyyymm)
+    os.makedirs(month_dir, exist_ok=True)
+    
+    logging.info(f"Downloading to {month_dir}...")
     # The earthaccess library automatically skips existing files
     downloaded_files = earthaccess.download(
         results,
-        local_path=RAW_DIR
+        local_path=month_dir
     )
     
-    # 4. Restructure files into YYYYMM directories (required by LIS IMERG reader)
-    logging.info("Restructuring HDF5 files into YYYYMM subdirectories...")
-    raw_files = sorted(glob.glob(os.path.join(RAW_DIR, '*.HDF5')))
-    
+    # 4. Generate Inventory for downloaded files
     inventory_data = []
+    import sys
     
-    for rf in raw_files:
-        basename = os.path.basename(rf)
+    for rf in downloaded_files:
+        if not rf: continue
         
-        # Extract date from filename (e.g., 3B-HHR.MS.MRG.3IMERG.20150101-S000000-E002959.0000.V07B.HDF5)
-        date_str = "Unknown"
-        yyyymm = "Unknown"
+        # If earthaccess encountered an error, it may put an Exception object in the list
+        if isinstance(rf, Exception) or not isinstance(rf, (str, os.PathLike)):
+            logging.error(f"FATAL: A file failed to download properly (earthaccess returned {type(rf)}). Failing job to allow retry.")
+            sys.exit(1)
+            
+        # earthaccess returns local file paths if downloaded
+        basename = os.path.basename(rf)
         try:
             date_part = basename.split('.')[4].split('-')[0]
             date_str = pd.to_datetime(date_part, format="%Y%m%d").strftime("%Y-%m-%d")
-            yyyymm = date_part[:6]
         except Exception as e:
             logging.error(f"Failed to parse date for {basename}: {e}")
             continue
-        
-        # Create YYYYMM dir and move
-        dest_dir = os.path.join(RAW_DIR, yyyymm)
-        os.makedirs(dest_dir, exist_ok=True)
-        dest_file = os.path.join(dest_dir, basename)
-        
-        # Move file if it is in the root RAW_DIR
-        if rf != dest_file:
-            os.rename(rf, dest_file)
             
-        file_size = os.path.getsize(dest_file) / (1024 * 1024) # MB
-        
+        if os.path.exists(rf):
+            file_size = os.path.getsize(rf) / (1024 * 1024) # MB
+        else:
+            file_size = 0.0
+            
         inventory_data.append({
             'date': date_str,
             'file_name': basename,
@@ -142,8 +142,7 @@ def main():
             'version': VERSION,
             'file_size_mb': round(file_size, 2),
             'status': "Downloaded_and_Structured"
-        })
-    
+        })    
     # 5. Save inventory
     df_inv = pd.DataFrame(inventory_data)
     df_inv.to_csv(INVENTORY_FILE, index=False)

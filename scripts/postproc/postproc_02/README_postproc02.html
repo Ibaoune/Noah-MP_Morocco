@@ -1,0 +1,131 @@
+<h1 id="documentation-for-noah-mp-ssm-da-evaluation-framework-postproc_02">Documentation for Noah-MP SSM-DA Evaluation Framework (postproc_02)</h1>
+<p>This directory (<code>/scripts/postproc/postproc_02</code>) contains the analytical scripts to generate a set of scientific figures and statistics evaluating the impact of Soil Moisture Data Assimilation (SSM-DA) on the Noah-MP land surface model over the Sebou-Saïss basin, focusing on fluxes, vegetation dynamics, and droughts.</p>
+<p>Below is the detailed description of each figure, its scientific objective, and the required datasets and their <strong>current availability</strong>.</p>
+<hr />
+<h2 id="figure-1-spatial-context-of-the-study-area">Figure 1: Spatial Context of the Study Area</h2>
+<ul>
+<li><strong>Objective</strong>: Establish the spatial context by identifying regions where vegetation-soil-irrigation interactions are likely to influence water balances.</li>
+<li><strong>Data Used</strong>:
+<ul>
+<li><strong>Land Cover</strong>: MODIS MCD12Q1 (IGBP, 1km) - <em>Assumed Available (LIS Input)</em></li>
+<li><strong>Irrigation Intensity</strong>: FAO GMIA (or GRIPC/GIAM) - <em>Available</em></li>
+</ul></li>
+<li><strong>Status</strong>: Ready for the 3-day test layout, though maps are static.</li>
+</ul>
+<h2 id="figure-2-spatial-impact-of-da-on-surface-fluxes">Figure 2: Spatial Impact of DA on Surface Fluxes</h2>
+<ul>
+<li><strong>Objective</strong>: Map differences (<span class="math inline"><em>Δ</em></span> and <span class="math inline"><em>Δ</em></span> Anomaly) between SSM-DA and OL for E, T, ET, GPP, and NPP.</li>
+<li><strong>Data Used</strong>:
+<ul>
+<li><strong>Noah-MP Output</strong>: Evap_tavg, TVeg_tavg, GPP_tavg, NPP_tavg from OL and DA.</li>
+<li><strong>Validation</strong>: FAO WaPOR (ET, E, T, NPP) and FLUXSAT (GPP).</li>
+</ul></li>
+<li><strong>Status</strong>: <strong>MISSING VALIDATION DATA</strong>. WaPOR and FLUXSAT need to be downloaded to <code>/data/observations/</code>. The script is a skeleton.</li>
+</ul>
+<h2 id="figure-3-statistical-evaluation-by-ecosystem-type">Figure 3: Statistical Evaluation by Ecosystem Type</h2>
+<ul>
+<li><strong>Objective</strong>: Identify ecosystems where assimilation significantly improves or degrades model performance using correlation (R) boxplots.</li>
+<li><strong>Data Used</strong>:
+<ul>
+<li><strong>Noah-MP Output</strong>: E, T, ET, NPP, GPP.</li>
+<li><strong>Land Cover</strong>: MODIS MCD12Q1.</li>
+<li><strong>Validation</strong>: FAO WaPOR, FLUXSAT.</li>
+</ul></li>
+<li><strong>Status</strong>: <strong>MISSING VALIDATION DATA</strong>. Script is a skeleton.</li>
+</ul>
+<h2 id="figure-4-simulated-vegetation-dynamics">Figure 4: Simulated Vegetation Dynamics</h2>
+<ul>
+<li><strong>Objective</strong>: Compare monthly LAI time series (OL vs SSM-DA) to assess phenology and drought response improvements.</li>
+<li><strong>Data Used</strong>:
+<ul>
+<li><strong>Noah-MP Output</strong>: LAI_tavg.</li>
+</ul></li>
+<li><strong>Status</strong>: Ready. Can run on LIS outputs (though requires longer runs than 3 days for meaningful seasonal cycles).</li>
+</ul>
+<h2 id="figure-5-drought-categorization">Figure 5: Drought Categorization</h2>
+<ul>
+<li><strong>Objective</strong>: Quantify the effect of assimilation on spatial drought detection.</li>
+<li><strong>Data Used</strong>:
+<ul>
+<li><strong>Noah-MP Output</strong>: Root zone soil moisture (SoilMoist_tavg for layers).</li>
+</ul></li>
+<li><strong>Status</strong>: Ready. Computes percentiles based on OL climatology. Requires multi-year simulations to establish robust climatologies.</li>
+</ul>
+<h2 id="figure-6-spatial-response-to-an-extreme-event">Figure 6: Spatial Response to an Extreme Event</h2>
+<ul>
+<li><strong>Objective</strong>: Evaluate the capability of SSM-DA to reproduce spatial impacts of water stress on vegetation during a major drought.</li>
+<li><strong>Data Used</strong>:
+<ul>
+<li><strong>Noah-MP Output</strong>: LAI_tavg anomalies.</li>
+<li><strong>Validation</strong>: MODIS LAI MCD15A2H v6.</li>
+</ul></li>
+<li><strong>Status</strong>: <strong>PARTIALLY READY</strong>. MODIS LAI is available, but detecting a major drought event requires multi-year LIS simulations.</li>
+</ul>
+<h2 id="supplementary-statistical-analysis">Supplementary Statistical Analysis</h2>
+<ul>
+<li><strong>Objective</strong>: Comprehensive statistical validation (R, Anomaly R, Bias, RMSE, ubRMSE, NSE, KGE) for SM, ET, T, E, GPP, NPP, LAI.</li>
+<li><strong>Data Used</strong>: All aforementioned LIS outputs and validation datasets.</li>
+<li><strong>Status</strong>: <strong>MISSING VALIDATION DATA</strong>. Script is a skeleton.</li>
+</ul>
+<hr />
+<h2 id="summary-table">Summary Table</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Figure</th>
+<th>Message</th>
+<th>Data used from simulation (variables) if any</th>
+<th>Data used from observation (if any)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Figure 1</td>
+<td>Establish spatial context (vegetation-soil-irrigation)</td>
+<td>None</td>
+<td>MODIS MCD12Q1 (Land Cover), FAO GMIA/GRIPC (Irrigation)</td>
+</tr>
+<tr class="even">
+<td>Figure 2</td>
+<td>Map spatial impact of DA on surface fluxes (<span class="math inline"><em>Δ</em></span> and <span class="math inline"><em>Δ</em></span> Anomaly)</td>
+<td>Evap_tavg, TVeg_tavg, GPP_tavg, NPP_tavg</td>
+<td>FAO WaPOR (ET, E, T, NPP), FLUXSAT (GPP)</td>
+</tr>
+<tr class="odd">
+<td>Figure 3</td>
+<td>Identify ecosystems where DA improves/degrades performance</td>
+<td>E, T, ET, NPP, GPP</td>
+<td>MODIS MCD12Q1, FAO WaPOR, FLUXSAT</td>
+</tr>
+<tr class="even">
+<td>Figure 4</td>
+<td>Compare LAI dynamics to assess phenology and drought response</td>
+<td>LAI_tavg</td>
+<td>MODIS LAI MCD15A2H v6</td>
+</tr>
+<tr class="odd">
+<td>Figure 5</td>
+<td>Quantify effect of assimilation on spatial drought detection</td>
+<td>Root zone soil moisture (SoilMoist_tavg)</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>Figure 6</td>
+<td>Evaluate spatial vegetation response to a major drought event</td>
+<td>LAI_tavg anomalies</td>
+<td>MODIS LAI MCD15A2H v6</td>
+</tr>
+<tr class="odd">
+<td>Supp Stats</td>
+<td>Comprehensive statistical validation (R, RMSE, KGE, NSE, etc.)</td>
+<td>SM, ET, T, E, GPP, NPP, LAI</td>
+<td>All validation datasets</td>
+</tr>
+</tbody>
+</table>

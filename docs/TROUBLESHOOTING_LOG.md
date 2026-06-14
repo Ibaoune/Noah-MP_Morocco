@@ -1,3 +1,8 @@
+> **Author:** M. El Aabaribaoune (@UM6P)  
+> **Date:** 2026-06-07
+
+---
+
 # Journal de Traçabilité et Guide de Dépannage : LISF / Noah-MP (Bassin Allal El Fassi)
 **Auteur:** M. EL Aabaribaoune (@um6p)
 

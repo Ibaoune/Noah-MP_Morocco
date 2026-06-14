@@ -29,8 +29,8 @@ echo " Tasks:  $SLURM_NTASKS"
 echo " Job ID: $SLURM_JOB_ID"
 echo "=================================================="
 
-if [ ! -f "data/lis_input.d01.nc" ]; then
-    echo "ERROR: data/lis_input.d01.nc not found!"
+if [ ! -f "data/lis_input/lis_input.d01.nc" ]; then
+    echo "ERROR: data/lis_input/lis_input.d01.nc not found!"
     echo "Please ensure that job_1_ldt.sh has successfully completed."
     exit 1
 fi

@@ -76,7 +76,11 @@ NoahMP_Morocco/
 │   ├── DA_SM_sebou/          #   SMAP SM assimilation results
 │   ├── DA_LAI_sebou/         #   MODIS LAI assimilation results
 │   ├── DA_Joint_sebou/       #   Joint SM+LAI assimilation results
-│   └── scalability/          #   Scalability test results
+│   ├── scalability/          #   Scalability test results
+│   └── 3days/                #   3-day Validation & DA Tests
+│       ├── opl/              #     Open Loop run
+│       ├── assim_tests/      #     SMAP, LAI, and Joint DA runs
+│       └── README_exps.md    #     Detailed guide for 3-day tests
 │
 ├── postproc/                 # Post-processing & visualization
 │   ├── scripts/              #   Analysis scripts
@@ -208,6 +212,19 @@ A comprehensive scalability analysis was conducted on the Toubkal cluster to opt
 ### Scalability Performance Plot
 The scalability curves are plotted below:
 ![Scalability Performance](postproc/figures/lis_scalability_performance.png)
+
+## 3-Day Validation & Data Assimilation Tests
+
+Before running the multi-year joint assimilation, a complete test environment is set up over a **3-day window (2020-02-01 to 2020-02-04)** to validate the EnKF configuration, forcing perturbations, and observation processing (following the methodology in Nie et al., 2022).
+
+These tests are isolated in `experiments/3days/`:
+- **Open Loop (OPL)**: A fast baseline reference simulation using 32 tasks (`experiments/3days/opl`).
+- **Data Assimilation (DA)**: Three separate configurations testing 1D EnKF with 20 ensemble members (`experiments/3days/assim_tests`):
+  - SMAP Soil Moisture assimilation
+  - MODIS LAI assimilation
+  - Joint (SMAP + LAI) assimilation
+
+Please refer to `experiments/3days/README_exps.md` for detailed configuration settings and launch instructions for these test cases.
 
 ## Sebou Basin Joint DA Experiment
 
