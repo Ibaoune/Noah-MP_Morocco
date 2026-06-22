@@ -38,11 +38,8 @@ echo "Starting MERRA-2 Download for: $year-$month"
 echo "Period : $start_date to $end_date"
 echo "================================================================================"
 
-# 1. Load the standard Toubkal environment modules (relative to this script's directory)
-source ../../../arch/arch_toubkal.env
-
-# 2. Load the python virtual environment
-source ../../venv/bin/activate
+# 1. Load the python environment
+module load Anaconda3/2020.11
 
 # 3. Download Constants (Only needed once, so we tie it to the year 2000, month 1)
 if [ "$year" -eq 2000 ] && [ "$SLURM_ARRAY_TASK_ID" -eq 1 ]; then

@@ -115,38 +115,61 @@ if __name__ == "__main__":
         day = current_date.strftime("%d")
         date_str = f"{yr}{mo}{day}"
         
-        # 1. Surface Fluxes (M2T1NXFLX)
-        flx_filename = f"MERRA2_400.tavg1_2d_flx_Nx.{date_str}.nc4"
-        flx_url = f"{BASE_FLX_URL}/{yr}/{mo}/{flx_filename}"
-        flx_dest = f"{OUT_DIR}/M2T1NXFLX/{flx_filename}"
-        
-        try:
-            if not download_file(flx_url, flx_dest): failures += 1
-        except Exception as e:
-            print(f"[ERROR] Failed to download FLX for {date_str}: {e}", file=sys.stderr)
-            failures += 1
+        yr_int = int(yr)
+        if yr_int <= 1991:
+            merra_prefix = "MERRA2_100"
+        elif yr_int <= 2000:
+            merra_prefix = "MERRA2_200"
+        elif yr_int <= 2010:
+            merra_prefix = "MERRA2_300"
+        else:
+            merra_prefix = "MERRA2_400"
             
-        # 2. Single-level Met (M2T1NXSLV)
-        slv_filename = f"MERRA2_400.tavg1_2d_slv_Nx.{date_str}.nc4"
-        slv_url = f"{BASE_SLV_URL}/{yr}/{mo}/{slv_filename}"
-        slv_dest = f"{OUT_DIR}/M2T1NXSLV/{slv_filename}"
-        
-        try:
-            if not download_file(slv_url, slv_dest): failures += 1
-        except Exception as e:
-            print(f"[ERROR] Failed to download SLV for {date_str}: {e}", file=sys.stderr)
-            failures += 1
+        prefixes_to_try = [merra_prefix]
+        if merra_prefix == "MERRA2_400":
+            prefixes_to_try.append("MERRA2_401")
+            
+        success_flx = False
+        for prefix in prefixes_to_try:
+            # 1. Surface Fluxes (M2T1NXFLX)
+            flx_filename = f"{prefix}.tavg1_2d_flx_Nx.{date_str}.nc4"
+            flx_url = f"{BASE_FLX_URL}/{yr}/{mo}/{flx_filename}"
+            flx_dest = f"{OUT_DIR}/M2T1NXFLX/{flx_filename}"
+            try:
+                if download_file(flx_url, flx_dest):
+                    success_flx = True
+                    break
+            except Exception as e:
+                print(f"[ERROR] Failed to download FLX for {date_str} with {prefix}: {e}", file=sys.stderr)
+        if not success_flx: failures += 1
+            
+        success_slv = False
+        for prefix in prefixes_to_try:
+            # 2. Single-level Met (M2T1NXSLV)
+            slv_filename = f"{prefix}.tavg1_2d_slv_Nx.{date_str}.nc4"
+            slv_url = f"{BASE_SLV_URL}/{yr}/{mo}/{slv_filename}"
+            slv_dest = f"{OUT_DIR}/M2T1NXSLV/{slv_filename}"
+            try:
+                if download_file(slv_url, slv_dest):
+                    success_slv = True
+                    break
+            except Exception as e:
+                print(f"[ERROR] Failed to download SLV for {date_str} with {prefix}: {e}", file=sys.stderr)
+        if not success_slv: failures += 1
 
-        # 3. Radiation (M2T1NXRAD) — required by LIS MERRA2 reader
-        rad_filename = f"MERRA2_400.tavg1_2d_rad_Nx.{date_str}.nc4"
-        rad_url = f"{BASE_RAD_URL}/{yr}/{mo}/{rad_filename}"
-        rad_dest = f"{OUT_DIR}/M2T1NXRAD/{rad_filename}"
-        
-        try:
-            if not download_file(rad_url, rad_dest): failures += 1
-        except Exception as e:
-            print(f"[ERROR] Failed to download RAD for {date_str}: {e}", file=sys.stderr)
-            failures += 1
+        success_rad = False
+        for prefix in prefixes_to_try:
+            # 3. Radiation (M2T1NXRAD)
+            rad_filename = f"{prefix}.tavg1_2d_rad_Nx.{date_str}.nc4"
+            rad_url = f"{BASE_RAD_URL}/{yr}/{mo}/{rad_filename}"
+            rad_dest = f"{OUT_DIR}/M2T1NXRAD/{rad_filename}"
+            try:
+                if download_file(rad_url, rad_dest):
+                    success_rad = True
+                    break
+            except Exception as e:
+                print(f"[ERROR] Failed to download RAD for {date_str} with {prefix}: {e}", file=sys.stderr)
+        if not success_rad: failures += 1
             
         current_date += timedelta(days=1)
         

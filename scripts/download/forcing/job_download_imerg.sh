@@ -46,11 +46,8 @@ echo "Starting IMERG Download for: $year-$month"
 echo "Period : $start_date to $end_date"
 echo "================================================================================"
 
-# 1. Load the standard Toubkal environment modules (relative to this script's directory)
-source ../../../arch/arch_toubkal.env
-
-# 2. Load the python virtual environment
-source ../../venv/bin/activate
+# 1. Load the python environment
+module load Anaconda3/2020.11
 
 # 3. Run download
 python3 download_imerg.py --start "$start_date" --end "$end_date"
