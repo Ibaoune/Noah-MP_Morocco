@@ -1,3 +1,18 @@
+#!/usr/bin/env python3
+"""
+===============================================================================
+Script Name   : check_single_year.py
+Author        : M. El Aabaribaoune (@um6p)
+Description   : High-performance Python script to verify the integrity of 
+                downloaded MERRA-2 and IMERG forcing files. It checks whether 
+                the files are correctly downloaded by attempting to open them 
+                with `h5py` (HDF5 structure). It also verifies if the expected 
+                number of daily granules exists for each month. Any corrupted 
+                files are automatically deleted so they can be re-downloaded 
+                in the next orchestrator cycle.
+Usage         : python3 check_single_year.py <YYYY>
+===============================================================================
+"""
 import os
 import glob
 import h5py
@@ -78,18 +93,18 @@ def main():
             i_expected = 0
             
         if corrupted:
-            print(f"[{yyyymm}] ❌ CORRUPTED ({len(corrupted)} files deleted)")
+            print(f"[{yyyymm}] [CORRUPTED] ({len(corrupted)} files deleted)")
             for c in corrupted:
                 print(f"  -> {c}")
             all_complete = False
         elif m_valid < m_expected or (i_expected > 0 and i_valid == 0):
-            print(f"[{yyyymm}] ⏳ PARTIAL | MERRA-2: {m_valid}/{m_expected} | IMERG: {i_valid}/{i_expected} (Requires > 0)")
+            print(f"[{yyyymm}] [PARTIAL] | MERRA-2: {m_valid}/{m_expected} | IMERG: {i_valid}/{i_expected} (Requires > 0)")
             all_complete = False
         elif m_valid == 0 and i_valid == 0 and m_expected > 0:
-            print(f"[{yyyymm}] ⭕ EMPTY | MERRA-2: {m_valid}/{m_expected} | IMERG: {i_valid}/{i_expected}")
+            print(f"[{yyyymm}] [EMPTY] | MERRA-2: {m_valid}/{m_expected} | IMERG: {i_valid}/{i_expected}")
             all_complete = False
         else:
-            print(f"[{yyyymm}] ✅ COMPLETE | MERRA-2: {m_valid}/{m_expected} | IMERG: {i_valid}/{i_expected}")
+            print(f"[{yyyymm}] [COMPLETE] | MERRA-2: {m_valid}/{m_expected} | IMERG: {i_valid}/{i_expected}")
 
     if all_complete:
         print(f"\nSUCCESS: Year {year} is fully downloaded and verified!")

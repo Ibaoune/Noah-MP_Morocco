@@ -12,6 +12,7 @@ Resolution    : 0.5° x 0.625°
 Source / Site : NASA GES DISC (via `requests` API)
 Author        : M. El Aabaribaoune (@um6p)
 Date Updated  : 2026-06-11
+Usage         : python3 download_merra2_const.py
 ===============================================================================
 """
 
@@ -28,8 +29,17 @@ FILENAME  = "MERRA2_101.const_2d_asm_Nx.00000000.nc4"
 BASE_URL  = "https://goldsmr4.gesdisc.eosdis.nasa.gov/data/MERRA2_MONTHLY/M2C0NXASM.5.12.4/1980"
 
 # Earthdata credentials  (same as download_merra2.py)
-EARTHDATA_USER = "el.aabaribaoune@gmail.com"
-EARTHDATA_PASS = "mohkaj111@ZO"
+EARTHDATA_USER = "e" + "x"*20 + "@gmail.com"
+EARTHDATA_PASS = "m" + "x"*8 + "O"
+
+import netrc
+try:
+    netrc_info = netrc.netrc()
+    EARTHDATA_USER, _, EARTHDATA_PASS = netrc_info.authenticators('urs.earthdata.nasa.gov')
+except Exception as e:
+    print(f"[ERROR] Could not read credentials from ~/.netrc: {e}", file=sys.stderr)
+    print("Please ensure ~/.netrc exists with machine urs.earthdata.nasa.gov", file=sys.stderr)
+    sys.exit(1)
 
 # -----------------------------------------------------------------------
 

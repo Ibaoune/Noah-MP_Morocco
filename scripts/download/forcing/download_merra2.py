@@ -19,12 +19,14 @@ Source / Site : NASA GES DISC (via `requests` API)
 Target Period : 2000-01-01 to 2023-12-31
 Author        : M. El Aabaribaoune (@um6p)
 Date Updated  : 2026-06-11
+Usage         : python3 download_merra2.py --start <YYYY-MM-DD> --end <YYYY-MM-DD>
 ===============================================================================
 """
 
 import os
 import requests
 import sys
+import netrc
 from datetime import datetime, timedelta
 
 import argparse
@@ -54,9 +56,21 @@ BASE_FLX_URL = "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2T1NXFLX.5.
 BASE_SLV_URL = "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2T1NXSLV.5.12.4"
 BASE_RAD_URL = "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2T1NXRAD.5.12.4"
 
+# NASA Earthdata Credentials (mask for git)
+EARTHDATA_USER = "e" + "x"*20 + "m@gmail.com"
+EARTHDATA_PASS = "m" + "x"*8 + "O"
+
 # Set up an HTTP session with Earthdata credentials to handle redirects
+try:
+    netrc_info = netrc.netrc()
+    EARTHDATA_USER, _, EARTHDATA_PASS = netrc_info.authenticators('urs.earthdata.nasa.gov')
+except Exception as e:
+    print(f"[ERROR] Could not read credentials from ~/.netrc: {e}", file=sys.stderr)
+    print("Please ensure ~/.netrc exists with machine urs.earthdata.nasa.gov", file=sys.stderr)
+    sys.exit(1)
+
 session = requests.Session()
-session.auth = ("el.aabaribaoune@gmail.com", "mohkaj111@ZO")
+session.auth = (EARTHDATA_USER, EARTHDATA_PASS)
 
 def download_file(url, dest_path):
     """

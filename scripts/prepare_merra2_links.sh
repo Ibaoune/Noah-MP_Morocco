@@ -12,7 +12,7 @@ for var in M2T1NXFLX M2T1NXRAD M2T1NXSLV; do
       
       target_dir="MERRA2_400/Y${yyyy}/M${mm}"
       mkdir -p $target_dir
-      ln -sf ../../../../$var/$filename $target_dir/$filename
+      ln -sf ../../../$var/$filename $target_dir/$filename
     done
   fi
 done

@@ -26,7 +26,7 @@ sbatch --export=ALL,YEAR=2015 job_orchestrator.sh
 1. **Orchestration:** `job_orchestrator.sh` manages the workflow. It concurrently submits `job_download_imerg.sh` and `job_download_merra2.sh` as job arrays (12 tasks, one for each month).
 2. **Resilience:** If the network drops or a file fails to download, the Python scripts force a strict failure (`sys.exit(1)`). 
 3. **Verification:** Once both downloads finish for the year, the orchestrator submits `job_check_single_year.sh`. This script rigorously verifies every NetCDF/HDF5 file using `h5py`. Any corrupted files are immediately deleted.
-4. **Auto-Retry & Progression:** If files are missing or corrupted, the orchestrator loops back and retries downloading the year. Existing files are safely `[SKIP]`ped. If the year is 100% verified, it creates a `status_YYYY.success` file and automatically submits the job for `YEAR + 1`, chaining all the way to 2020.
+4. **Auto-Retry & Progression:** If files are missing or corrupted, the orchestrator loops back and retries downloading the year. Existing files are safely `[SKIP]`ped. If the year is 100% verified, it creates a `status/status_YYYY.success` file and automatically submits the job for `YEAR + 1`, chaining all the way to 2020.
 
 ---
 
@@ -80,7 +80,7 @@ The downloaded files are automatically organized into the `data/forcing/` direct
 
 If you need to verify the status or resume a broken download (for instance, if years like 2008-2010 are missing days):
 
-1. **Check the `.success` files**: When a year is successfully downloaded and 100% verified, a file named `status_YYYY.success` is created in `scripts/download/forcing/`. If this file is missing, the year is incomplete.
+1. **Check the `.success` files**: When a year is successfully downloaded and 100% verified, a file named `status_YYYY.success` is created in `scripts/download/forcing/status/`. If this file is missing, the year is incomplete.
 2. **Check the logs**: Detailed SLURM outputs and error logs are stored in `scripts/download/forcing/logs/` (e.g., `chk_yr_*.out`, `chk_yr_*.err`).
 3. **Resuming a download**: Simply run the orchestrator again for the failed year. The Python scripts are designed to check file sizes and will `[SKIP]` files that are already successfully downloaded, picking up exactly where they left off:
    ```bash

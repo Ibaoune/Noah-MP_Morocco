@@ -30,8 +30,8 @@ year=${YEAR:-2020}
 month=$(printf "%02d" $SLURM_ARRAY_TASK_ID)
 
 start_date="${year}-${month}-01"
-# Calculate the last day of the current month
-end_date=$(date -d "${start_date} + 1 month - 1 day" +%Y-%m-%d)
+# Calculate the last day of the current month (using UTC to avoid local DST boundaries)
+end_date=$(TZ=UTC date -d "${start_date} + 1 month - 1 day" +%Y-%m-%d)
 
 echo "================================================================================"
 echo "Starting MERRA-2 Download for: $year-$month"

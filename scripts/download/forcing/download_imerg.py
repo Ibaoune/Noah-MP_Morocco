@@ -20,6 +20,7 @@ Target Period : 2000-06-01 to 2023-12-31
 Bounding Box  : 33.0N to 35.0N, 7.0W to 4.0W
 Author        : M. El Aabaribaoune (@um6p)
 Date Updated  : 2026-06-11
+Usage         : python3 download_imerg.py --start <YYYY-MM-DD> --end <YYYY-MM-DD>
 ===============================================================================
 """
 
