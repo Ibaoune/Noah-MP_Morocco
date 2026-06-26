@@ -18,6 +18,22 @@ This methodology eliminates wasteful idle wait-times that occur when an orchestr
 
 ---
 
+##  Completed Spin-Up Run (2005 - 2015)
+
+A full 10-year spin-up has already been successfully executed on this domain to achieve a stable equilibrium state for the land surface variables.
+
+**Run Details:**
+- **Start Date:** `2005-01-01` (Coldstart)
+- **End Date:** `2016-01-01`
+- **Period Length:** 1 Year (`1Y`)
+- **Status:**  Successfully completed. 
+- **Final Output:** The final robust restart file generated from this 10-year spin-up is available at:
+  `restarts/LIS_RST_NOAHMP401_201601010000.d01.nc`
+
+This restart file serves as the perfect, fully-equilibrated initial condition for any subsequent Assimilation (DA) or Open Loop (OL) experiments starting from January 1st, 2016.
+
+---
+
 ## Repository Structure
 
 The workflow is completely self-contained within this directory:
