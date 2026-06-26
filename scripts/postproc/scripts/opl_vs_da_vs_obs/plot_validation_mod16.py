@@ -10,11 +10,12 @@ import matplotlib.pyplot as plt
 # Script to compare LIS Evapotranspiration with MOD16
 # ==========================================
 
-lis_output_dir = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability_tests/output/SURFACEMODEL/202002' # Update this for full run
+import config_postproc as cfg
+lis_output_dir = cfg.DIR_OUTPUT_OL
 mod16_dir = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/data/validation/evapotranspiration/MOD16/raw'
-output_fig = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/figures/validation_mod16_et.png'
+output_fig = os.path.join(cfg.DIR_FIGURES_OPL_VS_DA, 'validation_mod16_et.png')
 
-lis_files = sorted(glob.glob(os.path.join(lis_output_dir, 'LIS_HIST_*.nc')))
+lis_files = sorted(glob.glob(os.path.join(lis_output_dir, '**', 'LIS_HIST_*.nc'), recursive=True))
 
 if not lis_files:
     print("No LIS files found.")

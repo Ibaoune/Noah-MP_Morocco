@@ -21,12 +21,13 @@ Dependencies:
     os, yaml, core.plot_variable
 ===============================================================================
 """
+import sys
 import os
 import yaml
 from core import plot_variable
 
 def main():
-    config_path = "config_opl_da.yaml"
+    config_path = sys.argv[1] if len(sys.argv) > 1 else "config_opl_da.yaml"
     if not os.path.exists(config_path):
         print(f"Error: Configuration file '{config_path}' not found.")
         return

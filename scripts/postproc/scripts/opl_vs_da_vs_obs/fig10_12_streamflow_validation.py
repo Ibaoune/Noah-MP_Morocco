@@ -78,7 +78,7 @@ def plot_hydrographs_and_metrics():
              ha='center', va='center', size=14)
     plt.axis('off')
     
-    output_path = os.path.join(config.DIR_FIGURES, "fig10_12_streamflow_validation_placeholder.png")
+    output_path = os.path.join(config.DIR_FIGURES_OPL_VS_DA, "fig10_12_streamflow_validation_placeholder.png")
     plt.savefig(output_path)
     print(f"Placeholder saved to: {output_path}")
 

@@ -11,11 +11,12 @@ from datetime import datetime
 # Script to compare LIS Soil Moisture (Top layer) with ASCAT SWI
 # ==========================================
 
-lis_output_dir = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability_tests/output/SURFACEMODEL/202002' # Update this for full run
+import config_postproc as cfg
+lis_output_dir = cfg.DIR_OUTPUT_OL
 ascat_dir = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/data/validation/soil_moisture/ASCAT/raw'
-output_fig = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/figures/validation_ascat_sm.png'
+output_fig = os.path.join(cfg.DIR_FIGURES_OPL_VS_DA, 'validation_ascat_sm.png')
 
-lis_files = sorted(glob.glob(os.path.join(lis_output_dir, 'LIS_HIST_*.nc')))
+lis_files = sorted(glob.glob(os.path.join(lis_output_dir, '**', 'LIS_HIST_*.nc'), recursive=True))
 # In a real run, you'd match the ASCAT dates to the LIS dates.
 # Here we just show a template script structure
 

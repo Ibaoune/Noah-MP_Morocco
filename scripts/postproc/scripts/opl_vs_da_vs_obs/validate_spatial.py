@@ -15,7 +15,8 @@ import numpy as np
 import netCDF4 as nc
 from datetime import datetime
 
-# Local utility imports
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "utils")))
 from utils_eval import get_lis_files, load_lis_variable, calculate_basin_average
 
 # Apply beautiful seaborn styling
@@ -31,7 +32,7 @@ DA_DIR = cfg.DIR_OUTPUT_DA
 START_DATE = cfg.START_DATE
 END_DATE = cfg.END_DATE
 LDT_FILE = cfg.LDT_FILE
-OUT_FIG_DIR = cfg.DIR_FIGURES
+OUT_FIG_DIR = cfg.DIR_FIGURES_OPL_VS_DA
 
 # Placeholder paths for validation datasets (To be activated with multi-year data)
 GRACE_FILE = "data/validation/water_storage/GRACE_GRACEFO/raw/GRCTellus.JPL.200204_202603.GLO.RL06.3M.MSCNv04CRI.nc"
@@ -121,8 +122,8 @@ def plot_grace_validation(opl_tws, da_tws):
     da_anom = da_tws_avg - np.mean(da_tws_avg)
     
     plt.figure(figsize=(10, 5))
-    plt.plot(days, opl_anom, 'b-', marker='o', linewidth=2, label='OPL TWS Anomaly')
-    plt.plot(days, da_anom, 'r--', marker='s', linewidth=2, label='DA TWS Anomaly')
+    plt.plot(np.arange(len(opl_anom)), opl_anom, 'b-', marker='o', linewidth=2, label='OPL TWS Anomaly')
+    plt.plot(np.arange(len(da_anom)), da_anom, 'r--', marker='s', linewidth=2, label='DA TWS Anomaly')
     
     # Placeholder for actual GRACE data (which is monthly)
     plt.axhline(0, color='k', linestyle=':', linewidth=2, label='GRACE Anomaly (Monthly)')
@@ -148,8 +149,8 @@ def plot_ascat_validation(opl_sm, da_sm):
     da_sm_avg = calculate_basin_average(da_sm, landmask)
     
     plt.figure(figsize=(10, 5))
-    plt.plot(days, opl_sm_avg, 'b-', marker='o', linewidth=2, label='OPL Top Layer SM')
-    plt.plot(days, da_sm_avg, 'r--', marker='s', linewidth=2, label='DA Top Layer SM')
+    plt.plot(np.arange(len(opl_sm_avg)), opl_sm_avg, 'b-', marker='o', linewidth=2, label='OPL Top Layer SM')
+    plt.plot(np.arange(len(da_sm_avg)), da_sm_avg, 'r--', marker='s', linewidth=2, label='DA Top Layer SM')
     
     # Mock ASCAT observation for testing the script structure
     mock_ascat = opl_sm_avg + np.random.normal(0, 0.02, size=len(opl_sm_avg))
@@ -175,8 +176,8 @@ def plot_et_validation(opl_et, da_et):
     da_et_avg = calculate_basin_average(da_et, landmask) * 86400
     
     plt.figure(figsize=(10, 5))
-    plt.plot(days, opl_et_avg, 'b-', marker='o', linewidth=2, label='OPL ET')
-    plt.plot(days, da_et_avg, 'r--', marker='s', linewidth=2, label='DA ET')
+    plt.plot(np.arange(len(opl_et_avg)), opl_et_avg, 'b-', marker='o', linewidth=2, label='OPL ET')
+    plt.plot(np.arange(len(da_et_avg)), da_et_avg, 'r--', marker='s', linewidth=2, label='DA ET')
     
     # Mock GLEAM observation for testing the script structure
     mock_gleam = opl_et_avg * 1.1 + np.random.normal(0, 0.5, size=len(opl_et_avg))

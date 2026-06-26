@@ -18,13 +18,13 @@ def load_and_preprocess(dir_path):
     """
     Load LIS output netCDF files and extract the top soil moisture layer.
     """
-    files = sorted(glob.glob(os.path.join(dir_path, "*", "*", "*.nc")))
+    files = sorted(glob.glob(os.path.join(dir_path, "**", "*.nc"), recursive=True))
     if not files:
         print(f"Warning: No netCDF files found in {dir_path}")
         return None
     
     # Load multi-file dataset
-    ds = xr.open_mfdataset(files, combine='by_coords')
+    ds = xr.open_mfdataset(files, combine='by_coords', compat='override', coords='minimal')
     
     # Extract SoilMoist_tavg (Layer 1: index 0)
     # LIS Noah-MP SoilMoist_tavg dimensions are usually (time, SoilMoist_profiles, lat, lon)
@@ -95,7 +95,7 @@ def plot_sm_assim_impact():
                 gl = ax.gridlines(draw_labels=True, linestyle='--', alpha=0.5)
                 gl.top_labels = False; gl.right_labels = False
 
-            output_path = os.path.join(config.DIR_FIGURES, f"fig03_sm_assim_impact_{season}.png")
+            output_path = os.path.join(config.DIR_FIGURES_OPL_VS_DA, f"fig03_sm_assim_impact_{season}.png")
             plt.savefig(output_path)
             print(f"Figure 3 ({season}) saved to: {output_path}")
 

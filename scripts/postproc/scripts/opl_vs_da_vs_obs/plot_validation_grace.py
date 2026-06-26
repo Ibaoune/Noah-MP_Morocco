@@ -10,11 +10,12 @@ import matplotlib.pyplot as plt
 # Script to compare LIS TWS Anomalies with GRACE
 # ==========================================
 
-lis_output_dir = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/scalability_tests/output/SURFACEMODEL/202002' # Update this for full run
+import config_postproc as cfg
+lis_output_dir = cfg.DIR_OUTPUT_OL
 grace_file = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/data/validation/water_storage/GRACE_GRACEFO/raw/GRCTellus.JPL.200204_202603.GLO.RL06.3M.MSCNv04CRI.nc'
-output_fig = '/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/figures/validation_grace_tws.png'
+output_fig = os.path.join(cfg.DIR_FIGURES_OPL_VS_DA, 'validation_grace_tws.png')
 
-lis_files = sorted(glob.glob(os.path.join(lis_output_dir, 'LIS_HIST_*.nc')))
+lis_files = sorted(glob.glob(os.path.join(lis_output_dir, '**', 'LIS_HIST_*.nc'), recursive=True))
 
 if not lis_files:
     print("No LIS files found.")

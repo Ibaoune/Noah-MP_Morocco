@@ -29,8 +29,9 @@ def get_lis_files(output_dir, start_date, end_date):
     while current_date <= end_date:
         # LIS files are structured in SURFACEMODEL/YYYYMM directories
         yyyymm = current_date.strftime("%Y%m")
+        yyyymm = current_date.strftime("%Y%m")
         yyyymmddhh = current_date.strftime("%Y%m%d%H00")
-        filepath = os.path.join(output_dir, "SURFACEMODEL", yyyymm, f"LIS_HIST_{yyyymmddhh}.d01.nc")
+        filepath = os.path.join(output_dir, yyyymm, f"LIS_HIST_{yyyymmddhh}.d01.nc")
         
         if os.path.exists(filepath):
             files.append(filepath)

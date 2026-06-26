@@ -68,7 +68,7 @@ def plot_gldas_intercomparison():
              ha='center', va='center', size=14)
     plt.axis('off')
     
-    output_path = os.path.join(config.DIR_FIGURES, "fig06_09_gldas_intercomparison_placeholder.png")
+    output_path = os.path.join(config.DIR_FIGURES_OPL_VS_DA, "fig06_09_gldas_intercomparison_placeholder.png")
     plt.savefig(output_path)
     print(f"Placeholder saved to: {output_path}")
 

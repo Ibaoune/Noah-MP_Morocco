@@ -7,13 +7,19 @@ from datetime import datetime
 # ==========================================
 PROJECT_ROOT = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
 
-# LIS Outputs (NorthMor 3days experiment)
-DIR_OUTPUT_OL = os.path.join(PROJECT_ROOT, "experiments/NorthMor/3days/opl/output/SURFACEMODEL")
-DIR_OUTPUT_DA = os.path.join(PROJECT_ROOT, "experiments/NorthMor/3days/assim/smap_assim/output/SURFACEMODEL")
+RUN_MODE = "1Yr_2016_test"  # Toggle: "3days" or "1Yr_2016_test"
 
-# Simulation period
-START_DATE = datetime(2016, 1, 1) # Updating to default starting date. Scripts will use what is available.
-END_DATE = datetime(2016, 1, 3)
+if RUN_MODE == "3days":
+    DIR_OUTPUT_OL = os.path.join(PROJECT_ROOT, "experiments/NorthMor/3days/opl/output/SURFACEMODEL")
+    DIR_OUTPUT_DA = os.path.join(PROJECT_ROOT, "experiments/NorthMor/3days/assim/smap_assim/output/SURFACEMODEL")
+    START_DATE = datetime(2016, 1, 1)
+    END_DATE = datetime(2016, 1, 3)
+elif RUN_MODE == "1Yr_2016_test":
+    DIR_OUTPUT_OL = os.path.join(PROJECT_ROOT, "experiments/NorthMor/1Yr_2016_test/opl/output/SURFACEMODEL")
+    DIR_OUTPUT_DA = os.path.join(PROJECT_ROOT, "experiments/NorthMor/1Yr_2016_test/assim/output_smap/SURFACEMODEL")
+    START_DATE = datetime(2016, 1, 1)
+    END_DATE = datetime(2016, 12, 31)
+
 
 # Observation / Forcing Data
 FILE_DEM_SRTM = os.path.join(PROJECT_ROOT, "data/lis_input/MNT_SRTM_30m.tif")
@@ -27,9 +33,14 @@ DIR_OBS_GLDAS = os.path.join(PROJECT_ROOT, "data/observations/GLDAS")
 DIR_OBS_INSITU = os.path.join(PROJECT_ROOT, "data/validation/streamflow")
 
 # Output directory for figures
-DIR_FIGURES = os.path.join(PROJECT_ROOT, "scripts/postproc/postproc_00/figures")
+DIR_FIGURES = os.path.join(PROJECT_ROOT, "scripts/postproc/figures")
 DIR_FIGURES_DOMAIN = os.path.join(DIR_FIGURES, "domain")
-DIR_FIGURES_OPL_VS_DA = os.path.join(DIR_FIGURES, "opl_vs_da", "3days")
+
+if RUN_MODE == "3days":
+    DIR_FIGURES_OPL_VS_DA = os.path.join(DIR_FIGURES, "opl_vs_da", "3days")
+elif RUN_MODE == "1Yr_2016_test":
+    DIR_FIGURES_OPL_VS_DA = os.path.join(DIR_FIGURES, "opl_vs_da", "1Yr_2016_test")
+
 os.makedirs(DIR_FIGURES, exist_ok=True)
 os.makedirs(DIR_FIGURES_DOMAIN, exist_ok=True)
 os.makedirs(DIR_FIGURES_OPL_VS_DA, exist_ok=True)
