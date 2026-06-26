@@ -36,7 +36,7 @@ PASSWORD = CDSE_PASSWORD
 
 
 DATA_DIR = config.PROJECT_ROOT
-TARGET_DIR = os.path.join(DATA_DIR, 'validation/vegetation/Copernicus_LAI/raw')
+TARGET_DIR = os.path.join(DATA_DIR, 'data/validation/vegetation/Copernicus_LAI/raw')
 REPORT_DIR = os.path.join(DATA_DIR, 'reports')
 
 os.makedirs(TARGET_DIR, exist_ok=True)
