@@ -1,10 +1,20 @@
+#!/usr/bin/env python3
+# ==============================================================================
+# Script: download_wapor.py
+# Description: Download script for validation data.
+# Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import argparse
 import os
 import sys
 import ee
 import geemap
 import logging
-from config_validation import DIR_WAPOR, DOMAIN_BBOX
+from config_validation import DIR_WAPOR, BBOX
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -28,17 +38,15 @@ def main():
 
     # Initialize Earth Engine
     try:
-        ee.Initialize(project='ee-mohammadelaabaribao') # Will fallback to default if project is none
+        ee.Initialize()
     except Exception as e:
-        try:
-            ee.Initialize()
-        except Exception as e:
-            logger.error("Earth Engine is not authenticated. Please run 'earthengine authenticate' first.")
-            logger.error(str(e))
-            sys.exit(1)
+        logger.error("Earth Engine is not authenticated or the project is incorrectly set.")
+        logger.error("Please run 'earthengine set_project YOUR_PROJECT_ID'.")
+        logger.error(str(e))
+        sys.exit(1)
 
     # Define region of interest
-    min_lon, min_lat, max_lon, max_lat = DOMAIN_BBOX
+    min_lon, min_lat, max_lon, max_lat = BBOX
     roi = ee.Geometry.Rectangle([min_lon, min_lat, max_lon, max_lat])
 
     # Convert dates to years

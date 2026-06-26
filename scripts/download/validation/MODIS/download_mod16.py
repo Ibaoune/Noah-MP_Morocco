@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
-
+# ==============================================================================
+# Script: download_mod16.py
+# Description: Download script for validation data.
 # Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import config_validation as config
+
 
 """
-download_gpp.py
+download_mod16.py
 
-Script to download MODIS Terra Gross Primary Productivity (MOD17A2H)
+Script to download MODIS Terra Evapotranspiration (MOD16A2)
 for the Sebou-Saïss basin, Morocco.
 Target Period: 2015-01-01 to 2020-12-31
 Bounding Box: 33.0N to 35.0N, 7.0W to 4.0W
@@ -20,13 +29,13 @@ import earthaccess
 # --- Configuration ---
 START_DATE = "2015-01-01"
 END_DATE = "2020-12-31"
-CONCEPT_ID = "C2565791029-LPCLOUD" # MOD17A2HGF v061
+CONCEPT_ID = "C2565791021-LPCLOUD" # MOD16A2GF v061
 BBOX = (-7.5, 32.0, -3.0, 36.0)
 
-DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
-RAW_DIR = os.path.join(DATA_DIR, 'validation/vegetation/GPP/raw')
+DATA_DIR = config.PROJECT_ROOT
+RAW_DIR = os.path.join(DATA_DIR, 'validation/evapotranspiration/MOD16/raw')
 REPORT_DIR = os.path.join(DATA_DIR, 'reports')
-INVENTORY_FILE = os.path.join(REPORT_DIR, 'inventory_gpp.csv')
+INVENTORY_FILE = os.path.join(REPORT_DIR, 'inventory_mod16.csv')
 
 os.makedirs(RAW_DIR, exist_ok=True)
 os.makedirs(REPORT_DIR, exist_ok=True)
@@ -36,13 +45,13 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(os.path.join(DATA_DIR, 'logs/download/download_gpp.log')),
+        logging.FileHandler(os.path.join(DATA_DIR, os.path.join(os.path.dirname(__file__), 'logs', 'download_mod16.log')),
         logging.StreamHandler()
     ]
 )
 
 def main():
-    logging.info("Starting MODIS MOD17A2H (GPP) download workflow.")
+    logging.info("Starting MODIS MOD16A2 download workflow.")
     
     # Authenticate
     logging.info("Authenticating with NASA Earthdata...")
@@ -79,7 +88,7 @@ def main():
         status = "Downloaded" if os.path.exists(output_path) else "Failed"
         size = os.path.getsize(output_path) / (1024 * 1024) if os.path.exists(output_path) else 0
         
-        # Extract date from MODIS filename (e.g., MOD17A2H.A2015001.h17v05.061.2020211155959.hdf)
+        # Extract date from MODIS filename (e.g., MOD16A2.A2015001.h17v05.061.2020211155959.hdf)
         try:
             date_part = fname.split('.')[1][1:] # e.g. 2015001 (YYYYDDD)
             date_str = pd.to_datetime(date_part, format="%Y%j").strftime("%Y-%m-%d")
@@ -89,7 +98,7 @@ def main():
         inventory_data.append({
             'date': date_str,
             'file_name': fname,
-            'product': "MOD17A2HGF",
+            'product': "MOD16A2GF",
             'file_size_mb': round(size, 2),
             'status': status
         })
@@ -97,7 +106,7 @@ def main():
     df_inv = pd.DataFrame(inventory_data)
     df_inv.to_csv(INVENTORY_FILE, index=False)
     logging.info(f"Inventory saved to {INVENTORY_FILE}")
-    logging.info("MOD17A2H workflow completed.")
+    logging.info("MOD16A2 workflow completed.")
 
 if __name__ == "__main__":
     main()

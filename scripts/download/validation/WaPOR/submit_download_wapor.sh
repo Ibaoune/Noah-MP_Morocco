@@ -15,7 +15,7 @@
 #
 # Output:
 #   data/validation/evapotranspiration/WaPOR/<component>/
-#   scripts/download/validation/logs/wapor_<jobid>.out
+#   scripts/download/validation/WaPOR/logs/wapor_<jobid>.out
 # =============================================================================
 
 #SBATCH --job-name=wapor_download
@@ -26,8 +26,8 @@
 #SBATCH --mem=8G
 #SBATCH --time=04:00:00
 #SBATCH --partition=compute
-#SBATCH --output=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/logs/wapor_%a_%j.out
-#SBATCH --error=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/logs/wapor_%a_%j.err
+#SBATCH --output=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/WaPOR/logs/wapor_%a_%j.out
+#SBATCH --error=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/WaPOR/logs/wapor_%a_%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=mohammad.elaabaribao@um6p.ma
 
@@ -35,7 +35,7 @@
 # Environment
 # ---------------------------------------------------------------------------
 BASE=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco
-SCRIPT=${BASE}/scripts/download/validation/download_wapor.py
+SCRIPT=${BASE}/scripts/download/validation/WaPOR/download_wapor.py
 
 source /srv/software/easybuild/software/Anaconda3/2020.11/etc/profile.d/conda.sh
 conda activate postproc_env

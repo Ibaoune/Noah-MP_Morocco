@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
+# ==============================================================================
+# Script: download_gmia.py
+# Description: Download script for validation data.
+# Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # =============================================================================
-# Author: M. El Aabaribaoune (@UM6P)
 # Date:   2026-06-07
 # =============================================================================
 import os

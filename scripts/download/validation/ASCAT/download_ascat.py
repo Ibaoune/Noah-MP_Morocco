@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
-
+# ==============================================================================
+# Script: download_ascat.py
+# Description: Download script for validation data.
 # Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import config_validation as config
+from credentials_validation import CDSE_USERNAME, CDSE_PASSWORD
+
 
 import os
 import requests
@@ -14,18 +24,19 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 import argparse
 
-parser = argparse.ArgumentParser(description="Download Copernicus LAI data")
+parser = argparse.ArgumentParser(description="Download ASCAT data")
 parser.add_argument('--start_date', type=str, default="2015-01-01", help='Start date YYYY-MM-DD')
 parser.add_argument('--end_date', type=str, default="2020-12-31", help='End date YYYY-MM-DD')
 args = parser.parse_args()
 
 START_DATE = args.start_date
 END_DATE = args.end_date
-USERNAME = "mohammad.trop1@gmail.com"
-PASSWORD = "pip123@ZOHMKA"
+USERNAME = CDSE_USERNAME
+PASSWORD = CDSE_PASSWORD
 
-DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
-TARGET_DIR = os.path.join(DATA_DIR, 'validation/vegetation/Copernicus_LAI/raw')
+
+DATA_DIR = config.PROJECT_ROOT
+TARGET_DIR = os.path.join(DATA_DIR, 'validation/soil_moisture/ASCAT/raw')
 REPORT_DIR = os.path.join(DATA_DIR, 'reports')
 
 os.makedirs(TARGET_DIR, exist_ok=True)
@@ -52,7 +63,7 @@ def download_file(url, token, target_path):
                 f.write(chunk)
 
 def main():
-    logging.info("Starting Copernicus LAI 300m download workflow.")
+    logging.info("Starting Copernicus ASCAT Soil Moisture download workflow.")
     
     try:
         logging.info("Authenticating with CDSE...")
@@ -66,12 +77,11 @@ def main():
     start_dt = f"{START_DATE}T00:00:00.000Z"
     end_dt = f"{END_DATE}T23:59:59.000Z"
     
-    # We query for c_gls_LAI300 which will match both PROBA-V (c_gls_LAI300_) and S3 (c_gls_LAI300-RT0_)
     base_url = "https://catalogue.dataspace.copernicus.eu/odata/v1/Products"
-    filter_query = f"?$filter=contains(Name,'c_gls_LAI300') and contains(Name,'_nc') and ContentDate/Start ge {start_dt} and ContentDate/Start le {end_dt}&$top=1000"
+    filter_query = f"?$filter=contains(Name,'c_gls_SWI_') and contains(Name,'_nc') and ContentDate/Start ge {start_dt} and ContentDate/Start le {end_dt}&$top=1000"
     search_url = base_url + filter_query
     
-    logging.info(f"Searching for Copernicus LAI 300m from {START_DATE} to {END_DATE}...")
+    logging.info(f"Searching for ASCAT SWI from {START_DATE} to {END_DATE}...")
     
     products = []
     while search_url:
@@ -91,7 +101,7 @@ def main():
     
     logging.info(f"Downloading to {TARGET_DIR}...")
     
-    for p in tqdm(products, desc="Downloading LAI"):
+    for p in tqdm(products, desc="Downloading ASCAT"):
         uuid = p['Id']
         fname = p['Name']
         date_str = p['ContentDate']['Start']
@@ -103,9 +113,16 @@ def main():
         else:
             download_url = f"https://zipper.dataspace.copernicus.eu/odata/v1/Products({uuid})/$value"
             try:
-                # Refresh token periodically if downloading many files to prevent expiry
-                token = get_token() 
-                download_file(download_url, token, target_path)
+                try:
+                    download_file(download_url, token, target_path)
+                except requests.exceptions.HTTPError as he:
+                    if he.response.status_code == 401:
+                        # Token expired, get a new one
+                        logging.info("Token expired, refreshing...")
+                        token = get_token()
+                        download_file(download_url, token, target_path)
+                    else:
+                        raise he
             except Exception as e:
                 logging.error(f"Failed to download {fname}: {e}")
                 status = f"Failed: {e}"
@@ -115,17 +132,17 @@ def main():
         inventory_data.append({
             'date': date_str,
             'file_name': fname,
-            'product': 'Copernicus_LAI',
+            'product': 'ASCAT_SWI',
             'file_size_mb': round(size, 2),
             'status': status
         })
 
     logging.info("Building inventory...")
     df = pd.DataFrame(inventory_data)
-    inventory_file = os.path.join(REPORT_DIR, 'inventory_copernicus_lai.csv')
+    inventory_file = os.path.join(REPORT_DIR, 'inventory_ascat.csv')
     df.to_csv(inventory_file, index=False)
     logging.info(f"Inventory saved to {inventory_file}")
-    logging.info("Copernicus LAI workflow completed.")
+    logging.info("ASCAT workflow completed.")
 
 if __name__ == "__main__":
     main()

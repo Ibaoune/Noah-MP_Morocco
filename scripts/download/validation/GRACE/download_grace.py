@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-
+# ==============================================================================
+# Script: download_grace.py
+# Description: Download script for validation data.
 # Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
 
 """
 download_grace.py
@@ -8,35 +11,33 @@ download_grace.py
 Script to download GRACE / GRACE-FO Mascon Terrestrial Water Storage
 for the Sebou-Saïss basin, Morocco.
 Target Period: 2015-01-01 to 2020-12-31
-Bounding Box: 33.0N to 35.0N, 7.0W to 4.0W
 Uses the `earthaccess` python package for downloading.
 """
 
 import os
+import sys
 import logging
 import pandas as pd
 import earthaccess
 
-# --- Configuration ---
-START_DATE = "2015-01-01"
-END_DATE = "2020-12-31"
+# Import centralized configuration
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import config_validation as config
+
 CONCEPT_ID = "C3195527175-POCLOUD" # JPL GRACE and GRACE-FO Mascon CRI Filtered Release 06.3 Version 04
-BBOX = (-7.5, 32.0, -3.0, 36.0)
 
-DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
-RAW_DIR = os.path.join(DATA_DIR, 'validation/water_storage/GRACE_GRACEFO/raw')
-REPORT_DIR = os.path.join(DATA_DIR, 'reports')
-INVENTORY_FILE = os.path.join(REPORT_DIR, 'inventory_grace.csv')
-
+RAW_DIR = os.path.join(config.PROJECT_ROOT, 'data/validation/water_storage/GRACE_GRACEFO/raw')
 os.makedirs(RAW_DIR, exist_ok=True)
-os.makedirs(REPORT_DIR, exist_ok=True)
+os.makedirs(config.REPORT_DIR, exist_ok=True)
+INVENTORY_FILE = os.path.join(config.REPORT_DIR, 'inventory_grace.csv')
 
-# Set up logging
+# Set up logging locally
+log_file = os.path.join(os.path.dirname(__file__), "logs", "download_grace.log")
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(os.path.join(DATA_DIR, 'logs/download/download_grace.log')),
+        logging.FileHandler(log_file),
         logging.StreamHandler()
     ]
 )
@@ -53,11 +54,11 @@ def main():
         earthaccess.login()
         
     # Search
-    logging.info(f"Searching for Concept ID {CONCEPT_ID} from {START_DATE} to {END_DATE}...")
+    logging.info(f"Searching for Concept ID {CONCEPT_ID} from {config.START_DATE} to {config.END_DATE}...")
     results = earthaccess.search_data(
         concept_id=CONCEPT_ID,
-        bounding_box=BBOX,
-        temporal=(START_DATE, END_DATE)
+        bounding_box=config.BBOX,
+        temporal=(config.START_DATE, config.END_DATE)
     )
     logging.info(f"Found {len(results)} granules.")
     

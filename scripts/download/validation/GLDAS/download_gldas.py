@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
+# ==============================================================================
+# Script: download_gldas.py
+# Description: Download script for validation data.
+# Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # =============================================================================
 # download_gldas.py
 #
-# Author: M. El Aabaribaoune (@um6p)
 # Created: 2026-06-11
 #
 # Download GLDAS land surface model outputs for multi-model intercomparison
@@ -54,7 +62,7 @@ args = parser.parse_args()
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
-log_file = os.path.join(LOG_DIR, "download_gldas.log")
+log_file = os.path.join(os.path.dirname(__file__), "logs", "download_gldas.log")
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",

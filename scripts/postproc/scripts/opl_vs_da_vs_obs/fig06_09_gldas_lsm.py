@@ -1,5 +1,5 @@
 """
-fig06_09_gldas_intercomparison.py
+fig06_09_gldas_lsm.py
 
 Objective: Generate Figures 6 to 9 for the publication.
 Compare local LIS simulations to reference models: GLDAS_NOAH, GLDAS_VIC, GLDAS_CLSM, GLDAS_CLSM_DA.
@@ -36,7 +36,7 @@ def regrid_to_gldas(lis_ds, gldas_ds):
     # return lis_ds.interp(lat=gldas_ds.lat, lon=gldas_ds.lon, method='linear')
     pass
 
-def plot_gldas_intercomparison():
+def plot_gldas_lsm():
     print("This script is a skeleton. GLDAS data must be downloaded first.")
     
     # -------------------------------------------------------------
@@ -64,13 +64,13 @@ def plot_gldas_intercomparison():
     # Create an empty placeholder figure to indicate the script exists
     plt.rcParams.update(config.PLOT_RC_PARAMS)
     plt.figure(figsize=(8, 6))
-    plt.text(0.5, 0.5, "Figures 6-9: GLDAS Intercomparison\n(Requires GLDAS NetCDF data)", 
+    plt.text(0.5, 0.5, "Figures 6-9: GLDAS LSM\n(Requires GLDAS NetCDF data)", 
              ha='center', va='center', size=14)
     plt.axis('off')
     
-    output_path = os.path.join(config.DIR_FIGURES_OPL_VS_DA, "fig06_09_gldas_intercomparison_placeholder.png")
+    output_path = os.path.join(config.DIR_FIGURES_OPL_VS_DA, "fig06_09_gldas_lsm_placeholder.png")
     plt.savefig(output_path)
     print(f"Placeholder saved to: {output_path}")
 
 if __name__ == "__main__":
-    plot_gldas_intercomparison()
+    plot_gldas_lsm()

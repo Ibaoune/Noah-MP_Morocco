@@ -2,15 +2,15 @@
 # =============================================================================
 # submit_download_gldas.sh
 #
-# SLURM job array to download GLDAS products for postproc_01 intercomparison.
+# SLURM job array to download GLDAS products for postproc_01 lsm.
 # One array task per GLDAS product (4 tasks total).
 #
 # Usage:
 #   sbatch submit_download_gldas.sh
 #
 # Outputs:
-#   data/validation/intercomparison/GLDAS/<product>/
-#   scripts/download/validation/logs/gldas_<product>.out
+#   data/validation/lsm/GLDAS/<product>/
+#   scripts/download/validation/GLDAS/logs/gldas_<product>.out
 # =============================================================================
 
 #SBATCH --job-name=gldas_download
@@ -21,8 +21,8 @@
 #SBATCH --mem=8G
 #SBATCH --time=08:00:00
 #SBATCH --partition=compute
-#SBATCH --output=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/logs/gldas_%a_%j.out
-#SBATCH --error=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/logs/gldas_%a_%j.err
+#SBATCH --output=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/GLDAS/logs/gldas_%a_%j.out
+#SBATCH --error=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/GLDAS/logs/gldas_%a_%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=mohammad.elaabaribao@um6p.ma
 
@@ -30,7 +30,7 @@
 # Environment
 # ---------------------------------------------------------------------------
 BASE=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco
-SCRIPT=${BASE}/scripts/download/validation/download_gldas.py
+SCRIPT=${BASE}/scripts/download/validation/GLDAS/download_gldas.py
 
 # Export NASA credentials for earthaccess
 export EARTHDATA_USERNAME="el.aabaribaoune@gmail.com"

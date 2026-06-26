@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
+# ==============================================================================
+# Script: download_fluxsat_gpp.py
+# Description: Download script for validation data.
+# Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # =============================================================================
 # download_fluxsat_gpp.py
 #
-# Author: M. El Aabaribaoune (@um6p)
 # Created: 2026-06-11
 #
 # Download FLUXSAT v2 monthly Gross Primary Production (GPP) global dataset
@@ -53,7 +61,7 @@ args = parser.parse_args()
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
-log_file = os.path.join(LOG_DIR, "download_fluxsat.log")
+log_file = os.path.join(os.path.dirname(__file__), "logs", "download_fluxsat.log")
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",

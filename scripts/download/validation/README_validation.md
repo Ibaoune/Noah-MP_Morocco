@@ -13,7 +13,7 @@ workflow for the two post-processing experiments:
 
 | Experiment | Scope |
 |------------|-------|
-| **postproc_01** | Water balance, runoff, multi-model intercomparison (GLDAS), streamflow validation |
+| **postproc_01** | Water balance, runoff, multi-model lsm (GLDAS), streamflow validation |
 | **postproc_02** | SSM-DA impact on fluxes (ET, GPP, NPP), vegetation dynamics (LAI), drought detection |
 
 **Validation period**: **2015-01-01 to 2020-12-31**  
@@ -26,12 +26,12 @@ workflow for the two post-processing experiments:
 
 | # | Dataset | Used In | Status (2015–2020) | Download Script |
 |---|---------|---------|-------------------|-----------------|
-| 1 | [FAO GMIA v5](#1-fao-gmia-v5---irrigation-maps) | pp01, pp02 | ✅ Available | `download_gmia.py` (moved) |
-| 2 | [GLDAS Products](#2-gldas-land-surface-model-intercomparison) | pp01 (Figs 6–9) | ❌ **MISSING** — needs download | `download_gldas.py` (new) |
-| 3 | [MODIS MCD12Q1](#3-modis-mcd12q1---land-cover) | pp02 (Fig 1, 3) | ✅ Available (LIS input) | Static — no script needed |
-| 4 | [MODIS MCD15A2H v6.1](#4-modis-mcd15a2h-v61---leaf-area-index-lai) | pp02 (Figs 4, 6, Supp) | ✅ Available — 276 HDF files | `download_modis_mcd15a2h.py` (moved) |
-| 5 | [FAO WaPOR v3](#5-fao-wapor-v3---evapotranspiration--npp) | pp02 (Figs 2, 3, Supp) | ❌ Dummy files — needs real download | `download_wapor.py` (moved + rewritten) |
-| 6 | [FLUXSAT v2](#6-fluxsat-v2---gross-primary-production-gpp) | pp02 (Figs 2, 3, Supp) | ❌ **MISSING** — needs download | `download_fluxsat_gpp.py` (new) |
+| 1 | [FAO GMIA v5](#1-fao-gmia-v5---irrigation-maps) | pp01, pp02 |  Available | `download_gmia.py` (moved) |
+| 2 | [GLDAS Products](#2-gldas-land-surface-model-lsm) | pp01 (Figs 6–9) |  **MISSING** — needs download | `download_gldas.py` (new) |
+| 3 | [MODIS MCD12Q1](#3-modis-mcd12q1---land-cover) | pp02 (Fig 1, 3) |  Available (LIS input) | Static — no script needed |
+| 4 | [MODIS MCD15A2H v6.1](#4-modis-mcd15a2h-v61---leaf-area-index-lai) | pp02 (Figs 4, 6, Supp) |  Available — 276 HDF files | `download_modis_mcd15a2h.py` (moved) |
+| 5 | [FAO WaPOR v3](#5-fao-wapor-v3---evapotranspiration--npp) | pp02 (Figs 2, 3, Supp) |  Dummy files — needs real download | `download_wapor.py` (moved + rewritten) |
+| 6 | [FLUXSAT v2](#6-fluxsat-v2---gross-primary-production-gpp) | pp02 (Figs 2, 3, Supp) |  **MISSING** — needs download | `download_fluxsat_gpp.py` (new) |
 
 > **Excluded** (produced by simulation workflow or provided by local agencies):  
 > LIS Noah-MP OPL outputs · LIS Noah-MP DA outputs · HyMAP routed streamflow · In-situ gauging discharge
@@ -84,7 +84,7 @@ scripts/download/validation/
 | **Preprocessing** | None required; used directly as a spatial mask |
 | **Notes** | Used for Figures 4, 13–14 in postproc_01 and Figures 1, 2 in postproc_02. No newer version is needed for the 2015–2020 period. |
 
-**Status**: ✅ Available and complete.
+**Status**:  Available and complete.
 
 ---
 
@@ -104,9 +104,9 @@ scripts/download/validation/
 | **File format** | NetCDF-4 |
 | **Download method** | `earthaccess` Python library (NASA Earthdata login required) |
 | **Download script** | `download_gldas.py` |
-| **Storage location** | `data/validation/intercomparison/GLDAS/<product>/` |
+| **Storage location** | `data/validation/lsm/GLDAS/<product>/` |
 | **Preprocessing** | Spatial subsetting to Sebou domain; temporal aggregation (3H → daily/monthly) |
-| **Notes** | Used for postproc_01 Figures 6–9 (multi-model intercomparison). NASA Earthdata account required; store credentials in `~/.netrc`. |
+| **Notes** | Used for postproc_01 Figures 6–9 (multi-model lsm). NASA Earthdata account required; store credentials in `~/.netrc`. |
 
 **Sub-products:**
 
@@ -117,7 +117,7 @@ scripts/download/validation/
 | GLDAS CLSM | v2.1 | 1.0° / 3H | 3-hourly | `GLDAS_CLSM10_3H` |
 | GLDAS CLSM GRACE-DA1 | v2.2 | 0.25° / Daily | Daily | `GLDAS_CLSM025_DA1_D` |
 
-**Status**: ❌ Not yet downloaded. **Action**: Run `sbatch submit_download_gldas.sh`
+**Status**:  Not yet downloaded. **Action**: Run `sbatch submit_download_gldas.sh`
 
 ---
 
@@ -141,7 +141,7 @@ scripts/download/validation/
 | **Preprocessing** | Pre-processed by LDT into LIS input file |
 | **Notes** | Used for ecosystem stratification in postproc_02 Figures 1, 3. Accessed from `lis_input.d01.nc` land cover index variable. |
 
-**Status**: ✅ Available and complete.
+**Status**:  Available and complete.
 
 ---
 
@@ -165,7 +165,7 @@ scripts/download/validation/
 | **Preprocessing** | HDF4 → NetCDF conversion, reprojection to lat/lon, spatial clip to Sebou domain |
 | **Notes** | 276 HDF files available for 2015–2020 (tile h17v05, ~46 composites/year × 6 years). Processed files in `data/observations_archive/MODIS_LAI/processed/`. Used for postproc_02 Figures 4, 6, and Supplementary statistics. |
 
-**Status**: ✅ Available and complete for 2015–2020.
+**Status**:  Available and complete for 2015–2020.
 
 ---
 
@@ -189,7 +189,7 @@ scripts/download/validation/
 | **Preprocessing** | Spatial clip to Sebou domain; temporal aggregation (dekadal → monthly/seasonal) |
 | **Notes** | **Requires WaPOR API token** — register at https://wapor.apps.fao.org/ and set `WAPOR_API_TOKEN` environment variable or store in `~/.wapor_token`. Install library: `pip install wapordl`. Dummy files currently exist in `data/validation/evapotranspiration/WaPOR/` and must be replaced. Used for postproc_02 Figures 2, 3, and Supplementary statistics. |
 
-**Status**: ❌ Dummy placeholder files only. **Action**: Run `sbatch submit_download_wapor.sh`
+**Status**:  Dummy placeholder files only. **Action**: Run `sbatch submit_download_wapor.sh`
 
 **WaPOR layer codes (wapordl)**:
 ```
@@ -221,7 +221,7 @@ L2-NPP-D   →  Net Primary Production (dekadal)
 | **Preprocessing** | Spatial clip to Sebou domain; temporal aggregation to seasonal/annual means |
 | **Notes** | FLUXSAT v2 is derived from MODIS reflectance and SIF data scaled to FLUXNET tower GPP. Coverage ends at 2020 — fully covers the 2015–2020 validation period. Used for postproc_02 Figures 2, 3, and Supplementary statistics. Compare with LIS `GPP_tavg` output. |
 
-**Status**: ❌ Not yet downloaded. **Action**: Run `sbatch submit_download_fluxsat.sh`
+**Status**:  Not yet downloaded. **Action**: Run `sbatch submit_download_fluxsat.sh`
 
 ---
 
@@ -230,32 +230,32 @@ L2-NPP-D   →  Net Primary Production (dekadal)
 ```
 data/
 ├── land_params/GMIA/
-│   └── gmia_v5_aei_pct.asc                    ✅ Available
+│   └── gmia_v5_aei_pct.asc                     Available
 │
 ├── observations_archive/
 │   └── MODIS_LAI/
-│       ├── raw/        (276 HDF files, 2015–2020)    ✅ Available
-│       └── processed/  (NetCDF, clipped)               ✅ Available
+│       ├── raw/        (276 HDF files, 2015–2020)     Available
+│       └── processed/  (NetCDF, clipped)                Available
 │
 └── validation/
     ├── evapotranspiration/
     │   ├── WaPOR/
-    │   │   ├── AETI/   (dekadal GeoTIFF 2015–2020)   ❌ NEEDS DOWNLOAD
-    │   │   ├── T/                                      ❌ NEEDS DOWNLOAD
-    │   │   ├── E/                                      ❌ NEEDS DOWNLOAD
-    │   │   └── NPP/                                    ❌ NEEDS DOWNLOAD
-    │   └── MOD16/      (existing archive, 2015–2020)  ✅ Available (archive)
+    │   │   ├── AETI/   (dekadal GeoTIFF 2015–2020)    NEEDS DOWNLOAD
+    │   │   ├── T/                                       NEEDS DOWNLOAD
+    │   │   ├── E/                                       NEEDS DOWNLOAD
+    │   │   └── NPP/                                     NEEDS DOWNLOAD
+    │   └── MOD16/      (existing archive, 2015–2020)   Available (archive)
     │
-    ├── intercomparison/
+    ├── lsm/
     │   └── GLDAS/
-    │       ├── GLDAS_NOAH025_3H/                       ❌ NEEDS DOWNLOAD
-    │       ├── GLDAS_VIC10_3H/                         ❌ NEEDS DOWNLOAD
-    │       ├── GLDAS_CLSM10_3H/                        ❌ NEEDS DOWNLOAD
-    │       └── GLDAS_CLSM025_DA1_D/                    ❌ NEEDS DOWNLOAD
+    │       ├── GLDAS_NOAH025_3H/                        NEEDS DOWNLOAD
+    │       ├── GLDAS_VIC10_3H/                          NEEDS DOWNLOAD
+    │       ├── GLDAS_CLSM10_3H/                         NEEDS DOWNLOAD
+    │       └── GLDAS_CLSM025_DA1_D/                     NEEDS DOWNLOAD
     │
     └── vegetation/
-        ├── MODIS_MCD15A2H/    (link to observations_archive)  ✅ Available
-        └── FLUXSAT_GPP/       (monthly NetCDF 2015–2020)       ❌ NEEDS DOWNLOAD
+        ├── MODIS_MCD15A2H/    (link to observations_archive)   Available
+        └── FLUXSAT_GPP/       (monthly NetCDF 2015–2020)        NEEDS DOWNLOAD
 ```
 
 ---

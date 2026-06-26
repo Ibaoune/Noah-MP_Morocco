@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
+# ==============================================================================
+# Script: config_validation.py
+# Description: Download script for validation data.
+# Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
+
 # =============================================================================
 # config_validation.py
 #
-# Author: M. El Aabaribaoune (@um6p)
 # Created: 2026-06-11
 #
 # Central configuration for the validation data download workflow.
@@ -65,7 +70,7 @@ DIR_WAPOR    = os.path.join(PROJECT_ROOT, "data/validation/evapotranspiration/Wa
 DIR_FLUXSAT  = os.path.join(PROJECT_ROOT, "data/validation/vegetation/FLUXSAT_GPP")
 
 # GLDAS products (one sub-dir per product)
-DIR_GLDAS_ROOT    = os.path.join(PROJECT_ROOT, "data/validation/intercomparison/GLDAS")
+DIR_GLDAS_ROOT    = os.path.join(PROJECT_ROOT, "data/validation/lsm/GLDAS")
 DIR_GLDAS_NOAH    = os.path.join(DIR_GLDAS_ROOT, "GLDAS_NOAH025_3H")
 DIR_GLDAS_VIC     = os.path.join(DIR_GLDAS_ROOT, "GLDAS_VIC10_3H")
 DIR_GLDAS_CLSM3H  = os.path.join(DIR_GLDAS_ROOT, "GLDAS_CLSM10_3H")

@@ -14,7 +14,7 @@
 #   sbatch submit_download_fluxsat.sh
 #
 # Output:
-#   scripts/download/validation/logs/fluxsat_<jobid>.out
+#   scripts/download/validation/FLUXSAT/logs/fluxsat_<jobid>.out
 # =============================================================================
 
 #SBATCH --job-name=fluxsat_download
@@ -24,8 +24,8 @@
 #SBATCH --mem=4G
 #SBATCH --time=02:00:00
 #SBATCH --partition=compute
-#SBATCH --output=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/logs/fluxsat_%j.out
-#SBATCH --error=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/logs/fluxsat_%j.err
+#SBATCH --output=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/FLUXSAT/logs/fluxsat_%j.out
+#SBATCH --error=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/download/validation/FLUXSAT/logs/fluxsat_%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=mohammad.elaabaribao@um6p.ma
 
@@ -33,7 +33,7 @@
 # Environment
 # ---------------------------------------------------------------------------
 BASE=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco
-SCRIPT=${BASE}/scripts/download/validation/download_fluxsat_gpp.py
+SCRIPT=${BASE}/scripts/download/validation/FLUXSAT/download_fluxsat_gpp.py
 
 source /srv/software/easybuild/software/Anaconda3/2020.11/etc/profile.d/conda.sh
 conda activate postproc_env

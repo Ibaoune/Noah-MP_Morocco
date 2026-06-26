@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
+# ==============================================================================
+# Script: download_modis_mcd15a2h.py
+# Description: Download script for validation data.
+# Author: M. El Aabaribaoune (@um6p)
+# ==============================================================================
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # =============================================================================
 # download_modis_mcd15a2h.py
 #
-# Author: M. El Aabaribaoune (@um6p)
 # Moved to: scripts/download/validation/  (2026-06-11)
 #
 # Download MODIS Terra+Aqua LAI/FPAR 8-Day 500m (MCD15A2H Collection 6.1)
