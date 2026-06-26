@@ -33,3 +33,4 @@ scripts/venv/
 scripts/unrar
 validation/vegetation/Copernicus_LAI/raw/
 scripts/download/validation/credentials_validation.py
+MaskParamFill.log
