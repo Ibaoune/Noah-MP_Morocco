@@ -27,11 +27,17 @@ workflow for the two post-processing experiments:
 | # | Dataset | Used In | Status (2015–2020) | Download Script |
 |---|---------|---------|-------------------|-----------------|
 | 1 | [FAO GMIA v5](#1-fao-gmia-v5---irrigation-maps) | pp01, pp02 |  Available | `download_gmia.py` (moved) |
-| 2 | [GLDAS Products](#2-gldas-land-surface-model-lsm) | pp01 (Figs 6–9) |  **MISSING** — needs download | `download_gldas.py` (new) |
+| 2 | [GLDAS Products](#2-gldas-land-surface-model-lsm) | pp01 (Figs 6–9) |  Available | `download_gldas.py` |
 | 3 | [MODIS MCD12Q1](#3-modis-mcd12q1---land-cover) | pp02 (Fig 1, 3) |  Available (LIS input) | Static — no script needed |
 | 4 | [MODIS MCD15A2H v6.1](#4-modis-mcd15a2h-v61---leaf-area-index-lai) | pp02 (Figs 4, 6, Supp) |  Available — 276 HDF files | `download_modis_mcd15a2h.py` (moved) |
-| 5 | [FAO WaPOR v3](#5-fao-wapor-v3---evapotranspiration--npp) | pp02 (Figs 2, 3, Supp) |  Dummy files — needs real download | `download_wapor.py` (moved + rewritten) |
-| 6 | [FLUXSAT v2](#6-fluxsat-v2---gross-primary-production-gpp) | pp02 (Figs 2, 3, Supp) |  **MISSING** — needs download | `download_fluxsat_gpp.py` (new) |
+| 5 | [FAO WaPOR v3](#5-fao-wapor-v3---evapotranspiration--npp) | pp02 (Figs 2, 3, Supp) |  **Pending** — requires Google Earth Engine `set_project` | `download_wapor.py` |
+| 6 | [FLUXSAT v2](#6-fluxsat-v2---gross-primary-production-gpp) | pp02 (Figs 2, 3, Supp) |  Available | `download_fluxsat_gpp.py` |
+
+| 7 | ESA CCI Soil Moisture (COMBINED v8.1) | pp01, pp02 | Available | `download_esa_cci_sm.py` |
+| 8 | Copernicus ASCAT SWI | pp01, pp02 | Available | `download_ascat.py` |
+| 9 | Copernicus LAI 300m | pp02 | **Running** | `download_copernicus_lai.py` |
+| 10 | GLEAM v3.8a ET | pp01, pp02 | **Running** | `download_gleam.py` |
+| 11 | GRACE / GRACE-FO | pp01 | Available | `download_grace.py` |
 
 > **Excluded** (produced by simulation workflow or provided by local agencies):  
 > LIS Noah-MP OPL outputs · LIS Noah-MP DA outputs · HyMAP routed streamflow · In-situ gauging discharge
@@ -310,6 +316,13 @@ tail -f logs/fluxsat_*.out
 
 # Check downloaded inventories
 ls ../../data/reports/inventory_*.csv
+
+# Other submission scripts available:
+# sbatch submit_ascat.sh
+# sbatch submit_cop_lai.sh
+# sbatch submit_esacci.sh
+# sbatch submit_gleam.sh
+
 ```
 
 ### Step 4 — Run interactively (if needed)
