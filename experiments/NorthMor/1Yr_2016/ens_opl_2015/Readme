@@ -13,8 +13,9 @@ Plutôt que de faire un "cold start" (démarrage à froid) direct en 2016, nous 
 Ces deux fichiers serviront ensuite à initialiser correctement la chaîne Data Assimilation (EnKF) pour la période 2016-2020.
 
 ## Stratégie d'Initialisation
-* **State start mode** : `restart` (initialisé à partir du restart déterministe généré par le spin-up à la fin de l'année 2014).
+* **State start mode** : `restart` (initialisé à partir du restart déterministe généré par le spin-up à la fin de l'année 2014). Cela permet au modèle de reprendre l'humidité du sol, la température de surface, etc. exactement tels qu'ils étaient.
 * **Perturbations start mode** : `coldstart` (initialisé à zéro, les perturbations se développent tout au long de l'année 2015).
+  * **Pourquoi coldstart pour les perturbations ?** Le spin-up (2005-2014) était une simulation **déterministe** (sans assimilation, sans perturbations, 1 seul membre). Par conséquent, il n'a généré **aucun fichier de restart de perturbations** (`LIS_DAPERT_...bin`). Comme c'est la toute première fois (en 2015) qu'on active le module de perturbations pour créer un ensemble de 20 membres, on est obligé de démarrer ce module en "coldstart" pour initialiser les variables statistiques de perturbation de zéro.
 * **Taille de l'ensemble** : 20 membres (`Number of ensembles per tile: 20`).
 
 ## Troubleshooting et Solutions Mises en Place
