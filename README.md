@@ -72,10 +72,12 @@ NoahMP_Morocco/
 │   └── README_data_acquisition.md # Detailed data workflow documentation
 │
 ├── experiments/              # Model outputs (by experiment)
-│   ├── OPL_sebou/            #   Open-Loop results
-│   ├── DA_SM_sebou/          #   SMAP SM assimilation results
-│   ├── DA_LAI_sebou/         #   MODIS LAI assimilation results
-│   ├── DA_Joint_sebou/       #   Joint SM+LAI assimilation results
+│   ├── NorthMor/
+│   │   ├── matrix_2016/      #   Core SMAP DA matrix (5 baseline experiments)
+│   │   ├── step3_da_2015/    #   Long-run DA experiments
+│   │   └── 1Yr_2016/         #   One-year evaluation configurations
+│   ├── OPL_sebou/            #   Legacy Open-Loop results
+│   ├── DA_SM_sebou/          #   Legacy SMAP SM assimilation results
 │   ├── scalability/          #   Scalability test results
 │   └── 3days/                #   3-day Validation & DA Tests
 │       ├── opl/              #     Open Loop run
@@ -158,11 +160,17 @@ sbatch scripts/jobs/job_3c_lis_da_joint_sebou.sh
 | **DA-LAI** | LAI Assimilation | EnKF + MODIS MCD15A2H LAI (20 ens.) | `lis.config.da_lai_sebou` | `experiments/DA_LAI_sebou/` |
 | **DA-Joint** | Joint Assimilation | EnKF + SMAP SM **+** MODIS LAI (20 ens.) | `lis.config.da_joint` | `experiments/DA_Joint_sebou/` |
 
-## Forcing & Observations
+## Forcing, Observations & Validation
 
 - **Meteorological forcing:** GDAS (NASA, 2015–2020) and GPM IMERG Final V07
-- **Soil Moisture Observations:** SMAP L3 SPL3SMP v009 (daily, 2015–2020)
-- **LAI Observations:** MODIS MOD15A2H v061, tile `h17v05` (8-day, 2015–2020), preprocessed to global NetCDF4
+- **Assimilation:**
+  - SMAP L3 SPL3SMP v009 (daily, 2015–2020)
+  - MODIS MOD15A2H v061, tile `h17v05` (8-day, 2015–2020)
+- **Validation Datasets:**
+  - ASCAT (Soil Moisture)
+  - Copernicus LAI (Vegetation)
+  - GRACE (Terrestrial Water Storage anomalies)
+  - GLEAM (Evapotranspiration)
 - **Land surface model:** NoahMP v4.0.1 with dynamic vegetation (`option=2`)
 - **Data assimilation:** Ensemble Kalman Filter (EnKF, 20 members)
 - **Perturbations:** GMAO scheme — precipitation, radiation, soil moisture state, LAI state
@@ -229,6 +237,17 @@ Please refer to `experiments/3days/README_exps.md` for detailed configuration se
 ## Sebou Basin Joint DA Experiment
 
 An expanded multi-year experiment has been designed over the entire upstream Sebou River basin (`32.5° N — 35.5° N` and `7.0° W — 3.5° W` at 1 km resolution) for the period 2015–2020, matching the study period in Nie et al. (2022).
+
+### 2016 Core SMAP DA Matrix
+Before executing the full 2015-2020 runs, a highly controlled 1-year validation matrix has been established in `experiments/NorthMor/matrix_2016/`. 
+This matrix strictly focuses on isolating the impact of **SMAP Assimilation** without the noise of irrigation models or dynamic LAI. It includes 5 fundamental experiments:
+1. `OPL_noirr_2016`: Baseline open-loop without irrigation.
+2. `DA_nocdf_noirr_2016`: SMAP EnKF without CDF matching.
+3. `DA_cdf_noirr_2016`: SMAP EnKF with CDF matching.
+4. `DA_SMAP_inflation_sensitivity_2016`: EnKF spread/inflation tests.
+5. `DA_SMAP_obs_error_sensitivity_2016`: Observation error parameter tests.
+
+Please refer to `experiments/NorthMor/matrix_2016/README.md` for launch instructions.
 
 ### Current Status
 *   **Domain parameters (LDT):** Successfully processed. Generated the NetCDF parameter file `data/lis_input.d01_sebou.nc`.
