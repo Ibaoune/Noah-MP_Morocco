@@ -6,7 +6,6 @@ using NASA's **Land Information System (LIS)** with **NoahMP 4.0.1** and
 
 **Author:** M. EL Aabaribaoune (@um6p)  
 **HPC:** Toubkal cluster, UM6P  
-**Project:** EMPOWERMED
 
 ---
 
