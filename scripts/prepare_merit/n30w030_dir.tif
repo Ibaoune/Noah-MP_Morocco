@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yamazaki Lab Webpage has moved</title>
+
+  <!-- Auto redirect (seconds) -->
+  <meta http-equiv="refresh" content="10; url=https://global-hydrodynamics.github.io/" />
+
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif; line-height: 1.6; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 48px 20px; }
+    .card { border: 1px solid rgba(127,127,127,.35); border-radius: 12px; padding: 22px 20px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    p { margin: 10px 0; }
+    .url { word-break: break-all; }
+    .btn {
+      display: inline-block; margin-top: 10px; padding: 10px 14px;
+      border-radius: 10px; text-decoration: none; border: 1px solid rgba(127,127,127,.45);
+    }
+    .note { margin-top: 14px; font-size: .95rem; opacity: .85; }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="card">
+      <h1>Webページ移行のお知らせ / Website has moved</h1>
+
+      <p>
+        このWebページは新しいURLへ移行しました。<br />
+        10秒後に自動的に新しいページへ移動します。
+      </p>
+      <p class="url">
+        新URL: <a href="https://global-hydrodynamics.github.io/">https://global-hydrodynamics.github.io/</a>
+      </p>
+      <a class="btn" href="https://global-hydrodynamics.github.io/">新しいページへ移動する</a>
+
+      <hr style="margin:18px 0; border:none; border-top:1px solid rgba(127,127,127,.35);" />
+
+      <p>
+        This page has moved to a new URL. You will be redirected in 10 seconds.
+      </p>
+      <p class="url">
+        New URL: <a href="https://global-hydrodynamics.github.io/">https://global-hydrodynamics.github.io/</a>
+      </p>
+
+      <p class="note">
+        ※ブックマークを更新してください。<br />
+        ※If you have this page bookmarked, please update your bookmark.
+      </p>
+    </div>
+  </main>
+</body>
+</html>

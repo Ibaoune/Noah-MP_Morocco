@@ -35,9 +35,9 @@ Run domain resolution (dx):            0.05
 Run domain resolution (dy):            0.05
 
 # Parameters
-Landcover data source:     MODIS_Native 
+Landcover data source:     MODIS_Native
 Landcover classification:  IGBPNCEP 
-Landcover file:            ./input/LS_PARAMETERS/noah_2dparms/igbp.bin
+Landcover file:            ../../../../data/land_params/noah_2dparms/igbp.bin
 Landcover spatial transform:     tile
 #Landcover fill option:           none # Set to none if creating land mask
 Landcover fill option:           neighbor
@@ -52,7 +52,7 @@ Landmask spatial transform:   mode
 
 #Create or readin landmask:    readin
 #Landmask file: cap2ldt_updated.nc
-#Landmask data source:         UKMO_CAP_Netcdf
+#Landmask data source:         MODIS_Native
 #Landmask spatial transform: none
 #Landmask lower left lat:            -89.9531250
 #Landmask lower left lon:           -179.9296875
@@ -74,7 +74,7 @@ Soils fill option:               none
 Soils map projection:            latlon
 
 Soil texture data source:       none
-Soil texture map:               ../LS_PARAMETERS/noah_2dparms/topsoil30snew
+Soil texture map:               ../../../../data/land_params/noah_2dparms/topsoil30snew
 Soil texture spatial transform:   mode
 Soil texture fill option:         neighbor
 Soil texture fill value:          6
@@ -86,21 +86,21 @@ Soil texture force exclusion of water points during fill: true
 # Topography parameters -- Elevation, Slope, Aspect
 Elevation data source:        none
 Elevation number of bands:        1
-Elevation map:       ../LS_PARAMETERS/topo_parms/SRTM/SRTM30/raw_wgtopo30antarc
+Elevation map:       ../../../../data/land_params/topo_parms/SRTM/SRTM30/raw_wgtopo30antarc
 Elevation fill option: none # Preserve elevation for water bodies
 Elevation fill value:             0
 Elevation fill radius:            5
 
 Slope data source:        none
 Slope number of bands:        1
-Slope map:       ../LS_PARAMETERS/topo_parms/SRTM/SRTM30/raw_wgtopo30antarc
+Slope map:       ../../../../data/land_params/topo_parms/SRTM/SRTM30/raw_wgtopo30antarc
 Slope fill option:            none # Preserve slope for water bodies
 Slope fill value:             0
 Slope fill radius:            5.
 
 Aspect data source:        none
 Aspect number of bands:        1
-Aspect map:       ../LS_PARAMETERS/topo_parms/SRTM/SRTM30/raw_wgtopo30antarc
+Aspect map:       ../../../../data/land_params/topo_parms/SRTM/SRTM30/raw_wgtopo30antarc
 Aspect fill option:            none # Preserve aspect ratio for water bodies
 Aspect fill value:             3.14159
 Aspect fill radius:            5.
@@ -110,7 +110,7 @@ Topography map projection:       latlon
 
 # LSM-specific parameters
 Albedo data source:          none
-Albedo map:                 ../LS_PARAMETERS/noah_2dparms/albedo 
+Albedo map:                 ../../../../data/land_params/noah_2dparms/albedo 
 Albedo climatology interval:    monthly
 Albedo spatial transform:       budget-bilinear
 Albedo fill option:             neighbor
@@ -119,7 +119,7 @@ Albedo fill radius:             5
 Albedo map projection:          latlon
 
 Max snow albedo data source: none
-Max snow albedo map:        ../LS_PARAMETERS/noah_2dparms/maximum_snow_albedo.hdf
+Max snow albedo map:        ../../../../data/land_params/noah_2dparms/maximum_snow_albedo.hdf
 Max snow albedo spatial transform:     average
 Max snow albedo fill option:           neighbor
 Max snow albedo fill value:           0.3
@@ -127,11 +127,11 @@ Max snow albedo fill radius:          5
 Max snow albedo map projection:        latlon
 
 Greenness data source:         NCEP_Native
-Greenness fraction map:        ./input/LS_PARAMETERS/noah_2dparms/gfrac
+Greenness fraction map:        ../../../../data/land_params/noah_2dparms/gfrac
 Greenness climatology interval:    monthly
 Calculate min-max greenness fraction:  .false.
-Greenness maximum map:         ./input/LS_PARAMETERS/noah_2dparms/gfrac_max.asc
-Greenness minimum map:         ./input/LS_PARAMETERS/noah_2dparms/gfrac_min.asc
+Greenness maximum map:         ../../../../data/land_params/noah_2dparms/gfrac_max.asc
+Greenness minimum map:         ../../../../data/land_params/noah_2dparms/gfrac_min.asc
 Greenness spatial transform:       budget-bilinear
 Greenness fill option:             neighbor
 Greenness fill radius:             5
@@ -143,7 +143,7 @@ Greenness map projection:         latlon
 Slope type data source:   none
 
 Bottom temperature data source:   none
-Bottom temperature map:          ../LS_PARAMETERS/noah_2dparms/SOILTEMP.60
+Bottom temperature map:          ../../../../data/land_params/noah_2dparms/SOILTEMP.60
 Bottom temperature spatial transform:    budget-bilinear
 Bottom temperature fill option:      average      
 Bottom temperature fill value:       287.0       

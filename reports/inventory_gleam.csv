@@ -1,0 +1,13 @@
+year,file_name,product,file_size_mb,status
+2015,E_2015_GLEAM_v4.3a.nc,GLEAM_E,2687.22,Already Downloaded
+2015,Ep_2015_GLEAM_v4.3a.nc,GLEAM_Ep,2811.22,Already Downloaded
+2016,E_2016_GLEAM_v4.3a.nc,GLEAM_E,2695.63,Already Downloaded
+2016,Ep_2016_GLEAM_v4.3a.nc,GLEAM_Ep,2819.29,Already Downloaded
+2017,E_2017_GLEAM_v4.3a.nc,GLEAM_E,2676.55,Already Downloaded
+2017,Ep_2017_GLEAM_v4.3a.nc,GLEAM_Ep,2811.98,Already Downloaded
+2018,E_2018_GLEAM_v4.3a.nc,GLEAM_E,2681.89,Downloaded
+2018,Ep_2018_GLEAM_v4.3a.nc,GLEAM_Ep,2811.12,Downloaded
+2019,E_2019_GLEAM_v4.3a.nc,GLEAM_E,2677.39,Downloaded
+2019,Ep_2019_GLEAM_v4.3a.nc,GLEAM_Ep,2811.95,Downloaded
+2020,E_2020_GLEAM_v4.3a.nc,GLEAM_E,2695.2,Downloaded
+2020,Ep_2020_GLEAM_v4.3a.nc,GLEAM_Ep,2820.12,Downloaded

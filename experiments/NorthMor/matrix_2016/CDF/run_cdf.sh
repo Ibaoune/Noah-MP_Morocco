@@ -4,10 +4,11 @@
 #SBATCH --error=slurm-%j.err
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
+#SBATCH --mem=32G
 #SBATCH --time=12:00:00
 #SBATCH --partition=compute
 
-source ../../../arch/arch_toubkal.env
+source ../../../../arch/arch_toubkal.env
 
 BASE_DIR="/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016"
 
@@ -26,9 +27,9 @@ for month in $(seq -w 01 12); do
 done
 
 echo "Starting LDT CDF Generation for IRR..."
-time ./../../../src/lisf/ldt/LDT -f ldt.config.cdf.irr
+time ./../../../../src/lisf/ldt/LDT  ldt.config.cdf.irr
 
 echo "Starting LDT CDF Generation for NO-IRR..."
-time ./../../../src/lisf/ldt/LDT -f ldt.config.cdf.noirr
+time ./../../../../src/lisf/ldt/LDT  ldt.config.cdf.noirr
 
 echo "Done."
