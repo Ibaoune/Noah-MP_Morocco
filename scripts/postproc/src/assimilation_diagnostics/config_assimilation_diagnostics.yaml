@@ -1,0 +1,758 @@
+# ==========================================
+# CONFIGURATION: ASSIMILATION DIAGNOSTICS
+# ==========================================
+
+# 1. Project Global Paths
+# Provide absolute paths or paths relative to the execution directory
+project_root: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+output_dir: "scripts/postproc/figures/matrix_2016/assimilation_diagnostics"
+
+# 2. Experiment Settings
+experiment_name: "DA_nocdf_noirr_2016"
+# Paths to the Open Loop (OPL) and Data Assimilation (DA) experiments
+opl_dir: "experiments/NorthMor/matrix_2016/OPL_noirr_2016/output"
+da_dir: "experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output"
+
+# 3. Period of Analysis
+start_date: "2016-01-01"
+end_date: "2016-12-31"
+
+# Seasonal Definitions (used for seasonal increment splitting)
+# Numbers correspond to months (e.g., 12=Dec, 1=Jan, 2=Feb)
+seasons:
+  wet_season: [12, 1, 2] # DJF
+  dry_season: [6, 7, 8]  # JJA
+
+# 4. Active Diagnostics
+# List the diagnostics you want to execute.
+# These match the python module names in the 'diagnostics/' folder.
+active_diagnostics:
+  # - "coverage"
+  # - "innovations"
+  # - "seasonal_increments"
+  - "spread"
+
+assimilation_observations_map:
+  enabled: true
+
+  output:
+    filename: "Fig01_smap_assimilated_observation_count_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  title:
+    main: "Assimilated SMAP observations in 2016"
+    subtitle: "DA-noCDF-noIRR experiment | January–December 2016"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+    pad: 8
+
+  colormap:
+    name: "YlGnBu"
+    discrete: true
+    bad_color: "lightgrey"
+    background_color: "0.92"
+
+  colorbar:
+    label: "Assimilated SMAP observations"
+    bounds: [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275]
+    ticks: [0, 50, 100, 150, 200, 250, 275]
+    extend: "neither"
+    orientation: "vertical"
+    location: "right"
+    width: 0.015       # Reduced width (thinner)
+    pad: 0.015
+    shrink: 0.85       # Make it 85% of the map height
+    align_to_map_height: true
+    label_fontsize: 11
+    tick_fontsize: 9
+
+  annotation:
+    enabled: true
+    text_template: "Max = {data_max:.0f} obs"
+    lon: -9.9
+    lat: 35.6
+    fontsize: 8
+    ha: "left"
+    va: "top"
+    facecolor: "white"
+    edgecolor: "0.4"
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: "round,pad=0.25"
+
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.6
+    coastline_color: "0.2"
+    border_linewidth: 0.4
+    border_color: "0.35"
+
+  gridlines:
+    enabled: true
+    linewidth: 0.25
+    linestyle: "--"
+    color: "0.55"
+    alpha: 0.30
+    label_fontsize: 9
+
+  layout:
+    left: 0.07
+    right: 0.88
+    bottom: 0.08
+    top: 0.88
+
+assimilation_frequency_map:
+  enabled: true
+
+  output:
+    filename: "Fig02_smap_assimilation_frequency_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  title:
+    main: "SMAP assimilation frequency in 2016"
+    subtitle: "DA-noCDF-noIRR experiment | January–December 2016"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+    suptitle_y: 0.965
+    subtitle_pad: 8
+
+  colormap:
+    name: "OrRd"
+    discrete: true
+    bad_color: "lightgrey"
+    background_color: "0.92"
+
+  colorbar:
+    label: "Assimilation frequency (obs day⁻¹)"
+    bounds: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+    ticks: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+    tick_format: "%.1f"
+    extend: "neither"
+    orientation: "vertical"
+    location: "right"
+    width: 0.018
+    pad: 0.012
+    align_to_map_height: true
+    label_fontsize: 11
+    tick_fontsize: 9
+
+  annotation:
+    enabled: true
+    text_template: "Max = {data_max:.2f} obs day⁻¹"
+    lon: -9.95
+    lat: 35.55
+    fontsize: 8
+    ha: "left"
+    va: "top"
+    facecolor: "white"
+    edgecolor: "0.4"
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: "round,pad=0.25"
+
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.6
+    coastline_color: "0.2"
+    border_linewidth: 0.35
+    border_color: "0.35"
+
+  gridlines:
+    enabled: true
+    linewidth: 0.20
+    linestyle: "--"
+    color: "0.55"
+    alpha: 0.25
+    label_fontsize: 9
+
+  layout:
+    left: 0.07
+    right: 0.88
+    bottom: 0.08
+    top: 0.86
+
+monthly_total_assimilated_obs:
+  enabled: true
+
+  output:
+    filename: "Fig03_monthly_assimilated_observations_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  title:
+    main: "Monthly assimilated SMAP observations in 2016"
+    subtitle: "Domain-integrated total | DA-noCDF-noIRR experiment"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+    suptitle_y: 0.965
+    subtitle_pad: 8
+
+  axes:
+    xlabel: "Month"
+    ylabel: "Assimilated SMAP observations (×10³)"
+    xlabel_fontsize: 11
+    ylabel_fontsize: 11
+    tick_fontsize: 10
+    y_scale_factor: 1000
+    y_min: 0
+    y_max: 160
+    y_tick_interval: 20
+
+  bars:
+    color: "#6FA4C8"
+    edgecolor: "0.25"
+    linewidth: 0.8
+    width: 0.72
+    alpha: 0.95
+
+  grid:
+    enabled: true
+    axis: "y"
+    linestyle: "--"
+    linewidth: 0.6
+    color: "0.75"
+    alpha: 0.7
+
+  mean_line:
+    enabled: true
+    color: "0.25"
+    linestyle: "--"
+    linewidth: 1.2
+    label: "Monthly mean"
+
+  annotations:
+    show_values: false
+    show_min_max: true
+    fontsize: 8
+
+  layout:
+    left: 0.10
+    right: 0.97
+    bottom: 0.14
+    top: 0.86
+
+mean_innovation_map:
+  enabled: true
+
+  output:
+    filename: "Fig04a_mean_innovation_observation_space_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  title:
+    main: "Mean SMAP innovation in 2016"
+    subtitle: "Observation − forecast | DA-noCDF-noIRR experiment"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+    suptitle_y: 0.965
+    subtitle_pad: 8
+
+  colormap:
+    name: "RdBu_r"
+    reverse: true
+    discrete: true
+    bad_color: "lightgrey"
+    background_color: "0.92"
+
+  colorbar:
+    label: "SMAP innovation (m³ m⁻³)"
+    bounds: [-0.05, -0.04, -0.03, -0.02, -0.01, 0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
+    ticks: [-0.05, -0.04, -0.03, -0.02, -0.01, 0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
+    tick_format: "%.2f"
+    extend: "both"
+    orientation: "vertical"
+    location: "right"
+    width: 0.018
+    pad: 0.012
+    align_to_map_height: true
+    label_fontsize: 11
+    tick_fontsize: 9
+
+  annotation:
+    enabled: true
+    text_template: "Mean = {data_mean:.3f} m³ m⁻³\nMin = {data_min:.3f}\nMax = {data_max:.3f}"
+    lon: -9.95
+    lat: 35.55
+    fontsize: 8
+    ha: "left"
+    va: "top"
+    facecolor: "white"
+    edgecolor: "0.4"
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: "round,pad=0.25"
+
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.6
+    coastline_color: "0.2"
+    border_linewidth: 0.35
+    border_color: "0.35"
+
+  gridlines:
+    enabled: true
+    linewidth: 0.20
+    linestyle: "--"
+    color: "0.55"
+    alpha: 0.25
+    label_fontsize: 9
+
+  layout:
+    left: 0.07
+    right: 0.88
+    bottom: 0.08
+    top: 0.86
+
+mean_increment_map:
+  enabled: true
+
+  output:
+    filename: "Fig04b_mean_soil_moisture_increment_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  title:
+    main: "Mean SMAP analysis increment in 2016"
+    subtitle: "Analysis − forecast | DA-noCDF-noIRR experiment"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+    suptitle_y: 0.965
+    subtitle_pad: 8
+
+  display:
+    scale_factor: 1000.0
+    scaled_units: "×10⁻³ m³ m⁻³"
+
+  colormap:
+    name: "RdBu"
+    reverse: false
+    discrete: true
+    bad_color: "lightgrey"
+    background_color: "0.92"
+
+  colorbar:
+    label: "SMAP analysis increment (×10⁻³ m³ m⁻³)"
+    bounds: [-1.5, -1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
+    ticks: [-1.5, -1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
+    tick_format: "%.1f"
+    extend: "both"
+    orientation: "vertical"
+    location: "right"
+    width: 0.018
+    pad: 0.012
+    align_to_map_height: true
+    label_fontsize: 11
+    tick_fontsize: 9
+
+  annotation:
+    enabled: true
+    text_template: "Mean = {data_mean_scaled:.2f} ×10⁻³\nMin = {data_min_scaled:.2f}\nMax = {data_max_scaled:.2f}"
+    lon: -9.95
+    lat: 35.55
+    fontsize: 8
+    ha: "left"
+    va: "top"
+    facecolor: "white"
+    edgecolor: "0.4"
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: "round,pad=0.25"
+
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.6
+    coastline_color: "0.2"
+    border_linewidth: 0.35
+    border_color: "0.35"
+
+  gridlines:
+    enabled: true
+    linewidth: 0.20
+    linestyle: "--"
+    color: "0.55"
+    alpha: 0.25
+    label_fontsize: 9
+
+  layout:
+    left: 0.07
+    right: 0.88
+    bottom: 0.08
+    top: 0.86
+
+increment_histogram:
+  enabled: true
+
+  output:
+    filename: "Fig04c_soil_moisture_increment_distribution_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  title:
+    main: "Distribution of SMAP analysis increments in 2016"
+    subtitle: "Analysis − forecast | DA-noCDF-noIRR experiment"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+
+  data_filtering:
+    remove_nan: true
+    remove_inf: true
+    exclude_exact_zero: true
+    zero_tolerance: 1.0e-10
+    use_quantile_xlim: true
+    lower_quantile: 0.005
+    upper_quantile: 0.995
+
+  display:
+    scale_factor: 1000.0
+    scaled_units: "×10⁻³ m³ m⁻³"
+    use_percentage: true
+    y_log_scale: false
+
+  histogram:
+    bins: 80
+    color: "#8EC7DA"
+    edgecolor: "0.25"
+    linewidth: 0.5
+    alpha: 0.90
+
+  axes:
+    xlabel: "SMAP analysis increment (×10⁻³ m³ m⁻³)"
+    ylabel: "Frequency (%)"
+    xlabel_fontsize: 11
+    ylabel_fontsize: 11
+    tick_fontsize: 10
+    x_symmetric: true
+    x_limit_abs: null
+
+  reference_lines:
+    zero_line:
+      enabled: true
+      color: "0.15"
+      linestyle: "-"
+      linewidth: 1.0
+      label: "Zero"
+    mean_line:
+      enabled: true
+      color: "#B2182B"
+      linestyle: "--"
+      linewidth: 1.2
+      label: "Mean"
+    median_line:
+      enabled: true
+      color: "#2166AC"
+      linestyle: ":"
+      linewidth: 1.4
+      label: "Median"
+
+  statistics_box:
+    enabled: true
+    location: "upper right"
+    fontsize: 8
+    facecolor: "white"
+    edgecolor: "0.4"
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: "round,pad=0.30"
+    content:
+      - "N = {n_valid}"
+      - "Zero fraction = {zero_fraction:.1f}%"
+      - "Mean = {mean_scaled:.2f} ×10⁻³"
+      - "Median = {median_scaled:.2f} ×10⁻³"
+      - "P5–P95 = [{p5_scaled:.2f}, {p95_scaled:.2f}]"
+
+  grid:
+    enabled: true
+    axis: "y"
+    linestyle: "--"
+    linewidth: 0.5
+    color: "0.75"
+    alpha: 0.6
+
+  legend:
+    enabled: true
+    location: "upper left"
+    fontsize: 8
+    frameon: false
+
+  layout:
+    left: 0.10
+    right: 0.97
+    bottom: 0.13
+    top: 0.86
+
+seasonal_increment_wet_dry:
+  enabled: true
+
+  output:
+    filename: "Fig05_wet_dry_season_increment_comparison_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  title:
+    main: "Seasonal SMAP analysis increments in 2016"
+    subtitle: "Analysis − forecast | DA-noCDF-noIRR experiment"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+    suptitle_y: 0.965
+    subtitle_pad: 8
+
+  seasons:
+    wet:
+      label: "Wet season"
+      months: ["Nov", "Dec", "Jan", "Feb", "Mar", "Apr"]
+    dry:
+      label: "Dry season"
+      months: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"]
+
+  panel_titles:
+    wet: "(a) Wet season"
+    dry: "(b) Dry season"
+    fontsize: 10
+    fontweight: "bold"
+    pad: 6
+
+  display:
+    scale_factor: 1000.0
+    scaled_units: "×10⁻³ m³ m⁻³"
+
+  colormap:
+    name: "RdBu"
+    reverse: false
+    discrete: true
+    bad_color: "lightgrey"
+    background_color: "0.92"
+
+  colorbar:
+    label: "SMAP analysis increment (×10⁻³ m³ m⁻³)"
+    bounds: [-2.5, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0, 2.5]
+    ticks: [-2.5, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0, 2.5]
+    tick_format: "%.1f"
+    extend: "both"
+    orientation: "vertical"
+    location: "right"
+    width: 0.016
+    pad: 0.012
+    align_to_panel_height: true
+    label_fontsize: 11
+    tick_fontsize: 9
+
+  statistics:
+    enabled: true
+    print_to_terminal: true
+    show_annotation_boxes: false
+
+  annotation:
+    enabled: false
+
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.55
+    coastline_color: "0.2"
+    border_linewidth: 0.35
+    border_color: "0.35"
+
+  gridlines:
+    enabled: true
+    linewidth: 0.18
+    linestyle: "--"
+    color: "0.55"
+    alpha: 0.22
+    label_fontsize: 9
+
+  layout:
+    left: 0.05
+    right: 0.88
+    bottom: 0.08
+    top: 0.86
+    wspace: 0.06
+
+spread_diagnostics_consistency_check:
+  enabled: true
+
+  output:
+    filename: "Fig06_spread_diagnostics_consistency_check_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  title:
+    main: "Spread diagnostic consistency check"
+    subtitle: "forecast_sigma_01 and ensspread are not directly comparable | DA-noCDF-noIRR experiment"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+
+  variables:
+    forecast_sigma:
+      source: "innov"
+      name: "forecast_sigma_01"
+      interpretation: "Observation-space forecast variance/uncertainty at assimilated SMAP locations"
+    ensspread:
+      source: "spread"
+      name: "ensspread_Soil Moisture Layer 1_01"
+      interpretation: "Model-state ensemble spread snapshot for Soil Moisture Layer 1"
+
+  panel_titles:
+    forecast_sigma:
+      main: "(a) forecast_sigma_01 valid mask"
+      subtitle: "Observation-space diagnostic at assimilated SMAP locations"
+    ensspread:
+      main: "(b) ensspread valid mask"
+      subtitle: "Model-state spread snapshot on LIS land mask"
+    mask_difference:
+      main: "(c) Mask difference"
+      subtitle: "Common versus diagnostic-specific valid cells"
+    main_fontsize: 10
+    subtitle_fontsize: 8
+    main_fontweight: "bold"
+
+  categories:
+    invalid_both:
+      label: "Invalid both"
+      color: "#E0E0E0"
+    valid_both:
+      label: "Common valid"
+      color: "#1B9E77"
+    forecast_sigma_only:
+      label: "forecast_sigma only"
+      color: "#D95F02"
+    ensspread_only:
+      label: "ensspread only"
+      color: "#377EB8"
+
+  mask_panels:
+    invalid_color: "#E0E0E0"
+    valid_color: "#1B9E77"
+
+  statistics_box:
+    enabled: true
+    fontsize: 8
+    content:
+      - "forecast_sigma valid = {n_forecast_sigma_valid} cells"
+      - "ensspread valid = {n_ensspread_valid} cells"
+      - "common valid = {n_common_valid} cells"
+      - "forecast_sigma only = {n_forecast_sigma_only} cells"
+      - "ensspread only = {n_ensspread_only} cells"
+      - "Not a spread-reduction diagnostic"
+
+  layout:
+    figure_width: 14
+    figure_height: 5.5
+    left: 0.04
+    right: 0.98
+    bottom: 0.15
+    top: 0.82
+    wspace: 0.08
+
+  map:
+    coastline_linewidth: 0.6
+    coastline_color: "0.2"
+    border_linewidth: 0.35
+    border_color: "0.35"
+
+  gridlines:
+    enabled: true
+    linewidth: 0.18
+    linestyle: "--"
+    color: "0.55"
+    alpha: 0.20
+
+prior_posterior_spread_comparison:
+  enabled: true
+  output:
+    filename: "Fig07_spread_related_diagnostics_obsspace_vs_state_DA-noCDF-noIRR_2016.png"
+    dpi: 300
+    bbox_inches: "tight"
+
+  scientific_context:
+    use_common_mask: true
+    compute_sqrt_forecast_sigma: true
+    compute_spread_reduction: false
+    diagnostics_directly_comparable: false
+
+  title:
+    main: "Spread-related diagnostic comparison in 2016"
+    subtitle: "Common valid mask | diagnostics shown in different physical spaces"
+    main_fontsize: 13
+    subtitle_fontsize: 10
+    main_fontweight: "bold"
+
+  colorbar_mode: "independent_physical"
+
+  colormap:
+    name: "YlOrBr"
+    discrete: true
+    bad_color: "lightgrey"
+    background_color: "0.92"
+
+  forecast_colorbar:
+    label: "Forecast uncertainty (×10⁻³ m³ m⁻³)"
+    bounds: [0, 10, 20, 30, 40, 50, 60, 70]
+    ticks: [0, 10, 20, 30, 40, 50, 60, 70]
+
+  ensspread_colorbar:
+    label: "Model-state spread (×10⁻³ m³ m⁻³)"
+    bounds: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
+    ticks: [0, 1, 2, 3, 4]
+
+  histograms:
+    use_percentage: true
+    bins: 60
+    forecast_xlim: [0, 70]
+    ensspread_xlim: [0, 5]
+    show_mean: true
+    show_median: false
+    show_p95: true
+
+  summary_barplot:
+    enabled: true
+    metrics: ["Mean", "Median", "P95"]
+    yscale: "log"
+    ylabel: "Value (×10⁻³ m³ m⁻³, log scale)"
+    note: "Log scale; diagnostics are not directly equivalent"
+
+  note:
+    text: "Both diagnostics are evaluated on the same valid grid cells. However, forecast_sigma_01 is an observation-space uncertainty diagnostic, while ensspread is a model-state spread snapshot. Values should not be interpreted as prior/posterior spread reduction."
+    fontsize: 8
+    color: "0.25"
+
+  layout:
+    figure_width: 15
+    figure_height: 8.5
+    nrows: 2
+    ncols: 3
+    width_ratios: [1.0, 1.0, 0.75]
+    height_ratios: [1.0, 0.85]
+    left: 0.05
+    right: 0.97
+    bottom: 0.08
+    top: 0.88
+    wspace: 0.25
+    hspace: 0.35
+    
+  map:
+    coastline_linewidth: 0.6
+    coastline_color: "0.2"
+    border_linewidth: 0.35
+    border_color: "0.35"
+    bad_color: "#E0E0E0"
+
+  gridlines:
+    enabled: true
+    linewidth: 0.15
+    linestyle: "--"
+    color: "0.55"
+    alpha: 0.18
