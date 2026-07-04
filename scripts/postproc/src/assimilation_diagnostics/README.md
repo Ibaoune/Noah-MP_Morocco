@@ -1,46 +1,70 @@
-# Assimilation diagnostics post-processing
+# Assimilation Diagnostics Post-Processing
 
-This module generates diagnostic figures for the 2016 SMAP assimilation experiment.
+This module generates publication-ready diagnostic figures for the 2016 SMAP assimilation experiment. It systematically extracts, computes, and plots several metrics to evaluate the performance and physical impact of the Data Assimilation (DA) system.
 
-## Scientific purpose
+## Diagnostic Metrics & Interpretation
 
-The diagnostics are used to verify:
-- where SMAP observations were assimilated;
-- the observation footprint;
-- the sign and magnitude of innovations;
-- the sign and magnitude of analysis increments;
-- the consistency of diagnostic variables before interpretation.
+### 1. Assimilation Coverage & Frequency (`Fig02`)
+- **Files used**: `*innov.a01.d01.nc`
+- **Variables**: `obs_01` (SMAP observations)
+- **Metrics computed**:
+  - **Spatial Assimilation Frequency**: The ratio of days where a valid observation was assimilated at a given grid cell, relative to the total number of days in the period (expressed in `obs d⁻¹`).
+  - **Monthly Total Observations**: The domain-integrated count of assimilated observations for each month.
+- **Interpretation**: Identifies the spatial distribution of the SMAP satellite swaths and highlights potential observational gaps (e.g., due to dense vegetation, freezing, or orbital patterns). The monthly totals highlight temporal variations in data availability across the year.
 
-## Important note on spread diagnostics
+### 2. Innovations and Increments (`Fig04`)
+- **Files used**: `*innov.a01.d01.nc` and `*EnKF_incr*.nc`
+- **Variables**: `innov_01` (observation-space innovations) and `SoilMoist_inst` at Layer 1 (model-state increments).
+- **Metrics computed**:
+  - **Mean Innovation**: Time-averaged difference between the observation and the model forecast prior ($y - H(x^f)$). A positive value indicates the satellite observation is systematically wetter than the model forecast.
+  - **Mean Increment**: Time-averaged update applied to the model state ($x^a - x^f$). A positive value indicates the assimilation systematically adds water to the model soil moisture.
+  - **Increment Distribution**: Histogram of all daily increment values across the domain.
+- **Interpretation**: Evaluates the systematic biases being corrected by the assimilation. It reveals regional patterns where the land surface model is consistently too dry (requiring positive increments) or too wet (requiring negative increments) compared to the SMAP baseline.
 
-The variables forecast_sigma_01 and ensspread_Soil Moisture Layer 1_01 are not directly comparable.
+### 3. Seasonal Increments (`Fig05`)
+- **Files used**: `*EnKF_incr*.nc`
+- **Variables**: `SoilMoist_inst` at Layer 1.
+- **Metrics computed**:
+  - **Wet Season Increment**: Mean increment during the hydrologically wet months (November–April).
+  - **Dry Season Increment**: Mean increment during the hydrologically dry months (May–October).
+- **Interpretation**: Investigates seasonal biases in the land surface model. It reveals if the model dries out too quickly in summer or drains too slowly in winter, and demonstrates how the DA system compensates for these seasonal dynamics.
 
-forecast_sigma_01 is read from LIS innovation files. It represents a forecast variance or uncertainty diagnostic in observation space and is only available at assimilated SMAP observation locations.
+### 4. Spread & Uncertainty Diagnostics (`Fig06` & `Fig07`)
+- **Files used**: `*innov.a01.d01.nc` and `*EnKF_spread*.nc`
+- **Variables**: `forecast_sigma_01` (forecast uncertainty) and `ensspread_Soil Moisture Layer 1_01` (model-state ensemble spread).
+- **Metrics computed**:
+  - **Valid Mask Consistency**: Compares the spatial coverage of both diagnostics.
+  - **Forecast Uncertainty (obs space)**: Uncertainty mapped specifically at assimilated observation locations.
+  - **Model-State Spread (state space)**: Ensemble spread snapshot at daily output times over the entire LIS land mask.
+- **Important Interpretation Note**: These two variables **are not directly comparable** and must not be interpreted as a prior/posterior spread reduction pair. They differ in physical space (observation vs. model-state), spatial support (satellite footprint vs. full mask), and timing (assimilation times vs. daily snapshots). The diagnostics simply verify their spatial coverage consistency and their independent statistical distributions.
 
-ensspread_Soil Moisture Layer 1_01 is read from LIS spread files. It represents a model-state ensemble spread snapshot for Soil Moisture Layer 1, written on the LIS land mask at daily output times.
+---
 
-Because these diagnostics differ in:
-- physical space: observation space versus model-state space;
-- spatial support: assimilated observation footprint versus full LIS land mask;
-- timing: assimilation times versus daily snapshots;
-- diagnostic meaning: forecast variance/uncertainty versus model-state ensemble spread;
+## Configuration Architecture
 
-they must not be interpreted as a prior/posterior spread pair.
+The module uses a robust **3-level configuration architecture** to ensure reproducibility, allow easy tuning, and avoid parameter duplication:
 
-Therefore, the module does not compute or plot spread reduction from these two variables.
+1. **`configs/global.yaml`**: Contains common paths, default plotting options (e.g., DPI, fonts, margins), and map styling (coastlines, borders).
+2. **`configs/experiments/*.yaml`**: Contains experiment-specific parameters such as the experiment name, analysis period, and input directories.
+3. **`configs/diagnostics/*.yaml`**: Each file (`coverage.yaml`, `innovations.yaml`, etc.) contains purely diagnostic-specific parameters like panel layout, colorbars, bounds, titles, and target output filenames.
 
-## Figure 08
+At execution, `main.py` automatically merges the global config, the selected experiment config, and the specific diagnostic configs.
 
-Figure 08 is a consistency-check diagnostic showing that forecast_sigma_01 and ensspread_Soil Moisture Layer 1_01 differ in physical space, spatial support, and timing. It must not be interpreted as a prior/posterior spread-reduction diagnostic.
+## Execution
 
-## Configuration
+You can execute all diagnostics for an experiment simultaneously, or just a specific module.
 
-All plotting options are controlled by:
-config_assimilation_diagnostics.yaml
+**Run all diagnostics:**
+```bash
+python main.py --experiment configs/experiments/DA-noCDF-noIRR_2016.yaml --all
+```
 
-The Python source code should not contain hard-coded figure titles, colorbar limits, colormaps, or output names.
+**Run a single diagnostic (e.g., coverage):**
+```bash
+python main.py --experiment configs/experiments/DA-noCDF-noIRR_2016.yaml --diagnostic coverage
+```
 
-## Output policy
-
-Figures 06a, 06b, 07a, and 07b related to separated uncertainty/spread plots are disabled.
-Only the consistency-check figure 08 is kept for this diagnostic family.
+Alternatively, you can submit the job via SLURM on the cluster:
+```bash
+sbatch job_assimilation_diagnostics.sh
+```

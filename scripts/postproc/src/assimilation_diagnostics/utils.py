@@ -88,3 +88,14 @@ def get_lis_files(base_dir, start_date, end_date, file_pattern="LIS_HIST_*.nc", 
         curr_date += timedelta(days=1)
         
     return sorted(list(set(files)))
+
+def deep_merge_dicts(dict1, dict2):
+    """
+    Recursively merges dict2 into dict1.
+    """
+    for key, value in dict2.items():
+        if isinstance(value, dict) and key in dict1 and isinstance(dict1[key], dict):
+            deep_merge_dicts(dict1[key], value)
+        else:
+            dict1[key] = value
+    return dict1

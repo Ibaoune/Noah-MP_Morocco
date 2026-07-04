@@ -1,0 +1,93 @@
+/home/mohammad.elaabaribao/.conda/envs/postproc_env/lib/python3.11/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/home/mohammad.elaabaribao/.conda/envs/postproc_env/lib/python3.11/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/assimilation_diagnostics/diagnostics/diag_innovations.py:89: RuntimeWarning: invalid value encountered in divide
+  mean_innov = np.where(counts_innov > 0, innov_sum / counts_innov, np.nan)
+/srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/assimilation_diagnostics/diagnostics/diag_innovations.py:90: RuntimeWarning: invalid value encountered in divide
+  mean_incr = np.where(counts_incr > 0, incr_sum / counts_incr, np.nan)
+/home/mohammad.elaabaribao/.conda/envs/postproc_env/lib/python3.11/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/home/mohammad.elaabaribao/.conda/envs/postproc_env/lib/python3.11/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/assimilation_diagnostics/diagnostics/diag_seasonal_increments.py:81: RuntimeWarning: invalid value encountered in divide
+  mean_incr_wet = np.where(counts_incr_wet > 0, incr_sum_wet / counts_incr_wet, np.nan)
+/srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/assimilation_diagnostics/diagnostics/diag_seasonal_increments.py:82: RuntimeWarning: invalid value encountered in divide
+  mean_incr_dry = np.where(counts_incr_dry > 0, incr_sum_dry / counts_incr_dry, np.nan)
+/home/mohammad.elaabaribao/.conda/envs/postproc_env/lib/python3.11/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/home/mohammad.elaabaribao/.conda/envs/postproc_env/lib/python3.11/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/assimilation_diagnostics/diagnostics/diag_spread.py:56: RuntimeWarning: invalid value encountered in divide
+  data_raw = np.where(counts_spread > 0, spread_sum / counts_spread, np.nan)
+/srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/assimilation_diagnostics/diagnostics/diag_spread.py:125: RuntimeWarning: invalid value encountered in divide
+  post_raw = np.where(post_counts > 0, post_spread_sum / post_counts, np.nan)
+/home/mohammad.elaabaribao/.conda/envs/postproc_env/lib/python3.11/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/home/mohammad.elaabaribao/.conda/envs/postproc_env/lib/python3.11/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+Output directory ready: /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/figures/matrix_2016/assimilation_diagnostics
+
+--- Running diagnostic: coverage ---
+Running coverage diagnostics...
+Data min: 3.0, max: 268.0
+Valid cells: 14250, NaN cells: 7651
+Variable: assim_freq_plot
+Data min: 0.00819672131147541, max: 0.73224043715847
+Valid cells: 14250, NaN cells: 7651
+Variable: monthly_totals
+Monthly totals (raw): [np.float64(133312.0), np.float64(108931.0), np.float64(112538.0), np.float64(104784.0), np.float64(121805.0), np.float64(101141.0), np.float64(129171.0), np.float64(145111.0), np.float64(125046.0), np.float64(151513.0), np.float64(136908.0), np.float64(145153.0)]
+Monthly min: 101141.0, max: 151513.0
+Monthly mean: 126284.41666666667
+Annual sum: 1515413.0
+
+--- Running diagnostic: innovations ---
+Running innovation and increment diagnostics...
+Variable: mean_innov
+Data min: -0.07681944800747766, max: 0.06133425235748291
+Spatial mean: -0.010901147295115892, median: -0.009538277862495814
+Valid cells: 14250, NaN cells: 7651
+Positive innovation (observation wetter than model): 16.5%
+Negative innovation (observation drier than model): 83.5%
+Variable: mean_incr
+Data min (raw): -0.004695521758980773, max (raw): 0.005079834375603734
+Spatial mean (raw): -0.00039489047428388393, median (raw): -0.0003703096631698862
+Valid cells: 16030, NaN cells: 5871
+Positive increment (assimilation wets model): 12.3%
+Negative increment (assimilation dries model): 76.6%
+Variable: all_incr_values
+Total values: 15132320
+NaN: 0, Inf: 0, Exact zeros: 13616907
+Fraction of exact zeros: 90.0%
+Raw Min: -0.1326330602169037, Max: 0.21743226051330566
+Raw Mean: -0.0003948904341086745, Median: 0.0, Std: 0.006854768376797438
+Percentiles - P1: -0.028910716995596886, P5: -0.0028032190166413784, P50: 0.0, P95: 0.0, P99: 0.015642812475562096
+
+--- Running diagnostic: seasonal_increments ---
+Running seasonal increments diagnostics...
+Variable: mean_incr_wet
+Wet months used: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr']
+Data min (raw): -0.004995523069699775, max (raw): 0.005365011595618457
+Spatial mean (raw): -0.0006099583052443297, median (raw): -0.0005635881358582262
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 8.8%
+Negative increment: 80.0%
+Variable: mean_incr_dry
+Dry months used: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+Data min (raw): -0.004741800345416489, max (raw): 0.006591862372358533
+Spatial mean (raw): -0.00017428441591673137, median (raw): -0.00013393502198861683
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 26.4%
+Negative increment: 62.4%
+
+--- Running diagnostic: spread ---
+
+Running spread diagnostics consistency check...
+WARNING: forecast_sigma_01 and ensspread_Soil Moisture Layer 1_01 are not directly comparable. Only a diagnostic consistency-check figure is generated.
+
+Spread diagnostics consistency check completed. Figure saved: /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/figures/matrix_2016/assimilation_diagnostics/Fig06_spread_diagnostics_consistency_check_DA-noCDF-noIRR_2016.png
+
+Running prior_posterior_spread_comparison...
+Spread comparative figure completed. Figure saved: /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/figures/matrix_2016/assimilation_diagnostics/Fig07_spread_related_diagnostics_obsspace_vs_state_DA-noCDF-noIRR_2016.png
+
+Assimilation Diagnostics module completed successfully!

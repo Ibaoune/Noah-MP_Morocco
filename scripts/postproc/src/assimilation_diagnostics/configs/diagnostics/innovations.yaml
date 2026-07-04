@@ -1,0 +1,277 @@
+mean_innovation_map:
+  enabled: true
+  output:
+    filename: Fig04a_mean_innovation_observation_space_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  title:
+    main: Mean SMAP innovation in 2016
+    subtitle: Observation − forecast | DA-noCDF-noIRR experiment
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+    suptitle_y: 0.965
+    subtitle_pad: 8
+  display:
+    scale_factor: 1000.0
+    scaled_units: ×10⁻³ m³ m⁻³
+  colormap:
+    name: RdBu_r
+    reverse: true
+    discrete: true
+    bad_color: lightgrey
+    background_color: '0.92'
+  colorbar:
+    label: SMAP innovation (×10⁻³ m³ m⁻³)
+    bounds:
+    - -50
+    - -40
+    - -30
+    - -20
+    - -10
+    - 0
+    - 10
+    - 20
+    - 30
+    - 40
+    - 50
+    ticks:
+    - -50
+    - -40
+    - -30
+    - -20
+    - -10
+    - 0
+    - 10
+    - 20
+    - 30
+    - 40
+    - 50
+    tick_format: '%.0f'
+    extend: both
+    orientation: vertical
+    location: right
+    width: 0.018
+    pad: 0.012
+    align_to_map_height: true
+    label_fontsize: 10
+    tick_fontsize: 9
+  annotation:
+    enabled: false
+
+      Min = {data_min:.3f}
+
+      Max = {data_max:.3f}'
+    lon: -9.95
+    lat: 35.55
+    fontsize: 8
+    ha: left
+    va: top
+    facecolor: white
+    edgecolor: '0.4'
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: round,pad=0.25
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.6
+    coastline_color: '0.2'
+    border_linewidth: 0.35
+    border_color: '0.35'
+  gridlines:
+    enabled: true
+    linewidth: 0.2
+    linestyle: --
+    color: '0.55'
+    alpha: 0.25
+    label_fontsize: 9
+  layout:
+    left: 0.07
+    right: 0.88
+    bottom: 0.08
+    top: 0.86
+mean_increment_map:
+  enabled: true
+  output:
+    filename: Fig04b_mean_soil_moisture_increment_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  title:
+    main: Mean SMAP analysis increment in 2016
+    subtitle: Analysis − forecast | DA-noCDF-noIRR experiment
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+    suptitle_y: 0.965
+    subtitle_pad: 8
+  display:
+    scale_factor: 1000.0
+    scaled_units: ×10⁻³ m³ m⁻³
+  colormap:
+    name: RdBu
+    reverse: false
+    discrete: true
+    bad_color: lightgrey
+    background_color: '0.92'
+  colorbar:
+    label: SMAP analysis increment (×10⁻³ m³ m⁻³)
+    bounds:
+    - -5.0
+    - -4.0
+    - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 4.0
+    - 5.0
+    ticks:
+    - -5.0
+    - -4.0
+    - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 4.0
+    - 5.0
+    tick_format: '%.1f'
+    extend: both
+    orientation: vertical
+    location: right
+    width: 0.018
+    pad: 0.012
+    align_to_map_height: true
+    label_fontsize: 10
+    tick_fontsize: 9
+  annotation:
+    enabled: false
+    text_template: 'Mean = {data_mean_scaled:.2f} ×10⁻³
+
+      Min = {data_min_scaled:.2f}
+
+      Max = {data_max_scaled:.2f}'
+    lon: -9.95
+    lat: 35.55
+    fontsize: 8
+    ha: left
+    va: top
+    facecolor: white
+    edgecolor: '0.4'
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: round,pad=0.25
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.6
+    coastline_color: '0.2'
+    border_linewidth: 0.35
+    border_color: '0.35'
+  gridlines:
+    enabled: true
+    linewidth: 0.2
+    linestyle: --
+    color: '0.55'
+    alpha: 0.25
+    label_fontsize: 9
+  layout:
+    left: 0.07
+    right: 0.88
+    bottom: 0.08
+    top: 0.86
+increment_histogram:
+  enabled: true
+  output:
+    filename: Fig04c_soil_moisture_increment_distribution_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  title:
+    main: Distribution of SMAP analysis increments in 2016
+    subtitle: Analysis − forecast | DA-noCDF-noIRR experiment
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+  data_filtering:
+    remove_nan: true
+    remove_inf: true
+    exclude_exact_zero: true
+    zero_tolerance: 1.0e-10
+    use_quantile_xlim: true
+    lower_quantile: 0.005
+    upper_quantile: 0.995
+  display:
+    scale_factor: 1000.0
+    scaled_units: ×10⁻³ m³ m⁻³
+    use_percentage: true
+    y_log_scale: false
+  histogram:
+    bins: 80
+    color: '#8EC7DA'
+    edgecolor: '0.25'
+    linewidth: 0.5
+    alpha: 0.9
+  axes:
+    xlabel: SMAP analysis increment (×10⁻³ m³ m⁻³)
+    ylabel: Frequency (%)
+    xlabel_fontsize: 11
+    ylabel_fontsize: 11
+    tick_fontsize: 10
+    x_symmetric: true
+    x_limit_abs: null
+  reference_lines:
+    zero_line:
+      enabled: true
+      color: '0.15'
+      linestyle: '-'
+      linewidth: 1.0
+      label: Zero
+    mean_line:
+      enabled: true
+      color: '#B2182B'
+      linestyle: --
+      linewidth: 1.2
+      label: Mean
+    median_line:
+      enabled: true
+      color: '#2166AC'
+      linestyle: ':'
+      linewidth: 1.4
+      label: Median
+  statistics_box:
+    enabled: false
+    location: upper right
+    fontsize: 8
+    facecolor: white
+    edgecolor: '0.4'
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: round,pad=0.30
+    content:
+    - N = {n_valid}
+    - Zero fraction = {zero_fraction:.1f}%
+    - Mean = {mean_scaled:.2f} ×10⁻³
+    - Median = {median_scaled:.2f} ×10⁻³
+    - P5–P95 = [{p5_scaled:.2f}, {p95_scaled:.2f}]
+  grid:
+    enabled: true
+    axis: y
+    linestyle: --
+    linewidth: 0.5
+    color: '0.75'
+    alpha: 0.6
+  legend:
+    enabled: true
+    location: upper left
+    fontsize: 8
+    frameon: false
+  layout:
+    left: 0.1
+    right: 0.97
+    bottom: 0.13
+    top: 0.86

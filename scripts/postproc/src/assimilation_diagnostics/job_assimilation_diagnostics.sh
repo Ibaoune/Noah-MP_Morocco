@@ -17,4 +17,4 @@ conda activate postproc_env || true
 # SLURM runs the job in the submission directory by default
 # No need to cd if we submit from the correct directory
 
-python main.py --config config_assimilation_diagnostics.yaml
+python main.py --experiment configs/experiments/DA-noCDF-noIRR_2016.yaml --all

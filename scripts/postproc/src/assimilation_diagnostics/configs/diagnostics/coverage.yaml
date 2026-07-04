@@ -1,0 +1,223 @@
+assimilation_observations_map:
+  enabled: true
+  output:
+    filename: Fig01_smap_assimilated_observation_count_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  title:
+    main: Assimilated SMAP observations in 2016
+    subtitle: DA-noCDF-noIRR experiment | January–December 2016
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+    pad: 8
+  colormap:
+    name: YlGnBu
+    discrete: true
+    bad_color: lightgrey
+    background_color: '0.92'
+  colorbar:
+    label: Assimilated SMAP observations
+    bounds:
+    - 0
+    - 25
+    - 50
+    - 75
+    - 100
+    - 125
+    - 150
+    - 175
+    - 200
+    - 225
+    - 250
+    - 275
+    ticks:
+    - 0
+    - 50
+    - 100
+    - 150
+    - 200
+    - 250
+    - 275
+    extend: neither
+    orientation: vertical
+    location: right
+    width: 0.015
+    pad: 0.015
+    shrink: 0.85
+    align_to_map_height: true
+    label_fontsize: 11
+    tick_fontsize: 9
+  annotation:
+    enabled: true
+    text_template: Max = {data_max:.0f} obs
+    lon: -9.9
+    lat: 35.6
+    fontsize: 8
+    ha: left
+    va: top
+    facecolor: white
+    edgecolor: '0.4'
+    linewidth: 0.5
+    alpha: 0.85
+    boxstyle: round,pad=0.25
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.6
+    coastline_color: '0.2'
+    border_linewidth: 0.4
+    border_color: '0.35'
+  gridlines:
+    enabled: true
+    linewidth: 0.25
+    linestyle: --
+    color: '0.55'
+    alpha: 0.3
+    label_fontsize: 9
+  layout:
+    left: 0.07
+    right: 0.88
+    bottom: 0.08
+    top: 0.88
+assimilation_frequency_map:
+  enabled: true
+  output:
+    filename: Fig02_smap_assimilation_frequency_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  title:
+    main: SMAP assimilation coverage in 2016
+    subtitle: ""
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+    suptitle_y: 0.965
+    subtitle_pad: 8
+  panel_titles:
+    main: "(a) Spatial assimilation frequency"
+    main_fontsize: 11
+  colormap:
+    name: YlOrRd
+    discrete: true
+    bad_color: '#F0F0F0'
+    background_color: '0.92'
+  colorbar:
+    label: Assimilation frequency (obs d⁻¹)
+    bounds:
+    - 0.0
+    - 0.05
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    ticks:
+    - 0.0
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    tick_format: '%.2f'
+    extend: max
+    orientation: horizontal
+    location: right
+    width: 0.018
+    pad: 0.012
+    align_to_map_height: true
+    label_fontsize: 10
+    tick_fontsize: 9
+  annotation:
+    enabled: true
+    text_template: "Max: {data_max:.2f} obs d⁻¹"
+    lon: -9.9
+    lat: 35.6
+    fontsize: 8
+    ha: left
+    va: top
+    facecolor: white
+    edgecolor: none
+    linewidth: 0.0
+    alpha: 0.85
+    boxstyle: round,pad=0.25
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.4
+    coastline_color: '0.3'
+    border_linewidth: 0.25
+    border_color: '0.4'
+  gridlines:
+    enabled: true
+    linewidth: 0.15
+    linestyle: --
+    color: '0.7'
+    alpha: 0.15
+    label_fontsize: 8
+  layout:
+    left: 0.07
+    right: 0.88
+    bottom: 0.08
+    top: 0.86
+monthly_total_assimilated_obs:
+  enabled: true
+  output:
+    filename: Fig03_monthly_assimilated_observations_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  title:
+    main: ""
+    subtitle: ""
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+    suptitle_y: 0.965
+    subtitle_pad: 8
+  panel_titles:
+    main: "(b) Monthly assimilated observations"
+    main_fontsize: 11
+  axes:
+    xlabel: Month
+    ylabel: Assimilated SMAP observations (×10³)
+    xlabel_fontsize: 11
+    ylabel_fontsize: 11
+    tick_fontsize: 10
+    y_scale_factor: 1000
+    y_min: 0
+    y_max: 160
+    y_tick_interval: 20
+  bars:
+    color: '#899BAA'
+    edgecolor: '0.3'
+    linewidth: 0.6
+    width: 0.72
+    alpha: 0.95
+  grid:
+    enabled: true
+    axis: y
+    linestyle: --
+    linewidth: 0.6
+    color: '0.75'
+    alpha: 0.7
+  mean_line:
+    enabled: true
+    color: '0.3'
+    linestyle: --
+    linewidth: 1.0
+    label: 2016 monthly mean
+  annotations:
+    show_values: false
+    show_min_max: false
+    fontsize: 8
+  layout:
+    left: 0.1
+    right: 0.97
+    bottom: 0.14
+    top: 0.86

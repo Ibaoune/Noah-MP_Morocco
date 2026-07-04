@@ -1,0 +1,47 @@
+# ==========================================
+# CONFIGURATION: GLOBAL
+# ==========================================
+
+# 1. Project Global Paths
+# Provide absolute paths or paths relative to the execution directory
+project_root: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+output_dir: "scripts/postproc/figures/matrix_2016/assimilation_diagnostics"
+
+# 2. Common plotting settings
+# Default values for maps and gridlines, can be overridden by specific diagnostics.
+
+title:
+  main_fontsize: 14
+  subtitle_fontsize: 11
+  main_fontweight: normal
+  pad: 8
+
+panel_titles:
+  main_fontsize: 11
+  subtitle_fontsize: 11
+  main_fontweight: normal
+
+axes:
+  xlabel_fontsize: 11
+  ylabel_fontsize: 11
+  tick_fontsize: 9
+
+colorbar:
+  label_fontsize: 10
+  tick_fontsize: 9
+
+map:
+  keep_original_extent: true
+  keep_original_projection: true
+  coastline_linewidth: 0.6
+  coastline_color: "0.2"
+  border_linewidth: 0.35
+  border_color: "0.35"
+
+gridlines:
+  enabled: true
+  linewidth: 0.20
+  linestyle: "--"
+  color: "0.55"
+  alpha: 0.25
+  label_fontsize: 9

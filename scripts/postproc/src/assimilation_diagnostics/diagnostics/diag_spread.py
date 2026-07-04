@@ -169,7 +169,7 @@ def plot_spread_diagnostics_consistency_check(config, out_dir, data_raw, post_ra
     
     map_cfg = cfg.get("map", {})
     gl_cfg = cfg.get("gridlines", {})
-    for ax in [ax1, ax2, ax3]:
+    for i, ax in enumerate([ax1, ax2, ax3]):
         add_map_features(ax, map_cfg=map_cfg, gl_cfg=gl_cfg)
         ax.set_xticks([-9, -7.5, -6, -4.5, -3, -1.5], crs=ccrs.PlateCarree())
         ax.set_yticks([30, 31, 32, 33, 34, 35, 36], crs=ccrs.PlateCarree())
@@ -178,6 +178,8 @@ def plot_spread_diagnostics_consistency_check(config, out_dir, data_raw, post_ra
         ax.xaxis.set_major_formatter(lon_formatter)
         ax.yaxis.set_major_formatter(lat_formatter)
         ax.tick_params(axis='both', labelsize=8)
+        if i > 0:
+            ax.set_yticklabels([])
         
     p_tcfg = cfg.get("panel_titles", {})
     pt_fs = p_tcfg.get("main_fontsize", 10)
@@ -216,14 +218,18 @@ def plot_spread_diagnostics_consistency_check(config, out_dir, data_raw, post_ra
     ]
     ax3.legend(handles=legend_elements, loc='lower center', bbox_to_anchor=(0.5, -0.35), ncol=2, frameon=False, fontsize=9)
     
+    n_p = np.sum(prior_valid_mask)
+    n_pos = np.sum(posterior_valid_mask)
+    n_com = np.sum(common_valid_mask)
+    n_po = np.sum(prior_only_mask)
+    n_poso = np.sum(posterior_only_mask)
+    
+    print(f"forecast_sigma valid = {n_p} cells")
+    print(f"ensspread valid = {n_pos} cells")
+    print(f"common valid = {n_com} cells")
+    
     sb_cfg = cfg.get("statistics_box", {})
     if sb_cfg.get("enabled", True):
-        n_p = np.sum(prior_valid_mask)
-        n_pos = np.sum(posterior_valid_mask)
-        n_com = np.sum(common_valid_mask)
-        n_po = np.sum(prior_only_mask)
-        n_poso = np.sum(posterior_only_mask)
-        
         box_text = "\n".join([line.format(
             n_forecast_sigma_valid=n_p,
             n_ensspread_valid=n_pos,
@@ -331,12 +337,12 @@ def plot_prior_posterior_spread_comparison(config, out_dir, data_raw, post_raw, 
     # ---------------------------
     fc_bounds = [0, 20, 30, 40, 45, 50, 55, 60, 70]
     cmap1 = plt.get_cmap("YlOrBr", len(fc_bounds) - 1).copy()
-    cmap1.set_bad(color="none")
+    cmap1.set_bad(color="#F0F0F0")
     norm1 = mcolors.BoundaryNorm(fc_bounds, ncolors=cmap1.N, clip=True)
     
     es_bounds = [0, 0.5, 1.0, 1.3, 1.6, 1.8, 2.0, 2.5, 3.0, 4.0]
-    cmap2 = plt.get_cmap("Blues", len(es_bounds) - 1).copy()
-    cmap2.set_bad(color="none")
+    cmap2 = plt.get_cmap("YlOrBr", len(es_bounds) - 1).copy()
+    cmap2.set_bad(color="#F0F0F0")
     norm2 = mcolors.BoundaryNorm(es_bounds, ncolors=cmap2.N, clip=True)
     
     cbar_label1 = "Forecast uncertainty (×10⁻³ m³ m⁻³)"
@@ -353,7 +359,7 @@ def plot_prior_posterior_spread_comparison(config, out_dir, data_raw, post_raw, 
     # ---------------------------
     # Panel (b)
     # ---------------------------
-    ax2.set_title("(b) Model-state ensemble spread", fontsize=11)
+    ax2.set_title("(b) Model-state spread", fontsize=11)
     pcm2 = ax2.pcolormesh(lon, lat, ensspread_plot_masked, cmap=cmap2, norm=norm2, transform=ccrs.PlateCarree())
     
     fig.canvas.draw()
@@ -365,14 +371,14 @@ def plot_prior_posterior_spread_comparison(config, out_dir, data_raw, post_raw, 
     cax1 = fig.add_axes([pos1.x1 + cb_pad, pos1.y0, cb_width, pos1.height])
     cbar1 = fig.colorbar(pcm1, cax=cax1, orientation="vertical", extend="max")
     cbar1.set_ticks(cbar_ticks1)
-    cbar1.set_label(cbar_label1, fontsize=9)
+    cbar1.set_label(cbar_label1, fontsize=10)
     cbar1.ax.tick_params(labelsize=8)
     
     pos2 = ax2.get_position()
     cax2 = fig.add_axes([pos2.x1 + cb_pad, pos2.y0, cb_width, pos2.height])
     cbar2 = fig.colorbar(pcm2, cax=cax2, orientation="vertical", extend="max")
     cbar2.set_ticks(cbar_ticks2)
-    cbar2.set_label(cbar_label2, fontsize=9)
+    cbar2.set_label(cbar_label2, fontsize=10)
     cbar2.ax.tick_params(labelsize=8)
     
     # ---------------------------

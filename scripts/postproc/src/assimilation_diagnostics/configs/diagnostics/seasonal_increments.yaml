@@ -1,0 +1,109 @@
+seasonal_increment_wet_dry:
+  enabled: true
+  output:
+    filename: Fig05_wet_dry_season_increment_comparison_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  title:
+    main: Seasonal SMAP analysis increments in 2016
+    subtitle: Analysis − forecast | DA-noCDF-noIRR experiment
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+    suptitle_y: 0.965
+    subtitle_pad: 8
+  seasons:
+    wet:
+      label: Wet season
+      months:
+      - Nov
+      - Dec
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+    dry:
+      label: Dry season
+      months:
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+  panel_titles:
+    wet: (a) Wet season
+    dry: (b) Dry season
+    fontsize: 11
+    fontweight: normal
+    pad: 6
+  display:
+    scale_factor: 1000.0
+    scaled_units: ×10⁻³ m³ m⁻³
+  colormap:
+    name: RdBu
+    reverse: false
+    discrete: true
+    bad_color: '#F0F0F0'
+    background_color: '0.92'
+  colorbar:
+    label: SMAP analysis increment (×10⁻³ m³ m⁻³)
+    bounds:
+    - -2.5
+    - -2.0
+    - -1.5
+    - -1.0
+    - -0.5
+    - 0.0
+    - 0.5
+    - 1.0
+    - 1.5
+    - 2.0
+    - 2.5
+    ticks:
+    - -2.5
+    - -2.0
+    - -1.5
+    - -1.0
+    - -0.5
+    - 0.0
+    - 0.5
+    - 1.0
+    - 1.5
+    - 2.0
+    - 2.5
+    tick_format: '%.1f'
+    extend: both
+    orientation: vertical
+    location: right
+    width: 0.016
+    pad: 0.012
+    align_to_panel_height: true
+    label_fontsize: 10
+    tick_fontsize: 9
+  statistics:
+    enabled: true
+    print_to_terminal: true
+    show_annotation_boxes: false
+  annotation:
+    enabled: false
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.55
+    coastline_color: '0.2'
+    border_linewidth: 0.35
+    border_color: '0.35'
+  gridlines:
+    enabled: true
+    linewidth: 0.18
+    linestyle: --
+    color: '0.55'
+    alpha: 0.22
+    label_fontsize: 9
+  layout:
+    left: 0.05
+    right: 0.88
+    bottom: 0.08
+    top: 0.86
+    wspace: 0.06

@@ -112,6 +112,12 @@ def run_innovations(config, base_dir_da, out_dir):
         raise ValueError(f"Values are suspiciously large (min={data_min1}, max={data_max1}). Not an innovation field.")
         
     cfg1 = config.get("mean_innovation_map", {})
+    scale_factor1 = cfg1.get("display", {}).get("scale_factor", 1000.0)
+    
+    mean_innov_plot = mean_innov * scale_factor1
+    data_min1_plot = data_min1 * scale_factor1
+    data_max1_plot = data_max1 * scale_factor1
+    data_mean1_plot = data_mean1 * scale_factor1
     
     # Layout config
     lcfg1 = cfg1.get("layout", {})
@@ -160,10 +166,10 @@ def run_innovations(config, base_dir_da, out_dir):
     else:
         cmap1 = plt.get_cmap(cmap_name1).copy()
         
-    cmap1.set_bad(color=cm_cfg1.get("bad_color", "lightgrey"))
+    cmap1.set_bad(color=cm_cfg1.get("bad_color", "#F0F0F0"))
     norm1 = mcolors.BoundaryNorm(levels1, ncolors=cmap1.N, clip=True)
     
-    pcm1 = ax1.pcolormesh(lon, lat, mean_innov, cmap=cmap1, norm=norm1, transform=ccrs.PlateCarree())
+    pcm1 = ax1.pcolormesh(lon, lat, mean_innov_plot, cmap=cmap1, norm=norm1, transform=ccrs.PlateCarree())
     
     if cb_cfg1.get("align_to_map_height", True):
         fig1.canvas.draw()
@@ -176,11 +182,11 @@ def run_innovations(config, base_dir_da, out_dir):
             pos1.height
         ])
         
-        if data_min1 < levels1[0] and data_max1 > levels1[-1]:
+        if data_min1_plot < levels1[0] and data_max1_plot > levels1[-1]:
             extend_val1 = "both"
-        elif data_min1 < levels1[0]:
+        elif data_min1_plot < levels1[0]:
             extend_val1 = "min"
-        elif data_max1 > levels1[-1]:
+        elif data_max1_plot > levels1[-1]:
             extend_val1 = "max"
         else:
             extend_val1 = "neither"
@@ -198,13 +204,9 @@ def run_innovations(config, base_dir_da, out_dir):
     # Annotation box
     ann_cfg1 = cfg1.get("annotation", {})
     if ann_cfg1.get("enabled", True):
-        tmpl1 = ann_cfg1.get("text_template", "Mean = {data_mean:.3f} m³ m⁻³\nMin = {data_min:.3f}\nMax = {data_max:.3f}")
-        box_text1 = tmpl1.format(data_mean=data_mean1, data_min=data_min1, data_max=data_max1)
-        props1 = dict(boxstyle=ann_cfg1.get("boxstyle", "round,pad=0.25"), 
-                     facecolor=ann_cfg1.get("facecolor", "white"), 
-                     alpha=ann_cfg1.get("alpha", 0.85), 
-                     edgecolor=ann_cfg1.get("edgecolor", "0.4"),
-                     linewidth=ann_cfg1.get("linewidth", 0.5))
+        tmpl1 = ann_cfg1.get("text_template", "Mean = {data_mean:.3f}\nMin = {data_min:.3f}\nMax = {data_max:.3f}")
+        box_text1 = tmpl1.format(data_mean=data_mean1_plot, data_min=data_min1_plot, data_max=data_max1_plot)
+        props1 = dict(boxstyle="round,pad=0.25", facecolor="white", alpha=0.85, edgecolor="0.4", linewidth=0.5)
         ax1.text(ann_cfg1.get("lon", -9.95), ann_cfg1.get("lat", 35.55), box_text1, 
                  transform=ccrs.PlateCarree(), fontsize=ann_cfg1.get("fontsize", 8), 
                  ha=ann_cfg1.get("ha", "left"), va=ann_cfg1.get("va", "top"), bbox=props1)
@@ -294,7 +296,7 @@ def run_innovations(config, base_dir_da, out_dir):
     if cm_cfg2.get("reverse", False):
         cmap2 = cmap2.reversed()
         
-    cmap2.set_bad(color=cm_cfg2.get("bad_color", "lightgrey"))
+    cmap2.set_bad(color=cm_cfg2.get("bad_color", "#F0F0F0"))
     norm2 = mcolors.BoundaryNorm(levels2, ncolors=cmap2.N, clip=True)
     
     pcm2 = ax2.pcolormesh(lon, lat, mean_incr_plot, cmap=cmap2, norm=norm2, transform=ccrs.PlateCarree())

@@ -1,0 +1,200 @@
+spread_diagnostics_consistency_check:
+  enabled: true
+  output:
+    filename: Fig06_spread_diagnostics_consistency_check_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  title:
+    main: Spread diagnostic consistency check
+    subtitle: forecast_sigma_01 and ensspread are not directly comparable | DA-noCDF-noIRR
+      experiment
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+  variables:
+    forecast_sigma:
+      source: innov
+      name: forecast_sigma_01
+      interpretation: Observation-space forecast variance/uncertainty at assimilated
+        SMAP locations
+    ensspread:
+      source: spread
+      name: ensspread_Soil Moisture Layer 1_01
+      interpretation: Model-state ensemble spread snapshot for Soil Moisture Layer
+        1
+  panel_titles:
+    forecast_sigma:
+      main: (a) forecast_sigma_01 valid mask
+      subtitle: Observation-space diagnostic at assimilated SMAP locations
+    ensspread:
+      main: (b) ensspread valid mask
+      subtitle: Model-state spread snapshot on LIS land mask
+    mask_difference:
+      main: (c) Mask difference
+      subtitle: Common versus diagnostic-specific valid cells
+    main_fontsize: 11
+    subtitle_fontsize: 11
+    main_fontweight: normal
+  categories:
+    invalid_both:
+      label: Invalid both
+      color: '#E0E0E0'
+    valid_both:
+      label: Common valid
+      color: '#1B9E77'
+    forecast_sigma_only:
+      label: forecast_sigma only
+      color: '#D95F02'
+    ensspread_only:
+      label: ensspread only
+      color: '#377EB8'
+  mask_panels:
+    invalid_color: '#E0E0E0'
+    valid_color: '#1B9E77'
+  statistics_box:
+    enabled: false
+    content:
+    - forecast_sigma valid = {n_forecast_sigma_valid} cells
+    - ensspread valid = {n_ensspread_valid} cells
+    - common valid = {n_common_valid} cells
+    - forecast_sigma only = {n_forecast_sigma_only} cells
+    - ensspread only = {n_ensspread_only} cells
+    - Not a spread-reduction diagnostic
+  layout:
+    figure_width: 14
+    figure_height: 5.5
+    left: 0.04
+    right: 0.98
+    bottom: 0.15
+    top: 0.82
+    wspace: 0.08
+  map:
+    coastline_linewidth: 0.6
+    coastline_color: '0.2'
+    border_linewidth: 0.35
+    border_color: '0.35'
+  gridlines:
+    enabled: true
+    linewidth: 0.18
+    linestyle: --
+    color: '0.55'
+    alpha: 0.2
+prior_posterior_spread_comparison:
+  enabled: true
+  output:
+    filename: Fig07_spread_related_diagnostics_obsspace_vs_state_DA-noCDF-noIRR_2016.png
+    dpi: 300
+    bbox_inches: tight
+  scientific_context:
+    use_common_mask: true
+    compute_sqrt_forecast_sigma: true
+    compute_spread_reduction: false
+    diagnostics_directly_comparable: false
+  title:
+    main: Spread-related diagnostic comparison in 2016
+    subtitle: Common valid mask | diagnostics shown in different physical spaces
+    main_fontsize: 14
+    subtitle_fontsize: 11
+    main_fontweight: normal
+  colorbar_mode: independent_physical
+  colormap:
+    name: YlOrBr
+    discrete: true
+    bad_color: '#F0F0F0'
+    background_color: '0.92'
+  forecast_colorbar:
+    label: Forecast uncertainty (×10⁻³ m³ m⁻³)
+    bounds:
+    - 0
+    - 10
+    - 20
+    - 30
+    - 40
+    - 50
+    - 60
+    - 70
+    ticks:
+    - 0
+    - 10
+    - 20
+    - 30
+    - 40
+    - 50
+    - 60
+    - 70
+  ensspread_colorbar:
+    label: Model-state spread (×10⁻³ m³ m⁻³)
+    bounds:
+    - 0
+    - 0.5
+    - 1
+    - 1.5
+    - 2
+    - 2.5
+    - 3
+    - 3.5
+    - 4
+    ticks:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+  histograms:
+    use_percentage: true
+    bins: 60
+    forecast_xlim:
+    - 0
+    - 70
+    ensspread_xlim:
+    - 0
+    - 5
+    show_mean: true
+    show_median: false
+    show_p95: true
+  summary_barplot:
+    enabled: true
+    metrics:
+    - Mean
+    - Median
+    - P95
+    yscale: log
+    ylabel: Value (×10⁻³ m³ m⁻³, log scale)
+    note: Log scale; diagnostics are not directly equivalent
+  note:
+    text: Both diagnostics are evaluated on the same valid grid cells. However, forecast_sigma_01
+      is an observation-space uncertainty diagnostic, while ensspread is a model-state
+      spread snapshot. Values should not be interpreted as prior/posterior spread
+      reduction.
+    fontsize: 8
+    color: '0.25'
+  layout:
+    figure_width: 15
+    figure_height: 8.5
+    nrows: 2
+    ncols: 3
+    width_ratios:
+    - 1.0
+    - 1.0
+    - 0.75
+    height_ratios:
+    - 1.0
+    - 0.85
+    left: 0.05
+    right: 0.97
+    bottom: 0.08
+    top: 0.88
+    wspace: 0.25
+    hspace: 0.35
+  map:
+    coastline_linewidth: 0.6
+    coastline_color: '0.2'
+    border_linewidth: 0.35
+    border_color: '0.35'
+    bad_color: '#F0F0F0'
+  gridlines:
+    enabled: true
+    linewidth: 0.15
+    linestyle: --
+    color: '0.55'
+    alpha: 0.18

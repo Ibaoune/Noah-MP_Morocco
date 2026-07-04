@@ -6,6 +6,7 @@ import netCDF4 as nc
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import matplotlib.gridspec as gridspec
 import cartopy.crs as ccrs
 
 from utils import get_lat_lon, add_map_features, generate_filename
@@ -109,13 +110,22 @@ def run_coverage(config, base_dir_da, out_dir):
     
     # Title
     tcfg = cfg.get("title", {})
-    ax1.set_title(tcfg.get("main", "Assimilated SMAP observations in 2016"), 
-                  fontsize=tcfg.get("main_fontsize", 13), 
-                  fontweight=tcfg.get("main_fontweight", "bold"), 
-                  pad=tcfg.get("pad", 8))
-    ax1.text(0.5, 1.02, tcfg.get("subtitle", "DA-noCDF-noIRR experiment | January–December 2016"), 
-             transform=ax1.transAxes, ha='center', 
-             fontsize=tcfg.get("subtitle_fontsize", 10))
+    if "suptitle_y" in tcfg:
+        fig1.suptitle(tcfg.get("main", "Assimilated SMAP observations in 2016"), 
+                      fontsize=tcfg.get("main_fontsize", 14), 
+                      fontweight=tcfg.get("main_fontweight", "normal"), 
+                      y=tcfg.get("suptitle_y", 0.965))
+        ax1.set_title(tcfg.get("subtitle", "DA-noCDF-noIRR experiment | January–December 2016"), 
+                      fontsize=tcfg.get("subtitle_fontsize", 11), 
+                      pad=tcfg.get("subtitle_pad", 8))
+    else:
+        fig1.suptitle(tcfg.get("main", "Assimilated SMAP observations in 2016"), 
+                      fontsize=tcfg.get("main_fontsize", 14), 
+                      fontweight=tcfg.get("main_fontweight", "normal"), 
+                      y=0.965)
+        ax1.set_title(tcfg.get("subtitle", "DA-noCDF-noIRR experiment | January–December 2016"), 
+                      fontsize=tcfg.get("subtitle_fontsize", 11), 
+                      pad=8)
     
     # Colormap
     cm_cfg = cfg.get("colormap", {})
@@ -178,141 +188,87 @@ def run_coverage(config, base_dir_da, out_dir):
     plt.close(fig1)
     
     # ---------------------------------------------------------
-    # Fig 2: Assimilation Frequency
+    # Fig 2: Assimilation Frequency and Monthly Totals
     # ---------------------------------------------------------
     data_min2 = np.nanmin(assim_freq_plot)
     data_max2 = np.nanmax(assim_freq_plot)
-    valid_cells2 = np.sum(~np.isnan(assim_freq_plot))
-    nan_cells2 = np.sum(np.isnan(assim_freq_plot))
+    
     print("Variable: assim_freq_plot")
     print(f"Data min: {data_min2}, max: {data_max2}")
-    print(f"Valid cells: {valid_cells2}, NaN cells: {nan_cells2}")
     if data_max2 > 10:
-        raise ValueError(f"Max value {data_max2} is > 10. This is not the correct variable (likely total obs, not frequency in obs/day).")
+        raise ValueError(f"Max value {data_max2} is > 10. This is not the correct variable.")
         
+    print("Variable: monthly_totals")
+    print(f"Monthly min: {np.nanmin(monthly_totals)}, max: {np.nanmax(monthly_totals)}")
+    mean_monthly = np.nanmean(monthly_totals)
+    
     cfg2 = config.get("assimilation_frequency_map", {})
+    cfg3 = config.get("monthly_total_assimilated_obs", {})
     
-    # Layout config
-    lcfg2 = cfg2.get("layout", {})
-    fig2 = plt.figure(figsize=(9, 7))
-    fig2.subplots_adjust(
-        left=lcfg2.get("left", 0.07),
-        right=lcfg2.get("right", 0.88),
-        bottom=lcfg2.get("bottom", 0.08),
-        top=lcfg2.get("top", 0.88)
-    )
-    
-    ax2 = fig2.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
-    
-    map_cfg2 = cfg2.get("map", {})
-    gl_cfg2 = cfg2.get("gridlines", {})
-    gl2 = add_map_features(ax2, map_cfg=map_cfg2, gl_cfg=gl_cfg2)
+    # We create a 1x2 figure with GridSpec for 60/40 ratio
+    fig2 = plt.figure(figsize=(12, 5.5))
+    gs = gridspec.GridSpec(1, 2, width_ratios=[1.7, 1], wspace=0.15, left=0.04, right=0.96, bottom=0.18, top=0.82)
     
     # Title
     tcfg2 = cfg2.get("title", {})
-    if "suptitle_y" in tcfg2:
-        fig2.suptitle(tcfg2.get("main", "SMAP assimilation frequency in 2016"), 
-                      fontsize=tcfg2.get("main_fontsize", 13), 
-                      fontweight=tcfg2.get("main_fontweight", "bold"), 
-                      y=tcfg2.get("suptitle_y", 0.965))
-        ax2.set_title(tcfg2.get("subtitle", "DA-noCDF-noIRR experiment | January–December 2016"), 
-                      fontsize=tcfg2.get("subtitle_fontsize", 10), 
-                      pad=tcfg2.get("subtitle_pad", 8))
-    else:
-        ax2.set_title(tcfg2.get("main", "SMAP assimilation frequency in 2016"), 
-                      fontsize=tcfg2.get("main_fontsize", 13), 
-                      fontweight=tcfg2.get("main_fontweight", "bold"), 
-                      pad=tcfg2.get("pad", 22))
-        ax2.text(0.5, 1.015, tcfg2.get("subtitle", "DA-noCDF-noIRR experiment | January–December 2016"), 
-                 transform=ax2.transAxes, ha='center', va='bottom',
-                 fontsize=tcfg2.get("subtitle_fontsize", 10))
+    fig2.suptitle(tcfg2.get("main", "SMAP assimilation coverage in 2016"),
+                  fontsize=tcfg2.get("main_fontsize", 14), fontweight='normal')
     
-    # Colormap
+    # Panel 1: Map
+    ax2 = fig2.add_subplot(gs[0], projection=ccrs.PlateCarree())
+    map_cfg2 = cfg2.get("map", {})
+    gl_cfg2 = cfg2.get("gridlines", {})
+    add_map_features(ax2, map_cfg=map_cfg2, gl_cfg=gl_cfg2)
+    
+    p_tcfg = cfg2.get("panel_titles", {})
+    ax2.set_title(p_tcfg.get("main", "(a) Spatial assimilation frequency"), fontsize=p_tcfg.get("main_fontsize", 11))
+    
     cm_cfg2 = cfg2.get("colormap", {})
     cb_cfg2 = cfg2.get("colorbar", {})
-    
-    levels2 = cb_cfg2.get("bounds", [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
-    max_bound2 = levels2[-1]
-            
-    cmap_name2 = cm_cfg2.get("name", "OrRd")
+    levels2 = cb_cfg2.get("bounds", [0.0, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
+    cmap_name2 = cm_cfg2.get("name", "YlOrRd")
     
     if cm_cfg2.get("discrete", True):
         cmap2 = plt.get_cmap(cmap_name2, len(levels2) - 1).copy()
     else:
         cmap2 = plt.get_cmap(cmap_name2).copy()
         
-    cmap2.set_bad(color=cm_cfg2.get("bad_color", "lightgrey"))
+    cmap2.set_bad(color=cm_cfg2.get("bad_color", "#F0F0F0"))
     norm2 = mcolors.BoundaryNorm(levels2, ncolors=cmap2.N, clip=True)
     
     pcm2 = ax2.pcolormesh(lon, lat, assim_freq_plot, cmap=cmap2, norm=norm2, transform=ccrs.PlateCarree())
     
-    if cb_cfg2.get("align_to_map_height", True):
-        fig2.canvas.draw()
-        pos2 = ax2.get_position()
-        
-        cax2 = fig2.add_axes([
-            pos2.x1 + cb_cfg2.get("pad", 0.012),
-            pos2.y0,
-            cb_cfg2.get("width", 0.018),
-            pos2.height
-        ])
-        
-        base_extend2 = cb_cfg2.get("extend", "neither")
-        if base_extend2 == "neither" and data_max2 > max_bound2:
-            extend_val2 = "max"
-        else:
-            extend_val2 = base_extend2
-            
-        cbar2 = fig2.colorbar(pcm2, cax=cax2, orientation=cb_cfg2.get("orientation", "vertical"), extend=extend_val2)
+    fig2.canvas.draw()
+    pos2 = ax2.get_position()
+    
+    cbar_orientation = cb_cfg2.get("orientation", "horizontal")
+    if cbar_orientation == "horizontal":
+        cax2 = fig2.add_axes([pos2.x0 + 0.05, pos2.y0 - 0.09, pos2.width - 0.1, 0.025])
+        cbar2 = fig2.colorbar(pcm2, cax=cax2, orientation="horizontal", extend=cb_cfg2.get("extend", "max"))
     else:
-        cbar2 = fig2.colorbar(pcm2, ax=ax2, orientation=cb_cfg2.get("orientation", "vertical"), 
-                              pad=cb_cfg2.get("pad", 0.025), fraction=cb_cfg2.get("width", 0.035))
+        cax2 = fig2.add_axes([pos2.x1 + 0.012, pos2.y0, 0.015, pos2.height])
+        cbar2 = fig2.colorbar(pcm2, cax=cax2, orientation="vertical", extend=cb_cfg2.get("extend", "max"))
         
-    ticks2 = cb_cfg2.get("ticks", levels2)
-    cbar2.set_ticks(ticks2)
-    cbar2.set_label(cb_cfg2.get("label", "Assimilation frequency (obs day⁻¹)"), fontsize=cb_cfg2.get("label_fontsize", 11))
+    cbar2.set_ticks(levels2)
+    cbar2.set_label(cb_cfg2.get("label", "Assimilation frequency (obs d⁻¹)"), fontsize=cb_cfg2.get("label_fontsize", 10))
     cbar2.ax.tick_params(labelsize=cb_cfg2.get("tick_fontsize", 9))
     
-    # Annotation box
+    # Annotation box for Map
     ann_cfg2 = cfg2.get("annotation", {})
     if ann_cfg2.get("enabled", True):
-        tmpl2 = ann_cfg2.get("text_template", "Max = {data_max:.2f} obs day⁻¹")
+        tmpl2 = ann_cfg2.get("text_template", "Max: {data_max:.2f} obs d⁻¹")
         box_text2 = tmpl2.format(data_max=data_max2)
         props2 = dict(boxstyle=ann_cfg2.get("boxstyle", "round,pad=0.25"), 
-                     facecolor=ann_cfg2.get("facecolor", "white"), 
-                     alpha=ann_cfg2.get("alpha", 0.85), 
-                     edgecolor=ann_cfg2.get("edgecolor", "0.4"),
-                     linewidth=ann_cfg2.get("linewidth", 0.5))
+                      facecolor=ann_cfg2.get("facecolor", "white"), 
+                      alpha=ann_cfg2.get("alpha", 0.85), 
+                      edgecolor=ann_cfg2.get("edgecolor", "none"), 
+                      linewidth=ann_cfg2.get("linewidth", 0.0))
         ax2.text(ann_cfg2.get("lon", -9.9), ann_cfg2.get("lat", 35.6), box_text2, 
                  transform=ccrs.PlateCarree(), fontsize=ann_cfg2.get("fontsize", 8), 
-                 ha=ann_cfg2.get("ha", "left"), va=ann_cfg2.get("va", "top"), bbox=props2)
-    
-    out_cfg2 = cfg2.get("output", {})
-    f2_png = os.path.join(out_dir, out_cfg2.get("filename", "Fig02_smap_assimilation_frequency_DA-noCDF-noIRR_2016.png"))
-    fig2.savefig(f2_png, dpi=out_cfg2.get("dpi", 300), bbox_inches=out_cfg2.get("bbox_inches", "tight"))
-    plt.close(fig2)
-    
-    # ---------------------------------------------------------
-    # Fig 3: Monthly Total
-    # ---------------------------------------------------------
-    print("Variable: monthly_totals")
-    print(f"Monthly totals (raw): {monthly_totals}")
-    print(f"Monthly min: {np.nanmin(monthly_totals)}, max: {np.nanmax(monthly_totals)}")
-    mean_monthly = np.nanmean(monthly_totals)
-    print(f"Monthly mean: {mean_monthly}")
-    print(f"Annual sum: {np.nansum(monthly_totals)}")
-
-    cfg3 = config.get("monthly_total_assimilated_obs", {})
-    
-    lcfg3 = cfg3.get("layout", {})
-    fig3 = plt.figure(figsize=(8, 5))
-    fig3.subplots_adjust(
-        left=lcfg3.get("left", 0.10),
-        right=lcfg3.get("right", 0.97),
-        bottom=lcfg3.get("bottom", 0.14),
-        top=lcfg3.get("top", 0.86)
-    )
-    ax3 = fig3.add_subplot(1, 1, 1)
+                 ha="left", va="top", bbox=props2)
+                 
+    # Panel 2: Bar Plot
+    ax3 = fig2.add_subplot(gs[1])
     
     ax_cfg3 = cfg3.get("axes", {})
     scale_factor = ax_cfg3.get("y_scale_factor", 1000)
@@ -320,72 +276,37 @@ def run_coverage(config, base_dir_da, out_dir):
     
     bars_cfg3 = cfg3.get("bars", {})
     bars = ax3.bar(month_labels, monthly_totals_displayed, 
-                   color=bars_cfg3.get("color", "#6FA4C8"), 
-                   edgecolor=bars_cfg3.get("edgecolor", "0.25"), 
-                   linewidth=bars_cfg3.get("linewidth", 0.8),
+                   color=bars_cfg3.get("color", "#899BAA"), 
+                   edgecolor=bars_cfg3.get("edgecolor", "0.3"), 
+                   linewidth=bars_cfg3.get("linewidth", 0.6),
                    width=bars_cfg3.get("width", 0.72),
                    alpha=bars_cfg3.get("alpha", 0.95))
+                   
+    p_tcfg3 = cfg3.get("panel_titles", {})
+    ax3.set_title(p_tcfg3.get("main", "(b) Monthly assimilated observations"), fontsize=p_tcfg3.get("main_fontsize", 11))
     
-    # Title
-    tcfg3 = cfg3.get("title", {})
-    if "suptitle_y" in tcfg3:
-        fig3.suptitle(tcfg3.get("main", "Monthly assimilated SMAP observations in 2016"), 
-                      fontsize=tcfg3.get("main_fontsize", 13), 
-                      fontweight=tcfg3.get("main_fontweight", "bold"), 
-                      y=tcfg3.get("suptitle_y", 0.965))
-        ax3.set_title(tcfg3.get("subtitle", "Domain-integrated total | DA-noCDF-noIRR experiment"), 
-                      fontsize=tcfg3.get("subtitle_fontsize", 10), 
-                      pad=tcfg3.get("subtitle_pad", 8))
-    else:
-        ax3.set_title(tcfg3.get("main", "Monthly assimilated SMAP observations in 2016"), 
-                      fontsize=tcfg3.get("main_fontsize", 13), 
-                      fontweight=tcfg3.get("main_fontweight", "bold"), 
-                      pad=tcfg3.get("pad", 22))
-        ax3.text(0.5, 1.015, tcfg3.get("subtitle", "Domain-integrated total | DA-noCDF-noIRR experiment"), 
-                 transform=ax3.transAxes, ha='center', va='bottom',
-                 fontsize=tcfg3.get("subtitle_fontsize", 10))
-
-    ax3.set_xlabel(ax_cfg3.get("xlabel", "Month"), fontsize=ax_cfg3.get("xlabel_fontsize", 11))
-    ax3.set_ylabel(ax_cfg3.get("ylabel", "Assimilated SMAP observations (×10³)"), fontsize=ax_cfg3.get("ylabel_fontsize", 11))
-    ax3.tick_params(axis='both', labelsize=ax_cfg3.get("tick_fontsize", 10))
+    ax3.set_xlabel("Month", fontsize=ax_cfg3.get("xlabel_fontsize", 10))
+    ax3.set_ylabel("Assimilated observations (×10³)", fontsize=ax_cfg3.get("ylabel_fontsize", 10))
+    ax3.tick_params(axis='both', labelsize=ax_cfg3.get("tick_fontsize", 9))
     
-    if "y_min" in ax_cfg3 and "y_max" in ax_cfg3:
-        y_min = ax_cfg3.get("y_min", 0)
-        y_max = ax_cfg3.get("y_max", 160)
-        ax3.set_ylim(y_min, y_max)
-        if "y_tick_interval" in ax_cfg3:
-            interval = ax_cfg3.get("y_tick_interval", 20)
-            ax3.set_yticks(np.arange(y_min, y_max + interval, interval))
+    y_min = ax_cfg3.get("y_min", 0)
+    y_max = ax_cfg3.get("y_max", 160)
+    interval = ax_cfg3.get("y_tick_interval", 20)
+    ax3.set_ylim(y_min, y_max)
+    ax3.set_yticks(np.arange(y_min, y_max + interval, interval))
             
     grid_cfg3 = cfg3.get("grid", {})
     if grid_cfg3.get("enabled", True):
-        ax3.grid(axis=grid_cfg3.get("axis", "y"), 
-                 linestyle=grid_cfg3.get("linestyle", "--"), 
-                 linewidth=grid_cfg3.get("linewidth", 0.6), 
-                 color=grid_cfg3.get("color", "0.75"), 
-                 alpha=grid_cfg3.get("alpha", 0.7))
+        ax3.grid(axis='y', linestyle='--', linewidth=0.5, color='0.8')
                  
     mean_cfg3 = cfg3.get("mean_line", {})
     if mean_cfg3.get("enabled", True):
-        mean_displayed = mean_monthly / scale_factor
-        ax3.axhline(mean_displayed, 
-                    linestyle=mean_cfg3.get("linestyle", "--"), 
-                    color=mean_cfg3.get("color", "0.25"), 
-                    linewidth=mean_cfg3.get("linewidth", 1.2),
-                    label=mean_cfg3.get("label", "Monthly mean"))
-        ax3.legend(loc="upper left", frameon=False, fontsize=9)
+        mean_val = mean_monthly / scale_factor
+        ax3.axhline(mean_val, linestyle=mean_cfg3.get("linestyle", "--"), color=mean_cfg3.get("color", "0.3"), linewidth=mean_cfg3.get("linewidth", 1.0))
+        ax3.text(len(month_labels) - 1, mean_val + 2, mean_cfg3.get("label", "2016 monthly mean"),
+                 color=mean_cfg3.get("color", "0.3"), fontsize=8, ha='right', va='bottom')
         
-    ann_cfg3 = cfg3.get("annotations", {})
-    if ann_cfg3.get("show_min_max", True):
-        min_idx = np.argmin(monthly_totals_displayed)
-        max_idx = np.argmax(monthly_totals_displayed)
-        
-        ax3.text(min_idx, monthly_totals_displayed[min_idx] + 2, f"Min:\n{month_labels[min_idx]}", 
-                 ha='center', va='bottom', fontsize=ann_cfg3.get("fontsize", 8), color='0.3')
-        ax3.text(max_idx, monthly_totals_displayed[max_idx] + 2, f"Max:\n{month_labels[max_idx]}", 
-                 ha='center', va='bottom', fontsize=ann_cfg3.get("fontsize", 8), color='0.3')
-    
-    out_cfg3 = cfg3.get("output", {})
-    f3_png = os.path.join(out_dir, out_cfg3.get("filename", "Fig03_monthly_assimilated_observations_DA-noCDF-noIRR_2016.png"))
-    fig3.savefig(f3_png, dpi=out_cfg3.get("dpi", 300), bbox_inches=out_cfg3.get("bbox_inches", "tight"))
-    plt.close(fig3)
+    out_cfg2 = cfg2.get("output", {})
+    f2_png = os.path.join(out_dir, out_cfg2.get("filename", "Fig02_smap_assimilation_frequency_DA-noCDF-noIRR_2016.png"))
+    fig2.savefig(f2_png, dpi=out_cfg2.get("dpi", 300), bbox_inches="tight")
+    plt.close(fig2)
