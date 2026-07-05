@@ -1,0 +1,115 @@
+config_file: configs/postproc/hydrology_visuals/surface_soil_moisture.yaml
+variable: surface_soil_moisture
+period: '2016'
+experiments:
+  opl:
+    files_found: 354
+    operation: none
+    multiplier: 1.0
+    number_of_fill_values_masked: 8313336
+    valid_pixel_count: 22698480
+    layer: 0
+    variable_used: SoilMoist_tavg
+    stats:
+      min: 0.00767749547958374
+      max: 0.44632241129875183
+      mean: 0.14923200011253357
+      median: 0.14637073874473572
+      valid_pixels: 5674620
+      percentiles:
+        p2: 0.0497821120172739
+        p5: 0.05523470304906368
+        p50: 0.14637073874473572
+        p95: 0.26565620750188823
+        p98: 0.29755239546298984
+        p99: 0.32115621954202633
+      pixel_counts_gt_threshold:
+        gt_0.001: 5674620
+        gt_0.01: 5640022
+        gt_0.05: 5557048
+  da_smap_nocdf:
+    files_found: 354
+    operation: none
+    multiplier: 1.0
+    number_of_fill_values_masked: 8313336
+    valid_pixel_count: 22698480
+    layer: 0
+    variable_used: SoilMoist_tavg
+    stats:
+      min: 0.01981542259454727
+      max: 0.4442253112792969
+      mean: 0.1348617672920227
+      median: 0.11968274414539337
+      valid_pixels: 5674620
+      percentiles:
+        p2: 0.05177052043378353
+        p5: 0.058847805857658385
+        p50: 0.11968274787068367
+        p95: 0.2570669755339622
+        p98: 0.2919419878721238
+        p99: 0.314758021235466
+      pixel_counts_gt_threshold:
+        gt_0.001: 5674620
+        gt_0.01: 5674620
+        gt_0.05: 5574526
+  da_smap_cdf:
+    files_found: 354
+    operation: none
+    multiplier: 1.0
+    number_of_fill_values_masked: 8313336
+    valid_pixel_count: 22698480
+    layer: 0
+    variable_used: SoilMoist_tavg
+    stats:
+      min: 0.019307861104607582
+      max: 0.4440758228302002
+      mean: 0.14240704476833344
+      median: 0.13055333495140076
+      valid_pixels: 5674620
+      percentiles:
+        p2: 0.04896715596318245
+        p5: 0.057682748697698114
+        p50: 0.13055334240198135
+        p95: 0.2600234463810921
+        p98: 0.29271632611751564
+        p99: 0.31781550675630565
+      pixel_counts_gt_threshold:
+        gt_0.001: 5674620
+        gt_0.01: 5674620
+        gt_0.05: 5554459
+annual_mean_levels_used:
+- 0.05
+- 0.08
+- 0.1
+- 0.12
+- 0.15
+- 0.18
+- 0.2
+- 0.23
+- 0.26
+- 0.3
+- 0.35
+- 0.4
+differences_levels_used:
+- -0.1
+- -0.075
+- -0.05
+- -0.035
+- -0.025
+- -0.015
+- -0.005
+- 0.005
+- 0.015
+- 0.025
+- 0.035
+- 0.05
+- 0.075
+- 0.1
+differences_stats:
+  cdf_minus_nocdf:
+    mean: 0.0075452676974236965
+    median: 0.007428104989230633
+    pct_area_gt_0.005: 67.75421085464754
+    pct_area_gt_0.01: 47.80411728009981
+    pct_area_gt_0.02: 16.35683094198378
+    pct_area_gt_0.05: 0.08733624454148471

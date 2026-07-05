@@ -1,0 +1,59 @@
+# ============================================================
+# RECETTE : OPL seul (vérification de référence)
+# ============================================================
+recipe_id: only_opl_2016
+title: "Open Loop only — Reference simulation 2016"
+description: >
+  Analyse de la simulation Open Loop seule.
+  Utilisé pour vérifier les sorties de référence avant comparaison.
+year: 2016
+domain: morocco_001deg
+comparison_mode: single_experiment
+baseline: null
+
+experiments:
+  - OPL_noirr_2016
+
+variables:
+  - surface_soil_moisture
+  - rootzone_soil_moisture
+  - evapotranspiration
+  - total_runoff
+  - surface_runoff
+  - baseflow
+  - groundwater_storage
+  - lai
+
+diagnostics:
+  assimilation:
+    enabled: false
+
+  maps:
+    enabled: true
+    figure_types:
+      - annual_mean
+
+  timeseries:
+    enabled: true
+    spatial_average: domain
+
+  runoff_partitioning:
+    enabled: true
+
+  water_balance:
+    enabled: true
+
+  streamflow:
+    enabled: false
+
+  external_validation:
+    enabled: false
+
+  spatial_analysis:
+    enabled: false
+
+outputs:
+  figure_dir: "outputs/matrix_2016/figures/only_opl/"
+  metrics_dir: "outputs/matrix_2016/metrics/only_opl/"
+  table_dir: "outputs/matrix_2016/tables/only_opl/"
+  pdf_report: "outputs/matrix_2016/pdf/only_opl_2016.pdf"

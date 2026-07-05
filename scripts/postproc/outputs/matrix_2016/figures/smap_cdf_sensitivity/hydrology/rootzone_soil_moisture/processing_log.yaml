@@ -1,0 +1,68 @@
+config_file: configs/postproc/hydrology_visuals/rootzone_soil_moisture.yaml
+variable: rootzone_soil_moisture
+period: '2016'
+experiments:
+  opl:
+    files_found: 354
+    operation: weighted_mean
+    multiplier: 1.0
+    variable_used: SoilMoist_tavg (layers 0,1,2 weighted)
+    number_of_fill_values_masked: 2078334
+    valid_pixel_count: 5674620
+    stats:
+      min: 0.06263509392738342
+      max: 0.44219210743904114
+      mean: 0.18986813724040985
+      median: 0.20408597588539124
+      valid_pixels: 5674620
+  da_smap_nocdf:
+    files_found: 354
+    operation: weighted_mean
+    multiplier: 1.0
+    variable_used: SoilMoist_tavg (layers 0,1,2 weighted)
+    number_of_fill_values_masked: 2078334
+    valid_pixel_count: 5674620
+    stats:
+      min: 0.035816311836242676
+      max: 0.4432979226112366
+      mean: 0.18091648817062378
+      median: 0.19645610451698303
+      valid_pixels: 5674620
+  da_smap_cdf:
+    files_found: 354
+    operation: weighted_mean
+    multiplier: 1.0
+    variable_used: SoilMoist_tavg (layers 0,1,2 weighted)
+    number_of_fill_values_masked: 2078334
+    valid_pixel_count: 5674620
+    stats:
+      min: 0.043281443417072296
+      max: 0.44086340069770813
+      mean: 0.18605291843414307
+      median: 0.20240187644958496
+      valid_pixels: 5674620
+annual_mean_levels_used:
+- 0.05
+- 0.1
+- 0.15
+- 0.18
+- 0.2
+- 0.22
+- 0.25
+- 0.28
+- 0.3
+- 0.35
+- 0.4
+differences_levels_used:
+- -0.08
+- -0.06
+- -0.04
+- -0.025
+- -0.015
+- -0.005
+- 0.005
+- 0.015
+- 0.025
+- 0.04
+- 0.06
+- 0.08

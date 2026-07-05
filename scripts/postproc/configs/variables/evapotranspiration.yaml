@@ -1,0 +1,38 @@
+variable_id: evapotranspiration
+long_name: Evapotranspiration
+short_name: ET
+unit: mm/day
+category: evapotranspiration
+
+input:
+  source: LIS
+  lis_variable_names:
+    - Evap_tavg
+  operation: identity
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "YlGnBu"
+  difference_cmap: "BrBG"
+  vmin: 0.0
+  vmax: 1.6
+  levels: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6]
+  difference_vmin: -0.4
+  difference_vmax: 0.4
+  difference_levels: [-0.4, -0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4]
+  colorbar_label: "Evapotranspiration (mm day⁻¹)"
+  difference_label: "Δ evapotranspiration (mm day⁻¹)"
+  unit_label: "mm day⁻¹"
+  tick_format: "%.1f"
+  y_min: 0.0
+  y_max: 1.8
+  auto_limits: false
+  center_difference_on_zero: true

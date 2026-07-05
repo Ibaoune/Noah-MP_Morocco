@@ -1,0 +1,46 @@
+variable_id: rootzone_soil_moisture
+long_name: Root-zone soil moisture
+short_name: RZSM
+unit: m3/m3
+category: soil_moisture
+
+input:
+  source: LIS
+  lis_variable_names:
+    - SoilMoist_tavg
+  operation: weighted_mean
+  layers:
+    - layer: 1
+      depth: 0.10
+    - layer: 2
+      depth: 0.30
+    - layer: 3
+      depth: 0.60
+  target_depth: 1.0
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "YlGnBu"
+  difference_cmap: "RdBu"
+  vmin: 0.08
+  vmax: 0.25
+  levels: [0.08, 0.10, 0.12, 0.14, 0.16, 0.18, 0.20, 0.22, 0.24, 0.25]
+  difference_vmin: -0.035
+  difference_vmax: 0.035
+  difference_levels: [-0.03, -0.02, -0.01, 0, 0.01, 0.02, 0.03]
+  colorbar_label: "Root-zone soil moisture (m³ m⁻³)"
+  difference_label: "Δ root-zone soil moisture (m³ m⁻³)"
+  unit_label: "m³ m⁻³"
+  tick_format: "%.3f"
+  y_min: 0.16
+  y_max: 0.26
+  auto_limits: false
+  center_difference_on_zero: true

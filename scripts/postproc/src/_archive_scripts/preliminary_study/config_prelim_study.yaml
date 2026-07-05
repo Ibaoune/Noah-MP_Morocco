@@ -1,0 +1,52 @@
+# Configuration for Preliminary Study Synthesis (Matrix 2016)
+# Used by preliminary_study module
+
+paths:
+  project_root: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+  # Default output directories for the 2016 matrix
+  dir_output_ol: "experiments/NorthMor/{matrix_name}/OPL_noirr_2016/output"
+  dir_output_da_nocdf: "experiments/NorthMor/{matrix_name}/DA_nocdf_noirr_2016/output"
+  dir_output_da_cdf: "experiments/NorthMor/{matrix_name}/DA_cdf_noirr_2016/output"
+  
+  # Where to save the generated figures and PDF
+  dir_figures_out: "scripts/postproc/figures/{matrix_name}/preliminary_study_2016"
+  dir_reports_out: "scripts/postproc/reports/{matrix_name}"
+
+analysis_period:
+  start_date: "2016-01-01"
+  end_date: "2016-06-30"
+
+features:
+  generate_pdf: true
+  pdf_filename: "preliminary_study_2016.pdf"
+  compare_cdf: true       # Compare DA_nocdf and DA_cdf
+  evaluate_hymap: false   # Option to activate streamflow evaluation (Fig 5)
+  figure_format: "png"
+
+figures:
+  fig1_assimilation_diagnostics: true
+  fig2_cdf_sensitivity: true
+  fig3_vertical_propagation: true
+  fig4_runoff_partitioning: true
+  fig5_hymap_streamflow: false # Set to true when HyMAP outputs are available
+
+variables:
+  # List of primary variables to look for
+  surface_sm: "SoilMoist_tavg_0"      # Layer 1
+  root_zone_sm: "SoilMoist_tavg_1"    # Example layer 2 or aggregated
+  evapotranspiration: "Evap_tavg"
+  transpiration: "TVeg_tavg"
+  soil_evaporation: "ESoil_tavg"
+  surface_runoff: "Qs_tavg"
+  baseflow: "Qsb_tavg"
+  total_runoff: "Total_Runoff"        # Calculated from Qs + Qsb
+  precipitation: "Rainf_f_tavg"       # Explanatory variable
+
+seasons:
+  wet_season: ["DJF", "MAM"]
+  dry_season: ["JJA", "SON"]
+
+stations_hymap:
+  # Placeholder for streamflow evaluation stations
+  - "Station_1"
+  - "Station_2"

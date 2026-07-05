@@ -1,0 +1,36 @@
+variable_id: groundwater_storage
+long_name: Groundwater storage
+short_name: GWS
+unit: mm
+category: groundwater
+
+input:
+  source: LIS
+  lis_variable_names:
+    - TWS_tavg
+  operation: identity
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "PuBuGn"
+  difference_cmap: "RdBu"
+  vmin: 5000
+  vmax: 5400
+  levels: [5000, 5050, 5100, 5150, 5200, 5250, 5300, 5350, 5400]
+  difference_vmin: -50
+  difference_vmax: 50
+  difference_levels: [-50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50]
+  colorbar_label: "Groundwater storage (mm)"
+  difference_label: "Δ groundwater storage (mm)"
+  unit_label: "mm"
+  tick_format: "%d"
+  auto_limits: false
+  center_difference_on_zero: true

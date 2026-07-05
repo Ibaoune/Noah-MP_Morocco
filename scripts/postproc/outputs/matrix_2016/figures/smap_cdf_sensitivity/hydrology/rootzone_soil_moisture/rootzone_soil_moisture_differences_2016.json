@@ -1,0 +1,8 @@
+{
+    "experiment": "DA_Differences",
+    "variable": "rootzone_soil_moisture",
+    "diagnostic_type": "difference",
+    "filename": "rootzone_soil_moisture_differences_2016.png",
+    "title": "Root-zone soil moisture response to assimilation \u2014 2016",
+    "caption": "Impact of SMAP assimilation on root-zone soil moisture."
+}

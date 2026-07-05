@@ -1,0 +1,8 @@
+{
+    "experiment": "OPL_noCDF_CDF",
+    "variable": "runoff_partitioning",
+    "diagnostic_type": "partitioning",
+    "filename": "runoff_partitioning_2016.png",
+    "title": "Monthly runoff partitioning \u2014 NorthMor, 2016",
+    "caption": "Monthly runoff partitioning showing the contribution of surface runoff and baseflow to the total runoff for each experiment."
+}

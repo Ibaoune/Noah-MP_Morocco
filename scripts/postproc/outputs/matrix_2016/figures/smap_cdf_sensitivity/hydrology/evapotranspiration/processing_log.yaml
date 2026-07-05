@@ -1,0 +1,61 @@
+config_file: configs/postproc/hydrology_visuals/evapotranspiration.yaml
+variable: evapotranspiration
+period: '2016'
+experiments:
+  opl:
+    files_found: 354
+    operation: none
+    multiplier: 86400.0
+    variable_used: Evap_tavg
+    stats:
+      min: -0.18012681603431702
+      max: 7.662775993347168
+      mean: 0.572081983089447
+      median: 0.3875439465045929
+      valid_pixels: 5674620
+  da_smap_nocdf:
+    files_found: 354
+    operation: none
+    multiplier: 86400.0
+    variable_used: Evap_tavg
+    stats:
+      min: -0.21735748648643494
+      max: 7.274140357971191
+      mean: 0.5745186805725098
+      median: 0.3926999270915985
+      valid_pixels: 5674620
+  da_smap_cdf:
+    files_found: 354
+    operation: none
+    multiplier: 86400.0
+    variable_used: Evap_tavg
+    stats:
+      min: -0.21025332808494568
+      max: 7.47527551651001
+      mean: 0.67383873462677
+      median: 0.5007057785987854
+      valid_pixels: 5674620
+annual_mean_levels_used:
+- 0.0
+- 0.25
+- 0.5
+- 0.75
+- 1.0
+- 1.25
+- 1.5
+- 2.0
+- 2.5
+- 3.0
+- 3.5
+- 4.0
+differences_levels_used:
+- -1.0
+- -0.75
+- -0.5
+- -0.25
+- -0.1
+- 0.1
+- 0.25
+- 0.5
+- 0.75
+- 1.0

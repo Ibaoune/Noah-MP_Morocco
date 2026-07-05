@@ -1,0 +1,6 @@
+# Configuration for OPL vs DA
+module_name: "opl_vs_da"
+active_plots:
+  - maps_opl_da_diff
+  - soil_layers_timeseries
+  - basin_timeseries

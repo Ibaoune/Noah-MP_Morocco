@@ -1,0 +1,205 @@
+variable:
+  name: rootzone_soil_moisture
+  long_name: Root-Zone Soil Moisture
+  domain: NorthMor
+  period: 2016
+data:
+  possible_names:
+  - RootMoist_tavg
+  - SoilMoist_tavg
+  operation: weighted_mean
+  layers: null
+  multiplier: 1.0
+  units: "m\xB3 m\u207B\xB3"
+paths:
+  output_dir: scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/hydrology/rootzone_soil_moisture
+experiments:
+  opl:
+    label: OPL
+    path: experiments/NorthMor/matrix_2016/OPL_noirr_2016/output
+    color: '#2b2b2b'
+    linestyle: '-'
+    linewidth: 2.0
+  da_smap_nocdf:
+    label: DA-SMAP-noCDF
+    path: experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output
+    color: '#E69F00'
+    linestyle: '-'
+    linewidth: 2.0
+  da_smap_cdf:
+    label: DA-SMAP-CDF
+    path: experiments/NorthMor/matrix_2016/DA_cdf_noirr_2016/output
+    color: '#0072B2'
+    linestyle: '-'
+    linewidth: 2.0
+visual:
+  annual_mean:
+    enabled: true
+    title: Annual mean root-zone soil moisture, NorthMor, 2016
+    panel_titles:
+    - (a) OPL
+    - (b) DA-SMAP-noCDF
+    - (c) DA-SMAP-CDF
+    cmap:
+      name: YlGnBu
+      type: sequential
+      bad_color: '#f0f0f0'
+      extend: both
+    colorbar:
+      label: "Root-zone soil moisture (m\xB3 m\u207B\xB3)"
+      levels:
+      - 0.05
+      - 0.1
+      - 0.15
+      - 0.18
+      - 0.2
+      - 0.22
+      - 0.25
+      - 0.28
+      - 0.3
+      - 0.35
+      - 0.4
+      ticks:
+      - 0.05
+      - 0.1
+      - 0.15
+      - 0.2
+      - 0.25
+      - 0.3
+      - 0.35
+      - 0.4
+  differences:
+    enabled: true
+    title: Root-zone soil moisture response to SMAP assimilation, 2016
+    comparisons:
+    - name: nocdf_minus_opl
+      label: "(a) noCDF \u2212 OPL"
+      experiment_a: da_smap_nocdf
+      experiment_b: opl
+    - name: cdf_minus_opl
+      label: "(b) CDF \u2212 OPL"
+      experiment_a: da_smap_cdf
+      experiment_b: opl
+    - name: cdf_minus_nocdf
+      label: "(c) CDF \u2212 noCDF"
+      experiment_a: da_smap_cdf
+      experiment_b: da_smap_nocdf
+    cmap:
+      name: RdBu
+      type: divergent
+      positive_color_meaning: increase in soil moisture
+      negative_color_meaning: decrease in soil moisture
+      neutral_color: '#f7f7f7'
+      bad_color: '#f0f0f0'
+      extend: both
+    colorbar:
+      label: "\u0394 root-zone soil moisture (m\xB3 m\u207B\xB3)"
+      levels:
+      - -0.08
+      - -0.06
+      - -0.04
+      - -0.025
+      - -0.015
+      - -0.005
+      - 0.005
+      - 0.015
+      - 0.025
+      - 0.04
+      - 0.06
+      - 0.08
+      ticks:
+      - -0.08
+      - -0.04
+      - -0.015
+      - 0.0
+      - 0.015
+      - 0.04
+      - 0.08
+    statistics_box:
+      enabled: true
+      metrics:
+      - mean
+      - median
+      - percent_area_abs_gt_threshold
+      threshold:
+      - 0.01
+      - 0.02
+      fontsize: 9
+      alpha: 0.85
+      location: upper_left
+  domain_mean_timeseries:
+    enabled: true
+    title: Domain-averaged root-zone soil moisture, NorthMor, 2016
+    yaxis:
+      label: "Root-zone soil moisture (m\xB3 m\u207B\xB3)"
+      limits:
+      - 0.14
+      - 0.27
+      ticks:
+      - 0.15
+      - 0.18
+      - 0.21
+      - 0.24
+      - 0.27
+    anomalies_panel:
+      enabled: true
+      comparisons:
+      - name: da_smap_nocdf_minus_opl
+        label: "DA-SMAP-noCDF \u2212 OPL"
+        experiment_a: da_smap_nocdf
+        experiment_b: opl
+      - name: da_smap_cdf_minus_opl
+        label: "DA-SMAP-CDF \u2212 OPL"
+        experiment_a: da_smap_cdf
+        experiment_b: opl
+      ylabel: "\u0394 RZSM relative to OPL (m\xB3 m\u207B\xB3)"
+      zero_line: true
+      yaxis:
+        limits:
+        - -0.03
+        - 0.005
+        ticks:
+        - -0.03
+        - -0.02
+        - -0.01
+        - 0.0
+  style:
+    figure:
+      dpi: 600
+      formats:
+      - png
+      - pdf
+      bbox_inches: tight
+    fonts:
+      main_title_size: 14
+      panel_title_size: 12
+      axis_label_size: 12
+      tick_label_size: 11
+      legend_size: 11
+      colorbar_label_size: 11
+      colorbar_tick_size: 10
+    maps:
+      figsize:
+      - 18
+      - 5
+      wspace: 0.06
+      axis_off: true
+      same_extent: true
+      same_mask: true
+      outside_domain_color: '#e0e0e0'
+    timeseries:
+      figsize:
+      - 10
+      - 6
+      grid: true
+      grid_color: lightgray
+      grid_alpha: 0.4
+      legend_location: upper_left
+      legend_frame: true
+      legend_alpha: 0.9
+  overlays:
+    basin_boundary:
+      enabled: false
+      path: null
+      color: '#404040'
+      linewidth: 0.6

@@ -1,0 +1,34 @@
+# ============================================================
+# VARIABLE : Flux de chaleur latente
+# ============================================================
+variable_id: latent_heat
+long_name: "Latent heat flux"
+short_name: "LE"
+unit: "W m⁻²"
+category: fluxes
+
+input:
+  source: LIS
+  lis_variable_names:
+    - LWnet_tavg
+  operation: direct
+  scale_factor: 1.0     # Déjà en W m⁻²
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+    - basin_mean
+
+plotting:
+  cmap: "PuBu"
+  difference_cmap: "RdBu"
+  colorbar_label: "Latent heat flux (W m⁻²)"
+  difference_label: "Δ LE (W m⁻²)"
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true

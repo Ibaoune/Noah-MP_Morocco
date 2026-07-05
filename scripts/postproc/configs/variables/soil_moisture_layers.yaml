@@ -1,0 +1,43 @@
+# ============================================================
+# VARIABLE : Profil vertical d'humidité du sol (4 couches)
+# ============================================================
+variable_id: soil_moisture_layers
+long_name: "Soil moisture vertical profile"
+short_name: "SM_layers"
+unit: "m³ m⁻³"
+category: soil_moisture
+
+input:
+  source: LIS
+  lis_variable_names:
+    - SoilMoist_inst
+  layers: [0, 1, 2, 3]    # 4 couches Noah-MP
+  operation: all_layers
+  # Épaisseurs des couches Noah-MP (m) pour calcul de la moyenne pondérée
+  layer_thickness_m: [0.10, 0.30, 0.60, 1.00]
+
+layer_labels:
+  - "Layer 1 (0–10 cm)"
+  - "Layer 2 (10–40 cm)"
+  - "Layer 3 (40–100 cm)"
+  - "Layer 4 (100–200 cm)"
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+  spatial:
+    - domain_mean
+    - basin_mean
+    - timeseries_per_layer
+
+plotting:
+  cmap: "YlOrBr"
+  difference_cmap: "RdBu"
+  colorbar_label: "Soil moisture (m³ m⁻³)"
+  difference_label: "Δ Soil moisture (m³ m⁻³)"
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true
+  # Couleurs par couche pour les séries temporelles
+  layer_colors: ["#1A5E8A", "#2980B9", "#5DADE2", "#AED6F1"]

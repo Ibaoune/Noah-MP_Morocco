@@ -1,0 +1,36 @@
+variables:
+  surface_sm:
+    name: "SoilMoist_tavg"
+    layer: 0
+    mult: 1.0
+    units: "m3/m3"
+  root_zone_sm_2:
+    name: "SoilMoist_tavg"
+    layer: 1
+    mult: 1.0
+    units: "m3/m3"
+  root_zone_sm_3:
+    name: "SoilMoist_tavg"
+    layer: 2
+    mult: 1.0
+    units: "m3/m3"
+  root_zone_sm_4:
+    name: "SoilMoist_tavg"
+    layer: 3
+    mult: 1.0
+    units: "m3/m3"
+  evapotranspiration:
+    name: "Evap_tavg"
+    layer: null
+    mult: 86400.0
+    units: "mm/day"
+  surface_runoff:
+    name: "Qs_tavg"
+    layer: null
+    mult: 86400.0
+    units: "mm/day"
+  baseflow:
+    name: "Qsb_tavg"
+    layer: null
+    mult: 86400.0
+    units: "mm/day"

@@ -1,0 +1,8 @@
+{
+  "experiment": "DA_smap_cdf_noirr_2016",
+  "experiment_label": "DA-SMAP-CDF",
+  "title": "Wet- and dry-season SMAP analysis increments \u2014 DA-SMAP-CDF, NorthMor, 2016",
+  "caption": "Seasonal mean increments during wet and dry seasons. This diagnostic shows whether the assimilation correction depends on seasonal hydroclimatic conditions.\nWet season = Nov, Dec, Jan, Feb, Mar, Apr\nDry season = May, Jun, Jul, Aug, Sep, Oct\nColorbar limits: robust symmetric bounds [-1.5e-3, 1.5e-3].",
+  "filename": "DA_smap_cdf_noirr_2016_seasonal_increments.png",
+  "diagnostic_type": "spread"
+}

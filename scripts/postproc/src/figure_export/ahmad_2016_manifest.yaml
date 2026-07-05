@@ -1,0 +1,6 @@
+# Manifest for Ahmad 2016 figures
+figures:
+  - id: fig1
+    source: "domain/domain_map.png"
+  - id: fig2
+    source: "assimilation_diagnostics/DA_nocdf_noirr_2016/04b_mean_increment.png"

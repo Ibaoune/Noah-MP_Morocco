@@ -1,0 +1,8 @@
+{
+    "experiment": "DA_Differences",
+    "variable": "total_runoff",
+    "diagnostic_type": "difference",
+    "filename": "total_runoff_differences_2016.png",
+    "title": "Total runoff response to assimilation \u2014 2016",
+    "caption": "Impact of SMAP assimilation on total runoff."
+}

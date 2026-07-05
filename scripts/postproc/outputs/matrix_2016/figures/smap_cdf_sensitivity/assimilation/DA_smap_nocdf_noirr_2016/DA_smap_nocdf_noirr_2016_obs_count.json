@@ -1,0 +1,8 @@
+{
+  "experiment": "DA_smap_nocdf_noirr_2016",
+  "experiment_label": "DA-SMAP-noCDF",
+  "title": "Spatial distribution of assimilated SMAP observations \u2014 DA-SMAP-noCDF, NorthMor, 2016",
+  "caption": "Number of assimilated SMAP observations per grid cell during January\u2013December 2016. Higher values indicate more frequent valid SMAP updates.",
+  "filename": "DA_smap_nocdf_noirr_2016_obs_count.png",
+  "diagnostic_type": "spread"
+}

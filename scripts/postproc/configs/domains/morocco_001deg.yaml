@@ -1,0 +1,35 @@
+# ============================================================
+# DOMAINE SPATIAL — Maroc Nord (0.01°)
+# ============================================================
+domain_id: morocco_001deg
+long_name: "Northern Morocco"
+description: "LIS/Noah-MP domain at 0.01-degree resolution for Northern Morocco"
+
+resolution:
+  degree: 0.01
+  km_approx: 1.1
+
+extent:
+  lon_min: -10.0
+  lon_max: -0.5
+  lat_min: 29.0
+  lat_max: 36.0
+
+projection: PlateCarree
+
+# Fichier de référence pour extraire lat/lon (relatif à project_root)
+landmask_reference: "experiments/NorthMor/matrix_2016/OPL_noirr_2016/output"
+
+map:
+  figsize: [9, 7]
+  figsize_wide: [14, 5.5]
+  figsize_panel2: [12, 5.5]
+  lon_ticks: [-10, -8, -6, -4, -2, 0]
+  lat_ticks: [30, 31, 32, 33, 34, 35, 36]
+  annotation_default_lon: -9.95
+  annotation_default_lat: 35.55
+
+basins:
+  full_domain:
+    name: "Full domain"
+    type: rectangle

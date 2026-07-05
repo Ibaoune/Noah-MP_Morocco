@@ -1,0 +1,37 @@
+variable_id: water_table_depth
+long_name: Water table depth
+short_name: WTD
+unit: m
+category: groundwater
+
+input:
+  source: LIS
+  lis_variable_names:
+    - WaterTableD_tavg
+  operation: identity
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "YlOrBr"
+  difference_cmap: "RdBu"
+  vmin: 2.75
+  vmax: 3.25
+  levels: [2.75, 2.80, 2.85, 2.90, 2.95, 3.00, 3.05, 3.10, 3.15, 3.20, 3.25]
+  difference_vmin: -0.05
+  difference_vmax: 0.05
+  difference_levels: [-0.05, -0.04, -0.03, -0.02, -0.01, 0, 0.01, 0.02, 0.03, 0.04, 0.05]
+  colorbar_label: "Water table depth (m)"
+  difference_label: "Water table rise (m)"
+  difference_type: "reverse"
+  unit_label: "m"
+  tick_format: "%.2f"
+  auto_limits: false
+  center_difference_on_zero: true

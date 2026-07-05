@@ -1,0 +1,35 @@
+# ============================================================
+# VARIABLE : Transpiration végétale
+# ============================================================
+variable_id: transpiration
+long_name: "Plant transpiration"
+short_name: "T"
+unit: "mm day⁻¹"
+category: fluxes
+
+input:
+  source: LIS
+  lis_variable_names:
+    - TVeg_tavg
+  operation: direct
+  scale_factor: 0.0353    # W m⁻² → mm day⁻¹
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+    - basin_mean
+
+plotting:
+  cmap: "Greens"
+  difference_cmap: "RdBu"
+  colorbar_label: "Transpiration (mm day⁻¹)"
+  difference_label: "Δ T (mm day⁻¹)"
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true
+  difference_bounds: [-1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0]

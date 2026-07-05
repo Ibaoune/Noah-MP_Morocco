@@ -1,0 +1,5 @@
+matrix_name: "matrix_2016"
+experiments:
+  OPL_noirr_2016: "experiments/NorthMor/matrix_2016/OPL_noirr_2016/output"
+  DA_nocdf_noirr_2016: "experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output"
+  DA_cdf_noirr_2016: "experiments/NorthMor/matrix_2016/DA_cdf_noirr_2016/output"

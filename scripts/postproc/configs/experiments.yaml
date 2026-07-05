@@ -1,0 +1,88 @@
+# ============================================================
+# CATALOGUE DES EXPÉRIENCES — Framework LIS/Noah-MP
+# ============================================================
+# Ce fichier référence TOUTES les expériences disponibles.
+# Les chemins (path) sont résolus depuis paths.project_root défini dans global.yaml.
+#
+# Pour ajouter une nouvelle expérience :
+#   1. Créer une nouvelle clé sous "experiments:"
+#   2. Remplir tous les champs (label, type, year, path, etc.)
+#   3. Référencer la clé dans une recette configs/recipes/*.yaml
+#
+# Règle : path: null = expérience déclarée mais pas encore disponible.
+
+experiments:
+
+  OPL_noirr_2016:
+    label: OPL
+    type: open_loop
+    year: 2016
+    assimilation: none
+    cdf_matching: false
+    irrigation: false
+    domain: NorthMor
+    matrix: matrix_2016
+    # Ajout de /output car les scripts utils/io_lis.py attendent le sous-dossier output
+    path: experiments/NorthMor/matrix_2016/OPL_noirr_2016/output
+    color: "#2166AC"
+    linestyle: "-"
+    marker: "o"
+
+  DA_smap_nocdf_noirr_2016:
+    label: DA-SMAP-noCDF
+    type: data_assimilation
+    year: 2016
+    assimilation: SMAP
+    cdf_matching: false
+    irrigation: false
+    domain: NorthMor
+    matrix: matrix_2016
+    path: experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output
+    color: "#D6604D"
+    linestyle: "--"
+    marker: "s"
+
+  DA_smap_cdf_noirr_2016:
+    label: DA-SMAP-CDF
+    type: data_assimilation
+    year: 2016
+    assimilation: SMAP
+    cdf_matching: true
+    irrigation: false
+    domain: NorthMor
+    matrix: matrix_2016
+    path: experiments/NorthMor/matrix_2016/DA_cdf_noirr_2016/output
+    color: "#B2182B"
+    linestyle: "-."
+    marker: "^"
+
+  # ----------------------------------------------------------
+  # Expériences futures (LAI, Joint, etc.) - path à définir
+  # ----------------------------------------------------------
+  DA_lai_noirr_2016:
+    label: "DA-LAI"
+    type: data_assimilation
+    year: 2016
+    assimilation: LAI
+    cdf_matching: true
+    irrigation: false
+    domain: NorthMor
+    matrix: matrix_2016
+    path: null
+    color: "#4DAC26"
+    linestyle: ":"
+    marker: "D"
+
+  DA_joint_smap_lai_noirr_2016:
+    label: "DA-SMAP-LAI"
+    type: data_assimilation
+    year: 2016
+    assimilation: SMAP+LAI
+    cdf_matching: true
+    irrigation: false
+    domain: NorthMor
+    matrix: matrix_2016
+    path: null
+    color: "#762A83"
+    linestyle: "-"
+    marker: "v"

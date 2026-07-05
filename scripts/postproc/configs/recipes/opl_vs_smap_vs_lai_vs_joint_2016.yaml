@@ -1,0 +1,79 @@
+# ============================================================
+# RECETTE : OPL vs DA-SMAP vs DA-LAI vs DA-SMAP+LAI (2016)
+# ============================================================
+recipe_id: opl_vs_smap_vs_lai_vs_joint_2016
+title: "OPL vs DA-SMAP vs DA-LAI vs DA-joint-SMAP-LAI (2016)"
+description: >
+  Comparaison complète à 4 expériences : Open Loop, assimilation SMAP seul,
+  assimilation LAI seul, et assimilation jointe SMAP+LAI.
+  Recette de référence pour la publication Q1.
+  NOTE : Expériences DA-LAI et DA-joint non encore disponibles.
+year: 2016
+domain: morocco_001deg
+comparison_mode: multi_experiment
+baseline: OPL_noirr_2016
+
+experiments:
+  - OPL_noirr_2016
+  - DA_smap_cdf_noirr_2016
+  - DA_lai_noirr_2016
+  - DA_joint_smap_lai_noirr_2016
+
+variables:
+  - surface_soil_moisture
+  - rootzone_soil_moisture
+  - soil_moisture_layers
+  - evapotranspiration
+  - transpiration
+  - soil_evaporation
+  - lai
+  - total_runoff
+  - surface_runoff
+  - baseflow
+  - groundwater_storage
+  - water_table_depth
+
+diagnostics:
+  assimilation:
+    enabled: true
+    active_diagnostics:
+      - coverage
+      - innovations
+      - seasonal_increments
+      - spread
+    da_experiments:
+      - DA_smap_cdf_noirr_2016
+      - DA_lai_noirr_2016
+      - DA_joint_smap_lai_noirr_2016
+    seasons:
+      wet_season: [12, 1, 2]
+      dry_season: [6, 7, 8]
+
+  maps:
+    enabled: true
+    figure_types:
+      - annual_mean
+      - difference_against_baseline
+
+  timeseries:
+    enabled: true
+    spatial_average: domain
+
+  runoff_partitioning:
+    enabled: true
+  water_balance:
+    enabled: true
+  streamflow:
+    enabled: false
+  external_validation:
+    enabled: false
+  spatial_analysis:
+    enabled: true
+  synthesis:
+    enabled: true
+
+outputs:
+  figure_dir: "outputs/matrix_2016/figures/opl_vs_smap_vs_lai_vs_joint/"
+  metrics_dir: "outputs/matrix_2016/metrics/opl_vs_smap_vs_lai_vs_joint/"
+  table_dir: "outputs/matrix_2016/tables/opl_vs_smap_vs_lai_vs_joint/"
+  pdf_report: "outputs/matrix_2016/pdf/opl_vs_smap_vs_lai_vs_joint_2016.pdf"

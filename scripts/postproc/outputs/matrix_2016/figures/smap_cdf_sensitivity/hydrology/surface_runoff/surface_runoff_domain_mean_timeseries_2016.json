@@ -1,0 +1,8 @@
+{
+    "experiment": "OPL_noCDF_CDF",
+    "variable": "surface_runoff",
+    "diagnostic_type": "timeseries",
+    "filename": "surface_runoff_domain_mean_timeseries_2016.png",
+    "title": "Domain-average surface runoff time series \u2014 2016",
+    "caption": "Daily domain-averaged timeseries of surface runoff."
+}

@@ -1,0 +1,35 @@
+# ============================================================
+# VARIABLE : Indice de surface foliaire (LAI)
+# ============================================================
+variable_id: lai
+long_name: "Leaf area index"
+short_name: "LAI"
+unit: "m² m⁻²"
+category: vegetation
+
+input:
+  source: LIS
+  lis_variable_names:
+    - LAI_inst
+  operation: direct
+  scale_factor: 1.0
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+    - basin_mean
+
+plotting:
+  cmap: "YlGn"
+  difference_cmap: "RdBu"
+  colorbar_label: "Leaf area index (m² m⁻²)"
+  difference_label: "Δ LAI (m² m⁻²)"
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true
+  difference_bounds: [-1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0]

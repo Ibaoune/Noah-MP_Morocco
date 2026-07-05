@@ -1,0 +1,108 @@
+variable:
+  name: runoff_partitioning
+  long_name: Runoff Partitioning
+  domain: NorthMor
+  period: 2016
+data:
+  possible_names:
+  - runoff_partitioning
+  operation: partitioning
+  multiplier: 86400.0
+  units: "mm d\u207B\xB9"
+paths:
+  output_dir: scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/hydrology/runoff_partitioning
+experiments:
+  opl:
+    label: OPL
+    path: experiments/NorthMor/matrix_2016/OPL_noirr_2016/output
+    color: '#2b2b2b'
+  da_smap_nocdf:
+    label: DA-SMAP-noCDF
+    path: experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output
+    color: '#E69F00'
+  da_smap_cdf:
+    label: DA-SMAP-CDF
+    path: experiments/NorthMor/matrix_2016/DA_cdf_noirr_2016/output
+    color: '#0072B2'
+visual:
+  runoff_partitioning:
+    enabled: true
+    title: Monthly runoff partitioning, NorthMor, 2016
+    panel_titles:
+    - (a) OPL
+    - (b) DA-SMAP-noCDF
+    - (c) DA-SMAP-CDF
+    figure_type: stacked_bar
+    units: "mm month\u207B\xB9"
+    components:
+      surface_runoff:
+        label: Surface runoff
+        color: '#2B8CBE'
+        edgecolor: white
+        linewidth: 0.4
+      baseflow:
+        label: Baseflow
+        color: '#A6CEE3'
+        edgecolor: white
+        linewidth: 0.4
+    total_line:
+      enabled: true
+      label: Total runoff
+      color: '#252525'
+      linewidth: 1.2
+      marker: o
+      markersize: 3
+    layout:
+      figsize:
+      - 13.5
+      - 4.2
+      sharey: true
+      wspace: 0.2
+      legend_location: upper center
+      legend_ncol: 3
+      grid_axis: y
+      grid_alpha: 0.35
+    yaxis:
+      label: "Runoff (mm month\u207B\xB9)"
+      limits:
+      - 0
+      - 10
+      ticks:
+      - 0
+      - 2
+      - 4
+      - 6
+      - 8
+      - 10
+    xaxis:
+      labels:
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
+      rotation: 45
+    annotations:
+      annual_total: true
+      baseflow_index: true
+      fontsize: 8.5
+  style:
+    figure:
+      dpi: 600
+      formats:
+      - png
+      - pdf
+      bbox_inches: tight
+    fonts:
+      main_title_size: 14
+      panel_title_size: 12
+      axis_label_size: 12
+      tick_label_size: 11
+      legend_size: 11

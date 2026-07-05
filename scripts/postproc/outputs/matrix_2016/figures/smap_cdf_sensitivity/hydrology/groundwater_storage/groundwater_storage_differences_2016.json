@@ -1,0 +1,8 @@
+{
+    "experiment": "DA_Differences",
+    "variable": "groundwater_storage",
+    "diagnostic_type": "difference",
+    "filename": "groundwater_storage_differences_2016.png",
+    "title": "Groundwater storage response to assimilation \u2014 2016",
+    "caption": "Impact of SMAP assimilation on groundwater storage."
+}

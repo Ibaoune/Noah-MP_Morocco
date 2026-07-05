@@ -1,0 +1,8 @@
+{
+    "experiment": "OPL_noCDF_CDF",
+    "variable": "water_table_depth",
+    "diagnostic_type": "annual_mean",
+    "filename": "water_table_depth_annual_mean_2016.png",
+    "title": "Annual mean water table depth \u2014 NorthMor, 2016",
+    "caption": "Annual mean spatial distribution of water table depth."
+}

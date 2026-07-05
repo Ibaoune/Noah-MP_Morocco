@@ -1,0 +1,8 @@
+{
+    "experiment": "OPL_noCDF_CDF",
+    "variable": "rootzone_soil_moisture",
+    "diagnostic_type": "timeseries",
+    "filename": "rootzone_soil_moisture_domain_mean_timeseries_2016.png",
+    "title": "Domain-average root-zone soil moisture time series \u2014 2016",
+    "caption": "Daily domain-averaged timeseries of root-zone soil moisture."
+}

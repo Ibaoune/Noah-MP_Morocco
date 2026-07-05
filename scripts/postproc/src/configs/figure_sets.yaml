@@ -1,0 +1,37 @@
+figure_sets:
+  ahmad_2016:
+    description: "Figures for first contact with Ahmad - SMAP-only pilot 2016"
+    experiments:
+      - OPL_noirr_2016
+      - DA_nocdf_noirr_2016
+    output_dir: "outputs/postproc/export/ahmad_2016"
+    figures:
+      - id: A1
+        module: domain
+        source: domain_map_abhs
+        output_name: 01_domain_sebou_saiss_abhs.png
+
+      - id: A2
+        module: assimilation_diagnostics
+        source: smap_obs_coverage
+        output_name: 02_smap_obs_coverage.png
+
+      - id: A3
+        module: assimilation_diagnostics
+        source: innovation_increment
+        output_name: 03_smap_innovation_increment.png
+
+      - id: A4
+        module: opl_vs_da
+        source: vertical_soil_layers
+        output_name: 04_vertical_propagation.png
+
+      - id: A5
+        module: runoff_partitioning
+        source: surface_baseflow_partitioning
+        output_name: 05_runoff_partitioning.png
+
+      - id: A6
+        module: hymap_validation
+        source: selected_station_hydrographs
+        output_name: 06_hymap_streamflow.png

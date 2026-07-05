@@ -1,0 +1,5 @@
+# Configuration for Figure Export
+module_name: "figure_export"
+export_formats:
+  - png
+  - pdf

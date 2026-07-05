@@ -1,0 +1,6 @@
+# Configuration for HyMAP Validation
+module_name: "hymap_validation"
+active_plots:
+  - hydrographs
+  - station_metrics
+  - station_typology

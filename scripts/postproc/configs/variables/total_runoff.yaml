@@ -1,0 +1,40 @@
+variable_id: total_runoff
+long_name: Total runoff
+short_name: Qtotal
+unit: mm/day
+category: runoff
+
+input:
+  source: LIS
+  lis_variable_names:
+    - Qs_tavg
+    - Qsb_tavg
+  operation: sum
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+    - cumulative
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "Blues"
+  difference_cmap: "RdBu"
+  vmin: 0.00
+  vmax: 0.25
+  levels: [0.00, 0.01, 0.025, 0.05, 0.10, 0.15, 0.20, 0.25]
+  difference_vmin: -0.05
+  difference_vmax: 0.05
+  difference_levels: [-0.05, -0.04, -0.03, -0.02, -0.01, 0, 0.01, 0.02, 0.03, 0.04, 0.05]
+  colorbar_label: "Total runoff (mm day⁻¹)"
+  difference_label: "Δ total runoff (mm day⁻¹)"
+  unit_label: "mm day⁻¹"
+  tick_format: "%.3f"
+  y_min: 0.0
+  y_max: 0.45
+  auto_limits: false
+  center_difference_on_zero: true

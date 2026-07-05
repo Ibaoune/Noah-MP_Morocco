@@ -1,0 +1,39 @@
+variable_id: surface_runoff
+long_name: Surface runoff
+short_name: Qs
+unit: mm/day
+category: runoff
+
+input:
+  source: LIS
+  lis_variable_names:
+    - Qs_tavg
+  operation: identity
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+    - cumulative
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "Blues"
+  difference_cmap: "RdBu"
+  vmin: 0.00
+  vmax: 0.07
+  levels: [0.00, 0.002, 0.005, 0.01, 0.02, 0.04, 0.07]
+  difference_vmin: -0.005
+  difference_vmax: 0.005
+  difference_levels: [-0.005, -0.004, -0.003, -0.002, -0.001, 0, 0.001, 0.002, 0.003, 0.004, 0.005]
+  colorbar_label: "Surface runoff (mm day⁻¹)"
+  difference_label: "Δ surface runoff (mm day⁻¹)"
+  unit_label: "mm day⁻¹"
+  tick_format: "%.4f"
+  y_min: 0.0
+  y_max: 0.40
+  auto_limits: false
+  center_difference_on_zero: true

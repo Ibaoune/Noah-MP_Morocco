@@ -1,0 +1,72 @@
+# ============================================================
+# RECETTE : OPL vs DA-SMAP vs DA-LAI (2016)
+# ============================================================
+recipe_id: opl_vs_smap_vs_lai_2016
+title: "OPL vs DA-SMAP vs DA-LAI (2016)"
+description: >
+  Comparaison triple entre l'Open Loop, l'assimilation SMAP et l'assimilation LAI.
+  Permet d'évaluer les contributions relatives et complémentaires des deux observations.
+  NOTE : Expérience DA-LAI non encore disponible.
+year: 2016
+domain: morocco_001deg
+comparison_mode: multi_experiment
+baseline: OPL_noirr_2016
+
+experiments:
+  - OPL_noirr_2016
+  - DA_smap_cdf_noirr_2016
+  - DA_lai_noirr_2016
+
+variables:
+  - surface_soil_moisture
+  - rootzone_soil_moisture
+  - evapotranspiration
+  - transpiration
+  - lai
+  - total_runoff
+  - surface_runoff
+  - baseflow
+  - groundwater_storage
+
+diagnostics:
+  assimilation:
+    enabled: true
+    active_diagnostics:
+      - coverage
+      - innovations
+      - seasonal_increments
+    da_experiments:
+      - DA_smap_cdf_noirr_2016
+      - DA_lai_noirr_2016
+    seasons:
+      wet_season: [12, 1, 2]
+      dry_season: [6, 7, 8]
+
+  maps:
+    enabled: true
+    figure_types:
+      - annual_mean
+      - difference_against_baseline
+
+  timeseries:
+    enabled: true
+    spatial_average: domain
+
+  runoff_partitioning:
+    enabled: true
+  water_balance:
+    enabled: true
+  streamflow:
+    enabled: false
+  external_validation:
+    enabled: false
+  spatial_analysis:
+    enabled: true
+  synthesis:
+    enabled: true
+
+outputs:
+  figure_dir: "outputs/matrix_2016/figures/opl_vs_smap_vs_lai/"
+  metrics_dir: "outputs/matrix_2016/metrics/opl_vs_smap_vs_lai/"
+  table_dir: "outputs/matrix_2016/tables/opl_vs_smap_vs_lai/"
+  pdf_report: "outputs/matrix_2016/pdf/opl_vs_smap_vs_lai_2016.pdf"

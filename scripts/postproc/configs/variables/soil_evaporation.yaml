@@ -1,0 +1,35 @@
+# ============================================================
+# VARIABLE : Évaporation du sol
+# ============================================================
+variable_id: soil_evaporation
+long_name: "Soil evaporation"
+short_name: "Es"
+unit: "mm day⁻¹"
+category: fluxes
+
+input:
+  source: LIS
+  lis_variable_names:
+    - ESoil_tavg
+  operation: direct
+  scale_factor: 0.0353    # W m⁻² → mm day⁻¹
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+    - basin_mean
+
+plotting:
+  cmap: "YlOrBr"
+  difference_cmap: "RdBu"
+  colorbar_label: "Soil evaporation (mm day⁻¹)"
+  difference_label: "Δ Es (mm day⁻¹)"
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true
+  difference_bounds: [-0.8, -0.6, -0.4, -0.2, -0.1, 0, 0.1, 0.2, 0.4, 0.6, 0.8]

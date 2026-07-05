@@ -1,0 +1,6 @@
+# Configuration for Runoff Partitioning
+module_name: "runoff_partitioning"
+active_plots:
+  - surface_baseflow_maps
+  - baseflow_fraction
+  - runoff_timeseries

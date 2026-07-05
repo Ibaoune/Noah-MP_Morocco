@@ -1,0 +1,126 @@
+# Configuration for OPL vs DA plots
+# Author: M. El Aabaribaoune (@um6p)
+# Description: Central configuration file for variables, periods, and colorbars.
+
+paths:
+  project_root: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+  dir_output_ol: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016/OPL_noirr_2016/output"
+  dir_output_da: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output"
+  dir_figures: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/figures/matrix_2016/spatial_maps"
+
+domain:
+  lon_min: -10.0
+  lon_max: -1.0
+  lat_min: 30.0
+  lat_max: 36.0
+
+analysis:
+  # "all-period" averages all available files. "seasonal" splits them by DJF, MAM, JJA, SON.
+  period: "all-period"
+
+variables:
+  # Soil Moisture (Top 10 cm, Layer 0)
+  SoilMoist_tavg:
+    active: true
+    title_name: "Top Soil Moisture (0-10 cm)"
+    unit: "m^3/m^3"
+    layer_index: 0
+    cmap: "viridis_r"
+    vmin: 0.0
+    vmax: 0.45
+    diff_cmap: "RdBu"
+    diff_vmax: 0.05
+    multiplier: 1.0
+
+  # Soil Evaporation (E)
+  ESoil_tavg:
+    active: true
+    title_name: "Soil Evaporation (E)"
+    unit: "mm/day"
+    layer_index: null
+    cmap: "Blues"
+    vmin: 0.0
+    vmax: 5.0
+    diff_cmap: "RdBu"
+    diff_vmax: 1.0
+    multiplier: 86400.0  # kg m-2 s-1 to mm/day
+
+  # Transpiration (T)
+  TVeg_tavg:
+    active: true
+    title_name: "Transpiration (T)"
+    unit: "mm/day"
+    layer_index: null
+    cmap: "Greens"
+    vmin: 0.0
+    vmax: 5.0
+    diff_cmap: "RdBu"
+    diff_vmax: 1.0
+    multiplier: 86400.0
+
+  # Total Evapotranspiration (ET)
+  Evap_tavg:
+    active: true
+    title_name: "Total Evapotranspiration (ET)"
+    unit: "mm/day"
+    layer_index: null
+    cmap: "YlGnBu"
+    vmin: 0.0
+    vmax: 8.0
+    diff_cmap: "RdBu"
+    diff_vmax: 2.0
+    multiplier: 86400.0
+
+  # Gross Primary Production (GPP)
+  GPP_tavg:
+    active: true
+    title_name: "Gross Primary Production (GPP)"
+    unit: "gC/m^2/day"
+    layer_index: null
+    cmap: "YlGn"
+    vmin: 0.0
+    vmax: 15.0
+    diff_cmap: "PiYG"
+    diff_vmax: 3.0
+    multiplier: 86400.0  # g m-2 s-1 to g/m2/day
+
+  # Net Primary Production (NPP)
+  NPP_tavg:
+    active: true
+    title_name: "Net Primary Production (NPP)"
+    unit: "gC/m^2/day"
+    layer_index: null
+    cmap: "YlGn"
+    vmin: 0.0
+    vmax: 10.0
+    diff_cmap: "PiYG"
+    diff_vmax: 2.0
+    multiplier: 86400.0
+
+  # Baseflow (Subsurface Runoff)
+  Qsb_tavg:
+    active: true
+    title_name: "Baseflow"
+    unit: "mm/day"
+    layer_index: null
+    cmap: "PuBu"
+    vmin: 0.0
+    vmax: 2.0
+    diff_cmap: "RdBu"
+    diff_vmax: 0.5
+    multiplier: 86400.0
+
+  # Total Runoff (Qs_tavg + Qsb_tavg)
+  Total_Runoff:
+    active: true
+    is_composite: true
+    components: ["Qs_tavg", "Qsb_tavg"]
+    title_name: "Total Runoff"
+    unit: "mm/day"
+    layer_index: null
+    cmap: "PuBuGn"
+    vmin: 0.0
+    vmax: 5.0
+    diff_cmap: "RdBu"
+    diff_vmax: 1.0
+    multiplier: 86400.0

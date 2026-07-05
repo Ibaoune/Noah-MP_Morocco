@@ -1,0 +1,59 @@
+# ============================================================
+# CONFIGURATION GLOBALE — Framework LIS/Noah-MP Post-Processing
+# ============================================================
+
+project_name: LIS_NoahMP_SMAP_DA
+default_year: 2016
+default_domain: morocco_001deg
+default_resolution: 0.01deg
+
+paths:
+  project_root: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+  data_root: "experiments/NorthMor/matrix_2016"
+  output_root: "outputs"
+  figure_root: "outputs/matrix_2016/figures"
+  metrics_root: "outputs/matrix_2016/metrics"
+  tables_root: "outputs/matrix_2016/tables"
+  pdf_root: "outputs/matrix_2016/pdf"
+  log_root: "logs"
+
+plotting:
+  dpi: 300
+  save_format: png
+  bbox_inches: tight
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true
+  font_family: "DejaVu Sans"
+  title_fontsize: 13
+  subtitle_fontsize: 10
+  label_fontsize: 11
+  tick_fontsize: 9
+  legend_fontsize: 9
+  map:
+    keep_original_extent: true
+    keep_original_projection: true
+    coastline_linewidth: 0.6
+    coastline_color: "0.2"
+    border_linewidth: 0.35
+    border_color: "0.35"
+    background_color: "0.92"
+  gridlines:
+    enabled: true
+    linewidth: 0.20
+    linestyle: "--"
+    color: "0.55"
+    alpha: 0.25
+    label_fontsize: 9
+
+pdf:
+  engine: matplotlib
+  dpi_report: 150
+  include_metadata: true
+  author: "Mohammad El Aarabaribao"
+  title_prefix: "LIS/Noah-MP Post-Processing Report"
+
+logging:
+  level: INFO
+  to_file: true
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"

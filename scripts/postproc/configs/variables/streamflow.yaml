@@ -1,0 +1,46 @@
+# ============================================================
+# VARIABLE : Débit fluvial (HyMAP-routed streamflow)
+# ============================================================
+variable_id: streamflow
+long_name: "Streamflow (HyMAP-routed)"
+short_name: "Q"
+unit: "m³ s⁻¹"
+category: streamflow
+
+input:
+  source: HyMAP
+  # Variable dans les fichiers HyMAP NetCDF
+  hymap_variable_name: "Streamflow"
+  operation: direct
+  scale_factor: 1.0
+
+# Stations de jaugeage pour la validation
+stations:
+  # Ajouter les coordonnées et noms des stations ici
+  # example_station:
+  #   name: "Oued Sebou à Azib Sidi Raho"
+  #   lon: -5.34
+  #   lat: 34.12
+  #   id: "ABHS_001"
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+  spatial:
+    - at_stations
+    - basin_outlet
+
+plotting:
+  cmap: "Blues"
+  colorbar_label: "Streamflow (m³ s⁻¹)"
+  difference_cmap: "RdBu_r"
+  difference_label: "Δ Q (m³ s⁻¹)"
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true
+  # Options spécifiques aux hydrogrammes
+  hydrograph:
+    obs_color: "0.2"
+    obs_linestyle: "-"
+    obs_linewidth: 1.5

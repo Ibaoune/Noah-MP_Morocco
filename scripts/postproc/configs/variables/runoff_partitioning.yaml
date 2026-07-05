@@ -1,0 +1,27 @@
+variable_id: runoff_partitioning
+long_name: Runoff partitioning
+short_name: Qpart
+unit: "-"
+category: runoff
+
+input:
+  source: LIS
+  lis_variable_names:
+    - Qs_tavg
+    - Qsb_tavg
+  operation: fraction
+
+aggregation:
+  temporal:
+    - monthly
+  spatial:
+    - domain_mean
+
+plotting:
+  cmap: "viridis"
+  difference_cmap: "RdBu"
+  colorbar_label: "Baseflow fraction"
+  difference_label: "Difference"
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true

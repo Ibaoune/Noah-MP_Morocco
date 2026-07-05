@@ -1,0 +1,34 @@
+# ============================================================
+# VARIABLE : Flux de chaleur sensible
+# ============================================================
+variable_id: sensible_heat
+long_name: "Sensible heat flux"
+short_name: "SH"
+unit: "W m⁻²"
+category: fluxes
+
+input:
+  source: LIS
+  lis_variable_names:
+    - Qh_tavg
+  operation: direct
+  scale_factor: 1.0
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+    - basin_mean
+
+plotting:
+  cmap: "OrRd"
+  difference_cmap: "RdBu_r"
+  colorbar_label: "Sensible heat flux (W m⁻²)"
+  difference_label: "Δ SH (W m⁻²)"
+  auto_limits: true
+  robust_percentiles: [2, 98]
+  center_difference_on_zero: true

@@ -1,0 +1,14 @@
+# Configuration for OPL Multiple DA
+module_name: "opl_multiple_da"
+
+# Activate or deactivate specific thematic blocks
+active_blocks:
+  assimilation: true
+  soil_moisture: true
+  fluxes: true
+  groundwater: true
+  runoff: true
+  streamflow: true
+  validation: true
+  spatial_analysis: true
+  synthesis: true

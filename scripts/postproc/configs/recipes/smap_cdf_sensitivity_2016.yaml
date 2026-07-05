@@ -1,0 +1,54 @@
+recipe_id: smap_cdf_sensitivity_2016
+title: SMAP CDF-matching sensitivity experiment over North Morocco
+domain: NorthMor
+year: 2016
+comparison_mode: baseline_vs_multiple
+baseline: OPL_noirr_2016
+
+experiments:
+  - OPL_noirr_2016
+  - DA_smap_nocdf_noirr_2016
+  - DA_smap_cdf_noirr_2016
+
+variables:
+  - obs_count
+  - innovations
+  - increments
+  - spread
+  - surface_soil_moisture
+  - rootzone_soil_moisture
+  - evapotranspiration
+  - groundwater_storage
+  - total_runoff
+  - surface_runoff
+  - baseflow
+  - runoff_partitioning
+  - water_table_depth
+
+diagnostics:
+  assimilation:
+    enabled: true
+    preserve_existing_code_from: src/assimilation_diagnostics
+
+  domain:
+    enabled: true
+    preserve_existing_code_from: src/domain
+
+  # --- Hydrologie ---
+  hydrology:
+    enabled: true
+
+  water_balance:
+    enabled: false
+
+  streamflow:
+    enabled: false
+
+  external_validation:
+    enabled: false
+
+outputs:
+  figure_dir: outputs/matrix_2016/figures/smap_cdf_sensitivity/
+  metrics_dir: outputs/matrix_2016/metrics/smap_cdf_sensitivity/
+  table_dir: outputs/matrix_2016/tables/smap_cdf_sensitivity/
+  pdf_report: outputs/matrix_2016/pdf/smap_cdf_sensitivity_2016_diagnostic_report_v4.pdf

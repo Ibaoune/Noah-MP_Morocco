@@ -1,0 +1,6 @@
+# Configuration for Domain module
+module_name: "domain"
+active_plots:
+  - domain_map
+  - landcover_irrigation
+  - station_map
