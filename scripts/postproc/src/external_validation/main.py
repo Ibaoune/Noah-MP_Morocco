@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: external_validation.main
+Description: Validation of model outputs against external observational datasets.
+================================================================================
+"""
 import argparse
 import sys
 import os

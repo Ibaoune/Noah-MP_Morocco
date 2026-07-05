@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.core.__init__
+Description: Core framework logic: configuration, variables, and experiment parsing.
+================================================================================
+"""
 """core/__init__.py"""
 from .config import (
     load_yaml, load_global_config, load_experiments_catalog,

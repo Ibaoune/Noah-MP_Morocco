@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: utils.metrics
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
 import numpy as np
 
 def calculate_metrics(obs, sim):

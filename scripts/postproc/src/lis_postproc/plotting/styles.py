@@ -1,4 +1,11 @@
 """
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.plotting.styles
+Description: Generic plotting utilities and visualization functions.
+================================================================================
+"""
+"""
 plotting/styles.py — Styles globaux et palettes de couleurs
 =============================================================
 Fonctions utilitaires pour initialiser les styles matplotlib

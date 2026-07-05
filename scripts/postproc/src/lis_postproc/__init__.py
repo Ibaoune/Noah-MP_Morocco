@@ -1,4 +1,11 @@
 """
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.__init__
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
+"""
 lis_postproc — Framework de post-processing LIS/Noah-MP/HyMAP
 ==============================================================
 Architecture YAML-driven, modulaire et scalable pour l'analyse

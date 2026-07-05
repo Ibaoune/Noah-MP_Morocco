@@ -1,7 +1,14 @@
 """
-core/experiments.py — Classe Experiment
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.core.experiments
+Description: Core framework logic: configuration, variables, and experiment parsing.
+================================================================================
+"""
+"""
+core/experiments.py — Experiment Class
 ========================================
-Représente une expérience LIS/Noah-MP avec ses métadonnées et son path.
+Represents a LIS/Noah-MP experiment with its metadata and path.
 """
 import os
 from dataclasses import dataclass, field
@@ -11,23 +18,23 @@ from typing import Optional
 @dataclass
 class Experiment:
     """
-    Représente une expérience LIS/Noah-MP.
+    Represents a LIS/Noah-MP experiment.
 
-    Attributs
+    Attributes
     ---------
-    id          : Identifiant unique (clé dans experiments.yaml)
-    label       : Label court pour les figures (ex: "DA-SMAP-CDF")
-    type        : "open_loop" ou "data_assimilation"
-    year        : Année de simulation
-    path        : Chemin relatif à project_root
-    path_abs    : Chemin absolu résolu
-    assimilation: Type d'observation assimilée ("none", "SMAP", "LAI", "SMAP+LAI")
-    cdf_matching: CDF-matching appliqué (True/False)
-    irrigation  : Irrigation activée (True/False)
-    color       : Couleur par défaut pour les figures
-    linestyle   : Style de ligne pour les séries temporelles
-    marker      : Marqueur pour les scatter plots
-    description : Description longue (optionnel)
+    id          : Unique identifier (key in experiments.yaml)
+    label       : Short label for figures (e.g., "DA-SMAP-CDF")
+    type        : "open_loop" or "data_assimilation"
+    year        : Simulation year
+    path        : Path relative to project_root
+    path_abs    : Resolved absolute path
+    assimilation: Type of assimilated observation ("none", "SMAP", "LAI", "SMAP+LAI")
+    cdf_matching: CDF-matching applied (True/False)
+    irrigation  : Irrigation enabled (True/False)
+    color       : Default color for figures
+    linestyle   : Line style for timeseries
+    marker      : Marker for scatter plots
+    description : Long description (optional)
     """
     id: str
     label: str
@@ -45,7 +52,7 @@ class Experiment:
 
     @classmethod
     def from_dict(cls, exp_id: str, data: dict) -> 'Experiment':
-        """Crée un Experiment depuis un dictionnaire (entrée YAML)."""
+        """Creates an Experiment object from a dictionary (YAML input)."""
         return cls(
             id=exp_id,
             label=data.get('label', exp_id),
@@ -63,15 +70,15 @@ class Experiment:
         )
 
     def is_available(self) -> bool:
-        """Retourne True si le path de l'expérience est défini et existe."""
+        """Returns True if the experiment path is defined and exists."""
         return self.path_abs is not None and os.path.isdir(self.path_abs)
 
     def is_da(self) -> bool:
-        """Retourne True si c'est une expérience d'assimilation."""
+        """Returns True if this is a data assimilation experiment."""
         return self.type == 'data_assimilation'
 
     def validate_path(self) -> str:
-        """Vérifie l'existence du path. Retourne un message d'état."""
+        """Verifies path existence. Returns a status message."""
         if self.path_abs is None:
             return f"[WARNING] {self.id}: path=null (future experiment)"
         if not os.path.isdir(self.path_abs):
@@ -87,7 +94,7 @@ class Experiment:
 
 
 def build_experiments_from_catalog(catalog: dict) -> dict:
-    """Convertit un catalogue brut (dict) en dict d'objets Experiment."""
+    """Converts a raw catalog (dict) into a dictionary of Experiment objects."""
     return {
         exp_id: Experiment.from_dict(exp_id, exp_data)
         for exp_id, exp_data in catalog.items()

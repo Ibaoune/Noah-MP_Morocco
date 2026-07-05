@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: domain.main
+Description: Geospatial mapping and domain characterization.
+================================================================================
+"""
 import os
 from .plot_domain_map import plot_all_domain_maps
 

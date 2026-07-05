@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: domain.plot_domain_map
+Description: Geospatial mapping and domain characterization.
+================================================================================
+"""
 import os
 import glob
 import h5py
@@ -14,6 +21,17 @@ import geopandas as gpd
 import matplotlib.lines as mlines
 
 def plot_all_domain_maps(out_dir, project_root):
+    """
+    Generates and saves the 4 geospatial domain maps.
+    
+    Args:
+        out_dir (str): Output directory where the maps will be saved.
+        project_root (str): Root path of the NoahMP_Morocco project.
+        
+    Returns:
+        list: List of file paths to the generated PNG images.
+    """
+    # Paths to the input reference files (LDT, SMAP, MERRA2)
     ldt_nc_path = os.path.join(project_root, "data", "lis_input", "lis_input_NorthMor_5km.nc")
     
     smap_h5_path = os.path.join(project_root, "input", "RS_DATA", "SMAP", "SPL3SMP.009", "2020.06.01", "SMAP_L3_SM_P_20200601.h5")
@@ -40,16 +58,22 @@ def plot_all_domain_maps(out_dir, project_root):
     }
 
     def add_geospatial_context(ax, fig):
+        """
+        Adds borders, coastlines, rivers, gridlines (lat/lon), 
+        and major city locations to the map context.
+        """
         ax.add_feature(cfeature.BORDERS, linewidth=0.8, edgecolor='black', linestyle=':', zorder=4)
         ax.add_feature(cfeature.COASTLINE, linewidth=0.8, edgecolor='black', zorder=4)
         ax.add_feature(cfeature.RIVERS, linewidth=0.5, edgecolor='blue', alpha=0.5, zorder=4)
         
+        # Add lat/lon gridlines
         gl = ax.gridlines(draw_labels=True, linewidth=0.5, color='gray', alpha=0.5, linestyle='--')
         gl.top_labels = False
         gl.right_labels = False
         gl.xlabel_style = {'size': 10}
         gl.ylabel_style = {'size': 10}
         
+        # Loop through cities to overlay them on the map
         for city, coord in cities.items():
             if lon_min - 1.5 <= coord[0] <= lon_max + 0.5 and lat_min - 0.5 <= coord[1] <= lat_max + 0.5:
                 ax.plot(coord[0], coord[1], 'ro', markersize=6, markeredgecolor='black', markeredgewidth=1.0, zorder=6)

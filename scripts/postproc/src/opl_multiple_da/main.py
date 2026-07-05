@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: opl_multiple_da.main
+Description: Analysis of multiple Data Assimilation configurations vs Open Loop.
+================================================================================
+"""
 import os
 import yaml
 from .assimilation.plot_assimilation import run_assimilation_diagnostics

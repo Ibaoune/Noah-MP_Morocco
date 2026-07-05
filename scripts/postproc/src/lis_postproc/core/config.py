@@ -1,7 +1,14 @@
 """
-core/config.py — Chargement et validation des fichiers YAML
-============================================================
-Fonctions pour charger, valider et résoudre les chemins de :
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.core.config
+Description: Core framework logic: configuration, variables, and experiment parsing.
+================================================================================
+"""
+"""
+core/config.py — YAML Loading and Validation
+============================================
+Functions to load, validate, and resolve paths for:
   - global.yaml
   - experiments.yaml
   - configs/variables/*.yaml
@@ -18,11 +25,11 @@ logger = logging.getLogger(__name__)
 
 
 # ============================================================
-# Fonctions de chargement bas niveau
+# Low-level loading functions
 # ============================================================
 
 def load_yaml(filepath: str) -> Dict[str, Any]:
-    """Charge un fichier YAML et retourne un dictionnaire."""
+    """Loads a YAML file and returns a dictionary."""
     filepath = Path(filepath)
     if not filepath.exists():
         raise FileNotFoundError(f"YAML file not found: {filepath}")
@@ -34,7 +41,7 @@ def load_yaml(filepath: str) -> Dict[str, Any]:
 
 
 def deep_merge(base: Dict, override: Dict) -> Dict:
-    """Fusionne récursivement override dans base (override a la priorité)."""
+    """Recursively merges override into base (override takes precedence)."""
     result = dict(base)
     for key, value in override.items():
         if isinstance(value, dict) and key in result and isinstance(result[key], dict):
@@ -45,18 +52,18 @@ def deep_merge(base: Dict, override: Dict) -> Dict:
 
 
 # ============================================================
-# Chargement des configs principales
+# Main configurations loading
 # ============================================================
 
 def load_global_config(global_yaml_path: str) -> Dict[str, Any]:
     """
-    Charge configs/global.yaml.
-    Résout les chemins relatifs en chemins absolus à partir de project_root.
+    Loads configs/global.yaml.
+    Resolves relative paths to absolute paths based on project_root.
     """
     cfg = load_yaml(global_yaml_path)
     project_root = cfg.get('paths', {}).get('project_root', '')
     cfg['_project_root'] = project_root
-    # Racine du dossier postproc (parent du dossier configs/)
+    # Root of the postproc directory (parent of the configs/ directory)
     postproc_dir = str(Path(global_yaml_path).parent.parent)
     cfg['_postproc_dir'] = postproc_dir
     logger.info(f"Global config loaded: project_root={project_root}")
@@ -66,8 +73,8 @@ def load_global_config(global_yaml_path: str) -> Dict[str, Any]:
 def load_experiments_catalog(experiments_yaml_path: str,
                               global_cfg: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Charge configs/experiments.yaml.
-    Résout les chemins d'expériences relatifs à project_root.
+    Loads configs/experiments.yaml.
+    Resolves experiment paths relative to project_root.
     """
     catalog_raw = load_yaml(experiments_yaml_path)
     project_root = global_cfg.get('_project_root', '')
@@ -77,7 +84,7 @@ def load_experiments_catalog(experiments_yaml_path: str,
     for exp_id, exp_data in experiments.items():
         exp = dict(exp_data)
         exp['id'] = exp_id
-        # Résoudre le path en absolu si non null
+        # Resolve to absolute path if not null
         if exp.get('path') is not None:
             raw_path = exp['path']
             if not os.path.isabs(raw_path):
@@ -95,13 +102,13 @@ def load_experiments_catalog(experiments_yaml_path: str,
 def load_recipe(recipe_yaml_path: str,
                 global_cfg: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Charge une recette configs/recipes/*.yaml.
-    Résout les chemins de sortie relatifs au dossier postproc/.
+    Loads a recipe from configs/recipes/*.yaml.
+    Resolves output paths relative to the postproc/ directory.
     """
     recipe = load_yaml(recipe_yaml_path)
     postproc_dir = global_cfg.get('_postproc_dir', '.')
 
-    # Résoudre les chemins de sortie
+    # Resolve output paths
     outputs = recipe.get('outputs', {})
     for key in ['figure_dir', 'metrics_dir', 'table_dir', 'pdf_report']:
         if key in outputs and outputs[key] is not None:
@@ -117,7 +124,7 @@ def load_recipe(recipe_yaml_path: str,
 def load_variable(variable_id: str,
                   variables_dir: str) -> Dict[str, Any]:
     """
-    Charge le YAML d'une variable depuis configs/variables/{variable_id}.yaml.
+    Loads the YAML configuration for a variable from configs/variables/{variable_id}.yaml.
     """
     yaml_path = os.path.join(variables_dir, f"{variable_id}.yaml")
     if not os.path.exists(yaml_path):
@@ -132,7 +139,7 @@ def load_variable(variable_id: str,
 
 def load_all_variables_for_recipe(recipe: Dict[str, Any],
                                    variables_dir: str) -> Dict[str, Dict]:
-    """Charge tous les YAMLs de variables référencés dans une recette."""
+    """Loads all variable YAMLs referenced in a recipe."""
     variables = {}
     for var_id in recipe.get('variables', []):
         variables[var_id] = load_variable(var_id, variables_dir)
@@ -140,11 +147,11 @@ def load_all_variables_for_recipe(recipe: Dict[str, Any],
 
 
 # ============================================================
-# Fonctions de découverte
+# Discovery functions
 # ============================================================
 
 def list_available_experiments(experiments_catalog: Dict[str, Any]) -> list:
-    """Liste les IDs d'expériences disponibles (path non null)."""
+    """Lists available experiment IDs (where path is not null)."""
     available = []
     for exp_id, exp in experiments_catalog.items():
         if exp.get('path_abs') is not None:
@@ -153,13 +160,13 @@ def list_available_experiments(experiments_catalog: Dict[str, Any]) -> list:
 
 
 def list_available_variables(variables_dir: str) -> list:
-    """Liste les variables disponibles dans configs/variables/."""
+    """Lists all available variables in configs/variables/."""
     yamls = glob.glob(os.path.join(variables_dir, '*.yaml'))
     return [os.path.splitext(os.path.basename(f))[0] for f in sorted(yamls)]
 
 
 def list_available_recipes(recipes_dir: str) -> list:
-    """Liste les recettes disponibles dans configs/recipes/."""
+    """Lists all available recipes in configs/recipes/."""
     yamls = glob.glob(os.path.join(recipes_dir, '*.yaml'))
     return [os.path.splitext(os.path.basename(f))[0] for f in sorted(yamls)]
 
@@ -172,12 +179,12 @@ def validate_recipe_against_catalog(recipe: Dict[str, Any],
                                      experiments_catalog: Dict[str, Any],
                                      variables_dir: str) -> list:
     """
-    Valide une recette et retourne une liste de messages d'erreur/warning.
-    Vérifie :
-      - Que toutes les expériences référencées existent dans le catalogue
-      - Que toutes les expériences ont un path non null
-      - Que tous les paths existent sur le disque
-      - Que toutes les variables ont un YAML
+    Validates a recipe and returns a list of error/warning messages.
+    Checks:
+      - That all referenced experiments exist in the catalog
+      - That all experiments have a non-null path
+      - That all paths exist on the disk
+      - That all variables have a corresponding YAML
     """
     errors = []
     warnings = []
@@ -208,8 +215,8 @@ def validate_recipe_against_catalog(recipe: Dict[str, Any],
 
 def check_all_configs(postproc_dir: str) -> Dict[str, Any]:
     """
-    Vérification complète de toutes les configs.
-    Retourne un rapport structuré.
+    Performs a comprehensive check of all configurations.
+    Returns a structured report.
     """
     report = {
         'global': [],
@@ -233,7 +240,7 @@ def check_all_configs(postproc_dir: str) -> Dict[str, Any]:
     except Exception as e:
         report['global'].append(f"[ERROR] global.yaml: {e}")
         report['summary']['errors'] += 1
-        return report  # Impossible de continuer sans global config
+        return report  # Impossible to continue without global config
 
     # 2. Experiments catalog
     try:

@@ -1,4 +1,11 @@
 """
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.diagnostics.assimilation.adapter
+Description: Adapter for the legacy assimilation diagnostics suite.
+================================================================================
+"""
+"""
 diagnostics/assimilation/adapter.py
 =====================================
 Adaptateur entre la nouvelle architecture (Recipe/Experiment)
@@ -80,7 +87,7 @@ def _build_compat_config(
 
     Ce config fusionne :
       - le global.yaml du module assimilation_diagnostics
-      - les paramètres de la recette (dates, saisons)
+      - les Parameters de la recette (dates, saisons)
       - les overrides nécessaires (chemins, labels)
     """
     # Charger la config globale du module assimilation_diagnostics
@@ -90,7 +97,7 @@ def _build_compat_config(
     base_cfg['project_root'] = global_cfg_override.get('_project_root', '')
     base_cfg['output_dir'] = out_dir  # Chemin absolu depuis la recette
 
-    # Paramètres d'expérience
+    # Parameters d'expérience
     base_cfg['experiment_name'] = experiment_id
     base_cfg['da_dir'] = os.path.relpath(
         da_path_abs, global_cfg_override.get('_project_root', '/')
@@ -222,7 +229,7 @@ def run_assimilation_diagnostics(
     """
     Point d'entrée principal de l'adaptateur.
 
-    Paramètres
+    Parameters
     ----------
     recipe            : Objet Recipe (lis_postproc.core.recipes.Recipe)
     experiments_catalog: dict brut des expériences (depuis config.py)
@@ -284,7 +291,7 @@ def run_assimilation_diagnostics(
         'spread': run_spread,
     }
 
-    # Paramètres de dates depuis la recette
+    # Parameters de dates depuis la recette
     year = getattr(recipe, 'year', 2016)
     recipe_params = {
         'year': year,

@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.plotting.distributions
+Description: Generic plotting utilities and visualization functions.
+================================================================================
+"""
 """plotting/distributions.py — Histogrammes et boxplots génériques."""
 import numpy as np
 import matplotlib.pyplot as plt

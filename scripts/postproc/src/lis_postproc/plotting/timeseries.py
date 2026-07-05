@@ -1,4 +1,11 @@
-"""plotting/timeseries.py — Fonctions génériques de séries temporelles."""
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.plotting.timeseries
+Description: Generic plotting utilities and visualization functions.
+================================================================================
+"""
+"""plotting/timeseries.py — Generic timeseries functions."""
 import numpy as np
 import matplotlib.pyplot as plt
 import logging
@@ -13,14 +20,14 @@ def plot_multi_experiment_timeseries(
     out_path=None,
 ):
     """
-    Trace les séries temporelles de plusieurs expériences sur le même graphique.
+    Plots timeseries of multiple experiments on the same graph.
 
-    Paramètres
+    Parameters
     ----------
-    dates          : liste de datetime
+    dates          : list of datetime
     data_dict      : {exp_id: np.array 1D}
     variable       : objet Variable (pour les unités et labels)
-    experiment_catalog: dict brut des expériences (pour les styles)
+    experiment_catalog: raw dictionary of experiments (for styling)
     """
     from .styles import get_experiment_style
 

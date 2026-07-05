@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: opl_vs_da.plot_basin_timeseries
+Description: Comparison between Open Loop (OPL) and Data Assimilation (DA) experiments.
+================================================================================
+"""
 import os
 import sys
 import matplotlib.pyplot as plt

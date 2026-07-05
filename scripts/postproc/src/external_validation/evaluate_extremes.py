@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: external_validation.evaluate_extremes
+Description: Validation of model outputs against external observational datasets.
+================================================================================
+"""
 import os
 import matplotlib
 matplotlib.use('Agg')

@@ -1,4 +1,11 @@
 """
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.utils.helpers
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
+"""
 utils/helpers.py — Fonctions utilitaires partagées
 =====================================================
 Wrappeurs et helpers qui réexportent ou complètent

@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: utils.io_lis
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
 import os
 from datetime import timedelta
 import netCDF4 as nc

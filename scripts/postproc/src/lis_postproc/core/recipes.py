@@ -1,7 +1,14 @@
 """
-core/recipes.py — Classe Recipe
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.core.recipes
+Description: Core framework logic: configuration, variables, and experiment parsing.
+================================================================================
+"""
+"""
+core/recipes.py — Recipe Class
 =================================
-Représente une recette de comparaison (fichier configs/recipes/*.yaml).
+Represents a comparison recipe (configs/recipes/*.yaml file).
 """
 import os
 from dataclasses import dataclass, field
@@ -10,14 +17,14 @@ from typing import List, Dict, Optional, Any
 
 @dataclass
 class RecipeOutputs:
-    """Chemins de sortie pour une recette."""
+    """Output paths for a given recipe."""
     figure_dir: str = ""
     metrics_dir: str = ""
     table_dir: str = ""
     pdf_report: str = ""
 
     def create_dirs(self):
-        """Crée tous les dossiers de sortie."""
+        """Creates all necessary output directories."""
         for path in [self.figure_dir, self.metrics_dir, self.table_dir]:
             if path:
                 os.makedirs(path, exist_ok=True)
@@ -29,14 +36,14 @@ class RecipeOutputs:
 @dataclass
 class Recipe:
     """
-    Représente une recette de post-processing.
+    Represents a post-processing recipe.
 
-    Une recette définit :
-      - Les expériences à comparer
-      - La baseline de référence
-      - Les variables à analyser
-      - Les diagnostics à activer
-      - Les chemins de sortie
+    A recipe defines:
+      - The experiments to compare
+      - The baseline reference
+      - The variables to analyze
+      - The diagnostics to enable
+      - The output paths
     """
     recipe_id: str
     title: str
@@ -52,7 +59,7 @@ class Recipe:
 
     @classmethod
     def from_dict(cls, data: dict) -> 'Recipe':
-        """Crée un Recipe depuis un dictionnaire (entrée YAML)."""
+        """Creates a Recipe object from a dictionary (YAML input)."""
         outputs_raw = data.get('outputs', {})
         outputs = RecipeOutputs(
             figure_dir=outputs_raw.get('figure_dir', ''),
@@ -75,16 +82,16 @@ class Recipe:
         )
 
     def is_diagnostic_enabled(self, diag_name: str) -> bool:
-        """Vérifie si un diagnostic est activé dans cette recette."""
+        """Checks if a specific diagnostic is enabled in this recipe."""
         diag = self.diagnostics.get(diag_name, {})
         return diag.get('enabled', False)
 
     def get_da_experiments(self) -> List[str]:
-        """Retourne la liste des expériences DA référencées dans la recette."""
+        """Returns the list of Data Assimilation experiments referenced in the recipe."""
         return [e for e in self.experiments if e != self.baseline]
 
     def get_assimilation_config(self) -> Dict[str, Any]:
-        """Retourne la config du bloc assimilation."""
+        """Returns the configuration block for assimilation diagnostics."""
         return self.diagnostics.get('assimilation', {})
 
     def __repr__(self) -> str:

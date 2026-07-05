@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: opl_multiple_da.soil_moisture.plot_soil_moisture
+Description: Analysis of multiple Data Assimilation configurations vs Open Loop.
+================================================================================
+"""
 import os
 import sys
 import numpy as np

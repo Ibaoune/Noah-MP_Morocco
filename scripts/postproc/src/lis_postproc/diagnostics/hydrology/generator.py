@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.diagnostics.hydrology.generator
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
 import os
 import json
 import logging

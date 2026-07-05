@@ -1,11 +1,18 @@
 """
-runner.py — Orchestrateur de recettes
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.runner
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
+"""
+runner.py — Recipe Orchestrator
 =======================================
-RecipeRunner exécute le pipeline complet d'une recette :
-  1. Résolution des expériences et variables
-  2. Création des dossiers de sortie
-  3. Dispatch vers les modules de diagnostics activés
-  4. Génération optionnelle du PDF
+RecipeRunner executes the complete pipeline of a recipe:
+  1. Resolution of experiments and variables
+  2. Creation of output directories
+  3. Dispatching to enabled diagnostic modules
+  4. Optional PDF report generation
 """
 import os
 import logging
@@ -20,15 +27,15 @@ logger = logging.getLogger(__name__)
 
 class RecipeRunner:
     """
-    Orchestre l'exécution d'une recette de post-processing.
+    Orchestrates the execution of a post-processing recipe.
 
-    Paramètres
+    Parameters
     ----------
-    recipe            : Objet Recipe chargé depuis YAML
-    experiments_catalog: dict brut des expériences (depuis load_experiments_catalog)
-    global_cfg        : Config globale (depuis load_global_config)
-    variables_dir     : Chemin vers configs/variables/
-    dry_run           : Si True, affiche le plan sans exécuter
+    recipe            : Recipe object loaded from YAML
+    experiments_catalog: Raw dictionary of experiments (from load_experiments_catalog)
+    global_cfg        : Global configuration (from load_global_config)
+    variables_dir     : Path to configs/variables/
+    dry_run           : If True, prints the execution plan without running
     """
 
     def __init__(
@@ -48,9 +55,9 @@ class RecipeRunner:
 
     def run(self, make_figures: bool = True, make_hydrology_figures: bool = False, make_pdf: bool = False) -> Dict:
         """
-        Lance le pipeline complet de la recette.
+        Launches the complete recipe pipeline.
 
-        Retourne un rapport d'exécution.
+        Returns an execution report.
         """
         logger.info(f"Starting recipe: {self.recipe.recipe_id}")
         report = {
@@ -62,12 +69,12 @@ class RecipeRunner:
             'errors': [],
         }
 
-        # 1. Créer les dossiers de sortie
+        # 1. Create output directories
         if not self.dry_run:
             self.recipe.outputs.create_dirs()
             logger.info("Output directories created")
 
-        # 2. Charger les variables
+        # 2. Load variables
         try:
             variables_data = load_all_variables_for_recipe(
                 self.recipe.__dict__, self.variables_dir
@@ -77,7 +84,7 @@ class RecipeRunner:
             report['errors'].append(str(e))
             variables_data = {}
 
-        # 3. Dispatcher vers les diagnostics activés
+        # 3. Dispatch to enabled diagnostics
         if make_figures or make_hydrology_figures:
             self._run_diagnostics(report, variables_data, make_figures, make_hydrology_figures)
 
@@ -89,7 +96,7 @@ class RecipeRunner:
         return report
 
     def _run_diagnostics(self, report: Dict, variables_data: Dict, make_figures: bool, make_hydrology_figures: bool):
-        """Dispatch vers chaque module de diagnostic activé dans la recette."""
+        """Dispatches execution to each diagnostic module enabled in the recipe."""
 
         # --- Assimilation ---
         if self.recipe.is_diagnostic_enabled('assimilation') and make_figures:
@@ -135,7 +142,7 @@ class RecipeRunner:
                 logger.error(f"Error in domain diagnostics: {e}")
                 report['errors'].append(f"domain: {e}")
 
-        # --- Hydrologie unifiée ---
+        # --- Unified Hydrology ---
         hydrology_enabled = self.recipe.is_diagnostic_enabled('hydrology')
         
         if hydrology_enabled and make_hydrology_figures:
@@ -162,13 +169,13 @@ class RecipeRunner:
             logger.info("Dispatching: streamflow (Not yet implemented with HyMAP)")
             report['diagnostics_run'].append('streamflow')
 
-        # --- Validation externe ---
+        # --- External Validation ---
         if self.recipe.is_diagnostic_enabled('external_validation') and make_hydrology_figures:
             logger.info("Dispatching: external_validation (Not yet implemented)")
             report['diagnostics_run'].append('external_validation')
 
     def _generate_pdf(self, report: Dict):
-        """Génère un rapport PDF consolidant toutes les figures."""
+        """Generates a PDF report consolidating all figures."""
         pdf_path = self.recipe.outputs.pdf_report
         if not pdf_path:
             logger.warning("No pdf_report path defined in recipe outputs")
@@ -187,7 +194,7 @@ class RecipeRunner:
                 logger.warning("No figures to include in PDF")
                 return
 
-            # Appel au nouveau générateur structuré
+            # Call the new structured generator
             final_pdf = generate_diagnostic_report(self.recipe, figure_files, pdf_path)
             
             self._generated_files.append(final_pdf)

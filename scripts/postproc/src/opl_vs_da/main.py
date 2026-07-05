@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: opl_vs_da.main
+Description: Comparison between Open Loop (OPL) and Data Assimilation (DA) experiments.
+================================================================================
+"""
 import os
 from .plot_basin_timeseries import plot_vertical_propagation
 

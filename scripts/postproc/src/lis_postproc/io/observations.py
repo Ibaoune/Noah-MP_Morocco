@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.io.observations
+Description: Input/Output operations for LIS and HyMAP NetCDF datasets.
+================================================================================
+"""
 """io/observations.py — Stub pour la lecture des observations de validation."""
 import logging
 logger = logging.getLogger(__name__)

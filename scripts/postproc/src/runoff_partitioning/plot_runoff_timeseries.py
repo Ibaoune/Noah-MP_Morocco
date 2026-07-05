@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: runoff_partitioning.plot_runoff_timeseries
+Description: Analysis of runoff partitioning and hydrological water balance.
+================================================================================
+"""
 import os
 import sys
 import matplotlib.pyplot as plt

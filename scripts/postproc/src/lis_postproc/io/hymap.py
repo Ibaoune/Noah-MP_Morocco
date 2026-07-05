@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.io.hymap
+Description: Input/Output operations for LIS and HyMAP NetCDF datasets.
+================================================================================
+"""
 """io/hymap.py — Stub pour la lecture des fichiers HyMAP."""
 import logging
 logger = logging.getLogger(__name__)

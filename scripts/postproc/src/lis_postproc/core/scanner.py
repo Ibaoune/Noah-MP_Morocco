@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.core.scanner
+Description: Core framework logic: configuration, variables, and experiment parsing.
+================================================================================
+"""
 import os
 import glob
 import pandas as pd

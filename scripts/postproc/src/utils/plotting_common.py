@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: utils.plotting_common
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
 import numpy as np
 import cartopy.crs as ccrs
 

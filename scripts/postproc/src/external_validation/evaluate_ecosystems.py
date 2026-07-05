@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: external_validation.evaluate_ecosystems
+Description: Validation of model outputs against external observational datasets.
+================================================================================
+"""
 import os
 import sys
 import matplotlib

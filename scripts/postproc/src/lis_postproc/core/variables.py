@@ -1,8 +1,15 @@
 """
-core/variables.py — Classe Variable
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.core.variables
+Description: Core framework logic: configuration, variables, and experiment parsing.
+================================================================================
+"""
+"""
+core/variables.py — Variable Class
 ======================================
-Représente une variable hydrologique/physique avec ses métadonnées
-et ses paramètres de plotting.
+Represents a hydrological/physical variable with its metadata
+and plotting parameters.
 """
 from dataclasses import dataclass, field
 from typing import List, Optional, Any, Dict
@@ -11,22 +18,22 @@ from typing import List, Optional, Any, Dict
 @dataclass
 class Variable:
     """
-    Représente une variable LIS/Noah-MP/HyMAP.
+    Represents a LIS/Noah-MP/HyMAP variable.
 
-    Attributs
+    Attributes
     ---------
-    variable_id     : Identifiant unique (nom du fichier YAML sans extension)
-    long_name       : Nom complet ("Surface soil moisture")
-    short_name      : Nom court ("SSM")
-    unit            : Unité physique ("m³ m⁻³")
-    category        : Catégorie ("soil_moisture", "runoff", "fluxes", ...)
-    lis_variable_names : Liste des noms de variables LIS NetCDF
-    operation       : Opération de calcul ("direct", "sum", "layer_mean", ...)
-    scale_factor    : Facteur de conversion
-    cmap            : Colormap matplotlib pour les cartes
-    difference_cmap : Colormap pour les cartes de différences
-    colorbar_label  : Label de la colorbar
-    difference_label: Label pour les cartes de différences
+    variable_id     : Unique identifier (YAML filename without extension)
+    long_name       : Full name ("Surface soil moisture")
+    short_name      : Short name ("SSM")
+    unit            : Physical unit ("m³ m⁻³")
+    category        : Category ("soil_moisture", "runoff", "fluxes", ...)
+    lis_variable_names : List of LIS NetCDF variable names
+    operation       : Calculation operation ("direct", "sum", "layer_mean", ...)
+    scale_factor    : Conversion factor
+    cmap            : Matplotlib colormap for maps
+    difference_cmap : Colormap for difference maps
+    colorbar_label  : Colorbar label
+    difference_label: Label for difference maps
     """
     variable_id: str
     long_name: str
@@ -60,7 +67,7 @@ class Variable:
 
     @classmethod
     def from_dict(cls, data: dict) -> 'Variable':
-        """Crée un Variable depuis un dictionnaire (entrée YAML)."""
+        """Creates a Variable object from a dictionary (YAML input)."""
         input_cfg = data.get('input', {})
         plot_cfg = data.get('plotting', {})
         return cls(
@@ -103,7 +110,7 @@ class Variable:
 
 
 def build_variables_from_dicts(variables_data: Dict[str, Dict]) -> Dict[str, Variable]:
-    """Convertit un dict de données YAML brutes en dict d'objets Variable."""
+    """Converts a dictionary of raw YAML data into a dictionary of Variable objects."""
     return {
         var_id: Variable.from_dict(data)
         for var_id, data in variables_data.items()

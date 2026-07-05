@@ -1,4 +1,11 @@
 """
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.io.lis
+Description: Input/Output operations for LIS and HyMAP NetCDF datasets.
+================================================================================
+"""
+"""
 io/lis.py — Wrapper autour de src/utils/io_lis.py
 ====================================================
 Réexporte les fonctions de lecture des fichiers LIS NetCDF
@@ -54,7 +61,7 @@ def load_variable_for_experiment(experiment, variable, start_date, end_date):
     """
     Charge une variable LIS pour une expérience donnée.
 
-    Paramètres
+    Parameters
     ----------
     experiment  : dict brut ou objet Experiment (avec path_abs)
     variable    : objet Variable (avec lis_variable_names, operation, etc.)

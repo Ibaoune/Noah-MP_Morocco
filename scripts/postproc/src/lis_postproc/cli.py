@@ -1,4 +1,11 @@
 """
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.cli
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
+"""
 cli.py — Interface en ligne de commande
 =========================================
 Fonctions CLI appelées par scripts/run_postproc.py.

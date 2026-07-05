@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: run_postproc
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
 import os
 import sys
 import argparse

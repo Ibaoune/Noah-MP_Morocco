@@ -1,8 +1,15 @@
 """
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.diagnostics.domain.adapter
+Description: Geospatial mapping and domain characterization.
+================================================================================
+"""
+"""
 diagnostics/domain/adapter.py
 =============================
-Adaptateur pour le module src/domain/
-Permet d'intégrer la génération des cartes du domaine dans le pipeline lis_postproc.
+Adapter for the module src/domain/
+Integrates the domain maps generation into the pipeline lis_postproc.
 """
 import os
 import sys
@@ -22,7 +29,7 @@ def _add_src_to_path():
 
 def run_domain_diagnostics(recipe, global_cfg, out_dir, dry_run=False):
     """
-    Exécute le script principal du module domain.
+    Executes the main script of the module domain.
     """
     generated_files = []
     
@@ -40,7 +47,7 @@ def run_domain_diagnostics(recipe, global_cfg, out_dir, dry_run=False):
         logger.error(f"Cannot import domain module: {e}")
         return generated_files
 
-    # Config attendue par le module domain
+    # Configuration expected by the module domain
     data_dict = {
         'project_root': getattr(global_cfg, 'project_root', "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco")
     }

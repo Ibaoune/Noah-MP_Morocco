@@ -1,4 +1,11 @@
 """
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.plotting.pdf_generator
+Description: Generic plotting utilities and visualization functions.
+================================================================================
+"""
+"""
 plotting/pdf_generator.py — Générateur de rapport PDF V2
 ================================================================
 Crée un rapport PDF scientifique V2 contenant exclusivement

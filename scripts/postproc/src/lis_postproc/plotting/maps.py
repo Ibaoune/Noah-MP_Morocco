@@ -1,4 +1,11 @@
-"""plotting/maps.py — Fonctions génériques de cartographie."""
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: lis_postproc.plotting.maps
+Description: Generic plotting utilities and visualization functions.
+================================================================================
+"""
+"""plotting/maps.py — Generic mapping functions."""
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
@@ -17,8 +24,8 @@ except ImportError:
 
 def add_map_features(ax, map_cfg=None, gl_cfg=None):
     """
-    Ajoute coastlines, frontières et grille à un axe Cartopy.
-    Compatible avec la fonction du même nom dans assimilation_diagnostics/utils.py.
+    Adds coastlines, borders and grid to a Cartopy axis.
+    Compatible with the function of the same name in assimilation_diagnostics/utils.py.
     """
     if not HAS_CARTOPY:
         return None
@@ -61,8 +68,8 @@ def plot_spatial_map(
     out_path=None,
 ):
     """
-    Génère une carte spatiale générique avec Cartopy.
-    Compatible avec les conventions de assimilation_diagnostics.
+    Generates a generic spatial map with Cartopy.
+    Compatible with the conventions of assimilation_diagnostics.
     """
     if not HAS_CARTOPY:
         logger.warning("Cannot plot map: cartopy not available")
@@ -110,7 +117,7 @@ def plot_difference_map(
     map_cfg=None, gl_cfg=None,
     out_path=None,
 ):
-    """Génère une carte de différence (B − A) avec colormap divergente centrée sur 0."""
+    """Generates a difference map (B - A) with a divergent colormap centered on 0."""
     return plot_spatial_map(
         data=data_diff, lat=lat, lon=lon,
         title=title, subtitle=subtitle,

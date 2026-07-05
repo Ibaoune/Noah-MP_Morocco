@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: hymap_validation.plot_hydrographs
+Description: Validation and analysis of HyMAP routing and streamflow outputs.
+================================================================================
+"""
 import os
 import matplotlib.pyplot as plt
 

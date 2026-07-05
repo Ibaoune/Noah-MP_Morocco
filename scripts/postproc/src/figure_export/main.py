@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: figure_export.main
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
 # Figure export main module placeholder
 import argparse
 

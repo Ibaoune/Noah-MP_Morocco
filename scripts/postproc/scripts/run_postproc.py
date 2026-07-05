@@ -1,26 +1,33 @@
 #!/usr/bin/env python3
 """
-run_postproc.py — Contrôleur principal du framework LIS/Noah-MP Post-Processing
 ================================================================================
-Point d'entrée unique pour toutes les opérations de post-processing.
+Author: M. El Aabaribaoune (@um6)
+Module: run_postproc
+Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
+================================================================================
+"""
+"""
+run_postproc.py — Main Controller of the LIS/Noah-MP Post-Processing Framework
+================================================================================
+Single entry point for all post-processing operations.
 
-UTILISATION :
-  # Lister les expériences disponibles
+USAGE:
+  # List available experiments
   python scripts/run_postproc.py --list-experiments
 
-  # Lister les recettes disponibles
+  # List available recipes
   python scripts/run_postproc.py --list-recipes
 
-  # Vérifier toutes les configurations
+  # Check all configurations
   python scripts/run_postproc.py --check-configs
 
-  # Simuler l'exécution d'une recette (sans calculs)
+  # Simulate recipe execution (no calculations)
   python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_2016.yaml --dry-run
 
-  # Lancer une recette complète avec figures
+  # Run a complete recipe with figures
   python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_2016.yaml --make-figures
 
-  # Lancer avec génération PDF
+  # Run with PDF generation
   python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_2016.yaml --make-figures --make-pdf
 """
 import os
@@ -30,15 +37,15 @@ import logging
 from pathlib import Path
 
 # ============================================================
-# Résolution des chemins
+# Path Resolution
 # ============================================================
-# Ce script est dans scripts/ (sous postproc/).
-# Le package lis_postproc est dans src/.
+# This script is located in scripts/ (under postproc/).
+# The lis_postproc package is in src/.
 _SCRIPTS_DIR = Path(__file__).parent.resolve()
 _POSTPROC_DIR = _SCRIPTS_DIR.parent.resolve()    # scripts/postproc/
 _SRC_DIR = _POSTPROC_DIR / "src"                 # scripts/postproc/src/
 
-# Ajouter src/ au sys.path pour importer lis_postproc
+# Add src/ to sys.path to import lis_postproc
 if str(_SRC_DIR) not in sys.path:
     sys.path.insert(0, str(_SRC_DIR))
 
@@ -58,39 +65,39 @@ Examples:
         """
     )
 
-    # Modes mutuellement exclusifs (sauf --recipe qui peut se combiner)
+    # Mutually exclusive modes (except --recipe which can be combined)
     mode_group = parser.add_mutually_exclusive_group()
     mode_group.add_argument(
         '--list-experiments', action='store_true',
-        help='Affiche la liste de toutes les expériences dans experiments.yaml'
+        help='Displays the list of all experiments in experiments.yaml'
     )
     mode_group.add_argument(
         '--list-recipes', action='store_true',
-        help='Affiche la liste de toutes les recettes disponibles'
+        help='Displays the list of all available recipes'
     )
     mode_group.add_argument(
         '--check-configs', action='store_true',
-        help='Vérifie toutes les configurations YAML et les chemins'
+        help='Checks all YAML configurations and paths'
     )
 
-    # Recette
+    # Recipe
     parser.add_argument(
         '--recipe', type=str, metavar='RECIPE_PATH',
-        help='Chemin vers le fichier YAML de recette (ex: configs/recipes/smap_cdf_sensitivity_2016.yaml)'
+        help='Path to the YAML recipe file (e.g., configs/recipes/smap_cdf_sensitivity_2016.yaml)'
     )
 
-    # Options d'exécution
+    # Execution Options
     parser.add_argument(
         '--dry-run', action='store_true',
-        help='Affiche le plan d\'exécution sans lancer les calculs'
+        help='Displays the execution plan without running calculations'
     )
     parser.add_argument(
         '--make-figures', action='store_true',
-        help='Génère les figures'
+        help='Generates the figures'
     )
     parser.add_argument(
         '--make-hydrology-figures', action='store_true',
-        help='Génère les figures hydrologiques'
+        help='Generates the hydrology figures'
     )
     parser.add_argument(
         '--scan-variables', action='store_true',
@@ -98,17 +105,17 @@ Examples:
     )
     parser.add_argument(
         '--make-pdf', action='store_true',
-        help='Génère le rapport PDF (nécessite --make-figures)'
+        help='Generates the PDF report (requires --make-figures)'
     )
 
-    # Options de verbosité
+    # Verbosity options
     parser.add_argument(
         '--verbose', '-v', action='store_true',
-        help='Mode verbeux (logging DEBUG)'
+        help='Verbose mode (DEBUG logging)'
     )
     parser.add_argument(
         '--quiet', '-q', action='store_true',
-        help='Mode silencieux (logging WARNING uniquement)'
+        help='Quiet mode (WARNING logging only)'
     )
 
     return parser.parse_args()
@@ -116,7 +123,7 @@ Examples:
 
 def setup_logging(verbose: bool = False, quiet: bool = False,
                   log_dir: str = None):
-    """Configure le logging."""
+    """Configures the logging system."""
     if verbose:
         level = logging.DEBUG
     elif quiet:
@@ -143,10 +150,10 @@ def setup_logging(verbose: bool = False, quiet: bool = False,
 
 def resolve_recipe_path(recipe_arg: str) -> str:
     """
-    Résout le chemin de la recette, en testant plusieurs bases :
-      1. Tel quel (chemin absolu ou relatif au CWD)
-      2. Relatif au dossier postproc/
-      3. Relatif au dossier où est scripts/run_postproc.py
+    Resolves the recipe path by testing several bases:
+      1. As provided (absolute or relative to CWD)
+      2. Relative to the postproc/ directory
+      3. Relative to the directory where scripts/run_postproc.py is located
     """
     candidates = [
         recipe_arg,
@@ -156,7 +163,7 @@ def resolve_recipe_path(recipe_arg: str) -> str:
     for path in candidates:
         if os.path.isfile(path):
             return os.path.abspath(path)
-    return os.path.abspath(recipe_arg)  # Retourner tel quel pour le message d'erreur
+    return os.path.abspath(recipe_arg)  # Return as is for the error message
 
 
 def main():
@@ -187,7 +194,7 @@ def main():
     postproc_dir = str(_POSTPROC_DIR)
 
     # ============================================================
-    # Dispatch selon le mode
+    # Dispatch based on the execution mode
     # ============================================================
 
     if args.list_experiments:
@@ -222,7 +229,7 @@ def main():
                 make_pdf=args.make_pdf,
             )
         else:
-            # Pas d'option fournie avec --recipe → afficher le dry-run par défaut
+            # No option provided with --recipe → display dry-run by default
             print(
                 "\n[INFO] No action specified. Use --dry-run, --make-figures, or --make-pdf."
                 "\n       Showing dry-run output:\n"

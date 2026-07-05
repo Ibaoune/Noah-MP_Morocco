@@ -1,3 +1,10 @@
+"""
+================================================================================
+Author: M. El Aabaribaoune (@um6)
+Module: external_validation.config
+Description: Validation of model outputs against external observational datasets.
+================================================================================
+"""
 import os
 import yaml
 from datetime import datetime
