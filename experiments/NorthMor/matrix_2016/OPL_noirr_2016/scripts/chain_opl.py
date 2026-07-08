@@ -97,7 +97,7 @@ def main():
     expected_start_restart = f"LIS_RST_NOAHMP401_{current_date.strftime('%Y%m%d')}0000.d01.nc"
     
     if current_date == global_start_date:
-        spinup_restart = f"/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/step1_spinup/restarts/{expected_start_restart}"
+        spinup_restart = f"/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/SPINUP/SPINUP_OPL/restarts/{expected_start_restart}"
         if not os.path.exists(spinup_restart):
             print(f"Error: Initial spinup restart file {spinup_restart} not found!")
             sys.exit(1)

@@ -102,12 +102,12 @@ def main():
     if current_date == global_start_date:
         if "noirr" in exp_name:
             # Point to noirr spinup
-            surf_restart_full = f"/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/step3_da_2015/restarts/surf/{surf_restart_path.split('/')[-1]}"
+            surf_restart_full = f"/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/SPINUP/SPINUP_DA/restarts/surf/{surf_restart_path.split('/')[-1]}"
         else:
             # Point to irr spinup
-            surf_restart_full = f"/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/step3_da_2015/restarts/surf/{surf_restart_path.split('/')[-1]}"
+            surf_restart_full = f"/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/SPINUP/SPINUP_DA/restarts/surf/{surf_restart_path.split('/')[-1]}"
             
-        pert_restart_full = f"/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/step3_da_2015/{pert_restart_path}"
+        pert_restart_full = f"/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/SPINUP/SPINUP_DA/{pert_restart_path}"
     else:
         surf_restart_full = f"{base_dir}/{surf_restart_path}"
         pert_restart_full = f"{base_dir}/{pert_restart_path}"
