@@ -262,10 +262,17 @@ For detailed configurations, datasets, and job launch instructions, please refer
 
 ## Evaluation and Post-Processing
 
-A dedicated Python module is provided to extract variables, compute spatial averages, and visualize spatial/temporal impacts across Data Assimilation setups. 
-*   **DA Analysis script:** `scripts/plot_da_comparison.py` extracts Surface/Root-Zone Soil Moisture, Evapotranspiration, Runoff, and LAI to generate spatial difference maps (`Δ DA - OPL`) and basin-averaged temporal comparisons.
-*   **DA Increments script:** `scripts/plot_da_increments.py` parses EnKF assimilation diagnostics (`*_incr.*.nc`) to visualize temporal adjustments applied by the filter (aligning with Nie et al. 2022).
-*   **Result Plots:** Are deposited into `experiments/plots/` upon successful execution.
+A modern, highly modular, YAML-driven post-processing pipeline has been established to visualize hydrology states and fluxes, strictly separating scientific data loading from visual styling.
 
+*   **YAML Configurations:** Located in `configs/postproc/hydrology_visuals/`. Each hydrological variable (e.g., `baseflow.yaml`, `total_runoff.yaml`) has its own configuration specifying NetCDF variable names, multipliers, fallback calculation logic (e.g. weighted mean for RZSM), colormaps, bounds, and layout preferences.
+*   **Universal Runner:** The core script `scripts/postproc/scripts/run_hydrology_postproc.py` dynamically ingests these YAML files to generate standardized multi-panel figures:
+    - `01_<variable>_annual_mean_<year>`
+    - `02_<variable>_differences_<year>` (e.g. DA-CDF minus OPL)
+    - `03_<variable>_domain_mean_timeseries_<year>`
+*   **Reproducibility:** Every execution produces a `processing_log.yaml` detailing exact NetCDF files read, aliases used, calculated percentiles, and statistical metrics, along with a `resolved_config.yaml`.
+*   **Execution Launchers:** Available in `jobs/postproc_hydrology/`:
+    - `run_all_local.sh`: Processes all variables locally in sequence.
+    - `submit_all_hydrology.sh`: Submits one SLURM job per variable for parallel HPC execution.
+    - `run_one_hydro_variable.sh`: Core wrapper script for a single variable configuration.
 
-
+*Note: Older hardcoded Python scripts (e.g., `plot_runoff.py`, `plot_da_comparison.py`) remain in `scripts/postproc/src/` as legacy reference materials.*
