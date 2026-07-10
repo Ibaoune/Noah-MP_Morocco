@@ -1,0 +1,153 @@
+variable:
+  name: total_runoff
+  long_name: Total Runoff
+  domain: NorthMor
+  period: 2016
+data:
+  possible_names:
+  - TotalRunoff_tavg
+  - Qs_tavg
+  operation: add
+  layers: null
+  multiplier: 86400.0
+  units: "mm d\u207B\xB9"
+paths:
+  output_dir: scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/hydrology/total_runoff
+experiments:
+  opl:
+    label: OPL
+    path: experiments/NorthMor/matrix_2016/OPL_noirr_2016/output
+    color: '#2b2b2b'
+    linestyle: '-'
+    linewidth: 2.0
+  da_smap_nocdf:
+    label: DA-SMAP-noCDF
+    path: experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output
+    color: '#E69F00'
+    linestyle: '-'
+    linewidth: 2.0
+  da_smap_cdf:
+    label: DA-SMAP-CDF
+    path: experiments/NorthMor/matrix_2016/DA_cdf_noirr_2016/output
+    color: '#0072B2'
+    linestyle: '-'
+    linewidth: 2.0
+visual:
+  annual_mean:
+    enabled: true
+    title: "Annual mean total runoff, NorthMor, 2016"
+    panel_titles:
+    - (a) OPL
+    - (b) DA-SMAP-noCDF
+    - (c) DA-SMAP-CDF
+    cmap:
+      name: Blues
+      type: sequential
+      bad_color: '#f0f0f0'
+      extend: max
+    colorbar:
+      label: "Total runoff (mm d⁻¹)"
+      levels: [0.00, 0.005, 0.01, 0.025, 0.05, 0.10, 0.20, 0.40, 0.70, 1.00, 1.50]
+      ticks: [0.00, 0.01, 0.05, 0.10, 0.20, 0.40, 1.00, 1.50]
+  differences:
+    enabled: true
+    title: "Total runoff response to SMAP assimilation, 2016"
+    comparisons:
+    - name: nocdf_minus_opl
+      label: "(a) noCDF − OPL"
+      experiment_a: da_smap_nocdf
+      experiment_b: opl
+    - name: cdf_minus_opl
+      label: "(b) CDF − OPL"
+      experiment_a: da_smap_cdf
+      experiment_b: opl
+    - name: cdf_minus_nocdf
+      label: "(c) CDF − noCDF"
+      experiment_a: da_smap_cdf
+      experiment_b: da_smap_nocdf
+    cmap:
+      name: RdBu
+      type: divergent
+      positive_color_meaning: "increase in total runoff"
+      negative_color_meaning: "decrease in total runoff"
+      neutral_color: '#f7f7f7'
+      bad_color: '#f0f0f0'
+      extend: both
+    colorbar:
+      label: "Δ total runoff (mm d⁻¹)"
+      levels: [-0.50, -0.30, -0.20, -0.10, -0.05, -0.02, -0.005, 0.005, 0.02, 0.05, 0.10, 0.20, 0.30, 0.50]
+      ticks: [-0.50, -0.20, -0.05, 0.00, 0.05, 0.20, 0.50]
+    statistics_box:
+      enabled: true
+      metrics:
+      - mean
+      - median
+      - percent_area_abs_gt_threshold
+      threshold: [0.005, 0.02, 0.05, 0.10]
+      display_thresholds: [0.02, 0.05]
+      fontsize: 9
+      alpha: 0.85
+      location: upper_left
+  domain_mean_timeseries:
+    enabled: true
+    title: "Domain-averaged total runoff, NorthMor, 2016"
+    yaxis:
+      label: "Total runoff (mm d⁻¹)"
+      limits: [0.00, 0.45]
+      ticks: [0.00, 0.10, 0.20, 0.30, 0.40]
+    anomalies_panel:
+      enabled: true
+      comparisons:
+      - name: da_smap_nocdf_minus_opl
+        label: "DA-SMAP-noCDF − OPL"
+        experiment_a: da_smap_nocdf
+        experiment_b: opl
+      - name: da_smap_cdf_minus_opl
+        label: "DA-SMAP-CDF − OPL"
+        experiment_a: da_smap_cdf
+        experiment_b: opl
+      ylabel: "Δ total runoff relative to OPL (mm d⁻¹)"
+      zero_line: true
+      yaxis:
+        limits: [-0.005, 0.15]
+        ticks: [0.00, 0.05, 0.10, 0.15]
+  style:
+    figure:
+      dpi: 600
+      formats:
+      - png
+      - pdf
+      bbox_inches: tight
+    fonts:
+      main_title_size: 14
+      panel_title_size: 12
+      axis_label_size: 12
+      tick_label_size: 11
+      legend_size: 11
+      colorbar_label_size: 11
+      colorbar_tick_size: 10
+    maps:
+      figsize:
+      - 18
+      - 5
+      wspace: 0.06
+      axis_off: true
+      same_extent: true
+      same_mask: true
+      outside_domain_color: '#e0e0e0'
+    timeseries:
+      figsize:
+      - 10
+      - 6
+      grid: true
+      grid_color: lightgray
+      grid_alpha: 0.4
+      legend_location: upper_left
+      legend_frame: true
+      legend_alpha: 0.9
+  overlays:
+    basin_boundary:
+      enabled: false
+      path: null
+      color: '#404040'
+      linewidth: 0.6

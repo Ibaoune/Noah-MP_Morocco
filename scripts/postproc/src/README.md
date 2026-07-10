@@ -75,12 +75,15 @@ src/
 │           ├── seasonal_increments.yaml
 │           └── spread.yaml
 │
-├── opl_multiple_da/                ← Archive (remplacé par configs/recipes/)
+├── opl_multiple_da/                ← Archive (remplacé par configs/recipes/) + Modules génériques
 ├── opl_vs_da/                      ← Archive (remplacé par configs/recipes/)
 ├── runoff_partitioning/            ← À migrer (Phase 2)
 ├── hymap_validation/               ← À migrer (Phase 2)
-├── external_validation/            ← À migrer (Phase 2)
+├── external_validation/            ← À migrer (Phase 2) + Modules génériques
 ├── figure_export/                  ← À migrer (Phase 2)
+│
+├── paper_reproductions/            ← NOUVEAU : Scripts de reproduction des articles
+│   └── nie2022/                    # Figures de l'article Nie et al. (2022)
 │
 ├── utils/                          ← Utilitaires partagés (réutilisés par lis_postproc/)
 │   ├── io_lis.py                   # Lecture des fichiers LIS NetCDF
@@ -164,9 +167,35 @@ Validation des débits HyMAP contre les stations de jaugeage. Sera migré dans `
 
 ---
 
-### `external_validation/` — À migrer (Phase 2)
+### `external_validation/` — À migrer (Phase 2) + Modules Génériques
 
 Validation externe (ASCAT, ESA-CCI, GLEAM, WaPOR, GRACE, MODIS LAI). Sera migré dans `lis_postproc/diagnostics/validation/`.
+Contient également les nouveaux modules de calcul génériques pour la reproduction de papiers (e.g., `correlations.py`, `lai_anomalies.py`, `landcover_statistics.py`).
+
+---
+
+### `paper_reproductions/` — Reproduction d'Articles Scientifiques (NOUVEAU)
+
+Ce répertoire contient les scripts de haut niveau dédiés exclusivement à la **reproduction exacte des figures d'articles publiés**. 
+
+**Principe d'architecture :**
+- **Aucun calcul scientifique lourd** ne doit être codé ici. 
+- Les scripts importent les fonctions depuis les modules de calcul (`external_validation/`, `opl_multiple_da/`, `assimilation_diagnostics/`, etc.).
+- Le rôle de ces scripts se limite à l'assemblage des données, la mise en page (subplots), les palettes de couleurs, et l'export des figures finales (PDF/PNG).
+
+**Sous-module `nie2022/` :**
+Reproduit les figures de l'article *Nie et al. (2022)* relatives à l'assimilation SMAP.
+- `fig02_flux_correlation_maps.py` : Utilise `external_validation/correlations.py`
+- `fig03_landcover_correlation_boxplots.py` : Utilise `external_validation/landcover_statistics.py`
+- `fig04_lai_seasonality_comparison.py` : Utilise `opl_multiple_da/lai_timeseries.py`
+- `fig08_drought_area_timeseries.py` : Utilise `opl_multiple_da/drought_indices.py`
+- `fig09_drought_area_scatterplots.py` : Utilise `opl_multiple_da/drought_scatter.py`
+- `fig10_lai_anomaly_maps.py` : Utilise `external_validation/lai_anomalies.py`
+
+**Utilisation :**
+```bash
+python src/paper_reproductions/nie2022/fig02_flux_correlation_maps.py
+```
 
 ---
 

@@ -1,0 +1,171 @@
+variable:
+  name: evapotranspiration
+  long_name: Evapotranspiration
+  domain: NorthMor
+  period: 2016
+data:
+  possible_names:
+  - Evap_tavg
+  operation: none
+  layers: null
+  multiplier: 86400.0
+  units: "mm d\u207B\xB9"
+paths:
+  output_dir: scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/hydrology/evapotranspiration
+experiments:
+  opl:
+    label: OPL
+    path: experiments/NorthMor/matrix_2016/OPL_noirr_2016/output
+    color: '#2b2b2b'
+    linestyle: '-'
+    linewidth: 2.0
+  da_smap_nocdf:
+    label: DA-SMAP-noCDF
+    path: experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output
+    color: '#E69F00'
+    linestyle: '-'
+    linewidth: 2.0
+  da_smap_cdf:
+    label: DA-SMAP-CDF
+    path: experiments/NorthMor/matrix_2016/DA_cdf_noirr_2016/output
+    color: '#0072B2'
+    linestyle: '-'
+    linewidth: 2.0
+visual:
+  annual_mean:
+    enabled: true
+    title: "Annual mean evapotranspiration, NorthMor, 2016"
+    panel_titles:
+    - (a) OPL
+    - (b) DA-SMAP-noCDF
+    - (c) DA-SMAP-CDF
+    cmap:
+      name: YlGnBu
+      type: sequential
+      bad_color: '#f0f0f0'
+      extend: max
+    colorbar:
+      label: "Evapotranspiration (mm d⁻¹)"
+      levels: [0.00, 0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 2.00, 2.50, 3.00, 3.50, 4.00]
+      ticks: [0.00, 0.50, 1.00, 2.00, 3.00, 4.00]
+  differences:
+    enabled: true
+    title: "Evapotranspiration response to SMAP assimilation \u2014 2016"
+    comparisons:
+    - name: nocdf_minus_opl
+      label: "(a) noCDF \u2212 OPL"
+      experiment_a: da_smap_nocdf
+      experiment_b: opl
+    - name: cdf_minus_opl
+      label: "(b) CDF \u2212 OPL"
+      experiment_a: da_smap_cdf
+      experiment_b: opl
+    - name: cdf_minus_nocdf
+      label: "(c) CDF \u2212 noCDF"
+      experiment_a: da_smap_cdf
+      experiment_b: da_smap_nocdf
+    cmap:
+      name: RdBu
+      type: divergent
+      positive_color_meaning: increase in baseflow
+      negative_color_meaning: decrease in baseflow
+      neutral_color: '#f5f5f5'
+      bad_color: '#e0e0e0'
+      extend: both
+    colorbar:
+      label: "\u0394 evapotranspiration (mm d\u207B\xB9)"
+      levels:
+      - -1.0
+      - -0.75
+      - -0.5
+      - -0.25
+      - -0.1
+      - 0.1
+      - 0.25
+      - 0.5
+      - 0.75
+      - 1.0
+      ticks:
+      - -1.0
+      - -0.5
+      - -0.1
+      - 0.25
+      - 0.75
+      - 1.0
+    statistics_box:
+      enabled: true
+      metrics:
+      - mean
+      - median
+      - percent_area_abs_gt_threshold
+      threshold: 0.005
+      fontsize: 9
+      alpha: 0.85
+      location: upper_left
+  domain_mean_timeseries:
+    enabled: true
+    title: Domain-averaged evapotranspiration, NorthMor, 2016
+    yaxis:
+      label: "Evapotranspiration (mm d\u207B\xB9)"
+      limits:
+      - 0.0
+      - 4.0
+      ticks:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+    anomalies_panel:
+      enabled: true
+      comparisons:
+      - name: da_smap_nocdf_minus_opl
+        label: "DA-SMAP-noCDF \u2212 OPL"
+        experiment_a: da_smap_nocdf
+        experiment_b: opl
+      - name: da_smap_cdf_minus_opl
+        label: "DA-SMAP-CDF \u2212 OPL"
+        experiment_a: da_smap_cdf
+        experiment_b: opl
+      ylabel: "\u0394 (mm d\u207B\xB9)"
+      zero_line: true
+  style:
+    figure:
+      dpi: 600
+      formats:
+      - png
+      - pdf
+      bbox_inches: tight
+    fonts:
+      main_title_size: 14
+      panel_title_size: 12
+      axis_label_size: 12
+      tick_label_size: 11
+      legend_size: 11
+      colorbar_label_size: 11
+      colorbar_tick_size: 10
+    maps:
+      figsize:
+      - 18
+      - 5
+      wspace: 0.1
+      axis_off: true
+      same_extent: true
+      same_mask: true
+      outside_domain_color: '#e0e0e0'
+    timeseries:
+      figsize:
+      - 10
+      - 6
+      grid: true
+      grid_color: lightgray
+      grid_alpha: 0.4
+      legend_location: upper_left
+      legend_frame: true
+      legend_alpha: 0.9
+  overlays:
+    basin_boundary:
+      enabled: false
+      path: null
+      color: '#404040'
+      linewidth: 0.6
