@@ -1,0 +1,24 @@
+observation_id: esa_cci_soil_moisture
+long_name: "ESA CCI Soil Moisture (COMBINED)"
+category: soil_moisture
+path: "data/validation/soil_moisture/ESA_CCI/raw"
+format: "NETCDF"
+variable_names: ["sm"]
+unit: "m3/m3"
+temporal_resolution: "daily"
+spatial_resolution: "0.25 deg"
+start_date: "2015-01-01"
+end_date: "2020-12-31"
+missing_values: -9999.0
+quality_flags: ["flag", "dnflag"]
+scale_factor: 1.0
+offset: 0.0
+coordinate_names:
+  lat: "lat"
+  lon: "lon"
+  time: "time"
+regridding_method: "nearest"
+temporal_aggregation: "daily_mean"
+model_variable: "surface_soil_moisture"
+validation_scale: "pixel"
+enabled: true

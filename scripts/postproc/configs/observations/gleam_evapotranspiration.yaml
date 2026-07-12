@@ -1,0 +1,24 @@
+observation_id: gleam_evapotranspiration
+long_name: "GLEAM Evapotranspiration v4.3a"
+category: evapotranspiration
+path: "data/validation/evapotranspiration/GLEAM/raw"
+format: "NETCDF"
+variable_names: ["E"]
+unit: "mm/day"
+temporal_resolution: "daily"
+spatial_resolution: "0.25 deg"
+start_date: "2015-01-01"
+end_date: "2020-12-31"
+missing_values: -9999.0
+quality_flags: []
+scale_factor: 1.0
+offset: 0.0
+coordinate_names:
+  lat: "lat"
+  lon: "lon"
+  time: "time"
+regridding_method: "conservative"
+temporal_aggregation: "monthly_mean"
+model_variable: "evapotranspiration"
+validation_scale: "pixel"
+enabled: true

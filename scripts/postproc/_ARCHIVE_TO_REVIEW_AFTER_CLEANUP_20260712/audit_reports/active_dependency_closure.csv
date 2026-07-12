@@ -1,0 +1,101 @@
+path,type,category,required_by,dependency_evidence,imported_by,referenced_from_yaml,runtime_loaded,keep_reason
+README.md,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+cleanup_remove_candidates.csv,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+cleanup_commands_preview.sh,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+cleanup_baseline_output_inventory.csv,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+cleanup_keep_inventory.csv,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+scripts/run_postproc.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/global.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/experiments.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/observations/fluxsat_gpp.yaml,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/observations/esa_cci_soil_moisture.yaml,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/observations/grace_twsa.yaml,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/observations/gleam_evapotranspiration.yaml,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/observations/wapor_v2_aeti.yaml,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/evapotranspiration.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/streamflow.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/spread.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/innovations.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/latent_heat.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/groundwater_storage.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/lai.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/baseflow.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/surface_soil_moisture.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/obs_count.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/runoff_partitioning.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/sensible_heat.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/total_runoff.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/transpiration.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/increments.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/soil_moisture_layers.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/surface_runoff.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/soil_evaporation.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/water_table_depth.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/variables/rootzone_soil_moisture.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/domains/morocco_001deg.yaml,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+configs/recipes/smap_cdf_sensitivity_2016.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/config_assimilation_diagnostics.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/README.md,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/slurm-7277518.out,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/utils.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/main.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/job_assimilation_diagnostics.sh,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/diagnostics/diag_coverage.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/diagnostics/diag_spread.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/diagnostics/diag_seasonal_increments.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/diagnostics/__init__.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/diagnostics/diag_innovations.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/configs/global.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/configs/diagnostics/seasonal_increments.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/configs/diagnostics/spread.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/configs/diagnostics/innovations.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/configs/diagnostics/coverage.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/configs/experiments/DA-CDF-noIRR_2016.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/assimilation_diagnostics/configs/experiments/DA-noCDF-noIRR_2016.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/domain/README.md,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/domain/job_domain.sh,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/domain/plot_domain_map.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/domain/main.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/domain/config_domain.yaml,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/runner.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/cli.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/__init__.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/assimilation/adapter.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/assimilation/__init__.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/hydrology/generator.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/hydrology/__init__.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/vegetation.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/evapotranspiration.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/common.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/metrics.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/soil_moisture.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/adapter.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/water_storage.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/streamflow.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/synthesis.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/__init__.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/independent_ob_validation/lsm_benchmark.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/domain/adapter.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/diagnostics/domain/__init__.py,file,KEEP_ACTIVE_REQUIRED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/core/experiments.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/core/scanner.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/core/config.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/core/recipes.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/core/__init__.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/core/quality.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/core/variables.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/utils/helpers.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/utils/__init__.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/plotting/pdf_generator.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/plotting/styles.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/plotting/maps.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/plotting/distributions.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/plotting/__init__.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/plotting/timeseries.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/io/observations.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/io/lis.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/io/__init__.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+src/lis_postproc/io/hymap.py,file,KEEP_ACTIVE_SHARED,Baseline,Static Rules,runner.py,yes,yes,Requested by user rules
+tools/download/download_wapor_v2_aeti.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+tests/test_observation_config.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules
+tests/test_missing_products.py,file,KEEP_ACTIVE_INDEPENDENT_OB_VALIDATION,Independent Validation,Static Rules,runner.py,yes,yes,Requested by user rules

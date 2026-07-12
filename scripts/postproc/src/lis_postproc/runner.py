@@ -174,6 +174,17 @@ class RecipeRunner:
             logger.info("Dispatching: external_validation (Not yet implemented)")
             report['diagnostics_run'].append('external_validation')
 
+        # --- Independent Validation ---
+        if self.recipe.is_diagnostic_enabled('independent_ob_validation') and (make_figures or make_hydrology_figures):
+            logger.info("Dispatching: independent validation")
+            from .diagnostics.independent_ob_validation.adapter import run as run_independent_validation
+            try:
+                run_independent_validation(self.recipe.__dict__, self.global_cfg)
+                report['diagnostics_run'].append('independent_ob_validation')
+            except Exception as e:
+                logger.error(f"Error in independent validation: {e}")
+                report['errors'].append(f"independent_ob_validation: {e}")
+
     def _generate_pdf(self, report: Dict):
         """Generates a PDF report consolidating all figures."""
         pdf_path = self.recipe.outputs.pdf_report

@@ -1,4 +1,0 @@
-variable,experiment,file_count,date_start,date_end,expected_year_complete,unit,min,max,mean,nan_fraction,status,warning
-LIS_HIST_FILES,OPL_noirr_2016,365,LIS_HIST_201601020000.d01.nc,LIS_HIST_201612310000.d01.nc,YES,N/A,N/A,N/A,N/A,N/A,PASS,
-LIS_HIST_FILES,DA_smap_nocdf_noirr_2016,365,LIS_HIST_201601020000.d01.nc,LIS_HIST_201612310000.d01.nc,YES,N/A,N/A,N/A,N/A,N/A,PASS,
-LIS_HIST_FILES,DA_smap_cdf_noirr_2016,365,LIS_HIST_201601020000.d01.nc,LIS_HIST_201612310000.d01.nc,YES,N/A,N/A,N/A,N/A,N/A,PASS,

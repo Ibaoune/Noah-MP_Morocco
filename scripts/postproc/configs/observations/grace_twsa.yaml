@@ -1,0 +1,24 @@
+observation_id: grace_twsa
+long_name: "GRACE/GRACE-FO Terrestrial Water Storage Anomaly"
+category: water_storage
+path: "data/validation/water_storage/GRACE_GRACEFO/raw"
+format: "NETCDF"
+variable_names: ["lwe_thickness"]
+unit: "cm"
+temporal_resolution: "monthly"
+spatial_resolution: "3.0 deg"
+start_date: "2002-04-01"
+end_date: "2026-04-30"
+missing_values: -99999.0
+quality_flags: []
+scale_factor: 1.0
+offset: 0.0
+coordinate_names:
+  lat: "lat"
+  lon: "lon"
+  time: "time"
+regridding_method: "basin_average"
+temporal_aggregation: "monthly_mean"
+model_variable: "groundwater_storage"
+validation_scale: "basin"
+enabled: true

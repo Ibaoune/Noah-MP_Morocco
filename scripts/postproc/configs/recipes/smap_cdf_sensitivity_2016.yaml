@@ -47,8 +47,43 @@ diagnostics:
   external_validation:
     enabled: false
 
+  independent_ob_validation:
+    enabled: true
+    soil_moisture:
+      enabled: true
+      products:
+        - esa_cci_soil_moisture
+        - ascat_soil_moisture
+        - in_situ_soil_moisture
+    evapotranspiration:
+      enabled: true
+      products:
+        - gleam_evapotranspiration
+        - mod16_evapotranspiration
+        - wapor_evapotranspiration
+    streamflow_and_runoff:
+      enabled: true
+      products:
+        - in_situ_streamflow
+    vegetation:
+      enabled: true
+      products:
+        - fluxsat_gpp
+        - copernicus_lai
+        - modis_lai
+    water_storage:
+      enabled: true
+      products:
+        - grace_twsa
+    lsm_benchmark:
+      enabled: true
+      products:
+        - gldas_benchmark
+    validation_synthesis:
+      enabled: true
+
 outputs:
   figure_dir: outputs/matrix_2016/figures/smap_cdf_sensitivity/
-  metrics_dir: outputs/matrix_2016/metrics/smap_cdf_sensitivity/
-  table_dir: outputs/matrix_2016/tables/smap_cdf_sensitivity/
-  pdf_report: outputs/matrix_2016/pdf/smap_cdf_sensitivity_2016_diagnostic_report_v4.pdf
+  metrics_dir: .tmp/metrics/smap_cdf_sensitivity/
+  table_dir: .tmp/tables/smap_cdf_sensitivity/
+  pdf_report: .tmp/pdf/smap_cdf_sensitivity_2016_diagnostic_report_v4.pdf

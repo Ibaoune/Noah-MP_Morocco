@@ -1,0 +1,88 @@
+ D configs/baselines/smap_cdf_sensitivity_2016.yaml
+ D configs/recipes/opl_vs_smap_da_scientific_2016.yaml
+ M configs/recipes/smap_cdf_sensitivity_2016.yaml
+ D outputs/matrix_2016/metrics/smap_cdf_sensitivity/available_variables.csv
+ D outputs/matrix_2016/metrics/smap_cdf_sensitivity/figure_inventory_v2.csv
+ D outputs/matrix_2016/metrics/smap_cdf_sensitivity/hydrological_postproc_quality_check.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/assimilation_increment_strategy.yaml
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/baseline_manifest.yaml
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/baseline_outputs_snapshot.yaml
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/baseline_regression_comparison.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/baseline_regression_report.md
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/coordinate_checks.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/daobs_inventory.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/diagnostic_capabilities.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/diagnostic_execution_plan.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/enkf_inventory.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/grid_compatibility.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/input_inventory.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/lot2a_validation_report.md
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/lot2b_integration_report.md
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/missing_values.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/resolved_recipe.yaml
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/scientific_run_manifest.yaml
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/temporal_coverage.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/validation_data_status.md
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/validation_download_requirements.md
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/variable_availability.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/provenance/water_balance_variable_audit.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/tables/baseline_dependency_inventory.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/tables/baseline_output_inventory.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/tables/validation_dataset_metadata.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/tables/validation_diagnostic_coverage.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/tables/validation_download_requirements.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/tables/validation_file_inventory.csv
+ D outputs/matrix_2016/opl_vs_smap_da_scientific/tables/validation_scripts_search_results.txt
+ D outputs/matrix_2016/pdf/smap_cdf_sensitivity_2016_diagnostic_report.pdf
+ D outputs/matrix_2016/pdf/smap_cdf_sensitivity_2016_diagnostic_report_v2.pdf
+ D outputs/matrix_2016/pdf/smap_cdf_sensitivity_2016_diagnostic_report_v4.pdf
+ D scripts/run_scientific_postproc.py
+ M src/lis_postproc/core/__init__.py
+ D src/lis_postproc/core/capabilities.py
+ D src/lis_postproc/core/diagnostic_registry.py
+ D src/lis_postproc/core/provenance.py
+ D src/lis_postproc/diagnostics/quality_control/__init__.py
+ D src/lis_postproc/diagnostics/quality_control/quality_control.py
+ D src/lis_postproc/diagnostics/water_balance/__init__.py
+ D src/lis_postproc/diagnostics/water_balance/variable_audit.py
+ M src/lis_postproc/runner.py
+ D tests/core/test_capabilities.py
+ D tests/core/test_diagnostic_registry.py
+ D tests/core/test_provenance.py
+ D tests/integration/test_run_scientific_postproc.py
+ D tests/quality_control/__init__.py
+ D tests/quality_control/test_quality_control.py
+ D tests/water_balance/__init__.py
+ D tests/water_balance/test_variable_audit.py
+ D tools/audit/build_baseline_manifest.py
+ D tools/audit/build_outputs_snapshot.py
+ D tools/audit/generate_reports.py
+ D tools/audit/inspect_netcdf_metadata.py
+ D tools/audit/inventory_baseline.py
+ D tools/audit/inventory_validation_data.py
+ D tools/audit/run_baseline_regression.py
+ D tools/audit/run_da_audit_real_data.py
+ D tools/audit/run_outputs_regression.py
+ D tools/audit/run_qc_real_data.py
+ D tools/audit/run_wb_audit_real_data.py
+?? active_dependency_closure.csv
+?? archive_candidates.csv
+?? archive_move_preview.sh
+?? cleanup_baseline_output_inventory.csv
+?? cleanup_commands_preview.sh
+?? cleanup_git_diff_before.txt
+?? cleanup_git_status_before.txt
+?? cleanup_keep_inventory.csv
+?? cleanup_remove_candidates.csv
+?? configs/observations/esa_cci_soil_moisture.yaml
+?? configs/observations/fluxsat_gpp.yaml
+?? configs/observations/gleam_evapotranspiration.yaml
+?? configs/observations/grace_twsa.yaml
+?? review_required.csv
+?? scratch/
+?? source_cleanup_git_status_before.txt
+?? src/lis_postproc/diagnostics/independent_ob_validation/
+?? tests/test_missing_products.py
+?? tests/test_observation_config.py
+?? ../../slurm-7276927.out
+?? ../../test_load.py

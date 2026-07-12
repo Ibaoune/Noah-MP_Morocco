@@ -1,0 +1,30 @@
+File,Category,Reason
+configs/recipes/opl_vs_smap_da_scientific_2016.yaml,REMOVE_UNUSED_EXTENSION,Recette parallèle abandonnée
+configs/recipes/smap_da_extended_validation_2016.yaml,REMOVE_UNUSED_EXTENSION,Recette parallèle abandonnée
+configs/baselines/,REMOVE_UNUSED_EXTENSION,Non utilisé par la recette principale
+configs/product_catalogs/,REMOVE_UNUSED_EXTENSION,Non utilisé par la recette principale
+src/lis_postproc/core/capabilities.py,REMOVE_UNUSED_EXTENSION,Lié à la nouvelle architecture parallèle
+src/lis_postproc/core/diagnostic_registry.py,REMOVE_UNUSED_EXTENSION,Lié à la nouvelle architecture parallèle
+src/lis_postproc/core/provenance.py,REMOVE_UNUSED_EXTENSION,Lié à la nouvelle architecture parallèle
+src/lis_postproc/diagnostics/quality_control/,REMOVE_UNUSED_EXTENSION,Non activé et lié à l'extension
+src/lis_postproc/diagnostics/water_balance/,REMOVE_UNUSED_EXTENSION,Non activé et lié à l'extension
+tests/core/test_capabilities.py,REMOVE_UNUSED_EXTENSION,Test obsolète
+tests/core/test_diagnostic_registry.py,REMOVE_UNUSED_EXTENSION,Test obsolète
+tests/core/test_provenance.py,REMOVE_UNUSED_EXTENSION,Test obsolète
+tests/integration/test_run_scientific_postproc.py,REMOVE_UNUSED_EXTENSION,Test obsolète
+tests/quality_control/,REMOVE_UNUSED_EXTENSION,Test obsolète
+tests/water_balance/,REMOVE_UNUSED_EXTENSION,Test obsolète
+tools/audit/,REMOVE_UNUSED_EXTENSION,Outils d'audit pour l'extension
+scripts/run_scientific_postproc.py,REMOVE_UNUSED_EXTENSION,CLI parallèle abandonné
+scripts/postproc/scripts/run_scientific_postproc.py,REMOVE_UNUSED_EXTENSION,CLI parallèle abandonné
+outputs/matrix_2016/metrics/,REMOVE_UNUSED_EXTENSION,Sorties intermédiaires non désirées
+outputs/matrix_2016/pdf/,REMOVE_UNUSED_EXTENSION,Sorties PDF redondantes non désirées
+outputs/matrix_2016/tables/,REMOVE_UNUSED_EXTENSION,Sorties tables non désirées
+outputs/matrix_2016/smap_cdf_sensitivity_2016/,REMOVE_UNUSED_EXTENSION,Sorties intermédiaires non désirées
+outputs/matrix_2016/opl_vs_smap_da_scientific/,REMOVE_UNUSED_EXTENSION,Sorties de l'extension
+outputs/matrix_2016/smap_da_extended_validation_2016/,REMOVE_UNUSED_EXTENSION,Sorties de l'extension
+pipeline_scope_comparison.md,REMOVE_UNUSED_EXTENSION,Rapport d'audit temporaire
+pipeline_diagnostic_overlap.csv,REMOVE_UNUSED_EXTENSION,Rapport d'audit temporaire
+pipeline_output_overlap.csv,REMOVE_UNUSED_EXTENSION,Rapport d'audit temporaire
+pipeline_module_overlap.csv,REMOVE_UNUSED_EXTENSION,Rapport d'audit temporaire
+pipeline_consolidation_recommendation.md,REMOVE_UNUSED_EXTENSION,Rapport d'audit temporaire

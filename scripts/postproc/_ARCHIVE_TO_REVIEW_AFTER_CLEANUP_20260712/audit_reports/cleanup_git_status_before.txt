@@ -1,0 +1,23 @@
+ M configs/recipes/smap_cdf_sensitivity_2016.yaml
+ M src/lis_postproc/runner.py
+?? cleanup_baseline_output_inventory.csv
+?? cleanup_commands_preview.sh
+?? cleanup_git_status_before.txt
+?? cleanup_keep_inventory.csv
+?? cleanup_remove_candidates.csv
+?? configs/observations/esa_cci_soil_moisture.yaml
+?? configs/observations/fluxsat_gpp.yaml
+?? configs/observations/gleam_evapotranspiration.yaml
+?? configs/observations/grace_twsa.yaml
+?? outputs/matrix_2016/smap_cdf_sensitivity_2016/
+?? pipeline_consolidation_recommendation.md
+?? pipeline_diagnostic_overlap.csv
+?? pipeline_module_overlap.csv
+?? pipeline_output_overlap.csv
+?? pipeline_scope_comparison.md
+?? scratch/
+?? src/lis_postproc/diagnostics/independent_ob_validation/
+?? tests/test_missing_products.py
+?? tests/test_observation_config.py
+?? ../../slurm-7276927.out
+?? ../../test_load.py

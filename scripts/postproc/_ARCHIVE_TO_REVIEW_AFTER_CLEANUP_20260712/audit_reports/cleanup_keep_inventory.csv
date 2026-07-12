@@ -1,0 +1,21 @@
+File,Category,Reason
+configs/recipes/smap_cdf_sensitivity_2016.yaml,KEEP_BASELINE_DEPENDENCY,Recette principale
+configs/experiments.yaml,KEEP_BASELINE_DEPENDENCY,Définition des expériences
+configs/global.yaml,KEEP_BASELINE_DEPENDENCY,Configuration globale
+configs/variables/,KEEP_BASELINE_DEPENDENCY,Définition des variables
+scripts/run_postproc.py,KEEP_BASELINE_DEPENDENCY,Point d'entrée
+src/lis_postproc/runner.py,KEEP_BASELINE_DEPENDENCY,Orchestrateur
+src/lis_postproc/cli.py,KEEP_BASELINE_DEPENDENCY,Interface CLI
+src/lis_postproc/core/config.py,KEEP_BASELINE_DEPENDENCY,Chargement config
+src/lis_postproc/core/recipes.py,KEEP_BASELINE_DEPENDENCY,Modèle recette
+src/lis_postproc/core/experiments.py,KEEP_BASELINE_DEPENDENCY,Modèle expériences
+src/lis_postproc/core/variables.py,KEEP_BASELINE_DEPENDENCY,Modèle variables
+src/lis_postproc/diagnostics/assimilation/,KEEP_BASELINE_DEPENDENCY,Module baseline
+src/lis_postproc/diagnostics/domain/,KEEP_BASELINE_DEPENDENCY,Module baseline
+src/lis_postproc/diagnostics/hydrology/,KEEP_BASELINE_DEPENDENCY,Module baseline
+src/lis_postproc/plotting/,KEEP_BASELINE_DEPENDENCY,Génération PDF et figures
+src/assimilation_diagnostics/,KEEP_BASELINE_DEPENDENCY,Code historique intouchable
+src/lis_postproc/diagnostics/independent_ob_validation/,KEEP_INDEPENDENT_VALIDATION,Nouveau module renommé
+configs/observations/,KEEP_INDEPENDENT_VALIDATION,Config observations
+tests/test_missing_products.py,KEEP_INDEPENDENT_VALIDATION,Test validation
+tests/test_observation_config.py,KEEP_INDEPENDENT_VALIDATION,Test validation
