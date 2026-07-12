@@ -8,49 +8,61 @@ Framework modulaire et scalable pour le post-traitement des expériences d'assim
 
 ```
 scripts/postproc/
+├── _ARCHIVE_OBSOLETE/              # Composants obsolètes archivés pour traçabilité
 ├── configs/                        # ← Fichiers YAML de configuration
 │   ├── global.yaml                 # Chemins globaux, options de plotting
 │   ├── experiments.yaml            # Catalogue de toutes les expériences
+│   ├── baselines/                  # Configurations des baselines figées (read-only)
+│   ├── observations/               # Configurations des jeux d'observations (ex: WaPOR)
 │   ├── domains/                    # Configurations de domaine spatial
 │   │   └── morocco_001deg.yaml
 │   ├── variables/                  # Une variable = un YAML
 │   │   ├── surface_soil_moisture.yaml
 │   │   ├── total_runoff.yaml
 │   │   └── ...  (15 variables)
-│   └── recipes/                    # Recettes de comparaison
+│   └── recipes/                    # Recettes de comparaison scientifiques
 │       ├── only_opl_2016.yaml
 │       ├── smap_cdf_sensitivity_2016.yaml
-│       └── ...  (6 recettes)
+│       ├── opl_vs_smap_da_scientific_2016.yaml
+│       └── ...
 │
 ├── scripts/                        # Point d'entrée
-│   ├── run_postproc.py             # ← SCRIPT PRINCIPAL
+│   ├── run_postproc.py             # ← SCRIPT PRINCIPAL (baseline existante)
+│   ├── run_scientific_postproc.py  # ← NOUVEAU RUNNER scientifique (additive)
 │   └── job_postproc_2016.sh        # Script SLURM pour le cluster
 │
 ├── src/                            # Code Python
-│   ├── lis_postproc/               # ← Package principal (nouveau)
+│   ├── lis_postproc/               # ← Package principal
 │   │   ├── cli.py                  # Interface CLI
 │   │   ├── runner.py               # Orchestrateur RecipeRunner
-│   │   ├── core/                   # Chargement + validation YAML
+│   │   ├── core/                   # Chargement YAML, capabilities, registry, provenance
 │   │   ├── io/                     # Lecture LIS/HyMAP NetCDF
 │   │   ├── diagnostics/
-│   │   │   ├── assimilation/
-│   │   │   │   └── adapter.py      # Pont vers assimilation_diagnostics/
-│   │   │   └── domain/
-│   │   │       └── adapter.py      # Diagnostic de cartographie du domaine
+│   │   │   ├── assimilation/       # Pont vers assimilation_diagnostics/
+│   │   │   ├── domain/             # Diagnostic de cartographie du domaine
+│   │   │   ├── quality_control/    # QC temporel, coords, valeurs manquantes
+│   │   │   └── water_balance/      # Audit des termes du bilan hydrique
 │   │   ├── plotting/               # Fonctions de visualisation génériques
 │   │   └── utils/
 │   │
 │   ├── assimilation_diagnostics/   # ← MODULE DE RÉFÉRENCE (préservé intact)
-│   ├── opl_multiple_da/            # Archive (→ remplacé par recettes YAML)
-│   ├── opl_vs_da/                  # Archive
+│   ├── opl_multiple_da/            # Archive (→ déplacé vers _ARCHIVE_OBSOLETE)
+│   ├── opl_vs_da/                  # Archive (→ déplacé vers _ARCHIVE_OBSOLETE)
 │   └── utils/                      # Utilitaires partagés existants
+│
+├── tests/                          # Tests unitaires et d'intégration (core, qc, wb, etc.)
+│
+├── tools/                          # Outils autonomes d'audit et utilitaires
+│   ├── audit/                      # Scripts d'inventaire, regression, audit EnKF/DAOBS
+│   └── download/                   # Scripts de téléchargement de données (WaPOR, etc.)
 │
 ├── outputs/                        # Sorties générées
 │   └── matrix_2016/
 │       ├── figures/
 │       ├── metrics/
 │       ├── tables/
-│       └── pdf/
+│       ├── pdf/
+│       └── opl_vs_smap_da_scientific/ # Nouvelle structure de sortie avec provenance
 │
 └── logs/                           # Fichiers de logs
 ```
@@ -102,26 +114,25 @@ diagnostics:
 ```bash
 # Depuis le dossier scripts/postproc/
 
-# Lister toutes les expériences
+# Lister toutes les expériences (baseline)
 python scripts/run_postproc.py --list-experiments
 
-# Lister toutes les recettes
+# Lister toutes les recettes (baseline)
 python scripts/run_postproc.py --list-recipes
 
-# Vérifier toutes les configurations
-python scripts/run_postproc.py --check-configs
-
-# Dry-run (plan sans calculs)
-python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_2016.yaml --dry-run
-
-# Lancer la génération des figures
-python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_2016.yaml --make-figures
-
-# Lancer + générer le PDF
+# Lancer la génération des figures pour une recette baseline
 python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_2016.yaml --make-figures --make-pdf
 
+# Lancer le NOUVEAU workflow scientifique additif avec provenance et diagnostiques étendus
+python scripts/run_scientific_postproc.py --recipe configs/recipes/opl_vs_smap_da_scientific_2016.yaml
+
+# Lancer la suite de tests (unitaires et d'intégration)
+pytest tests/ -v
+
+# Lancer un audit de non-régression de la baseline
+python tools/audit/run_baseline_regression.py
+
 # Sur le cluster (SLURM)
-sbatch scripts/job_postproc_2016.sh
 sbatch scripts/job_postproc_2016.sh smap_cdf_sensitivity_2016
 ```
 
@@ -247,7 +258,7 @@ Le module de domaine (`src/domain/`) est entièrement intégré dans le nouveau 
 2. **Ne jamais coder en dur** un nom d'expérience dans le code Python
 3. Pour ajouter un diagnostic dans l'assimilation, l'ajouter dans `assimilation_diagnostics/` puis l'enregistrer dans `adapter.py`
 4. Pour ajouter un nouveau module de diagnostic (hydrology, validation...), créer un fichier dans `src/lis_postproc/diagnostics/` et l'enregistrer dans `runner.py`
-5. `src/opl_multiple_da/` et `src/opl_vs_da/` sont en mode **archive** — ne pas ajouter de nouveau code
+5. Les anciens scripts `opl_multiple_da/` et `opl_vs_da/` ont été déplacés dans **`_ARCHIVE_OBSOLETE/`** — ne pas ajouter de nouveau code.
 
 ---
 
