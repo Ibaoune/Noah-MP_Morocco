@@ -1,0 +1,4 @@
+experiment,num_files,num_dates_extracted,num_dates_unique,first_date,last_date,has_feb29,min_time_step_days,max_time_step_days,missing_dates_count,duplicated_dates_count,dates_out_of_2016,filename_internal_concordance_errors
+OPL_noirr_2016,366,365,365,2016-01-02,2016-12-31,True,1.0,1.0,1,0,0,0
+DA_nocdf_noirr_2016,366,365,365,2016-01-02,2016-12-31,True,1.0,1.0,1,0,0,0
+DA_cdf_noirr_2016,366,365,365,2016-01-02,2016-12-31,True,1.0,1.0,1,0,0,0

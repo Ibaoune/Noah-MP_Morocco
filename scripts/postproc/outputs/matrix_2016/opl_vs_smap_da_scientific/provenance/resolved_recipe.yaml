@@ -1,0 +1,37 @@
+analysis_period:
+  end: '2016-12-31'
+  start: '2016-01-01'
+comparisons:
+- candidate: DA_smap_nocdf_noirr_2016
+  comparison_id: smap_nocdf_vs_opl
+  reference: OPL_noirr_2016
+- candidate: DA_smap_cdf_noirr_2016
+  comparison_id: smap_cdf_vs_opl
+  reference: OPL_noirr_2016
+diagnostics:
+  drought_percentiles:
+    enabled: false
+  external_validation:
+    dataset: wapor_v2_aeti
+    enabled: true
+  quality_control:
+    enabled: true
+  response_to_updates:
+    enabled: true
+  temporal_means:
+    enabled: true
+  vertical_propagation:
+    enabled: true
+  water_balance:
+    enabled: true
+experiments:
+  candidates:
+  - DA_smap_nocdf_noirr_2016
+  - DA_smap_cdf_noirr_2016
+  reference: OPL_noirr_2016
+recipe_id: opl_vs_smap_da_scientific_2016
+reference_climatology:
+  enabled: false
+  end: null
+  experiment: null
+  start: null

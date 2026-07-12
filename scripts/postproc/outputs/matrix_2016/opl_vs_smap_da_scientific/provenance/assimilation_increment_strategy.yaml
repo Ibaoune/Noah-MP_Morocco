@@ -1,0 +1,26 @@
+DA_smap_cdf_noirr_2016:
+  dimensions: ''
+  directory_name: DA_cdf_noirr_2016
+  fraction_nonzero_values: 0.0
+  frequency: Daily
+  increment_variable: None
+  layers: 0
+  percentage_files_present: 0.0
+  sample_file: ''
+  sign_convention: TBD
+  strategy: INCREMENT_NOT_AVAILABLE
+  unit: ''
+  verification_level: NONE
+DA_smap_nocdf_noirr_2016:
+  dimensions: ''
+  directory_name: DA_nocdf_noirr_2016
+  fraction_nonzero_values: 0.0
+  frequency: Daily
+  increment_variable: None
+  layers: 0
+  percentage_files_present: 0.0
+  sample_file: ''
+  sign_convention: TBD
+  strategy: INCREMENT_NOT_AVAILABLE
+  unit: ''
+  verification_level: NONE

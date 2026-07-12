@@ -1,0 +1,4 @@
+experiment,has_lat,has_lon,has_time
+OPL_noirr_2016,False,False,True
+DA_nocdf_noirr_2016,False,False,True
+DA_cdf_noirr_2016,False,False,True

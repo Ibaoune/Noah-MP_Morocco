@@ -1,0 +1,8 @@
+diagnostic,requested,implementation_status,data_capability_status,decision,justification,missing_dependencies,action_required
+quality_control,True,REAL_DATA_TESTED,READY,EXECUTE,Ready and tested.,,None
+temporal_means,True,NOT_IMPLEMENTED,READY,SKIP,Module not implemented yet.,,Implement module
+external_validation,True,NOT_IMPLEMENTED,SKIPPED,SKIP,WaPOR v2 2016 data missing.,,Implement module
+water_balance,True,NOT_IMPLEMENTED,PARTIAL,SKIP,Water balance closure not implemented.,,Implement module
+vertical_propagation,True,NOT_IMPLEMENTED,PARTIAL,SKIP,Increment sign/conversion not validated.,,Implement module
+response_to_updates,True,NOT_IMPLEMENTED,PARTIAL,SKIP,Not fully implemented.,,Implement module
+drought_percentiles,False,NOT_IMPLEMENTED,SKIPPED,IGNORED,Climatology absent.,,None

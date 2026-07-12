@@ -1,0 +1,7 @@
+category,product,diagnostic,period_req,status,independence,sensor_provenance,contains_assimilated_sensor,strict_independence_status
+evapotranspiration,WaPOR AETI,External ET Validation,2016,PARTIAL,INDEPENDENT,Optical/Thermal,False,INDEPENDENT
+soil_moisture,ASCAT / ESA CCI ACTIVE,SMAP-DA Independent Validation,2016,MISSING,INDEPENDENT,Scatterometer,False,INDEPENDENT
+streamflow,In-situ stations,HyMAP Routing Validation,2016,PARTIAL,INDEPENDENT,In-situ Gauge,False,INDEPENDENT
+water_storage,GRACE/Mascon,Basin-scale TWS Validation,2016,PARTIAL,INDEPENDENT,Gravimetry,False,INDEPENDENT
+lsm,ERA5-Land/GLDAS,Model Benchmark,2016,READY,MODEL_BENCHMARK,Reanalysis,False,FORCING_RELATED
+precipitation,MSWEP / CHIRPS,precipitation_forcing_evaluation,2016,MISSING,INDEPENDENT,Gauge/Satellite,False,INDEPENDENT

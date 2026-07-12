@@ -1,0 +1,25 @@
+experiment,variable,unit,type,time_convention,conversion,role,in_tws,double_count_risk,avail_start,avail_end,usage_status,justification
+OPL_noirr_2016,Rainf_f_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,source,False,LOW,True,True,YES,Forcing precip
+OPL_noirr_2016,Evap_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Total ET
+OPL_noirr_2016,Qs_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Surface runoff
+OPL_noirr_2016,Qsb_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Subsurface runoff
+OPL_noirr_2016,TWS_tavg,mm,storage,mean,mm,storage,True,LOW,True,True,PENDING,Needs definition check
+OPL_noirr_2016,GWS_tavg,mm,storage,mean,mm,storage,True,HIGH,True,True,PENDING,Double count risk with TWS
+OPL_noirr_2016,SoilMoist_inst,N/A,storage,instant,m3/m3 to mm,storage,True,HIGH,False,False,PENDING,Maybe better for dS
+OPL_noirr_2016,SoilMoist_tavg,m^3 m-3,storage,mean,m3/m3 to mm,storage,True,HIGH,True,True,PENDING,Maybe better for dS
+DA_nocdf_noirr_2016,Rainf_f_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,source,False,LOW,True,True,YES,Forcing precip
+DA_nocdf_noirr_2016,Evap_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Total ET
+DA_nocdf_noirr_2016,Qs_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Surface runoff
+DA_nocdf_noirr_2016,Qsb_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Subsurface runoff
+DA_nocdf_noirr_2016,TWS_tavg,mm,storage,mean,mm,storage,True,LOW,True,True,PENDING,Needs definition check
+DA_nocdf_noirr_2016,GWS_tavg,mm,storage,mean,mm,storage,True,HIGH,True,True,PENDING,Double count risk with TWS
+DA_nocdf_noirr_2016,SoilMoist_inst,N/A,storage,instant,m3/m3 to mm,storage,True,HIGH,False,False,PENDING,Maybe better for dS
+DA_nocdf_noirr_2016,SoilMoist_tavg,m^3 m-3,storage,mean,m3/m3 to mm,storage,True,HIGH,True,True,PENDING,Maybe better for dS
+DA_cdf_noirr_2016,Rainf_f_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,source,False,LOW,True,True,YES,Forcing precip
+DA_cdf_noirr_2016,Evap_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Total ET
+DA_cdf_noirr_2016,Qs_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Surface runoff
+DA_cdf_noirr_2016,Qsb_tavg,kg m-2 s-1,flux,mean,kg m-2 s-1 to mm/day,sink,False,LOW,True,True,YES,Subsurface runoff
+DA_cdf_noirr_2016,TWS_tavg,mm,storage,mean,mm,storage,True,LOW,True,True,PENDING,Needs definition check
+DA_cdf_noirr_2016,GWS_tavg,mm,storage,mean,mm,storage,True,HIGH,True,True,PENDING,Double count risk with TWS
+DA_cdf_noirr_2016,SoilMoist_inst,N/A,storage,instant,m3/m3 to mm,storage,True,HIGH,False,False,PENDING,Maybe better for dS
+DA_cdf_noirr_2016,SoilMoist_tavg,m^3 m-3,storage,mean,m3/m3 to mm,storage,True,HIGH,True,True,PENDING,Maybe better for dS

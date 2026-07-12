@@ -1,0 +1,16 @@
+product: WaPOR
+version: v2
+level: L1
+variable: AETI
+unit: mm/day
+period: "2016-01-01 to 2016-12-31"
+frequency: dekadal
+expected_intervals: 36
+missing_value: -9999
+scale_factor: 0.1
+aggregation_method: mean
+regridding_method: conservative
+local_paths:
+  raw: data/validation/evapotranspiration/WaPOR/WaPOR_v2_AETI/raw/2016/
+  processed: data/validation/evapotranspiration/WaPOR/WaPOR_v2_AETI/processed/2016/
+domain_extent: NorthMor
