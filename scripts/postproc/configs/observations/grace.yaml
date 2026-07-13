@@ -1,24 +1,24 @@
-dataset_id: fluxsat_gpp
-display_name: FLUXSAT GPP
+dataset_id: grace
+display_name: GRACE TWS Anomalies
 version: unknown
-validation_category: vegetation
-validation_role: INDEPENDENT_REMOTE_SENSING
+validation_category: water_storage
+validation_role: INDEPENDENT_OBSERVATION
 independence_level: STRICT
 paths:
-  raw: data/validation/vegetation/FLUXSAT_GPP
-  processed: data/validation/vegetation/FLUXSAT_GPP/processed
+  raw: data/validation/water_storage/GRACE_GRACEFO/raw
+  processed: data/validation/water_storage/GRACE/processed
 files:
   pattern: '*.nc'
 variables:
-  observation: GPP
-  lis: GPP_tavg
+  observation: lwe_thickness
+  lis: TWS_tavg
 coordinates:
   time: time
   latitude: lat
   longitude: lon
 units:
-  native: gC/m2/day
-  target: gC/m2/day
+  native: cm
+  target: cm
   scale_factor: 1.0
   offset: 0.0
 missing_values:

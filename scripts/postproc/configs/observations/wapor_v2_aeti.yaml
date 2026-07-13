@@ -1,16 +1,42 @@
-product: WaPOR
-version: v2
-level: L1
-variable: AETI
-unit: mm/day
-period: "2016-01-01 to 2016-12-31"
-frequency: dekadal
-expected_intervals: 36
-missing_value: -9999
-scale_factor: 0.1
-aggregation_method: mean
-regridding_method: conservative
-local_paths:
-  raw: data/validation/evapotranspiration/WaPOR/WaPOR_v2_AETI/raw/2016/
-  processed: data/validation/evapotranspiration/WaPOR/WaPOR_v2_AETI/processed/2016/
-domain_extent: NorthMor
+dataset_id: wapor_v2_aeti
+display_name: WaPOR v2 AETI
+version: unknown
+validation_category: evapotranspiration
+validation_role: INDEPENDENT_REMOTE_SENSING
+independence_level: STRICT
+paths:
+  raw: data/validation/evapotranspiration/WaPOR/raw
+  processed: data/validation/evapotranspiration/WAPOR_V2_AETI/processed
+files:
+  pattern: '*.nc'
+variables:
+  observation: AETI
+  lis: Evap_tavg
+coordinates:
+  time: time
+  latitude: lat
+  longitude: lon
+units:
+  native: mm/dekad
+  target: mm/dekad
+  scale_factor: 1.0
+  offset: 0.0
+missing_values:
+  fill_value: -9999.0
+  valid_min: null
+  valid_max: null
+temporal:
+  native_frequency: daily
+  target_frequency: daily
+  interval_definition: mean
+spatial:
+  native_resolution: 0.25 deg
+  target_strategy: aggregate_lis_to_obs
+  resampling_method: conservative
+period:
+  start: '2015-01-01'
+  end: '2020-12-31'
+quality_control:
+  minimum_valid_pairs: 30
+  minimum_valid_fraction: 0.5
+enabled: true

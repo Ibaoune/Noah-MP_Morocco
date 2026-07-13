@@ -1,24 +1,24 @@
-dataset_id: fluxsat_gpp
-display_name: FLUXSAT GPP
+dataset_id: gleam
+display_name: GLEAM ET
 version: unknown
-validation_category: vegetation
-validation_role: INDEPENDENT_REMOTE_SENSING
+validation_category: evapotranspiration
+validation_role: MODEL_ASSISTED_REMOTE_SENSING_BENCHMARK
 independence_level: STRICT
 paths:
-  raw: data/validation/vegetation/FLUXSAT_GPP
-  processed: data/validation/vegetation/FLUXSAT_GPP/processed
+  raw: data/validation/evapotranspiration/GLEAM/raw
+  processed: data/validation/evapotranspiration/GLEAM/processed
 files:
   pattern: '*.nc'
 variables:
-  observation: GPP
-  lis: GPP_tavg
+  observation: E
+  lis: Evap_tavg
 coordinates:
   time: time
   latitude: lat
   longitude: lon
 units:
-  native: gC/m2/day
-  target: gC/m2/day
+  native: mm/day
+  target: mm/day
   scale_factor: 1.0
   offset: 0.0
 missing_values:
