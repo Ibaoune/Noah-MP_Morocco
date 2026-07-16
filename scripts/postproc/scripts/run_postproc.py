@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 ================================================================================
-Author: M. El Aabaribaoune (@um6)
+Author: M. El Aabaribaoune (@um6p)
 Module: run_postproc
 Description: Script for post-processing and analysis of LIS/Noah-MP outputs.
 ================================================================================
@@ -45,9 +45,9 @@ _SCRIPTS_DIR = Path(__file__).parent.resolve()
 _POSTPROC_DIR = _SCRIPTS_DIR.parent.resolve()    # scripts/postproc/
 _SRC_DIR = _POSTPROC_DIR / "src"                 # scripts/postproc/src/
 
-# Add src/ to sys.path to import lis_postproc
-if str(_SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(_SRC_DIR))
+# Add postproc_dir to sys.path to import src as a package
+if str(_POSTPROC_DIR) not in sys.path:
+    sys.path.insert(0, str(_POSTPROC_DIR))
 
 
 def parse_args():
@@ -177,9 +177,9 @@ def main():
     logger.debug(f"postproc_dir = {_POSTPROC_DIR}")
     logger.debug(f"src_dir      = {_SRC_DIR}")
 
-    # Import du package lis_postproc
+    # Import du package principal
     try:
-        from lis_postproc.cli import (
+        from src.cli import (
             cmd_list_experiments,
             cmd_list_recipes,
             cmd_check_configs,
@@ -187,8 +187,8 @@ def main():
             cmd_run_recipe,
         )
     except ImportError as e:
-        print(f"\n[ERROR] Cannot import lis_postproc package: {e}")
-        print(f"  Expected location: {_SRC_DIR}/lis_postproc/")
+        print(f"\n[ERROR] Cannot import src.cli package: {e}")
+        print(f"  Expected location: {_SRC_DIR}/cli.py")
         sys.exit(1)
 
     postproc_dir = str(_POSTPROC_DIR)

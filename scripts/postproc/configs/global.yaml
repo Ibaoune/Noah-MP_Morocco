@@ -8,13 +8,14 @@ default_domain: morocco_001deg
 default_resolution: 0.01deg
 
 paths:
+  name_main_dir: "matrix_2016"
   project_root: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
-  data_root: "experiments/NorthMor/matrix_2016"
+  data_root: "experiments/NorthMor/{name_main_dir}"
   output_root: "outputs"
-  figure_root: "outputs/matrix_2016/figures"
-  metrics_root: "outputs/matrix_2016/metrics"
-  tables_root: "outputs/matrix_2016/tables"
-  pdf_root: "outputs/matrix_2016/pdf"
+  figure_root: "outputs/{name_main_dir}/figures"
+  metrics_root: "outputs/{name_main_dir}/metrics"
+  tables_root: "outputs/{name_main_dir}/tables"
+  pdf_root: "outputs/{name_main_dir}/pdf"
   log_root: "logs"
 
 plotting:

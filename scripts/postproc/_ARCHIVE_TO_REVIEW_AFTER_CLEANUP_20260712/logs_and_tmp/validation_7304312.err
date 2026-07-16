@@ -1,0 +1,21 @@
+/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/lis_postproc/diagnostics/independent_ob_validation/plotting.py:25: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/lis_postproc/diagnostics/independent_ob_validation/plotting.py:25: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/lis_postproc/diagnostics/independent_ob_validation/plotting.py:25: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/lis_postproc/diagnostics/independent_ob_validation/plotting.py:25: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/lis_postproc/diagnostics/independent_ob_validation/plotting.py:25: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+Validation failed for esa_cci_combined: name 'json' is not defined
+Traceback (most recent call last):
+  File "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/lis_postproc/diagnostics/independent_ob_validation/soil_moisture.py", line 36, in run_validation
+    _run_single_validation(cfg, experiments, sub_dir)
+  File "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/lis_postproc/diagnostics/independent_ob_validation/soil_moisture.py", line 91, in _run_single_validation
+    _generate_products(cfg, lis_sub, obs_sub, obs_var, subset_out_dir, experiments, subset_id)
+  File "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/lis_postproc/diagnostics/independent_ob_validation/soil_moisture.py", line 230, in _generate_products
+    json.dump({"status": "IMPLEMENTED_PLACEHOLDER"}, f)
+    ^^^^
+NameError: name 'json' is not defined
+

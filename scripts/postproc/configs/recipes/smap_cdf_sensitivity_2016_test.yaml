@@ -1,5 +1,6 @@
+name_main_dir: "matrix_2016"
 recipe_id: smap_cdf_sensitivity_2016
-name_exp: smap_cdf_sensitivity
+name_exp: "smap_cdf_sensitivity/results_after_organisation"
 title: SMAP CDF-matching sensitivity experiment over North Morocco
 domain: NorthMor
 year: 2016

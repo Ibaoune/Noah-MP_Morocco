@@ -1,0 +1,168 @@
+Démarrage de la validation : ث يوليوز 14 21:19:01 +01 2026
+2026-07-14 21:19:01,820 [INFO] run_postproc: Recipe: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/configs/recipes/smap_cdf_sensitivity_2016.yaml
+2026-07-14 21:19:01,824 [INFO] lis_postproc.core.config: Global config loaded: project_root=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco
+2026-07-14 21:19:01,842 [INFO] lis_postproc.core.config: Experiments catalog loaded: 5 experiments
+2026-07-14 21:19:01,848 [INFO] lis_postproc.core.config: Recipe loaded: smap_cdf_sensitivity_2016
+
+=================================================================
+  Running recipe: smap_cdf_sensitivity_2016
+  Title: SMAP CDF-matching sensitivity experiment over North Morocco
+  Experiments: ['OPL_noirr_2016', 'DA_smap_nocdf_noirr_2016', 'DA_smap_cdf_noirr_2016']
+  Variables: 13
+=================================================================
+
+2026-07-14 21:19:01,852 [INFO] lis_postproc.runner: Starting recipe: smap_cdf_sensitivity_2016
+2026-07-14 21:19:01,855 [INFO] lis_postproc.runner: Output directories created
+2026-07-14 21:19:02,013 [INFO] lis_postproc.runner: Dispatching: assimilation diagnostics
+2026-07-14 21:19:02,014 [INFO] lis_postproc.diagnostics.assimilation.adapter: Assimilation diagnostics: ['coverage', 'innovations', 'seasonal_increments', 'spread'] for experiments: ['DA_smap_nocdf_noirr_2016', 'DA_smap_cdf_noirr_2016']
+2026-07-14 21:19:03,263 [INFO] lis_postproc.diagnostics.assimilation.adapter: Running assimilation diagnostics for: DA_smap_nocdf_noirr_2016 → /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_nocdf_noirr_2016
+2026-07-14 21:19:03,329 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: coverage for DA_smap_nocdf_noirr_2016
+Running coverage diagnostics...
+Data min: 3.0, max: 268.0
+Valid cells: 14250, NaN cells: 7651
+Variable: assim_freq_plot
+Data min: 0.00819672131147541, max: 0.73224043715847
+Variable: monthly_totals
+Monthly min: 101141.0, max: 151513.0
+2026-07-14 21:19:17,511 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-07-14 21:19:17,512 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-07-14 21:19:18,315 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: innovations for DA_smap_nocdf_noirr_2016
+Running innovation and increment diagnostics...
+Variable: mean_innov
+Data min: -0.07681944800747766, max: 0.06133425235748291
+Spatial mean: -0.010901147295115892, median: -0.009538277862495814
+Valid cells: 14250, NaN cells: 7651
+Positive innovation (observation wetter than model): 16.5%
+Negative innovation (observation drier than model): 83.5%
+Variable: mean_incr
+Data min (raw): -0.004695521758980773, max (raw): 0.005079834375603734
+Spatial mean (raw): -0.00039489047428388393, median (raw): -0.0003703096631698862
+Valid cells: 16030, NaN cells: 5871
+Positive increment (assimilation wets model): 12.3%
+Negative increment (assimilation dries model): 76.6%
+Variable: all_incr_values
+Total values: 15132320
+NaN: 0, Inf: 0, Exact zeros: 13616907
+Fraction of exact zeros: 90.0%
+Raw Min: -0.1326330602169037, Max: 0.21743226051330566
+Raw Mean: -0.0003948904341086745, Median: 0.0, Std: 0.006854768376797438
+Percentiles - P1: -0.028910716995596886, P5: -0.0028032190166413784, P50: 0.0, P95: 0.0, P99: 0.015642812475562096
+2026-07-14 21:19:57,644 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: seasonal_increments for DA_smap_nocdf_noirr_2016
+Running seasonal increments diagnostics...
+Variable: mean_incr_wet
+Wet months used: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr']
+Data min (raw): -0.004995523069699775, max (raw): 0.005365011595618457
+Spatial mean (raw): -0.0006099583052443297, median (raw): -0.0005635881358582262
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 8.8%
+Negative increment: 80.0%
+Variable: mean_incr_dry
+Dry months used: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+Data min (raw): -0.004741800345416489, max (raw): 0.006591862372358533
+Spatial mean (raw): -0.00017428441591673137, median (raw): -0.00013393502198861683
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 26.4%
+Negative increment: 62.4%
+2026-07-14 21:20:00,645 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: spread for DA_smap_nocdf_noirr_2016
+
+Running spread diagnostics consistency check...
+WARNING: forecast_sigma_01 and ensspread_Soil Moisture Layer 1_01 are not directly comparable. Only a diagnostic consistency-check figure is generated.
+
+forecast_sigma valid = 14250 cells
+ensspread valid = 16030 cells
+common valid = 14250 cells
+Spread diagnostics consistency check completed. Figure saved: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_nocdf_noirr_2016/DA_smap_nocdf_noirr_2016_spread_consistency.png
+
+Running prior_posterior_spread_comparison...
+Spread comparative figure completed. Figure saved: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_nocdf_noirr_2016/Fig07_spread_related_diagnostics_obsspace_vs_state_DA-noCDF-noIRR_2016.png
+2026-07-14 21:20:11,592 [INFO] lis_postproc.diagnostics.assimilation.adapter: Running assimilation diagnostics for: DA_smap_cdf_noirr_2016 → /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_cdf_noirr_2016
+2026-07-14 21:20:11,618 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: coverage for DA_smap_cdf_noirr_2016
+Running coverage diagnostics...
+Data min: 1.0, max: 268.0
+Valid cells: 12010, NaN cells: 9891
+Variable: assim_freq_plot
+Data min: 0.00273224043715847, max: 0.73224043715847
+Variable: monthly_totals
+Monthly min: 7225.0, max: 92992.0
+2026-07-14 21:20:26,894 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-07-14 21:20:26,895 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-07-14 21:20:27,688 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: innovations for DA_smap_cdf_noirr_2016
+Running innovation and increment diagnostics...
+Variable: mean_innov
+Data min: -0.19338494539260864, max: 0.11292050033807755
+Spatial mean: -0.02041762923699996, median: -0.014295830700786844
+Valid cells: 12010, NaN cells: 9891
+Positive innovation (observation wetter than model): 23.3%
+Negative innovation (observation drier than model): 76.7%
+Variable: mean_incr
+Data min (raw): -0.003598440768864164, max (raw): 0.0007794401729895964
+Spatial mean (raw): -0.00016266840791474916, median (raw): -5.301038114900596e-05
+Valid cells: 16030, NaN cells: 5871
+Positive increment (assimilation wets model): 15.6%
+Negative increment (assimilation dries model): 59.3%
+Variable: all_incr_values
+Total values: 13978160
+NaN: 0, Inf: 0, Exact zeros: 13632672
+Fraction of exact zeros: 97.5%
+Raw Min: -0.14594003558158875, Max: 0.1283164918422699
+Raw Mean: -0.00016266842430923134, Median: 0.0, Std: 0.0028862962499260902
+Percentiles - P1: -0.004946549888700247, P5: 0.0, P50: 0.0, P95: 0.0, P99: 0.0
+2026-07-14 21:21:05,532 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: seasonal_increments for DA_smap_cdf_noirr_2016
+Running seasonal increments diagnostics...
+Variable: mean_incr_wet
+Wet months used: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr']
+Data min (raw): -0.005762391289247885, max (raw): 0.0005603380156659131
+Spatial mean (raw): -0.00020312358894541987, median (raw): 0.0
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 0.9%
+Negative increment: 38.2%
+Variable: mean_incr_dry
+Dry months used: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+Data min (raw): -0.002423724823893281, max (raw): 0.0016747906869486644
+Spatial mean (raw): -0.00012384961622913932, median (raw): 0.0
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 22.7%
+Negative increment: 49.0%
+2026-07-14 21:21:08,365 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: spread for DA_smap_cdf_noirr_2016
+
+Running spread diagnostics consistency check...
+WARNING: forecast_sigma_01 and ensspread_Soil Moisture Layer 1_01 are not directly comparable. Only a diagnostic consistency-check figure is generated.
+
+forecast_sigma valid = 12010 cells
+ensspread valid = 16030 cells
+common valid = 12010 cells
+Spread diagnostics consistency check completed. Figure saved: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_cdf_noirr_2016/DA_smap_cdf_noirr_2016_spread_consistency.png
+
+Running prior_posterior_spread_comparison...
+Spread comparative figure completed. Figure saved: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_cdf_noirr_2016/Fig07_spread_related_diagnostics_obsspace_vs_state_DA-noCDF-noIRR_2016.png
+2026-07-14 21:21:20,291 [INFO] lis_postproc.runner: Dispatching: domain diagnostics
+2026-07-14 21:21:20,312 [ERROR] lis_postproc.diagnostics.domain.adapter: DEBUG: sys.modules['utils'] = <module 'utils' from '/srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/assimilation_diagnostics/utils.py'>
+2026-07-14 21:21:21,381 [INFO] lis_postproc.diagnostics.domain.adapter: Running domain diagnostics → /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/domain
+Plotting Topography...
+Plotting Landcover...
+Plotting Soil Texture...
+Plotting Hydrological Basins & In-Situ Stations...
+2026-07-14 21:21:29,021 [INFO] lis_postproc.runner: Dispatching: independent validation
+2026-07-14 21:21:32,687 [INFO] lis_postproc.diagnostics.independent_ob_validation.adapter: Démarrage de la validation indépendante multi-source
+2026-07-14 21:21:32,961 [INFO] lis_postproc.diagnostics.independent_ob_validation.adapter: [RUN] ESA CCI Combined (soil_moisture)
+2026-07-14 21:21:33,082 [INFO] lis_postproc.diagnostics.independent_ob_validation.soil_moisture: Running Soil Moisture validation for ESA CCI Combined
+2026-07-14 21:24:34,746 [INFO] lis_postproc.diagnostics.independent_ob_validation.soil_moisture: [OPL_noirr_2016] SoilMoist_tavg | Units: m^3 m-3 | Dims: ('time', 'north_south', 'east_west') | Shape: (366, 121, 181)
+      Min: 0.007677, Max: 0.4463, Mean: 0.1493, Median: 0.1464
+      P1: 0.02011, P5: 0.05524, P50: 0.1464, P95: 0.2655, P99: 0.321
+      NaN fraction: 26.81%, Valid cells: 5866980
+2026-07-14 21:24:44,914 [INFO] lis_postproc.diagnostics.independent_ob_validation.soil_moisture: [DA_smap_nocdf_noirr_2016] SoilMoist_tavg | Units: m^3 m-3 | Dims: ('time', 'north_south', 'east_west') | Shape: (366, 121, 181)
+      Min: 0.01982, Max: 0.4442, Mean: 0.1349, Median: 0.1197
+      P1: 0.04364, P5: 0.05885, P50: 0.1197, P95: 0.2569, P99: 0.3146
+      NaN fraction: 26.81%, Valid cells: 5866980
+2026-07-14 21:24:55,111 [INFO] lis_postproc.diagnostics.independent_ob_validation.soil_moisture: [DA_smap_cdf_noirr_2016] SoilMoist_tavg | Units: m^3 m-3 | Dims: ('time', 'north_south', 'east_west') | Shape: (366, 121, 181)
+      Min: 0.01931, Max: 0.4441, Mean: 0.1425, Median: 0.1307
+      P1: 0.04001, P5: 0.05769, P50: 0.1307, P95: 0.2598, P99: 0.3177
+      NaN fraction: 26.81%, Valid cells: 5866980
+2026-07-14 21:25:31,529 [INFO] lis_postproc.diagnostics.independent_ob_validation.soil_moisture: [ESA CCI Combined] SoilMoist_tavg | Units: m3 m-3 | Dims: ('time', 'lat', 'lon') | Shape: (366, 720, 1440)
+      Min: 0, Max: 1, Mean: 0.2006, Median: 0.2008
+      P1: 0.02351, P5: 0.05969, P50: 0.2008, P95: 0.3542, P99: 0.3989
+      NaN fraction: 87.63%, Valid cells: 46947397
+2026-07-14 21:30:30,947 [INFO] lis_postproc.diagnostics.independent_ob_validation.adapter: [DONE] ESA CCI Combined
+2026-07-14 21:30:30,949 [INFO] lis_postproc.diagnostics.independent_ob_validation.adapter: [RUN] GLEAM ET (evapotranspiration)
+2026-07-14 21:30:31,078 [INFO] lis_postproc.diagnostics.independent_ob_validation.evapotranspiration: Running ET validation for GLEAM ET
+Fin de la validation : ث يوليوز 14 22:01:32 +01 2026

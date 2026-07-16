@@ -9,9 +9,9 @@ Cette architecture a été consolidée pour se concentrer sur l'essentiel : une 
 
 ```text
 scripts/postproc/
-├── _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/ # Anciennes architectures et historiques
+├── _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/ # Anciennes architectures et historiques préservés
 ├── configs/                        # ← Fichiers YAML de configuration
-│   ├── global.yaml                 # Chemins globaux
+│   ├── global.yaml                 # Chemins globaux et nom de répertoire de base
 │   ├── experiments.yaml            # Catalogue de toutes les expériences
 │   ├── observations/               # Configurations des jeux d'observations
 │   ├── domains/                    # Configurations spatiales
@@ -19,34 +19,36 @@ scripts/postproc/
 │   └── recipes/                    # Recettes d'exécution
 │       └── smap_cdf_sensitivity_2016.yaml  # ← RECETTE PRINCIPALE
 │
-├── scripts/                        # Point d'entrée
-│   └── run_postproc.py             # ← SCRIPT D'EXÉCUTION UNIQUE
+├── scripts/                        # Scripts d'exécution et outils
+│   ├── run_postproc.py             # ← SCRIPT D'EXÉCUTION UNIQUE
+│   ├── job_independent_validation.sh # Modèle de job Slurm
+│   └── collect_review.sh           # Outil de collecte des validations
 │
 ├── src/                            # Code Python actif
-│   ├── assimilation_diagnostics/   # Code historique préservé
-│   ├── domain/                     # Logique de génération des cartes
-│   └── lis_postproc/               # Coeur de la pipeline modulaire
-│       ├── core/                   # Chargement YAML et configuration
-│       ├── io/                     # Lecture LIS/HyMAP NetCDF
-│       ├── diagnostics/            # Modules d'analyse
-│       │   ├── assimilation/       
-│       │   ├── domain/             
-│       │   ├── hydrology/          # (Inclut le runoff_partitioning)
-│       │   └── independent_ob_validation/ # Validation multi-sources
-│       ├── plotting/               # Outils graphiques
-│       └── utils/
+│   ├── core/                       # Chargement YAML et configuration
+│   ├── io/                         # Lecture LIS/HyMAP NetCDF
+│   ├── diagnostics/                # Modules d'analyse
+│   │   ├── assimilation/           # Diagnostics d'assimilation (intégré)
+│   │   ├── domain/                 # Génération de cartes de domaine (intégré)
+│   │   ├── hydrology/              # Validation hydrologique
+│   │   ├── runoff_partitioning/    # Partitionnement du ruissellement
+│   │   └── independent_ob_validation/ # Validation multi-sources
+│   ├── plotting/                   # Outils graphiques
+│   ├── utils/                      # Fonctions utilitaires
+│   ├── cli.py                      # Définition des commandes
+│   └── runner.py                   # Orchestrateur de recettes
 │
 ├── tests/                          # Tests unitaires du framework
-├── tools/                          # Outils autonomes (téléchargement WaPOR, etc.)
+├── tools/                          # Outils autonomes
 │
 └── outputs/
-    └── matrix_2016/
+    └── <name_main_dir>/
         └── figures/
-            └── smap_cdf_sensitivity/
+            └── <name_exp>/
                 ├── assimilation/
                 ├── domain/
                 ├── hydrology/
-                ├── independent_ob_validation/
+                ├── independent_obs_validation/
                 └── runoff_partitioning/
 ```
 
@@ -89,16 +91,18 @@ python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_201
 
 La recette principale (`smap_cdf_sensitivity_2016.yaml`) orchestre la génération de 5 dossiers de sortie distincts :
 
-1. **`assimilation/`** : Diagnostics internes du filtre (innovations, incréments, spread). S'appuie sur le code historique `src/assimilation_diagnostics/`.
+1. **`assimilation/`** : Diagnostics internes du filtre (innovations, incréments, spread). Code historique entièrement intégré.
 2. **`domain/`** : Cartographie géospatiale du domaine d'étude (topographie, sols, bassins).
 3. **`hydrology/`** : Séries temporelles et cartes de différences pour les variables hydrologiques (humidité du sol, ET, ruissellement).
 4. **`runoff_partitioning/`** : Sous-diagnostic généré par l'hydrologie analysant le ratio ruissellement de surface / débit de base.
-5. **`independent_ob_validation/`** : Comparaison avec des jeux de données d'observation indépendants (ESA CCI, ASCAT, WaPOR, In-situ).
+5. **`independent_ob_validation/`** : Comparaison avec des jeux de données d'observation indépendants (ESA CCI, GRACE, GLEAM, etc.).
+   - Géré dynamiquement via un registre de données (`dataset_registry.py`) sourçant les `configs/observations/`.
+   - Utilise une classe centralisée de visualisation (`plotting.py`) pour garantir un rendu de qualité publication.
 
 ---
 
 ## Principes d'Extension
 
 - **Aucun nom de variable ou d'expérience n'est codé en dur** dans les scripts Python. Tout se paramètre dans les `configs/`.
-- Pour ajouter une observation indépendante, utilisez `configs/observations/` et l'adaptateur de validation.
+- **Validation d'Observations** : Pour ajouter une observation indépendante, déclarez-la dans `configs/observations/`. Le pipeline la liera automatiquement via le registre de données. Toute nouvelle logique de graphique doit impérativement être ajoutée à la classe statique `Plotting` (`src/diagnostics/independent_ob_validation/plotting.py`) pour maintenir l'esthétique et la cohérence des publications.
 - Les anciens codes, CLI parallèles et scripts redondants ont été isolés dans `_ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/` pour garantir une architecture saine. En cas de besoin de code ancien, veuillez consulter cette archive.

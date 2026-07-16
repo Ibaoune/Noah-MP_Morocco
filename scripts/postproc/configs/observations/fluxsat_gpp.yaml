@@ -8,7 +8,7 @@ paths:
   raw: data/validation/vegetation/FLUXSAT_GPP
   processed: data/validation/vegetation/FLUXSAT_GPP/processed
 files:
-  pattern: '*.nc'
+  pattern: '*_daily_*.nc'
 variables:
   observation: GPP
   lis: GPP_tavg

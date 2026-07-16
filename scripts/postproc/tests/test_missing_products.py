@@ -1,7 +1,7 @@
 import os
 import unittest
 from pathlib import Path
-from lis_postproc.diagnostics.independent_ob_validation.common import check_data_availability
+from src.diagnostics.independent_ob_validation.common import check_data_availability
 
 class TestMissingProducts(unittest.TestCase):
     def test_missing_data(self):

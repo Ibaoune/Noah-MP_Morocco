@@ -1,0 +1,163 @@
+Démarrage de la validation : ث يوليوز 14 17:17:00 +01 2026
+2026-07-14 17:17:00,316 [INFO] run_postproc: Recipe: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/configs/recipes/smap_cdf_sensitivity_2016.yaml
+2026-07-14 17:17:00,321 [INFO] lis_postproc.core.config: Global config loaded: project_root=/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco
+2026-07-14 17:17:00,326 [INFO] lis_postproc.core.config: Experiments catalog loaded: 5 experiments
+2026-07-14 17:17:00,331 [INFO] lis_postproc.core.config: Recipe loaded: smap_cdf_sensitivity_2016
+
+=================================================================
+  Running recipe: smap_cdf_sensitivity_2016
+  Title: SMAP CDF-matching sensitivity experiment over North Morocco
+  Experiments: ['OPL_noirr_2016', 'DA_smap_nocdf_noirr_2016', 'DA_smap_cdf_noirr_2016']
+  Variables: 13
+=================================================================
+
+2026-07-14 17:17:00,334 [INFO] lis_postproc.runner: Starting recipe: smap_cdf_sensitivity_2016
+2026-07-14 17:17:00,337 [INFO] lis_postproc.runner: Output directories created
+2026-07-14 17:17:00,365 [INFO] lis_postproc.runner: Dispatching: assimilation diagnostics
+2026-07-14 17:17:00,366 [INFO] lis_postproc.diagnostics.assimilation.adapter: Assimilation diagnostics: ['coverage', 'innovations', 'seasonal_increments', 'spread'] for experiments: ['DA_smap_nocdf_noirr_2016', 'DA_smap_cdf_noirr_2016']
+2026-07-14 17:17:01,719 [INFO] lis_postproc.diagnostics.assimilation.adapter: Running assimilation diagnostics for: DA_smap_nocdf_noirr_2016 → /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_nocdf_noirr_2016
+2026-07-14 17:17:01,789 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: coverage for DA_smap_nocdf_noirr_2016
+Running coverage diagnostics...
+Data min: 3.0, max: 268.0
+Valid cells: 14250, NaN cells: 7651
+Variable: assim_freq_plot
+Data min: 0.00819672131147541, max: 0.73224043715847
+Variable: monthly_totals
+Monthly min: 101141.0, max: 151513.0
+2026-07-14 17:17:06,045 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-07-14 17:17:06,046 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-07-14 17:17:06,851 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: innovations for DA_smap_nocdf_noirr_2016
+Running innovation and increment diagnostics...
+Variable: mean_innov
+Data min: -0.07681944800747766, max: 0.06133425235748291
+Spatial mean: -0.010901147295115892, median: -0.009538277862495814
+Valid cells: 14250, NaN cells: 7651
+Positive innovation (observation wetter than model): 16.5%
+Negative innovation (observation drier than model): 83.5%
+Variable: mean_incr
+Data min (raw): -0.004695521758980773, max (raw): 0.005079834375603734
+Spatial mean (raw): -0.00039489047428388393, median (raw): -0.0003703096631698862
+Valid cells: 16030, NaN cells: 5871
+Positive increment (assimilation wets model): 12.3%
+Negative increment (assimilation dries model): 76.6%
+Variable: all_incr_values
+Total values: 15132320
+NaN: 0, Inf: 0, Exact zeros: 13616907
+Fraction of exact zeros: 90.0%
+Raw Min: -0.1326330602169037, Max: 0.21743226051330566
+Raw Mean: -0.0003948904341086745, Median: 0.0, Std: 0.006854768376797438
+Percentiles - P1: -0.028910716995596886, P5: -0.0028032190166413784, P50: 0.0, P95: 0.0, P99: 0.015642812475562096
+2026-07-14 17:17:35,426 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: seasonal_increments for DA_smap_nocdf_noirr_2016
+Running seasonal increments diagnostics...
+Variable: mean_incr_wet
+Wet months used: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr']
+Data min (raw): -0.004995523069699775, max (raw): 0.005365011595618457
+Spatial mean (raw): -0.0006099583052443297, median (raw): -0.0005635881358582262
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 8.8%
+Negative increment: 80.0%
+Variable: mean_incr_dry
+Dry months used: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+Data min (raw): -0.004741800345416489, max (raw): 0.006591862372358533
+Spatial mean (raw): -0.00017428441591673137, median (raw): -0.00013393502198861683
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 26.4%
+Negative increment: 62.4%
+2026-07-14 17:17:38,448 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: spread for DA_smap_nocdf_noirr_2016
+
+Running spread diagnostics consistency check...
+WARNING: forecast_sigma_01 and ensspread_Soil Moisture Layer 1_01 are not directly comparable. Only a diagnostic consistency-check figure is generated.
+
+forecast_sigma valid = 14250 cells
+ensspread valid = 16030 cells
+common valid = 14250 cells
+Spread diagnostics consistency check completed. Figure saved: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_nocdf_noirr_2016/DA_smap_nocdf_noirr_2016_spread_consistency.png
+
+Running prior_posterior_spread_comparison...
+Spread comparative figure completed. Figure saved: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_nocdf_noirr_2016/Fig07_spread_related_diagnostics_obsspace_vs_state_DA-noCDF-noIRR_2016.png
+2026-07-14 17:17:45,255 [INFO] lis_postproc.diagnostics.assimilation.adapter: Running assimilation diagnostics for: DA_smap_cdf_noirr_2016 → /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_cdf_noirr_2016
+2026-07-14 17:17:45,288 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: coverage for DA_smap_cdf_noirr_2016
+Running coverage diagnostics...
+Data min: 1.0, max: 268.0
+Valid cells: 12010, NaN cells: 9891
+Variable: assim_freq_plot
+Data min: 0.00273224043715847, max: 0.73224043715847
+Variable: monthly_totals
+Monthly min: 7225.0, max: 92992.0
+2026-07-14 17:17:48,499 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-07-14 17:17:48,500 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-07-14 17:17:49,284 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: innovations for DA_smap_cdf_noirr_2016
+Running innovation and increment diagnostics...
+Variable: mean_innov
+Data min: -0.19338494539260864, max: 0.11292050033807755
+Spatial mean: -0.02041762923699996, median: -0.014295830700786844
+Valid cells: 12010, NaN cells: 9891
+Positive innovation (observation wetter than model): 23.3%
+Negative innovation (observation drier than model): 76.7%
+Variable: mean_incr
+Data min (raw): -0.003598440768864164, max (raw): 0.0007794401729895964
+Spatial mean (raw): -0.00016266840791474916, median (raw): -5.301038114900596e-05
+Valid cells: 16030, NaN cells: 5871
+Positive increment (assimilation wets model): 15.6%
+Negative increment (assimilation dries model): 59.3%
+Variable: all_incr_values
+Total values: 13978160
+NaN: 0, Inf: 0, Exact zeros: 13632672
+Fraction of exact zeros: 97.5%
+Raw Min: -0.14594003558158875, Max: 0.1283164918422699
+Raw Mean: -0.00016266842430923134, Median: 0.0, Std: 0.0028862962499260902
+Percentiles - P1: -0.004946549888700247, P5: 0.0, P50: 0.0, P95: 0.0, P99: 0.0
+2026-07-14 17:18:15,747 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: seasonal_increments for DA_smap_cdf_noirr_2016
+Running seasonal increments diagnostics...
+Variable: mean_incr_wet
+Wet months used: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr']
+Data min (raw): -0.005762391289247885, max (raw): 0.0005603380156659131
+Spatial mean (raw): -0.00020312358894541987, median (raw): 0.0
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 0.9%
+Negative increment: 38.2%
+Variable: mean_incr_dry
+Dry months used: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+Data min (raw): -0.002423724823893281, max (raw): 0.0016747906869486644
+Spatial mean (raw): -0.00012384961622913932, median (raw): 0.0
+Valid cells: 16030, NaN cells: 5871
+Positive increment: 22.7%
+Negative increment: 49.0%
+2026-07-14 17:18:18,585 [INFO] lis_postproc.diagnostics.assimilation.adapter:   → Running: spread for DA_smap_cdf_noirr_2016
+
+Running spread diagnostics consistency check...
+WARNING: forecast_sigma_01 and ensspread_Soil Moisture Layer 1_01 are not directly comparable. Only a diagnostic consistency-check figure is generated.
+
+forecast_sigma valid = 12010 cells
+ensspread valid = 16030 cells
+common valid = 12010 cells
+Spread diagnostics consistency check completed. Figure saved: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_cdf_noirr_2016/DA_smap_cdf_noirr_2016_spread_consistency.png
+
+Running prior_posterior_spread_comparison...
+Spread comparative figure completed. Figure saved: /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/assimilation/DA_smap_cdf_noirr_2016/Fig07_spread_related_diagnostics_obsspace_vs_state_DA-noCDF-noIRR_2016.png
+2026-07-14 17:18:25,183 [INFO] lis_postproc.runner: Dispatching: domain diagnostics
+2026-07-14 17:18:25,186 [ERROR] lis_postproc.diagnostics.domain.adapter: DEBUG: sys.modules['utils'] = <module 'utils' from '/srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/src/assimilation_diagnostics/utils.py'>
+2026-07-14 17:18:26,245 [INFO] lis_postproc.diagnostics.domain.adapter: Running domain diagnostics → /srv/lustre01/project/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/scripts/postproc/outputs/matrix_2016/figures/smap_cdf_sensitivity/domain
+Plotting Topography...
+Plotting Landcover...
+Plotting Soil Texture...
+Plotting Hydrological Basins & In-Situ Stations...
+2026-07-14 17:18:33,233 [INFO] lis_postproc.runner: Dispatching: independent validation
+2026-07-14 17:18:36,108 [INFO] lis_postproc.diagnostics.independent_ob_validation.adapter: Démarrage de la validation indépendante multi-source
+2026-07-14 17:18:36,284 [INFO] lis_postproc.diagnostics.independent_ob_validation.adapter: [RUN] FLUXSAT GPP (vegetation)
+2026-07-14 17:18:36,409 [INFO] lis_postproc.diagnostics.independent_ob_validation.vegetation: Running Vegetation validation for FLUXSAT GPP
+2026-07-14 17:26:49,716 [INFO] lis_postproc.diagnostics.independent_ob_validation.vegetation: FLUXSAT stats -> Mean: 2.8782e+00, Max: 9.3157e+01, NaNs: 1627402102
+2026-07-14 17:28:39,097 [INFO] lis_postproc.diagnostics.independent_ob_validation.vegetation: OPL_noirr_2016 stats -> Mean: 4.5120e-01, Max: 1.4475e+01, NaNs: 2148786
+2026-07-14 17:29:05,062 [INFO] lis_postproc.diagnostics.independent_ob_validation.vegetation: DA_smap_nocdf_noirr_2016 stats -> Mean: 3.7168e-01, Max: 1.6005e+01, NaNs: 2148786
+2026-07-14 17:29:30,948 [INFO] lis_postproc.diagnostics.independent_ob_validation.vegetation: DA_smap_cdf_noirr_2016 stats -> Mean: 3.9690e-01, Max: 1.4458e+01, NaNs: 2148786
+2026-07-14 17:31:35,859 [ERROR] lis_postproc.diagnostics.independent_ob_validation.vegetation: Vegetation Validation failed for fluxsat_gpp: name 'cfeature' is not defined
+2026-07-14 17:31:36,189 [INFO] lis_postproc.diagnostics.independent_ob_validation.adapter: [DONE] FLUXSAT GPP
+2026-07-14 17:31:36,222 [INFO] lis_postproc.diagnostics.independent_ob_validation.adapter: Validation indépendante terminée
+
+=================================================================
+  Recipe completed: smap_cdf_sensitivity_2016
+  Diagnostics run : ['assimilation', 'domain', 'independent_ob_validation']
+  Files generated : 50
+=================================================================
+
+Fin de la validation : ث يوليوز 14 17:31:37 +01 2026
