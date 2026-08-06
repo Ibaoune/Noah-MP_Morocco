@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 spread_diagnostics_consistency_check:
   enabled: true
   output:

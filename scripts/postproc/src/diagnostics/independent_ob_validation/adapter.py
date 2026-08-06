@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import os
 import logging
@@ -38,14 +40,14 @@ def run(recipe_config, global_config):
     if hasattr(outputs, "figure_dir"):
         out_dir = outputs.figure_dir
     elif isinstance(outputs, dict):
-        out_dir = outputs.get("figure_dir", "outputs/matrix_2016/figures/smap_cdf_sensitivity")
+        out_dir = outputs.get("figure_dir", "outputs/matrix_2016_2020/figures/smap_cdf_sensitivity")
     else:
-        out_dir = "outputs/matrix_2016/figures/smap_cdf_sensitivity"
+        out_dir = "outputs/matrix_2016_2020/figures/smap_cdf_sensitivity"
         
     val_out_dir = os.path.join(out_dir, "independent_obs_validation")
     os.makedirs(val_out_dir, exist_ok=True)
     
-    project_root = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+    project_root = global_cfg.get("_project_root", "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco") if "global_cfg" in locals() else "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
     config_dir = os.path.join(project_root, "scripts/postproc/configs/observations")
     registry = DatasetRegistry(config_dir)
     

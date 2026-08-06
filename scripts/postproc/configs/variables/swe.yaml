@@ -1,0 +1,32 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+variable_id: swe
+long_name: Snow Water Equivalent
+short_name: SWE
+unit: mm
+category: storage
+
+input:
+  source: LIS
+  lis_variable_names:
+    - SWE_tavg
+  operation: identity
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "Blues"
+  difference_cmap: "RdBu"
+  colorbar_label: "SWE (mm)"
+  difference_label: "Δ SWE (mm)"
+  unit_label: "mm"
+  tick_format: "%.1f"
+  auto_limits: true
+  center_difference_on_zero: true

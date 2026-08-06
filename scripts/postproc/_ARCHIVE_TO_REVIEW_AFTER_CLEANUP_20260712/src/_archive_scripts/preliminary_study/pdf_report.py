@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import os
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages

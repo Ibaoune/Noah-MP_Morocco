@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import xarray as xr
 import pandas as pd
 from lis_postproc.diagnostics.increment_propagation.loader import discover_enkf_files, extract_time_from_filename

@@ -1,8 +1,0 @@
-{
-  "experiment": "DA_smap_cdf_noirr_2016",
-  "experiment_label": "DA-SMAP-CDF",
-  "title": "Monthly SMAP assimilation frequency \u2014 DA-SMAP-CDF, NorthMor, 2016",
-  "caption": "Spatial assimilation frequency and monthly total number of assimilated observations. This diagnostic identifies spatial and temporal gaps in SMAP availability.",
-  "filename": "DA_smap_cdf_noirr_2016_assim_frequency.png",
-  "diagnostic_type": "spread"
-}

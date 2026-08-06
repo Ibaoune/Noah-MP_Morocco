@@ -1,4 +1,5 @@
 # Runoff Partitioning Module
+**Author:** M. EL Aabaribaoune (@um6p)
 
 This module analyzes surface and baseflow partitioning, and runoff timeseries.
 

@@ -1,4 +1,5 @@
 # Figure Export Module
+**Author:** M. EL Aabaribaoune (@um6p)
 
 This folder contains scripts for exporting and organizing figures into final publication-ready structures (e.g. for Ahmad 2016).
 

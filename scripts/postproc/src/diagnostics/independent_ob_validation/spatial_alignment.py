@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import xarray as xr
 import numpy as np
@@ -185,6 +187,98 @@ class SpatialAlignment:
                     
                     out_ds[var] = xr.DataArray(mean_val.reshape((len(obs_lat), len(obs_lon))), coords=[obs_lat, obs_lon], dims=[obs_lat_name, obs_lon_name])
         
+        return out_ds
+        
+    @staticmethod
+    def aggregate_observation_to_lis_grid(obs_ds, lis_ds, min_coverage=0.50):
+        """Explicit conservative area-weighted aggregation from OBS to LIS."""
+        # Find coordinate names
+        lis_lon_name = 'lon' if 'lon' in lis_ds.coords else 'longitude'
+        lis_lat_name = 'lat' if 'lat' in lis_ds.coords else 'latitude'
+        obs_lon_name = 'lon' if 'lon' in obs_ds.coords else 'longitude'
+        obs_lat_name = 'lat' if 'lat' in obs_ds.coords else 'latitude'
+        
+        lis_lon = lis_ds[lis_lon_name].values
+        lis_lat = lis_ds[lis_lat_name].values
+        obs_lon = obs_ds[obs_lon_name].values
+        obs_lat = obs_ds[obs_lat_name].values
+        
+        if len(lis_lon.shape) > 1:
+            raise ValueError("LIS coordinates must be 1D for this aggregation method.")
+            
+        lis_lon_edges = SpatialAlignment.coordinate_edges(lis_lon)
+        lis_lat_edges = SpatialAlignment.coordinate_edges(lis_lat)
+        
+        if len(obs_lon.shape) == 1 and len(obs_lat.shape) == 1:
+            obs_lon_grid, obs_lat_grid = np.meshgrid(obs_lon, obs_lat)
+        else:
+            obs_lon_grid, obs_lat_grid = obs_lon, obs_lat
+            
+        obs_lon_flat = obs_lon_grid.flatten()
+        obs_lat_flat = obs_lat_grid.flatten()
+        
+        obs_cell_area = np.cos(np.deg2rad(obs_lat_flat))
+        
+        lon_bins = np.digitize(obs_lon_flat, lis_lon_edges) - 1
+        lat_bins = np.digitize(obs_lat_flat, lis_lat_edges) - 1
+        
+        valid_idx = (lon_bins >= 0) & (lon_bins < len(lis_lon)) & (lat_bins >= 0) & (lat_bins < len(lis_lat))
+        
+        out_ds = xr.Dataset(coords={lis_lat_name: lis_lat, lis_lon_name: lis_lon})
+        
+        for var in obs_ds.data_vars:
+            has_time = 'time' in obs_ds[var].dims
+            da = obs_ds[var]
+            
+            if has_time:
+                times = da.time.values
+                agg_data = np.full((len(times), len(lis_lat), len(lis_lon)), np.nan, dtype=np.float32)
+                for t_idx in range(len(times)):
+                    val_flat = da.isel(time=t_idx).values.flatten()
+                    flat_lis_idx = lat_bins[valid_idx] * len(lis_lon) + lon_bins[valid_idx]
+                    
+                    val_valid = val_flat[valid_idx]
+                    weight_valid = obs_cell_area[valid_idx]
+                    not_nan = ~np.isnan(val_valid)
+                    
+                    if not_nan.any():
+                        w_sum = np.bincount(flat_lis_idx[not_nan], weights=(val_valid * weight_valid)[not_nan], minlength=len(lis_lat)*len(lis_lon))
+                        w_tot = np.bincount(flat_lis_idx[not_nan], weights=weight_valid[not_nan], minlength=len(lis_lat)*len(lis_lon))
+                        count_tot = np.bincount(flat_lis_idx, minlength=len(lis_lat)*len(lis_lon))
+                        count_valid = np.bincount(flat_lis_idx[not_nan], minlength=len(lis_lat)*len(lis_lon))
+                        
+                        coverage = np.zeros_like(count_tot, dtype=float)
+                        np.divide(count_valid, count_tot, out=coverage, where=count_tot>0)
+                        
+                        mean_val = np.full_like(w_sum, np.nan)
+                        np.divide(w_sum, w_tot, out=mean_val, where=w_tot>0)
+                        mean_val[coverage < min_coverage] = np.nan
+                        
+                        agg_data[t_idx, :, :] = mean_val.reshape((len(lis_lat), len(lis_lon)))
+                        
+                out_ds[var] = xr.DataArray(agg_data, coords=[times, lis_lat, lis_lon], dims=['time', lis_lat_name, lis_lon_name])
+            else:
+                val_flat = da.values.flatten()
+                flat_lis_idx = lat_bins[valid_idx] * len(lis_lon) + lon_bins[valid_idx]
+                val_valid = val_flat[valid_idx]
+                weight_valid = obs_cell_area[valid_idx]
+                
+                not_nan = ~np.isnan(val_valid)
+                if not_nan.any():
+                    w_sum = np.bincount(flat_lis_idx[not_nan], weights=(val_valid * weight_valid)[not_nan], minlength=len(lis_lat)*len(lis_lon))
+                    w_tot = np.bincount(flat_lis_idx[not_nan], weights=weight_valid[not_nan], minlength=len(lis_lat)*len(lis_lon))
+                    count_tot = np.bincount(flat_lis_idx, minlength=len(lis_lat)*len(lis_lon))
+                    count_valid = np.bincount(flat_lis_idx[not_nan], minlength=len(lis_lat)*len(lis_lon))
+                    
+                    coverage = np.zeros_like(count_tot, dtype=float)
+                    np.divide(count_valid, count_tot, out=coverage, where=count_tot>0)
+                    
+                    mean_val = np.full_like(w_sum, np.nan)
+                    np.divide(w_sum, w_tot, out=mean_val, where=w_tot>0)
+                    mean_val[coverage < min_coverage] = np.nan
+                    
+                    out_ds[var] = xr.DataArray(mean_val.reshape((len(lis_lat), len(lis_lon))), coords=[lis_lat, lis_lon], dims=[lis_lat_name, lis_lon_name])
+                    
         return out_ds
 
     @staticmethod

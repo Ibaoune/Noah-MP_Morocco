@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import os
 import logging
@@ -9,7 +11,7 @@ def run_validation(config, experiments, base_out_dir):
     out_dir = os.path.join(base_out_dir, "streamflow")
     os.makedirs(out_dir, exist_ok=True)
     
-    project_root = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+    project_root = global_cfg.get("_project_root", "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco") if "global_cfg" in locals() else "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
     config_dir = os.path.join(project_root, "scripts/postproc/configs/observations")
     registry = DatasetRegistry(config_dir)
     ready_datasets = registry.get_ready_datasets()

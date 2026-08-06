@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import os
 import logging
@@ -21,7 +23,7 @@ def run_validation(config, experiments, base_out_dir):
     out_dir = os.path.join(base_out_dir, "soil_moisture")
     os.makedirs(out_dir, exist_ok=True)
     
-    project_root = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+    project_root = global_cfg.get("_project_root", "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco") if "global_cfg" in locals() else "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
     config_dir = os.path.join(project_root, "scripts/postproc/configs/observations")
     registry = DatasetRegistry(config_dir)
     ready_datasets = registry.get_ready_datasets()
@@ -47,8 +49,8 @@ def run_validation(config, experiments, base_out_dir):
 def _run_single_validation(cfg, experiments, out_dir):
     logger.info(f"Running Soil Moisture validation for {cfg['display_name']}")
     
-    project_root = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
-    base_matrix_dir = os.path.join(project_root, "experiments/NorthMor/matrix_2016")
+    from src.core.config import get_experiments_catalog
+    catalog = get_experiments_catalog()
     
     is_smoke_test = os.environ.get("SMOKE_TEST", "0") == "1"
     smoke_dates = ['2016-01-15', '2016-04-15', '2016-07-15', '2016-10-15']
@@ -57,7 +59,11 @@ def _run_single_validation(cfg, experiments, out_dir):
     baseline_ds = None
     for exp_path in experiments:
         exp_name = os.path.basename(exp_path)
-        full_exp_path = os.path.join(base_matrix_dir, exp_path)
+        exp_info = catalog.get(exp_name, {})
+        full_exp_path = exp_info.get("path_abs")
+        if not full_exp_path:
+            logger.error(f"Path for experiment {exp_name} not found in catalog.")
+            continue
         try:
             ds = LISLoader.load_variable(full_exp_path, "SoilMoist_tavg")
             if is_smoke_test:

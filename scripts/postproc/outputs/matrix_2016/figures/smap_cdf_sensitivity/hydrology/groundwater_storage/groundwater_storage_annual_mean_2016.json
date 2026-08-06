@@ -1,8 +1,0 @@
-{
-    "experiment": "OPL_noCDF_CDF",
-    "variable": "groundwater_storage",
-    "diagnostic_type": "annual_mean",
-    "filename": "groundwater_storage_annual_mean_2016.png",
-    "title": "Annual mean groundwater storage \u2014 NorthMor, 2016",
-    "caption": "Annual mean spatial distribution of groundwater storage."
-}

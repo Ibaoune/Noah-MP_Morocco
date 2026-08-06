@@ -1,22 +1,24 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ============================================================
 # CONFIGURATION GLOBALE — Framework LIS/Noah-MP Post-Processing
 # ============================================================
 
 project_name: LIS_NoahMP_SMAP_DA
-default_year: 2016
+default_period: "2016-2020"
 default_domain: morocco_001deg
 default_resolution: 0.01deg
 
 paths:
-  name_main_dir: "matrix_2016"
+  name_main_dir: "matrix_2016_2020"
   project_root: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
   data_root: "experiments/NorthMor/{name_main_dir}"
-  output_root: "outputs"
-  figure_root: "outputs/{name_main_dir}/figures"
-  metrics_root: "outputs/{name_main_dir}/metrics"
-  tables_root: "outputs/{name_main_dir}/tables"
-  pdf_root: "outputs/{name_main_dir}/pdf"
-  log_root: "logs"
+  output_root: "{name_main_dir}"
+  figure_root: "{name_main_dir}/figures"
+  metrics_root: "{name_main_dir}/metrics"
+  tables_root: "{name_main_dir}/tables"
+  pdf_root: "{name_main_dir}/pdf"
+  log_root: "{name_main_dir}/logs"
 
 plotting:
   dpi: 300

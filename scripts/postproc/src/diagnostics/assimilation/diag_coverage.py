@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import os
 import glob
@@ -109,24 +111,10 @@ def run_coverage(config, base_dir_da, out_dir):
     gl_cfg = cfg.get("gridlines", {})
     gl1 = add_map_features(ax1, map_cfg=map_cfg, gl_cfg=gl_cfg)
     
-    # Title
-    tcfg = cfg.get("title", {})
-    if "suptitle_y" in tcfg:
-        fig1.suptitle(tcfg.get("main", "Assimilated SMAP observations in 2016"), 
-                      fontsize=tcfg.get("main_fontsize", 14), 
-                      fontweight=tcfg.get("main_fontweight", "normal"), 
-                      y=tcfg.get("suptitle_y", 0.965))
-        ax1.set_title(tcfg.get("subtitle", "DA-noCDF-noIRR experiment | January–December 2016"), 
-                      fontsize=tcfg.get("subtitle_fontsize", 11), 
-                      pad=tcfg.get("subtitle_pad", 8))
-    else:
-        fig1.suptitle(tcfg.get("main", "Assimilated SMAP observations in 2016"), 
-                      fontsize=tcfg.get("main_fontsize", 14), 
-                      fontweight=tcfg.get("main_fontweight", "normal"), 
-                      y=0.965)
-        ax1.set_title(tcfg.get("subtitle", "DA-noCDF-noIRR experiment | January–December 2016"), 
-                      fontsize=tcfg.get("subtitle_fontsize", 11), 
-                      pad=8)
+    # Fonts and styling
+    plt.rcParams.update({'font.size': 10, 'axes.labelsize': 10, 'xtick.labelsize': 9, 'ytick.labelsize': 9})
+    
+    # Title - Removed per request
     
     # Colormap
     cm_cfg = cfg.get("colormap", {})
@@ -172,16 +160,11 @@ def run_coverage(config, base_dir_da, out_dir):
     # Annotation box
     ann_cfg = cfg.get("annotation", {})
     if ann_cfg.get("enabled", True):
-        tmpl = ann_cfg.get("text_template", "Max = {data_max:.0f} obs")
+        tmpl = "Max = {data_max:.0f} obs"
         box_text = tmpl.format(data_max=data_max)
-        props = dict(boxstyle=ann_cfg.get("boxstyle", "round,pad=0.25"), 
-                     facecolor=ann_cfg.get("facecolor", "white"), 
-                     alpha=ann_cfg.get("alpha", 0.85), 
-                     edgecolor=ann_cfg.get("edgecolor", "0.4"),
-                     linewidth=ann_cfg.get("linewidth", 0.5))
-        ax1.text(ann_cfg.get("lon", -9.9), ann_cfg.get("lat", 35.6), box_text, 
-                 transform=ccrs.PlateCarree(), fontsize=ann_cfg.get("fontsize", 8), 
-                 ha=ann_cfg.get("ha", "left"), va=ann_cfg.get("va", "top"), bbox=props)
+        props = dict(boxstyle="square,pad=0.25", facecolor="white", alpha=0.85, edgecolor="none")
+        ax1.text(0.02, 0.98, box_text, transform=ax1.transAxes, fontsize=8, 
+                 ha="left", va="top", bbox=props)
     
     out_cfg = cfg.get("output", {})
     f1_png = os.path.join(out_dir, out_cfg.get("filename", "Fig01_smap_assimilated_observation_count_DA-noCDF-noIRR_2016.png"))
@@ -210,10 +193,7 @@ def run_coverage(config, base_dir_da, out_dir):
     fig2 = plt.figure(figsize=(12, 5.5))
     gs = gridspec.GridSpec(1, 2, width_ratios=[1.7, 1], wspace=0.15, left=0.04, right=0.96, bottom=0.18, top=0.82)
     
-    # Title
-    tcfg2 = cfg2.get("title", {})
-    fig2.suptitle(tcfg2.get("main", "SMAP assimilation coverage in 2016"),
-                  fontsize=tcfg2.get("main_fontsize", 14), fontweight='normal')
+    # Title - Removed per request
     
     # Panel 1: Map
     ax2 = fig2.add_subplot(gs[0], projection=ccrs.PlateCarree())
@@ -222,7 +202,7 @@ def run_coverage(config, base_dir_da, out_dir):
     add_map_features(ax2, map_cfg=map_cfg2, gl_cfg=gl_cfg2)
     
     p_tcfg = cfg2.get("panel_titles", {})
-    ax2.set_title(p_tcfg.get("main", "(a) Spatial assimilation frequency"), fontsize=p_tcfg.get("main_fontsize", 11))
+    # Title - Removed per request
     
     cm_cfg2 = cfg2.get("colormap", {})
     cb_cfg2 = cfg2.get("colorbar", {})
@@ -257,15 +237,10 @@ def run_coverage(config, base_dir_da, out_dir):
     # Annotation box for Map
     ann_cfg2 = cfg2.get("annotation", {})
     if ann_cfg2.get("enabled", True):
-        tmpl2 = ann_cfg2.get("text_template", "Max: {data_max:.2f} obs d⁻¹")
+        tmpl2 = "Max = {data_max:.2f} obs d⁻¹"
         box_text2 = tmpl2.format(data_max=data_max2)
-        props2 = dict(boxstyle=ann_cfg2.get("boxstyle", "round,pad=0.25"), 
-                      facecolor=ann_cfg2.get("facecolor", "white"), 
-                      alpha=ann_cfg2.get("alpha", 0.85), 
-                      edgecolor=ann_cfg2.get("edgecolor", "none"), 
-                      linewidth=ann_cfg2.get("linewidth", 0.0))
-        ax2.text(ann_cfg2.get("lon", -9.9), ann_cfg2.get("lat", 35.6), box_text2, 
-                 transform=ccrs.PlateCarree(), fontsize=ann_cfg2.get("fontsize", 8), 
+        props2 = dict(boxstyle="square,pad=0.25", facecolor="white", alpha=0.85, edgecolor="none")
+        ax2.text(0.02, 0.98, box_text2, transform=ax2.transAxes, fontsize=8, 
                  ha="left", va="top", bbox=props2)
                  
     # Panel 2: Bar Plot
@@ -284,7 +259,7 @@ def run_coverage(config, base_dir_da, out_dir):
                    alpha=bars_cfg3.get("alpha", 0.95))
                    
     p_tcfg3 = cfg3.get("panel_titles", {})
-    ax3.set_title(p_tcfg3.get("main", "(b) Monthly assimilated observations"), fontsize=p_tcfg3.get("main_fontsize", 11))
+    # Title - Removed per request
     
     ax3.set_xlabel("Month", fontsize=ax_cfg3.get("xlabel_fontsize", 10))
     ax3.set_ylabel("Assimilated observations (×10³)", fontsize=ax_cfg3.get("ylabel_fontsize", 10))

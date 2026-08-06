@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 ================================================================================
 Author: M. El Aabaribaoune (@um6p)
@@ -22,6 +24,14 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 
 logger = logging.getLogger(__name__)
+
+def get_experiments_catalog() -> Dict[str, Any]:
+    """
+    Backward compatibility wrapper to load the global catalog directly.
+    """
+    postproc_dir = str(Path(__file__).resolve().parent.parent.parent)
+    global_cfg = load_global_config(os.path.join(postproc_dir, "configs", "global.yaml"))
+    return load_experiments_catalog(os.path.join(postproc_dir, "configs", "experiments.yaml"), global_cfg)
 
 
 # ============================================================

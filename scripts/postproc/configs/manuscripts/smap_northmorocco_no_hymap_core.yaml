@@ -1,0 +1,36 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+# configs/manuscripts/smap_northmorocco_no_hymap_core.yaml
+manuscript_id: smap_northmorocco_no_hymap_core
+title: "Assimilation of SMAP Soil Moisture in Noah-MP/LIS over Northern Morocco"
+
+style:
+  dpi: 400
+  format: "png"
+  bbox_inches: "tight"
+  neutral_zone: [-0.1, 0.1] # Zone neutre pour les différences faibles
+
+figures:
+  - id: ASSIM-01
+    output_name: fig_assimilation_diagnostics
+  
+  - id: SM-01
+    output_name: fig_soil_moisture_propagation
+    
+  - id: FLUX-01
+    output_name: fig_evapotranspiration_validation
+
+  - id: DROUGHT-01
+    output_name: fig_drought_analysis
+    
+  - id: RUNOFF-01
+    output_name: fig_runoff_partitioning
+    
+  - id: GLDAS-01
+    output_name: fig_gldas_intercomparison
+    
+  - id: WB-01
+    output_name: fig_water_balance
+    
+  - id: PROP-01
+    output_name: fig_drought_propagation

@@ -1,8 +1,0 @@
-{
-  "experiment": "DA_smap_nocdf_noirr_2016",
-  "experiment_label": "DA-SMAP-noCDF",
-  "title": "Forecast uncertainty and model-state spread \u2014 DA-SMAP-noCDF, NorthMor, 2016",
-  "caption": "Technical quality-control diagnostic used to verify the consistency of masks, observation-space uncertainty fields, and model-state spread fields. This figure should not be interpreted as hydrological validation.",
-  "filename": "DA_smap_nocdf_noirr_2016_spread_comparison.png",
-  "diagnostic_type": "spread"
-}

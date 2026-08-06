@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import sys
 from lis_postproc.cli import _load_context
 from lis_postproc.core.config import load_recipe

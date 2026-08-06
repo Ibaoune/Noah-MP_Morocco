@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import xarray as xr
 import os
@@ -88,14 +90,58 @@ class ObservationLoader:
     def _load_tiffs(cfg, files):
         import rioxarray
         import pandas as pd
+        import datetime
         datasets = []
+        times = []
         for f in files:
             da = rioxarray.open_rasterio(f)
-            # WaPOR files have dates in their names, e.g., L2_AETI_0911_2016.tif
-            # Extract year from filename, but for generic logic we just use creation time or parse
-            # Here we just stack them
+            
+            basename = os.path.basename(f)
+            stem = basename.replace('.tif', '').replace('.tiff', '')
+            
+            # Attempt to parse WaPOR dekad format (e.g. L1_AETI_1601 -> Year 16, Dekad 01)
+            if len(stem) >= 4 and stem[-4:].isdigit():
+                yy = int(stem[-4:-2])
+                dd = int(stem[-2:])
+                year = 2000 + yy if yy < 50 else 1900 + yy
+                
+                # Dekad 1-3 -> Jan, 4-6 -> Feb, etc.
+                month = (dd - 1) // 3 + 1
+                dekad_in_month = (dd - 1) % 3 + 1
+                day = 1 if dekad_in_month == 1 else (11 if dekad_in_month == 2 else 21)
+                
+                try:
+                    dt = pd.Timestamp(datetime.datetime(year, month, day))
+                    times.append(dt)
+                except ValueError:
+                    times.append(pd.Timestamp(os.path.getmtime(f), unit='s'))
+            else:
+                times.append(pd.Timestamp(os.path.getmtime(f), unit='s'))
+            
+            if 'band' in da.dims and len(da['band']) == 1:
+                da = da.squeeze('band').drop_vars('band', errors='ignore')
+                
+            if 'y' in da.coords and 'x' in da.coords:
+                da = da.rename({'y': 'lat', 'x': 'lon'})
+                
             datasets.append(da)
+            
         if not datasets:
             return None
-        # Combine without assuming time dimension is present inside the TIFF
-        return xr.concat(datasets, dim='time')
+            
+        time_idx = pd.DatetimeIndex(times)
+        ds_concat = xr.concat(datasets, dim=xr.DataArray(time_idx, name='time'))
+        
+        var_name = cfg["variables"]["lis"]
+        res_ds = ds_concat.to_dataset(name=var_name)
+        
+        scale = float(cfg.get("units", {}).get("scale_factor", 1.0))
+        offset = float(cfg.get("units", {}).get("offset", 0.0))
+        fill_val = cfg.get("missing_values", {}).get("fill_value")
+        
+        if fill_val is not None:
+            res_ds[var_name] = res_ds[var_name].where(res_ds[var_name] != fill_val)
+        if scale != 1.0 or offset != 0.0:
+            res_ds[var_name] = res_ds[var_name] * scale + offset
+            
+        return res_ds

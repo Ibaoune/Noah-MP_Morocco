@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import pytest
 import numpy as np
 import xarray as xr

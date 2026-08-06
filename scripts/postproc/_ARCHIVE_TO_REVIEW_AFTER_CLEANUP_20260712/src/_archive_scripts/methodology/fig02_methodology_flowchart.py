@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 fig02_methodology_flowchart.py
 

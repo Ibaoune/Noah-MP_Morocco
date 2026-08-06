@@ -1,4 +1,5 @@
 # OPL Multiple DA Module
+**Author:** M. EL Aabaribaoune (@um6p)
 
 This module compares Open Loop (OPL) against multiple Data Assimilation (DA) experiments (e.g. CDF and no-CDF).
 

@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 #SBATCH --job-name=opl_mult_da
 #SBATCH --output=logs/opl_multiple_da_%j.out
 #SBATCH --error=logs/opl_multiple_da_%j.err

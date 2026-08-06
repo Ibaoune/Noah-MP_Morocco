@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 #SBATCH --mem=32G
 #SBATCH --time=01:00:00
 set -eo pipefail

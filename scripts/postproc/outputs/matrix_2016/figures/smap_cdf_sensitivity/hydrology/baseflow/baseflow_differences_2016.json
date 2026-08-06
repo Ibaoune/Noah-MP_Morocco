@@ -1,8 +1,0 @@
-{
-    "experiment": "DA_Differences",
-    "variable": "baseflow",
-    "diagnostic_type": "difference",
-    "filename": "baseflow_differences_2016.png",
-    "title": "Baseflow response to assimilation \u2014 2016",
-    "caption": "Impact of SMAP assimilation on baseflow."
-}

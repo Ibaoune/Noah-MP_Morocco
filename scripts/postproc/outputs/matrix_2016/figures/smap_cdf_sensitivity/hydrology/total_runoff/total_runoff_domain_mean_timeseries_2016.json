@@ -1,8 +1,0 @@
-{
-    "experiment": "OPL_noCDF_CDF",
-    "variable": "total_runoff",
-    "diagnostic_type": "timeseries",
-    "filename": "total_runoff_domain_mean_timeseries_2016.png",
-    "title": "Domain-average total runoff time series \u2014 2016",
-    "caption": "Daily domain-averaged timeseries of total runoff."
-}

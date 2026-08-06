@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 supp_statistical_analysis.py
 

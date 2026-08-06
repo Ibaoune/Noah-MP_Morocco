@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 ================================================================================
 Author: M. El Aabaribaoune (@um6p)
@@ -49,6 +51,7 @@ class Recipe:
     title: str
     description: str = ""
     year: int = 2016
+    period: str = "2016"
     domain: str = "morocco_001deg"
     comparison_mode: str = "multi_experiment"
     baseline: Optional[str] = None
@@ -72,6 +75,7 @@ class Recipe:
             title=data.get('title', ''),
             description=data.get('description', ''),
             year=data.get('year', 2016),
+            period=data.get('period', str(data.get('year', 2016))),
             domain=data.get('domain', 'morocco_001deg'),
             comparison_mode=data.get('comparison_mode', 'multi_experiment'),
             baseline=data.get('baseline'),

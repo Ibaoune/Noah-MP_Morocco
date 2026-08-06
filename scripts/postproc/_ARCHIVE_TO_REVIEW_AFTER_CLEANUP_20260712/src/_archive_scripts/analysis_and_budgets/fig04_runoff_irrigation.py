@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 fig04_runoff_irrigation.py
 

@@ -1,8 +1,0 @@
-{
-    "experiment": "OPL_noCDF_CDF",
-    "variable": "surface_soil_moisture",
-    "diagnostic_type": "annual_mean",
-    "filename": "surface_soil_moisture_annual_mean_2016.png",
-    "title": "Annual mean surface soil moisture \u2014 NorthMor, 2016",
-    "caption": "Annual mean spatial distribution of surface soil moisture."
-}

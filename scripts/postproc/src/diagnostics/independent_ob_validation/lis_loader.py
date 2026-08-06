@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import os
 import glob
@@ -12,7 +14,7 @@ class LISLoader:
     
     @staticmethod
     def load_variable(exp_dir, variable_name, start_date=None, end_date=None):
-        search_path = os.path.join(exp_dir, "output", "**", "SURFACEMODEL", "**", "LIS_HIST_*.nc")
+        search_path = os.path.join(exp_dir, "**", "SURFACEMODEL", "**", "LIS_HIST_*.nc")
         files = glob.glob(search_path, recursive=True)
         files = sorted(files)
         

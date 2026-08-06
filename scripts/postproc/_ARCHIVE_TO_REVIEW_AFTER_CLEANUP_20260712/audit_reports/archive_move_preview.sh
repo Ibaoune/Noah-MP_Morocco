@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 mkdir -p _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/$(dirname scripts/job_postproc_2016.sh) && mv scripts/job_postproc_2016.sh _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/scripts/job_postproc_2016.sh
 mkdir -p _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/$(dirname scripts/run_hydrology_postproc.py) && mv scripts/run_hydrology_postproc.py _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/scripts/run_hydrology_postproc.py
 mkdir -p _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/$(dirname configs/recipes/opl_vs_smap_vs_lai_vs_joint_2016.yaml) && mv configs/recipes/opl_vs_smap_vs_lai_vs_joint_2016.yaml _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/configs/recipes/opl_vs_smap_vs_lai_vs_joint_2016.yaml

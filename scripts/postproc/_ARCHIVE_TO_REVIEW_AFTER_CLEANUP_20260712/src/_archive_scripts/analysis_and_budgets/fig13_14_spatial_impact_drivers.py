@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 fig13_14_spatial_impact_drivers.py
 

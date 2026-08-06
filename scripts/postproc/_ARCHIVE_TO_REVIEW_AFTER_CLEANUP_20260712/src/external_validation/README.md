@@ -1,4 +1,5 @@
 # External Validation Module
+**Author:** M. EL Aabaribaoune (@um6p)
 
 Ce module orchestre la validation indépendante du modèle (Noah-MP) en comparant ses sorties Open Loop (OL) et avec Assimilation de Données (DA) contre des jeux de données d'observation externes.
 

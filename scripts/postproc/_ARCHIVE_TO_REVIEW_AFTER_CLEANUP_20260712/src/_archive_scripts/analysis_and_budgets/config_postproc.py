@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import os
 import numpy as np
 from datetime import datetime

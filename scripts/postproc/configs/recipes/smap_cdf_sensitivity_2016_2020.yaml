@@ -1,0 +1,57 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+recipe_id: smap_cdf_sensitivity_2016_2020
+name_exp: "smap_cdf_sensitivity_2016_2020"
+description: "Core recipe for 2016-2020 CDF sensitivity analysis"
+
+year: 2016 # Kept for backward compatibility
+period: "2016-2020"
+
+experiments:
+  - OPL
+  - DA_NoCDF
+  - DA_CDF
+
+variables:
+  - surface_soil_moisture
+  - rootzone_soil_moisture
+  - evapotranspiration
+  - surface_runoff
+  - baseflow
+  - total_runoff
+  - baseflow_fraction
+  - soil_storage
+  - precipitation
+  - swe
+
+diagnostics:
+  assimilation:
+    enabled: true
+    active_diagnostics: ['coverage', 'innovations', 'seasonal_increments', 'spread']
+    da_experiments:
+      - DA_NoCDF
+      - DA_CDF
+    seasons:
+      wet_season: [11, 12, 1, 2, 3, 4]
+      dry_season: [5, 6, 7, 8, 9, 10]
+
+  hydrology:
+    enabled: true
+
+  drought:
+    enabled: true
+
+  runoff_partitioning:
+    enabled: true
+
+  water_balance:
+    enabled: true
+
+  propagation:
+    enabled: true
+
+outputs:
+  figure_dir: "{name_main_dir}/figures/{name_exp}"
+  metrics_dir: "{name_main_dir}/metrics/{name_exp}"
+  table_dir: "{name_main_dir}/tables/{name_exp}"
+  pdf_report: "{name_main_dir}/pdf/report_{name_exp}.pdf"

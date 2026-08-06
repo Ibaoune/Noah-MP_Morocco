@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 ================================================================================
 Author: M. El Aabaribaoune (@um6p)
@@ -48,8 +50,17 @@ def _build_compat_config(
     )
 
     year = recipe_diag_cfg.get('year', 2016)
-    base_cfg['start_date'] = f"{year}-01-01"
-    base_cfg['end_date'] = f"{year}-12-31"
+    period = recipe_diag_cfg.get('period', str(year))
+    
+    if "-" in str(period):
+        start_year, end_year = str(period).split('-')
+        base_cfg['start_date'] = f"{start_year}-01-01"
+        base_cfg['end_date'] = f"{end_year}-12-31"
+    else:
+        base_cfg['start_date'] = f"{period}-01-01"
+        base_cfg['end_date'] = f"{period}-12-31"
+        
+    base_cfg['period'] = str(period)
 
     seasons = recipe_diag_cfg.get('seasons', {})
     if seasons:
@@ -71,51 +82,52 @@ def _deep_merge_into(base: Dict, override: Dict) -> Dict:
     return result
 
 
-def _stylize_diagnostic_config(run_cfg: Dict, diag_name: str, exp_id: str, exp_label: str, out_dir: str):
+def _stylize_diagnostic_config(run_cfg: Dict, diag_name: str, exp_id: str, exp_label: str, out_dir: str, domain_label: str):
     incr_bounds = [-1.5, -1.2, -0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
+    period = run_cfg.get('period', '2016')
     
     metadata_map = {
         "mean_innovation_map": {
-            "title": f"Mean SMAP innovation, observation minus forecast — {exp_label}, NorthMor, 2016",
+            "title": f"Mean SMAP innovation, observation minus forecast — {exp_label}, {domain_label}, {period}",
             "caption": "Mean innovation computed as observation minus forecast.",
             "file_suffix": "innovation_map"
         },
         "mean_increment_map": {
-            "title": f"Mean SMAP analysis increment — {exp_label}, NorthMor, 2016",
+            "title": f"Mean SMAP analysis increment — {exp_label}, {domain_label}, {period}",
             "caption": "Mean analysis increment computed as analysis minus forecast.",
             "bounds": incr_bounds,
             "cmap": "RdBu_r",
             "file_suffix": "increment_map"
         },
         "increment_histogram": {
-            "title": f"Distribution of SMAP analysis increments — {exp_label}, NorthMor, 2016",
+            "title": f"Distribution of SMAP analysis increments — {exp_label}, {domain_label}, {period}",
             "caption": "Distribution of all SMAP analysis increments.",
             "file_suffix": "increment_histogram"
         },
         "seasonal_increment_wet_dry": {
-            "title": f"Wet- and dry-season SMAP analysis increments — {exp_label}, NorthMor, 2016",
+            "title": f"Wet- and dry-season SMAP analysis increments — {exp_label}, {domain_label}, {period}",
             "caption": "Seasonal mean increments during wet and dry seasons.",
             "bounds": incr_bounds,
             "cmap": "RdBu_r",
             "file_suffix": "seasonal_increments"
         },
         "assimilation_observations_map": {
-            "title": f"Spatial distribution of assimilated SMAP observations — {exp_label}, NorthMor, 2016",
+            "title": f"Spatial distribution of assimilated SMAP observations — {exp_label}, {domain_label}, {period}",
             "caption": "Number of assimilated SMAP observations per grid cell.",
             "file_suffix": "obs_count"
         },
         "assimilation_frequency_map": {
-            "title": f"Monthly SMAP assimilation frequency — {exp_label}, NorthMor, 2016",
+            "title": f"Monthly SMAP assimilation frequency — {exp_label}, {domain_label}, {period}",
             "caption": "Spatial assimilation frequency.",
             "file_suffix": "assim_frequency"
         },
         "spread_diagnostics_consistency_check": {
-            "title": f"Spread diagnostic consistency check — {exp_label}, NorthMor, 2016",
+            "title": f"Spread diagnostic consistency check — {exp_label}, {domain_label}, {period}",
             "caption": "Technical quality-control diagnostic.",
             "file_suffix": "spread_consistency"
         },
         "prior_posterior_spread_comparison": {
-            "title": f"Forecast uncertainty and model-state spread — {exp_label}, NorthMor, 2016",
+            "title": f"Forecast uncertainty and model-state spread — {exp_label}, {domain_label}, {period}",
             "caption": "Technical quality-control diagnostic.",
             "file_suffix": "spread_comparison"
         }
@@ -130,7 +142,7 @@ def _stylize_diagnostic_config(run_cfg: Dict, diag_name: str, exp_id: str, exp_l
         run_cfg[cfg_key]['output']['filename'] = filename
         
         if 'title' not in run_cfg[cfg_key]: run_cfg[cfg_key]['title'] = {}
-        run_cfg[cfg_key]['title']['main'] = meta['title']
+        run_cfg[cfg_key]['title']['main'] = ""
         run_cfg[cfg_key]['title']['subtitle'] = ""
         run_cfg[cfg_key]['title']['main_fontsize'] = 9 
         
@@ -202,8 +214,10 @@ def run_assimilation_diagnostics(
     }
 
     year = getattr(recipe, 'year', 2016)
+    period = getattr(recipe, 'period', str(year))
     recipe_params = {
         'year': year,
+        'period': period,
         'seasons': assimil_cfg.get('seasons', {}),
     }
 
@@ -251,7 +265,8 @@ def run_assimilation_diagnostics(
             diag_extra_cfg = _load_diag_config(diag_name)
             run_cfg = _deep_merge_into(compat_config, diag_extra_cfg)
             
-            _stylize_diagnostic_config(run_cfg, diag_name, exp_id, exp_label, exp_out_dir)
+            domain_label = global_cfg.get('default_domain', 'Domain')
+            _stylize_diagnostic_config(run_cfg, diag_name, exp_id, exp_label, exp_out_dir, domain_label)
 
             logger.info(f"  → Running: {diag_name} for {exp_id}")
             try:
@@ -286,7 +301,7 @@ def get_dry_run_summary(recipe, experiments_catalog: Dict) -> List[str]:
     for exp_id in da_exps:
         exp_data = experiments_catalog.get(exp_id, {})
         path = exp_data.get('path_abs', 'null')
-        status = "✓ available" if path and os.path.isdir(path) else "✗ not available"
+        status = " available" if path and os.path.isdir(path) else " not available"
         lines.append(f"      - {exp_id} ({status})")
 
     return lines

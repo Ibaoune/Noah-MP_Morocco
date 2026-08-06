@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import netCDF4 as nc
 import matplotlib
 matplotlib.use('Agg')

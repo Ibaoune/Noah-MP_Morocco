@@ -1,8 +1,0 @@
-{
-    "experiment": "OPL_noCDF_CDF",
-    "variable": "evapotranspiration",
-    "diagnostic_type": "timeseries",
-    "filename": "evapotranspiration_domain_mean_timeseries_2016.png",
-    "title": "Domain-average evapotranspiration time series \u2014 2016",
-    "caption": "Daily domain-averaged timeseries of evapotranspiration."
-}

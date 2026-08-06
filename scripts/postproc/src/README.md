@@ -1,4 +1,5 @@
 # LIS/Noah-MP Post-Processing — `src/`
+**Author:** M. EL Aabaribaoune (@um6p)
 
 Ce dossier contient l'ensemble des modules Python du framework de post-traitement LIS/Noah-MP/HyMAP.
 

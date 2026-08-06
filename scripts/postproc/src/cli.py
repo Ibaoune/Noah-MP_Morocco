@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 ================================================================================
 Author: M. El Aabaribaoune (@um6p)
@@ -67,7 +69,7 @@ def cmd_list_experiments(postproc_dir: str):
     print("  " + "-" * 63)
 
     for exp_id, exp in experiments.items():
-        status = "✓ available" if exp.is_available() else "✗ path=null (future)"
+        status = " available" if exp.is_available() else " path=null (future)"
         print(f"  {exp_id:<35} {exp.label:<18} {status}")
 
     print("=" * 65)
@@ -168,7 +170,7 @@ def cmd_dry_run(recipe_path: str, postproc_dir: str):
         exp_data = experiments.get(exp_id, {})
         path = exp_data.get('path_abs', 'null')
         label = exp_data.get('label', exp_id)
-        status = "✓" if path and os.path.isdir(path) else "✗"
+        status = "" if path and os.path.isdir(path) else ""
         print(f"    {status} {exp_id} ({label})")
         if path and not os.path.isdir(path):
             print(f"      Path not found: {path}")
@@ -177,7 +179,7 @@ def cmd_dry_run(recipe_path: str, postproc_dir: str):
     print(f"\n  Variables ({len(recipe.variables)}):")
     available_vars = list_available_variables(ctx['variables_dir'])
     for var_id in recipe.variables:
-        status = "✓" if var_id in available_vars else "✗ MISSING"
+        status = "" if var_id in available_vars else " MISSING"
         print(f"    {status} {var_id}")
 
     # Diagnostics

@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import os
 import glob
@@ -158,25 +160,15 @@ def run_seasonal_increments(config, base_dir_da, out_dir):
     gl_cfg5 = cfg5.get("gridlines", {})
     pt_cfg5 = cfg5.get("panel_titles", {})
     
-    # Title
-    tcfg5 = cfg5.get("title", {})
-    if "suptitle_y" in tcfg5:
-        fig4.suptitle(tcfg5.get("main", "Seasonal SMAP analysis increments in 2016"), 
-                      fontsize=tcfg5.get("main_fontsize", 13), 
-                      fontweight=tcfg5.get("main_fontweight", "bold"), 
-                      y=tcfg5.get("suptitle_y", 0.965))
-        fig4.text(0.5, tcfg5.get("subtitle_y", 0.925), tcfg5.get("subtitle", "Analysis − forecast | DA-noCDF-noIRR experiment"), 
-                  ha='center', va='center', fontsize=tcfg5.get("subtitle_fontsize", 10))
-    else:
-        fig4.suptitle(tcfg5.get("main", "Seasonal SMAP analysis increments in 2016"), 
-                      fontsize=tcfg5.get("main_fontsize", 13), 
-                      fontweight=tcfg5.get("main_fontweight", "bold"), y=0.96)
+    # Fonts and styling
+    plt.rcParams.update({'font.size': 10, 'axes.labelsize': 10, 'xtick.labelsize': 9, 'ytick.labelsize': 9})
+    
+    # Title - Removed per request
                       
     # WET
     ax4a = fig4.add_subplot(1, 2, 1, projection=ccrs.PlateCarree())
     add_map_features(ax4a, map_cfg=map_cfg5, gl_cfg=gl_cfg5)
-    ax4a.set_title(pt_cfg5.get("wet", "(a) Wet season"), fontsize=pt_cfg5.get("fontsize", 10), 
-                   fontweight=pt_cfg5.get("fontweight", "bold"), pad=pt_cfg5.get("pad", 6))
+    ax4a.set_title("Wet season", fontsize=10, fontweight="bold", pad=6)
     pcm4a = ax4a.pcolormesh(lon, lat, data_wet_plot, cmap=cmap5, norm=norm5, transform=ccrs.PlateCarree())
     
     # DRY
@@ -186,8 +178,7 @@ def run_seasonal_increments(config, base_dir_da, out_dir):
     gl_cfg5_right["left_labels"] = False
     
     add_map_features(ax4b, map_cfg=map_cfg5, gl_cfg=gl_cfg5_right)
-    ax4b.set_title(pt_cfg5.get("dry", "(b) Dry season"), fontsize=pt_cfg5.get("fontsize", 10), 
-                   fontweight=pt_cfg5.get("fontweight", "bold"), pad=pt_cfg5.get("pad", 6))
+    ax4b.set_title("Dry season", fontsize=10, fontweight="bold", pad=6)
     pcm4b = ax4b.pcolormesh(lon, lat, data_dry_plot, cmap=cmap5, norm=norm5, transform=ccrs.PlateCarree())
     
     # Colorbar
@@ -225,8 +216,8 @@ def run_seasonal_increments(config, base_dir_da, out_dir):
         
     ticks5 = cb_cfg5.get("ticks", levels5)
     cbar4.set_ticks(ticks5)
-    cbar4.set_label(cb_cfg5.get("label", "SMAP analysis increment (×10⁻³ m³ m⁻³)"), fontsize=cb_cfg5.get("label_fontsize", 11))
-    cbar4.ax.tick_params(labelsize=cb_cfg5.get("tick_fontsize", 9))
+    cbar4.set_label("SMAP analysis increment (×10⁻³ m³ m⁻³)", fontsize=10)
+    cbar4.ax.tick_params(labelsize=9)
     
     out_cfg5 = cfg5.get("output", {})
     f4a_png = os.path.join(out_dir, out_cfg5.get("filename", "Fig05_wet_dry_season_increment_comparison_DA-noCDF-noIRR_2016.png"))

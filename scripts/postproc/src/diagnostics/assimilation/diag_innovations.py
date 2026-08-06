@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import os
 import glob
@@ -136,24 +138,10 @@ def run_innovations(config, base_dir_da, out_dir):
     gl_cfg1 = cfg1.get("gridlines", {})
     gl1 = add_map_features(ax1, map_cfg=map_cfg1, gl_cfg=gl_cfg1)
     
-    # Title
-    tcfg1 = cfg1.get("title", {})
-    if "suptitle_y" in tcfg1:
-        fig1.suptitle(tcfg1.get("main", "Mean SMAP innovation in 2016"), 
-                      fontsize=tcfg1.get("main_fontsize", 13), 
-                      fontweight=tcfg1.get("main_fontweight", "bold"), 
-                      y=tcfg1.get("suptitle_y", 0.965))
-        ax1.set_title(tcfg1.get("subtitle", "Observation − forecast | DA-noCDF-noIRR experiment"), 
-                      fontsize=tcfg1.get("subtitle_fontsize", 10), 
-                      pad=tcfg1.get("subtitle_pad", 8))
-    else:
-        ax1.set_title(tcfg1.get("main", "Mean SMAP innovation in 2016"), 
-                      fontsize=tcfg1.get("main_fontsize", 13), 
-                      fontweight=tcfg1.get("main_fontweight", "bold"), 
-                      pad=tcfg1.get("pad", 22))
-        ax1.text(0.5, 1.015, tcfg1.get("subtitle", "Observation − forecast | DA-noCDF-noIRR experiment"), 
-                 transform=ax1.transAxes, ha='center', va='bottom',
-                 fontsize=tcfg1.get("subtitle_fontsize", 10))
+    # Fonts and styling
+    plt.rcParams.update({'font.size': 10, 'axes.labelsize': 10, 'xtick.labelsize': 9, 'ytick.labelsize': 9})
+    
+    # Title - Removed per request
     
     # Colormap
     cm_cfg1 = cfg1.get("colormap", {})
@@ -205,12 +193,11 @@ def run_innovations(config, base_dir_da, out_dir):
     # Annotation box
     ann_cfg1 = cfg1.get("annotation", {})
     if ann_cfg1.get("enabled", True):
-        tmpl1 = ann_cfg1.get("text_template", "Mean = {data_mean:.3f}\nMin = {data_min:.3f}\nMax = {data_max:.3f}")
+        tmpl1 = "Mean = {data_mean:.3f}\nMin = {data_min:.3f}\nMax = {data_max:.3f}"
         box_text1 = tmpl1.format(data_mean=data_mean1_plot, data_min=data_min1_plot, data_max=data_max1_plot)
-        props1 = dict(boxstyle="round,pad=0.25", facecolor="white", alpha=0.85, edgecolor="0.4", linewidth=0.5)
-        ax1.text(ann_cfg1.get("lon", -9.95), ann_cfg1.get("lat", 35.55), box_text1, 
-                 transform=ccrs.PlateCarree(), fontsize=ann_cfg1.get("fontsize", 8), 
-                 ha=ann_cfg1.get("ha", "left"), va=ann_cfg1.get("va", "top"), bbox=props1)
+        props1 = dict(boxstyle="square,pad=0.25", facecolor="white", alpha=0.85, edgecolor="none")
+        ax1.text(0.02, 0.98, box_text1, transform=ax1.transAxes, fontsize=8, 
+                 ha="left", va="top", bbox=props1)
     
     out_cfg1 = cfg1.get("output", {})
     f1_png = os.path.join(out_dir, out_cfg1.get("filename", "Fig04a_mean_innovation_observation_space_DA-noCDF-noIRR_2016.png"))
@@ -263,24 +250,7 @@ def run_innovations(config, base_dir_da, out_dir):
     gl_cfg2 = cfg2.get("gridlines", {})
     gl2 = add_map_features(ax2, map_cfg=map_cfg2, gl_cfg=gl_cfg2)
     
-    # Title
-    tcfg2 = cfg2.get("title", {})
-    if "suptitle_y" in tcfg2:
-        fig2.suptitle(tcfg2.get("main", "Mean SMAP analysis increment in 2016"), 
-                      fontsize=tcfg2.get("main_fontsize", 13), 
-                      fontweight=tcfg2.get("main_fontweight", "bold"), 
-                      y=tcfg2.get("suptitle_y", 0.965))
-        ax2.set_title(tcfg2.get("subtitle", "Analysis − forecast | DA-noCDF-noIRR experiment"), 
-                      fontsize=tcfg2.get("subtitle_fontsize", 10), 
-                      pad=tcfg2.get("subtitle_pad", 8))
-    else:
-        ax2.set_title(tcfg2.get("main", "Mean SMAP analysis increment in 2016"), 
-                      fontsize=tcfg2.get("main_fontsize", 13), 
-                      fontweight=tcfg2.get("main_fontweight", "bold"), 
-                      pad=tcfg2.get("pad", 22))
-        ax2.text(0.5, 1.015, tcfg2.get("subtitle", "Analysis − forecast | DA-noCDF-noIRR experiment"), 
-                 transform=ax2.transAxes, ha='center', va='bottom',
-                 fontsize=tcfg2.get("subtitle_fontsize", 10))
+    # Title - Removed per request
     
     # Colormap
     cm_cfg2 = cfg2.get("colormap", {})
@@ -335,16 +305,11 @@ def run_innovations(config, base_dir_da, out_dir):
     # Annotation box
     ann_cfg2 = cfg2.get("annotation", {})
     if ann_cfg2.get("enabled", True):
-        tmpl2 = ann_cfg2.get("text_template", "Mean = {data_mean_scaled:.2f} ×10⁻³\nMin = {data_min_scaled:.2f}\nMax = {data_max_scaled:.2f}")
+        tmpl2 = "Mean = {data_mean_scaled:.2f}\nMin = {data_min_scaled:.2f}\nMax = {data_max_scaled:.2f}"
         box_text2 = tmpl2.format(data_mean_scaled=data_mean2_plot, data_min_scaled=data_min2_plot, data_max_scaled=data_max2_plot)
-        props2 = dict(boxstyle=ann_cfg2.get("boxstyle", "round,pad=0.25"), 
-                     facecolor=ann_cfg2.get("facecolor", "white"), 
-                     alpha=ann_cfg2.get("alpha", 0.85), 
-                     edgecolor=ann_cfg2.get("edgecolor", "0.4"),
-                     linewidth=ann_cfg2.get("linewidth", 0.5))
-        ax2.text(ann_cfg2.get("lon", -9.95), ann_cfg2.get("lat", 35.55), box_text2, 
-                 transform=ccrs.PlateCarree(), fontsize=ann_cfg2.get("fontsize", 8), 
-                 ha=ann_cfg2.get("ha", "left"), va=ann_cfg2.get("va", "top"), bbox=props2)
+        props2 = dict(boxstyle="square,pad=0.25", facecolor="white", alpha=0.85, edgecolor="none")
+        ax2.text(0.02, 0.98, box_text2, transform=ax2.transAxes, fontsize=8, 
+                 ha="left", va="top", bbox=props2)
     
     out_cfg2 = cfg2.get("output", {})
     f2_png = os.path.join(out_dir, out_cfg2.get("filename", "Fig04b_mean_soil_moisture_increment_DA-noCDF-noIRR_2016.png"))
@@ -433,16 +398,12 @@ def run_innovations(config, base_dir_da, out_dir):
             ax3.set_yscale('log')
             
         ax_cfg3 = cfg3.get("axes", {})
-        ax3.set_xlabel(ax_cfg3.get("xlabel", "SMAP analysis increment (×10⁻³ m³ m⁻³)"), fontsize=ax_cfg3.get("xlabel_fontsize", 11))
-        ax3.set_ylabel(ax_cfg3.get("ylabel", "Frequency (%)"), fontsize=ax_cfg3.get("ylabel_fontsize", 11))
-        ax3.tick_params(axis='both', labelsize=ax_cfg3.get("tick_fontsize", 10))
+        ax3.set_xlabel("SMAP analysis increment (×10⁻³ m³ m⁻³)", fontsize=10)
+        ax3.set_ylabel("Frequency (%)", fontsize=10)
+        ax3.tick_params(axis='both', labelsize=9)
         
-        if filt_cfg.get("use_quantile_xlim", True) and n_valid > 0:
-            q_low = np.percentile(increments_plot, filt_cfg.get("lower_quantile", 0.005) * 100)
-            q_high = np.percentile(increments_plot, filt_cfg.get("upper_quantile", 0.995) * 100)
-            if ax_cfg3.get("x_symmetric", True):
-                x_abs = max(abs(q_low), abs(q_high))
-                ax3.set_xlim(-x_abs, x_abs)
+        # Enforce fixed xlim to match NoCDF and CDF visually
+        ax3.set_xlim(-6, 6)
                 
         # Ref lines
         ref_cfg = cfg3.get("reference_lines", {})
@@ -468,35 +429,12 @@ def run_innovations(config, base_dir_da, out_dir):
         # Stats box
         sb_cfg = cfg3.get("statistics_box", {})
         if sb_cfg.get("enabled", True):
-            content_list = sb_cfg.get("content", [])
-            formatted_lines = []
-            for line in content_list:
-                formatted_lines.append(line.format(
-                    n_valid=n_valid,
-                    zero_fraction=frac_zero,
-                    mean_scaled=mean_scaled,
-                    median_scaled=median_scaled,
-                    p5_scaled=p5_scaled,
-                    p95_scaled=p95_scaled
-                ))
-            box_text3 = "\n".join(formatted_lines)
-            props3 = dict(boxstyle=sb_cfg.get("boxstyle", "round,pad=0.30"), 
-                         facecolor=sb_cfg.get("facecolor", "white"), 
-                         alpha=sb_cfg.get("alpha", 0.85), 
-                         edgecolor=sb_cfg.get("edgecolor", "0.4"),
-                         linewidth=sb_cfg.get("linewidth", 0.5))
-            ax3.text(0.95, 0.95, box_text3, transform=ax3.transAxes, fontsize=sb_cfg.get("fontsize", 8),
-                     ha='right', va='top', bbox=props3)
+            box_text3 = f"Mean = {mean_scaled:.2f}\nMedian = {median_scaled:.2f}\nP5 = {p5_scaled:.2f}\nP95 = {p95_scaled:.2f}\nZeros = {frac_zero:.1f}%"
+            props3 = dict(boxstyle="square,pad=0.25", facecolor="white", alpha=0.85, edgecolor="none")
+            ax3.text(0.02, 0.98, box_text3, transform=ax3.transAxes, fontsize=8,
+                     ha='left', va='top', bbox=props3)
                      
-        # Title
-        tcfg3 = cfg3.get("title", {})
-        fig3.suptitle(tcfg3.get("main", "Distribution of SMAP analysis increments in 2016"), 
-                      fontsize=tcfg3.get("main_fontsize", 13), 
-                      fontweight=tcfg3.get("main_fontweight", "bold"), 
-                      y=0.965)
-        ax3.set_title(tcfg3.get("subtitle", "Analysis − forecast | DA-noCDF-noIRR experiment"), 
-                      fontsize=tcfg3.get("subtitle_fontsize", 10), 
-                      pad=8)
+        # Title - Removed per request
                       
         grid_cfg3 = cfg3.get("grid", {})
         if grid_cfg3.get("enabled", True):

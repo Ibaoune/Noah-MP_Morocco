@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 ================================================================================
 Author: M. El Aabaribaoune (@um6p)
@@ -25,7 +27,7 @@ def run_domain_diagnostics(recipe, global_cfg, out_dir, dry_run=False):
         print(f"    Output dir: {out_dir}")
         return generated_files
 
-    project_root = getattr(global_cfg, 'project_root', "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco")
+    project_root = global_cfg.get('_project_root', str(Path(__file__).resolve().parent.parent.parent.parent.parent))
     
     from .plot_domain_map import plot_all_domain_maps
 

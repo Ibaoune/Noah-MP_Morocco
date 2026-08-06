@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 #SBATCH --job-name=external_validation
 #SBATCH --output=logs/ext_val_%j.out
 #SBATCH --error=logs/ext_val_%j.err

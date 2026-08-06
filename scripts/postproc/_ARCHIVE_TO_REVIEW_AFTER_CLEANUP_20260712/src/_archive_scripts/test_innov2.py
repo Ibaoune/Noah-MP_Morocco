@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import sys, os
 from datetime import datetime
 sys.path.append('src')

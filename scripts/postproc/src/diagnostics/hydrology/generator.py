@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 ================================================================================
 Author: M. El Aabaribaoune (@um6p)
@@ -162,9 +164,8 @@ def make_3panel_map(data_list, titles, out_path, var_cfg, main_title, mask=None,
     fig.savefig(out_path, bbox_inches='tight', pad_inches=0.05, dpi=300)
     plt.close(fig)
 
-def make_timeseries(data_dict, recipe, experiments_catalog, var_cfg, mask, out_path):
+def make_timeseries(data_dict, recipe, experiments_catalog, var_cfg, mask, out_path, start_date, period):
     fig, ax = plt.subplots(figsize=(10, 4), constrained_layout=True)
-    start_date = datetime(recipe.year, 1, 1)
     
     for exp_id in recipe.experiments:
         if exp_id not in data_dict or data_dict[exp_id] is None:
@@ -193,7 +194,7 @@ def make_timeseries(data_dict, recipe, experiments_catalog, var_cfg, mask, out_p
         
     unit_label = var_cfg.unit_label if var_cfg.unit_label else var_cfg.unit
     ax.set_ylabel(f"{var_cfg.long_name} ({unit_label})", fontsize=10)
-    ax.set_title(f"Domain-average {var_cfg.long_name.lower()} — {recipe.domain}, {recipe.year}", fontsize=12, fontweight='bold')
+    ax.set_title(f"Domain-average {var_cfg.long_name.lower()} — {recipe.domain}, {period}", fontsize=12, fontweight='bold')
     
     if var_cfg.y_min is not None and var_cfg.y_max is not None:
         ax.set_ylim(var_cfg.y_min, var_cfg.y_max)
@@ -214,8 +215,15 @@ def run_hydrology_diagnostics(recipe, experiments_catalog, global_cfg, variables
     
     target_vars = [v for v in recipe.variables if v not in ['obs_count', 'innovations', 'increments', 'spread', 'runoff_partitioning']]
     
-    start_date = datetime(recipe.year, 1, 1)
-    end_date = datetime(recipe.year, 12, 31)
+    year = getattr(recipe, 'year', 2016)
+    period = getattr(recipe, 'period', str(year))
+    if "-" in str(period):
+        start_year, end_year = str(period).split('-')
+        start_date = datetime(int(start_year), 1, 1)
+        end_date = datetime(int(end_year), 12, 31)
+    else:
+        start_date = datetime(int(period), 1, 1)
+        end_date = datetime(int(period), 12, 31)
     
     # Create mask based on the first experiment's LIS output
     mask = None
@@ -286,13 +294,13 @@ def run_hydrology_diagnostics(recipe, experiments_catalog, global_cfg, variables
         label_da1 = experiments_catalog.get(da_ids[0], {}).get('label', da_ids[0]) if len(da_ids) > 0 else ""
         label_da2 = experiments_catalog.get(da_ids[1], {}).get('label', da_ids[1]) if len(da_ids) > 1 else ""
 
-        map_png = os.path.join(out_dir, f"{var_id}_annual_mean_{recipe.year}.png")
+        map_png = os.path.join(out_dir, f"{var_id}_annual_mean_{period}.png")
         make_3panel_map(
             [mean_opl, mean_da1, mean_da2], 
             [label_baseline, label_da1, label_da2],
             map_png,
             var_cfg,
-            f"Annual mean {var_cfg.long_name.lower()} — {recipe.domain}, {recipe.year}",
+            f"Annual mean {var_cfg.long_name.lower()} — {recipe.domain}, {period}",
             mask=mask,
             diff=False
         )
@@ -305,7 +313,7 @@ def run_hydrology_diagnostics(recipe, experiments_catalog, global_cfg, variables
                 "variable": var_id,
                 "diagnostic_type": "annual_mean",
                 "filename": os.path.basename(map_png),
-                "title": f"Annual mean {var_cfg.long_name.lower()} — {recipe.domain}, {recipe.year}",
+                "title": f"Annual mean {var_cfg.long_name.lower()} — {recipe.domain}, {period}",
                 "caption": caption_mean
             }, f, indent=4)
         generated_files.extend([map_png, json_mean])
@@ -325,13 +333,13 @@ def run_hydrology_diagnostics(recipe, experiments_catalog, global_cfg, variables
             check_difference_magnitude(var_id, diff1, mean_opl)
             check_difference_magnitude(var_id, diff2, mean_opl)
             
-            diff_png = os.path.join(out_dir, f"{var_id}_differences_{recipe.year}.png")
+            diff_png = os.path.join(out_dir, f"{var_id}_differences_{period}.png")
             make_3panel_map(
                 [diff1, diff2, diff3], 
                 [f"{label_da1} − {label_baseline}", f"{label_da2} − {label_baseline}", f"{label_da2} − {label_da1}"],
                 diff_png,
                 var_cfg,
-                f"{var_cfg.long_name} response to assimilation — {recipe.year}",
+                f"{var_cfg.long_name} response to assimilation — {period}",
                 mask=mask,
                 diff=True
             )
@@ -343,15 +351,15 @@ def run_hydrology_diagnostics(recipe, experiments_catalog, global_cfg, variables
                     "variable": var_id,
                     "diagnostic_type": "difference",
                     "filename": os.path.basename(diff_png),
-                    "title": f"{var_cfg.long_name} response to assimilation — {recipe.year}",
+                    "title": f"{var_cfg.long_name} response to assimilation — {period}",
                     "caption": f"Impact of SMAP assimilation on {var_cfg.long_name.lower()}."
                 }, f, indent=4)
             generated_files.extend([diff_png, json_diff])
             logger.info(f"  -> Saved {diff_png}")
 
         # 3. Domain-Averaged Timeseries
-        ts_png = os.path.join(out_dir, f"{var_id}_domain_mean_timeseries_{recipe.year}.png")
-        make_timeseries(data_cache, recipe, experiments_catalog, var_cfg, mask, ts_png)
+        ts_png = os.path.join(out_dir, f"{var_id}_domain_mean_timeseries_{period}.png")
+        make_timeseries(data_cache, recipe, experiments_catalog, var_cfg, mask, ts_png, start_date, period)
         
         json_ts = ts_png.replace('.png', '.json')
         with open(json_ts, 'w') as f:
@@ -360,7 +368,7 @@ def run_hydrology_diagnostics(recipe, experiments_catalog, global_cfg, variables
                 "variable": var_id,
                 "diagnostic_type": "timeseries",
                 "filename": os.path.basename(ts_png),
-                "title": f"Domain-average {var_cfg.long_name.lower()} time series — {recipe.year}",
+                "title": f"Domain-average {var_cfg.long_name.lower()} time series — {period}",
                 "caption": f"Daily domain-averaged timeseries of {var_cfg.long_name.lower()}."
             }, f, indent=4)
         generated_files.extend([ts_png, json_ts])

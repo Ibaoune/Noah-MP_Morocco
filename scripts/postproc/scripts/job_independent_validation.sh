@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 #SBATCH --job-name=independent_validation
 #SBATCH --output=logs/validation_%j.out

@@ -1,8 +1,0 @@
-{
-  "experiment": "DA_smap_nocdf_noirr_2016",
-  "experiment_label": "DA-SMAP-noCDF",
-  "title": "Mean SMAP innovation, observation minus forecast \u2014 DA-SMAP-noCDF, NorthMor, 2016",
-  "caption": "Mean innovation computed as observation minus forecast. Positive values indicate that SMAP is wetter than the model forecast; negative values indicate that SMAP is drier.",
-  "filename": "DA_smap_nocdf_noirr_2016_innovation_map.png",
-  "diagnostic_type": "spread"
-}

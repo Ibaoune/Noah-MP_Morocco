@@ -1,0 +1,30 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+recipe_id: paper_core_diagnostics
+name_exp: "paper_core_diagnostics"
+description: "Generates all intermediate core diagnostic metrics for the manuscript"
+
+period: "2016-2020"
+
+experiments:
+  - OPL
+  - DA_NoCDF
+  - DA_CDF
+
+variables:
+  - surface_soil_moisture
+  - rootzone_soil_moisture
+  - evapotranspiration
+  - surface_runoff
+  - baseflow
+
+diagnostics:
+  assimilation:
+    enabled: true
+  hydrology:
+    enabled: true
+  independent_ob_validation:
+    enabled: true
+
+outputs:
+  metrics_dir: "{name_main_dir}/metrics/{name_exp}"

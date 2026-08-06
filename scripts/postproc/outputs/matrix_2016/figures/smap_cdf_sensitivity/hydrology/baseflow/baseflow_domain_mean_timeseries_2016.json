@@ -1,8 +1,0 @@
-{
-    "experiment": "OPL_noCDF_CDF",
-    "variable": "baseflow",
-    "diagnostic_type": "timeseries",
-    "filename": "baseflow_domain_mean_timeseries_2016.png",
-    "title": "Domain-average baseflow time series \u2014 2016",
-    "caption": "Daily domain-averaged timeseries of baseflow."
-}

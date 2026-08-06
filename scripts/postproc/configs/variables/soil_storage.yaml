@@ -1,0 +1,32 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+variable_id: soil_storage
+long_name: Soil Water Storage
+short_name: SWS
+unit: mm
+category: storage
+
+input:
+  source: LIS
+  lis_variable_names:
+    - SoilMoist_tavg
+  operation: soil_storage
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "YlGnBu"
+  difference_cmap: "RdBu"
+  colorbar_label: "Soil Water Storage (mm)"
+  difference_label: "Δ SWS (mm)"
+  unit_label: "mm"
+  tick_format: "%.1f"
+  auto_limits: true
+  center_difference_on_zero: true

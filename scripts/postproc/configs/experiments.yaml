@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ============================================================
 # CATALOGUE DES EXPÉRIENCES — Framework LIS/Noah-MP
 # ============================================================
@@ -13,45 +15,44 @@
 
 experiments:
 
-  OPL_noirr_2016:
+  OPL:
     label: OPL
     type: open_loop
-    year: 2016
+    period: "2016-2020"
     assimilation: none
     cdf_matching: false
     irrigation: false
     domain: NorthMor
-    matrix: matrix_2016
-    # Ajout de /output car les scripts utils/io_lis.py attendent le sous-dossier output
-    path: experiments/NorthMor/matrix_2016/OPL_noirr_2016/output
+    matrix: matrix_2016_2020
+    path: experiments/NorthMor/matrix_2016_2020/OPL_noirr_2016_2020/output
     color: "#2166AC"
     linestyle: "-"
     marker: "o"
 
-  DA_smap_nocdf_noirr_2016:
-    label: DA-SMAP-noCDF
+  DA_NoCDF:
+    label: DA-NoCDF
     type: data_assimilation
-    year: 2016
+    period: "2016-2020"
     assimilation: SMAP
     cdf_matching: false
     irrigation: false
     domain: NorthMor
-    matrix: matrix_2016
-    path: experiments/NorthMor/matrix_2016/DA_nocdf_noirr_2016/output
+    matrix: matrix_2016_2020
+    path: experiments/NorthMor/matrix_2016_2020/DA_nocdf_noirr_2016_2020/output
     color: "#D6604D"
     linestyle: "--"
     marker: "s"
 
-  DA_smap_cdf_noirr_2016:
-    label: DA-SMAP-CDF
+  DA_CDF:
+    label: DA-CDF
     type: data_assimilation
-    year: 2016
+    period: "2016-2020"
     assimilation: SMAP
     cdf_matching: true
     irrigation: false
     domain: NorthMor
-    matrix: matrix_2016
-    path: experiments/NorthMor/matrix_2016/DA_cdf_noirr_2016/output
+    matrix: matrix_2016_2020
+    path: experiments/NorthMor/matrix_2016_2020/DA_cdf_noirr_2016_2020/output
     color: "#B2182B"
     linestyle: "-."
     marker: "^"

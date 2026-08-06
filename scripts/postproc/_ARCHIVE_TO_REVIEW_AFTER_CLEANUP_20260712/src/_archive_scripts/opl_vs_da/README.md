@@ -1,4 +1,5 @@
 # OPL vs DA Modular Plotting Framework
+**Author:** M. EL Aabaribaoune (@um6p)
 
 **Author:** M. El Aabaribaoune (@um6p)
 

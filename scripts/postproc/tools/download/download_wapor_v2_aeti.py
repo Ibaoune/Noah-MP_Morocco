@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 import os
 import sys
 import yaml
@@ -86,12 +88,12 @@ def main():
         
         if out_file.exists():
             if not args.dry_run:
-                logger.info(f"  ✓ Already exists: {out_file.name}")
+                logger.info(f"   Already exists: {out_file.name}")
             downloaded_files.append({"filename": out_file.name, "path": str(out_file), "status": "EXISTING"})
             continue
             
         if args.verify_only:
-            logger.error(f"  ✗ Missing file: {out_file.name}")
+            logger.error(f"   Missing file: {out_file.name}")
             downloaded_files.append({"filename": out_file.name, "path": str(out_file), "status": "MISSING"})
             continue
             
@@ -110,13 +112,13 @@ def main():
             )
             if out_file.exists() and out_file.stat().st_size > 100:
                 downloaded_files.append({"filename": out_file.name, "path": str(out_file), "status": "DOWNLOADED"})
-                logger.info(f"  ✓ Downloaded {img_id}.tif")
+                logger.info(f"   Downloaded {img_id}.tif")
             else:
                 if out_file.exists():
                     out_file.unlink()
                 raise Exception("File empty or not created due to GEE limits")
         except Exception as e:
-            logger.error(f"  ✗ Failed to download {img_id}: {e}")
+            logger.error(f"   Failed to download {img_id}: {e}")
             downloaded_files.append({"filename": out_file.name, "path": str(out_file), "status": "FAILED"})
 
     if args.dry_run:

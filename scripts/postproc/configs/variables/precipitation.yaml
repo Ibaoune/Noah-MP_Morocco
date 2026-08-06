@@ -1,0 +1,33 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+variable_id: precipitation
+long_name: Precipitation
+short_name: P
+unit: mm/day
+category: forcing
+
+input:
+  source: LIS
+  lis_variable_names:
+    - TotalPrecip_tavg
+  operation: identity
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+    - cumulative
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "Blues"
+  difference_cmap: "RdBu"
+  colorbar_label: "Precipitation (mm day⁻¹)"
+  difference_label: "Δ Precipitation (mm day⁻¹)"
+  unit_label: "mm day⁻¹"
+  tick_format: "%.1f"
+  auto_limits: true
+  center_difference_on_zero: true

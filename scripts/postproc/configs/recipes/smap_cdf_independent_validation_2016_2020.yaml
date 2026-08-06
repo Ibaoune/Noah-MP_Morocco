@@ -1,0 +1,34 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+recipe_id: smap_cdf_independent_validation_2016_2020
+name_exp: "smap_cdf_sensitivity_2016_2020"
+description: "Independent observation validation for 2016-2020"
+
+year: 2016
+period: "2016-2020"
+
+experiments:
+  - OPL
+  - DA_NoCDF
+  - DA_CDF
+
+variables: []
+
+diagnostics:
+  independent_ob_validation:
+    enabled: true
+    soil_moisture:
+      enabled: true
+    evapotranspiration:
+      enabled: true
+    vegetation:
+      enabled: true
+    water_storage:
+      enabled: true
+    model_benchmark:
+      enabled: false
+
+outputs:
+  figure_dir: "{name_main_dir}/figures/{name_exp}"
+  metrics_dir: "{name_main_dir}/metrics/{name_exp}"
+  table_dir: "{name_main_dir}/tables/{name_exp}"

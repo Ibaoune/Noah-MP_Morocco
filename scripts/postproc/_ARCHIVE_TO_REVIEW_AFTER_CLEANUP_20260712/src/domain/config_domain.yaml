@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Configuration for Domain module
 module_name: "domain"
 active_plots:

@@ -1,4 +1,5 @@
 # Multi-experiment Hydrological Diagnostics — `opl_multiple_da`
+**Author:** M. EL Aabaribaoune (@um6p)
 
 This directory contains the full set of publication-ready diagnostic figures produced for the comparative analysis of multiple SMAP data assimilation configurations against the open-loop (OPL) baseline for the year **2016**.
 

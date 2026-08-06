@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 dataset_id: copernicus_lai
 display_name: Copernicus LAI
 version: unknown
@@ -5,10 +7,10 @@ validation_category: vegetation
 validation_role: INDEPENDENT_REMOTE_SENSING
 independence_level: STRICT
 paths:
-  raw: data/validation/vegetation/Copernicus/raw
-  processed: data/validation/vegetation/COPERNICUS_LAI/processed
+  raw: data/validation/vegetation/Copernicus_LAI/raw
+  processed: data/validation/vegetation/Copernicus_LAI/processed
 files:
-  pattern: '*.nc'
+  pattern: '*_nc'
 variables:
   observation: LAI
   lis: LAI_tavg

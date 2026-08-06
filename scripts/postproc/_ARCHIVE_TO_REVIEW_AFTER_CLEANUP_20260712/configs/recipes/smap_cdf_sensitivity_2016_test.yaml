@@ -1,0 +1,71 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+name_main_dir: "matrix_2016"
+recipe_id: smap_cdf_sensitivity_2016
+name_exp: "smap_cdf_sensitivity/results_after_organisation"
+title: SMAP CDF-matching sensitivity experiment over North Morocco
+domain: NorthMor
+year: 2016
+comparison_mode: baseline_vs_multiple
+baseline: OPL_noirr_2016
+experiments:
+- OPL_noirr_2016
+- DA_smap_nocdf_noirr_2016
+- DA_smap_cdf_noirr_2016
+variables:
+- obs_count
+- innovations
+- increments
+- spread
+- surface_soil_moisture
+- rootzone_soil_moisture
+- evapotranspiration
+- groundwater_storage
+- total_runoff
+- surface_runoff
+- baseflow
+- runoff_partitioning
+- water_table_depth
+diagnostics:
+  assimilation:
+    enabled: true
+  domain:
+    enabled: true
+  hydrology:
+    enabled: true
+  independent_ob_validation:
+    enabled: true
+    soil_moisture:
+      enabled: true
+      products:
+      - esa_cci_soil_moisture
+    evapotranspiration:
+      enabled: true
+      products:
+      - gleam_evapotranspiration
+    streamflow_and_runoff:
+      enabled: true
+      products:
+      - in_situ_streamflow
+    vegetation:
+      enabled: true
+      products:
+      - fluxsat_gpp
+    water_storage:
+      enabled: true
+      products:
+      - grace_twsa
+    lsm_benchmark:
+      enabled: true
+      products:
+      - gldas_benchmark
+    validation_synthesis:
+      enabled: true
+  runoff_partitioning:
+    enabled: true
+
+outputs:
+  figure_dir: "outputs/{name_main_dir}/figures/{name_exp}/"
+  metrics_dir: ".tmp/metrics/{name_exp}/"
+  table_dir: ".tmp/tables/{name_exp}/"
+  pdf_report: ".tmp/pdf/{name_exp}_2016_diagnostic_report_v4.pdf"

@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Configuration for Runoff Partitioning
 module_name: "runoff_partitioning"
 active_plots:

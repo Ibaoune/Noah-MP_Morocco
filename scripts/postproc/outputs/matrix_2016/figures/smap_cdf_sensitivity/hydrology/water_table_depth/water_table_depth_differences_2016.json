@@ -1,8 +1,0 @@
-{
-    "experiment": "DA_Differences",
-    "variable": "water_table_depth",
-    "diagnostic_type": "difference",
-    "filename": "water_table_depth_differences_2016.png",
-    "title": "Water table depth response to assimilation \u2014 2016",
-    "caption": "Impact of SMAP assimilation on water table depth."
-}

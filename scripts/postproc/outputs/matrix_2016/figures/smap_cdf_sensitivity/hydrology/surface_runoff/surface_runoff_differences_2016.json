@@ -1,8 +1,0 @@
-{
-    "experiment": "DA_Differences",
-    "variable": "surface_runoff",
-    "diagnostic_type": "difference",
-    "filename": "surface_runoff_differences_2016.png",
-    "title": "Surface runoff response to assimilation \u2014 2016",
-    "caption": "Impact of SMAP assimilation on surface runoff."
-}

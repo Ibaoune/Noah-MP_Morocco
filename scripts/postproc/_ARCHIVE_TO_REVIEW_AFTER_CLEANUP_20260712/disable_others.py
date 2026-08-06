@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import yaml
 
 with open('configs/recipes/smap_cdf_sensitivity_2016.yaml', 'r') as f:

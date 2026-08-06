@@ -1,4 +1,5 @@
 # Assimilation Diagnostics Post-Processing
+**Author:** M. EL Aabaribaoune (@um6p)
 
 This module generates publication-ready diagnostic figures for the 2016 SMAP assimilation experiment. It systematically extracts, computes, and plots several metrics to evaluate the performance and physical impact of the Data Assimilation (DA) system.
 

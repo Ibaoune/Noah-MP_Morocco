@@ -1,0 +1,35 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+variable_id: baseflow_fraction
+long_name: Baseflow Fraction
+short_name: BF_frac
+unit: "-"
+category: runoff
+
+input:
+  source: LIS
+  lis_variable_names:
+    - Qsb_tavg
+    - Qs_tavg
+  operation: baseflow_fraction
+
+aggregation:
+  temporal:
+    - daily
+    - monthly
+    - annual_mean
+  spatial:
+    - map
+    - domain_mean
+
+plotting:
+  cmap: "YlGnBu"
+  difference_cmap: "RdBu"
+  colorbar_label: "Baseflow Fraction (-)"
+  difference_label: "Δ Baseflow Fraction (-)"
+  unit_label: "-"
+  tick_format: "%.2f"
+  vmin: 0.0
+  vmax: 1.0
+  auto_limits: false
+  center_difference_on_zero: true

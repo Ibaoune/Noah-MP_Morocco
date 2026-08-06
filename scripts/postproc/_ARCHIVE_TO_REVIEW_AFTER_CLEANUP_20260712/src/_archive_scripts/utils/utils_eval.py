@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ==============================================================================
 # Author : M. EL AAbaribaoune
 # Purpose: Shared utility functions for the LIS/Noah-MP post-processing framework.

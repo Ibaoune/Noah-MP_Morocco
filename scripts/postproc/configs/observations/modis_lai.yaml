@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 dataset_id: modis_lai
 display_name: MODIS LAI
 version: unknown
@@ -39,4 +41,4 @@ period:
 quality_control:
   minimum_valid_pairs: 30
   minimum_valid_fraction: 0.5
-enabled: false
+enabled: true

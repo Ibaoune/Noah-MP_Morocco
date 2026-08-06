@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 #SBATCH --job-name=postproc_matrix2016
 #SBATCH --output=scripts/postproc/logs/postproc_matrix2016_%j.out
 #SBATCH --error=scripts/postproc/logs/postproc_matrix2016_%j.err

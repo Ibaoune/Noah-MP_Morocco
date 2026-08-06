@@ -1,8 +1,0 @@
-{
-    "experiment": "OPL_noCDF_CDF",
-    "variable": "surface_soil_moisture",
-    "diagnostic_type": "timeseries",
-    "filename": "surface_soil_moisture_domain_mean_timeseries_2016.png",
-    "title": "Domain-average surface soil moisture time series \u2014 2016",
-    "caption": "Daily domain-averaged timeseries of surface soil moisture."
-}

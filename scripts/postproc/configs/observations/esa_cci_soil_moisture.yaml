@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 observation_id: esa_cci_soil_moisture
 long_name: "ESA CCI Soil Moisture (COMBINED)"
 category: soil_moisture

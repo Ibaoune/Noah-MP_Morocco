@@ -1,108 +1,101 @@
 # Framework de Post-Processing LIS/Noah-MP/HyMAP
 
-Framework unifié et modulaire pour le post-traitement des expériences d'assimilation de données LIS/Noah-MP. 
-Cette architecture a été consolidée pour se concentrer sur l'essentiel : une arborescence propre, reproductible et pilotée par des configurations YAML.
+**Author:** M. EL Aabaribaoune (@um6p)
 
----
+## 1. Objectif du Projet
+Ce projet est un framework générique et modulaire conçu pour le post-traitement, l'analyse et la visualisation des résultats de modélisation hydrologique et d'assimilation de données (LIS/Noah-MP). 
 
-## Architecture Générale
+Il a été pensé pour ne pas être spécifique à une expérience donnée (comme `matrix_2016_2020`). Il s'appuie intégralement sur des fichiers de configuration YAML afin d'être **réutilisable** pour toute future expérience de modélisation sans aucune modification du code source.
+
+## 2. Architecture des Dossiers
+
+L'arborescence du framework sépare strictement le code métier (sources), la configuration et les résultats (outputs).
 
 ```text
 scripts/postproc/
-├── _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/ # Anciennes architectures et historiques préservés
 ├── configs/                        # ← Fichiers YAML de configuration
-│   ├── global.yaml                 # Chemins globaux et nom de répertoire de base
-│   ├── experiments.yaml            # Catalogue de toutes les expériences
-│   ├── observations/               # Configurations des jeux d'observations
-│   ├── domains/                    # Configurations spatiales
-│   ├── variables/                  # Une variable = un YAML
-│   └── recipes/                    # Recettes d'exécution
-│       └── smap_cdf_sensitivity_2016.yaml  # ← RECETTE PRINCIPALE
+│   ├── global.yaml                 # Configuration globale (noms de dossiers, paramètres par défaut)
+│   ├── experiments.yaml            # Catalogue définissant les chemins des expériences (OL, DA)
+│   ├── observations/               # Configurations des jeux de données d'observations
+│   ├── variables/                  # Métadonnées des variables NetCDF (unités, limites)
+│   └── recipes/                    # "Recettes" d'exécution des diagnostics
 │
-├── scripts/                        # Scripts d'exécution et outils
-│   ├── run_postproc.py             # ← SCRIPT D'EXÉCUTION UNIQUE
-│   ├── job_independent_validation.sh # Modèle de job Slurm
-│   └── collect_review.sh           # Outil de collecte des validations
-│
-├── src/                            # Code Python actif
-│   ├── core/                       # Chargement YAML et configuration
-│   ├── io/                         # Lecture LIS/HyMAP NetCDF
+├── src/                            # ← Code métier (Python)
+│   ├── core/                       # Chargement et validation des YAML
+│   ├── io/                         # Outils de lecture NetCDF (LIS, HyMAP)
 │   ├── diagnostics/                # Modules d'analyse
-│   │   ├── assimilation/           # Diagnostics d'assimilation (intégré)
-│   │   ├── domain/                 # Génération de cartes de domaine (intégré)
-│   │   ├── hydrology/              # Validation hydrologique
-│   │   ├── runoff_partitioning/    # Partitionnement du ruissellement
-│   │   └── independent_ob_validation/ # Validation multi-sources
-│   ├── plotting/                   # Outils graphiques
-│   ├── utils/                      # Fonctions utilitaires
-│   ├── cli.py                      # Définition des commandes
-│   └── runner.py                   # Orchestrateur de recettes
+│   │   ├── assimilation/           # Diagnostics d'assimilation (innovations, spread)
+│   │   ├── domain/                 # Cartographie du domaine d'étude
+│   │   ├── hydrology/              # Cartes d'impacts hydrologiques
+│   │   ├── independent_ob_validation/ # Validation contre observations satellitaires
+│   │   └── runoff_partitioning/    # Séparation Ruissellement de surface / Baseflow
+│   ├── plotting/                   # Utilitaires de tracé et de style (matplotlib/cartopy)
+│   └── runner.py                   # Orchestrateur qui exécute les recettes
 │
-├── tests/                          # Tests unitaires du framework
-├── tools/                          # Outils autonomes
+├── docs/                           # ← Documentation détaillée
+│   └── figures/                    # Documentation décrivant la génération de CHAQUE figure
 │
-└── outputs/
-    └── <name_main_dir>/
-        └── figures/
-            └── <name_exp>/
-                ├── assimilation/
-                ├── domain/
-                ├── hydrology/
-                ├── independent_obs_validation/
-                └── runoff_partitioning/
+├── <nom_exp_principale>/           # ← DOSSIER DE RÉSULTATS (ex: matrix_2016_2020)
+│   ├── figures/                    # Toutes les figures générées
+│   ├── tables/                     # Fichiers textes/CSV statistiques
+│   ├── metrics/                    # Données intermédiaires et NetCDF calculés
+│   └── climatology_nc/             # Fichiers de climatologies moyennes
+│
+└── _ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/ # Anciens codes archivés
 ```
 
----
+## 3. Fonctionnement Général
 
-## Utilisation de la Pipeline
+Le framework fonctionne via un système de **"Recettes"** (recipes). 
+Une recette (un fichier YAML dans `configs/recipes/`) définit :
+- Les expériences à comparer (ex: `OPL`, `DA_NoCDF`).
+- La période d'analyse.
+- Les variables à traiter.
+- Les modules de diagnostic à activer (hydrologie, assimilation, etc.).
 
-Le point d'entrée unique est `scripts/run_postproc.py`.
+Lors de l'exécution, l'orchestrateur `runner.py` :
+1. Lit le `global.yaml` et la recette.
+2. Résout les chemins des expériences via `experiments.yaml`.
+3. Lance séquentiellement les modules de diagnostics demandés.
+4. Écrit les résultats dynamiquement dans le dossier de l'expérience (`<nom_exp_principale>/figures/`).
 
-### Commandes de base
+## 4. Prérequis et Installation
+
+### Environnement Python
+Le projet nécessite Python 3.8+ et les librairies d'analyse géospatiale standards (`xarray`, `netCDF4`, `cartopy`, `matplotlib`, `numpy`, `pandas`).
+
+L'environnement virtuel (situé typiquement dans `scripts/venv/`) doit être activé avant toute exécution :
+```bash
+source ../venv/bin/activate
+```
+
+## 5. Comment exécuter le pipeline
+
+Le point d'entrée principal est le script d'enrobage :
 
 ```bash
-# Depuis le dossier scripts/postproc/
+# Vérifier la configuration des recettes
+python src/cli.py --list-recipes
 
-# Lister les expériences configurées
-python scripts/run_postproc.py --list-experiments
-
-# Lister les recettes disponibles
-python scripts/run_postproc.py --list-recipes
-
-# Vérifier la validité des configurations sans exécuter
-python scripts/run_postproc.py --check-configs
-
-# Simuler l'exécution de la recette principale (Dry-Run)
-python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_2016.yaml --dry-run
+# Exécuter une recette spécifique
+python src/cli.py --recipe configs/recipes/smap_cdf_sensitivity_2016_2020.yaml --make-figures
 ```
 
-### Génération des figures
-
+Pour les figures de publication (manuscrit), un script dédié permet de soumettre le calcul via SLURM sur le HPC :
 ```bash
-# Exécuter l'analyse et générer les figures
-python scripts/run_postproc.py --recipe configs/recipes/smap_cdf_sensitivity_2016.yaml --make-figures
+bash submit_manuscript_plots.sh
 ```
 
-> **Note :** Les dossiers temporaires pour les métriques, PDFs et tables (`.tmp/`) sont utilisés pendant l'exécution pour ne pas polluer l'arborescence permanente de `outputs/`.
+## 6. Ajouter une nouvelle expérience
 
----
+Pour traiter une nouvelle simulation LIS, il n'est **jamais** nécessaire de modifier le code Python :
 
-## Les 5 Diagnostics Actifs
+1. Ouvrez `configs/global.yaml` et changez `name_main_dir` par le nom de votre nouveau dossier d'analyse (ex: `my_new_experiment`).
+2. Ouvrez `configs/experiments.yaml` et ajoutez un bloc pointant vers le dossier contenant vos sorties NetCDF LIS.
+3. Copiez une recette dans `configs/recipes/`, changez son nom et lancez-la !
 
-La recette principale (`smap_cdf_sensitivity_2016.yaml`) orchestre la génération de 5 dossiers de sortie distincts :
+## 7. Bonnes pratiques de maintenance
 
-1. **`assimilation/`** : Diagnostics internes du filtre (innovations, incréments, spread). Code historique entièrement intégré.
-2. **`domain/`** : Cartographie géospatiale du domaine d'étude (topographie, sols, bassins).
-3. **`hydrology/`** : Séries temporelles et cartes de différences pour les variables hydrologiques (humidité du sol, ET, ruissellement).
-4. **`runoff_partitioning/`** : Sous-diagnostic généré par l'hydrologie analysant le ratio ruissellement de surface / débit de base.
-5. **`independent_ob_validation/`** : Comparaison avec des jeux de données d'observation indépendants (ESA CCI, GRACE, GLEAM, etc.).
-   - Géré dynamiquement via un registre de données (`dataset_registry.py`) sourçant les `configs/observations/`.
-   - Utilise une classe centralisée de visualisation (`plotting.py`) pour garantir un rendu de qualité publication.
-
----
-
-## Principes d'Extension
-
-- **Aucun nom de variable ou d'expérience n'est codé en dur** dans les scripts Python. Tout se paramètre dans les `configs/`.
-- **Validation d'Observations** : Pour ajouter une observation indépendante, déclarez-la dans `configs/observations/`. Le pipeline la liera automatiquement via le registre de données. Toute nouvelle logique de graphique doit impérativement être ajoutée à la classe statique `Plotting` (`src/diagnostics/independent_ob_validation/plotting.py`) pour maintenir l'esthétique et la cohérence des publications.
-- Les anciens codes, CLI parallèles et scripts redondants ont été isolés dans `_ARCHIVE_TO_REVIEW_AFTER_CLEANUP_20260712/` pour garantir une architecture saine. En cas de besoin de code ancien, veuillez consulter cette archive.
+1. **Aucun chemin en dur :** Tous les chemins doivent être construits dynamiquement via `global_cfg.get('_project_root')` ou lus depuis un fichier YAML.
+2. **Modularité :** Toute nouvelle fonction de tracé doit être ajoutée dans `src/plotting/` et être appelée par un diagnostic dans `src/diagnostics/`.
+3. **Documentation :** Chaque fonction doit avoir une docstring. Chaque nouveau diagnostic doit posséder un fichier markdown explicatif dans `docs/figures/`.

@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 import os
 import sys
@@ -26,7 +28,7 @@ def run_validation(config, experiments, base_out_dir):
     out_dir = os.path.join(base_out_dir, "vegetation")
     os.makedirs(out_dir, exist_ok=True)
     
-    project_root = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
+    project_root = global_cfg.get("_project_root", "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco") if "global_cfg" in locals() else "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
     registry = DatasetRegistry(os.path.join(project_root, "scripts/postproc/configs/observations"))
     
     for name, cfg in registry.get_ready_datasets().items():
@@ -45,14 +47,19 @@ def _run_single_validation(cfg, experiments, out_dir):
     obs_ds = ObservationLoader.load_dataset(cfg)
     obs_var = cfg["variables"]["lis"]
     
-    project_root = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
-    base_matrix_dir = os.path.join(project_root, "experiments/NorthMor/matrix_2016")
+    from src.core.config import get_experiments_catalog
+    catalog = get_experiments_catalog()
     
     lis_datasets = {}
     for exp_path in experiments:
         exp_name = os.path.basename(exp_path)
+        exp_info = catalog.get(exp_name, {})
+        full_exp_path = exp_info.get("path_abs")
+        if not full_exp_path:
+            logger.error(f"Path for experiment {exp_name} not found in catalog.")
+            continue
         try:
-            ds = LISLoader.load_variable(os.path.join(base_matrix_dir, exp_path), "GPP_tavg")
+            ds = LISLoader.load_variable(full_exp_path, "GPP_tavg")
             lis_datasets[exp_name] = ds
         except Exception as e:
             logger.error(f"Could not load LIS Veg for {exp_name}: {e}")

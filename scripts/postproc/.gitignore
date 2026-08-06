@@ -1,0 +1,13 @@
+# Fichiers de résultats (outputs d'expériences)
+matrix_2016_2020/
+matrix_*/
+outputs/
+
+# Dossiers temporaires et logs
+.tmp/
+logs/
+*.log
+
+# Caches Python
+__pycache__/
+*.pyc

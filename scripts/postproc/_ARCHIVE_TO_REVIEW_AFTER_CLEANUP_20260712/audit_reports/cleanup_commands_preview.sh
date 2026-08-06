@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Phase B1 : Aperçu corrigé du nettoyage (Ne rien exécuter sans validation)
 # =========================================================================
 

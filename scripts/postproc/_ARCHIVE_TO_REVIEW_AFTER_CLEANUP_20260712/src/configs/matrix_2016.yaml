@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 matrix_name: "matrix_2016"
 experiments:
   OPL_noirr_2016: "experiments/NorthMor/matrix_2016/OPL_noirr_2016/output"

@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 #SBATCH --job-name=test_organisation
 #SBATCH --output=logs/test_org_%j.out

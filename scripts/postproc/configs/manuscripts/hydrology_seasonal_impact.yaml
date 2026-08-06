@@ -1,0 +1,45 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
+# configs/manuscripts/hydrology_seasonal_impact.yaml
+manuscript_id: hydrology_seasonal_impact
+title: "Seasonal Hydrological Impacts of SMAP Assimilation"
+description: "Generates seasonal climatology figures for Soil Moisture, Runoff, and Precipitation components."
+
+style:
+  dpi: 300
+  format: "png"
+  bbox_inches: "tight"
+  cmap_soil_moisture: "YlGnBu"
+  cmap_runoff: "Blues"
+  cmap_precip: "Blues"
+  cmap_diff: "RdBu_r"
+
+period:
+  start_year: 2016
+  end_year: 2020
+
+seasons:
+  DJF: [12, 1, 2]
+  JJA: [6, 7, 8]
+
+experiments:
+  reference: "OPL"
+  assimilation: "DA_NoCDF"
+  assimilation_secondary: "DA_CDF"
+
+paths:
+  lis_output_base: "outputs/LIS"
+  gmia_mask: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/data/land_params/GMIA/gmia_v5_aei_pct.asc"
+  output_dir: "matrix_2016_2020"
+
+parameters:
+  highly_irrigated_threshold_pct: 30.0
+  precipitation_source: "MERRA-2"
+
+variables_required:
+  - surface_soil_moisture
+  - total_runoff
+  - surface_runoff
+  - baseflow
+  - precipitation
+

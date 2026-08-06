@@ -1,8 +1,0 @@
-{
-    "experiment": "OPL_noCDF_CDF",
-    "variable": "baseflow",
-    "diagnostic_type": "annual_mean",
-    "filename": "baseflow_annual_mean_2016.png",
-    "title": "Annual mean baseflow \u2014 NorthMor, 2016",
-    "caption": "Annual mean spatial distribution of baseflow."
-}

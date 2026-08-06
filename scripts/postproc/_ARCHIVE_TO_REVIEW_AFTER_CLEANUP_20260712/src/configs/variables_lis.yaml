@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 variables:
   surface_sm:
     name: "SoilMoist_tavg"

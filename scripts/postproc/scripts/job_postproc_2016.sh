@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 #SBATCH --job-name=postproc_2016
 #SBATCH --output=logs/postproc_%j.out

@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ==============================================================================
 # Author : M. EL AAbaribaoune
 # Purpose: Direct comparative diagnostics between Open Loop (OPL) and 
