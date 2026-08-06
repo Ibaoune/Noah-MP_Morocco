@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ==============================================================================
 # Script Name   : job_check_single_year.sh
 # Author        : M. El Aabaribaoune (@um6p)

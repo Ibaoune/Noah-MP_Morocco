@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 ===============================================================================
 Script Name   : download_merra2_const.py

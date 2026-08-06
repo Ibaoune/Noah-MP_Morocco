@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ==============================================================================
 # Script: download_ascat.py
 # Description: Download script for validation data.

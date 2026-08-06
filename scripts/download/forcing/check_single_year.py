@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 """
 ===============================================================================
 Script Name   : check_single_year.py

@@ -1,3 +1,5 @@
+# Author: M. EL Aabaribaoune (@um6p)
+
 import os
 import glob
 import h5py
@@ -30,8 +32,8 @@ if __name__ == '__main__':
             
     print("-" * 50)
     if len(corrupted) == 0:
-        print("✅ SUCCESS: All files are perfectly valid and NOT corrupted!")
+        print(" SUCCESS: All files are perfectly valid and NOT corrupted!")
     else:
-        print(f"❌ WARNING: Found {len(corrupted)} corrupted files:")
+        print(f" WARNING: Found {len(corrupted)} corrupted files:")
         for c in corrupted:
             print(c)

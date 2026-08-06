@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ==============================================================================
 # Script: download_fluxsat_gpp.py
 # Description: Download script for validation data.
@@ -179,7 +181,7 @@ def main():
         local  = os.path.join(DIR_FLUXSAT, fname)
 
         if os.path.exists(local) and os.path.getsize(local) == fsize:
-            logger.info(f"  ✓ Already complete: {fname}")
+            logger.info(f"   Already complete: {fname}")
             status = "Already_Downloaded"
         else:
             logger.info(f"  ↓ Downloading: {fname}  ({fsize/1048576:.1f} MB)")

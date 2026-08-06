@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ===============================================================================
 # Script Name   : download_gdas_orography.sh
 # Description   : Downloads the static GDAS global orography file, which is 

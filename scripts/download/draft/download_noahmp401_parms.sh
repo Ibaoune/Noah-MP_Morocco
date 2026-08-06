@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 # Author: M. El Aabaribaoune (@um6p)
 mkdir -p data/land_params/noahmp401_parms
 cd data/land_params/noahmp401_parms

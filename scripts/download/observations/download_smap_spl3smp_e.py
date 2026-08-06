@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
 
 # =============================================================================
 # Noah-MP Observation Data Downloader: SMAP SPL3SMP_E

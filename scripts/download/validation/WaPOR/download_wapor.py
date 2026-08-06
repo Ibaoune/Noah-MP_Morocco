@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ==============================================================================
 # Script: download_wapor.py
 # Description: Download script for validation data.
@@ -67,7 +69,7 @@ def main():
         for year in range(start_year, end_year + 1):
             out_file = os.path.join(out_dir, f"WaPOR_v3_{comp}_{year}.tif")
             if os.path.exists(out_file):
-                logger.info(f"  ✓ Already exists: {out_file}")
+                logger.info(f"   Already exists: {out_file}")
                 continue
                 
             logger.info(f"  ↓ Downloading {comp} for {year} ...")
@@ -78,7 +80,7 @@ def main():
                 # Check if collection is empty for this year
                 num_images = yearly_col.size().getInfo()
                 if num_images == 0:
-                    logger.warning(f"  ⚠ No data found for {comp} in {year}. Skipping.")
+                    logger.warning(f"   No data found for {comp} in {year}. Skipping.")
                     continue
                 logger.info(f"      Aggregating {num_images} images into annual sum composite...")
                 
@@ -94,9 +96,9 @@ def main():
                     region=roi, 
                     file_per_band=False
                 )
-                logger.info(f"  ✓ Saved to {out_file}")
+                logger.info(f"   Saved to {out_file}")
             except Exception as e:
-                logger.error(f"  ✗ Failed to download {comp} for {year}: {e}")
+                logger.error(f"   Failed to download {comp} for {year}: {e}")
 
 if __name__ == "__main__":
     main()

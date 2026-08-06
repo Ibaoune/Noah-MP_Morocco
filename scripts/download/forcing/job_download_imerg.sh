@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 #SBATCH --job-name=dl_imerg
 #SBATCH --output=logs/dl_imerg_%A_%a.out
 #SBATCH --error=logs/dl_imerg_%A_%a.err

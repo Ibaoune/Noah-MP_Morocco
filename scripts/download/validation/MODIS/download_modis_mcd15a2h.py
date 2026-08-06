@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ==============================================================================
 # Script: download_modis_mcd15a2h.py
 # Description: Download script for validation data.

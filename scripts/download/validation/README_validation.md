@@ -1,4 +1,5 @@
 # README — Validation Datasets for Noah-MP SMAP DA Experiments
+**Author:** M. EL Aabaribaoune (@um6p)
 
 **Project**: Noah-MP SMAP Data Assimilation — Sebou-Saïss Basin, Morocco  
 **Contact**: M. El Aabaribaoune, UM6P  

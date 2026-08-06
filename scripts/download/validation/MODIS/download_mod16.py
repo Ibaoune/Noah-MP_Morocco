@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 # ==============================================================================
 # Script: download_mod16.py
 # Description: Download script for validation data.

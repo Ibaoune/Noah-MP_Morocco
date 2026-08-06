@@ -1,4 +1,6 @@
 # Noah-MP Forcing Data Infrastructure
+**Author:** M. EL Aabaribaoune (@um6p)
+
 **Author:** M. El Aabaribaoune (@um6p)  
 **Last Updated:** 2026-06-18
 

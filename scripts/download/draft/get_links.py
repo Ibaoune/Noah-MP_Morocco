@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: M. EL Aabaribaoune (@um6p)
+
 # =============================================================================
 # Author: M. El Aabaribaoune (@UM6P)
 # Date:   2026-06-07

@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: M. EL Aabaribaoune (@um6p)
+
 #SBATCH --job-name=cop_lai
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
