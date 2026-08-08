@@ -26,3 +26,14 @@
   - *Justification*: RZSM integrates the assimilation updates vertically and drives ET and vegetation stress, making it the most robust indicator for drought monitoring compared to the highly variable surface layer.
 - **Supplementary candidates**: `manuscript_drought_area_timeseries_SSM`, `manuscript_drought_transition_RZSM`, and `manuscript_drought_by_landcover_RZSM`.
   - *Justification*: SSM provides a useful comparison but is less hydrologically representative of true agricultural drought. Transition maps provide deep methodological insight without cluttering the main text.
+
+## F. Threshold robustness
+With 60 values per pixel in the `pooled_2016_2020` mode:
+- D1 (<=20%) corresponds to approximately the 12 lowest values.
+- D2 (<=10%) corresponds to approximately the 6 lowest values.
+- D3 (<=5%) corresponds to approximately the 3 lowest values.
+- D4 (<=2%) corresponds to approximately 1 value or less.
+
+**Recommendation:**
+- D1 and D2 can be used in the main text as they are based on a statistically viable number of samples (6-12) to detect DA-induced shifts.
+- D3 and D4 should be supplementary or not emphasized. Avoid over-interpreting D4 with a 5-year reference, as it represents single-event noise rather than a stable diagnostic threshold.

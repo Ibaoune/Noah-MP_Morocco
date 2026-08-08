@@ -12,8 +12,26 @@ Nie et al. (2022) established a drought monitoring framework for the MENA region
 - Experiments: OPL, DA-NoCDF, DA-CDF.
 - Ancillary data: Static land cover.
 
-## D. Reference distribution
-For this V0 diagnostic, the percentiles are computed by evaluating all experiments against a common reference: the **OPL-based pooled 2016–2020 reference distribution** by pixel (`opl_pooled_2016_2020` mode). Because a 5-year period is relatively short to define a robust long-term climatology, this metric must be interpreted as a **relative model-derived diagnostic**, rather than an absolute climatological drought index. The short OPL-based 2016–2020 reference distribution supports only relative model-derived drought diagnostics and should not be interpreted as a robust climatological drought index.
+## D. Reference strategy
+
+### opl_pooled_2016_2020 (Main Mode)
+- OPL 2016–2020 by pixel as common reference.
+- Ensures comparability among OPL, DA-NoCDF, and DA-CDF.
+- Does not remove the seasonal cycle.
+- Supports relative low-soil-moisture diagnostics, not climatological drought assessment.
+
+### opl_calendar_month_2016_2020
+- Would remove the seasonal cycle.
+- But only 5 samples per calendar month and pixel.
+- Too short for stable percentile thresholds.
+- Not recommended as the main result.
+
+### opl_calendar_month_long_reference
+- Preferred if a longer OPL reference (e.g., 2005–2020) is available.
+- Would be the most defensible option for drought-like percentile classes.
+- Currently blocked pending processing of raw daily SPINUP outputs.
+
+**Conclusion:** The main reference mode used for this diagnostic is `opl_pooled_2016_2020` because it provides 60 samples per pixel, which is the minimum required for extracting stable relative shifts in D1/D2 without requiring full reprocessing of historical spin-up runs.
 
 ## E. Drought classes
 Percentile ranks are converted into hierarchical drought classes:
