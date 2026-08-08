@@ -59,3 +59,10 @@ When land cover data is available, the mean drought area percentage is stratifie
 - **No routed streamflow:** The analysis is restricted to grid-based fluxes and states, as HyMAP routed streamflow is not yet integrated.
 - **Short reference period:** The 2016–2020 window is short for computing true climatological percentiles.
 - **Diagnostic nature:** The drought classes are relative, model-derived diagnostics. Changes should be viewed as diagnostic sensitivity and do not necessarily represent a DA-induced shift in true drought classification.
+
+
+## Terminology and Metric Definitions
+- **Drought Area Percent (`drought_area_percent`)**: The monthly fraction of valid grid cells in the domain that fall below the specific diagnostic threshold (e.g., D1).
+- **Mean Drought Area Percent (`mean_drought_area_percent`)**: The temporal mean of these monthly spatial fractions over the 2016-2020 period.
+- **Transition Percentages**: The percentage of evaluated pixel-month cases that transition between categorical states relative to the total number of valid pixel-months.
+

@@ -27,6 +27,7 @@ with open(out_report, "w") as f:
     f.write(f"- SSM OPL mean D1 area: {opl_mean_ssm_d1:.2f}%\n")
     f.write(f"- SSM DA-NoCDF mean D1 area: {da_mean_ssm_d1:.2f}%\n")
     f.write("- **Status**: The OPL mean is close to the expected threshold (20% for D1) as the reference is OPL pooled by pixel. DA values are NOT forced to 20%, showing valid diagnostic sensitivity.\n")
+    f.write("- **Note**: Because the OPL 2016–2020 distribution is used as the reference, the mean OPL D1 fraction is expected to be close to 20% by construction. Therefore, the scientific signal is not the OPL value itself, but the departure of DA-NoCDF and DA-CDF from the OPL-based reference.\n")
     
     # C. Per-experiment percentile warning
     f.write("\n## C. Per-experiment percentile warning\n")
