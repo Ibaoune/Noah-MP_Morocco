@@ -16,7 +16,7 @@ DA-CDF also systematically dries the root zone, but the magnitude of the shift i
 The difference between DA-NoCDF and DA-CDF highlights the critical role of the observation operator. While both indicate that the baseline OPL is too wet relative to SMAP observations, DA-NoCDF aggressively alters the categorical drought threshold, whereas DA-CDF produces a more conservative diagnostic shift.
 
 ## F. Link with hydrological response
-These results are perfectly consistent with the water balance analysis (Section 3.4), which demonstrated that assimilation systematically reduces RZSM and ET while slightly increasing pre-routing baseflow. The drying of the root zone directly manifests here as a drastic expansion of the model-derived drought area.
+These results are perfectly consistent with the water balance analysis (Section 3.4), which demonstrated that assimilation systematically reduces RZSM and ET while slightly increasing pre-routing baseflow. The drying of the root zone directly manifests here as a strong relative shift toward the model-derived low-RZSM area.
 
 ## G. Link with RF/XAI
 The Random Forest diagnostics (Section 3.Y) established that RZSM and ET exhibit the highest predictability and strongest spatial coherence among the DA-induced responses. Consequently, the RZSM drought indicators are more stable and represent a more robust diagnostic metric for agricultural/ecological drought monitoring than the transient SSM responses.

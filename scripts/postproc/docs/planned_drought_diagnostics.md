@@ -51,5 +51,5 @@ We must verify if the 2016–2020 period is sufficient to compute a robust clima
 - SMAP-only assimilation does not constrain vegetation directly (unlike LAI assimilation).
 - 2016–2020 may be too short to establish robust climatological drought percentiles.
 - Differences between CDF and NoCDF must be strictly interpreted as diagnostic sensitivity, not a definitive "true" drought correction.
-- Drought diagnostics are model-derived and do not constitute direct observed drought truth.
+- Drought diagnostics are model-derived and do not constitute direct validation of meteorological drought truth.
 - There is currently no explicit representation of irrigation or reservoir management.

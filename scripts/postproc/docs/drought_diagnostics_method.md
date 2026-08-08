@@ -58,7 +58,7 @@ When land cover data is available, the mean drought area percentage is stratifie
 - **Missing human components:** There is no explicit representation of irrigation or reservoir management in the current Noah-MP setup.
 - **No routed streamflow:** The analysis is restricted to grid-based fluxes and states, as HyMAP routed streamflow is not yet integrated.
 - **Short reference period:** The 2016–2020 window is short for computing true climatological percentiles.
-- **Diagnostic nature:** The drought classes are relative, model-derived diagnostics. Changes should be viewed as diagnostic sensitivity and do not necessarily represent a DA-induced shift in true drought classification.
+- **Diagnostic nature:** The drought classes are relative, model-derived diagnostics. Changes should be viewed as diagnostic sensitivity and do not necessarily represent a DA-induced shift in actual meteorological drought classification.
 
 
 ## Terminology and Metric Definitions
