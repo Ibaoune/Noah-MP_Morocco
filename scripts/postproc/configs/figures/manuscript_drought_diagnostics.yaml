@@ -1,0 +1,17 @@
+# Placeholder configuration for future drought diagnostics
+
+target_variables:
+  - SSM
+  - RZSM
+  - ET
+
+drought_classes:
+  D0: 30
+  D1: 20
+  D2: 10
+  D3: 5
+  D4: 2
+
+period:
+  start_year: 2016
+  end_year: 2020
