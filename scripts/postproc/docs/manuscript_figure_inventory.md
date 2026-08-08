@@ -1,0 +1,14 @@
+# Manuscript Figure Inventory (Hydrological Post-Processing)
+
+| figure_file | relative_path | generated_by_script | input_data | paper_section | main_or_supplement | scientific_message | status |
+|---|---|---|---|---|---|---|---|
+| `manuscript_hydro_response_states_ET_annual_2016_2020.png` | `matrix_2016_2020/outputs/figures/hydrological_response/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Supplementary | Annual mean ET and state response | Ready |
+| `manuscript_hydro_response_states_ET_DJF_2016_2020.png` | `matrix_2016_2020/outputs/figures/hydrological_response/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Main Paper | Winter ET and state drying induced by DA | Ready |
+| `manuscript_hydro_response_states_ET_JJA_2016_2020.png` | `matrix_2016_2020/outputs/figures/hydrological_response/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Main Paper | Summer ET enhancement induced by DA | Ready |
+| `manuscript_runoff_partitioning_annual_2016_2020.png` | `matrix_2016_2020/outputs/figures/runoff_partitioning/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Supplementary | Annual runoff partitioning | Ready |
+| `manuscript_runoff_partitioning_DJF_2016_2020.png` | `matrix_2016_2020/outputs/figures/runoff_partitioning/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Main Paper | Baseflow vs surface runoff response in DJF | Ready |
+| `manuscript_runoff_partitioning_JJA_2016_2020.png` | `matrix_2016_2020/outputs/figures/runoff_partitioning/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Supplementary | Weak runoff response in JJA | Ready |
+| `manuscript_flux_only_water_balance_2016_2020.png` | `matrix_2016_2020/outputs/figures/water_balance/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.5 | Main Paper | First-order interpretation of DA mass changes | Ready |
+| `manuscript_assim_diagnostics_precip_runoff_components_DA_NoCDF_IMERG_2016_2020.png` | `matrix_2016_2020/outputs/figures/runoff_partitioning/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Supplementary | IMERG P vs Total Runoff (NoCDF) | Ready |
+| `manuscript_assim_diagnostics_precip_runoff_components_DA_CDF_IMERG_2016_2020.png` | `matrix_2016_2020/outputs/figures/runoff_partitioning/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Supplementary | IMERG P vs Total Runoff (CDF) | Ready |
+| *Placeholder: SMAP DA Increments Map* | `matrix_2016_2020/outputs/figures/assimilation_diagnostics/` | To Be Determined | `LIS_DA_EnKF_*_incr.nc` | 3.3 | Main Paper | Spatial distribution of SMAP DA increments | Planned |
