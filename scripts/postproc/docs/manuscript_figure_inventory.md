@@ -13,10 +13,10 @@
 | `manuscript_assim_diagnostics_precip_runoff_components_DA_CDF_IMERG_2016_2020.png` | `matrix_2016_2020/outputs/figures/runoff_partitioning/` | `hydrological_response_cdf_nocdf.py` | `monthly_pixel_dataset_2016_2020_static.parquet` | 3.4 | Supplementary | IMERG P vs Total Runoff (CDF) | Ready |
 | *Placeholder: SMAP DA Increments Map* | `matrix_2016_2020/outputs/figures/assimilation_diagnostics/` | To Be Determined | `LIS_DA_EnKF_*_incr.nc` | 3.3 | Main Paper | Spatial distribution of SMAP DA increments | Planned |
 
-| drought_diagnostics/manuscript_drought_frequency_SSM_OPL_DA_NoCDF_DA_CDF_2016_2020.png | TBD | SSM_OPL, SSM_DA_NoCDF, SSM_DA_CDF | 3.X | Main/Supp | Drought frequency modification by SMAP | planned |
-| drought_diagnostics/manuscript_drought_frequency_RZSM_OPL_DA_NoCDF_DA_CDF_2016_2020.png | TBD | RZSM_OPL, RZSM_DA_NoCDF, RZSM_DA_CDF | 3.X | Main/Supp | Drought frequency modification by SMAP | planned |
-| drought_diagnostics/manuscript_drought_area_timeseries_SSM_2016_2020.png | TBD | SSM percentiles | 3.X | Main | Temporal drought area | planned |
-| drought_diagnostics/manuscript_drought_area_timeseries_RZSM_2016_2020.png | TBD | RZSM percentiles | 3.X | Main | Temporal drought area | planned |
-| drought_diagnostics/manuscript_drought_transition_OPL_to_DA_NoCDF_2016_2020.png | TBD | Drought classes | 3.X | Supp | Transitions | planned |
-| drought_diagnostics/manuscript_drought_transition_OPL_to_DA_CDF_2016_2020.png | TBD | Drought classes | 3.X | Supp | Transitions | planned |
-| drought_diagnostics/manuscript_drought_by_landcover_2016_2020.png | TBD | Drought classes, land_cover | 3.X | Supp | Stratified impact | planned |
+| drought_diagnostics/manuscript_drought_frequency_SSM_OPL_DA_NoCDF_DA_CDF_2016_2020.png | drought_frequency_maps.py | SSM_OPL, SSM_DA_NoCDF, SSM_DA_CDF | 3.X | Main/Supp | Drought frequency modification by SMAP | produced |
+| drought_diagnostics/manuscript_drought_frequency_RZSM_OPL_DA_NoCDF_DA_CDF_2016_2020.png | drought_frequency_maps.py | RZSM_OPL, RZSM_DA_NoCDF, RZSM_DA_CDF | 3.X | Main/Supp | Drought frequency modification by SMAP | produced |
+| drought_diagnostics/manuscript_drought_area_timeseries_SSM_2016_2020.png | drought_area_timeseries.py | SSM percentiles | 3.X | Main | Temporal drought area | produced |
+| drought_diagnostics/manuscript_drought_area_timeseries_RZSM_2016_2020.png | drought_area_timeseries.py | RZSM percentiles | 3.X | Main | Temporal drought area | produced |
+| drought_diagnostics/manuscript_drought_transition_OPL_to_DA_NoCDF_2016_2020.png | drought_transition_analysis.py | Drought classes | 3.X | Supp | Transitions | produced |
+| drought_diagnostics/manuscript_drought_transition_OPL_to_DA_CDF_2016_2020.png | drought_transition_analysis.py | Drought classes | 3.X | Supp | Transitions | produced |
+| drought_diagnostics/manuscript_drought_by_landcover_2016_2020.png | drought_by_landcover.py | Drought classes, land_cover | 3.X | Supp | Stratified impact | produced |
