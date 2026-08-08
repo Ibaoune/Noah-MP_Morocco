@@ -15,14 +15,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     print(f"Running drought_area_timeseries.py for {args.variable}")
-    out_dir_fig = os.path.join(args.output_root, "figures", "drought_diagnostics")
-    out_dir_tab = os.path.join(args.output_root, "tables", "drought_diagnostics")
+    out_dir_fig = os.path.join(args.output_root, "outputs", "figures", "drought_diagnostics")
+    out_dir_tab = os.path.join(args.output_root, "outputs", "tables", "drought_diagnostics")
     
     if args.dry_run:
         print("[DRY RUN] Would generate area timeseries.")
         exit(0)
         
-    in_file = os.path.join(args.output_root, "tables", "drought_diagnostics", f"drought_percentiles_pixel_month_2016_2020_{args.variable}.parquet")
+    in_file = os.path.join(args.output_root, "outputs", "tables", "drought_diagnostics", f"drought_percentiles_pixel_month_2016_2020_{args.variable}.parquet")
     if not os.path.exists(in_file):
         print(f"Missing {in_file}")
         exit(1)

@@ -13,7 +13,7 @@ Nie et al. (2022) established a drought monitoring framework for the MENA region
 - Ancillary data: Static land cover.
 
 ## D. Reference distribution
-For this V0 diagnostic, the percentiles are computed by pooling the available 2016–2020 data for each pixel (`pooled_2016_2020` mode). Because a 5-year period is relatively short to define a robust long-term climatology, this metric must be interpreted as a **relative model-derived diagnostic**, rather than an absolute climatological drought index.
+For this V0 diagnostic, the percentiles are computed by evaluating all experiments against a common reference: the **OPL-based pooled 2016–2020 reference distribution** by pixel (`opl_pooled_2016_2020` mode). Because a 5-year period is relatively short to define a robust long-term climatology, this metric must be interpreted as a **relative model-derived diagnostic**, rather than an absolute climatological drought index. The short OPL-based 2016–2020 reference distribution supports only relative model-derived drought diagnostics and should not be interpreted as a robust climatological drought index.
 
 ## E. Drought classes
 Percentile ranks are converted into hierarchical drought classes:
@@ -40,4 +40,4 @@ When land cover data is available, the mean drought area percentage is stratifie
 - **Missing human components:** There is no explicit representation of irrigation or reservoir management in the current Noah-MP setup.
 - **No routed streamflow:** The analysis is restricted to grid-based fluxes and states, as HyMAP routed streamflow is not yet integrated.
 - **Short reference period:** The 2016–2020 window is short for computing true climatological percentiles.
-- **Diagnostic nature:** The drought classes are relative, model-derived diagnostics. Changes should be viewed as diagnostic sensitivity and do not necessarily prove a "true drought correction."
+- **Diagnostic nature:** The drought classes are relative, model-derived diagnostics. Changes should be viewed as diagnostic sensitivity and do not necessarily represent a DA-induced shift in true drought classification.

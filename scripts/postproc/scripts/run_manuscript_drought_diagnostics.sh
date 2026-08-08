@@ -24,11 +24,11 @@ echo "==========================================="
 
 for VAR in SSM RZSM; do
     echo "Processing $VAR..."
-    python ${SRC_DIR}/compute_drought_percentiles.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} ${DRY_RUN} ${OVERWRITE}
-    python ${SRC_DIR}/drought_frequency_maps.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} ${DRY_RUN} ${OVERWRITE}
-    python ${SRC_DIR}/drought_area_timeseries.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} ${DRY_RUN} ${OVERWRITE}
-    python ${SRC_DIR}/drought_transition_analysis.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} ${DRY_RUN} ${OVERWRITE}
-    python ${SRC_DIR}/drought_by_landcover.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} ${DRY_RUN} ${OVERWRITE}
+    python ${SRC_DIR}/compute_drought_percentiles.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} --reference-mode opl_pooled_2016_2020 ${DRY_RUN} ${OVERWRITE}
+    python ${SRC_DIR}/drought_frequency_maps.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} --reference-mode opl_pooled_2016_2020 ${DRY_RUN} ${OVERWRITE}
+    python ${SRC_DIR}/drought_area_timeseries.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} --reference-mode opl_pooled_2016_2020 ${DRY_RUN} ${OVERWRITE}
+    python ${SRC_DIR}/drought_transition_analysis.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} --reference-mode opl_pooled_2016_2020 ${DRY_RUN} ${OVERWRITE}
+    python ${SRC_DIR}/drought_by_landcover.py --input-parquet ${INPUT_PARQUET} --output-root ${MATRIX} --variable ${VAR} --reference-mode opl_pooled_2016_2020 ${DRY_RUN} ${OVERWRITE}
 done
 
 echo "Done."

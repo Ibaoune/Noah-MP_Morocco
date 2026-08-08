@@ -1,7 +1,7 @@
 # Manuscript Captions: Drought Diagnostics (V0)
 
 **Figure 1. Relative Monthly Drought Area (SSM)**
-*Caption:* Temporal evolution of the percentage of the domain area under moderate drought (D1, percentile ≤ 20%) or worse, based on Surface Soil Moisture (SSM). The time series compares the Open Loop (OPL) against the two SMAP assimilation experiments (DA-NoCDF and DA-CDF). Note that the percentiles are derived from a relative 2016–2020 reference distribution. The differences highlight the diagnostic sensitivity of the model-derived drought classification to the assimilated observations.
+*Caption:* Temporal evolution of the percentage of the domain area under moderate drought (D1, percentile ≤ 20%) or worse, based on Surface Soil Moisture (SSM). The time series compares the Open Loop (OPL) against the two SMAP assimilation experiments (DA-NoCDF and DA-CDF). Note that the percentiles are derived from an OPL-based pooled 2016–2020 reference distribution. The differences highlight the diagnostic sensitivity of the model-derived drought classification to the assimilated observations.
 
 **Figure 2. Relative Monthly Drought Area (RZSM)**
 *Caption:* Temporal evolution of the percentage of the domain area under moderate drought (D1, percentile ≤ 20%) or worse, based on Root-Zone Soil Moisture (RZSM). The time series compares the Open Loop (OPL) against the two SMAP assimilation experiments (DA-NoCDF and DA-CDF). 
