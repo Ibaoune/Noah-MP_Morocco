@@ -1,0 +1,13 @@
+xarray
+netCDF4
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+cartopy
+pyarrow
+shap
+joblib
+pyyaml
+tqdm

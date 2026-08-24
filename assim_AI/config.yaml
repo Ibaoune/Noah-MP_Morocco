@@ -1,0 +1,75 @@
+paths:
+  # LIS / Noah-MP Outputs
+  opl_hist_dir: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/OPL_noirr_2016_2020"
+  da_nocdf_hist_dir: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/DA_nocdf_noirr_2016_2020"
+  da_cdf_hist_dir: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/DA_cdf_noirr_2016_2020"
+  opl_dir: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/OPL_noirr_2016_2020"
+  da_nocdf_dir: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/DA_nocdf_noirr_2016_2020"
+  da_cdf_dir: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/DA_cdf_noirr_2016_2020"
+
+  # SMAP Observations / Diagnostics
+  smap_assim_diags_dir: "placeholder_path/SMAP"
+  smap_diagnostics:
+    da_nocdf_incr_dir: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/DA_nocdf_noirr_2016_2020"
+    da_cdf_incr_dir: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/DA_cdf_noirr_2016_2020"
+    increment_file_pattern: "LIS_DA_EnKF_*_incr*.nc"
+    increment_variables:
+      layer1: "anlys_incr_Soil Moisture Layer 1_01"
+      layer2: "anlys_incr_Soil Moisture Layer 2_01"
+      layer3: "anlys_incr_Soil Moisture Layer 3_01"
+      layer4: "anlys_incr_Soil Moisture Layer 4_01"
+    use_increments: true
+
+  # Dynamic Predictors
+  imerg_precip_dir: "placeholder_path/IMERG"
+  insitu_precip_file: "/home/mohammad.elaabaribao/lustre/climat-um6p-st-iwri-7ksifkvwkuy/shared/TEAM/data/Observed_data/ABH_stations_plusziz_and_abhbc1.csv"
+  merra2_dir: "placeholder_path/MERRA2"
+
+  # Static Predictors
+  elevation_file: "placeholder_path/static/elevation.nc"
+  slope_file: "placeholder_path/static/slope.nc"
+  land_cover_file: "placeholder_path/static/land_cover.nc"
+  soil_texture_file: "placeholder_path/static/soil_texture.nc"
+  basin_mask_file: "placeholder_path/static/basin_mask.nc"
+  cropland_proxy_file: "placeholder_path/static/cropland_proxy.nc"
+
+  # Output paths
+  output_dataset: "data/processed/monthly_pixel_dataset.parquet"
+  output_metrics: "results/metrics/rf_metrics.csv"
+  output_feature_importance: "results/metrics/rf_feature_importance.csv"
+  output_models_dir: "models"
+  output_dominant_factor_map: "results/netcdf/dominant_factor_map.nc"
+  output_figures_dir: "results/figures"
+  reports_dir: "reports"
+
+options:
+  run_mode: "real_data" # "synthetic_test" | "real_data_smoke_test" | "real_data"
+  start_date: "2016-01-01"
+  end_date: "2020-12-31"
+  use_insitu_precipitation: false
+  use_shap_full: false
+  use_shap_sample: true
+  shap_sample_size: 5000
+  
+  # Temporal validation
+  train_years: [2016, 2017, 2018, 2019]
+  test_years: [2020]
+  
+  # Predictor mode: assimilation_mechanics OR environmental_explanatory
+  # - assimilation_mechanics: can include innovation
+  # - environmental_explanatory: must exclude innovation
+  predictor_mode: "environmental_explanatory"
+  
+  use_shap: true
+
+# real_data_variable_mapping_template:
+#   targets:
+#     SSM: "SoilMoist_tavg" # or "sm1" etc.
+#     RZSM: "RootMoist_tavg" 
+#     ET: "Evap_tavg"
+#     runoff: "Qs_tavg"
+#     baseflow: "Qsb_tavg"
+#   predictors:
+#     precipitation: "Rainf_tavg"
+#     innovation: "innov"
+#     increment: "inc"

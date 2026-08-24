@@ -92,10 +92,12 @@ NoahMP_Morocco/
 │   ├── slurm_archive/        #   Archived generic execution logs
 │   └── *.log                 #   Download & run logs
 │
-└── docs/                     # Documentation
-    ├── TROUBLESHOOTING_LOG.md
-    ├── COMPILATION_AND_STATUS_SUMMARY.txt
-    └── EXPERIMENT_SETUP.md
+├── docs/                     # Documentation
+│   ├── TROUBLESHOOTING_LOG.md
+│   ├── COMPILATION_AND_STATUS_SUMMARY.txt
+│   └── EXPERIMENT_SETUP.md
+│
+└── assim_AI/                 # AI component for explaining assimilation behavior
 ```
 
 ## Quick Start
@@ -276,3 +278,10 @@ A modern, highly modular, YAML-driven post-processing pipeline has been establis
     - `run_one_hydro_variable.sh`: Core wrapper script for a single variable configuration.
 
 *Note: Older hardcoded Python scripts (e.g., `plot_runoff.py`, `plot_da_comparison.py`) remain in `scripts/postproc/src/` as legacy reference materials.*
+
+## AI-Based Assimilation Diagnostics (`assim_AI`)
+
+A dedicated AI/Machine Learning component is included in the `assim_AI/` directory. This project uses machine learning techniques (such as Random Forests and Explainable AI) to diagnose and explain the behavior of the data assimilation experiments.
+* Evaluates the hydrological response and sensitivity of assimilation increments.
+* Helps interpret the impact of assimilating observations on the core model variables.
+* Includes its own independent documentation, scripts, and environment configurations.

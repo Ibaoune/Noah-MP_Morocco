@@ -1,0 +1,20 @@
+# Data and Outputs
+data/
+outputs/
+results/
+models/
+models_test/
+logs/
+reports/
+archive/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Artifacts
+*.joblib
+*.parquet
+*.png
+*.csv
+*.zip

@@ -1,0 +1,20 @@
+name: rf-xai-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - xarray
+  - netcdf4
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - cartopy
+  - pyarrow
+  - shap
+  - joblib
+  - pyyaml
+  - tqdm
