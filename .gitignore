@@ -2,8 +2,19 @@
 
 # Input and Output data directories (large files)
 data/
-experiments/
 logs/
+
+# Whitelist experiments
+experiments/**
+!experiments/**/
+!experiments/NorthMor/routing/ldt_hymap/ldt.config
+!experiments/NorthMor/routing/configs/*.config
+!experiments/NorthMor/routing/README_HYMAP.md
+!experiments/NorthMor/routing/checks/**
+
+# Ensure binary and NetCDF data are never tracked
+*.nc
+*.bin
 
 # Older/temporary run files
 fort.*
