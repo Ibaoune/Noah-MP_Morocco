@@ -10,13 +10,38 @@ Deux expériences majeures sont routées et comparées aux observations hydrolog
 
 ---
 
-## 2. Provenance des paramètres
+## 2. Provenance et description des paramètres (Étape 01)
 
-Les paramètres physiographiques du réseau hydrographique HyMAP à la résolution spatiale de **0.05°** (grille $180 \times 120$) ont été fournis directement par **Augusto Getirana** (NASA GSFC) sous forme de l'archive compressée `lis_param.tar.gz`.
+Les paramètres physiographiques du réseau hydrographique HyMAP ont été fournis directement par **Augusto Getirana** (NASA GSFC, Hydrological Sciences Laboratory) sous la forme de l'archive compressée `lis_param.tar.gz`.
 
-- Répertoire source des fichiers binaires : `data/Hymap_params_from_Augusto/extracted/lis_param/`
-- Nombre de fichiers binaires 0.05° : 24 fichiers `lis_*_005.bin` (taille unitaire de 86 400 octets pour les grilles 2D, soit $180 \times 120 \times 4$ octets float32).
-- Intégrité et traçabilité : Les empreintes cryptographiques SHA-256 de l'archive et des 24 fichiers binaires sont consignées dans `checks/00_checksums_augusto.txt`.
+### 2.1 Grille et format des données
+* **Emprise et résolution :** Grille régulière de $180 \times 120$ mailles à la résolution spatiale de **0.05°** ($dx = dy = 0.05^\circ$), couvrant le domaine Nord Maroc de $30.00^\circ\text{N}$ à $36.00^\circ\text{N}$ et de $-10.00^\circ\text{E}$ à $-1.00^\circ\text{E}$ (centres des mailles extrêmes de $30.025^\circ\text{N}$ à $35.975^\circ\text{N}$ et $-9.975^\circ\text{E}$ à $-1.025^\circ\text{E}$).
+* **Format binaire et types de données :** Fichiers binaires directs sans en-tête Fortran (*direct access*, encodage *big-endian*, 4 octets par valeur). Deux types de données coexistent :
+  - **20 fichiers réels `float32` (IEEE 754) :** 19 grilles 2D ($180 \times 120 \times 4 = 86\,400$ octets) et 1 profil d'inondation 3D à 10 niveaux verticaux (`lis_fldhgt_merged_005.bin`, $10 \times 180 \times 120 \times 4 = 864\,000$ octets).
+  - **4 fichiers entiers signés `int32` :** 4 grilles 2D ($180 \times 120 \times 4 = 86\,400$ octets) pour les directions de drainage aval (`lis_nextx_005.bin`, `lis_nexty_005.bin`), l'identifiant de bassin (`lis_basin_005.bin`) et le masque de domaine (`lis_mask_005.bin`).
+* **Traçabilité cryptographique SHA-256 :** L'archive source (`data/Hymap_params_from_Augusto/lis_param.tar.gz`) et les 24 fichiers binaires extraits dans `data/Hymap_params_from_Augusto/extracted/lis_param/` ont été contrôlés par hachage SHA-256 et sont consignés dans [`checks/00_checksums_augusto.txt`](checks/00_checksums_augusto.txt).
+* **Fichier d'en-tête MERIT :** Le fichier `header` présent dans l'archive (`merit  1   10800    7199  0.000833  -10.000000000   -1.000000000   30.000000000   36.000000000`) atteste d'une source liée à MERIT (résolution native de 3 secondes d'arc $\sim 0.000833^\circ$, domaine $[-10^\circ, -1^\circ]\text{E} \times [30^\circ, 36^\circ]\text{N}$), sans constituer une preuve documentée de la méthode exacte d'agrégation ou de mise à l'échelle (*upscaling*) utilisée pour générer ces cartes 0.05°.
+
+### 2.2 Les cinq familles de paramètres
+Les 24 fichiers binaires décrivent l'ensemble des propriétés physiques du réseau d'écoulement :
+1. **Topologie et réseau hydrographique :** Directions de drainage vers l'aval (`lis_nextx_005.bin`, `lis_nexty_005.bin`, format `int32`), coordonnées des nœuds fluviaux (`lis_nodelon_005.bin`, `lis_nodelat_005.bin`, `float32`), distance hydraulique entre mailles (`lis_nxtdst_005.bin`, `float32`), superficies drainées amont cumulées (`lis_uparea_005.bin`, `float32`) et identifiants de bassins (`lis_basin_005.bin`, `int32`).
+2. **Géométrie du lit mineur :** Largeur de chenal avec estuaires fusionnés (`lis_rivwth_merged_005.bin`, `float32`, préférée dans LDT à la largeur non fusionnée `lis_rivwth_005.bin`), hauteur de berge à pleins bords (`lis_rivhgt_005.bin`, `float32`), longueur réelle méandrée du bief (`lis_rivlen_005.bin`, `float32`), et coefficient de rugosité de Manning du chenal (`lis_rivman_005.bin`, `float32`). La carte de pente (`lis_slope_005.bin`, `float32`) n'est pas ingérée par LDT.
+3. **Dynamique des plaines d'inondation :** Profil altimétrique d'inondation sub-maille discrétisé en 10 strates de hauteur (`lis_fldhgt_merged_005.bin`, `float32` 3D) et coefficient de frottement de Manning en plaine majeure (`lis_fldman_005.bin`, `float32`).
+4. **Hydrodynamique et temps de transfert :** Temps de concentration du ruissellement superficiel rapide (`lis_getirana_paiva_005.bin`, `float32`, méthode Getirana & Paiva 2013), multiplicateur de ruissellement (`lis_trunoff_005.bin`, `float32`), constante de temps de vidange du réservoir souterrain de nappe (`lis_tbasflw_005.bin`, `float32`), et débit interannuel de référence hydraulique (`lis_qrefer_005.bin`, `float32`). Le fichier `lis_maxlen_005.bin` (`float32`) n'est pas utilisé par LDT.
+5. **Masques, maillage et orographie :** Altitude moyenne du relief (`lis_elevtn_005.bin`, `float32`), superficie réelle des cellules (`lis_grarea_005.bin`, `float32`), et masques d'activité continentale (`lis_mask_005.bin` en `int32`, `lis_real_mask_005.bin` en `float32`, ce dernier servant également de bouche-trou technique dans LDT).
+
+### 2.3 Réutilisabilité et précautions d'emploi
+Ces paramètres sont spécifiques au domaine Nord Maroc à 0.05° et à la configuration du routeur HyMAP2 sous LISF :
+* **Réutilisabilité sous conditions :** Ces jeux de paramètres ne doivent pas être considérés a priori comme universellement validés physiquement ou réutilisables sans vérification. Toute réutilisation pour d'autres simulations requiert de vérifier la stricte compatibilité avec la même grille ($180 \times 120$ à 0.05°), la même version de HyMAP2 / LISF et la configuration du modèle (routage cinématique, désactivation du couplage nappe-inondation DWI).
+* **Signalement d'anomalies physiques :** Plusieurs champs présentent des valeurs atypiques qui restent explicitement signalées pour des investigations physiques ultérieures (notamment des superficies de maille `grarea` atteignant 178.9 km², une hauteur de berge `rivhgt` quasi-uniforme de ~0.50 m, des largeurs `rivwth_merged` atteignant ~14.3 km à l'exutoire, et des rugosités de Manning `rivman` uniformes proches de 0.10 s/m$^{1/3}$).
+* **Constante de vidange `tbasflw` :**
+  - Le code source de LISF attend `tbsflw` en jours (`qbas = basfsto / (tbsflw * 86400.)`).
+  - Les unités des valeurs binaires d'origine fournies par Augusto ne sont pas confirmées de façon indépendante.
+  - Les simulations de production existantes (Open-Loop et DA-NoCDF) ont utilisé le fichier NetCDF corrigé (`lis_input_corrigee.d01.nc`, division par 86 400).
+  - La correction appliquée et ses conséquences hydrologiques (activation du plancher numérique `cntime/86400.` sur 99.9 % des mailles, vidange accélérée du réservoir souterrain) requièrent des vérifications plus approfondies.
+
+*Pour l'inventaire détaillé cellule par cellule, l'audit du code LISF, la cartographie LDT et l'analyse critique de `tbasflw`, consulter la fiche technique :*
+👉 [`checks/01_parametres_augusto.md`](checks/01_parametres_augusto.md)
 
 ---
 
