@@ -90,16 +90,29 @@ export GFORTRAN_CONVERT_UNIT='big_endian'
 *Pour l'audit exhaustif des options de configuration, l'analyse des journaux d'exécution, la comparaison détaillée des valeurs numériques décodées et attributs NetCDF et la commande historique de modification, consulter la fiche technique :*
 👉 [`checks/02_preparation_ldt.md`](checks/02_preparation_ldt.md)
 
-### Étape 3.2 : Rééchantillonnage conservatif du ruissellement (181x121 → 180x120)
-Les sorties de surface Noah-MP (`Qs_tavg` et `Qsb_tavg`) produites sur la grille $181 \times 121$ sont reprojetées de façon rigoureusement conservative en masse vers la grille HyMAP $180 \times 120$ :
+### Étape 3.2 : Rééchantillonnage du ruissellement Noah-MP (181x121 → 180x120)
+Les flux journaliers de ruissellement superficiel (`Qs_tavg`) et de drainage souterrain (`Qsb_tavg`) issus des simulations Noah-MP sur la grille $181 \times 121$ (repérage aux nœuds entiers $30.00^\circ$ à $36.00^\circ\text{N}$, $-10.00^\circ$ à $-1.00^\circ\text{E}$) sont reprojetés vers la grille HyMAP $180 \times 120$ (centres de mailles $30.025^\circ$ à $35.975^\circ\text{N}$, $-9.975^\circ$ à $-1.025^\circ\text{E}$) par les scripts de production historiques :
+
 ```bash
-# Pour Open-Loop :
+# Pour Open-Loop (OPL) :
 python3 experiments/NorthMor/routing/scripts/remap_opl_2016_2020.py
 
 # Pour DA NoCDF :
 python3 experiments/NorthMor/routing/scripts/remap_da_nocdf_2016_2020.py
 ```
-*Répertoires produits* : `experiments/NorthMor/routing/runoff_remap_180x120/{OPL_noirr_2016_2020,DA_nocdf_noirr_2016_2020}/SURFACEMODEL/` (1 828 fichiers journaliers par expérience).
+
+* **Répertoires sources historiques :** `experiments/NorthMor/matrix_2016_2020/{OPL,DA_nocdf}_noirr_2016_2020/output/YYYY-MM/SURFACEMODEL/YYYYMM/`
+* **Répertoires cibles produits :** `experiments/NorthMor/routing/runoff_remap_180x120/{OPL,DA_nocdf}_noirr_2016_2020/SURFACEMODEL/YYYYMM/` (1 828 fichiers NetCDF journaliers par expérience, incluant les 1 827 jours simulés 2016–2020 et le fichier frontière terminal `LIS_HIST_202101020000.d01.nc`).
+
+#### Principes géométriques et formulation du remap
+* **Stencils aux 4 nœuds :** Le rééchantillonnage applique une moyenne arithmétique aux 4 sommets de chaque maille cible :
+  $$\bar{q}[j, i] = \frac{1}{4} \Big( q[j, i] + q[j, i+1] + q[j+1, i] + q[j+1, i+1] \Big)$$
+* **Traitement des masques et valeurs manquantes :** Les valeurs océaniques (`-9999.0`) et négatives sont remplacées inconditionnellement par `0.0`. En zone côtière, cette moyenne dilue les flux continentaux avec les zéros marins sur les mailles littorales sans appliquer de masque NetCDF en sortie (fichiers denses de 21 600 flottants).
+* **Quasi-conservation numérique sur l'emprise commune :** Le diagnostic annuel 2018 montre une quasi-conservation du volume intégré sur le domaine ($S_2/S_1$ d'environ $100.0002\%$) sur l'emprise géographique commune $[30.0^\circ, 36.0^\circ]\text{N} \times [-10.0^\circ, -1.0^\circ]\text{E}$, sous les hypothèses géométriques centrées sur la maille (*The annual 2018 diagnostic shows near-conservation of the domain-integrated volume (S2/S1 approximately 100.0002%) over the common geographic footprint, under the stated cell-centered geometric assumptions*). Il convient de distinguer rigoureusement le support physique des colonnes de surface Noah-MP (volumes de contrôle finis générant les flux) de la simple coïncidence géométrique nodale de leurs centres avec les sommets des mailles cibles HyMAP. Cette quasi-équivalence globale n'implique aucune préservation exacte des flux à l'échelle des sous-bassins. L'écart apparent de $\sim 0.35\%$ à $0.90\%$ lors d'une sommation sur la grille brute $181 \times 121$ provient uniquement de l'exclusion des demi-mailles externes au domaine commun.
+* **Filtrage par le masque de bassin et volume diagnostique `grarea` :** HyMAP filtre les flux sur les 15 937 mailles actives de `HYMAP_basin_mask`. Les flux tombant sur les mailles inactives sont exclus du réseau hydrographique : sur une journée test (2018-07-15), 134 mailles cibles présentant un drainage souterrain positif se trouvent ainsi hors masque. À l'échelle de l'année 2018 complète, le volume annuel total ($Q_s + Q_{sb}$) exclu par le masque de bassin ($S_2 - S_3$) atteint **$184.03\text{ hm}^3$** pour OPL et **environ $242.7\text{ hm}^3$** pour DA-NoCDF. Pour les mailles actives, le volume diagnostique $S_4$ calculé en appliquant la surface `HYMAP_grid_area` (`grarea / 1e3`) aux flux journaliers présente un écart global de $-3.86\%$ pour OPL par rapport au volume géométrique $S_3$. Cela résulte d'une variation de la pondération spatiale locale de conversion flux-volume selon l'altitude (`grarea` étant supérieure à la surface géométrique sphérique de $+1\%$ à $+4\%$ sous 500 m, et inférieure de $-8.5\%$ au-dessus de 1 000 m), sans constituer un déplacement physique d'eau entre tranches altimétriques. Ce volume $S_4$ est strictement un total diagnostique au pas journalier et ne doit pas être assimilé au volume exact effectivement intégré par HyMAP au pas de 15 minutes avant audit de l'interpolation sub-journalière.
+
+*Pour l'audit exhaustif des 4 stades de volume (S1 à S4), la vérification du code LISF, la convention temporelle journalière, les bilans physiques corrigés 2018 et l'analyse d'attribution par bande altimétrique, consulter la fiche technique :*
+👉 [`checks/03_remapping_ruissellement.md`](checks/03_remapping_ruissellement.md)
 
 ### Étape 3.3 : Spin-up hydrodynamique en 2 cycles (Année 2016)
 Initialisation et équilibrage des 4 réservoirs (BSFSTO, RNFSTO, RIVSTO, FLDSTO) par double boucle sur l'année 2016 :
