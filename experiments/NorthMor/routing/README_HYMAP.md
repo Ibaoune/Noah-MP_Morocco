@@ -50,12 +50,45 @@ Ces paramètres sont spécifiques au domaine Nord Maroc à 0.05° et à la confi
 La chaîne d'exécution comprend 4 étapes séquentielles :
 
 ### Étape 3.1 : Génération du fichier de paramètres NetCDF avec LDT
-Préparation du maillage et ingestion des 24 grilles binaires HyMAP :
+
+#### Rôle scientifique et technique de LDT
+Le processeur de paramètres **LDT** (LIS Data Toolkit 7.5) prépare le fichier NetCDF invariant nécessaire à l'initialisation du modèle de surface continentale Noah-MP et du routeur hydrodynamique HyMAP2 sur le domaine Nord Maroc :
+* **Grille et domaine d'intégration :** Définition de la grille régulière de $180 \times 120$ mailles à la résolution spatiale de **0.05°** ($dx = dy = 0.05^\circ$), bornée géométriquement par $30.00^\circ\text{N} - 36.00^\circ\text{N}$ et $-10.00^\circ\text{E} - -1.00^\circ\text{E}$ (centres des mailles extrêmes de $30.025^\circ\text{N}$ à $35.975^\circ\text{N}$ et $-9.975^\circ\text{E}$ à $-1.025^\circ\text{E}$).
+* **Ingestion des paramètres hydrographiques HyMAP :** Ingestion directe sans rééchantillonnage spatial (`none`) des grilles binaires dérivées des données fournies par Augusto Getirana (topologie d'écoulement, biefs fluviaux, profil altimétrique des plaines d'inondation, constantes de temps de transfert).
+* **Intégration conjointe des descripteurs de surface LIS / Noah-MP :** En mode `LSM parameter processing`, LDT génère simultanément l'ensemble des champs de surface nécessaires à l'architecture modulaire de LISF (masque continental `LANDMASK`, type de surface `SURFACETYPE`, orographie `ELEVATION`, texture de sol `TEXTURE`, climatologies d'albédo et de fraction végétale, et gradients thermiques MERRA-2), indispensables lors de l'initialisation du domaine de calcul même en configuration de routage hors ligne.
+
+#### Procédure d'exécution historique sous environnement Toubkal
+L'exécution de LDT s'effectue dans le répertoire `experiments/NorthMor/routing/ldt_hymap/` après chargement des modules du cluster et configuration du compilateur Fortran pour la lecture des grilles binaires *big-endian* :
 ```bash
 cd experiments/NorthMor/routing/ldt_hymap
-../../../src/lisf/ldt/LDT ldt.config
+
+# 1. Chargement de l'environnement cluster (compilateurs GCC/OpenMPI, bibliothèques ESMF, NetCDF-Fortran, HDF5)
+source ../../../../arch/arch_toubkal.env
+
+# 2. Variable obligatoire pour la lecture des fichiers binaires direct-access big-endian par GFortran
+export GFORTRAN_CONVERT_UNIT='big_endian'
+
+# 3. Exécution du binaire LDT (4 niveaux de remontée vers la racine du dépôt)
+../../../../src/lisf/ldt/LDT ldt.config
 ```
-*Sortie générée* : `lis_input.d01.nc` (180x120, contenant les 23 variables `HYMAP_*`).
+
+> [!WARNING]
+> **Risque d'écrasement des données historiques :** La réexécution de cette commande dans le répertoire existant écrasera le fichier `lis_input.d01.nc`. Pour préserver l'intégrité et la traçabilité des exécutions d'origine, toute reproduction doit être précédée d'une sauvegarde ou effectuée dans un répertoire de test indépendant.
+
+#### Fichiers NetCDF résultants et statut
+* **Fichier brut issu de LDT (`lis_input.d01.nc`) :**
+  Fichier NetCDF4/HDF5 généré directement par LDT (taille : 2 532 062 octets), comportant **45 variables** au total :
+  - **23 variables HyMAP** : 19 variables issues des grilles binaires d'Augusto Getirana et 4 variables provenant de substituts techniques (*placeholders*). La variable `HYMAP_ref_discharge` n'est pas écrite par LDT car sa routine de lecture n'est pas appelée dans le code source de LDT 7.5.
+  - **22 variables de surface continentale et repérage spatial LIS** (`LANDMASK`, `SURFACETYPE`, `ELEVATION`, coordonnées géodésiques, etc.).
+  - *Comportement de `tbasflw` :* Ce fichier brut conserve les valeurs numériques d'origine de la carte binaire (moyenne ~61 703, `units = 'none'`).
+* **Fichier modifié historique (`lis_input_corrigee.d01.nc`) :**
+  Fichier NetCDF4/HDF5 (taille : 2 587 165 octets) résultant d'une **modification historique a posteriori** appliquée par commande Python (et non d'une sortie directe de LDT) :
+  - Identique à `lis_input.d01.nc` pour 44 des 45 variables (valeurs numériques décodées et attributs identiques selon la comparaison netCDF4).
+  - Seule la variable `HYMAP_baseflow_time_delay` y a été modifiée : division numérique par 86 400 et mise à jour de l'attribut `units = 'days'`.
+  - C'est cette copie modifiée qui a été exploitée dans les simulations de production historiques (Open-Loop et DA-NoCDF). Sa validité physique générale et ses répercussions sur les régimes de décrue et d'étiage n'ont pas fait l'objet d'une validation physique formelle et restent soumises à vérification.
+
+*Pour l'audit exhaustif des options de configuration, l'analyse des journaux d'exécution, la comparaison détaillée des valeurs numériques décodées et attributs NetCDF et la commande historique de modification, consulter la fiche technique :*
+👉 [`checks/02_preparation_ldt.md`](checks/02_preparation_ldt.md)
 
 ### Étape 3.2 : Rééchantillonnage conservatif du ruissellement (181x121 → 180x120)
 Les sorties de surface Noah-MP (`Qs_tavg` et `Qsb_tavg`) produites sur la grille $181 \times 121$ sont reprojetées de façon rigoureusement conservative en masse vers la grille HyMAP $180 \times 120$ :
