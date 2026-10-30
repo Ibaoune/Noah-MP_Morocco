@@ -136,6 +136,16 @@ Chaque simulation produit exactement 1 827 fichiers journaliers (`LIS_HIST_20160
 *Pour l'inventaire exhaustif des runs, le diagnostic quantitatif des 4 réservoirs, l'analyse du plancher numérique `cntime/86400.` et l'audit des bilans volumiques, consulter la fiche technique :*
 👉 [`checks/04_audit_routing_historique.md`](checks/04_audit_routing_historique.md)
 
+### Étape 3.5 : Évaluation des débits simulés aux stations in-situ (2016–2020)
+La confrontation des simulations historiques (OPL corrigé et DA-NoCDF) aux observations in-situ sur 12 stations de jaugeage (4 journalières dans le Bouregreg, 7 mensuelles dans le Sebou, 1 mensuelle dans le Ksob) établit que :
+- **Contraste régional marqué :** Biais modéré en OPL dans le Bouregreg (PBIAS $+4\%$ à $+14\%$, hors Sidi Jabeur $-43\%$) vs fort déficit chronique sur 6 des 7 stations du haut Sebou ($-56\%$ à $-78\%$, seule Ait Khabbach à $+74\%$) et surestimation au Ksob ($+87\%$). Les superficies officielles ne sont documentées que pour le Sebou (indisponibles dans les archives pour Bouregreg et Ksob).
+- **Impact contrasté de l'assimilation DA-NoCDF :** Dégradation sévère dans le Bouregreg (PBIAS $+115\%$ à $+480\%$, KGE chutant à $-2.89$ / $-3.86$) ; dans le Sebou, amélioration du KGE pour 5 stations sur 7 (dégradation sur 2) et réduction arithmétique du déficit par apport d'eau sans amélioration démontrée des transferts (VALUE > 85% pour 3 stations seulement).
+- **Défaut de tarissement sur les cours d'eau temporaires :** 0 jour d'assec simulé sur l'oued Grou à Sidi Jabeur sur l'ensemble des trois simulations historiques (OPL brut, OPL corrigé et DA-NoCDF) contre 310 à 312 jours observés. L'absence d'assec étant déjà présente avant correction, la contribution du plancher `cntime/86400.` n'est pas isolée face au drainage continu de Noah-MP et à l'absence de pertes en lit mineur.
+- **Qualité des données in-situ :** Identité stricte démontrée entre Ain Loudah et S.M. Cherif (1 827 valeurs journalières identiques, cause d'origine inconnue), interdisant de les considérer comme des validations indépendantes.
+
+*Pour l'audit complet de l'évaluation hydrologique, les fiches des 12 stations, l'analyse d'appariement, le tableau exhaustif des métriques (KGE, NSE, r, PBIAS, VALUE), l'inventaire critique des figures F1–F6 et les questions ouvertes pour Augusto Getirana, consulter la fiche technique :*
+👉 [`checks/05_evaluation_debits_historiques.md`](checks/05_evaluation_debits_historiques.md)
+
 ---
 
 ## 4. Décisions et écarts documentés
@@ -180,3 +190,4 @@ Chaque simulation produit exactement 1 827 fichiers journaliers (`LIS_HIST_20160
 | Date | Quoi | Résultat | Commit |
 | :--- | :--- | :--- | :--- |
 | 2026-10-30 | Audit des runs historiques, spin-up, paramètres et bilan volumique | Inventaire exhaustif, correction de la coquille spin-up OPL (46.504 hm³), démonstration de l'écrêtage de `tbasflw` (99.90 %, médiane 2.45 j) et distinction stockage interne vs déficit | `(en cours)` |
+| 2026-10-30 | Évaluation historique des débits (12 stations) | Documentation exhaustive des observations, appariements, métriques (KGE/NSE/PBIAS/VALUE), contraste Bouregreg/Sebou/Ksob et questions ouvertes | `(en cours)` |
