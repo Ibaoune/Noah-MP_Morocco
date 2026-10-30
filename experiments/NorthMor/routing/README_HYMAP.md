@@ -123,7 +123,7 @@ mpirun -np 16 ./src/lisf/lis/LIS -f experiments/NorthMor/routing/configs/lis_hym
 # Cycle 2 (restart depuis fin cycle 1) :
 mpirun -np 16 ./src/lisf/lis/LIS -f experiments/NorthMor/routing/configs/lis_hymap2_opl_spinup_c2_corrigee.config
 ```
-*Critère de convergence validé* : variation inter-cycles du stock souterrain $\Delta S_{BSF} < 1.0\%$ ($0.13\%$ pour OPL, $0.0645\%$ pour DA).
+*Critère de convergence validé* : variation relative inter-cycles du stock souterrain $\Delta_{rel}(BSFSTO) < 1.0\%$ ($0.1316\%$ pour OPL avec $S_{BSF} = 46.504\text{ hm}^3 \to 46.565\text{ hm}^3$, et $0.0645\%$ pour DA avec $S_{BSF} = 146.113\text{ hm}^3 \to 146.207\text{ hm}^3$). Cette stabilisation numérique globale d'un réservoir linéaire ne préjuge ni de la validité physique des stocks ni de la convergence cellule par cellule.
 
 ### Étape 3.4 : Simulation de production continue 5 ans (2016–2020)
 Exécution continue à partir du restart équilibré issu du Cycle 2 de spin-up :
@@ -131,19 +131,25 @@ Exécution continue à partir du restart équilibré issu du Cycle 2 de spin-up 
 mpirun -np 16 ./src/lisf/lis/LIS -f experiments/NorthMor/routing/configs/lis_hymap2_opl_2016_2020_corrigee.config
 mpirun -np 16 ./src/lisf/lis/LIS -f experiments/NorthMor/routing/configs/lis_hymap2_da_nocdf_2016_2020.config
 ```
+Chaque simulation produit exactement 1 827 fichiers journaliers (`LIS_HIST_201601020000.d01.nc` à `LIS_HIST_202101010000.d01.nc`), chacun représentant la moyenne des 24 heures précédentes.
+
+*Pour l'inventaire exhaustif des runs, le diagnostic quantitatif des 4 réservoirs, l'analyse du plancher numérique `cntime/86400.` et l'audit des bilans volumiques, consulter la fiche technique :*
+👉 [`checks/04_audit_routing_historique.md`](checks/04_audit_routing_historique.md)
 
 ---
 
 ## 4. Décisions et écarts documentés
 
-1. **Grilles décalées d'une demi-maille & remap conservatif** :
+1. **Grilles décalées d'une demi-maille & quasi-conservation du remap** :
    - Grille Noah-MP de surface : $30.00^\circ$ à $36.00^\circ\text{N}$, $-10.00^\circ$ à $-1.00^\circ\text{E}$ ($181 \times 121$, repérage aux nœuds).
    - Grille HyMAP : $30.025^\circ$ à $35.975^\circ\text{N}$, $-9.975^\circ$ à $-1.025^\circ\text{E}$ ($180 \times 120$, repérage aux centres).
-   - *Décision* : Préservation intégrale du volume ruisselé via un opérateur de remap surfacique pondéré conservatif.
-2. **Délai de vidange du débit de base (`tbasflw`) divisé par 86 400 (STATUT : À VÉRIFIER)** :
-   - LIS implémente la vidange du réservoir souterrain sous la forme $q_{bas} = S_{bas} / (tbsflw \times 86400)$, attendant `tbsflw` en **jours**.
-   - Les cartes brutes `lis_tbasflw_005.bin` d'Augusto Getirana contiennent des valeurs en **secondes** (moyenne ~61 703 s). Ingérées directement, elles induisent un temps de séjour de ~169 ans piégeant 97.5 % du débit souterrain.
-   - *Décision* : Création de `lis_input_corrigee.d01.nc` où `HYMAP_baseflow_time_delay` est divisé par 86 400. Le plancher numérique du code `where(tbsflw < cntime/86400.)` s'applique alors dans 99.9 % des mailles, fixant le temps de vidange effectif à `cntime/86400` (médiane 2.45 jours).
+   - *Diagnostic de l'Étape 03* : Le diagnostic annuel 2018 montre une quasi-conservation du volume intégré sur le domaine ($S_2/S_1$ d'environ $100.0002\%$) sur l'emprise commune $[30.0^\circ, 36.0^\circ]\text{N} \times [-10.0^\circ, -1.0^\circ]\text{E}$, sous les hypothèses géométriques centrées sur la maille. Cette quasi-équivalence globale n'implique aucune préservation exacte des flux à l'échelle des sous-bassins.
+
+2. **Délai de vidange du débit de base (`tbasflw`) divisé par 86 400 (STATUT : AUDITÉ)** :
+   - LIS implémente la vidange du réservoir souterrain sous la forme $q_{bas} = S_{bas} / (tbsflw \times 86400)$ (`HYMAP2_modelMod.F90`, l. 111), attendant formellement `tbsflw` en **jours**.
+   - L'unité d'origine des données dans `lis_tbasflw_005.bin` reste **non vérifiée** (moyenne brute ~61 703). Ingérées sans mise à l'échelle dans `lis_input.d01.nc`, ces valeurs induisaient un temps de séjour irréaliste de ~169 ans piégeant 97.5 % du débit souterrain (augmentation nette de stockage basée sur les fichiers de restart de $+16\,525.8\text{ hm}^3$ en 5 ans, stock initial au restart du cycle 2 de $\approx 6\,920.4\text{ hm}^3$ atteignant $\approx 23\,446.2\text{ hm}^3$ au restart final de 2021 ; la valeur historique antérieure de $+16\,518\text{ hm}^3$ issue d'un diagnostic d'historique journalier constitue un résultat distinct dont l'écart de $\approx 7.4\text{ hm}^3$ demeure non résolu).
+   - *Décision historique* : Création de `lis_input_corrigee.d01.nc` où `HYMAP_baseflow_time_delay` est divisé par 86 400 (attribut `units = 'days'`).
+   - *Comportement effectif* : Le plancher numérique du code `where(tbsflw < cntime/86400.)` (`HYMAP2_routingMod.F90`, l. 1265–1267) s'applique dans **99.90 % des mailles (15 921 / 15 937)**, substituant au paramètre le temps de concentration superficielle `cntime` en jours (champ spatialement variable issu de `HYMAP_runoff_time_delay` avec médiane 2.45 jours, moyenne 3.76 jours, plage 0.21 à 101.0 jours). Ce délai accéléré restitue la quasi-totalité du flux d'entrée (ratio entrée/sortie $V_{sim}/V_{in} \approx 99.97\%$ sur le diagnostic historique 2018), constituant un mécanisme plausible de suralimentation permanente des étiages et d'atténuation des assecs naturels sur les cours d'eau temporaires.
 3. **Fichiers bouche-trou (placeholders dans `ldt.config`)** :
    - Les cartes `HYMAP river flow type map`, `HYMAP baseflow dwi ratio map` et `HYMAP runoff dwi ratio map` pointent vers `lis_real_mask_005.bin`.
    - La carte `HYMAP runoff bias correction map` pointe vers `lis_basin_005.bin`.
@@ -157,15 +163,15 @@ mpirun -np 16 ./src/lisf/lis/LIS -f experiments/NorthMor/routing/configs/lis_hym
 | Répertoire de sortie (`routing/output/`) | Fichier lis_input utilisé | Statut | Commentaire technique |
 | :--- | :---: | :---: | :--- |
 | `OPL_201801/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | Test initial 1 mois, paramètre `tbasflw` brut. |
-| `OPL_spinup_cycle1/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | Spin-up 2016 non corrigé, BSFSTO accumule sans converger. |
-| `OPL_spinup_cycle2/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | BSFSTO double entre cycle 1 et 2 (+3 368 hm³). |
-| `OPL_2016_2020/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | Production 5 ans avec puits massif artificiel en nappe. |
-| `OPL_spinup_c1_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **VALIDE** | Spin-up cycle 1 OPL corrigé (BSFSTO = 146.4 hm³). |
-| `OPL_spinup_c2_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **VALIDE** | Spin-up cycle 2 OPL corrigé (écart 0.13 % < 1.0 %). |
-| `OPL_2016_2020_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **VALIDE** | Production 5 ans OPL ($V_{sim}/V_{in} = 100.0\%$, bilan 2018 fermé à 0.035 %). |
-| `DA_nocdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **VALIDE** | Spin-up cycle 1 DA_nocdf (BSFSTO = 146.1 hm³). |
-| `DA_nocdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **VALIDE** | Spin-up cycle 2 DA_nocdf (écart 0.0645 % < 1.0 %). |
-| `DA_nocdf_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **VALIDE** | Production 5 ans DA_nocdf ($V_{sim}/V_{in} = 100.0\%$, bilan 2018 fermé à 0.070 %). |
+| `OPL_spinup_cycle1/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | Spin-up 2016 non corrigé, BSFSTO accumule sans converger ($3\,553\text{ hm}^3$). |
+| `OPL_spinup_cycle2/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | BSFSTO double entre cycle 1 et 2 ($6\,920\text{ hm}^3$, $+94.79\%$). |
+| `OPL_2016_2020/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | Production 5 ans avec puits massif artificiel en nappe (accumulation nette de $+16\,525.8\text{ hm}^3$ entre restarts, stock final $\approx 23\,446.2\text{ hm}^3$ ; diagnostic historique séparé de $+16\,518\text{ hm}^3$). |
+| `OPL_spinup_c1_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 1 OPL corrigé (BSFSTO = 46.504 hm³). |
+| `OPL_spinup_c2_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 2 OPL corrigé (BSFSTO = 46.565 hm³, écart 0.1316 % < 1.0 %). |
+| `OPL_2016_2020_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Production 5 ans OPL (ratio entrée/sortie 2018 de $99.965\%$ issu d'un diagnostic historique, avec un écart résiduel entrée-sortie de $2.40\text{ hm}^3$ à la provenance spatio-temporelle non résolue, et non une variation de stock $\Delta S$ vérifiée). |
+| `DA_nocdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 1 DA_nocdf (BSFSTO = 146.113 hm³). |
+| `DA_nocdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 2 DA_nocdf (BSFSTO = 146.207 hm³, écart 0.0645 % < 1.0 %). |
+| `DA_nocdf_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Production 5 ans DA_nocdf (ratio entrée/sortie 2018 de $99.930\%$). |
 
 ---
 
@@ -173,4 +179,4 @@ mpirun -np 16 ./src/lisf/lis/LIS -f experiments/NorthMor/routing/configs/lis_hym
 
 | Date | Quoi | Résultat | Commit |
 | :--- | :--- | :--- | :--- |
-| *(journal ouvert — les vérifications futures seront consignées ici)* | | | |
+| 2026-10-30 | Audit des runs historiques, spin-up, paramètres et bilan volumique | Inventaire exhaustif, correction de la coquille spin-up OPL (46.504 hm³), démonstration de l'écrêtage de `tbasflw` (99.90 %, médiane 2.45 j) et distinction stockage interne vs déficit | `(en cours)` |
