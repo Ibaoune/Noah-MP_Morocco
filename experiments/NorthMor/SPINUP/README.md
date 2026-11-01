@@ -1,11 +1,6 @@
-# Master Spin-up Architecture & Audit: Northern Morocco (NorthMor)
+# Master Spin-up Architecture Documentation: Northern Morocco (NorthMor)
 
-**Scope:** Centralized documentation, workflow hierarchy, and retention audit for all Land Information System (LIS) spin-up experiments supporting the Northern Morocco domain (`experiments/NorthMor/SPINUP/`).  
-**Domain & Resolution:** Northern Morocco 5-km grid (16,030 active land tiles; 320,600 ensemble tiles for $N = 20$).  
-**Land Surface Model:** Noah-MP 4.0.1 (4 soil layers: 0–10, 10–40, 40–100, 100–200 cm).  
-**Total Hierarchy Disk Usage:** **25.8 GB** (11,881 files across three experiments).  
-**Repository Branch:** `main`  
-**Audit Status:** Fully verified (reconstructed execution chronology, restart integrity, source code verification of EnKF diagnostics, and conservative retention audit).
+**Author:** Mohammad El Aabaribaoune
 
 ---
 
@@ -127,7 +122,7 @@ When `SPINUP_DA` commenced on 2015-04-01, an operational restart incompatibility
 
 ## 5. Summary of Verified Findings vs Unresolved Uncertainties
 
-To ensure rigorous scientific integrity, the audit distinguishes verified operational realities from unresolved hypotheses:
+To ensure rigorous scientific integrity, this documentation distinguishes verified operational realities from unresolved hypotheses:
 
 | Aspect | Status | Verified Historical / Scientific Reality | Unresolved Uncertainty / Qualification |
 | :--- | :---: | :--- | :--- |
@@ -142,9 +137,9 @@ To ensure rigorous scientific integrity, the audit distinguishes verified operat
 
 ---
 
-## 6. Retention and Cleanup Audit
+## 6. Storage Assessment and File Retention Plan
 
-An exhaustive disk usage audit was conducted across all three spin-up directories. **No deletion, archiving, compression, moving, or renaming was performed.**
+An exhaustive disk usage assessment was conducted across all three spin-up directories. **No deletion, archiving, compression, moving, or renaming was performed.**
 
 ### Disk Usage Summary by Experiment:
 - `experiments/NorthMor/SPINUP/SPINUP_OPL`: **18 GB** (8,489 files)
@@ -160,13 +155,13 @@ An exhaustive disk usage audit was conducted across all three spin-up directorie
 | :--- | :---: | :--- | :--- | :---: | :--- |
 | `restarts/LIS_RST_NOAHMP401_201601010000.d01.nc` | 1.5 MB | Final 11-year unperturbed deterministic restart. | Active initial condition for `OPL_noirr_2016_2020`. | **CRITICAL KEEP** | **DO NOT DELETE.** Essential active simulation dependency. |
 | `restarts/LIS_RST_NOAHMP401_201501010000.d01.nc` | 1.6 MB | Deterministic checkpoint at 2015-01-01. | Source file for `expand_restart.py` $	o$ `ENS_OPL_2015`. | **CRITICAL KEEP** | **DO NOT DELETE.** Required to reproduce ensemble expansion. |
-| `restarts/` (annual 2006–2014, 9 files) | 14 MB | Intermediate annual boundary restarts. | Documents 11-year chaining continuity. | **KEEP AS PROVENANCE** | Confirm all annual transitions are fully audited before any offload. |
+| `restarts/` (annual 2006–2014, 9 files) | 14 MB | Intermediate annual boundary restarts. | Documents 11-year chaining continuity. | **KEEP AS PROVENANCE** | Confirm all annual transitions are fully verified before any offload. |
 | `output/` (annual folders 2005–2015, 8,034 files) | 14 GB | Daily surface model history files (5-km grid). | Climatological baseline; potential convergence analysis. | **ARCHIVE CANDIDATE** | Confirm no publication figures or baseline climatologies require raw daily outputs; compress to cold storage. |
-| `logs/` master ranks (`lislog_*.0000`, 11 files) | ~120 MB | Rank 0 execution telemetry and LIS output messages. | Complete record of execution flags, restarts, and dates. | **KEEP AS PROVENANCE** | Indispensable execution audit trail. |
+| `logs/` master ranks (`lislog_*.0000`, 11 files) | ~120 MB | Rank 0 execution telemetry and LIS output messages. | Complete record of execution flags, restarts, and dates. | **KEEP AS PROVENANCE** | Indispensable execution telemetry and provenance trail. |
 | `logs/` worker ranks (`lislog_*.0001`–`.0031`, 341 files) | ~3.7 GB | Redundant MPI worker logs (ranks 1–31). | None (contain duplicate timing and sync lines). | **ARCHIVE CANDIDATE (REDUNDANT)** | Safe to delete if authorized; master rank 0 retains all domain metrics. |
 | `logs/` orchestration (`kickoff_*.log`, `orchestrator_*.log`) | <100 KB | SLURM batch job submission records. | Documents job IDs `7247157` and `7247895`. | **KEEP AS PROVENANCE** | Permanent cluster submission evidence. |
 | `experiments/NorthMor/spinup/logs/` (32 files) | 144 KB | Misplaced nested directory from 2008 run. | Errant duplicate created by relative log path in 2008. | **ARCHIVE CANDIDATE (MISPLACED)** | Verify identical to `logs/2008/` before removal. |
-| `generated/` (`configs/`, `jobs/`, 22 files) | 188 KB | Exact LIS configs and SLURM batch scripts. | Full historical configuration provenance. | **KEEP AS PROVENANCE** | Required for exact configuration audit. |
+| `generated/` (`configs/`, `jobs/`, 22 files) | 188 KB | Exact LIS configs and SLURM batch scripts. | Full historical configuration provenance. | **KEEP AS PROVENANCE** | Required for exact configuration verification and reproducibility. |
 | `config/`, `scripts/`, `templates/`, `job.sh` | ~44 KB | Executable pipeline scripts and config templates. | Core workflow definition. | **CRITICAL KEEP** | Retain for pipeline reproducibility. |
 
 ---
@@ -181,8 +176,8 @@ An exhaustive disk usage audit was conducted across all three spin-up directorie
 | `output/2015/` Jan–Feb checkpoints (`201501`, `201502`) | ~250 MB | Intermediate monthly perturbation states. | Documents 3-month ensemble spread generation. | **KEEP AS PROVENANCE** | Proves spread spin-up from 0 to $\sigma pprox 0.051$. |
 | `output/2015/` Apr–Dec outputs (`201504` to `201601`) | ~1.8 GB | Unassimilated 20-member ensemble open-loop run. | None (SPINUP_DA branched off at March 31). | **ARCHIVE CANDIDATE / UNRESOLVED** | Determine whether an unassimilated 2015 ensemble benchmark is required before archiving. |
 | `restarts/pert/` and `restarts/surf/` | 8 KB | Empty scaffolding directories. | None (output kept in `output/2015/`). | **ARCHIVE CANDIDATE (EMPTY)** | Harmless empty folders; safe to prune if authorized. |
-| `logs/` master rank (`lislog_2015.0000` + SLURM logs) | ~5 MB | Telemetry of successful Job `7262240`. | Full record of 2015 ensemble simulation. | **KEEP AS PROVENANCE** | Indispensable execution audit trail. |
-| `logs/` worker ranks (`lislog_2015.0001`–`.0031`) | ~115 MB | MPI worker rank logs (ranks 1–31). | None direct. | **ARCHIVE CANDIDATE** | Keep pending checks for unique per-rank diagnostic or warning messages across processors. Preserve all logs during audit. |
+| `logs/` master rank (`lislog_2015.0000` + SLURM logs) | ~5 MB | Telemetry of successful Job `7262240`. | Full record of 2015 ensemble simulation. | **KEEP AS PROVENANCE** | Indispensable execution telemetry and provenance trail. |
+| `logs/` worker ranks (`lislog_2015.0001`–`.0031`) | ~115 MB | MPI worker rank logs (ranks 1–31). | None direct. | **ARCHIVE CANDIDATE** | Keep pending checks for unique per-rank diagnostic or warning messages across processors. Preserve all logs during active evaluation. |
 | `Readme` (capital R) | 8 KB | Untracked legacy developer notes. | Historical notes superseded by `README.md`. | **ARCHIVE CANDIDATE (UNTRACKED)** | Archive content into project notes if needed before removal. |
 | `config/`, `generated/`, `scripts/`, `templates/`, `job.sh` | ~80 KB | Executable scripts and config templates. | Core workflow definition. | **CRITICAL KEEP** | Retain for pipeline reproducibility. |
 
@@ -198,9 +193,9 @@ An exhaustive disk usage audit was conducted across all three spin-up directorie
 | `restarts/pert/` (months 04–11, 8 files) | 1.05 GB | Intermediate monthly perturbation checkpoints. | Documents continuous covariance evolution. | **KEEP AS PROVENANCE** | Proves continuous perturbation propagation across all 9 months. |
 | `output/*/EnKF/` (innov, incr, spread NetCDF files) | ~1.2 GB | Daily EnKF diagnostic files (668 cycles). | Underlies all verified assimilation diagnostics. | **KEEP AS PROVENANCE** | Essential empirical foundation for EnKF diagnostics. |
 | `output/*/SURFACEMODEL/` (history files) | ~1.8 GB | Daily prognostic surface model outputs. | Evaluation of Noah-MP states under active assimilation. | **KEEP / ARCHIVE CANDIDATE** | Archive to cold storage if raw daily 2015 outputs are not actively analyzed. |
-| `output/*/DAOBS/` and `DAPERT/` | ~600 MB | Processed SMAP tiles and perturbation states. | Observation preprocessing audit trail. | **KEEP AS PROVENANCE** | Retain for complete data assimilation auditability. |
-| `logs/` master ranks (`lislog_*.0000` + `assim_*.log/err`) | ~30 MB | Rank 0 logs across jobs `7260791`–`7262178`. | Execution, restart loading, and chaining audit trail. | **KEEP AS PROVENANCE** | Indispensable execution audit trail. |
-| `logs/` worker ranks (`lislog_*.0001`–`.0031`) | ~248 MB | MPI worker rank logs (ranks 1–31). | None direct. | **ARCHIVE CANDIDATE** | Keep pending verification that no unique rank-specific EnKF processing or assimilation warnings occurred across processors. Preserve all logs during audit. |
+| `output/*/DAOBS/` and `DAPERT/` | ~600 MB | Processed SMAP tiles and perturbation states. | Observation preprocessing record. | **KEEP AS PROVENANCE** | Retain for complete data assimilation reproducibility. |
+| `logs/` master ranks (`lislog_*.0000` + `assim_*.log/err`) | ~30 MB | Rank 0 logs across jobs `7260791`–`7262178`. | Execution, restart loading, and chaining provenance trail. | **KEEP AS PROVENANCE** | Indispensable execution telemetry and provenance trail. |
+| `logs/` worker ranks (`lislog_*.0001`–`.0031`) | ~248 MB | MPI worker rank logs (ranks 1–31). | None direct. | **ARCHIVE CANDIDATE** | Keep pending verification that no unique rank-specific EnKF processing or assimilation warnings occurred across processors. Preserve all logs during active evaluation. |
 | `config/`, `generated/`, `scripts/`, `templates/`, `job.sh` | ~200 KB | Executable chaining scripts and templates. | Core workflow definition. | **CRITICAL KEEP** | Retain for pipeline reproducibility. |
 
 ---
@@ -246,6 +241,6 @@ experiments/NorthMor/SPINUP/
 
 ## 8. Links to Individual Experiment Documentation
 
-- **[`SPINUP_OPL/README.md`](SPINUP_OPL/README.md):** Audit of the 10+1 year deterministic baseline spin-up (2005–2015), MERRA-2 + IMERG forcing, daisy-chaining integrity, and hydrological non-convergence qualifications.
-- **[`ENS_OPL_2015/README.md`](ENS_OPL_2015/README.md):** Audit of the 20-member ensemble generation (2015), MERRA-2/IMERG forcing, restart expansion, and 3-month perturbation spread spin-up.
-- **[`SPINUP_DA/README.md`](SPINUP_DA/README.md):** Audit of the 9-month SMAP EnKF assimilation spin-up (April–December 2015), NoCDF strategy, verified EnKF diagnostic mathematics, and downstream matrix initializations.\n
+- **[`SPINUP_OPL/README.md`](SPINUP_OPL/README.md):** Documentation of the 10+1 year deterministic baseline spin-up (2005–2015), MERRA-2 + IMERG forcing, daisy-chaining integrity, and hydrological non-convergence qualifications.
+- **[`ENS_OPL_2015/README.md`](ENS_OPL_2015/README.md):** Documentation of the 20-member ensemble generation (2015), MERRA-2/IMERG forcing, restart expansion, and 3-month perturbation spread spin-up.
+- **[`SPINUP_DA/README.md`](SPINUP_DA/README.md):** Documentation of the 9-month SMAP EnKF assimilation spin-up (April–December 2015), NoCDF strategy, verified EnKF diagnostic mathematics, and downstream matrix initializations.\n

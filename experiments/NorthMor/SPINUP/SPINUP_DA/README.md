@@ -1,16 +1,6 @@
-# SPINUP_DA: Data Assimilation Spin-up & 2016 Initialization Audit
+# Data Assimilation Spin-up (SPINUP_DA) Documentation
 
-**Scope:** Stage 3 of the Northern Morocco Land Information System (LIS) Spin-up Hierarchy  
-**Experiment Directory:** `experiments/NorthMor/SPINUP/SPINUP_DA/`  
-**Model & Domain:** Noah-MP 4.0.1 on Northern Morocco 5-km Grid (16,030 active land tiles; 320,600 ensemble tiles)  
-**Atmospheric Forcing:** MERRA-2 meteorological forcing overlaid with GPM IMERG precipitation  
-**Ensemble Configuration:** 20 members (`Number of ensembles per tile: 20`)  
-**Data Assimilation Algorithm:** Ensemble Kalman Filter (`EnKF`), 1 instance  
-**Assimilation Target:** NASA SMAP Level-3 Enhanced Radiometer Soil Moisture (`SPL3SMP_E`, Release R19)  
-**Scaling Strategy:** **NoCDF** (`Data assimilation scaling strategy: "none"`)  
-**Execution Interval:** 2015-04-01 00:00:00 to 2016-01-01 00:00:00 (9 monthly simulation chunks)  
-**Historical Status:** Completed (Jobs `7260791` through `7262178`, 13h 45m walltime)  
-**Audit Status:** Fully verified (reconstructed execution chronology, restart integrity, source code verification of EnKF diagnostics, and corrected scientific interpretations)
+**Author:** Mohammad El Aabaribaoune
 
 ---
 
@@ -174,7 +164,7 @@ All jobs executed on the UM6P Toubkal HPC cluster under SLURM partition `nodes` 
 
 Every month generated an end-of-simulation restart stamped `${next_date}0000` which was copied to `restarts/surf/` and `restarts/pert/` by `chain_da.py`.
 
-### SHA-256 Checksum Audit:
+### SHA-256 Checksum Verification:
 
 | Monthly Segment | Target Restart Stamp | Surface NetCDF SHA-256 (Prefix) | Staged Match | Perturbation Binary SHA-256 (Prefix) | Staged Match |
 | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -246,7 +236,7 @@ Computed from all 668 innovation NetCDF files, 668 increment NetCDF files, and 2
      - The sample standard deviation of normalized innovations (`std(ninnov) ~ 0.55`) suggests a **possible consistency/calibration issue** in the filter configuration.
      - However, this diagnostic alone is **insufficient by itself to establish filter non-optimality or specifically over-estimated error covariance**. Alternative mechanisms—such as unresolved spatial observation error cross-correlations, forward operator approximations, observation preprocessing, or geographic sample selection—can also depress the empirical innovation variance.
      - Definitive attribution requires formal calibration diagnostics (e.g. Desroziers consistency relations or objective covariance tuning). Claims asserting either proven filter optimality or proven covariance over-estimation remain scientifically unsupported.
-4. **Observation Record Counts vs Acceptance/Rejection Audits:**
+4. **Observation Record Counts and Acceptance Verification:**
    - The 9-month archive contains **1,080,481 valid grid-time innovation records** (`innov_01 > -9000.0`).
    - While LIS populates `innov_01` during active EnKF processing cycles, calling every record an accepted physical state update is unverified without independent tile-by-tile acceptance logs or explicit Kalman weight telemetry. These records are rigorously designated as **valid grid-time innovation records** rather than proven unique physical update events.
    - Rejection counts by QC flags or unobserved cell ratios cannot be proven without examining raw SMAP HDF5 orbital footprints or dedicated diagnostic log files.
@@ -292,4 +282,4 @@ The final restart files produced at `2016-01-01 00:00:00`:
 | `restarts/surf/` (months 04–11, 8 files) | 168 MB | **KEEP AS PROVENANCE** | Intermediate monthly surface checkpoints documenting restart chaining. |
 | `restarts/pert/` (months 04–11, 8 files) | 1.05 GB | **KEEP AS PROVENANCE** | Intermediate monthly perturbation checkpoints documenting covariance spin-up. |
 | `output/` (9 monthly directories) | 3.6 GB | **KEEP** | Daily histories, innovations, increments, and spread files supporting all EnKF diagnostics. |
-| `logs/` (9 monthly directories) | 278 MB | **KEEP AS PROVENANCE** | Indispensable execution audit trail of jobs `7260791` through `7262178`. |\n
+| `logs/` (9 monthly directories) | 278 MB | **KEEP AS PROVENANCE** | Indispensable execution telemetry and provenance trail of jobs `7260791` through `7262178`. |\n

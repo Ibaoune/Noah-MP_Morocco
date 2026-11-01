@@ -1,12 +1,6 @@
-# ENS_OPL_2015: Ensemble Open Loop Spin-up & Perturbation Handoff
+# Ensemble Open-Loop Spin-up (ENS_OPL_2015) Documentation
 
-**Scope:** Stage 2 of the Northern Morocco Land Information System (LIS) Spin-up Hierarchy  
-**Experiment Directory:** `experiments/NorthMor/SPINUP/ENS_OPL_2015/`  
-**Model & Domain:** Noah-MP 4.0.1 on Northern Morocco 5-km Grid (16,030 active land tiles; 320,600 ensemble tiles)  
-**Atmospheric Forcing:** MERRA-2 meteorological forcing overlaid with GPM IMERG precipitation (MERRA-2 with lapse-rate topographic correction; IMERG raw; 1-hour forcing interval)  
-**Ensemble Configuration:** 20 members (`Number of ensembles per tile: 20`)  
-**Data Assimilation Status:** DISABLED (`Number of data assimilation instances: 0`)  
-**Primary Execution Interval:** 2015-01-01 00:00:00 to 2016-01-01 00:00:00 (Handoff checkpoint: 2015-03-31 23:45:00)
+**Author:** Mohammad El Aabaribaoune
 
 ---
 
@@ -83,7 +77,7 @@ do r = 1, LIS_rc%lnr(n)
 Because the ensemble index `m` is innermost within each spatial cell `(c, r)`, tiles are ordered contiguous in ensemble space: `[cell_0_ens1..20, cell_1_ens1..20, ...]`. The use of `np.repeat(data, 20)` replicates each spatial grid cell 20 consecutive times, perfectly preserving the 1-to-1 geographic mapping of every ensemble member.
 
 ### Numerical Array Verification
-Audit of the generated file [`restarts/LIS_RST_NOAHMP401_201501010000_ens20.d01.nc`](restarts/LIS_RST_NOAHMP401_201501010000_ens20.d01.nc) (93.8 MB; 93,781,388 bytes):
+Verification of the generated file [`restarts/LIS_RST_NOAHMP401_201501010000_ens20.d01.nc`](restarts/LIS_RST_NOAHMP401_201501010000_ens20.d01.nc) (93.8 MB; 93,781,388 bytes):
 - All 50 prognostic and diagnostic variables exhibit **exact numerical array-value equality** (`np.array_equal == True`) across all 20 members compared to the deterministic source array values.
 - *Distinction:* `np.array_equal` confirms exact array value replication across all variables, not byte-for-byte NetCDF container identity (NetCDF file headers, chunking tables, and dimension structures naturally differ between the 1-member 1.6 MB file and the 20-member 93.8 MB file).
 - Initial ensemble standard deviation across all 20 members is physically zero. Calculated standard deviations show exact $0.000000\text{ m}^3/\text{m}^3$ for all soil moisture layers; minuscule non-zero values in soil temperature ($\sim 2.5 \times 10^{-5}\text{ K}$) and aquifer water ($\sim 3.9 \times 10^{-4}\text{ mm}$) represent numerical 32-bit single-precision floating-point rounding artifacts of NetCDF/NumPy computations rather than genuine initial ensemble variance.
@@ -238,5 +232,5 @@ Lightweight read-only diagnostics evaluated over all 16,030 land grid cells and 
 | `output/2015/DAPERT/201501..201503/` | ~30 MB | **KEEP** | Monthly perturbation restarts, specifically the critical March 31 23:45 handoff binary. |
 | `output/2015/SURFACEMODEL/201504..201512/` | ~1.6 GB | **ARCHIVE CANDIDATE** | Daily histories post-dating the handoff to `SPINUP_DA`. Useful only as open-loop baseline for 2015. |
 | `output/2015/DAPERT/201504..201512/` | ~90 MB | **ARCHIVE CANDIDATE** | Perturbation binary restarts post-dating the handoff. |
-| `logs/` (all 32 MPI lislogs and SLURM logs) | 120 MB | **KEEP AS PROVENANCE** | Indispensable execution audit trail of jobs `7255708` and `7262240`. |
+| `logs/` (all 32 MPI lislogs and SLURM logs) | 120 MB | **KEEP AS PROVENANCE** | Indispensable execution telemetry and provenance trail of jobs `7255708` and `7262240`. |
 | `Readme` (original French documentation) | 3.5 KB | **KEEP AS PROVENANCE** | Primary historical source document written during original execution. |

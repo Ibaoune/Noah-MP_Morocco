@@ -1,10 +1,6 @@
-# NorthMor Noah-MP SPINUP_OPL Documentation
+# Deterministic Open-Loop Spin-up (SPINUP_OPL) Documentation
 
-**Directory:** `experiments/NorthMor/SPINUP/SPINUP_OPL/`  
-**Experiment Identifier:** `spinup`  
-**Model & Version:** NASA LIS 7.4 / Noah-MP 4.0.1  
-**Audit Reference:** SP-01 / SP-02 / SP-02b Audit (October 2026)  
-**Author / Provenance:** M. El Aabaribaoune (@um6p)
+**Author:** Mohammad El Aabaribaoune
 
 ---
 
