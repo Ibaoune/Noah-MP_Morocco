@@ -97,7 +97,7 @@ The experiment couples two meteorological forcing datasets via the LIS multi-for
   - **Observation & State Bounds Defined in Attribute Files:**
     - *Observation Attribute Bounds:* [`data/pert_package/smap_attribs.txt`](../../../../data/pert_package/smap_attribs.txt) prescribes generic observation validity bounds ($0.01 \le \theta_{\text{obs}} \le 1.0\text{ m}^3/\text{m}^3$) checked during generic LIS observation initialization.
     - *Prognostic State Bounds:* [`data/pert_package/noahmp_sm_attribs.txt`](../../../../data/pert_package/noahmp_sm_attribs.txt) prescribes model state limits ($0.01 \le \theta_{\text{model}} \le 0.55\text{ m}^3/\text{m}^3$) for Layers 1–4. These bounds govern state perturbation truncation and model state clamping; they do not function as the model-side observation screening routine.
-  - *Historical Executable Provenance Note:* These quality control logic paths and numerical thresholds are established directly from the workspace source code (`LISF Version 7.5`). As the historical executable `./src/lisf/lis/LIS` (16,666,992 bytes) resides untracked on Lustre without compiled build flags or embedded version manifests, binary-level execution of these exact rules is deduced from workspace source code alignment and execution log consistency.
+  - *Historical Executable Provenance Note:* These quality control logic paths and numerical thresholds are established directly from the workspace source code (`LISF Version 7.5`). As the historical executable `./src/lisf/lis/LIS` (16,666,992 bytes) resides untracked on Lustre without compiled build flags, recorded compiler toolchains, or embedded version manifests, binary-level execution of these exact rules is deduced from workspace source code alignment and execution log consistency.
 
 ### 3.2 Assimilation Algorithm & Scaling Strategy
 * **Data Assimilation Algorithm:** 1-Dimensional Ensemble Kalman Filter (`1D EnKF`, `Number of data assimilation instances: 1`).
@@ -123,7 +123,7 @@ On January 1, 2016, `chain_da.py` initialized `DA_nocdf_noirr_2016_2020` directl
 * **Surface Model Restart:**  
   `experiments/NorthMor/SPINUP/SPINUP_DA/restarts/surf/LIS_RST_NOAHMP401_201601010000.d01.nc` (21,451,770 bytes).
 * **Perturbation State Restart:**  
-  `experiments/NorthMor/SPINUP/SPINUP_DA/restarts/pert/LIS_DAPERT_201601010000.d01.bin` (137,219,692 bytes).
+  `experiments/NorthMor/SPINUP/SPINUP_DA/restarts/pert/LIS_DAPERT_201601010000.d01.bin` (143,629,696 bytes).
 
 ---
 
@@ -152,13 +152,13 @@ The 60 monthly jobs executed between July 24, 2026 and July 28, 2026 on HPC Toub
 ### 6.1 Directory Layout
 ```
 DA_nocdf_noirr_2016_2020/
-├── config/                      # Experiment parameters & date bounds (planned for Git tracking)
+├── config/                      # Experiment parameters & date bounds (tracked in Git)
 │   └── experiment.ini
-├── templates/                   # Base LISF/Noah-MP configuration template (planned for Git tracking)
+├── templates/                   # Base LISF/Noah-MP configuration template (tracked in Git)
 │   └── lis_da.config.template
-├── scripts/                     # Chaining and restart automation script (planned for Git tracking)
+├── scripts/                     # Chaining and restart automation script (tracked in Git)
 │   └── chain_da.py
-├── generated/                   # 60 monthly generated configs and SLURM scripts (preserved in later commits)
+├── generated/                   # 60 monthly generated configs and SLURM scripts (tracked in Git)
 │   ├── configs/                 # 60 monthly lis.config files
 │   └── jobs/                    # 60 monthly SLURM job scripts
 ├── restarts/                    # Checkpoint archive (Lustre-only, untracked)
@@ -175,8 +175,8 @@ DA_nocdf_noirr_2016_2020/
 ```
 
 *Note on Repository Tracking & Preservation Strategy:*
-* **Core Experiment Definitions:** The primary configuration, template, chaining script, and this documentation ([`config/experiment.ini`](config/experiment.ini), [`templates/lis_da.config.template`](templates/lis_da.config.template), [`scripts/chain_da.py`](scripts/chain_da.py), and `README.md`) define the experimental setup and will be tracked directly in Git.
-* **Generated Run Configurations:** The 60 historical monthly generated LIS configuration files (`generated/configs/`) and 60 SLURM job scripts (`generated/jobs/`) record exact historical execution parameters and will be preserved later in separate dedicated Git commits.
+* **Core Experiment Definitions:** The primary configuration, template, chaining script, and this documentation ([`config/experiment.ini`](config/experiment.ini), [`templates/lis_da.config.template`](templates/lis_da.config.template), [`scripts/chain_da.py`](scripts/chain_da.py), and `README.md`) define the experimental setup and are tracked directly in Git.
+* **Generated Run Configurations:** The 60 historical monthly generated LIS configuration files (`generated/configs/`) and 60 SLURM job scripts (`generated/jobs/`) record exact historical execution parameters and are preserved in dedicated Git commits.
 * **Excluded Simulation Products:** High-volume binary restarts (`restarts/`), primary simulation outputs (`output/`), and detailed raw MPI logs (`logs/`) remain excluded from version control in accordance with [`.gitignore`](../../../../.gitignore) to maintain repository efficiency.
 
 ### 6.2 Data Assimilation Diagnostic Variables
@@ -231,7 +231,7 @@ The parameter `LIS_rc%nmetforc = 2` mathematically partitions the 20 members int
 ### 7.6 LISF 7.5 Source Identification & Historical Binary Provenance
 * Source notices across `LIS_readConfig.F90`, `LIS_lsmMod.F90`, `LIS_metforcingMod.F90`, and `build_version.sh` are stamped `Land Information System Framework (LISF) Version 7.5 (2024)`.
 * Job logs from Job 7260790 match line 2490 in `gmaopert_Mod.F90` exactly, establishing direct line correspondence between the workspace source code and the execution environment.
-* Binary `./src/lisf/lis/LIS` (16,666,992 bytes) resides outside version control without archived build flags or commit-stamped version manifests. Behaviors documented here represent deductions from the current workspace source code.
+* Binary `./src/lisf/lis/LIS` (16,666,992 bytes) resides outside version control without archived build flags, recorded compiler toolchain specifications, or commit-stamped version manifests. Behaviors documented here represent deductions from the current workspace source code.
 
 ### 7.7 Downstream Postprocessing Directory-Path Mismatch
 In [`scripts/postproc/`](../../../../scripts/postproc/), several postprocessing and validation routines failed to locate outputs because they expected history files at `output/SURFACEMODEL/` or referenced `matrix_2016/DA_nocdf_noirr_2016/output`, whereas the production chaining script wrote outputs to monthly nested folders (`output/<YYYY-MM>/SURFACEMODEL/<YYYYMM>/LIS_HIST_*.nc`).
@@ -247,8 +247,8 @@ Independent reproducibility is constrained by the following documented repositor
 
 1. **Git Tracking Status & Preservation Strategy:**
    * Line 5 of [`.gitignore`](../../../../.gitignore#L5) specifies `experiments/`.
-   * **Core Experiment Definitions:** [`README.md`](README.md), [`config/experiment.ini`](config/experiment.ini), [`scripts/chain_da.py`](scripts/chain_da.py), and [`templates/lis_da.config.template`](templates/lis_da.config.template) define the mathematical and numerical setup and will be tracked in Git.
-   * **Generated Run Configurations:** The 60 historical monthly generated LIS configuration files (`generated/configs/`) and 60 SLURM job scripts (`generated/jobs/`) record exact historical execution parameters and will be preserved later in separate dedicated Git commits.
+   * **Core Experiment Definitions:** [`README.md`](README.md), [`config/experiment.ini`](config/experiment.ini), [`scripts/chain_da.py`](scripts/chain_da.py), and [`templates/lis_da.config.template`](templates/lis_da.config.template) define the mathematical and numerical setup and are tracked in Git.
+   * **Generated Run Configurations:** The 60 historical monthly generated LIS configuration files (`generated/configs/`) and 60 SLURM job scripts (`generated/jobs/`) record exact historical execution parameters and are preserved in dedicated Git commits.
    * **Excluded Simulation Products:** High-volume binary restarts (`restarts/`), primary simulation outputs (`output/`), and detailed raw MPI logs (`logs/`) remain excluded from version control in accordance with [`.gitignore`](../../../../.gitignore) to maintain repository efficiency.
 2. **Hardcoded Absolute Paths:**
    [`scripts/chain_da.py`](scripts/chain_da.py) contains hardcoded Lustre paths:
