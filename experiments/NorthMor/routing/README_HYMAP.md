@@ -146,7 +146,18 @@ La confrontation des simulations historiques (OPL corrigé et DA-NoCDF) aux obse
 *Pour l'audit complet de l'évaluation hydrologique, les fiches des 12 stations, l'analyse d'appariement, le tableau exhaustif des métriques (KGE, NSE, r, PBIAS, VALUE), l'inventaire critique des figures F1–F6 et les questions ouvertes pour Augusto Getirana, consulter la fiche technique :*
 👉 [`checks/05_evaluation_debits_historiques.md`](checks/05_evaluation_debits_historiques.md)
 
+### Étape 3.6 : Audit de cohérence méthodologique et numérique (Étape 06)
+Un audit de cohérence indépendant réalisé le 2 novembre 2026 a permis de clarifier 4 points méthodologiques et d'éliminer des affirmations non vérifiées :
+- **Recalcul indépendant du plancher `cntime` :** Confirmé sur 99.90 % des mailles (15 921 / 15 937), avec un temps de vidange corrigé réel `tbsflw` de 0.0774 jour en médiane (1.86 h) et un plancher médian de 2.45 jours (`scripts/check_cntime_floor.py`).
+- **Confirmation des fichiers fusionnés (*merged*) :** `lis_rivwth_merged_005.bin` et `lis_fldhgt_merged_005.bin` sont bel et bien présents dans l'archive originale, ont été correctement liés dans LDT et ont produit des champs distribués non constants (4 080 valeurs uniques de largeur ; profil d'inondation à 10 strates).
+- **Durée réelle du spin-up :** Les 2 cycles de spin-up ont été exécutés sur 1 an (2016) et non sur 5 ans. Au terme du Cycle 2, le stock total stabilisé est de 574.807 hm³ (écart inter-cycle de +0.0684 %, critère < 1.0 % validé). Le chiffre fictif de 64 521 hm³ était une hallucination textuelle.
+- **Résolution du paradoxe d'El Mers dans F5 :** La figure F5 comparait le ruissellement DA moyenné sur 5 ans (60 mois) au débit simulé OPL moyenné sur les seuls 20 mois humides observés. Sur les stricts mêmes 20 mois observés, $V_{in\_OPL} = 23.64\text{ mm/an}$ et $V_{sim\_OPL} = 23.65\text{ mm/an}$ (conservation à 100.06 %).
+
+*Pour le rapport complet d'audit, les distributions statistiques exactes, la vérification de l'archive tarball, l'analyse microscopique des restarts et la confrontation sur périodes identiques des 12 stations, consulter la fiche technique :*
+👉 [`checks/06_audit_coherence.md`](checks/06_audit_coherence.md)
+
 ---
+
 
 ## 4. Décisions et écarts documentés
 
@@ -155,16 +166,20 @@ La confrontation des simulations historiques (OPL corrigé et DA-NoCDF) aux obse
    - Grille HyMAP : $30.025^\circ$ à $35.975^\circ\text{N}$, $-9.975^\circ$ à $-1.025^\circ\text{E}$ ($180 \times 120$, repérage aux centres).
    - *Diagnostic de l'Étape 03* : Le diagnostic annuel 2018 montre une quasi-conservation du volume intégré sur le domaine ($S_2/S_1$ d'environ $100.0002\%$) sur l'emprise commune $[30.0^\circ, 36.0^\circ]\text{N} \times [-10.0^\circ, -1.0^\circ]\text{E}$, sous les hypothèses géométriques centrées sur la maille. Cette quasi-équivalence globale n'implique aucune préservation exacte des flux à l'échelle des sous-bassins.
 
-2. **Délai de vidange du débit de base (`tbasflw`) divisé par 86 400 (STATUT : AUDITÉ)** :
+2. **Délai de vidange du débit de base (`tbasflw`) divisé par 86 400 (STATUT : AUDITÉ, [CORRIGÉ le 2026-11-02])** :
    - LIS implémente la vidange du réservoir souterrain sous la forme $q_{bas} = S_{bas} / (tbsflw \times 86400)$ (`HYMAP2_modelMod.F90`, l. 111), attendant formellement `tbsflw` en **jours**.
    - L'unité d'origine des données dans `lis_tbasflw_005.bin` reste **non vérifiée** (moyenne brute ~61 703). Ingérées sans mise à l'échelle dans `lis_input.d01.nc`, ces valeurs induisaient un temps de séjour irréaliste de ~169 ans piégeant 97.5 % du débit souterrain (augmentation nette de stockage basée sur les fichiers de restart de $+16\,525.8\text{ hm}^3$ en 5 ans, stock initial au restart du cycle 2 de $\approx 6\,920.4\text{ hm}^3$ atteignant $\approx 23\,446.2\text{ hm}^3$ au restart final de 2021 ; la valeur historique antérieure de $+16\,518\text{ hm}^3$ issue d'un diagnostic d'historique journalier constitue un résultat distinct dont l'écart de $\approx 7.4\text{ hm}^3$ demeure non résolu).
    - *Décision historique* : Création de `lis_input_corrigee.d01.nc` où `HYMAP_baseflow_time_delay` est divisé par 86 400 (attribut `units = 'days'`).
-   - *Comportement effectif* : Le plancher numérique du code `where(tbsflw < cntime/86400.)` (`HYMAP2_routingMod.F90`, l. 1265–1267) s'applique dans **99.90 % des mailles (15 921 / 15 937)**, substituant au paramètre le temps de concentration superficielle `cntime` en jours (champ spatialement variable issu de `HYMAP_runoff_time_delay` avec médiane 2.45 jours, moyenne 3.76 jours, plage 0.21 à 101.0 jours). Ce délai accéléré restitue la quasi-totalité du flux d'entrée (ratio entrée/sortie $V_{sim}/V_{in} \approx 99.97\%$ sur le diagnostic historique 2018), constituant un mécanisme plausible de suralimentation permanente des étiages et d'atténuation des assecs naturels sur les cours d'eau temporaires.
-3. **Fichiers bouche-trou (placeholders dans `ldt.config`)** :
-   - Les cartes `HYMAP river flow type map`, `HYMAP baseflow dwi ratio map` et `HYMAP runoff dwi ratio map` pointent vers `lis_real_mask_005.bin`.
-   - La carte `HYMAP runoff bias correction map` pointe vers `lis_basin_005.bin`.
+   - *Comportement effectif [CORRIGÉ le 2026-11-02]* : Le recalcul indépendant (`scripts/check_cntime_floor.py`) confirme que le plancher numérique `where(tbsflw < cntime/86400.)` (`HYMAP2_routingMod.F90`, l. 1265–1267) s'active dans **99.90 % des mailles actives (15 921 / 15 937)**. Les distributions réelles sont : `tbsflw` corrigé médian = **0.0774 jour ($\approx 1.86\text{ h}$)**, min = 0.0024 j, max = 30.46 j ; `plancher` médian = **2.4465 jours** ; `trnoff` multiplicateur = **1.0000** partout. Ce délai accéléré restitue la quasi-totalité du flux d'entrée, constituant un mécanisme plausible de suralimentation permanente des étiages.
+3. **Fichiers fusionnés et bouche-trou dans `ldt.config` (STATUT : AUDITÉ, [CORRIGÉ le 2026-11-02])** :
+   - *Présence avérée des fichiers fusionnés [CORRIGÉ le 2026-11-02]* : `lis_rivwth_merged_005.bin` (86 400 octets) et `lis_fldhgt_merged_005.bin` (864 000 octets) sont bel et bien présents dans l'archive originale `lis_param.tar.gz` et ont produit des champs réels spatialement distribués (4 080 valeurs uniques de largeur de lit ; profil sub-maille d'inondation à 10 niveaux). L'affirmation antérieure selon laquelle des substituts constants (10 m et 0 m) avaient été employés était erronée.
+   - *Substituts techniques avérés (placeholders)* : Seules les cartes `HYMAP river flow type map`, `HYMAP baseflow dwi ratio map` et `HYMAP runoff dwi ratio map` pointent vers `lis_real_mask_005.bin`, et `HYMAP runoff bias correction map` pointe vers `lis_basin_005.bin` (neutralisées par `dwi flag = 0`).
 4. **Désactivation des interactions nappe-rivière (`dwi flag = 0`)** :
    - `HYMAP2 routing model dwi flag: 0` dans tous les `lis.config` pour neutraliser les ratios DWI fictifs.
+5. **Bilan F5 et résolution du paradoxe d'El Mers [CORRIGÉ le 2026-11-02]** :
+   - Dans `complete_t8_analysis_and_plots.py` (l. 723), la barre grise "Vin" de la figure F5 représentait le ruissellement de **DA_nocdf** (`vin_mman`, l. 349) calculé sur les **5 années entières (60 mois)** divisé par 5.0 ans, intégrant les années sèches 2018–2020.
+   - En revanche, les débits simulés et observés d'El Mers (`vsim_opl_mman`, l. 347) étaient moyennés sur les **seuls 20 mois humides observés** (janvier 2016 à août 2017).
+   - Recalculés sur les **stricts mêmes 20 mois observés**, $V_{in\_OPL} = 23.64\text{ mm/an}$ et $V_{sim\_OPL} = 23.65\text{ mm/an}$ (ratio de transmission = **100.06 %**). Il n'y a aucun dépassement physique ni création magique d'eau : le paradoxe $V_{sim} > V_{in}$ était un pur artefact statistique d'échantillonnage temporel.
 
 ---
 
@@ -176,8 +191,8 @@ La confrontation des simulations historiques (OPL corrigé et DA-NoCDF) aux obse
 | `OPL_spinup_cycle1/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | Spin-up 2016 non corrigé, BSFSTO accumule sans converger ($3\,553\text{ hm}^3$). |
 | `OPL_spinup_cycle2/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | BSFSTO double entre cycle 1 et 2 ($6\,920\text{ hm}^3$, $+94.79\%$). |
 | `OPL_2016_2020/ROUTING/` | `lis_input.d01.nc` | **OBSOLÈTE** | Production 5 ans avec puits massif artificiel en nappe (accumulation nette de $+16\,525.8\text{ hm}^3$ entre restarts, stock final $\approx 23\,446.2\text{ hm}^3$ ; diagnostic historique séparé de $+16\,518\text{ hm}^3$). |
-| `OPL_spinup_c1_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 1 OPL corrigé (BSFSTO = 46.504 hm³). |
-| `OPL_spinup_c2_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 2 OPL corrigé (BSFSTO = 46.565 hm³, écart 0.1316 % < 1.0 %). |
+| `OPL_spinup_c1_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 1 OPL corrigé sur 1 an (2016) [CORRIGÉ le 2026-11-02] (BSFSTO = 46.504 hm³, stock total = 574.414 hm³). |
+| `OPL_spinup_c2_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 2 OPL corrigé sur 1 an (2016) [CORRIGÉ le 2026-11-02] (BSFSTO = 46.565 hm³, stock total = 574.807 hm³, écart total 0.0684 % < 1.0 %). |
 | `OPL_2016_2020_corrigee/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Production 5 ans OPL (ratio entrée/sortie 2018 de $99.965\%$ issu d'un diagnostic historique, avec un écart résiduel entrée-sortie de $2.40\text{ hm}^3$ à la provenance spatio-temporelle non résolue, et non une variation de stock $\Delta S$ vérifiée). |
 | `DA_nocdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 1 DA_nocdf (BSFSTO = 146.113 hm³). |
 | `DA_nocdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE HISTORIQUE (COMPLÉTÉ)** | Spin-up cycle 2 DA_nocdf (BSFSTO = 146.207 hm³, écart 0.0645 % < 1.0 %). |
@@ -189,5 +204,6 @@ La confrontation des simulations historiques (OPL corrigé et DA-NoCDF) aux obse
 
 | Date | Quoi | Résultat | Commit |
 | :--- | :--- | :--- | :--- |
-| 2026-10-30 | Audit des runs historiques, spin-up, paramètres et bilan volumique | Inventaire exhaustif, correction de la coquille spin-up OPL (46.504 hm³), démonstration de l'écrêtage de `tbasflw` (99.90 %, médiane 2.45 j) et distinction stockage interne vs déficit | `(en cours)` |
-| 2026-10-30 | Évaluation historique des débits (12 stations) | Documentation exhaustive des observations, appariements, métriques (KGE/NSE/PBIAS/VALUE), contraste Bouregreg/Sebou/Ksob et questions ouvertes | `(en cours)` |
+| 2026-10-30 | Audit des runs historiques, spin-up, paramètres et bilan volumique | Inventaire exhaustif, correction de la coquille spin-up OPL (46.504 hm³), démonstration de l'écrêtage de `tbasflw` (99.90 %, médiane 2.45 j) et distinction stockage interne vs déficit | `b560136` |
+| 2026-10-30 | Évaluation historique des débits (12 stations) | Documentation exhaustive des observations, appariements, métriques (KGE/NSE/PBIAS/VALUE), contraste Bouregreg/Sebou/Ksob et questions ouvertes | `1ebe844` |
+| 2026-11-02 | Audit de cohérence (Étape 06) [CORRIGÉ le 2026-11-02] | Recalcul indépendant du plancher cntime (99.90 %, tbsflw médian 0.077 j), confirmation des fichiers merged dans l'archive, correction de la durée de spin-up (1 an 2016, stock total 574.8 hm³), résolution du paradoxe d'El Mers dans F5 | `(en cours)` |
