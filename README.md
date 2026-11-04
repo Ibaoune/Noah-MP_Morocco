@@ -31,7 +31,7 @@ NoahMP_Morocco/
 │   ├── forcing/              #   Forçages météo (MERRA2, IMERG, GDAS)
 │   ├── observations/         #   Observations satellitaires (SMAP_SPL3SMP_E, MODIS)
 │   ├── lis_input/            #   Fichier de domaine de référence lis_input_NorthMor_5km.nc
-│   ├── land_params/          #   Tables physiques Noah-MP (VEGPARM, SOILPARM, etc.)
+│   ├── land_params/          #   Tables physiques Noah-MP (SOILPARM, GENPARM, MPTABLE)
 │   ├── pert_package/         #   Tables d'attributs de perturbation d'ensemble GMAO
 │   └── validation/           #   Produits d'évaluation indépendants
 │
