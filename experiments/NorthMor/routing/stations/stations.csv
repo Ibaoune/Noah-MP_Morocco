@@ -1,0 +1,10 @@
+nom,type,longitude,latitude,aire_officielle_km2,source
+Moulouya,exutoire,-2.325,35.125,54103,officielle_ABH
+Sebou,exutoire,-6.675,34.275,38675,officielle_ABH
+Oum_Er_Rbia,exutoire,-8.325,33.325,35527,officielle_ABH
+Tensift,exutoire,-9.325,32.025,20174,officielle_ABH
+Souss,exutoire,-9.625,30.375,17178,officielle_ABH
+Bouregreg,exutoire,-6.825,34.025,9872,officielle_ABH
+Loukkos,exutoire,-6.125,35.225,3759,officielle_ABH
+Adamna_station,station,-9.675,31.475,1617,station_ABHT
+Ksob_exutoire,exutoire,-9.775,31.475,1742,etude_Ksob

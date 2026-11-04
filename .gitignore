@@ -1,36 +1,84 @@
-# Reorganized NoahMP_Morocco Git Ignore
+# ==============================================================================
+# NoahMP_Morocco - Git Ignore Configuration
+# ==============================================================================
 
-# Input and Output data directories (large files)
-data/
-experiments/
-logs/
+# --- Heavy Input Data Directories (anchored to root) ---
+/data/forcing/
+/data/observations/
+/data/observations_archive/
+/data/validation/*
+!/data/validation/README_validation.md
+/data/merit_hydro/
+/data/logs/
+/data/reports/
+/data/streamflow_data/
+/data/streamflow_clean/
+/data/Hymap_params/
+/data/Hymap_params_from_Augusto/
+/data/land_params/*
+!/data/land_params/noahmp401_parms/
+/data/land_params/noahmp401_parms/*
+!/data/land_params/noahmp401_parms/*.TBL
+/data/lis_input/*
+!/data/lis_input/*.nc
 
-# Older/temporary run files
-fort.*
+# --- Large Simulation Outputs, Restarts & CDF Outputs ---
+experiments/**/output/
+experiments/**/restarts/
+experiments/**/logs/
+experiments/NorthMor/matrix_2016_2020/CDF/OUTPUT_*/
+experiments/NorthMor/matrix_2016_2020/CDF/combined_OPL_noirr/
+experiments/NorthMor/matrix_2016_2020/_ARCHIVE_WRONG_CDF_DOMAIN/old_DA_cdf_run/
+experiments/NorthMor/matrix_2016_2020/_ARCHIVE_WRONG_CDF_DOMAIN/old_cdf_files/
+experiments/NorthMor/matrix_2016_2020/_ARCHIVE_WRONG_CDF_DOMAIN/old_derived_products/
+experiments/NorthMor/routing/output/
+experiments/NorthMor/routing/restarts/
+experiments/NorthMor/routing/logs/
+experiments/NorthMor/routing/plots/
+
+# --- Runtime artifacts, logs & temporary files ---
+**/logs/
+slurm-*.out
+slurm-*.err
 ldtlog.*
+ldtlog_*
+lislog*
+fort.*
 SMAP_filelist.dat
+MaskParamFill.log
+MPFilltest*.log
+*.log
+*.bak
+*~
+*.swp
+*.tmp
 
-# Compiled LISF binaries (under src/)
+# --- Compiled Binaries & Build Objects ---
 src/lisf/lis/LIS
-src/lisf/lis/make/LIS
+src/lisf/lis/LIS.orig
 src/lisf/ldt/LDT
-src/lisf/ldt/make/LDT
 src/lisf/lvt/LVT
-src/lisf/lvt/make/LVT
+src/lisf_nowilt/
+src/**/make/LIS
+src/**/make/LDT
+src/**/make/LVT
 *.o
 *.mod
 *.d
+*.a
 
-# Python cache
+# --- Python cache & virtual environments ---
 __pycache__/
 *.pyc
-
-# Figures
-postproc/figures/
-*.png
-input/
+.pytest_cache/
 scripts/venv/
 scripts/unrar
 validation/vegetation/Copernicus_LAI/raw/
 scripts/download/validation/credentials_validation.py
-MaskParamFill.log
+
+# --- Figures & Binary Images ---
+/postproc/figures/
+*.png
+experiments/NorthMor/routing/ldt_hymap/OUTPUT/
+experiments/NorthMor/routing/ldt_hymap/lis_input*.nc
+experiments/NorthMor/routing/runoff_remap_180x120/
