@@ -55,7 +55,7 @@ def main():
     
     args = parser.parse_args()
     
-    base_dir = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/DA_anomaly_noirr_2016_2020"
+    base_dir = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/planned/DA_anomaly_noirr_2016_2020"
     os.chdir(base_dir)
 
     config_path = "config/experiment.ini"
@@ -167,7 +167,7 @@ def main():
 #SBATCH --ntasks=32
 
 set -e
-cd {base_dir}/../../../../
+cd {base_dir}/../../../../../
 
 source arch/arch_toubkal.env
 

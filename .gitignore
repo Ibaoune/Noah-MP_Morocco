@@ -82,3 +82,4 @@ scripts/download/validation/credentials_validation.py
 experiments/NorthMor/routing/ldt_hymap/OUTPUT/
 experiments/NorthMor/routing/ldt_hymap/lis_input*.nc
 experiments/NorthMor/routing/runoff_remap_180x120/
+experiments/NorthMor/routing/ldt_hymap/*.bin
