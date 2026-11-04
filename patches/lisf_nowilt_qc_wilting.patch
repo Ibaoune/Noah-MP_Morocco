@@ -1,0 +1,14 @@
+--- src/lisf/lis/surfacemodels/land/noahmp.4.0.1/da_soilm/noahmp401_qc_soilmobs.F90	2026-05-19 23:47:02.000000000 +0100
++++ src/lisf_nowilt/lis/surfacemodels/land/noahmp.4.0.1/da_soilm/noahmp401_qc_soilmobs.F90	2026-10-27 19:12:30.000000000 +0100
+@@ -269,8 +269,9 @@
+ !too close to the tails, could be due to scaling, so reject. 
+         elseif(smcmax_obs(t)-smobs(t).lt.0.02) then 
+            smobs(t) = LIS_rc%udef
+-        elseif(smobs(t) - smcwlt_obs(t).lt.0.02) then 
+-           smobs(t) = LIS_rc%udef
++! TEST NOWILT : seuil de fletrissement commente pour audit DA-NoCDF
++!        elseif(smobs(t) - smcwlt_obs(t).lt.0.02) then 
++!           smobs(t) = LIS_rc%udef
+         endif
+      endif
+   enddo

@@ -48,7 +48,7 @@ Le modèle fonctionne en forçage couplé bimoteur, combinant les réanalyses ho
   - Coin Sud-Ouest : Latitude `30.0° N`, Longitude `-10.0° W` (`SOUTH_WEST_CORNER_LAT: 30.0`, `SOUTH_WEST_CORNER_LON: -10.0`)
   - Coin Nord-Est : Latitude `36.0° N`, Longitude `-1.0° W`
 * **Résolution spatiale de maille** : `0.05°` × `0.05°` (~5 km) (`DX: 0.05`, `DY: 0.05`)
-* **Dimensions de grille** : 180 colonnes (longitude) × 120 lignes (latitude) = 21 600 points totaux.
+* **Dimensions de grille** : 181 colonnes (longitude) × 121 lignes (latitude) = 181 × 121 = 21 901 points.
 * **Points continentaux actifs** : **16 030 points terre** (`LANDMASK == 1`, points océaniques exclus `INC_WATER_PTS: false`).
 * *(Source : `data/lis_input/lis_input_NorthMor_5km.nc`, attributs globaux NetCDF)*
 

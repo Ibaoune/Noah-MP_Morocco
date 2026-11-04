@@ -1,6 +1,6 @@
 # Registre des Expériences — Projet NoahMP_Morocco
 
-Ce document constitue le registre de référence exhaustif de toutes les simulations et expériences du projet **NoahMP_Morocco** sous NASA LIS (Land Information System) et Noah-MP 4.0.1 sur le domaine **NorthMor** (180 × 120 points de grille, résolution ~5 km).
+Ce document constitue le registre de référence exhaustif de toutes les simulations et expériences du projet **NoahMP_Morocco** sous NASA LIS (Land Information System) et Noah-MP 4.0.1 sur le domaine **NorthMor** (181 × 121 = 21 901 points de grille, résolution ~5 km).
 
 ---
 

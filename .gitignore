@@ -35,6 +35,10 @@ experiments/NorthMor/routing/output/
 experiments/NorthMor/routing/restarts/
 experiments/NorthMor/routing/logs/
 experiments/NorthMor/routing/plots/
+experiments/NorthMor/routing/runoff_remap_180x120/
+experiments/NorthMor/routing/ldt_hymap/OUTPUT/
+experiments/NorthMor/routing/ldt_hymap/lis_input*.nc
+experiments/NorthMor/routing/ldt_hymap/*.bin
 
 # --- Runtime artifacts, logs & temporary files ---
 **/logs/
@@ -48,6 +52,7 @@ SMAP_filelist.dat
 MaskParamFill.log
 MPFilltest*.log
 *.log
+!experiments/NorthMor/matrix_2016_2020/_ARCHIVE_WRONG_CDF_DOMAIN/moved_items.log
 *.bak
 *~
 *.swp
@@ -79,7 +84,3 @@ scripts/download/validation/credentials_validation.py
 # --- Figures & Binary Images ---
 /postproc/figures/
 *.png
-experiments/NorthMor/routing/ldt_hymap/OUTPUT/
-experiments/NorthMor/routing/ldt_hymap/lis_input*.nc
-experiments/NorthMor/routing/runoff_remap_180x120/
-experiments/NorthMor/routing/ldt_hymap/*.bin

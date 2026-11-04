@@ -2,7 +2,7 @@
 
 **Rôle** : Dépendance critique de production pour la simulation `DA_cdf_noirr_2016_2020`.
 
-Ce répertoire contient l'ensemble des scripts de traitement LDT (Land Data Toolkit) et des fichiers de sortie NetCDF utilisés pour calculer les fonctions de répartition cumulée (CDF) de l'humidité du sol sur le domaine NorthMor ($180 \times 120$, 16 030 points continentaux) sur la période 2016–2020.
+Ce répertoire contient l'ensemble des scripts de traitement LDT (Land Data Toolkit) et des fichiers de sortie NetCDF utilisés pour calculer les fonctions de répartition cumulée (CDF) de l'humidité du sol sur le domaine NorthMor (181 × 121 = 21 901 points, 16 030 points continentaux) sur la période 2016–2020.
 
 ## Fichiers de Sortie Clés
 * `OUTPUT_model_NorthMor/noahmp_model_cdf_NorthMor.nc` : CDF d'humidité du sol du modèle Noah-MP (dérivée de 60 mois d'Open Loop `OPL_noirr_2016_2020`).

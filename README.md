@@ -1,10 +1,10 @@
 # NoahMP-LIS Morocco — Modélisation et Assimilation SMAP
 
-Ce dépôt héberge le pipeline scientifique de modélisation des surfaces continentales et d'assimilation de données d'humidité du sol sur le Nord du Maroc (**NorthMor**), développé sous le framework **NASA Land Information System (LIS 7.4)** couplé au modèle de surface **Noah-MP 4.0.1** et aux observations satellitaires **NASA SMAP**.
+Ce dépôt héberge le pipeline scientifique de modélisation des surfaces continentales et d'assimilation de données d'humidité du sol sur le Nord du Maroc (**NorthMor**), développé sous le framework **NASA Land Information System Framework (LISF 7.5)** couplé au modèle de surface **Noah-MP 4.0.1** et aux observations satellitaires **NASA SMAP**.
 
 * **Auteur** : M. El Aabaribaoune (@um6p)
 * **Infrastructure HPC** : Cluster Toubkal, UM6P
-* **Domaine d'étude** : Domaine Nord Maroc (`NorthMor`, grille régulière $180 \times 120$ à $0.05^\circ \approx 5\text{ km}$, 16 030 points terre)
+* **Domaine d'étude** : Domaine Nord Maroc (`NorthMor`, grille régulière 181 × 121 = 21 901 points à $0.05^\circ \approx 5\text{ km}$, 16 030 points terre)
 * **Observations assimilées** : Humidité de surface SMAP L3 Enhanced 9 km (`SPL3SMP_E`) via Filtre de Kalman d'Ensemble (EnKF, 20 membres)
 * **Forçages météorologiques** : Couplage bimoteur MERRA-2 (NASA GMAO) + GPM IMERG Final Run v07B
 
@@ -20,8 +20,12 @@ NoahMP_Morocco/
 │   └── README.md
 │
 ├── src/                      # Code source LISF et exécutables
-│   ├── lisf/                 #   NASA LISF officiel compilé (exécutable : src/lisf/lis/LIS)
+│   ├── lisf/                 #   NASA LISF 7.5 officiel compilé (exécutable : src/lisf/lis/LIS)
 │   └── lisf_nowilt/          #   Copie d'audit LIS (test sans seuil flétrissement QC)
+│
+├── patches/                  # Patchs Git appliqués au code source LISF
+│   ├── lisf_hymap1_fixes.patch        # Correctifs routage HyMAP v1
+│   └── lisf_nowilt_qc_wilting.patch   # Modification test seuil flétrissement QC
 │
 ├── data/                     # Données d'entrée (structures lourdes exclues de Git)
 │   ├── forcing/              #   Forçages météo (MERRA2, IMERG, GDAS)

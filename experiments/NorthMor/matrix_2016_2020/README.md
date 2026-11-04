@@ -1,6 +1,6 @@
 # Matrice d'Expériences LIS / Noah-MP (2016–2020) — NorthMor
 
-Ce répertoire contient la matrice expérimentale sur 5 ans (2016–2020) pour l'assimilation d'humidité du sol NASA SMAP dans Noah-MP 4.0.1 sur le domaine Nord Maroc (**NorthMor**, 180 × 120 mailles à 0.05°, 16 030 points continentaux).
+Ce répertoire contient la matrice expérimentale sur 5 ans (2016–2020) pour l'assimilation d'humidité du sol NASA SMAP dans Noah-MP 4.0.1 sur le domaine Nord Maroc (**NorthMor**, 181 × 121 = 21 901 points à 0.05°, 16 030 points continentaux).
 
 ---
 

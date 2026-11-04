@@ -1,7 +1,8 @@
 # Test d'Audit : DA_nocdf_TEST_nowilt
 
-* **But** : Tester l'effet du seuil de flétrissement du QC sur l'assimilation directe SMAP sans CDF (`DA_nocdf`).
+* **But** : Mesurer l'effet du seuil de flétrissement du QC sur l'assimilation directe SMAP sans CDF (`DA_nocdf`).
 * **Modification du code source** : Utilise le binaire `src/lisf_nowilt/lis/LIS`, dans lequel la condition `smobs(t) - smcwlt_obs(t) < 0.02` dans `noahmp401_qc_soilmobs.F90` a été commentée.
+* **Patch associé** : Les modifications exactes sont enregistrées dans le patch Git [`patches/lisf_nowilt_qc_wilting.patch`](../../../../../patches/lisf_nowilt_qc_wilting.patch).
 * **Période simulée** : Juillet–Août 2018 (2 mois terminés : `2018-07` et `2018-08`).
 * **Membres d'ensemble** : 20 membres.
 * **Statut** : Test terminé.
