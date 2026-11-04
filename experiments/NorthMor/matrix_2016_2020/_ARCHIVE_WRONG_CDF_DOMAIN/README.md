@@ -59,7 +59,27 @@ Espace disque total occupé par l'archive : **38 Go**.
      - `analysis_water_accounting_pixel_cumulative_cdf.nc`
      - `analysis_water_accounting_*.csv`
 
-La liste exhaustive des 236 fichiers et répertoires déplacés est répertoriée dans [moved_items.log](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/_ARCHIVE_WRONG_CDF_DOMAIN/moved_items.log).
+### D. Produits dérivés de post-traitement archivés (`old_derived_products/postproc/`, 181 fichiers)
+- **Origine** : Sorties NetCDF de climatologies, figures de diagnostic et de manuscrit, tables et chiffres clés générés avant le 31 octobre 2026 à partir de l'ancienne simulation `DA-CDF`.
+- **Nouveau chemin racine** : `experiments/NorthMor/matrix_2016_2020/_ARCHIVE_WRONG_CDF_DOMAIN/old_derived_products/postproc/`
+- **Contenu déplacé** :
+  1. **Climatologies NetCDF DA-CDF (5 ans, 22 fichiers)** : `total_runoff_DA_CDF_M01..M12`, `DJF`, `JJA`, `surface_runoff_DA_CDF`, `baseflow_DA_CDF`, `precipitation_DA_CDF`, `surface_soil_moisture_DA_CDF`.
+  2. **Figures candidates du manuscrit (11 fichiers)** : `Fig3_SMAP_coverage_increment_distributions_v2/v3/v4`, `Fig4_annual_DJF_JJA_SMAP_increment_patterns_Q1`, `FigS1_mean_innovations_Q1`.
+  3. **Tables et chiffres clés (8 fichiers)** : `Fig3_Fig4_SMAP_assimilation_key_numbers.txt`, etc.
+  4. **Diagnostics d'assimilation DA-CDF (21 fichiers)** : sous-dossier `assimilation/DA_CDF/` et `Fig_MultiYear_Assimilation`.
+  5. **Hydrologie & bilans (60 fichiers)** : sous-dossiers `hydrology/` pour `baseflow`, `baseflow_fraction`, `evapotranspiration`, `rootzone_soil_moisture`, `surface_runoff`, `surface_soil_moisture`, `total_runoff`.
+  6. **Impact saisonnier OPL vs DA-CDF (6 fichiers)** : `fig_runoff_seasonal_OPL_vs_DA_CDF`, etc.
+  7. **Validation observations indépendantes (23 fichiers)** : comparaison DA-CDF face à ESA CCI.
+  8. **Réponse hydrologique & sécheresse (30 fichiers)**.
+- **Régénération avec la nouvelle run DA_cdf_noirr_2016_2020** :
+  Ces sorties sont **entièrement régénérables** à partir de la nouvelle run valide `DA_cdf_noirr_2016_2020` et des runs `OPL_noirr_2016_2020` et `DA_nocdf_noirr_2016_2020`, via les recettes existantes du pipeline :
+  - `configs/recipes/smap_cdf_sensitivity_2016_2020.yaml` (diagnostics d'assimilation, bilans hydrologiques, cartes de différences et climatologies saisonnières).
+  - `configs/recipes/paper_manuscript_figures.yaml` (génération des figures consolidées du manuscrit).
+  - `configs/recipes/smap_cdf_independent_validation_2016_2020.yaml` (évaluation indépendante face à ESA CCI, GLEAM, etc.).
+  - `configs/recipes/paper_core_diagnostics.yaml`.
+  Les sorties spécifiques à OPL seule et à DA-NoCDF seule restent intactes à leur emplacement d'origine dans `scripts/postproc/matrix_2016_2020/`.
+
+La liste exhaustive de tous les fichiers et répertoires déplacés (dont les 181 sorties postproc) est répertoriée dans [moved_items.log](file:///home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/_ARCHIVE_WRONG_CDF_DOMAIN/moved_items.log).
 
 ---
 

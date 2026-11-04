@@ -43,3 +43,10 @@ Cette section rassemble les spécificités factuelles du code LISF et du modèle
 
 3. **Condition de rejet par le contrôle qualité (QC) au point de flétrissement** :
    Dans la routine `noahmp401_qc_soilmobs.F90`, le test de rejet des observations d'humidité du sol s'appuie sur la condition `(smobs(t) - smcwlt_obs(t) < 0.02)`. La valeur de `smcwlt_obs` (teneur en eau au point de flétrissement) n'est pas constante spatialement : elle **dépend directement de la classe de texture du sol** (STATSGO) définie pour chaque point de grille.
+
+---
+
+## Travaux à Prévoir / À Faire
+
+1. **Jeu de données Parquet XAI (`monthly_pixel_dataset_2016_2020_static.parquet`)** :
+   Le fichier `IA_SM_assim/data/processed/monthly_pixel_dataset_2016_2020_static.parquet` (dépôt XAI) a été construit avant le 31/10 : s'il contient des données DA-CDF, il vient de l'ancienne CDF et devra être reconstruit. *(Ne pas toucher au dépôt IA_SM_assim depuis ce projet).*
