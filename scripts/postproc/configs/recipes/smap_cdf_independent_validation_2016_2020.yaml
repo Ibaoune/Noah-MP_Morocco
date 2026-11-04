@@ -29,6 +29,6 @@ diagnostics:
       enabled: false
 
 outputs:
-  figure_dir: "{name_main_dir}/figures/{name_exp}"
-  metrics_dir: "{name_main_dir}/metrics/{name_exp}"
-  table_dir: "{name_main_dir}/tables/{name_exp}"
+  figure_dir: "outputs/{name_main_dir}/figures/{name_exp}"
+  metrics_dir: "outputs/{name_main_dir}/metrics/{name_exp}"
+  table_dir: "outputs/{name_main_dir}/tables/{name_exp}"

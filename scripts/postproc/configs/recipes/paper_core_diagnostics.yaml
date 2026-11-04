@@ -27,4 +27,4 @@ diagnostics:
     enabled: true
 
 outputs:
-  metrics_dir: "{name_main_dir}/metrics/{name_exp}"
+  metrics_dir: "outputs/{name_main_dir}/metrics/{name_exp}"

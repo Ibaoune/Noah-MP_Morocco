@@ -13,12 +13,12 @@ paths:
   name_main_dir: "matrix_2016_2020"
   project_root: "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
   data_root: "experiments/NorthMor/{name_main_dir}"
-  output_root: "{name_main_dir}"
-  figure_root: "{name_main_dir}/figures"
-  metrics_root: "{name_main_dir}/metrics"
-  tables_root: "{name_main_dir}/tables"
-  pdf_root: "{name_main_dir}/pdf"
-  log_root: "{name_main_dir}/logs"
+  output_root: "outputs/{name_main_dir}"
+  figure_root: "outputs/{name_main_dir}/figures"
+  metrics_root: "outputs/{name_main_dir}/metrics"
+  tables_root: "outputs/{name_main_dir}/tables"
+  pdf_root: "outputs/{name_main_dir}/pdf"
+  log_root: "outputs/{name_main_dir}/logs"
 
 plotting:
   dpi: 300

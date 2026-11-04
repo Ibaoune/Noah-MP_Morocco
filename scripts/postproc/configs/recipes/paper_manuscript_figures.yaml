@@ -14,4 +14,4 @@ experiments:
   - DA_CDF
 
 outputs:
-  figure_dir: "{name_main_dir}/figures/manuscript"
+  figure_dir: "outputs/{name_main_dir}/figures/manuscript"

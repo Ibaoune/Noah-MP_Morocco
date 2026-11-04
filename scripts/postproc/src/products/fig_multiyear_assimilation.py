@@ -97,6 +97,6 @@ def build_composite_figure(base_dir, out_path):
 
 if __name__ == "__main__":
     project_root = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
-    base_dir = os.path.join(project_root, "scripts/postproc/matrix_2016_2020/figures/smap_cdf_sensitivity_2016_2020/assimilation")
+    base_dir = os.path.join(project_root, "scripts/postproc/outputs/matrix_2016_2020/figures/smap_cdf_sensitivity_2016_2020/assimilation")
     out_path = os.path.join(base_dir, "Fig_MultiYear_Assimilation.png")
     build_composite_figure(base_dir, out_path)
