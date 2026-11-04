@@ -1,6 +1,10 @@
 # Author: M. EL Aabaribaoune (@um6p)
 
-import os
+import os, sys
+from pathlib import Path
+_ROOT = Path(__file__).resolve().parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 import unittest
 from pathlib import Path
 from src.diagnostics.independent_ob_validation.common import check_data_availability

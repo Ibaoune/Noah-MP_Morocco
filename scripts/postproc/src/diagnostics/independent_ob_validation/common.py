@@ -12,7 +12,7 @@ def check_data_availability(product_name, category):
     Vérifie si les données brutes sont disponibles pour un produit.
     """
     # Chemin relatif depuis src/lis_postproc/diagnostics/independent_validation/common.py jusqu'à la racine du projet
-    project_root = Path(__file__).resolve().parent.parent.parent.parent.parent.parent.parent
+    project_root = Path(__file__).resolve().parent.parent.parent.parent.parent.parent
     base_path = project_root / "data" / "validation" / category / product_name
     
     if not base_path.exists():
