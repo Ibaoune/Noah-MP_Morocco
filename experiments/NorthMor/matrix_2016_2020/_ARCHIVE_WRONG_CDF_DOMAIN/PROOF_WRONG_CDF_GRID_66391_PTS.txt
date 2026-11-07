@@ -1,0 +1,39 @@
+================================================================================
+PREUVE TECHNIQUE DES DIMENSIONS DE LA MAUVAISE GRILLE CDF (MAROC NATIONAL)
+================================================================================
+
+--- FICHIER DOMAINE NATIONAL : smap_cdf_domain.nc ---
+  - east_west: 331
+  - north_south: 305
+  - ntimes: 12
+  - east_west_b: 335
+  - north_south_b: 309
+  - SoilMoist_levels: 1
+Variables et attributs :
+  - LANDMASK ('north_south', 'east_west'): shape (305, 331)
+  - lat ('north_south', 'east_west'): shape (305, 331)
+  - lon ('north_south', 'east_west'): shape (305, 331)
+  - lat_b ('north_south_b', 'east_west_b'): shape (309, 335)
+  - lon_b ('north_south_b', 'east_west_b'): shape (309, 335)
+  - SoilMoist_domain ('SoilMoist_levels', 'ntimes', 'north_south', 'east_west'): shape (1, 12, 305, 331)
+Couverture spatiale WGS84 :
+  - Longitudes : min = -17.29998779296875 deg, max = -0.79998779296875 deg (331 points)
+  - Latitudes  : min = 20.799999237060547 deg, max = 36.0 deg (305 points)
+  - Nombre total de mailles 2D : 331 x 305 = 100955 mailles
+
+--- FICHIER CDF SMAP ERRONÉ : smap_cdf.nc ---
+Dimensions :
+  - ngrid: 66391
+  - ntimes: 12
+  - nbins: 100
+  - SoilMoist_levels: 1
+Variables :
+  - SoilMoist_xrange ('nbins', 'SoilMoist_levels', 'ntimes', 'ngrid'): shape (100, 1, 12, 66391)
+  - SoilMoist_mu ('SoilMoist_levels', 'ntimes', 'ngrid'): shape (1, 12, 66391)
+  - SoilMoist_sigma ('SoilMoist_levels', 'ntimes', 'ngrid'): shape (1, 12, 66391)
+  - SoilMoist_CDF ('nbins', 'SoilMoist_levels', 'ntimes', 'ngrid'): shape (100, 1, 12, 66391)
+
+CONSTAT SCIENTIFIQUE D INCOMPATIBILITE :
+  - ngrid = 66391 points continentaux (grille Maroc National entiere)
+  - Domaine de simulation NorthMor = 16 030 points continentaux (grille 181 x 121)
+  - Consequence : decalage spatial direct des quantiles de SMAP appliques a Noah-MP.

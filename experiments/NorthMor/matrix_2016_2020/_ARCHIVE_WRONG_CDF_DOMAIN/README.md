@@ -85,3 +85,22 @@ La liste exhaustive de tous les fichiers et répertoires déplacés (dont les 18
 
 ## 3. Intégrité des simulations valides
 Aucun fichier appartenant aux simulations valides (`OPL_noirr_2016_2020`, `DA_nocdf_noirr_2016_2020`, nouvelle `DA_cdf_noirr_2016_2020`) n'a été altéré ou déplacé. Les produits propres à DA-NoCDF (`data/*/da_nocdf`, modèles `SOURCE_da_nocdf_*_native_support`, etc.) restent inchangés à leur emplacement d'origine.
+
+---
+
+## 4. Purge définitive des données volumineuses invalidées (Lot 2B)
+
+- **Date effective de la purge** : Novembre 2026
+- **Volume net récupéré** : **40,64 GB** (37,85 GiB, 19 840 fichiers supprimés)
+- **Groupes de données supprimés** :
+  1. `old_DA_cdf_run/output/` : 60 mois de sorties LIS historiques (`SURFACEMODEL`, incréments et spreads `EnKF`, observations `DAOBS`) — **25,29 GB** (17 127 fichiers).
+  2. `old_DA_cdf_run/restarts/` : Restarts mensuels LIS invalides (`restarts/surf`, `restarts/pert`) — **9,95 GB** (120 fichiers).
+  3. `old_DA_cdf_run/logs/` : Journaux d'exécution LIS de l'ancienne simulation — **1,93 GB** (2 042 fichiers).
+  4. `old_derived_products/` : Anciens produits dérivés `smap-xai-audit` (modèles RF, tables SHAP, data processed) et `postproc` (climatologies et figures obsolètes) — **3,07 GB** (549 fichiers).
+  5. `old_cdf_files/*/smap_cdf.nc` : Tables CDF erronées à 66 391 points (versions irriguée et non-irriguée) — **0,40 GB** (2 fichiers).
+- **Reliques préservées pour traçabilité scientifique (~1,4 Mo, 125 fichiers)** :
+  - `README.md` : justification méthodologique de l'invalidation spatiale et journal de purge.
+  - `PROOF_WRONG_CDF_GRID_66391_PTS.txt` : signature dimensionnelle ($331 \times 305$, 66 391 points 1D) et spatiale ($[20.8^\circ\text{N}, 36.0^\circ\text{N}] \times [-17.3^\circ\text{E}, -0.8^\circ\text{E}]$) attestant de l'incompatibilité avec `NorthMor`.
+  - `moved_items.log` : manifeste exhaustif des fichiers déplacés.
+  - `old_DA_cdf_run/generated/` : 120 fichiers de configuration `lis_DA_SMAP_cdf_noirr_*.config` et 60 scripts de soumission `job_DA_cdf_*.slurm` d'origine.
+  - `old_cdf_files/*/smap_cdf_domain.nc` : grilles NetCDF 2D de domaine LDT (514 Ko au total).
