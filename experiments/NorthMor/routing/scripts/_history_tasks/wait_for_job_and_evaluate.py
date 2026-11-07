@@ -27,5 +27,5 @@ if os.path.exists(log_file):
 
 print("\nExecuting evaluation of corrected run...")
 sys.stdout.flush()
-ret = subprocess.run(["python3", "experiments/NorthMor/routing/scripts/evaluate_t7_corrected_run.py"])
+ret = subprocess.run(["python3", "experiments/NorthMor/routing/scripts/_history_tasks/evaluate_t7_corrected_run.py"])
 print(f"\nEvaluation finished with exit code {ret.returncode}")

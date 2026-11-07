@@ -14,7 +14,7 @@ cd /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaab
 source arch/arch_toubkal.env
 export OMP_NUM_THREADS=1
 
-CONFIG="experiments/NorthMor/routing/configs/lis_hymap2_opl_spinup_cycle2.config"
+CONFIG="experiments/NorthMor/routing/configs/_archive_raw/lis_hymap2_opl_spinup_cycle2.config"
 LOG_DIR="experiments/NorthMor/routing/logs"
 OUT_DIR="experiments/NorthMor/routing/output/OPL_spinup_cycle2"
 mkdir -p "${LOG_DIR}" "${OUT_DIR}"

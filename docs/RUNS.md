@@ -43,6 +43,9 @@ Ce document constitue le registre de référence exhaustif de toutes les simulat
 
 ## 4. Module de Routage Hydraulique (`experiments/NorthMor/routing/`)
 
-* **Simulation active** : `lis_hymap_opl_2018` (routage HyMAP déterministe couplé à LIS sur l'année 2018).
-* **Prétraitements** : `ldt_hymap/` (paramètres physiographiques Augusto), `runoff_remap_180x120/` (remapping du ruissellement de surface et subsurfacique vers la grille HyMAP).
-* **Documentation interne** : `experiments/NorthMor/routing/docs/Hymap_troubleshooting.txt`.
+* **Simulations de référence (2016–2020)** :
+  - `OPL_2016_2020_corrigee` : Routage hydrodynamique 5 ans continu Open-Loop avec paramètre `tbasflw` corrigé.
+  - `DA_nocdf_2016_2020` : Routage hydrodynamique 5 ans continu SMAP DA sans CDF matching.
+  - `DA_cdf_2016_2020` : Expérience prévue après validation de la CDF corrigée.
+* **Prétraitements** : `ldt_hymap/` (paramètres physiographiques Augusto, `lis_input_corrigee.d01.nc`), `runoff_remap_180x120/` (remapping conservatif de $Q_s$ et $Q_{sb}$ vers la grille $180 \times 120$ à 0.05°).
+* **Documentation de référence** : [`experiments/NorthMor/routing/README_HYMAP.md`](../experiments/NorthMor/routing/README_HYMAP.md) et fiches techniques d'audit associées ([`checks/`](../experiments/NorthMor/routing/checks/)).

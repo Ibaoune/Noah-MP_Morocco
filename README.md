@@ -50,7 +50,7 @@ NoahMP_Morocco/
 │   │   ├── tests/                    # Expériences de test, audits et sensibilités
 │   │   └── planned/                  # Expériences prévues ou suspendues
 │   │
-│   └── routing/              # Module de routage hydraulique des débits (HyMAP)
+│   └── routing/              # Module de routage hydraulique HyMAP (voir experiments/NorthMor/routing/README_HYMAP.md)
 │
 ├── scripts/                  # Chaînes d'exécution et post-traitement
 │   ├── download/             #   Scripts d'acquisition de données

@@ -24,7 +24,7 @@ echo "Hote d'execution : $(hostname)"
 
 START_TIME=$(date +%s)
 
-/usr/bin/time -v mpirun -n 16 ./src/lisf/lis/LIS -f experiments/NorthMor/routing/configs/lis_hymap2_opl_201801.config
+/usr/bin/time -v mpirun -n 16 ./src/lisf/lis/LIS -f experiments/NorthMor/routing/configs/_archive_raw/lis_hymap2_opl_201801.config
 
 END_TIME=$(date +%s)
 ELAPSED=$((END_TIME - START_TIME))
