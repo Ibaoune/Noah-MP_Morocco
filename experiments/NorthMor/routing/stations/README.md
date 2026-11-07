@@ -82,10 +82,3 @@ Cette table est la référence d'extraction spatiale :
   3. `Somme du masque amont délimité` : Somme géométrique des mailles contribuant à la station via l'arbre de direction de drainage (`sebou_bouregreg_diagnostic.py`), très proche de `aire_hymap_km2` (ex. Lalla Chafia : 3 333.3 km² pour 133 mailles vs 3 341.6 km² pour `HYMAP_drain_area`).
 
 ---
-
-## 5. Archive Historique : `_history/stations.csv`
-
-Le fichier `stations.csv` archivé dans le sous-dossier `_history/` (528 octets, daté du 25/10/2026) est un **fichier historique exploratoire**.
-- Il contient les coordonnées d'exutoires majeurs (Moulouya, Sebou, Oum Er Rbia, Tensift, Souss, Bouregreg, Loukkos) et de la station d'Adamna.
-- **Statut** : Archivé dans `_history/` pour la traçabilité des premiers tests HyMAP.
-- **Règle d'usage** : Aucun script actif ne doit utiliser `_history/stations.csv` pour l'extraction hydrologique. Toutes les analyses doivent obligatoirement utiliser `hymap_stations_pairing.csv`.

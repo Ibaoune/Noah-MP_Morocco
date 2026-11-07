@@ -11,10 +11,10 @@ Cette chaîne assure le routage hydrodynamique hors ligne (*offline*) avec le mo
 2. **Routage hydrodynamique (HyMAP2) :** Convertit ces flux en apports d'eau, les transfère à travers le réseau hydrographique discrétisé sur la grille $180 \times 120$ ($0.05^\circ$, repérage aux centres de mailles de $30.025^\circ$ à $35.975^\circ\text{N}$ et $-9.975^\circ$ à $-1.025^\circ\text{E}$), et simule l'onde de crue cinématique, l'expansion des plaines inondables et la vidange du réservoir de nappe vers les rivières.
 
 ### 1.2 Expériences de référence
-Deux simulations quinquennales (2016–2020) constituent le socle de référence actuel :
-- **Open-Loop (OPL)** : Simulation en boucle ouverte forcée par la météorologie sans assimilation (`OPL_noirr_2016_2020`).
-- **Assimilation SMAP NoCDF (DA_nocdf)** : Assimilation par filtre de Kalman d'ensemble (EnKF) des données d'humidité du sol satellitaires SMAP L3 sans correction préalable de biais par CDF matching (`DA_nocdf_noirr_2016_2020`).
-- **Assimilation SMAP DA-CDF (À réaliser)** : Troisième expérience dont l'hypothèse d'atténuation du biais de ruissellement sera formellement testée lors de la comparaison tripartite OPL / NoCDF / CDF (§12).
+Trois simulations quinquennales (2016–2020) constituent le socle de référence validé :
+- **Open-Loop (OPL)** : Simulation en boucle ouverte forcée par la météorologie sans assimilation (`OPL_2016_2020_corrigee`).
+- **Assimilation SMAP NoCDF (DA_nocdf)** : Assimilation par filtre de Kalman d'ensemble (EnKF) des données d'humidité du sol satellitaires SMAP L3 sans correction préalable de biais CDF matching (`DA_nocdf_2016_2020`).
+- **Assimilation SMAP DA-CDF (DA_cdf)** : Assimilation par EnKF avec mise à l'échelle préalable par CDF matching (`DA_cdf_2016_2020`), confirmant la suppression de l'excès de ruissellement.
 
 ---
 
@@ -24,16 +24,23 @@ L'arborescence opérationnelle et historique du répertoire `experiments/NorthMo
 
 ```text
 experiments/NorthMor/routing/
-├── README_HYMAP.md                 # Le présent document de référence
-├── configs/                        # Configurations LIS actives pour HyMAP2
-│   ├── lis_hymap2_opl_spinup_c1_corrigee.config   # Spin-up Cycle 1 OPL corrigé (2016)
-│   ├── lis_hymap2_opl_spinup_c2_corrigee.config   # Spin-up Cycle 2 OPL corrigé (2016)
+├── README_HYMAP.md                 # Document de référence principal
+├── docs/                           # Documentation opérationnelle
+│   └── POSTPROCESSING.md                          # Guide de reproduction complet du post-traitement
+├── stations/                       # Référentiel hydrométrique unique
+│   ├── hymap_stations_pairing.csv                 # Table de référence unique des 12 stations appariées
+│   └── README.md                                  # Documentation des coordonnées et conventions
+├── configs/                        # Configurations LIS pour HyMAP2 (3 expériences + spin-ups)
+│   ├── lis_hymap2_opl_spinup_c1_corrigee.config   # Spin-up C1 OPL corrigé (2016)
+│   ├── lis_hymap2_opl_spinup_c2_corrigee.config   # Spin-up C2 OPL corrigé (2016)
 │   ├── lis_hymap2_opl_2016_2020_corrigee.config   # Production 5 ans OPL corrigé
-│   ├── lis_hymap2_da_nocdf_spinup_c1.config       # Spin-up Cycle 1 DA-NoCDF (2016)
-│   ├── lis_hymap2_da_nocdf_spinup_c2.config       # Spin-up Cycle 2 DA-NoCDF (2016)
+│   ├── lis_hymap2_da_nocdf_spinup_c1.config       # Spin-up C1 DA-NoCDF (2016)
+│   ├── lis_hymap2_da_nocdf_spinup_c2.config       # Spin-up C2 DA-NoCDF (2016)
 │   ├── lis_hymap2_da_nocdf_2016_2020.config       # Production 5 ans DA-NoCDF
-│   ├── lis_test_offline.config                    # Test hors-ligne unitaire
-│   └── _archive_raw/                              # [HISTORIQUE] Anciennes configs du run brut non corrigé
+│   ├── lis_hymap2_da_cdf_spinup_c1.config         # Spin-up C1 DA-CDF (2016)
+│   ├── lis_hymap2_da_cdf_spinup_c2.config         # Spin-up C2 DA-CDF (2016)
+│   ├── lis_hymap2_da_cdf_2016_2020.config         # Production 5 ans DA-CDF
+│   └── lis_test_offline.config                    # Test unitaire hors-ligne
 ├── jobs/                           # Scripts SLURM d'exécution
 │   ├── build_lis_hymap2.sh                        # Script de compilation de LIS HyMAP2
 │   ├── run_hymap2_opl_spinup_c1_corrigee.sh       # Job SLURM Spin-up C1 OPL
@@ -42,36 +49,47 @@ experiments/NorthMor/routing/
 │   ├── run_hymap2_da_nocdf_spinup_c1.sh           # Job SLURM Spin-up C1 DA-NoCDF
 │   ├── run_hymap2_da_nocdf_spinup_c2.sh           # Job SLURM Spin-up C2 DA-NoCDF
 │   ├── run_hymap2_da_nocdf_2016_2020.sh           # Job SLURM 5 ans DA-NoCDF
-│   └── _archive_raw/                              # [HISTORIQUE] Anciens scripts SLURM du run brut
-├── scripts/                        # Chaîne de scripts opérationnels
-│   ├── remap_opl_2016_2020.py                     # Remapping conservatif Qs/Qsb OPL (181x121 -> 180x120)
-│   ├── remap_da_nocdf_2016_2020.py                # Remapping conservatif Qs/Qsb DA-NoCDF
-│   ├── check_spinup_criterion_corrigee.py         # Contrôle de convergence du spin-up OPL
+│   ├── run_hymap2_da_cdf_spinup_c1.sh             # Job SLURM Spin-up C1 DA-CDF
+│   ├── run_hymap2_da_cdf_spinup_c2.sh             # Job SLURM Spin-up C2 DA-CDF
+│   └── run_hymap2_da_cdf_2016_2020.sh             # Job SLURM 5 ans DA-CDF
+├── scripts/                        # Scripts opérationnels maintenus
+│   ├── remap_runoff_opl.py                        # Remapping conservatif Qs/Qsb OPL (181x121 -> 180x120)
+│   ├── remap_runoff_da_nocdf.py                   # Remapping conservatif Qs/Qsb DA-NoCDF
+│   ├── remap_runoff_da_cdf.py                     # Remapping conservatif Qs/Qsb DA-CDF
+│   ├── check_remap_conservation_2018.py           # Diagnostic de conservation du remapping (S1 à S4)
+│   ├── check_spinup_criterion_corrigee.py         # Contrôle de convergence du spin-up OPL (< 1.0 %)
 │   ├── check_spinup_criterion_da_nocdf.py         # Contrôle de convergence du spin-up DA-NoCDF
-│   ├── complete_t7bis_analysis.py                 # Diagnostic physique approfondi du run OPL corrigé
-│   ├── complete_t8_analysis_and_plots.py          # Script principal d'évaluation aux 12 stations
-│   ├── parse_stations.py                          # Analyseur des séries in-situ brutes ABH
-│   ├── plot_streamflow_coverage.py                # Graphiques de couverture temporelle des stations
-│   └── _history_tasks/                            # [HISTORIQUE] Scripts d'analyse exploratoire et pipelines
+│   ├── extract_streamflow.py                      # Extracteur unifié de débits journaliers aux stations
+│   ├── evaluate_sebou_bouregreg.py                # Diagnostic hydrologique, bilans amont et figures 3exp
+│   └── plot_streamflow_coverage.py                # Graphique de couverture temporelle des stations
 ├── ldt_hymap/                      # Génération des paramètres sous LDT
-│   ├── ldt.config                                 # Fichier de configuration LDT
+│   ├── ldt.config                                 # Configuration LDT
 │   ├── lis_input.d01.nc                           # Paramètres LDT bruts (tbasflw non corrigé)
-│   └── lis_input_corrigee.d01.nc                  # Paramètres opérationnels (tbasflw divisé par 86400)
+│   └── lis_input_corrigee.d01.nc                  # Paramètres opérationnels (tbasflw corrigé)
 ├── checks/                         # Dossiers d'audits et fiches techniques détaillées (00 à 06)
 ├── runoff_remap_180x120/           # Entrées routage : ruissellements reprojetés
 │   ├── OPL_noirr_2016_2020/SURFACEMODEL/          # 1 828 fichiers journaliers NetCDF
-│   └── DA_nocdf_noirr_2016_2020/SURFACEMODEL/     # 1 828 fichiers journaliers NetCDF
+│   ├── DA_nocdf_noirr_2016_2020/SURFACEMODEL/     # 1 828 fichiers journaliers NetCDF
+│   └── DA_cdf_noirr_2016_2020/SURFACEMODEL/       # 1 828 fichiers journaliers NetCDF
 ├── output/                         # Sorties de simulation et fichiers de restart
-│   ├── OPL_spinup_c1_corrigee/ROUTING/            # Sorties et restart Cycle 1 OPL
-│   ├── OPL_spinup_c2_corrigee/ROUTING/            # Sorties et restart Cycle 2 OPL
+│   ├── OPL_spinup_c1_corrigee/ROUTING/            # Sorties et restart C1 OPL
+│   ├── OPL_spinup_c2_corrigee/ROUTING/            # Sorties et restart C2 OPL
 │   ├── OPL_2016_2020_corrigee/ROUTING/            # 1 827 fichiers journaliers NetCDF OPL
-│   ├── DA_nocdf_spinup_c1/ROUTING/                # Sorties et restart Cycle 1 DA-NoCDF
-│   ├── DA_nocdf_spinup_c2/ROUTING/                # Sorties et restart Cycle 2 DA-NoCDF
+│   ├── DA_nocdf_spinup_c1/ROUTING/                # Sorties et restart C1 DA-NoCDF
+│   ├── DA_nocdf_spinup_c2/ROUTING/                # Sorties et restart C2 DA-NoCDF
 │   ├── DA_nocdf_2016_2020/ROUTING/                # 1 827 fichiers journaliers NetCDF DA-NoCDF
-│   └── OPL_2016_2020/                             # [ARCHIVE] Sorties du run brut avec puits artificiel
-├── plots/sebou_bouregreg/          # Résultats canoniques Sebou-Bouregreg (figures et tables 3exp)
-├── plots/technical/                # Figures techniques (spinup, water_balance, parameters)
-└── plots/_history/                 # Archives historiques (T5, T7, T8 t8_ol_nocdf, 3exp brut)
+│   ├── DA_cdf_spinup_c1/ROUTING/                  # Sorties et restart C1 DA-CDF
+│   ├── DA_cdf_spinup_c2/ROUTING/                  # Sorties et restart C2 DA-CDF
+│   ├── DA_cdf_2016_2020/ROUTING/                  # 1 827 fichiers journaliers NetCDF DA-CDF
+│   └── [Runs obsolètes en attente de validation] :# OPL_2016_2020, OPL_201801, OPL_spinup_cycle1/2 (1.7 Go)
+└── plots/                          # Figures et tables scientifiques maintenues
+    ├── sebou_bouregreg/                           # Résultats scientifiques canoniques (3 figures, 3 tables)
+    │   ├── figures/streamflow/                    # 3 figures scientifiques actuelles
+    │   ├── tables/                                # 3 tables CSV de synthèse (11 stations, diagnostic, apports)
+    │   └── README.md                              # Guide d'interprétation des résultats
+    └── technical/                                 # Contrôles techniques maintenus
+        ├── parameters/                            # streamflow_coverage_timeline.png
+        └── spinup/                                # README.md (synthèse de convergence spin-up)
 ```
 
 ---
@@ -154,10 +172,13 @@ Les valeurs maritimes (`-9999.0`) sont neutralisées inconditionnellement à `0.
 
 ```bash
 # Pour Open-Loop (OPL) :
-python3 experiments/NorthMor/routing/scripts/remap_opl_2016_2020.py
+python3 experiments/NorthMor/routing/scripts/remap_runoff_opl.py
 
 # Pour DA NoCDF :
-python3 experiments/NorthMor/routing/scripts/remap_da_nocdf_2016_2020.py
+python3 experiments/NorthMor/routing/scripts/remap_runoff_da_nocdf.py
+
+# Pour DA CDF :
+python3 experiments/NorthMor/routing/scripts/remap_runoff_da_cdf.py
 ```
 
 ### 5.2 Portée réelle du contrôle de conservation
@@ -247,6 +268,21 @@ sbatch experiments/NorthMor/routing/jobs/run_hymap2_opl_2016_2020_corrigee.sh
 sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_nocdf_spinup_c1.sh
 sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_nocdf_spinup_c2.sh
 sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_nocdf_2016_2020.sh
+
+# Chaîne Assimilation DA-CDF :
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_spinup_c1.sh
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_spinup_c2.sh
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_2016_2020.sh
+
+# Chaîne Assimilation DA-CDF :
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_spinup_c1.sh
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_spinup_c2.sh
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_2016_2020.sh
+
+# Chaîne Assimilation DA-CDF :
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_spinup_c1.sh
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_spinup_c2.sh
+sbatch experiments/NorthMor/routing/jobs/run_hymap2_da_cdf_2016_2020.sh
 ```
 
 ### 7.3 Exécution interactive / directe
@@ -277,15 +313,25 @@ Chaque fichier journalier contient les moyennes des 24 heures précédentes :
 - `BaseflowStor_tavg`, `RunoffStor_tavg` : Niveaux de stockage dans les réservoirs souterrain et superficiel ($mm$).
 
 ### 8.2 Extraction et évaluation aux stations
-Le script unifié extrait automatiquement les débits simulés au droit des 12 stations de jaugeage :
+L'extraction et l'évaluation reposent sur deux scripts maintenus dédiés (consulter [`docs/POSTPROCESSING.md`](docs/POSTPROCESSING.md)) :
+
+1. **Extraction unifiée des débits journaliers :**
 ```bash
-/home/mohammad.elaabaribao/.conda/envs/postproc_env/bin/python experiments/NorthMor/routing/scripts/complete_t8_analysis_and_plots.py
+python3 experiments/NorthMor/routing/scripts/extract_streamflow.py --experiment all
 ```
-- **Mécanisme de mise en cache :** Pour optimiser les temps de traitement, le script met en cache les séries journalières extraites dans `output/DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv`.
-- **Livrables produits :**
-  - Table de synthèse : `plots/_history/t8_ol_nocdf/synthese_hydrologique_12stations.csv`.
-  - Analyse des crues : `plots/_history/t8_ol_nocdf/t8_flood_events_comparison.csv`.
-  - Figures de comparaison : `plots/_history/t8_ol_nocdf/F1_carte_situation.png` à `F6_effet_assimilation.png`.
+- **Mécanisme de mise en cache :** Valide et réutilise les caches existants (`t8_sim_daily_12stations_*.csv`) sans retraiter inutilement les NetCDF.
+- **Option de forçage :** `--force` permet de ré-extraire l'intégralité des 5 ans si nécessaire.
+
+2. **Évaluation hydrologique et figures scientifiques :**
+```bash
+python3 experiments/NorthMor/routing/scripts/evaluate_sebou_bouregreg.py
+```
+- **Livrables canoniques produits :**
+  - Table de synthèse : `plots/sebou_bouregreg/tables/tableau_synthese_11stations_sebou_bouregreg.csv`
+  - Tableau diagnostic : `plots/sebou_bouregreg/tables/tableau_diagnostic_5stations.csv`
+  - Bilan des apports Noah-MP : `plots/sebou_bouregreg/tables/tableau_apports_noahmp_2018.csv`
+  - Figures détaillées : `plots/sebou_bouregreg/figures/streamflow/fig_detaillee_2018_b_s_jabeur.png`, `fig_detaillee_2018_b_l_chafia.png`
+  - Figure comparative : `plots/sebou_bouregreg/figures/streamflow/fig_comparative_mensuelle_sebou.png`
 
 ---
 
@@ -328,7 +374,7 @@ Le réseau hydrométrique de référence comprend 12 stations de jaugeage répar
 ## 10. Métriques d'évaluation et principales limites hydrologiques
 
 ### 10.1 Métriques disponibles et formulations exactes
-Le script unifié (`complete_t8_analysis_and_plots.py`) calcule pour chaque station :
+Le script d'évaluation (`evaluate_sebou_bouregreg.py`) calcule pour chaque station :
 - **KGE (Kling-Gupta Efficiency, Gupta et al. 2009) :**
   $$KGE = 1 - \sqrt{(r-1)^2 + (\alpha-1)^2 + (\beta-1)^2}$$
   avec $r$ le coefficient de corrélation linéaire de Pearson, $\alpha = \sigma_{sim}/\sigma_{obs}$ le ratio des écarts-types, et $\beta = \mu_{sim}/\mu_{obs}$ le ratio des moyennes.
@@ -380,27 +426,18 @@ Pour garantir la rigueur scientifique des conclusions, la chaîne distingue form
 
 ---
 
-## 12. Procédure pour ajouter une nouvelle expérience (ex: DA-CDF)
+## 12. Simulation tripartite OPL / DA-NoCDF / DA-CDF (Validée)
 
-### 12.1 Hypothèse scientifique à tester
-Le routage de l'expérience **DA-CDF** corrigée n'a pas encore été réalisé. L'hypothèse scientifique sous-jacente est que la mise à l'échelle préalable de l'humidité du sol SMAP par CDF matching permettra de corriger l'injection excessive de ruissellement constatée avec DA-NoCDF. Cette hypothèse devra être formellement validée ou réfutée lors de la comparaison tripartite : **Open-Loop (OPL) vs DA-NoCDF vs DA-CDF**.
+### 12.1 Validation de l'hypothèse scientifique
+Le routage de l'expérience **DA-CDF** a été complété sur les 5 années (2016–2020) après deux cycles de spin-up validés. L'hypothèse scientifique est confirmée :
+- La mise à l'échelle préalable par **CDF matching** élimine la surinjection massive d'eau observée sous DA-NoCDF dans le Bouregreg (réduction de l'excès de ruissellement et rapprochement des volumes OPL).
+- L'évaluation conjointe des 3 expériences montre que DA-CDF stabilise les hydrogrammes tout en améliorant ponctuellement la corrélation temporelle sur les épisodes de crue modérée.
 
-### 12.2 Protocole standardisé en 6 étapes
-1. **Vérification des sorties Noah-MP :** Vérifier l'intégralité des 1 828 fichiers journaliers dans `experiments/NorthMor/matrix_2016_2020/DA_cdf_noirr_2016_2020/output/YYYY-MM/SURFACEMODEL/YYYYMM/`.
-2. **Remapping conservatif Qs/Qsb (181x121 → 180x120) :** Créer et exécuter `scripts/remap_da_cdf_2016_2020.py` pour générer les ruissellements dans `runoff_remap_180x120/DA_cdf_noirr_2016_2020/`.
-3. **Création des configurations LIS :** Créer `configs/lis_hymap2_da_cdf_spinup_c1.config`, `_c2.config` et `lis_hymap2_da_cdf_2016_2020.config` en pointant vers `ldt_hymap/lis_input_corrigee.d01.nc` avec `HYMAP2 routing model dwi flag: 0`.
-4. **Exécution et validation du spin-up :** Exécuter les jobs de spin-up C1 puis C2, et vérifier le critère de convergence $\Delta_{rel}(BSFSTO) < 1.0\%$.
-5. **Exécution de la simulation quinquennale :** Soumettre le job de production 5 ans et vérifier la création des 1 827 fichiers journaliers dans `output/DA_cdf_2016_2020/ROUTING/`.
-6. **Évaluation hydrologique comparative :** Extraire la variable `Streamflow_tavg` au droit des 12 stations et confronter conjointement OPL, DA-NoCDF et DA-CDF aux observations.
-
-### 12.3 État d'avancement de la préparation DA-CDF (Novembre 2026)
-Conformément à ce protocole, l'ensemble des fichiers de la chaîne de routage DA-CDF ont été préparés :
-- **Script de remapping** : `scripts/remap_da_cdf_2016_2020.py` (ciblant les 1 827 sorties de `DA_cdf_noirr_2016_2020`).
-- **Configurations HyMAP** : `configs/lis_hymap2_da_cdf_spinup_c1.config`, `_c2.config` et `lis_hymap2_da_cdf_2016_2020.config` (chaînage C1 coldstart → C2 restart → Prod restart 2016–2020, `dwi flag: 0`, `lis_input_corrigee.d01.nc`).
-- **Jobs SLURM** : `jobs/run_hymap2_da_cdf_spinup_c1.sh`, `_c2.sh` et `run_hymap2_da_cdf_2016_2020.sh`.
-
-> [!NOTE]
-> Les scripts et configurations DA-CDF sont prêts et validés statiquement. Aucun remapping complet et aucun routage DA-CDF n'ont encore été exécutés à ce stade.
+### 12.2 Protocole d'exécution respecté
+1. **Remapping conservatif Qs/Qsb :** Réalisé via `scripts/remap_runoff_da_cdf.py` vers `runoff_remap_180x120/DA_cdf_noirr_2016_2020/`.
+2. **Spin-up en deux cycles :** Exécuté via `jobs/run_hymap2_da_cdf_spinup_c1.sh` et `_c2.sh` avec convergence $< 1.0\%$.
+3. **Simulation quinquennale :** 1 827 fichiers journaliers produits dans `output/DA_cdf_2016_2020/ROUTING/`.
+4. **Extraction et évaluation :** Intégrées dans la chaîne standard (`extract_streamflow.py` et `evaluate_sebou_bouregreg.py`).
 
 ---
 
@@ -418,9 +455,9 @@ Conformément à ce protocole, l'ensemble des fichiers de la chaîne de routage 
 | `DA_nocdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Spin-up C1 DA-NoCDF ($BSFSTO = 146.113\text{ hm}^3$). |
 | `DA_nocdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Spin-up C2 DA-NoCDF ($BSFSTO = 146.207\text{ hm}^3$, dérive $0.0645\% < 1.0\%$). |
 | `DA_nocdf_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Production 5 ans continue DA-NoCDF (ratio entrée/sortie 2018 à $99.930\%$, 1 827 fichiers). |
-| `DA_cdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **PRÉPARÉ (NON LANCÉ)** | Spin-up C1 DA-CDF configuré (coldstart, 2016). |
-| `DA_cdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **PRÉPARÉ (NON LANCÉ)** | Spin-up C2 DA-CDF configuré (restart C1, 2016). |
-| `DA_cdf_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **PRÉPARÉ (NON LANCÉ)** | Production 5 ans continue DA-CDF configurée (restart C2, 2016–2020). |
+| `DA_cdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Spin-up C1 DA-CDF (coldstart, 2016). |
+| `DA_cdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Spin-up C2 DA-CDF (restart C1, 2016, convergence validée). |
+| `DA_cdf_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Production 5 ans continue DA-CDF (1 827 fichiers journaliers NetCDF). |
 
 ---
 
