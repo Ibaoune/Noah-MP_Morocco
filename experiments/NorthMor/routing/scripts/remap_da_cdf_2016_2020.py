@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-import os, glob, re, time
+import os, sys, glob, re, time
 import multiprocessing as mp
 import netCDF4 as nc
 import numpy as np
 
-ldt_path = "experiments/NorthMor/routing/ldt_hymap/lis_input.d01.nc"
+# Utilisation recommandee de lis_input_corrigee.d01.nc (coordonnees strictement identiques a lis_input.d01.nc)
+ldt_path = "experiments/NorthMor/routing/ldt_hymap/lis_input_corrigee.d01.nc"
 ds_ldt = nc.Dataset(ldt_path)
 tgt_lat = ds_ldt["lat"][:].astype(np.float32)
 tgt_lon = ds_ldt["lon"][:].astype(np.float32)
@@ -17,14 +18,14 @@ def process_file(src_path):
     fname = os.path.basename(src_path)
     m = re.search(r"LIS_HIST_(\d{4})(\d{2})\d{6}\.d01\.nc", fname)
     if not m:
-        return
+        return (src_path, None, "Nom de fichier invalide")
     ym = m.group(1) + m.group(2)
     dst_dir = os.path.join(dst_base, ym)
     os.makedirs(dst_dir, exist_ok=True)
     dst_path = os.path.join(dst_dir, fname)
 
     if os.path.exists(dst_path) and os.path.getsize(dst_path) > 10000:
-        return
+        return (src_path, dst_path, None)
 
     try:
         ds_src = nc.Dataset(src_path, "r")
@@ -83,16 +84,28 @@ def process_file(src_path):
         ds_dst.missing_value = np.float32(-9999.0)
         ds_dst.close()
         os.replace(tmp_path, dst_path)
+        return (src_path, dst_path, None)
     except Exception as e:
-        print(f"Error processing {src_path}: {e}")
+        return (src_path, dst_path, str(e))
 
 if __name__ == "__main__":
     src_pattern = "experiments/NorthMor/matrix_2016_2020/DA_cdf_noirr_2016_2020/output/**/LIS_HIST_*.d01.nc"
     files = sorted(glob.glob(src_pattern, recursive=True))
     print(f"Found {len(files)} files to process for DA_cdf...")
+    if len(files) != 1827:
+        print(f"ERROR: Expected 1827 files, found {len(files)}!")
+        sys.exit(1)
+        
     t0 = time.time()
     with mp.Pool(processes=16) as pool:
-        pool.map(process_file, files)
+        results = pool.map(process_file, files)
+        
+    errors = [r for r in results if r and r[2] is not None]
+    if errors:
+        print(f"FATAL: {len(errors)} errors occurred during processing:")
+        for src, dst, err in errors[:10]:
+            print(f"  {src} -> {err}")
+        sys.exit(1)
     
     src_bnd = os.path.join(dst_base, "202101", "LIS_HIST_202101010000.d01.nc")
     dst_bnd = os.path.join(dst_base, "202101", "LIS_HIST_202101020000.d01.nc")
@@ -100,5 +113,12 @@ if __name__ == "__main__":
         import shutil
         shutil.copyfile(src_bnd, dst_bnd)
         print(f"Created terminal boundary file: {dst_bnd}")
+    
+    # Exhaustive verification of generated files
+    all_remapped = sorted(glob.glob(f"{dst_base}/**/LIS_HIST_*.d01.nc", recursive=True))
+    print(f"Exhaustive check: Total remapped files produced: {len(all_remapped)} (expected 1828)")
+    if len(all_remapped) != 1828:
+        print(f"ERROR: File count mismatch: {len(all_remapped)} vs 1828 expected.")
+        sys.exit(1)
         
-    print(f"Remapping completed in {time.time()-t0:.2f} s.")
+    print(f"Remapping completed successfully in {time.time()-t0:.2f} s.")
