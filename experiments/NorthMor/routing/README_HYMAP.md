@@ -391,6 +391,15 @@ Le routage de l'expérience **DA-CDF** corrigée n'a pas encore été réalisé.
 5. **Exécution de la simulation quinquennale :** Soumettre le job de production 5 ans et vérifier la création des 1 827 fichiers journaliers dans `output/DA_cdf_2016_2020/ROUTING/`.
 6. **Évaluation hydrologique comparative :** Extraire la variable `Streamflow_tavg` au droit des 12 stations et confronter conjointement OPL, DA-NoCDF et DA-CDF aux observations.
 
+### 12.3 État d'avancement de la préparation DA-CDF (Novembre 2026)
+Conformément à ce protocole, l'ensemble des fichiers de la chaîne de routage DA-CDF ont été préparés :
+- **Script de remapping** : `scripts/remap_da_cdf_2016_2020.py` (ciblant les 1 827 sorties de `DA_cdf_noirr_2016_2020`).
+- **Configurations HyMAP** : `configs/lis_hymap2_da_cdf_spinup_c1.config`, `_c2.config` et `lis_hymap2_da_cdf_2016_2020.config` (chaînage C1 coldstart → C2 restart → Prod restart 2016–2020, `dwi flag: 0`, `lis_input_corrigee.d01.nc`).
+- **Jobs SLURM** : `jobs/run_hymap2_da_cdf_spinup_c1.sh`, `_c2.sh` et `run_hymap2_da_cdf_2016_2020.sh`.
+
+> [!NOTE]
+> Les scripts et configurations DA-CDF sont prêts et validés statiquement. Aucun remapping complet et aucun routage DA-CDF n'ont encore été exécutés à ce stade.
+
 ---
 
 ## 13. Tableau récapitulatif des runs de routage
@@ -407,6 +416,9 @@ Le routage de l'expérience **DA-CDF** corrigée n'a pas encore été réalisé.
 | `DA_nocdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Spin-up C1 DA-NoCDF ($BSFSTO = 146.113\text{ hm}^3$). |
 | `DA_nocdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Spin-up C2 DA-NoCDF ($BSFSTO = 146.207\text{ hm}^3$, dérive $0.0645\% < 1.0\%$). |
 | `DA_nocdf_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Production 5 ans continue DA-NoCDF (ratio entrée/sortie 2018 à $99.930\%$, 1 827 fichiers). |
+| `DA_cdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **PRÉPARÉ (NON LANCÉ)** | Spin-up C1 DA-CDF configuré (coldstart, 2016). |
+| `DA_cdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **PRÉPARÉ (NON LANCÉ)** | Spin-up C2 DA-CDF configuré (restart C1, 2016). |
+| `DA_cdf_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **PRÉPARÉ (NON LANCÉ)** | Production 5 ans continue DA-CDF configurée (restart C2, 2016–2020). |
 
 ---
 
