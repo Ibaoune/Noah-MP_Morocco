@@ -37,7 +37,7 @@ Ces figures assurent le contrôle de la qualité numérique et le diagnostic int
 
 Ces figures appartiennent à des étapes de travail antérieures ou à des périmètres différents et ne doivent pas être présentées comme des résultats scientifiques actuels :
 
-* **`_history/tache8_pour_hydro/`** (accessible via le symlink patrimonial `plots/pour_hydro/`) :
+* **`_history/t8_ol_nocdf/`** :
   * `F1_carte_situation.png` : Carte historique des 12 stations de la Tâche 8 (incluant le Ksob/Adamna).
   * `F2a_hydrogrammes_bouregreg.png`, `F2b_hydrogrammes_sebou.png`, `F2c_hydrogrammes_ksob.png` : Hydrogrammes binaires OPL vs DA-NoCDF.
   * `F3_courbes_debits_classes.png` : Courbes des débits classés en échelle log comparant uniquement OPL et DA-NoCDF (sans DA-CDF).

@@ -23,7 +23,7 @@ def main():
     base_dir = "experiments/NorthMor/routing"
     clean_dir = "data/streamflow_clean"
     ldt_path = os.path.join(base_dir, "ldt_hymap/lis_input_corrigee.d01.nc")
-    pairing_csv = os.path.join(base_dir, "output/OPL_2016_2020/t5bis_stations_pairing.csv")
+    pairing_csv = os.path.join(base_dir, "stations/hymap_stations_pairing.csv")
     t5bis_metrics_csv = os.path.join(base_dir, "output/OPL_2016_2020/t5bis_metrics_12stations.csv")
     t5bis_rec_csv = os.path.join(base_dir, "output/OPL_2016_2020/t5bis_recession_tau.csv")
     t5bis_lowflow_csv = os.path.join(base_dir, "output/OPL_2016_2020/t5bis_lowflow_stats.csv")

@@ -16,7 +16,7 @@ import netCDF4 as nc
 import numpy as np
 
 def main():
-    csv_path = "experiments/NorthMor/routing/stations/stations.csv"
+    csv_path = "experiments/NorthMor/routing/stations/_history/stations.csv"
     ldt_path = "experiments/NorthMor/routing/ldt_hymap/lis_input.d01.nc"
     rst_start_path = "experiments/NorthMor/routing/output/OPL_2016_2020/ROUTING/201712/LIS_RST_HYMAP2_router_201712312345.d01.nc"
     rst_end_path = "experiments/NorthMor/routing/output/OPL_2016_2020/ROUTING/201812/LIS_RST_HYMAP2_router_201812312345.d01.nc"

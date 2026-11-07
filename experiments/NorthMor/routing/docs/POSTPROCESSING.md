@@ -22,7 +22,7 @@ Ce document formalise l'intégralité de la chaîne de traitement hydrologique, 
 [Étape 4] Production HyMAP 2016–2020 (1 827 fichiers LIS_HIST NetCDF par expérience)
           output/[EXP]_2016_2020/ROUTING/YYYYMM/LIS_HIST_*.nc
     │
-    ▼  (Extraction Streamflow_tavg via row_hymap / col_hymap)
+    ▼  (Extraction Streamflow_tavg via stations/hymap_stations_pairing.csv)
 [Étape 5] Caches journaliers 12 stations
           output/[EXP]_2016_2020/t*_sim_daily_*.csv
     │
@@ -50,30 +50,33 @@ Ce document formalise l'intégralité de la chaîne de traitement hydrologique, 
 | **Ctrl** | `scripts/check_remap_conservation_2018.py` | Toutes | Grilles source 121x181 et cible 180x120 | Contrôle volumique global domaine | Sortie terminal / logs | **Contrôle global domaine uniquement** (< 0.01 % d'écart total) ; ne constitue pas une preuve de conservation par sous-bassin. |
 | **Ctrl** | `scripts/check_spinup_criterion_corrigee.py` | OPL | Restarts C1 & C2 au 01/01/2017 | Bilan stock BSFSTO | Sortie terminal | $\Delta S_{\text{BSF}} = 0.132\%$ |
 | **Ctrl** | `scripts/check_spinup_criterion_da_nocdf.py` | DA-NoCDF | Restarts C1 & C2 au 01/01/2017 | Bilan stock BSFSTO | Sortie terminal | $\Delta S_{\text{BSF}} = 0.065\%$ |
-| **5** | `scripts/complete_t7bis_analysis.py` | OPL | 1 827 LIS_HIST OPL | Cache débits OPL & tables historiques | `output/OPL_2016_2020_corrigee/t7_sim_daily_12stations_corrigee.csv` | Générateur du cache OPL |
-| **5** | `scripts/complete_t8_analysis_and_plots.py` | OPL & DA-NoCDF | 1 827 LIS_HIST NoCDF + cache OPL | Cache NoCDF, tables T8, figures historiques | `output/DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv`, `plots/_history/tache8_pour_hydro/` | Analyse historique T8 |
-| **5** | `scripts/compare_3experiments_hydro.py` | 3 exp | 1 827 LIS_HIST DA-CDF + caches OPL & NoCDF | Cache DA-CDF, planches brutes 12 stations | `output/DA_cdf_2016_2020/t9_sim_daily_12stations_da_cdf.csv`, `plots/_history/comparison_3experiments_raw/` | Générateur du cache DA-CDF |
-| **6→8** | `scripts/sebou_bouregreg_diagnostic.py` | 3 exp | 3 caches débits + observations ABH + LDT HyMAP | 3 tables validées + 3 figures ciblées Sebou–Bouregreg | `plots/sebou_bouregreg/tables/`, `plots/sebou_bouregreg/figures/streamflow/` | **Script canonique de production scientifique actuelle** |
+| **5** | `scripts/complete_t7bis_analysis.py` | OPL | 1 827 LIS_HIST OPL + stations/hymap_stations_pairing.csv | Cache débits OPL & tables historiques | `output/OPL_2016_2020_corrigee/t7_sim_daily_12stations_corrigee.csv` | Générateur du cache OPL |
+| **5** | `scripts/complete_t8_analysis_and_plots.py` | OPL & DA-NoCDF | 1 827 LIS_HIST NoCDF + cache OPL + stations/hymap_stations_pairing.csv | Cache NoCDF, tables T8, figures historiques | `output/DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv`, `plots/_history/t8_ol_nocdf/` | Analyse historique T8 |
+| **5** | `scripts/compare_3experiments_hydro.py` | 3 exp | 1 827 LIS_HIST DA-CDF + caches OPL & NoCDF + stations/hymap_stations_pairing.csv | Cache DA-CDF, planches brutes 12 stations | `output/DA_cdf_2016_2020/t9_sim_daily_12stations_da_cdf.csv`, `plots/_history/comparison_3experiments_raw/` | Générateur du cache DA-CDF |
+| **6→8** | `scripts/sebou_bouregreg_diagnostic.py` | 3 exp | 3 caches débits + observations ABH + LDT HyMAP + stations/hymap_stations_pairing.csv | 3 tables validées + 3 figures ciblées Sebou–Bouregreg | `plots/sebou_bouregreg/tables/`, `plots/sebou_bouregreg/figures/streamflow/` | **Script canonique de production scientifique actuelle** |
 
 ---
 
 ## 3. Typologie des Données et Organisation
 
-1. **Sorties brutes de modèle (`routing/output/`)** :
+1. **Référentiel des stations et appariements (`routing/stations/`)** :
+   * `stations/hymap_stations_pairing.csv` : Table canonique d'appariement des 12 stations hydrométriques (coordonnées in-situ, indices Python 0-basés `row_hymap` / `col_hymap`, superficies officielles et surfaces drainées HyMAP). Source de vérité unique pour tous les scripts d'extraction et de diagnostic.
+   * `stations/_history/stations.csv` : Fichier historique d'exutoires majeurs (archivé pour traçabilité).
+2. **Sorties brutes de modèle (`routing/output/`)** :
    * Contiennent exclusivement les arborescences NetCDF journalières (`ROUTING/YYYYMM/LIS_HIST_*.nc`), les restarts (`LIS_RST_*.nc`) et les journaux d'exécution (`lislog`).
    * Ces répertoires sont intangibles.
-2. **Produits intermédiaires de post-traitement (Caches d'extraction)** :
+3. **Produits intermédiaires de post-traitement (Caches d'extraction)** :
    * Les débits extraits aux 12 stations sont conservés sous forme de fichiers CSV journaliers dans le répertoire de chaque simulation :
      - OPL : `output/OPL_2016_2020_corrigee/t7_sim_daily_12stations_corrigee.csv`
      - DA-NoCDF : `output/DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv`
      - DA-CDF : `output/DA_cdf_2016_2020/t9_sim_daily_12stations_da_cdf.csv`
    * Ces caches permettent de relancer l'ensemble des diagnostics sans relire les 5 481 fichiers NetCDF.
-3. **Résultats scientifiques actuels (`routing/plots/sebou_bouregreg/`)** :
+4. **Résultats scientifiques actuels (`routing/plots/sebou_bouregreg/`)** :
    * Contient les tables validées (`tables/`) et les trois figures d'évaluation 3exp actuelles (`figures/streamflow/`).
-4. **Diagnostics techniques (`routing/plots/technical/`)** :
+5. **Diagnostics techniques (`routing/plots/technical/`)** :
    * Spin-up (`spinup/`), bilan des réservoirs OPL (`water_balance/`), paramètres et chronologie d'observation (`parameters/`).
-5. **Archives patrimoniales (`routing/plots/_history/`)** :
-   * Tâche 8 binaire OPL vs DA-NoCDF (`tache8_pour_hydro/`), planches brutes 3exp (`comparison_3experiments_raw/`), et anciennes figures unitaires (`exploratoire_t5_t7/`).
+6. **Archives patrimoniales (`routing/plots/_history/`)** :
+   * Tâche 8 binaire OPL vs DA-NoCDF (`t8_ol_nocdf/`), planches brutes 3exp (`comparison_3experiments_raw/`), et anciennes figures unitaires (`exploratoire_t5_t7/`).
 
 ---
 

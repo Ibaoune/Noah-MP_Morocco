@@ -6,7 +6,7 @@ Analyse complete de la Tache 8 pour l'assimilation DA_nocdf vs Open-Loop (OPL).
 - Controles obligatoires (Spinup < 1%, Vsim/Vin 100%, Bilan masse 2018 < 0.2%)
 - Differences Delta Q = Q_DA - Q_OPL (journalier, mensuel, crues, detectabilite)
 - Metrique VALUE = |Q_OPL - Q_obs| - |Q_DA - Q_obs| et metriques KGE/r/NSE/alpha/beta/PBIAS
-- 6 Figures de qualite publication pour un collegue hydrologue dans experiments/NorthMor/routing/plots/pour_hydro/
+- 6 Figures de qualite publication pour un collegue hydrologue dans experiments/NorthMor/routing/plots/_history/t8_ol_nocdf/
 - Tableau de synthese hydrologique
 """
 
@@ -29,13 +29,13 @@ def main():
 
     base_dir = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/routing"
     clean_dir = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/data/streamflow_clean"
-    plots_dir = os.path.join(base_dir, "plots/pour_hydro")
+    plots_dir = os.path.join(base_dir, "plots/_history/t8_ol_nocdf")
     os.makedirs(plots_dir, exist_ok=True)
 
     opl_out_dir = os.path.join(base_dir, "output/OPL_2016_2020_corrigee")
     da_out_dir = os.path.join(base_dir, "output/DA_nocdf_2016_2020")
     ldt_path = os.path.join(base_dir, "ldt_hymap/lis_input_corrigee.d01.nc")
-    pairing_csv = os.path.join(base_dir, "output/OPL_2016_2020/t5bis_stations_pairing.csv")
+    pairing_csv = os.path.join(base_dir, "stations/hymap_stations_pairing.csv")
 
     df_p = pd.read_csv(pairing_csv)
     df_obs_daily = pd.read_csv(os.path.join(clean_dir, "obs_daily.csv"))
@@ -414,7 +414,7 @@ def main():
     # ETAPE 5 — LOT DE 6 FIGURES POUR UN HYDROLOGUE
     # =========================================================================
     print("\n" + "=" * 95)
-    print("ETAPE 5 — PRODUCTION DU LOT DE FIGURES (pour_hydro/)")
+    print("ETAPE 5 — PRODUCTION DU LOT DE FIGURES (_history/t8_ol_nocdf/)")
     print("=" * 95)
 
     # Couleurs harmonieuses
@@ -793,7 +793,7 @@ def main():
     # FICHIER TEXTE DES LEGENDES
     # -------------------------------------------------------------------------
     legendes_text = """LEGENDES DU LOT DE FIGURES POUR UN COLLEGUE HYDROLOGUE
-Repertoire : experiments/NorthMor/routing/plots/pour_hydro/
+Repertoire : experiments/NorthMor/routing/plots/_history/t8_ol_nocdf/
 
 F1_carte_situation.png :
 Carte de situation du domaine Nord Maroc montrant le réseau hydrographique HyMAP (lignes bleues dont l'épaisseur est proportionnelle à la surface drainée) et l'emprise des 12 bassins versants amont évalués. Les stations hydrologiques sont codées par couleur de grand bassin (bleu : Bouregreg, 4 stations journalières ; vert : Sebou, 7 stations mensuelles ; orange : Ksob, 1 station mensuelle) avec indication de l'oued jaugé et de la superficie de drainage officielle.

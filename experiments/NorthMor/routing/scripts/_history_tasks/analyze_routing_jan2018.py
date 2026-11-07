@@ -21,7 +21,7 @@ import matplotlib.dates as mdates
 import datetime
 
 def main():
-    csv_path = "experiments/NorthMor/routing/stations/stations.csv"
+    csv_path = "experiments/NorthMor/routing/stations/_history/stations.csv"
     ldt_path = "experiments/NorthMor/routing/ldt_hymap/lis_input.d01.nc"
     out_dir = "experiments/NorthMor/routing/output/OPL_201801/ROUTING"
     remap_dir = "experiments/NorthMor/routing/runoff_remap_180x120/OPL_noirr_2016_2020/SURFACEMODEL"

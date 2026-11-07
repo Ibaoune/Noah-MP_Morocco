@@ -26,7 +26,8 @@ NoahMP_Morocco/
 │       ├── configs/                                # Fichiers lis.config pour le routage hors ligne
 │       ├── runoff_remap_180x120/                   # Ruissellements Noah-MP rééchantillonnés de 181x121 vers 180x120
 │       ├── output/                                 # Sorties netCDF du routeur HyMAP2
-│       ├── plots/pour_hydro/                       # Figures d'évaluation hydrologique F1-F6
+│       ├── plots/sebou_bouregreg/                  # Résultats canoniques Sebou-Bouregreg (figures & tables)
+│       ├── plots/_history/                         # Archives historiques (T5, T7, T8 t8_ol_nocdf, 3exp brut)
 │       └── checks/                                 # Vérifications, checksums et traçabilité
 ```
 

@@ -34,7 +34,7 @@ def main():
     da_nocdf_dir = os.path.join(base_dir, "output/DA_nocdf_2016_2020")
     da_cdf_dir = os.path.join(base_dir, "output/DA_cdf_2016_2020")
 
-    pairing_csv = os.path.join(base_dir, "output/OPL_2016_2020/t5bis_stations_pairing.csv")
+    pairing_csv = os.path.join(base_dir, "stations/hymap_stations_pairing.csv")
     df_p = pd.read_csv(pairing_csv)
 
     df_obs_daily = pd.read_csv(os.path.join(clean_dir, "obs_daily.csv"))
