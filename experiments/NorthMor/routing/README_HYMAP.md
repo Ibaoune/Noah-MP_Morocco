@@ -69,7 +69,9 @@ experiments/NorthMor/routing/
 │   ├── DA_nocdf_spinup_c2/ROUTING/                # Sorties et restart Cycle 2 DA-NoCDF
 │   ├── DA_nocdf_2016_2020/ROUTING/                # 1 827 fichiers journaliers NetCDF DA-NoCDF
 │   └── OPL_2016_2020/                             # [ARCHIVE] Sorties du run brut avec puits artificiel
-└── plots/pour_hydro/               # Figures de synthèse (F1 à F6) et tables CSV d'évaluation
+├── plots/sebou_bouregreg/          # Résultats canoniques Sebou-Bouregreg (figures et tables 3exp)
+├── plots/technical/                # Figures techniques (spinup, water_balance, parameters)
+└── plots/_history/                 # Archives historiques (T5, T7, T8 pour_hydro, 3exp brut)
 ```
 
 ---
@@ -281,9 +283,9 @@ Le script unifié extrait automatiquement les débits simulés au droit des 12 s
 ```
 - **Mécanisme de mise en cache :** Pour optimiser les temps de traitement, le script met en cache les séries journalières extraites dans `output/DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv`.
 - **Livrables produits :**
-  - Table de synthèse : `plots/pour_hydro/synthese_hydrologique_12stations.csv`.
-  - Analyse des crues : `plots/pour_hydro/t8_flood_events_comparison.csv`.
-  - Figures de comparaison : `plots/pour_hydro/F1_carte_situation.png` à `F6_effet_assimilation.png`.
+  - Table de synthèse : `plots/_history/tache8_pour_hydro/synthese_hydrologique_12stations.csv` (accessible via symlink `plots/pour_hydro/`).
+  - Analyse des crues : `plots/_history/tache8_pour_hydro/t8_flood_events_comparison.csv`.
+  - Figures de comparaison : `plots/_history/tache8_pour_hydro/F1_carte_situation.png` à `F6_effet_assimilation.png`.
 
 ---
 
