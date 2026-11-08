@@ -5,7 +5,7 @@ Ce dossier regroupe les résultats validés comparant les trois expériences de 
 2. **DA-NoCDF** : Assimilation SMAP EnKF brute (sans prétraitement CDF).
 3. **DA-CDF** : Assimilation SMAP EnKF avec correction préalable par CDF matching.
 
-Le périmètre scientifique concerne exclusivement les bassins contrastés du **Sebou** et du **Bouregreg**. Les résultats concernant d'autres bassins (notamment Adamna sur le Ksob) sont conservés dans `plots/_history/`.
+Le périmètre scientifique concerne exclusivement les bassins contrastés du **Sebou** et du **Bouregreg**. Le bassin du Ksob (station Adamna) est documenté dans les fiches techniques d'audit (`checks/`), le périmètre scientifique validé étant centré sur Sebou et Bouregreg.
 
 ---
 
@@ -17,9 +17,9 @@ Seules trois figures validées comparant les trois simulations (OPL, DA-NoCDF, D
 
 | Fichier canonique | Script générateur | Type de tracé | Station(s) & Période |
 | :--- | :--- | :--- | :--- |
-| [`figures/streamflow/fig_detaillee_2018_b_s_jabeur.png`](figures/streamflow/fig_detaillee_2018_b_s_jabeur.png) | `scripts/sebou_bouregreg_diagnostic.py` | Hydrogramme journalier double panneau : crue linéaire + étiage log (avec points d'assec observés stricts) | Sidi Jabeur (`b_s_jabeur`, Grou), Année civile 2018 |
-| [`figures/streamflow/fig_detaillee_2018_b_l_chafia.png`](figures/streamflow/fig_detaillee_2018_b_l_chafia.png) | `scripts/sebou_bouregreg_diagnostic.py` | Hydrogramme journalier double panneau : crue linéaire + étiage log | Lalla Chafia (`b_l_chafia`, Bouregreg moyen), Année civile 2018 |
-| [`figures/streamflow/fig_comparative_mensuelle_sebou.png`](figures/streamflow/fig_comparative_mensuelle_sebou.png) | `scripts/sebou_bouregreg_diagnostic.py` | Chroniques mensuelles avec métriques intégrées (KGE, r, NSE, PBIAS) | Ain Timedrine, Dar El Hamra, Pont de Mdez (2016–2020) |
+| [`figures/streamflow/fig_detaillee_2018_b_s_jabeur.png`](figures/streamflow/fig_detaillee_2018_b_s_jabeur.png) | `scripts/evaluate_sebou_bouregreg.py` | Hydrogramme journalier double panneau : crue linéaire + étiage log (avec points d'assec observés stricts) | Sidi Jabeur (`b_s_jabeur`, Grou), Année civile 2018 |
+| [`figures/streamflow/fig_detaillee_2018_b_l_chafia.png`](figures/streamflow/fig_detaillee_2018_b_l_chafia.png) | `scripts/evaluate_sebou_bouregreg.py` | Hydrogramme journalier double panneau : crue linéaire + étiage log | Lalla Chafia (`b_l_chafia`, Bouregreg moyen), Année civile 2018 |
+| [`figures/streamflow/fig_comparative_mensuelle_sebou.png`](figures/streamflow/fig_comparative_mensuelle_sebou.png) | `scripts/evaluate_sebou_bouregreg.py` | Chroniques mensuelles avec métriques intégrées (KGE, r, NSE, PBIAS) | Ain Timedrine, Dar El Hamra, Pont de Mdez (2016–2020) |
 
 *Note sur les figures prévues : Les figures F1 (carte du domaine et des 11 stations Sebou-Bouregreg), F2 (diagrammes de partitionnement Qs/Qsb), F3-3exp (courbes de débits classés 3 simulations) et F4 (synthèse globale des performances) restent à produire ultérieurement dans leurs dossiers respectifs (`domain/`, `runoff/`, `performance/`).*
 
@@ -27,9 +27,9 @@ Seules trois figures validées comparant les trois simulations (OPL, DA-NoCDF, D
 
 | Fichier CSV | Script générateur | Contenu & Variables | Périmètre |
 | :--- | :--- | :--- | :---: |
-| [`tables/tableau_synthese_11stations_sebou_bouregreg.csv`](tables/tableau_synthese_11stations_sebou_bouregreg.csv) | `scripts/sebou_bouregreg_diagnostic.py` | Métriques globales KGE, NSE, r, PBIAS, débits moyens, note de duplication ABH | 11 stations |
-| [`tables/tableau_diagnostic_5stations.csv`](tables/tableau_diagnostic_5stations.csv) | `scripts/sebou_bouregreg_diagnostic.py` | Statistiques fines : moyennes, médianes, quantiles P95/P99, débits de pointe ($Q_{\max}$), ratios de pic | 5 stations cibles |
-| [`tables/tableau_apports_noahmp_2018.csv`](tables/tableau_apports_noahmp_2018.csv) | `scripts/sebou_bouregreg_diagnostic.py` | Volumes annuels Noah-MP amont délimités : $Q_s$, $Q_{sb}$, $V_{\text{tot}}$ en $\text{hm}^3$ | 5 stations cibles |
+| [`tables/tableau_synthese_11stations_sebou_bouregreg.csv`](tables/tableau_synthese_11stations_sebou_bouregreg.csv) | `scripts/evaluate_sebou_bouregreg.py` | Métriques globales KGE, NSE, r, PBIAS, débits moyens, note de duplication ABH | 11 stations |
+| [`tables/tableau_diagnostic_5stations.csv`](tables/tableau_diagnostic_5stations.csv) | `scripts/evaluate_sebou_bouregreg.py` | Statistiques fines : moyennes, médianes, quantiles P95/P99, débits de pointe ($Q_{\max}$), ratios de pic | 5 stations cibles |
+| [`tables/tableau_apports_noahmp_2018.csv`](tables/tableau_apports_noahmp_2018.csv) | `scripts/evaluate_sebou_bouregreg.py` | Volumes annuels Noah-MP amont délimités : $Q_s$, $Q_{sb}$, $V_{\text{tot}}$ en $\text{hm}^3$ | 5 stations cibles |
 
 ---
 

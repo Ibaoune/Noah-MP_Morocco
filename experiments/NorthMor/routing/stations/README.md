@@ -15,11 +15,9 @@ Ce répertoire centralise les tables d'appariement géométrique et hydrologique
 Cette table est la référence d'extraction spatiale :
 - Elle définit pour chacune des 12 stations les indices Python 0-basés `(row_hymap, col_hymap)`.
 - Ces indices sont utilisés par les scripts pour extraire directement la variable 2D `Streamflow_tavg[row_hymap, col_hymap]` des fichiers NetCDF de simulation (`LIS_HIST_*.nc`).
-- Elle est exploitée par les quatre scripts actifs de la chaîne :
-  1. `scripts/complete_t7bis_analysis.py`
-  2. `scripts/complete_t8_analysis_and_plots.py`
-  3. `scripts/compare_3experiments_hydro.py`
-  4. `scripts/sebou_bouregreg_diagnostic.py`
+- Elle est exploitée par les scripts actifs de la chaîne :
+  1. `scripts/extract_streamflow.py` : extraction unifiée des séries journalières aux stations pour les 3 simulations.
+  2. `scripts/evaluate_sebou_bouregreg.py` : évaluation hydrologique, confrontation aux observations ABH et bilans d'apports amont.
 
 ### Description des Colonnes
 | Colonne | Type | Description |
@@ -67,8 +65,8 @@ Cette table est la référence d'extraction spatiale :
    - Checksum MD5 identique à l'original historique : `604f032a444478d182a1e5c9081620f0`.
    - Conservation intégrale des 12 stations, coordonnées, indices et superficies.
 3. **Validation des scripts dépendants** :
-   - Syntaxe Python 3 validée par compilation (`py_compile`) sur les 4 scripts adaptés.
-   - Les 4 scripts pointent désormais de façon unifiée vers `experiments/NorthMor/routing/stations/hymap_stations_pairing.csv`.
+   - Syntaxe Python 3 validée par compilation (`py_compile`) sur l'ensemble des scripts de la chaîne.
+   - Les scripts maintenus pointent désormais de façon unifiée vers `experiments/NorthMor/routing/stations/hymap_stations_pairing.csv`.
 
 ---
 
@@ -79,6 +77,6 @@ Cette table est la référence d'extraction spatiale :
 - **Échelle d'agrégation amont** : Trois notions d'aires sont à distinguer :
   1. `aire_off_km2` : Aire administrative officielle (ABH Sebou uniquement).
   2. `aire_hymap_km2` : Aire drainée calculée à la maille par HyMAP via `HYMAP_drain_area`.
-  3. `Somme du masque amont délimité` : Somme géométrique des mailles contribuant à la station via l'arbre de direction de drainage (`sebou_bouregreg_diagnostic.py`), très proche de `aire_hymap_km2` (ex. Lalla Chafia : 3 333.3 km² pour 133 mailles vs 3 341.6 km² pour `HYMAP_drain_area`).
+  3. `Somme du masque amont délimité` : Somme géométrique des mailles contribuant à la station via l'arbre de direction de drainage (`evaluate_sebou_bouregreg.py`), très proche de `aire_hymap_km2` (ex. Lalla Chafia : 3 333.3 km² pour 133 mailles vs 3 341.6 km² pour `HYMAP_drain_area`).
 
 ---

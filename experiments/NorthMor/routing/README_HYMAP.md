@@ -1,20 +1,31 @@
 # Documentation de référence du routage HyMAP2 (Nord Maroc 2016–2020)
 
-## 1. Objectif du routage HyMAP2 et lien avec Noah-MP
+## 1. Objectif scientifique et couplage Noah-MP → HyMAP2
 
-Cette chaîne assure le routage hydrodynamique hors ligne (*offline*) avec le modèle **HyMAP2** (*Hydrological Modeling and Analysis Platform, version 2*) des écoulements de surface et de subsurface simulés par le modèle de surface continentale **Noah-MP 4.0.1** sur le domaine Nord Maroc (`NorthMor`).
+### 1.1 Raison d'être scientifique du routage HyMAP2
+Le modèle de surface continentale **Noah-MP 4.0.1** calcule les bilans d'eau et d'énergie dans la colonne de sol 1D pour chaque maille du domaine Nord Maroc (`NorthMor`). Il produit au pas journalier les flux de ruissellement superficiel rapide (`Qs_tavg`) et de drainage sous-racinaire profond (`Qsb_tavg`). Cependant, Noah-MP ne résout pas la propagation hydrodynamique de l'eau à travers les versants, les biefs fluviaux et les plaines d'inondation.
 
-### 1.1 Couplage séquentiel Noah-MP → HyMAP2
-1. **Simulation de surface (Noah-MP) :** Simule les bilans d'énergie et d'eau sur la grille régulière $181 \times 121$ (~5 km, repérage aux nœuds entiers de $30.00^\circ$ à $36.00^\circ\text{N}$ et $-10.00^\circ$ à $-1.00^\circ\text{E}$) et produit au pas journalier les flux :
-   - `Qs_tavg` : ruissellement superficiel rapide ($kg \cdot m^{-2} \cdot s^{-1}$).
-   - `Qsb_tavg` : drainage sous-racinaire profond / recharge de nappe ($kg \cdot m^{-2} \cdot s^{-1}$).
-2. **Routage hydrodynamique (HyMAP2) :** Convertit ces flux en apports d'eau, les transfère à travers le réseau hydrographique discrétisé sur la grille $180 \times 120$ ($0.05^\circ$, repérage aux centres de mailles de $30.025^\circ$ à $35.975^\circ\text{N}$ et $-9.975^\circ$ à $-1.025^\circ\text{E}$), et simule l'onde de crue cinématique, l'expansion des plaines inondables et la vidange du réservoir de nappe vers les rivières.
+Le modèle hydrodynamique distribué **HyMAP2** (*Hydrological Modeling and Analysis Platform, version 2*) assure ce transfert spatial :
+1. **Agrégation des flux :** Il convertit les flux surfaciques ($kg \cdot m^{-2} \cdot s^{-1}$) en volumes d'eau entrants sur un réseau de drainage distribué issu de MERIT-Hydro à $0.05^\circ$.
+2. **Dynamique fluviale :** Il résout la propagation de l'onde cinématique en lit mineur, le stockage temporaire en nappe alluviale (vidange linéaire), et l'expansion sub-maille dans les plaines inondables.
+3. **Validation terrain :** Il produit le débit fluvial routé (`Streamflow_tavg` en $m^3/s$) au droit des stations de jaugeage, rendant possible la confrontation directe et objective des simulations aux observations hydrométriques des Agences de Bassin Hydraulique (ABH).
 
-### 1.2 Expériences de référence
-Trois simulations quinquennales (2016–2020) constituent le socle de référence validé :
-- **Open-Loop (OPL)** : Simulation en boucle ouverte forcée par la météorologie sans assimilation (`OPL_2016_2020_corrigee`).
-- **Assimilation SMAP NoCDF (DA_nocdf)** : Assimilation par filtre de Kalman d'ensemble (EnKF) des données d'humidité du sol satellitaires SMAP L3 sans correction préalable de biais CDF matching (`DA_nocdf_2016_2020`).
-- **Assimilation SMAP DA-CDF (DA_cdf)** : Assimilation par EnKF avec mise à l'échelle préalable par CDF matching (`DA_cdf_2016_2020`), confirmant la suppression de l'excès de ruissellement.
+### 1.2 Description des trois expériences de référence (2016–2020)
+L'analyse porte sur la période quinquennale **2016–2020** à travers trois simulations continues initialisées par deux cycles de spin-up :
+1. **Open-Loop (OPL corrigée) :** Simulation en boucle ouverte forcée par la météorologie sans assimilation de données d'humidité du sol (`OPL_2016_2020_corrigee`). Elle constitue la référence hydro-météorologique de base.
+2. **Assimilation SMAP NoCDF (DA_nocdf) :** Assimilation par filtre de Kalman d'ensemble (EnKF) des observations satellitaires SMAP L3 d'humidité du sol, injectées directement sans correction préalable de biais (`DA_nocdf_2016_2020`).
+3. **Assimilation SMAP DA-CDF (DA_cdf corrigée) :** Assimilation SMAP EnKF avec mise à l'échelle préalable par **CDF matching** sur l'ensemble du domaine (`DA_cdf_2016_2020`).
+
+> [!IMPORTANT]
+> **Distinction fondamentale entre les deux correctifs appliqués :**
+> - **Le correctif HyMAP de nappe (`tbasflw / 86400`) :** C'est un correctif physico-numérique appliqué à la grille de paramètres HyMAP (`ldt_hymap/lis_input_corrigee.d01.nc`). La constante de temps de vidange de nappe fournie en secondes a été convertie en jours pour respecter l'équation Fortran de LISF. Ce correctif est **strictement identique pour les trois expériences** et résout le puits artificiel d'accumulation continue de nappe.
+> - **Le correctif CDF matching Noah-MP :** C'est un prétraitement statistique appliqué en amont aux observations satellitaires SMAP L3 avant leur ingestion par le filtre EnKF dans Noah-MP. Il adapte la distribution d'humidité satellitaire à la climatologie du modèle, supprimant la surinjection massive et irréaliste de ruissellement constatée dans le Bouregreg sous DA-NoCDF.
+
+### 1.3 Rôle du spin-up en deux cycles (C1 & C2)
+Pour affranchir la simulation quinquennale du biais des conditions initiales nulles (*coldstart*), chaque expérience suit un protocole rigoureux de spin-up en deux cycles annuels sur l'année **2016** (366 jours) :
+- **Cycle 1 (Coldstart) :** Démarrage avec stocks nuls au 01/01/2016, produisant un premier état d'équilibre au 01/01/2017.
+- **Cycle 2 (Stabilisation) :** Ré-exécution de l'année 2016 initialisée par le restart du Cycle 1.
+- **Convergence :** La dérive relative du stock de nappe (`BSFSTO`) entre C1 et C2 est validée sous le seuil strict de $1.0\%$ (OPL: $0.132\%$, DA-NoCDF: $0.065\%$, DA-CDF: $0.076\%$). Le restart final de C2 daté `201701010000` initialise la production continue 2016–2020.
 
 ---
 
@@ -312,26 +323,36 @@ Chaque fichier journalier contient les moyennes des 24 heures précédentes :
 - `FloodedFrac_tavg`, `FloodedArea_tavg` : Fraction et surface inondée ($m^2$).
 - `BaseflowStor_tavg`, `RunoffStor_tavg` : Niveaux de stockage dans les réservoirs souterrain et superficiel ($mm$).
 
-### 8.2 Extraction et évaluation aux stations
-L'extraction et l'évaluation reposent sur deux scripts maintenus dédiés (consulter [`docs/POSTPROCESSING.md`](docs/POSTPROCESSING.md)) :
+### 8.2 Protocole de reproduction rapide (Quick Start)
 
-1. **Extraction unifiée des débits journaliers :**
-```bash
-python3 experiments/NorthMor/routing/scripts/extract_streamflow.py --experiment all
-```
-- **Mécanisme de mise en cache :** Valide et réutilise les caches existants (`t8_sim_daily_12stations_*.csv`) sans retraiter inutilement les NetCDF.
-- **Option de forçage :** `--force` permet de ré-extraire l'intégralité des 5 ans si nécessaire.
+L'intégralité du post-traitement et de l'évaluation scientifique repose sur deux scripts autonomes (détaillés dans [`docs/POSTPROCESSING.md`](docs/POSTPROCESSING.md)) :
 
-2. **Évaluation hydrologique et figures scientifiques :**
+#### A. Évaluation scientifique instantanée (Recommandé, ~15 secondes)
+Les débits journaliers des trois expériences étant déjà extraits et validés dans les caches de référence, l'évaluation complète se relance directement sans relire les 5 481 fichiers NetCDF :
 ```bash
 python3 experiments/NorthMor/routing/scripts/evaluate_sebou_bouregreg.py
 ```
-- **Livrables canoniques produits :**
-  - Table de synthèse : `plots/sebou_bouregreg/tables/tableau_synthese_11stations_sebou_bouregreg.csv`
-  - Tableau diagnostic : `plots/sebou_bouregreg/tables/tableau_diagnostic_5stations.csv`
-  - Bilan des apports Noah-MP : `plots/sebou_bouregreg/tables/tableau_apports_noahmp_2018.csv`
-  - Figures détaillées : `plots/sebou_bouregreg/figures/streamflow/fig_detaillee_2018_b_s_jabeur.png`, `fig_detaillee_2018_b_l_chafia.png`
-  - Figure comparative : `plots/sebou_bouregreg/figures/streamflow/fig_comparative_mensuelle_sebou.png`
+- **Livrables produits dans `plots/sebou_bouregreg/tables/` :**
+  - `tableau_synthese_11stations_sebou_bouregreg.csv` (métriques complètes KGE, NSE, r, PBIAS).
+  - `tableau_diagnostic_5stations.csv` (statistiques fines sur les 5 stations prioritaires).
+  - `tableau_apports_noahmp_2018.csv` (bilan amont délimité $Q_s$ et $Q_{sb}$ en $\text{hm}^3$ pour 2018).
+- **Figures régénérées dans `plots/sebou_bouregreg/figures/streamflow/` :**
+  - `fig_detaillee_2018_b_s_jabeur.png` (zoom journalier 2018 à Sidi Jabeur, oued Grou).
+  - `fig_detaillee_2018_b_l_chafia.png` (zoom journalier 2018 à Lalla Chafia, oued Bouregreg).
+  - `fig_comparative_mensuelle_sebou.png` (séries mensuelles multi-stations 2016–2020 sur le Haut Sebou).
+
+#### B. Contrôle ou ré-extraction des débits aux 12 stations
+```bash
+# Vérifier l'intégrité des 3 caches journaliers sans ré-extraction :
+python3 experiments/NorthMor/routing/scripts/extract_streamflow.py --experiment all
+
+# Forcer la ré-extraction complète d'une expérience depuis les NetCDF (ex: OPL) :
+python3 experiments/NorthMor/routing/scripts/extract_streamflow.py --experiment opl --force
+```
+Les fichiers de cache journaliers générés et lus sont :
+- OPL corrigée : `output/OPL_2016_2020_corrigee/t7_sim_daily_12stations_corrigee.csv`
+- DA-NoCDF : `output/DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv`
+- DA-CDF : `output/DA_cdf_2016_2020/t9_sim_daily_12stations_da_cdf.csv`
 
 ---
 
@@ -388,11 +409,13 @@ Le script d'évaluation (`evaluate_sebou_bouregreg.py`) calcule pour chaque stat
   $$\text{pos\_val\_tot} = \frac{1}{N} \sum_{t=1}^N \mathbb{I}(\text{value}_t > 0) \times 100\%$$
   Il s'agit donc d'un indicateur de **fréquence temporelle d'amélioration**, et non d'un gain volumique global.
 
-### 10.2 Synthèse des limites hydrologiques observées
-1. **Absence d'assecs sur les oueds temporaires :** À la station de Sidi Jabeur (oued Grou), l'observation compte 310 à 312 jours à débit nul (assecs estivaux complets), alors que les simulations OPL et DA-NoCDF prédisent **0 jour d'assec** (maintien permanent d'un écoulement $\ge 0.1\text{ m}^3/s$). Cette défaillance résulte de la conjonction du drainage de nappe continu de Noah-MP et de l'absence de pertes en lit mineur dans HyMAP2.
-2. **Déficit chronique sur le haut Sebou :** Les simulations OPL sous-estiment massivement les débits sur 6 des 7 stations du Sebou (PBIAS de $-56\%$ à $-78\%$, seule Ait Khabbach présentant une surestimation à $+74\%$). Les causes potentielles (sous-estimation des pluies d'altitude, résurgences karstiques non modélisées, prélèvements agricoles) restent des hypothèses physiques non isolées.
-3. **Forte dégradation sous DA-NoCDF dans le Bouregreg :** L'assimilation sans correction préalable CDF injecte un excès massif d'eau (PBIAS atteignant $+115\%$ à $+480\%$, KGE s'effondrant jusqu'à $-3.86$).
-4. **Désactivation des interactions nappe-rivière :** `dwi flag = 0` dans tous les runs pour neutraliser les ratios DWI fictifs de l'archive brute.
+### 10.2 Synthèse des limites scientifiques et incertitudes démontrées
+1. **Incertitudes d'appariement géomorphologique (Bouregreg) :** En l'absence de superficies officielles enregistrées dans l'archive ABH Bouregreg-Chaouia, les stations sont appariées sur le bief principal le plus proche (catégorisées Niveau B). Bien que morphologiquement cohérentes, l'incertitude sur la délimitation exacte du bassin versant amont persiste.
+2. **Duplication démontrée des observations Ain Loudah / S.M. Cherif :** Les 1 827 valeurs journalières observées fournies par l'ABH sont rigoureusement identiques entre ces deux stations situées sur deux oueds distincts (Korifla vs Mechraa). Cette duplication administrative interdit de les traiter comme deux validations indépendantes.
+3. **Surestimation d'étiage et absence d'assecs simulés :** À la station de Sidi Jabeur (oued Grou), 310 jours à débit strictement nul ($Q_{\text{obs}} = 0.00\text{ m}^3/\text{s}$) sont observés, alors que les trois simulations maintiennent un écoulement estival permanent ($Q_{\text{sim}} > 1.4\text{ m}^3/\text{s}$). Ce biais structurel s'explique conjointement par la recharge continue du réservoir de nappe par Noah-MP et par l'absence dans HyMAP2 de pertes par infiltration en lit mineur (*transmission losses*) vers les aquifères alluviaux profonds.
+4. **Sous-estimation sur le Haut Sebou :** Les simulations OPL et assimilées sous-estiment les débits sur la majorité des stations du Haut Sebou (PBIAS de $-38\%$ à $-78\%$). Les causes physiques potentielles (sous-estimation des précipitations orographiques d'altitude, résurgences de sources karstiques non représentées, prélèvements agricoles non instrumentés) demeurent des **hypothèses explicatives ouvertes** et non des facteurs quantifiés ou isolés.
+5. **Portée du remapping :** La conservation volumique est démontrée à l'échelle globale du domaine ($S_2/S_1 = 100.0002\%$), mais l'interpolation par stencil 4 points lisse localement les flux sans garantir une conservation stricte à l'échelle de chaque sous-bassin individuel.
+6. **Désactivation des interactions nappe-rivière bidirectionnelles :** Option `dwi flag: 0` imposée dans toutes les configurations pour neutraliser les ratios DWI instables de l'archive brute Augusto.
 
 ---
 
