@@ -1,5 +1,11 @@
 # Documentation de référence du routage HyMAP2 (Nord Maroc 2016–2020)
 
+> [!NOTE]
+> **Manuel Technique et Guide de Référence Complet :**  
+> Pour reproduire l'ensemble de la chaîne depuis zéro sur une nouvelle simulation Noah-MP, ou pour consulter l'analyse approfondie des hypothèses scientifiques et les questions techniques pour Augusto Getirana, référez-vous au guide complet :
+> - **Document Markdown (source canonique) :** [HYMAP2_ROUTING_GUIDE.md](docs/HYMAP2_ROUTING_GUIDE.md)
+> - **Document PDF (mise en page A4 complète, 43 pages) :** [HYMAP2_ROUTING_GUIDE.pdf](docs/HYMAP2_ROUTING_GUIDE.pdf)
+
 ## 1. Objectif scientifique et couplage Noah-MP → HyMAP2
 
 ### 1.1 Raison d'être scientifique du routage HyMAP2
