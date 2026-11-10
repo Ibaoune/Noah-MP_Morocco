@@ -487,6 +487,8 @@ Le routage de l'expérience **DA-CDF** a été complété sur les 5 années (201
 | `DA_cdf_spinup_c1/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Spin-up C1 DA-CDF (coldstart, 2016). |
 | `DA_cdf_spinup_c2/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Spin-up C2 DA-CDF (restart C1, 2016, convergence validée). |
 | `DA_cdf_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **RÉFÉRENCE COMPLÉTÉE** | Production 5 ans continue DA-CDF (1 827 fichiers journaliers NetCDF). |
+| `OPL_test_jan2016_linres0/ROUTING/` | `lis_input_corrigee.d01.nc` | **TEST VALIDÉ** | Test 1 mois (janv. 2016) avec `linres=0` en coldstart (job 8272765, 39.4 s, 31 fichiers NetCDF, $BSFSTO=0$). |
+| `OPL_linres0_2016_2020/ROUTING/` | `lis_input_corrigee.d01.nc` | **PRODUCTION VALIDÉE** | Production 5 ans OPL HyMAP-2 avec `linres=0` en coldstart (job 8272794, 28 min 43 s, 1 827 fichiers NetCDF, 61 restarts). |
 
 ---
 
@@ -500,3 +502,99 @@ Pour approfondir les analyses sans alourdir ce document opérationnel, consulter
 - [`checks/04_audit_routing_historique.md`](checks/04_audit_routing_historique.md) : Inventaire exhaustif des simulations historiques, diagnostic des 4 réservoirs et réfutation de l'ancien run brut.
 - [`checks/05_evaluation_debits_historiques.md`](checks/05_evaluation_debits_historiques.md) : Confrontation aux 12 stations de jaugeage, analyse des crues, métriques KGE/NSE/PBIAS et paradoxes hydrologiques.
 - [`checks/06_audit_coherence.md`](checks/06_audit_coherence.md) : Audit de cohérence méthodologique, recalcul du plancher numérique `cntime`, vérification du spin-up 1 an et résolution du paradoxe d'El Mers.
+- [`checks/07_transition_hymap3_linres0.md`](checks/07_transition_hymap3_linres0.md) : Transition vers HyMAP-3, désactivation du réservoir linéaire (`linres = 0`), extinction de la dérive de nappe et simplification du protocole de spin-up suite aux recommandations directes d'Augusto Getirana.
+
+---
+
+## 15. Simulation HyMAP-2 OPL 2016–2020 sans réservoir linéaire (`linres = 0`) et Évaluation 2018
+
+Suite aux recommandations d'Augusto Getirana (désactivation du réservoir linéaire souterrain pour assainir les récessions avant transition vers HyMAP-3), la simulation quinquennale OPL complète a été exécutée et validée.
+
+### 15.1 Fichiers de configuration, soumission et sorties
+- **Configuration LIS :** [`configs/lis_hymap2_opl_2016_2020_linres0.config`](configs/lis_hymap2_opl_2016_2020_linres0.config)
+  - `HYMAP2 routing model linear reservoir flag: 0`
+  - `HYMAP2 routing model start mode: coldstart` (aucun restart lu au démarrage)
+  - Période : 01/01/2016 au 01/01/2021 (5 ans, 1 827 jours)
+  - Domaine et paramètres : [`ldt_hymap/lis_input_corrigee.d01.nc`](ldt_hymap/lis_input_corrigee.d01.nc)
+- **Script SLURM de production :** [`jobs/run_hymap2_linres0_opl_2016_2020.sh`](jobs/run_hymap2_linres0_opl_2016_2020.sh)
+  - Exécution : **Job ID 8272794** (1 nœud, 16 tâches MPI, partition `compute`).
+  - Temps de calcul réel : **28 min 43 s** (code de retour `0`, exit status `0`).
+  - Logs : [`logs/slurm_hymap2_5y_lr0_opl_8272794.out`](logs/slurm_hymap2_5y_lr0_opl_8272794.out) et `logs/lislog_opl_linres0_2016_2020.*`.
+- **Répertoire des sorties NetCDF :** `output/OPL_linres0_2016_2020/ROUTING/`
+  - 1 827 fichiers journaliers NetCDF (`LIS_HIST_*.nc`, 100% complets, 0 jour manquant).
+  - 61 fichiers de restart mensuels (`LIS_RST_*.nc`).
+  - `BaseflowStor_tavg = 0.000000 mm` et `RunoffStor_tavg = 0.000000 mm` strictement nuls.
+- **Cache extrait aux 12 stations :** [`output/OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv`](output/OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv).
+
+### 15.2 Évaluation comparative 2018 à Lalla Chafia (`b_l_chafia`)
+- **Figure comparative 3 panneaux :** [`plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_hymap2_linres0_vs_hist.png`](plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_hymap2_linres0_vs_hist.png)
+  - *(a) Hydrogramme annuel 2018*
+  - *(b) Zoom sur la période de hautes eaux (mars – avril 2018)*
+  - *(c) Zoom sur la période d'étiage estival (juin – septembre 2018)*
+- **Tableau des métriques statistiques :** [`plots/sebou_bouregreg/tables/table_metrics_2018_lalla_chafia_linres0.csv`](plots/sebou_bouregreg/tables/table_metrics_2018_lalla_chafia_linres0.csv)
+
+#### Synthèse des métriques (364 jours communs valides, date manquante ABH : 06/01/2018)
+| Métrique 2018 | Observations ABH | OPL Historique (`linres=1`) | OPL Nouveau (`linres=0`) |
+| :--- | :---: | :---: | :---: |
+| Débit moyen annuel | 9.74 m³/s | 7.98 m³/s | **7.99 m³/s** |
+| Biais moyen | — | -1.76 m³/s (-18.1 %) | **-1.75 m³/s (-17.9 %)** |
+| RMSE | — | 19.20 m³/s | **18.81 m³/s** |
+| Corrélation Pearson (r) | 1.000 | 0.437 | **0.456** |
+| Critère NSE | 1.000 | 0.134 | **0.169** |
+| Critère KGE | 1.000 | 0.017 | **0.079** |
+| Moyenne estivale (juin–sept.) | 0.73 m³/s | 6.91 m³/s | **6.88 m³/s** |
+| Maximum annuel simulé | 199.0 m³/s (08/03) | 34.0 m³/s (26/04) | **68.9 m³/s (25/04)** |
+
+### 15.3 Résultats démontrés vs Hypothèses ouvertes
+1. **Résultats démontrés :**
+   - L'amélioration du synchronisme sur la crue de fin avril 2018 est avérée : le pic simulé est calé au 25/04 à la date exacte de l'observation (alors que la simulation historique présentait un retard de 24h, au 26/04). En revanche, son amplitude de pointe est sensiblement surestimée (68.9 m³/s simulés contre 41.4 m³/s observés le 25 avril).
+   - L'accélération de la courbe de tarissement post-crue est confirmée : les débits redescendent nettement plus rapidement dès la cessation des précipitations, éliminant la traînée artificielle de plusieurs semaines du réservoir linéaire.
+2. **Hypothèses ouvertes et limites :**
+   - Le fort déficit de crue sur l'événement majeur des 07–08 mars 2018 (199.0 m³/s observé vs 24.0 m³/s en `linres0`) persiste. Sa cause exacte (sous-estimation des précipitations d'entrée ou partition ruissellement/infiltration dans Noah-MP) demeure une **hypothèse ouverte non encore démontrée**.
+   - L'excès de débit estival persiste (6.88 m³/s sim vs 0.73 m³/s obs). Bien que le drainage profond issu de Noah-MP en soit un contributeur potentiel majeur, son rôle exact pourra être analysé en exploitant directement les séries temporelles existantes de $Q_s$ et $Q_{sb}$ de Noah-MP sur le bassin.
+   - **Différence d'initialisation :** L'historique OPL partait d'un restart issu du cycle de spin-up C2 (réseau hydrographique et réservoirs pré-remplis), tandis que la simulation `linres0` démarre en coldstart au 01/01/2016. En 2018 (3ᵉ année), l'influence de cette différence d'initialisation sur le réseau fluvial est probablement réduite, mais elle n'a pas été quantifiée formellement.
+
+
+---
+
+## 16. Diagnostic multi-annuel des flux et des debits a Lalla Chafia (2016–2020)
+
+### 16.1 Contexte et objectifs scientifiques
+Suite au retour d'Augusto Getirana sur l'hydrogramme 2018 (suspicion d'un exces de ruissellement souterrain maintenant un plateau de debit artificiel en ete), un diagnostic approfondi des flux moyens amont a ete mene pour l'annee 2018 puis etendu a l'ensemble de la periode quinquennale 2016–2020 (1 827 jours calendaires, dont 1 826 jours communs valides avec les observations ABH, seule la journee du 06/01/2018 etant manquante).
+
+### 16.2 Sources de donnees et methodologie d'extraction
+- **Bassin versant amont :** Delimite depuis le reseau de drainage de [`ldt_hymap/lis_input_corrigee.d01.nc`](ldt_hymap/lis_input_corrigee.d01.nc) a partir de la cellule exutoire `(row=75, col=71)`. Il comprend **133 mailles HyMAP** pour une superficie cumulée de **3 333,35 km²**.
+- **Precipitations ($P$) :** Extraites des sorties journalieres originales Noah-MP OPL (`matrix_2016_2020/OPL_noirr_2016_2020/output/`). La precipitation atmospherique totale correspond a `Rainf_f_tavg` (pluie liquide) et `Snowf_tavg` (neige). L'interpolation spatiale vers la grille HyMAP est bilineaire au centre des mailles (moyenne des 4 noeuds delimitant chaque cellule).
+- **Ruissellements de surface ($Q_s$) et souterrain ($Q_{sb}$) :** Extraits directement des fichiers remappes conservatifs (`runoff_remap_180x120/OPL_noirr_2016_2020/SURFACEMODEL/`) effectivement injectes dans HyMAP-2.
+- **Debits a l'exutoire :** Confrontation directe entre observations ABH (`b_l_chafia`), simulation historique HyMAP-2 (`linres=1`) et simulation recente HyMAP-2 (`linres=0`, Job 8272794).
+
+### 16.3 Figures et tables produites
+- **Figure de synthese interannuelle (2016–2020) :** [`plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2016_2020_synthesis.png`](plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2016_2020_synthesis.png) (.pdf)
+  - *(a) Precipitations interannuelles et partition annuelle du ruissellement ($P$, $Q_s$, $Q_{sb}$).*
+  - *(b) Partition estivale des apports (juin–septembre) — $Q_{sb}$ represente plus de 90 % des apports estivaux pour chacune des 5 annees.*
+  - *(c) Debits moyens estivaux et persistance du biais positif associe a des apports domines par $Q_{sb}$.*
+- **Figure detaillee 3 panneaux (2018) :** [`plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_fluxes_and_streamflow.png`](plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_fluxes_and_streamflow.png) (.pdf)
+  - *(a) Precipitations journalieres moyennes du bassin (pics de mars, avril et novembre 2018).*
+  - *(b) Chroniques journalieres de $Q_s$, $Q_{sb}$ et ruissellement total.*
+  - *(c) Hydrogramme comparatif (ABH, `linres=1`, `linres=0`), confirmant la recession physique continue en fin d'annee et l'absence de decrochage brutal a zero.*
+- **Fichiers tabulaires (CSV) :**
+  - Series journalieres 2016–2020 : [`plots/sebou_bouregreg/tables/lalla_chafia_fluxes_2016_2020.csv`](plots/sebou_bouregreg/tables/lalla_chafia_fluxes_2016_2020.csv)
+  - Series journalieres 2018 : [`plots/sebou_bouregreg/tables/lalla_chafia_fluxes_2018.csv`](plots/sebou_bouregreg/tables/lalla_chafia_fluxes_2018.csv)
+  - Bilan annuel et estival 2016–2020 : [`plots/sebou_bouregreg/tables/lalla_chafia_annual_summer_stats_2016_2020.csv`](plots/sebou_bouregreg/tables/lalla_chafia_annual_summer_stats_2016_2020.csv)
+
+### 16.4 Synthese des resultats demontres vs Hypotheses
+1. **Faits demontres :**
+   - **Dominance estivale de $Q_{sb}$ superieure a 90 % confirmee sur les 5 annees :** 2016 (90,8 %), 2017 (90,4 %), 2018 (90,5 %), 2019 (94,2 %), 2020 (90,6 %). Les apports liquides estivaux recus par le modele de routage sont quasi exclusivement constitues de ruissellement souterrain issu de Noah-MP.
+   - **Biais estival positif persistant sur toutes les annees :** Le debit moyen estival simule depasse systematiquement l'observe (+1,05 m³/s en 2016, +1,20 m³/s en 2017, +6,15 m³/s en 2018, +1,94 m³/s en 2019, +1,30 m³/s en 2020), alors que les observations ABH indiquent des etiages severes (0,2 a 0,7 m³/s).
+   - **Gain systematique de `linres=0` sur `linres=1` :** Sur l'ensemble des 5 annees, `linres=0` ameliore constamment les criteres statistiques (NSE 2016: +0,187 vs +0,111 ; 2017: +0,121 vs +0,090 ; 2018: +0,169 vs +0,134 ; 2019: -0,262 vs -0,341 ; 2020: -0,019 vs -0,108).
+   - **Continuite temporelle :** Les simulations ne presentent aucun decrochage artificiel a zero en fin d'annee.
+2. **Hypotheses ouvertes et points a examiner :**
+   - **Memoire hydrologique pluri-annuelle (2019) :** Malgre une faible pluviosite en 2019 (257,5 mm), le ruissellement souterrain et les debits estivaux sont restes eleves (2,48 m³/s simules vs 0,54 m³/s observes). Le stockage profond accumule lors de l'annee tres humide 2018 (780,0 mm) constitue une *hypothese de travail plausible*, mais n'est pas encore une conclusion formellement demontree (d'autres facteurs comme le parametrage des sols Noah-MP ou l'absence de prelevements/evaporation en riviere peuvent intervenir).
+   - **Attribution du biais estival :** L'exces de debit en riviere est etroitement correle a des apports domines par $Q_{sb}$, mais l'attribution causale definitive necessite d'evaluer les pertes en lit mineur et les processus d'assimilation (DA).
+   - **Sous-estimation de la crue de mars 2018 :** L'origine du deficit (forcage pluviometrique vs partition infiltration/ruissellement dans Noah-MP) reste a elucider.
+   - **Conditions initiales distinctes en 2016 :** L'année 2016 est une année de production à part entière, mais les conditions initiales au 01/01/2016 diffèrent entre le routage historique (restart issu de spin-up C2) et le routage récent `linres=0` (coldstart). Bien que la dynamique de crue converge dès le printemps, la comparaison quantitative de 2016 doit intégrer cette différence d'état initial.
+
+### 16.5 Commande de reproduction
+```bash
+python3 experiments/NorthMor/routing/scripts/diagnostic_lalla_chafia_flux.py --start-year 2016 --end-year 2020
+```
