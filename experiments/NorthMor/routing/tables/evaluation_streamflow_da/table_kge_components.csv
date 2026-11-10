@@ -1,0 +1,13 @@
+station_id,name,basin,experiment,n_obs,r,alpha,beta,kge,nse,log_nse
+b_a_loudah,Ain Loudah,Bouregreg,OL,1461,0.497,0.19,1.056,0.045,0.153,-0.929
+b_l_chafia,Lalla Chafia,Bouregreg,OL,1460,0.506,0.323,1.057,0.16,0.223,-0.386
+b_s_cherif,S.M. Cherif,Bouregreg,OL,1461,0.537,0.224,1.092,0.092,0.19,-0.956
+b_s_jabeur,Sidi Jabeur,Bouregreg,OL,1461,0.641,0.109,0.532,-0.069,0.111,-0.39
+ain_timedrine,Ain Timedrine,Sebou,OL,48,0.415,0.112,0.207,-0.327,-1.461,-4.743
+ait_khabbach,Ait Khabbach,Sebou,OL,32,0.204,0.421,1.425,-0.072,-0.093,-0.598
+azzaba,Azzaba,Sebou,OL,48,0.645,0.08,0.21,-0.263,-0.664,-2.9
+dar_el_hamra,Dar El Hamra,Sebou,OL,48,0.684,0.061,0.21,-0.267,-0.263,0.028
+el_mers,El Mers,Sebou,OL,8,0.541,0.115,0.38,-0.174,-0.742,-0.831
+pont_ait_aissa,Pont Ait Aissa,Sebou,OL,48,0.21,0.255,0.255,-0.317,-1.368,-7.0
+pont_de_mdez,Pont de Mdez,Sebou,OL,32,0.358,0.144,0.373,-0.24,-0.53,-0.457
+adamna,Adamna,Ksob,OL,8,0.099,0.725,2.435,-0.717,-2.466,-0.875

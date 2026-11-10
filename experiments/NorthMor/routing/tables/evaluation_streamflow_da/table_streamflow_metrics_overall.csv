@@ -1,0 +1,13 @@
+station_id,name,basin,area_km2,experiment,timestep,n_obs,q_obs_mean,q_sim_mean,bias,rel_bias_pct,rmse,r,alpha,beta,kge,nse,log_nse
+b_a_loudah,Ain Loudah,Bouregreg,697.6,OL,daily,1461,0.301,0.318,0.017,5.6,1.378,0.497,0.19,1.056,0.045,0.153,-0.929
+b_l_chafia,Lalla Chafia,Bouregreg,3341.6,OL,daily,1460,3.687,3.897,0.21,5.7,10.785,0.506,0.323,1.057,0.16,0.223,-0.386
+b_s_cherif,S.M. Cherif,Bouregreg,649.5,OL,daily,1461,0.301,0.329,0.028,9.2,1.347,0.537,0.224,1.092,0.092,0.19,-0.956
+b_s_jabeur,Sidi Jabeur,Bouregreg,3138.5,OL,daily,1461,4.612,2.452,-2.16,-46.8,15.803,0.641,0.109,0.532,-0.069,0.111,-0.39
+ain_timedrine,Ain Timedrine,Sebou,4387.0,OL,monthly,48,9.677,1.999,-7.678,-79.3,9.703,0.415,0.112,0.207,-0.327,-1.461,-4.743
+ait_khabbach,Ait Khabbach,Sebou,1240.0,OL,monthly,32,0.318,0.453,0.135,42.5,0.476,0.204,0.421,1.425,-0.072,-0.093,-0.598
+azzaba,Azzaba,Sebou,4640.0,OL,monthly,48,9.807,2.058,-7.749,-79.0,11.459,0.645,0.08,0.21,-0.263,-0.664,-2.9
+dar_el_hamra,Dar El Hamra,Sebou,670.0,OL,monthly,48,1.932,0.406,-1.526,-79.0,2.93,0.684,0.061,0.21,-0.267,-0.263,0.028
+el_mers,El Mers,Sebou,1004.0,OL,monthly,8,2.223,0.844,-1.379,-62.0,1.97,0.541,0.115,0.38,-0.174,-0.742,-0.831
+pont_ait_aissa,Pont Ait Aissa,Sebou,205.0,OL,monthly,48,0.37,0.094,-0.276,-74.5,0.357,0.21,0.255,0.255,-0.317,-1.368,-7.0
+pont_de_mdez,Pont de Mdez,Sebou,3435.0,OL,monthly,32,4.39,1.639,-2.751,-62.7,4.348,0.358,0.144,0.373,-0.24,-0.53,-0.457
+adamna,Adamna,Ksob,1617.0,OL,monthly,8,0.512,1.246,0.735,143.5,0.947,0.099,0.725,2.435,-0.717,-2.466,-0.875
