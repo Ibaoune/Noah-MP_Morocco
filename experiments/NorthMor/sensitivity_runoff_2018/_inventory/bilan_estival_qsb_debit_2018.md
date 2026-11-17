@@ -1,0 +1,33 @@
+# Bilan Estival Qs / Qsb contre Débit Routé et Observé (2018)
+
+- **Méthode de délimitation amont** : fonction `get_catchment` de `experiments/NorthMor/routing/scripts/evaluate_sebou_bouregreg.py` (lignes 699–708).
+- **Fichier de paramètres et directions LDT** : `experiments/NorthMor/routing/ldt_hymap/lis_input_corrigee.d01.nc`.
+- **Superficies et mailles** : `experiments/NorthMor/routing/stations/hymap_stations_pairing.csv` :
+  - Lalla Chafia (`b_l_chafia`) : row 75, col 71, aire pairing = 3 341.60 km² (133 mailles D8, aire grille = 3 333.35 km²).
+  - Sidi Jabeur (`b_s_jabeur`) : row 71, col 71, aire pairing = 3 138.52 km² (121 mailles D8, aire grille = 3 130.55 km²).
+- **Formule de conversion de flux** : $m^3/s = mm/j \times A[km^2] / 86.4$.
+- **Observations ABH** : `data/streamflow_clean/obs_daily.csv`.
+
+| Periode | Station_ID | Station_Nom | Aire_km2 | Schema_ID | Schema_Nom | Qs_mean_mm_j | Qs_median_mm_j | Qs_mean_m3s | Qs_median_m3s | Qsb_mean_mm_j | Qsb_median_mm_j | Qsb_mean_m3s | Qsb_median_m3s | Q_route_mean_m3s | Q_route_median_m3s | Q_obs_mean_m3s | Q_obs_median_m3s | N_obs |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Juin–Août 2018 (92j) | b_l_chafia | Lalla Chafia | 3341.6 | OL_R1_SIMGM | SIMGM (Opt 1) | 0.0046 | 0.0005 | 0.18 | 0.018 | 0.1736 | 0.1703 | 6.713 | 6.588 | 6.902 | 6.75 | 0.664 | 0.325 | 92 |
+| Juin–Août 2018 (92j) | b_l_chafia | Lalla Chafia | 3341.6 | OL_R2_SIMTOP | SIMTOP (Opt 2) | 0.0032 | 0.0002 | 0.124 | 0.009 | 0.0673 | 0.054 | 2.602 | 2.09 | 2.81 | 2.244 | 0.664 | 0.325 | 92 |
+| Juin–Août 2018 (92j) | b_l_chafia | Lalla Chafia | 3341.6 | OL_R3_SCHAAKE96 | Schaake96 (Opt 3) | 0.0013 | 0.0 | 0.05 | 0.0 | 0.0441 | 0.0413 | 1.706 | 1.598 | 1.783 | 1.639 | 0.664 | 0.325 | 92 |
+| Juin–Août 2018 (92j) | b_l_chafia | Lalla Chafia | 3341.6 | OL_R4_BATS | BATS (Opt 4) | 0.0064 | 0.0018 | 0.246 | 0.068 | 0.0862 | 0.0816 | 3.333 | 3.154 | 3.614 | 3.391 | 0.664 | 0.325 | 92 |
+| Juin–Août 2018 (92j) | b_l_chafia | Lalla Chafia | 3341.6 | OPL_HIST | OPL Historique (linres=1) | 0.0046 | 0.0005 | 0.18 | 0.018 | 0.1736 | 0.1703 | 6.713 | 6.588 | 6.96 | 6.779 | 0.664 | 0.325 | 92 |
+| Juin–Août 2018 (92j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OL_R1_SIMGM | SIMGM (Opt 1) | 0.0029 | 0.0002 | 0.105 | 0.008 | 0.082 | 0.082 | 2.978 | 2.979 | 3.07 | 3.054 | 0.208 | 0.174 | 92 |
+| Juin–Août 2018 (92j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OL_R2_SIMTOP | SIMTOP (Opt 2) | 0.0027 | 0.0002 | 0.099 | 0.006 | 0.0687 | 0.058 | 2.497 | 2.107 | 2.685 | 2.265 | 0.208 | 0.174 | 92 |
+| Juin–Août 2018 (92j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OL_R3_SCHAAKE96 | Schaake96 (Opt 3) | 0.0006 | 0.0 | 0.021 | 0.0 | 0.0347 | 0.0333 | 1.261 | 1.21 | 1.305 | 1.232 | 0.208 | 0.174 | 92 |
+| Juin–Août 2018 (92j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OL_R4_BATS | BATS (Opt 4) | 0.0049 | 0.001 | 0.179 | 0.036 | 0.0803 | 0.0766 | 2.917 | 2.781 | 3.13 | 2.955 | 0.208 | 0.174 | 92 |
+| Juin–Août 2018 (92j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OPL_HIST | OPL Historique (linres=1) | 0.0029 | 0.0002 | 0.105 | 0.008 | 0.082 | 0.082 | 2.978 | 2.979 | 3.081 | 3.063 | 0.208 | 0.174 | 92 |
+| Juin–Septembre 2018 (122j) | b_l_chafia | Lalla Chafia | 3341.6 | OL_R1_SIMGM | SIMGM (Opt 1) | 0.0152 | 0.0005 | 0.588 | 0.018 | 0.1635 | 0.1589 | 6.323 | 6.145 | 6.878 | 6.66 | 0.726 | 0.32 | 122 |
+| Juin–Septembre 2018 (122j) | b_l_chafia | Lalla Chafia | 3341.6 | OL_R2_SIMTOP | SIMTOP (Opt 2) | 0.0099 | 0.0002 | 0.383 | 0.009 | 0.0609 | 0.0457 | 2.356 | 1.766 | 2.757 | 2.253 | 0.726 | 0.32 | 122 |
+| Juin–Septembre 2018 (122j) | b_l_chafia | Lalla Chafia | 3341.6 | OL_R3_SCHAAKE96 | Schaake96 (Opt 3) | 0.0054 | 0.0 | 0.208 | 0.0 | 0.0417 | 0.039 | 1.612 | 1.509 | 1.838 | 1.664 | 0.726 | 0.32 | 122 |
+| Juin–Septembre 2018 (122j) | b_l_chafia | Lalla Chafia | 3341.6 | OL_R4_BATS | BATS (Opt 4) | 0.017 | 0.0017 | 0.657 | 0.067 | 0.0796 | 0.0744 | 3.078 | 2.879 | 3.714 | 3.387 | 0.726 | 0.32 | 122 |
+| Juin–Septembre 2018 (122j) | b_l_chafia | Lalla Chafia | 3341.6 | OPL_HIST | OPL Historique (linres=1) | 0.0152 | 0.0005 | 0.588 | 0.018 | 0.1635 | 0.1589 | 6.323 | 6.145 | 6.913 | 6.642 | 0.726 | 0.32 | 122 |
+| Juin–Septembre 2018 (122j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OL_R1_SIMGM | SIMGM (Opt 1) | 0.0103 | 0.0002 | 0.374 | 0.009 | 0.0804 | 0.0804 | 2.921 | 2.919 | 3.249 | 3.099 | 1.35 | 0.174 | 122 |
+| Juin–Septembre 2018 (122j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OL_R2_SIMTOP | SIMTOP (Opt 2) | 0.0093 | 0.0002 | 0.336 | 0.007 | 0.0631 | 0.051 | 2.293 | 1.852 | 2.648 | 2.318 | 1.35 | 0.174 | 122 |
+| Juin–Septembre 2018 (122j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OL_R3_SCHAAKE96 | Schaake96 (Opt 3) | 0.0037 | 0.0 | 0.136 | 0.0 | 0.0332 | 0.0318 | 1.205 | 1.154 | 1.343 | 1.265 | 1.35 | 0.174 | 122 |
+| Juin–Septembre 2018 (122j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OL_R4_BATS | BATS (Opt 4) | 0.015 | 0.001 | 0.543 | 0.036 | 0.0745 | 0.0703 | 2.707 | 2.553 | 3.23 | 3.013 | 1.35 | 0.174 | 122 |
+| Juin–Septembre 2018 (122j) | b_s_jabeur | Sidi Jabeur | 3138.52 | OPL_HIST | OPL Historique (linres=1) | 0.0103 | 0.0002 | 0.374 | 0.009 | 0.0804 | 0.0804 | 2.921 | 2.919 | 3.232 | 3.107 | 1.35 | 0.174 | 122 |
+

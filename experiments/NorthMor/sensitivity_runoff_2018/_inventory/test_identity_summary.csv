@@ -1,0 +1,4 @@
+Variable,Max_|diff|,Ratio_Sommes_Annuelles_Domaine,Correlation_Journaliere_Domaine,Correlation_Journaliere_Lalla_Chafia,Conclusion
+Qs_tavg (surface),0.0,1.0,1.0,1.0,identiques
+Qsb_tavg (subsurface),0.0,1.0,0.9999999999999998,1.0,identiques
+Total (Qs + Qsb),0.0,1.0,0.9999999999999999,1.0,identiques
