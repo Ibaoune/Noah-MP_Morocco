@@ -49,3 +49,15 @@ Ce document constitue le registre de référence exhaustif de toutes les simulat
   - `DA_cdf_2016_2020` : Expérience prévue après validation de la CDF corrigée.
 * **Prétraitements** : `ldt_hymap/` (paramètres physiographiques Augusto, `lis_input_corrigee.d01.nc`), `runoff_remap_180x120/` (remapping conservatif de $Q_s$ et $Q_{sb}$ vers la grille $180 \times 120$ à 0.05°).
 * **Documentation de référence** : [`experiments/NorthMor/routing/README_HYMAP.md`](../experiments/NorthMor/routing/README_HYMAP.md) et fiches techniques d'audit associées ([`checks/`](../experiments/NorthMor/routing/checks/)).
+
+
+---
+
+## 3. Expériences de Sensibilité 2018 (`matrix_2016_2020/sensitivity_2018/`)
+
+| Nom | Type | Membres | Période | Sorties | Binaire LIS | Objet & Hypothèse |
+| :--- | :---: | :---: | :---: | :---: | :--- | :--- |
+| **`OL_ctrl_hourly_2018`** | OL (déterministe) | 1 | 2018-01-01 au 2019-01-01 | **1 heure** (inst + tavg) | `src/lisf/lis/make/LIS` (Production) | Contrôle horaire avec config production (Sakaguchi & Zeng, `OPT_RSF=1`). Sert à vérifier la reproduction exacte de OPL_noirr. |
+| **`OL_rsf2_hourly_2018`** | OL (déterministe) | 1 | 2018-01-01 au 2019-01-01 | **1 heure** (inst + tavg) | `src/lisf/lis/make/LIS` (Production) | Sensibilité physique : résistance de surface alternative de Sellers 1992 (`OPT_RSF=2`, sans dépendance à SMCWLT). |
+| **`DA_nocdf_nowilt_2018`** | DA EnKF | 20 | 2018-01-01 au 2019-01-01 | 1 jour (DAOBS, incréments, spread) | `src/lisf_nowilt/lis/LIS` (Patché sans filtre flétrissement) | Sensibilité DA : assimilation SMAP sans censure du point de flétrissement (`smobs - smcwlt < 0.02` désactivé). |
+| **`HyMAP2_nowilt_2018`** | Routage hydrodynamique | 1 | 2018-01-01 au 2019-01-01 | 1 jour (débits stations) | `src/lisf/lis/make/LIS` (Production) | Routage HyMAP2 du ruissellement issu de DA_nocdf_nowilt_2018 après remapping 180×120. |

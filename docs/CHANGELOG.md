@@ -50,3 +50,19 @@ Cette section rassemble les spécificités factuelles du code LISF et du modèle
 
 1. **Jeu de données Parquet XAI (`monthly_pixel_dataset_2016_2020_static.parquet`)** :
    Le fichier `IA_SM_assim/data/processed/monthly_pixel_dataset_2016_2020_static.parquet` (dépôt XAI) a été construit avant le 31/10 : s'il contient des données DA-CDF, il vient de l'ancienne CDF et devra être reconstruit. *(Ne pas toucher au dépôt IA_SM_assim depuis ce projet).*
+
+
+### 5. Préparation de la matrice de sensibilité 2018 (Novembre 2026)
+* **Contexte** : Audit SMAP / Noah-MP sur les dynamiques de ressuyage post-pluviale et le lien avec le débit de base.
+* **Mise en place de `matrix_2016_2020/sensitivity_2018/`** :
+  1. *Étape B (Physique de résistance de surface)* :
+     - Préparation de deux runs OL horaires déterministes sur 2018 (`OL_ctrl_hourly_2018` avec `OPT_RSF=1` et `OL_rsf2_hourly_2018` avec `OPT_RSF=2` Sellers 1992).
+     - Table `shared/MODEL_OUTPUT_LIST_hourly.TBL` configurée avec `timeAvgOpt=2` pour extraire instantané et moyenne pour l'humidité des 4 couches, ET totale, ECanop, TVeg, ESoil, Qs, Qsb.
+     - Script de validation `verify_reproduce_opl.py` pour garantir la stricte cohérence avec `OPL_noirr`.
+  2. *Étape C (Assimilation sans filtre de flétrissement)* :
+     - Préparation de `DA_nocdf_nowilt_2018` sur l'année 2018 entière avec 20 membres d'ensemble, utilisant le binaire `lisf_nowilt` et initialisé au départ des restarts exacts de production (surface et perturbations).
+     - Préparation du pipeline de routage hydrodynamique HyMAP2 (`routing_DA_nocdf_nowilt_2018`) avec script de remapping automatique du ruissellement vers la grille 180×120 et restart au 2018-01-01.
+  3. *Documentation du code* :
+     - Analyse et consignation de la logique de troncature d'état dans `noahmp401_setsoilm.F90` démontrant que le plancher EnKF est universellement à `MIN_THRESHOLD = 0.02`, confirmant que la levée du filtre d'observation suffit à permettre à SMAP de corriger le modèle sous SMCWLT.
+  4. *Point d'arrêt strict* :
+     - Aucun job SLURM soumis avant validation explicite de l'utilisateur.
