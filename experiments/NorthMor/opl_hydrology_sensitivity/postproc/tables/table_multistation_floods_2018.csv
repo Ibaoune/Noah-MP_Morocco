@@ -1,0 +1,49 @@
+evenement,debut,fin,station_id,nom,bassin,experiment,formulation,q_peak_obs_m3s,q_peak_sim_m3s,biais_pic_pct,vol_obs_hm3,vol_sim_hm3,biais_vol_pct
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_l_chafia,Lalla Chafia,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),199.0,24.01,-87.9,69.29,9.96,-85.6
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_l_chafia,Lalla Chafia,Bouregreg,OL_R2_SIMTOP,SIMTOP,199.0,140.45,-29.4,69.29,52.97,-23.6
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_l_chafia,Lalla Chafia,Bouregreg,OL_R3_SCHAAKE96,Schaake96,199.0,136.44,-31.4,69.29,54.46,-21.4
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_l_chafia,Lalla Chafia,Bouregreg,OL_R4_BATS,BATS,199.0,293.45,47.5,69.29,102.34,47.7
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),349.0,15.43,-95.6,63.23,6.74,-89.3
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R2_SIMTOP,SIMTOP,349.0,70.57,-79.8,63.23,29.72,-53.0
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R3_SCHAAKE96,Schaake96,349.0,41.32,-88.2,63.23,16.39,-74.1
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R4_BATS,BATS,349.0,151.51,-56.6,63.23,44.78,-29.2
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_a_loudah,Ain Loudah,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),10.7,1.95,-81.7,3.65,0.83,-77.2
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_a_loudah,Ain Loudah,Bouregreg,OL_R2_SIMTOP,SIMTOP,10.7,9.36,-12.5,3.65,4.01,9.9
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_a_loudah,Ain Loudah,Bouregreg,OL_R3_SCHAAKE96,Schaake96,10.7,9.28,-13.2,3.65,2.32,-36.5
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_a_loudah,Ain Loudah,Bouregreg,OL_R4_BATS,BATS,10.7,26.83,150.7,3.65,6.35,74.1
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_s_cherif,S.M. Cherif,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),10.7,2.35,-78.0,3.65,0.76,-79.2
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_s_cherif,S.M. Cherif,Bouregreg,OL_R2_SIMTOP,SIMTOP,10.7,11.06,3.3,3.65,4.11,12.6
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_s_cherif,S.M. Cherif,Bouregreg,OL_R3_SCHAAKE96,Schaake96,10.7,10.31,-3.7,3.65,2.35,-35.6
+Crue 05–15 mars 2018,2018-03-05,2018-03-15,b_s_cherif,S.M. Cherif,Bouregreg,OL_R4_BATS,BATS,10.7,27.53,157.3,3.65,6.77,85.6
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_l_chafia,Lalla Chafia,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),41.4,68.9,66.4,11.35,17.51,54.2
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_l_chafia,Lalla Chafia,Bouregreg,OL_R2_SIMTOP,SIMTOP,41.4,104.18,151.6,11.35,25.92,128.4
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_l_chafia,Lalla Chafia,Bouregreg,OL_R3_SCHAAKE96,Schaake96,41.4,187.6,353.1,11.35,38.42,238.5
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_l_chafia,Lalla Chafia,Bouregreg,OL_R4_BATS,BATS,41.4,187.41,352.7,11.35,40.65,258.1
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),180.0,31.77,-82.3,26.95,7.38,-72.6
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R2_SIMTOP,SIMTOP,180.0,70.1,-61.1,26.95,21.21,-21.3
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R3_SCHAAKE96,Schaake96,180.0,238.99,32.8,26.95,42.49,57.7
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R4_BATS,BATS,180.0,185.75,3.2,26.95,35.24,30.8
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_a_loudah,Ain Loudah,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),8.56,2.63,-69.3,1.83,0.71,-61.1
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_a_loudah,Ain Loudah,Bouregreg,OL_R2_SIMTOP,SIMTOP,8.56,7.56,-11.7,1.83,2.2,20.2
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_a_loudah,Ain Loudah,Bouregreg,OL_R3_SCHAAKE96,Schaake96,8.56,14.37,67.8,1.83,2.86,56.5
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_a_loudah,Ain Loudah,Bouregreg,OL_R4_BATS,BATS,8.56,19.42,126.9,1.83,4.09,124.0
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_s_cherif,S.M. Cherif,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),8.56,3.9,-54.5,1.83,0.89,-51.4
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_s_cherif,S.M. Cherif,Bouregreg,OL_R2_SIMTOP,SIMTOP,8.56,10.59,23.7,1.83,2.59,41.7
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_s_cherif,S.M. Cherif,Bouregreg,OL_R3_SCHAAKE96,Schaake96,8.56,59.96,600.4,1.83,6.66,264.7
+Crue 22–30 avril 2018,2018-04-22,2018-04-30,b_s_cherif,S.M. Cherif,Bouregreg,OL_R4_BATS,BATS,8.56,40.59,374.1,1.83,5.36,193.6
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_l_chafia,Lalla Chafia,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),46.8,17.72,-62.1,19.61,12.35,-37.0
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_l_chafia,Lalla Chafia,Bouregreg,OL_R2_SIMTOP,SIMTOP,46.8,27.15,-42.0,19.61,20.15,2.7
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_l_chafia,Lalla Chafia,Bouregreg,OL_R3_SCHAAKE96,Schaake96,46.8,25.12,-46.3,19.61,8.81,-55.1
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_l_chafia,Lalla Chafia,Bouregreg,OL_R4_BATS,BATS,46.8,44.14,-5.7,19.61,27.7,41.3
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),101.0,11.37,-88.7,23.45,8.45,-64.0
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R2_SIMTOP,SIMTOP,101.0,23.63,-76.6,23.45,16.73,-28.7
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R3_SCHAAKE96,Schaake96,101.0,14.41,-85.7,23.45,6.32,-73.0
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_s_jabeur,Sidi Jabeur,Bouregreg,OL_R4_BATS,BATS,101.0,36.01,-64.3,23.45,22.48,-4.1
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_a_loudah,Ain Loudah,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),1.17,1.49,27.0,0.64,1.11,73.4
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_a_loudah,Ain Loudah,Bouregreg,OL_R2_SIMTOP,SIMTOP,1.17,3.64,211.3,0.64,2.57,301.0
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_a_loudah,Ain Loudah,Bouregreg,OL_R3_SCHAAKE96,Schaake96,1.17,3.42,192.0,0.64,1.62,153.4
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_a_loudah,Ain Loudah,Bouregreg,OL_R4_BATS,BATS,1.17,8.38,616.5,0.64,4.72,636.0
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_s_cherif,S.M. Cherif,Bouregreg,OL_R1_SIMGM,SIMGM (Réf),1.17,1.92,64.5,0.64,1.2,87.1
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_s_cherif,S.M. Cherif,Bouregreg,OL_R2_SIMTOP,SIMTOP,1.17,3.76,221.4,0.64,2.72,324.7
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_s_cherif,S.M. Cherif,Bouregreg,OL_R3_SCHAAKE96,Schaake96,1.17,6.51,456.8,0.64,2.07,223.0
+Crue 15–28 nov 2018,2018-11-15,2018-11-28,b_s_cherif,S.M. Cherif,Bouregreg,OL_R4_BATS,BATS,1.17,9.0,669.4,0.64,5.08,692.1

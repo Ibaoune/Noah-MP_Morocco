@@ -87,8 +87,9 @@ def run_coverage(config, base_dir_da, out_dir):
     nan_cells = np.sum(np.isnan(total_obs_plot))
     print(f"Data min: {data_min}, max: {data_max}")
     print(f"Valid cells: {valid_cells}, NaN cells: {nan_cells}")
-    if data_max > 800:
-        raise ValueError(f"Max value {data_max} is > 800. This is not the correct variable (likely indices or frequency).")
+    num_years = max(1, (end_date.year - start_date.year + 1))
+    if data_max > 800 * num_years:
+        raise ValueError(f"Max value {data_max} is > {800 * num_years}. This is not the correct variable (likely indices or frequency).")
 
     # ---------------------------------------------------------
     # Fig 1: Total Assimilated Obs
@@ -120,7 +121,8 @@ def run_coverage(config, base_dir_da, out_dir):
     cm_cfg = cfg.get("colormap", {})
     cb_cfg = cfg.get("colorbar", {})
     
-    levels1 = cb_cfg.get("bounds", [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275])
+    default_bounds = [b * num_years for b in [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275]] if num_years > 1 else [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275]
+    levels1 = cb_cfg.get("bounds", default_bounds)
     cmap_name = cm_cfg.get("name", "YlGnBu")
     
     if cm_cfg.get("discrete", True):

@@ -38,6 +38,11 @@ EXPERIMENT_CONFIGS = {
         "output_sub": "output/DA_cdf_2016_2020",
         "cache_file": "t9_sim_daily_12stations_da_cdf.csv",
     },
+    "opl_linres0": {
+        "name": "Open-Loop linres0 (HyMAP-2 linres=0)",
+        "output_sub": "output/OPL_linres0_2016_2020",
+        "cache_file": "t_sim_daily_12stations_opl_linres0.csv",
+    },
 }
 
 EXPECTED_DAYS = 1827
@@ -142,7 +147,7 @@ def main():
     )
     parser.add_argument(
         "--experiment", "-e",
-        choices=["opl", "nocdf", "cdf", "all"],
+        choices=["opl", "nocdf", "cdf", "opl_linres0", "all"],
         default="all",
         help="Experience a extraire (opl, nocdf, cdf, ou all)."
     )

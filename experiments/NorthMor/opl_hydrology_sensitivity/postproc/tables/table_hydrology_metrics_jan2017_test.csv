@@ -1,0 +1,5 @@
+Station_ID,Station_Name,Experiment,Formulation,N_Valid_Days,KGE,NSE,PBIAS_%,Pearson_r,Q_obs_mean,Q_sim_mean,Q_summer_obs,Q_summer_sim,ZeroDays_summer_obs,ZeroDays_summer_sim,LowDays_summer_obs,LowDays_summer_sim,N_Summer_Valid
+b_l_chafia,Lalla Chafia,OL_R1_SIMGM,SIMGM (Option 1),31,0.143,0.214,-46.9,0.688,3.48,1.85,,,0,0,0,0,0
+b_s_jabeur,Sidi Jabeur,OL_R1_SIMGM,SIMGM (Option 1),31,-0.109,0.054,-66.8,0.748,4.35,1.44,,,0,0,0,0,0
+b_a_loudah,Ain Loudah,OL_R1_SIMGM,SIMGM (Option 1),31,0.24,-0.529,40.6,0.735,0.21,0.3,,,0,0,0,0,0
+b_s_cherif,S.M. Cherif,OL_R1_SIMGM,SIMGM (Option 1),31,0.352,-0.19,31.4,0.763,0.21,0.28,,,0,0,0,0,0

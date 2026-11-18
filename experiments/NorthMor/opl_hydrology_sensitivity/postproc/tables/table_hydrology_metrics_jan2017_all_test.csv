@@ -1,0 +1,17 @@
+Station_ID,Station_Name,Experiment,Formulation,N_Valid_Days,KGE,NSE,PBIAS_%,Pearson_r,Q_obs_mean,Q_sim_mean,Q_summer_obs,Q_summer_sim,ZeroDays_summer_obs,ZeroDays_summer_sim,LowDays_summer_obs,LowDays_summer_sim,N_Summer_Valid
+b_l_chafia,Lalla Chafia,OL_R1_SIMGM,SIMGM (Option 1),31,0.143,0.214,-46.9,0.688,3.48,1.85,,,0,0,0,0,0
+b_s_jabeur,Sidi Jabeur,OL_R1_SIMGM,SIMGM (Option 1),31,-0.109,0.054,-66.8,0.748,4.35,1.44,,,0,0,0,0,0
+b_a_loudah,Ain Loudah,OL_R1_SIMGM,SIMGM (Option 1),31,0.24,-0.529,40.6,0.735,0.21,0.3,,,0,0,0,0,0
+b_s_cherif,S.M. Cherif,OL_R1_SIMGM,SIMGM (Option 1),31,0.352,-0.19,31.4,0.763,0.21,0.28,,,0,0,0,0,0
+b_l_chafia,Lalla Chafia,OL_R2_SIMTOP,SIMTOP (Option 2),31,-0.274,-0.921,119.2,0.554,3.48,7.62,,,0,0,0,0,0
+b_s_jabeur,Sidi Jabeur,OL_R2_SIMTOP,SIMTOP (Option 2),31,-0.005,0.088,78.9,0.547,4.35,7.79,,,0,0,0,0,0
+b_a_loudah,Ain Loudah,OL_R2_SIMTOP,SIMTOP (Option 2),31,-5.739,-78.303,532.4,0.726,0.21,1.35,,,0,0,0,0,0
+b_s_cherif,S.M. Cherif,OL_R2_SIMTOP,SIMTOP (Option 2),31,-5.132,-65.198,483.0,0.679,0.21,1.25,,,0,0,0,0,0
+b_l_chafia,Lalla Chafia,OL_R3_SCHAAKE96,Schaake96 (Option 3),31,0.214,0.197,-49.9,0.609,3.48,1.74,,,0,0,0,0,0
+b_s_jabeur,Sidi Jabeur,OL_R3_SCHAAKE96,Schaake96 (Option 3),31,-0.142,0.041,-74.7,0.73,4.35,1.1,,,0,0,0,0,0
+b_a_loudah,Ain Loudah,OL_R3_SCHAAKE96,Schaake96 (Option 3),31,-2.181,-11.956,91.6,0.755,0.21,0.41,,,0,0,0,0,0
+b_s_cherif,S.M. Cherif,OL_R3_SCHAAKE96,Schaake96 (Option 3),31,-2.317,-14.234,88.5,0.574,0.21,0.4,,,0,0,0,0,0
+b_l_chafia,Lalla Chafia,OL_R4_BATS,BATS (Option 4),31,-0.966,-4.529,139.9,0.414,3.48,8.34,,,0,0,0,0,0
+b_s_jabeur,Sidi Jabeur,OL_R4_BATS,BATS (Option 4),31,0.158,-0.221,66.7,0.489,4.35,7.26,,,0,0,0,0,0
+b_a_loudah,Ain Loudah,OL_R4_BATS,BATS (Option 4),31,-12.738,-238.901,625.6,0.688,0.21,1.55,,,0,0,0,0,0
+b_s_cherif,S.M. Cherif,OL_R4_BATS,BATS (Option 4),31,-13.184,-253.93,596.7,0.462,0.21,1.49,,,0,0,0,0,0

@@ -17,6 +17,326 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
+
+def plot_lalla_chafia_2018_en(m_2018, fig_streamflow_dir):
+    """
+    Génère la figure détaillée 2018 pour Lalla Chafia en anglais (300 dpi)
+    destinée à la communication avec Augusto Getirana.
+    """
+    dates_2018 = pd.to_datetime(m_2018['date']).dt.to_pydatetime()
+    q_obs = m_2018['q_m3s'].to_numpy()
+    q_opl = m_2018['q_opl'].to_numpy()
+    q_nocdf = m_2018['q_nocdf'].to_numpy()
+    q_cdf = m_2018['q_cdf'].to_numpy()
+
+    # Configuration typographique
+    plt.rcParams['font.sans-serif'] = 'DejaVu Sans'
+    plt.rcParams['axes.edgecolor'] = '#444444'
+    plt.rcParams['axes.linewidth'] = 0.8
+
+    # Couleurs distinctes : Obs en noir, OL en bleu, DA-NoCDF en rouge, DA-CDF en vert
+    c_obs = '#111111'
+    c_opl = '#1f77b4'
+    c_nocdf = '#d62728'
+    c_cdf = '#2ca02c'
+
+    fig, (ax_top, ax_bot) = plt.subplots(
+        2, 1, figsize=(13, 8.5), dpi=300,
+        gridspec_kw={'height_ratios': [1.6, 1.2]}
+    )
+
+    # ----------------- Top Panel: Daily streamflow and flood peaks -----------------
+    l1, = ax_top.plot(dates_2018, q_obs, color=c_obs, lw=1.6, label='Observed (ABH)', alpha=0.95, zorder=4)
+    l2, = ax_top.plot(dates_2018, q_opl, color=c_opl, lw=1.3, label='Open-Loop (OL)', alpha=0.9, zorder=3)
+    l3, = ax_top.plot(dates_2018, q_nocdf, color=c_nocdf, lw=1.3, ls='--', label='DA-NoCDF', alpha=0.9, zorder=3)
+    l4, = ax_top.plot(dates_2018, q_cdf, color=c_cdf, lw=1.4, ls='-.', label='DA-CDF', alpha=0.95, zorder=3)
+
+    ax_top.set_title('Daily streamflow and flood peaks', fontsize=11.5, fontweight='bold', pad=10)
+    ax_top.set_ylabel('Daily streamflow (m³/s)', fontsize=10.5, fontweight='medium')
+    ax_top.set_xlim(pd.Timestamp('2018-01-01'), pd.Timestamp('2018-12-31'))
+    ax_top.set_ylim(-3, 215)
+    ax_top.grid(True, which='major', ls=':', color='#cccccc', alpha=0.7)
+
+    ax_top.xaxis.set_major_locator(mdates.MonthLocator())
+    ax_top.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
+    ax_top.tick_params(axis='both', labelsize=9.5)
+
+    # Annotation discrète des statistiques annuelles (positionnée en été pour éviter tout chevauchement)
+    stats_text = (
+        "2018 Annual Statistics (Mean | Annual Peak):\n"
+        f"• Observed (ABH):  {q_obs.mean():.1f} m³/s  |  {q_obs.max():.1f} m³/s (Mar 08)\n"
+        f"• Open-Loop (OL):   {q_opl.mean():.1f} m³/s  |   {q_opl.max():.1f} m³/s (Apr 26)\n"
+        f"• DA-NoCDF:        {q_nocdf.mean():.1f} m³/s  |  {q_nocdf.max():.1f} m³/s (Mar 17)\n"
+        f"• DA-CDF:          {q_cdf.mean():.1f} m³/s  |   {q_cdf.max():.1f} m³/s (Apr 26)"
+    )
+    ax_top.text(
+        0.51, 0.93, stats_text,
+        transform=ax_top.transAxes,
+        fontsize=8.5,
+        verticalalignment='top',
+        family='sans-serif',
+        bbox=dict(boxstyle='round,pad=0.5', facecolor='#ffffff', edgecolor='#c0c0c0', alpha=0.93)
+    )
+
+    # ----------------- Bottom Panel: Low flows and seasonal recession (log scale) -----------------
+    q_obs_pos = np.where(q_obs > 0.0, q_obs, np.nan)
+    mask_zeros = (q_obs == 0.0)
+    dates_zeros = dates_2018[mask_zeros]
+
+    ax_bot.plot(dates_2018, q_obs_pos, color=c_obs, lw=1.6, label='Observed (ABH)', alpha=0.95, zorder=4)
+    if len(dates_zeros) > 0:
+        ax_bot.scatter(dates_zeros, [0.015]*len(dates_zeros), color='#e377c2', marker='|', s=45, label=f'Zero-flow days ({len(dates_zeros)} d)', zorder=5)
+
+    ax_bot.plot(dates_2018, q_opl, color=c_opl, lw=1.3, label='Open-Loop (OL)', alpha=0.9, zorder=3)
+    ax_bot.plot(dates_2018, q_nocdf, color=c_nocdf, lw=1.3, ls='--', label='DA-NoCDF', alpha=0.9, zorder=3)
+    ax_bot.plot(dates_2018, q_cdf, color=c_cdf, lw=1.4, ls='-.', label='DA-CDF', alpha=0.95, zorder=3)
+
+    ax_bot.set_yscale('log')
+    ax_bot.set_xlim(pd.Timestamp('2018-01-01'), pd.Timestamp('2018-12-31'))
+    ax_bot.set_ylim(0.02, 350)
+    ax_bot.set_title('Low flows and seasonal recession (log scale)', fontsize=11.5, fontweight='bold', pad=10)
+    ax_bot.set_ylabel('Daily streamflow [log scale] (m³/s)', fontsize=10.5, fontweight='medium')
+    ax_bot.set_xlabel('Date (2018)', fontsize=10.5, fontweight='medium')
+
+    ax_bot.grid(True, which='major', ls=':', color='#cccccc', alpha=0.7)
+    ax_bot.grid(True, which='minor', ls=':', color='#ebebeb', alpha=0.4)
+
+    ax_bot.xaxis.set_major_locator(mdates.MonthLocator())
+    ax_bot.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
+    ax_bot.tick_params(axis='both', labelsize=9.5)
+
+    # Annotation discrète des étiages (positionnée en été)
+    low_flow_text = (
+        "Annual Minimum Flow:\n"
+        f"• Observed (ABH):  {q_obs.min():.2f} m³/s\n"
+        f"• Open-Loop (OL):   {q_opl.min():.2f} m³/s\n"
+        f"• DA-NoCDF:        {q_nocdf.min():.2f} m³/s\n"
+        f"• DA-CDF:          {q_cdf.min():.2f} m³/s"
+    )
+    ax_bot.text(
+        0.58, 0.93, low_flow_text,
+        transform=ax_bot.transAxes,
+        fontsize=8.5,
+        verticalalignment='top',
+        family='sans-serif',
+        bbox=dict(boxstyle='round,pad=0.5', facecolor='#ffffff', edgecolor='#c0c0c0', alpha=0.93)
+    )
+
+    # Légende partagée unique en tête de figure
+    fig.legend(
+        [l1, l2, l3, l4],
+        ['Observed (ABH)', 'Open-Loop (OL)', 'DA-NoCDF', 'DA-CDF'],
+        loc='upper center',
+        bbox_to_anchor=(0.5, 0.938),
+        ncol=4,
+        frameon=True,
+        facecolor='#ffffff',
+        edgecolor='#cccccc',
+        fontsize=10.5
+    )
+
+    # Titre principal court
+    plt.suptitle('Observed and HyMAP2-simulated streamflow at Lalla Chafia (2018)', fontsize=13.5, fontweight='bold', y=0.985)
+
+    plt.subplots_adjust(top=0.86, bottom=0.08, hspace=0.34, left=0.08, right=0.96)
+
+    out_fig_path = os.path.join(fig_streamflow_dir, 'lalla_chafia_streamflow_2018_en.png')
+    plt.savefig(out_fig_path, dpi=300)
+    plt.close(fig)
+    print(f"-> Figure detaillee 2018 EN haute resolution (300 dpi) : {out_fig_path}")
+    return out_fig_path
+
+
+def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_csv, out_fig_path, table_out_path):
+    """
+    Génère la figure comparative 2018 à Lalla Chafia en anglais (3 panneaux, 300 dpi) :
+      (a) Full-year hydrograph
+      (b) Zoom sur crues mars-avril
+      (c) Zoom sur étiages juin-septembre
+    et sauvegarde le tableau des métriques d'évaluation dans table_out_path.
+    """
+    df_obs = pd.read_csv(os.path.join(clean_dir, "obs_daily.csv"))
+    sub_obs = df_obs[(df_obs["station_id"] == "b_l_chafia") & (df_obs["date"].str.startswith("2018"))][["date", "q_m3s"]].rename(columns={"q_m3s": "q_obs"})
+
+    df_hist = pd.read_csv(os.path.join(opl_out_dir, "t7_sim_daily_12stations_corrigee.csv"))
+    sub_hist = df_hist[df_hist["date"].str.startswith("2018")][["date", "b_l_chafia"]].rename(columns={"b_l_chafia": "q_hist"})
+
+    df_lr0 = pd.read_csv(linres0_csv)
+    sub_lr0 = df_lr0[df_lr0["date"].str.startswith("2018")][["date", "b_l_chafia"]].rename(columns={"b_l_chafia": "q_lr0"})
+
+    m = pd.merge(sub_obs, sub_hist, on="date").merge(sub_lr0, on="date").dropna().sort_values("date").reset_index(drop=True)
+    n_days = len(m)
+
+    o = m["q_obs"].to_numpy()
+    qh = m["q_hist"].to_numpy()
+    ql = m["q_lr0"].to_numpy()
+
+    def get_stats(s, o):
+        bias = float(np.mean(s - o))
+        rel_bias = float(bias / np.mean(o) * 100.0)
+        rmse = float(np.sqrt(np.mean((s - o)**2)))
+        r = float(np.corrcoef(o, s)[0, 1])
+        nse = float(1.0 - (np.sum((o - s)**2) / np.sum((o - np.mean(o))**2)))
+        alpha = float(np.std(s) / np.std(o))
+        beta = float(np.mean(s) / np.mean(o))
+        kge = float(1.0 - np.sqrt((r - 1.0)**2 + (alpha - 1.0)**2 + (beta - 1.0)**2))
+        return bias, rel_bias, rmse, r, nse, kge
+
+    bh, rbh, rmseh, rh, nseh, kgeh = get_stats(qh, o)
+    bl, rbl, rmsel, rl, nsel, kgel = get_stats(ql, o)
+
+    summer = m[(m["date"] >= "2018-06-01") & (m["date"] <= "2018-09-30")]
+
+    def get_date_val(df, date_str, col):
+        row = df[df["date"] == date_str]
+        return float(row[col].values[0]) if len(row) > 0 else np.nan
+
+    records = [
+        {
+            "Simulation": "Observed (ABH)",
+            "Valid_Days": n_days,
+            "Annual_Mean_m3s": round(float(np.mean(o)), 2),
+            "Bias_m3s": 0.0,
+            "Rel_Bias_pct": 0.0,
+            "RMSE_m3s": 0.0,
+            "Pearson_r": 1.000,
+            "NSE": 1.000,
+            "KGE": 1.000,
+            "Summer_Mean_m3s": round(float(summer["q_obs"].mean()), 2),
+            "Annual_Max_m3s": round(float(np.max(o)), 1),
+            "Annual_Max_Date": m.loc[m["q_obs"].idxmax(), "date"],
+            "March07_m3s": get_date_val(m, "2018-03-07", "q_obs"),
+            "March08_m3s": get_date_val(m, "2018-03-08", "q_obs"),
+            "April25_m3s": get_date_val(m, "2018-04-25", "q_obs"),
+            "April26_m3s": get_date_val(m, "2018-04-26", "q_obs")
+        },
+        {
+            "Simulation": "OPL Historical (linres=1)",
+            "Valid_Days": n_days,
+            "Annual_Mean_m3s": round(float(np.mean(qh)), 2),
+            "Bias_m3s": round(bh, 2),
+            "Rel_Bias_pct": round(rbh, 1),
+            "RMSE_m3s": round(rmseh, 2),
+            "Pearson_r": round(rh, 3),
+            "NSE": round(nseh, 3),
+            "KGE": round(kgeh, 3),
+            "Summer_Mean_m3s": round(float(summer["q_hist"].mean()), 2),
+            "Annual_Max_m3s": round(float(np.max(qh)), 1),
+            "Annual_Max_Date": m.loc[m["q_hist"].idxmax(), "date"],
+            "March07_m3s": round(get_date_val(m, "2018-03-07", "q_hist"), 2),
+            "March08_m3s": round(get_date_val(m, "2018-03-08", "q_hist"), 2),
+            "April25_m3s": round(get_date_val(m, "2018-04-25", "q_hist"), 2),
+            "April26_m3s": round(get_date_val(m, "2018-04-26", "q_hist"), 2)
+        },
+        {
+            "Simulation": "OPL New (linres=0)",
+            "Valid_Days": n_days,
+            "Annual_Mean_m3s": round(float(np.mean(ql)), 2),
+            "Bias_m3s": round(bl, 2),
+            "Rel_Bias_pct": round(rbl, 1),
+            "RMSE_m3s": round(rmsel, 2),
+            "Pearson_r": round(rl, 3),
+            "NSE": round(nsel, 3),
+            "KGE": round(kgel, 3),
+            "Summer_Mean_m3s": round(float(summer["q_lr0"].mean()), 2),
+            "Annual_Max_m3s": round(float(np.max(ql)), 1),
+            "Annual_Max_Date": m.loc[m["q_lr0"].idxmax(), "date"],
+            "March07_m3s": round(get_date_val(m, "2018-03-07", "q_lr0"), 2),
+            "March08_m3s": round(get_date_val(m, "2018-03-08", "q_lr0"), 2),
+            "April25_m3s": round(get_date_val(m, "2018-04-25", "q_lr0"), 2),
+            "April26_m3s": round(get_date_val(m, "2018-04-26", "q_lr0"), 2)
+        }
+    ]
+
+    df_table = pd.DataFrame(records)
+    df_table.to_csv(table_out_path, index=False)
+    print(f"-> Table des metriques enregistree : {table_out_path}")
+
+    dates = pd.to_datetime(m["date"]).dt.to_pydatetime()
+    plt.rcParams["font.sans-serif"] = "DejaVu Sans"
+    plt.rcParams["axes.edgecolor"] = "#444444"
+    plt.rcParams["axes.linewidth"] = 0.8
+
+    c_obs = "#111111"
+    c_hist = "#1f77b4"
+    c_lr0 = "#d62728"
+
+    fig, (ax1, ax2, ax3) = plt.subplots(
+        3, 1, figsize=(12, 11), dpi=300,
+        gridspec_kw={"height_ratios": [1.2, 1.1, 1.1]}
+    )
+
+    # Panel (a) Annual Hydrograph
+    l1, = ax1.plot(dates, o, color=c_obs, lw=1.6, label="Observed (ABH)", alpha=0.95, zorder=4)
+    l2, = ax1.plot(dates, qh, color=c_hist, lw=1.3, ls="--", label="HyMAP-2 Historical (linres=1, spinup restart)", alpha=0.9, zorder=3)
+    l3, = ax1.plot(dates, ql, color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 New (linres=0, coldstart)", alpha=0.9, zorder=3)
+
+    ax1.set_title("(a) Full-Year 2018 Hydrograph at Lalla Chafia (Bouregreg Basin)", fontsize=11, fontweight="bold", pad=10)
+    ax1.set_ylabel("Daily streamflow (m³/s)", fontsize=10, fontweight="medium")
+    ax1.set_xlim(pd.Timestamp("2018-01-01"), pd.Timestamp("2018-12-31"))
+    ax1.set_ylim(-3, 215)
+    ax1.grid(True, which="major", ls=":", color="#cccccc", alpha=0.7)
+    ax1.xaxis.set_major_locator(mdates.MonthLocator())
+    ax1.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
+    ax1.tick_params(axis="both", labelsize=9)
+
+    # Panel (b) March-April High Flows
+    mask_ma = (m["date"] >= "2018-03-01") & (m["date"] <= "2018-04-30")
+    dates_ma = pd.to_datetime(m.loc[mask_ma, "date"]).dt.to_pydatetime()
+
+    ax2.plot(dates_ma, o[mask_ma], color=c_obs, lw=1.6, label="Observed (ABH)", alpha=0.95, zorder=4)
+    ax2.plot(dates_ma, qh[mask_ma], color=c_hist, lw=1.3, ls="--", label="HyMAP-2 Historical (linres=1, spinup restart)", alpha=0.9, zorder=3)
+    ax2.plot(dates_ma, ql[mask_ma], color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 New (linres=0, coldstart)", alpha=0.9, zorder=3)
+
+    ax2.set_title("(b) High-Flow Period: Flood Peaks and Hydrograph Timing (March – April 2018)", fontsize=11, fontweight="bold", pad=8)
+    ax2.set_ylabel("Daily streamflow (m³/s)", fontsize=10, fontweight="medium")
+    ax2.set_xlim(pd.Timestamp("2018-03-01"), pd.Timestamp("2018-04-30"))
+    ax2.set_ylim(-3, 215)
+    ax2.grid(True, which="major", ls=":", color="#cccccc", alpha=0.7)
+    ax2.xaxis.set_major_locator(mdates.DayLocator(interval=7))
+    ax2.xaxis.set_major_formatter(mdates.DateFormatter("%b %d"))
+    ax2.tick_params(axis="both", labelsize=9)
+
+    # Panel (c) June-Sept Low Flows
+    mask_sum = (m["date"] >= "2018-06-01") & (m["date"] <= "2018-09-30")
+    dates_sum = pd.to_datetime(m.loc[mask_sum, "date"]).dt.to_pydatetime()
+
+    ax3.plot(dates_sum, o[mask_sum], color=c_obs, lw=1.6, label="Observed (ABH)", alpha=0.95, zorder=4)
+    ax3.plot(dates_sum, qh[mask_sum], color=c_hist, lw=1.3, ls="--", label="HyMAP-2 Historical (linres=1, spinup restart)", alpha=0.9, zorder=3)
+    ax3.plot(dates_sum, ql[mask_sum], color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 New (linres=0, coldstart)", alpha=0.9, zorder=3)
+
+    ax3.set_title("(c) Low-Flow Period: Summer Recession and Baseflow Floor (June – September 2018)", fontsize=11, fontweight="bold", pad=8)
+    ax3.set_ylabel("Daily streamflow (m³/s)", fontsize=10, fontweight="medium")
+    ax3.set_xlabel("Date (2018)", fontsize=10, fontweight="medium")
+    ax3.set_xlim(pd.Timestamp("2018-06-01"), pd.Timestamp("2018-09-30"))
+    ax3.set_ylim(-0.5, 15)
+    ax3.grid(True, which="major", ls=":", color="#cccccc", alpha=0.7)
+    ax3.xaxis.set_major_locator(mdates.DayLocator(interval=14))
+    ax3.xaxis.set_major_formatter(mdates.DateFormatter("%b %d"))
+    ax3.tick_params(axis="both", labelsize=9)
+
+    # Shared Legend
+    fig.legend(
+        [l1, l2, l3],
+        ["Observed (ABH)", "HyMAP-2 Historical (linres=1, spinup restart)", "HyMAP-2 New (linres=0, coldstart)"],
+        loc="upper center",
+        bbox_to_anchor=(0.5, 0.985),
+        ncol=3,
+        frameon=True,
+        facecolor="#ffffff",
+        edgecolor="#cccccc",
+        fontsize=10.5
+    )
+
+    plt.subplots_adjust(top=0.88, bottom=0.06, hspace=0.34, left=0.08, right=0.96)
+    plt.savefig(out_fig_path, dpi=300)
+    pdf_path = out_fig_path.replace(".png", ".pdf")
+    plt.savefig(pdf_path, dpi=300)
+    plt.close(fig)
+    print(f"-> Figure enregistree : {out_fig_path} et {pdf_path}")
+    return out_fig_path
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(
@@ -31,6 +351,16 @@ def main():
         "--clean-dir",
         default=None,
         help="Repertoire des observations nettoyees (data/streamflow_clean)."
+    )
+    parser.add_argument(
+        "--fig-linres0-2018",
+        action="store_true",
+        help="Genere la figure comparative 2018 3 panneaux linres0 vs linres1 et la table de metriques."
+    )
+    parser.add_argument(
+        "--fig-chafia-en-only",
+        action="store_true",
+        help="Regenere uniquement la figure en anglais de Lalla Chafia 2018 (lalla_chafia_streamflow_2018_en.png)."
     )
     parser.add_argument(
         "--plots-dir",
@@ -89,6 +419,23 @@ def main():
     df_q_opl_m = df_q_opl_d.groupby("year_month").mean(numeric_only=True).reset_index()
     df_q_nocdf_m = df_q_nocdf_d.groupby("year_month").mean(numeric_only=True).reset_index()
     df_q_cdf_m = df_q_cdf_d.groupby("year_month").mean(numeric_only=True).reset_index()
+
+    if args.fig_linres0_2018:
+        linres0_csv = os.path.join(base_dir, "output/OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv")
+        out_fig = os.path.join(fig_streamflow_dir, "lalla_chafia_2018_hymap2_linres0_vs_hist.png")
+        out_tab = os.path.join(table_dir, "table_metrics_2018_lalla_chafia_linres0.csv")
+        plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_csv, out_fig, out_tab)
+        print("Fin du mode exclusif --fig-linres0-2018.")
+        return
+
+    if args.fig_chafia_en_only:
+        sub_o = df_obs_daily[(df_obs_daily["station_id"] == "b_l_chafia") & (df_obs_daily["date"].str.startswith("2018"))].copy()
+        m_2018_fast = pd.merge(sub_o[["date", "q_m3s"]], df_q_opl_d[["date", "b_l_chafia"]], on="date", how="inner").rename(columns={"b_l_chafia": "q_opl"})
+        m_2018_fast = pd.merge(m_2018_fast, df_q_nocdf_d[["date", "b_l_chafia"]], on="date", how="inner").rename(columns={"b_l_chafia": "q_nocdf"})
+        m_2018_fast = pd.merge(m_2018_fast, df_q_cdf_d[["date", "b_l_chafia"]], on="date", how="inner").rename(columns={"b_l_chafia": "q_cdf"})
+        out_en = plot_lalla_chafia_2018_en(m_2018_fast, fig_streamflow_dir)
+        print("Fin du mode exclusif --fig-chafia-en-only.")
+        return
 
     # Dictionnaire de métadonnées officiel
     meta_dict = {
@@ -271,7 +618,7 @@ def main():
 
         ax_bot.set_yscale("log")
         ax_bot.set_ylim(0.01, max(m_2018["q_m3s"].max(), m_2018["q_nocdf"].max()) * 1.5)
-        ax_bot.set_title("[Bas] Échelle semi-logarithmique : Étiages, récessions estivales et planchers numériques", fontweight="bold", fontsize=10)
+        ax_bot.set_title("[Bas] Échelle semi-logarithmique : Étiages et récessions estivales", fontweight="bold", fontsize=10)
         ax_bot.set_ylabel("Débit log10 (m³/s)")
         ax_bot.set_xlabel("Date (2018)")
         ax_bot.grid(True, which="both", ls=":", alpha=0.5)

@@ -1,0 +1,41 @@
+station_id,nom,bassin,pas_temps,experiment,formulation,periode,q_mean_obs_m3s,q_mean_sim_m3s,q_median_obs_m3s,q_median_sim_m3s,n_days_le_01_obs,n_days_le_01_sim,n_days_le_05_obs,n_days_le_05_sim,n_days_zero_obs,n_days_zero_sim,max_dry_spell_obs_days,max_dry_spell_sim_days,biais_q_mean_sum_pct
+b_l_chafia,Lalla Chafia,Bouregreg,journalier,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),0.726,6.878,0.32,6.66,0.0,0,77.0,0,0.0,0,0.0,0,847.1
+b_l_chafia,Lalla Chafia,Bouregreg,journalier,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),0.726,2.757,0.32,2.253,0.0,0,77.0,0,0.0,0,0.0,0,279.7
+b_l_chafia,Lalla Chafia,Bouregreg,journalier,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),0.726,1.838,0.32,1.664,0.0,0,77.0,0,0.0,0,0.0,0,153.0
+b_l_chafia,Lalla Chafia,Bouregreg,journalier,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),0.726,3.714,0.32,3.387,0.0,0,77.0,0,0.0,0,0.0,0,411.3
+b_s_jabeur,Sidi Jabeur,Bouregreg,journalier,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),1.35,3.249,0.174,3.099,60.0,0,97.0,0,47.0,0,47.0,0,140.8
+b_s_jabeur,Sidi Jabeur,Bouregreg,journalier,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),1.35,2.648,0.174,2.318,60.0,0,97.0,0,47.0,0,47.0,0,96.2
+b_s_jabeur,Sidi Jabeur,Bouregreg,journalier,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),1.35,1.343,0.174,1.265,60.0,0,97.0,0,47.0,0,47.0,0,-0.5
+b_s_jabeur,Sidi Jabeur,Bouregreg,journalier,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),1.35,3.23,0.174,3.013,60.0,0,97.0,0,47.0,0,47.0,0,139.3
+ain_timedrine,Ain Timedrine,Sebou,mensuel,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),,1.863,,1.563,,0,,0,,0,,0,
+ain_timedrine,Ain Timedrine,Sebou,mensuel,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),,2.413,,2.052,,0,,0,,0,,0,
+ain_timedrine,Ain Timedrine,Sebou,mensuel,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),,1.05,,0.534,,0,,57,,0,,0,
+ain_timedrine,Ain Timedrine,Sebou,mensuel,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),,3.223,,2.418,,0,,0,,0,,0,
+ait_khabbach,Ait Khabbach,Sebou,mensuel,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),,0.348,,0.264,,0,,105,,0,,0,
+ait_khabbach,Ait Khabbach,Sebou,mensuel,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),,0.531,,0.436,,0,,74,,0,,0,
+ait_khabbach,Ait Khabbach,Sebou,mensuel,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),,0.211,,0.096,,65,,114,,0,,0,
+ait_khabbach,Ait Khabbach,Sebou,mensuel,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),,0.742,,0.429,,0,,66,,0,,0,
+azzaba,Azzaba,Sebou,mensuel,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),,1.911,,1.591,,0,,0,,0,,0,
+azzaba,Azzaba,Sebou,mensuel,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),,2.465,,2.069,,0,,0,,0,,0,
+azzaba,Azzaba,Sebou,mensuel,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),,1.091,,0.541,,0,,56,,0,,0,
+azzaba,Azzaba,Sebou,mensuel,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),,3.33,,2.454,,0,,0,,0,,0,
+dar_el_hamra,Dar El Hamra,Sebou,mensuel,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),,0.437,,0.411,,0,,103,,0,,0,
+dar_el_hamra,Dar El Hamra,Sebou,mensuel,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),,0.383,,0.32,,0,,100,,0,,0,
+dar_el_hamra,Dar El Hamra,Sebou,mensuel,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),,0.193,,0.122,,30,,118,,0,,0,
+dar_el_hamra,Dar El Hamra,Sebou,mensuel,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),,0.595,,0.507,,0,,56,,0,,0,
+pont_de_mdez,Pont de Mdez,Sebou,mensuel,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),,1.325,,1.071,,0,,0,,0,,0,
+pont_de_mdez,Pont de Mdez,Sebou,mensuel,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),,1.897,,1.593,,0,,0,,0,,0,
+pont_de_mdez,Pont de Mdez,Sebou,mensuel,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),,0.76,,0.379,,0,,83,,0,,0,
+pont_de_mdez,Pont de Mdez,Sebou,mensuel,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),,2.392,,1.669,,0,,0,,0,,0,
+b_a_loudah,Ain Loudah,Bouregreg,journalier,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),0.027,0.296,0.02,0.266,121.0,0,122.0,116,0.0,0,0.0,0,995.4
+b_a_loudah,Ain Loudah,Bouregreg,journalier,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),0.027,0.284,0.02,0.231,121.0,0,122.0,115,0.0,0,0.0,0,949.4
+b_a_loudah,Ain Loudah,Bouregreg,journalier,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),0.027,0.123,0.02,0.103,121.0,31,122.0,120,0.0,0,0.0,0,356.1
+b_a_loudah,Ain Loudah,Bouregreg,journalier,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),0.027,0.377,0.02,0.32,121.0,0,122.0,115,0.0,0,0.0,0,1296.1
+b_s_cherif,S.M. Cherif,Bouregreg,journalier,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),0.027,0.353,0.02,0.321,121.0,0,122.0,117,0.0,0,0.0,0,1205.6
+b_s_cherif,S.M. Cherif,Bouregreg,journalier,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),0.027,0.276,0.02,0.226,121.0,0,122.0,112,0.0,0,0.0,0,920.6
+b_s_cherif,S.M. Cherif,Bouregreg,journalier,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),0.027,0.154,0.02,0.127,121.0,0,122.0,119,0.0,0,0.0,0,469.8
+b_s_cherif,S.M. Cherif,Bouregreg,journalier,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),0.027,0.413,0.02,0.356,121.0,0,122.0,112,0.0,0,0.0,0,1429.0
+pont_ait_aissa,Pont Ait Aissa,Sebou,mensuel,OL_R1_SIMGM,SIMGM (Réf),Juin–Sept 2018 (122 j),,0.08,,0.061,,103,,122,,0,,0,
+pont_ait_aissa,Pont Ait Aissa,Sebou,mensuel,OL_R2_SIMTOP,SIMTOP,Juin–Sept 2018 (122 j),,0.142,,0.113,,40,,121,,0,,0,
+pont_ait_aissa,Pont Ait Aissa,Sebou,mensuel,OL_R3_SCHAAKE96,Schaake96,Juin–Sept 2018 (122 j),,0.038,,0.023,,114,,122,,0,,0,
+pont_ait_aissa,Pont Ait Aissa,Sebou,mensuel,OL_R4_BATS,BATS,Juin–Sept 2018 (122 j),,0.149,,0.113,,33,,120,,0,,0,
