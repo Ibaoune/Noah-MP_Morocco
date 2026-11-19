@@ -219,7 +219,7 @@ def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_cs
             "April26_m3s": get_date_val(m, "2018-04-26", "q_obs")
         },
         {
-            "Simulation": "OPL Historical (linres=1)",
+            "Simulation": "HyMAP-2 Historical (linres=1, spinup restart)",
             "Valid_Days": n_days,
             "Annual_Mean_m3s": round(float(np.mean(qh)), 2),
             "Bias_m3s": round(bh, 2),
@@ -237,7 +237,7 @@ def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_cs
             "April26_m3s": round(get_date_val(m, "2018-04-26", "q_hist"), 2)
         },
         {
-            "Simulation": "OPL New (linres=0)",
+            "Simulation": "HyMAP-2 Modified (linres=0, coldstart)",
             "Valid_Days": n_days,
             "Annual_Mean_m3s": round(float(np.mean(ql)), 2),
             "Bias_m3s": round(bl, 2),
@@ -296,7 +296,7 @@ def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_cs
     ax2.plot(dates_ma, qh[mask_ma], color=c_hist, lw=1.3, ls="--", label="HyMAP-2 Historical (linres=1, spinup restart)", alpha=0.9, zorder=3)
     ax2.plot(dates_ma, ql[mask_ma], color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 Modified (linres=0, coldstart)", alpha=0.9, zorder=3)
 
-    ax2.set_title("(b) High-Flow Period: Flood Peaks and Hydrograph Timing (March – April 2018)", fontsize=11, fontweight="bold", pad=8)
+    ax2.set_title("(b) High-Flow Period: Flood Peaks and Hydrograph Timing (March–April 2018)", fontsize=11, fontweight="bold", pad=8)
     ax2.set_ylabel("Daily Streamflow (m³/s)", fontsize=10, fontweight="medium")
     ax2.set_xlim(pd.Timestamp("2018-03-01"), pd.Timestamp("2018-04-30"))
     ax2.set_ylim(-3, 215)

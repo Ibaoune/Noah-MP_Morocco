@@ -529,7 +529,7 @@ Suite aux recommandations d'Augusto Getirana (désactivation du réservoir liné
 ### 15.2 Évaluation comparative 2018 à Lalla Chafia (`b_l_chafia`)
 - **Figure comparative 3 panneaux :** [`plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_hymap2_linres0_vs_hist.png`](plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_hymap2_linres0_vs_hist.png) (et version vectorielle `.pdf`)
   - *(a) Full-Year 2018 Hydrograph at Lalla Chafia (Bouregreg Basin)*
-  - *(b) High-Flow Period: Flood Peaks and Hydrograph Timing (March – April 2018)*
+  - *(b) High-Flow Period: Flood Peaks and Hydrograph Timing (March–April 2018)*
   - *(c) Summer Streamflow and Recession (June–September 2018)*
 - **Tableau des métriques statistiques :** [`plots/sebou_bouregreg/tables/table_metrics_2018_lalla_chafia_linres0.csv`](plots/sebou_bouregreg/tables/table_metrics_2018_lalla_chafia_linres0.csv)
 - **Script officiel et commande de régénération autonome (ciblée) :**
