@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.gridspec as gridspec
 from matplotlib.ticker import AutoMinorLocator
+from matplotlib.patches import Rectangle, ConnectionPatch
 
 REPO_ROOT = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
 SENS_DIR = os.path.join(REPO_ROOT, "experiments/NorthMor/opl_hydrology_sensitivity")
@@ -265,77 +266,180 @@ def plot_f2(df_q, df_flux):
     save_fig(fig, "f2_precip_and_flood_response_2018_en")
 
 # =============================================================================
-# F3 — Daily Precipitation, Qs, Qsb and Routed Discharge
+# F3 — Daily Catchment Fluxes (Precipitation, Qs, Qsb) and Routed Discharge
 # =============================================================================
 def plot_f3(df_flux, df_q):
-    print("Generating F3 — Daily precipitation, Qs, Qsb and routed discharge...")
+    print("Generating F3 — Daily catchment fluxes (Precipitation, Qs, Qsb) and routed discharge...")
     df_flux['date_dt'] = pd.to_datetime(df_flux['date'])
     df_q['date_dt'] = pd.to_datetime(df_q['date'])
 
-    fig, axes = plt.subplots(4, 2, figsize=(16, 14), sharex=True)
+    # Explicit color and styling definition matching official project palette
+    SCHEMES_F3 = [
+        ('OL_R1_SIMGM', 'SIMGM', '#1f77b4', '-'),       # Blue, highlighted
+        ('OL_R2_SIMTOP', 'SIMTOP', '#ff7f0e', '-'),     # Orange
+        ('OL_R3_SCHAAKE96', 'Schaake96', '#2ca02c', '--'), # Green
+        ('OL_R4_BATS', 'BATS', '#9467bd', ':')          # Violet
+    ]
+    COLOR_OBS_F3 = '#000000'
+    COLOR_PRECIP_F3 = '#3182bd'
+
+    fig, axes = plt.subplots(4, 2, figsize=(16, 14), sharex=False)
 
     # Column titles
-    axes[0, 0].set_title('Lalla Chafia — Upper Bouregreg (3,333 km²)', fontsize=11.5, fontweight='bold', pad=12)
-    axes[0, 1].set_title('Sidi Jabeur — Oued Grou (3,131 km²)', fontsize=11.5, fontweight='bold', pad=12)
+    axes[0, 0].set_title('Lalla Chafia — Upper Bouregreg (3,333 km²)', fontsize=12, fontweight='bold', pad=8)
+    axes[0, 1].set_title('Sidi Jabeur — Oued Grou (3,131 km²)', fontsize=12, fontweight='bold', pad=8)
 
-    # 1. Row 1: Precipitation (IMERG V07B)
-    for col_idx, sid in enumerate(['b_l_chafia', 'b_s_jabeur']):
+    stations = ['b_l_chafia', 'b_s_jabeur']
+
+    # 1. Row 0: Precipitation (IMERG V07B)
+    for col_idx, sid in enumerate(stations):
         ax = axes[0, col_idx]
         sub_p = df_flux[(df_flux['station_id'] == sid) & (df_flux['experiment'] == 'OL_R1_SIMGM')].sort_values('date_dt')
-        ax.bar(sub_p['date_dt'].values, sub_p['P_mm_day'].values, color=COLOR_PRECIP, width=0.8, alpha=0.75)
-        ax.set_ylabel('Precipitation (mm/day)', fontsize=9, fontweight='bold')
+        ax.bar(sub_p['date_dt'].values, sub_p['P_mm_day'].values, color=COLOR_PRECIP_F3, width=0.85, alpha=0.75, label='Precipitation (IMERG)')
+        ax.set_ylabel('Precipitation (mm/day)', fontsize=9.5, fontweight='bold')
         ax.set_ylim(0, 70.0)
         ax.invert_yaxis()
         ax.grid(axis='y', linestyle=':', alpha=0.5)
-        ax.text(0.02, 0.12, 'Daily Precipitation (IMERG)', transform=ax.transAxes, fontsize=8.5, fontweight='bold', color='#08519c')
+        ax.set_xlim(pd.to_datetime('2018-01-01'), pd.to_datetime('2018-12-31'))
+        ax.set_xticklabels([])
+        ax.tick_params(axis='both', labelsize=8.5)
 
-    # 2. Row 2: Surface Runoff Qs (Noah-MP)
-    for col_idx, sid in enumerate(['b_l_chafia', 'b_s_jabeur']):
+    # 2. Row 1: Surface Runoff Qs (Noah-MP) with Spring Event Inset (March–May)
+    for col_idx, sid in enumerate(stations):
         ax = axes[1, col_idx]
-        for exp_id, label, color, ls in SCHEMES:
+        for exp_id, label, color, ls in SCHEMES_F3:
             sub_f = df_flux[(df_flux['station_id'] == sid) & (df_flux['experiment'] == exp_id)].sort_values('date_dt')
-            ax.plot(sub_f['date_dt'].values, sub_f['Qs_mm_day'].values, color=color, lw=1.2, ls=ls, label=label, alpha=0.9)
-        ax.set_ylabel('Surface Runoff Qs (mm/day)', fontsize=9, fontweight='bold')
-        ax.set_ylim(0, 15.0)  # Shared scale ensures direct physical comparability
-        ax.grid(axis='y', linestyle=':', alpha=0.5)
-        ax.text(0.02, 0.88, 'Surface Runoff (Qs Noah-MP)', transform=ax.transAxes, fontsize=8.5, fontweight='bold', color='#333333')
+            lw = 1.6 if exp_id == 'OL_R1_SIMGM' else 1.2
+            zord = 4 if exp_id == 'OL_R1_SIMGM' else 3
+            ax.plot(sub_f['date_dt'].values, sub_f['Qs_mm_day'].values, color=color, lw=lw, ls=ls, label=label, alpha=0.9, zorder=zord)
 
-    # 3. Row 3: Subsurface Drainage Qsb (Noah-MP)
+        ax.set_ylabel('Surface Runoff Qs (mm/day)', fontsize=9.5, fontweight='bold')
+        ax.set_ylim(0, 15.0)
+        ax.grid(axis='y', linestyle=':', alpha=0.5)
+        ax.set_xlim(pd.to_datetime('2018-01-01'), pd.to_datetime('2018-12-31'))
+        ax.set_xticklabels([])
+        ax.tick_params(axis='both', labelsize=8.5)
+
+        # Inset for Qs: Zoom on March–May 2018
+        axins = ax.inset_axes([0.48, 0.38, 0.49, 0.57])
+        for exp_id, label, color, ls in SCHEMES_F3:
+            sub_f = df_flux[(df_flux['station_id'] == sid) & (df_flux['experiment'] == exp_id)].sort_values('date_dt')
+            sub_w = sub_f[(sub_f['date'] >= '2018-03-01') & (sub_f['date'] <= '2018-05-31')]
+            lw = 1.6 if exp_id == 'OL_R1_SIMGM' else 1.2
+            zord = 4 if exp_id == 'OL_R1_SIMGM' else 3
+            axins.plot(sub_w['date_dt'].values, sub_w['Qs_mm_day'].values, color=color, lw=lw, ls=ls, alpha=0.95, zorder=zord)
+
+        y_max_ins = 11.0 if sid == 'b_l_chafia' else 9.0
+        axins.set_ylim(0, y_max_ins)
+        axins.set_xlim(pd.to_datetime('2018-03-01'), pd.to_datetime('2018-05-31'))
+        axins.xaxis.set_major_locator(mdates.MonthLocator())
+        axins.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
+        axins.tick_params(axis='both', labelsize=7.5, pad=2)
+        axins.grid(True, linestyle=':', alpha=0.45)
+        axins.set_title('Spring Events (Mar–May)', fontsize=8.5, fontweight='bold', pad=3, color='#333333')
+
+        # Explicit zoom bounding box on main plot
+        t_start = mdates.date2num(pd.to_datetime('2018-03-01'))
+        t_end = mdates.date2num(pd.to_datetime('2018-05-31'))
+        rect = Rectangle((t_start, 0), t_end - t_start, y_max_ins,
+                         fill=False, edgecolor='#666666', linewidth=0.8, alpha=0.6, zorder=2)
+        ax.add_patch(rect)
+
+        # Clean connector lines bridging May 31 to the left border of the inset
+        cp_top = ConnectionPatch(xyA=(t_end, y_max_ins), coordsA=ax.transData,
+                                 xyB=(0.0, 1.0), coordsB=axins.transAxes,
+                                 color='#777777', linestyle='--', linewidth=0.7, alpha=0.7)
+        cp_bot = ConnectionPatch(xyA=(t_end, 0.0), coordsA=ax.transData,
+                                 xyB=(0.0, 0.0), coordsB=axins.transAxes,
+                                 color='#777777', linestyle='--', linewidth=0.7, alpha=0.7)
+        ax.add_artist(cp_top)
+        ax.add_artist(cp_bot)
+
+    # 3. Row 2: Subsurface Runoff Qsb (Noah-MP)
     for col_idx, (sid, y_lim_qsb) in enumerate([('b_l_chafia', 1.65), ('b_s_jabeur', 0.55)]):
         ax = axes[2, col_idx]
-        for exp_id, label, color, ls in SCHEMES:
+        for exp_id, label, color, ls in SCHEMES_F3:
             sub_f = df_flux[(df_flux['station_id'] == sid) & (df_flux['experiment'] == exp_id)].sort_values('date_dt')
-            ax.plot(sub_f['date_dt'].values, sub_f['Qsb_mm_day'].values, color=color, lw=1.3, ls=ls, label=label, alpha=0.9)
-        ax.set_ylabel('Drainage Qsb (mm/day)', fontsize=9, fontweight='bold')
+            lw = 1.6 if exp_id == 'OL_R1_SIMGM' else 1.2
+            zord = 4 if exp_id == 'OL_R1_SIMGM' else 3
+            ax.plot(sub_f['date_dt'].values, sub_f['Qsb_mm_day'].values, color=color, lw=lw, ls=ls, label=label, alpha=0.9, zorder=zord)
+
+        ax.set_ylabel('Subsurface Runoff Qsb (mm/day)', fontsize=9.5, fontweight='bold')
         ax.set_ylim(0, y_lim_qsb)
         ax.grid(axis='y', linestyle=':', alpha=0.5)
-        ax.text(0.02, 0.88, 'Deep Subsurface Drainage (Qsb Noah-MP)', transform=ax.transAxes, fontsize=8.5, fontweight='bold', color='#333333')
+        ax.set_xlim(pd.to_datetime('2018-01-01'), pd.to_datetime('2018-12-31'))
+        ax.set_xticklabels([])
+        ax.tick_params(axis='both', labelsize=8.5)
 
-    # 4. Row 4: Routed Discharge (HyMAP-2) vs Observed
+    # 4. Row 3: Routed Discharge (HyMAP-2) vs Observed ABH with Summer Low-Flow Inset
     for col_idx, (sid, y_lim_q) in enumerate([('b_l_chafia', 335.0), ('b_s_jabeur', 395.0)]):
         ax = axes[3, col_idx]
         sub_q = df_q[df_q['station_id'] == sid].sort_values('date_dt')
-        ax.plot(sub_q['date_dt'].values, sub_q['q_obs_m3s'].values, color=COLOR_OBS, lw=2.2, label='ABH Observed', zorder=5)
-        for exp_id, label, color, ls in SCHEMES:
-            ax.plot(sub_q['date_dt'].values, sub_q[f'q_sim_{exp_id}'].values, color=color, lw=1.3, ls=ls, label=label, alpha=0.9, zorder=3)
-        ax.set_ylabel('Routed Discharge (m³/s)', fontsize=9, fontweight='bold')
+
+        # 1. ABH Observed
+        ax.plot(sub_q['date_dt'].values, sub_q['q_obs_m3s'].values, color=COLOR_OBS_F3, lw=2.2, label='Observed (ABH)', zorder=5)
+
+        # 2. Simulated schemes
+        for exp_id, label, color, ls in SCHEMES_F3:
+            lw = 1.6 if exp_id == 'OL_R1_SIMGM' else 1.2
+            zord = 4 if exp_id == 'OL_R1_SIMGM' else 3
+            ax.plot(sub_q['date_dt'].values, sub_q[f'q_sim_{exp_id}'].values, color=color, lw=lw, ls=ls, label=label, alpha=0.9, zorder=zord)
+
+        ax.set_ylabel('Routed Discharge (m³/s)', fontsize=9.5, fontweight='bold')
         ax.set_ylim(0, y_lim_q)
         ax.grid(axis='y', linestyle=':', alpha=0.5)
-        ax.text(0.02, 0.88, 'Routed Streamflow (HyMAP-2 vs Observed)', transform=ax.transAxes, fontsize=8.5, fontweight='bold', color='#333333')
-        ax.set_xlabel('Date (2018)', fontsize=10, fontweight='bold', labelpad=6)
+        ax.set_xlim(pd.to_datetime('2018-01-01'), pd.to_datetime('2018-12-31'))
+        ax.set_xlabel('Date (2018)', fontsize=10, fontweight='bold', labelpad=5)
         ax.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
-        ax.set_xlim(pd.to_datetime('2018-01-01'), pd.to_datetime('2018-12-31'))
+        ax.tick_params(axis='both', labelsize=8.5)
 
-    handles, labels = axes[3, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(0.5, 0.985), ncol=5, frameon=True, framealpha=0.95, fontsize=10)
+        # Inset for Discharge: Zoom on Summer Low Flows (June–September)
+        axins = ax.inset_axes([0.46, 0.44, 0.51, 0.52])
+        sub_w_q = sub_q[(sub_q['date'] >= '2018-06-01') & (sub_q['date'] <= '2018-09-30')]
 
-    fig.text(0.08, 0.015,
-             'Note: Noah-MP subsurface drainage Qsb represents deep soil drainage into the unconfined aquifer / baseflow reservoir; it is an internal land-surface flux and not an in-situ streamflow measurement.',
-             fontsize=8.5, style='italic', color='#444444')
+        # Observed in inset
+        axins.plot(sub_w_q['date_dt'].values, sub_w_q['q_obs_m3s'].values, color=COLOR_OBS_F3, lw=2.2, zorder=5)
 
-    fig.suptitle('F3 — Daily Catchment Fluxes (Precipitation, Qs, Qsb) and Routed Discharge (2018)', fontsize=13, fontweight='bold', y=1.01)
-    plt.subplots_adjust(top=0.935, bottom=0.065, hspace=0.22, wspace=0.18)
+        # Simulated in inset
+        for exp_id, label, color, ls in SCHEMES_F3:
+            lw = 1.6 if exp_id == 'OL_R1_SIMGM' else 1.2
+            zord = 4 if exp_id == 'OL_R1_SIMGM' else 3
+            axins.plot(sub_w_q['date_dt'].values, sub_w_q[f'q_sim_{exp_id}'].values, color=color, lw=lw, ls=ls, alpha=0.95, zorder=zord)
+
+        y_max_q_ins = 13.5 if sid == 'b_l_chafia' else 7.5
+        axins.set_ylim(0, y_max_q_ins)
+        axins.set_xlim(pd.to_datetime('2018-06-01'), pd.to_datetime('2018-09-30'))
+        axins.xaxis.set_major_locator(mdates.MonthLocator())
+        axins.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
+        axins.tick_params(axis='both', labelsize=7.5, pad=2)
+        axins.grid(True, linestyle=':', alpha=0.45)
+        axins.set_title('Low-Flow Period (Jun–Sep)', fontsize=8.5, fontweight='bold', pad=3, color='#333333')
+
+        # Explicit zoom bounding box on main plot
+        t_start_q = mdates.date2num(pd.to_datetime('2018-06-01'))
+        t_end_q = mdates.date2num(pd.to_datetime('2018-09-30'))
+        rect_q = Rectangle((t_start_q, 0), t_end_q - t_start_q, y_max_q_ins,
+                           fill=False, edgecolor='#666666', linewidth=0.8, alpha=0.6, zorder=2)
+        ax.add_patch(rect_q)
+
+    # Unified Legend at top
+    p_handle = plt.Rectangle((0, 0), 1, 1, fc=COLOR_PRECIP_F3, alpha=0.75, label='Precipitation (IMERG)')
+    obs_handle = plt.Line2D([0], [0], color=COLOR_OBS_F3, lw=2.2, label='Observed (ABH)')
+    scheme_handles = [
+        plt.Line2D([0], [0], color=color, lw=1.6 if exp_id == 'OL_R1_SIMGM' else 1.2, ls=ls, label=label)
+        for exp_id, label, color, ls in SCHEMES_F3
+    ]
+
+    all_handles = [p_handle, obs_handle] + scheme_handles
+    all_labels = [h.get_label() for h in all_handles]
+
+    fig.legend(all_handles, all_labels, loc='upper center', bbox_to_anchor=(0.5, 0.955), ncol=6, frameon=True, framealpha=0.95, fontsize=10)
+
+    fig.suptitle('F3 — Daily Catchment Fluxes (Precipitation, Qs, Qsb) and Routed Discharge (2018)', fontsize=13, fontweight='bold', y=0.985)
+
+    # Layout adjustments without bottom note
+    plt.subplots_adjust(top=0.895, bottom=0.045, left=0.065, right=0.975, hspace=0.22, wspace=0.18)
     save_fig(fig, "f3_daily_qs_qsb_hydrographs_2018_en")
 
 # =============================================================================
@@ -764,6 +868,12 @@ def main():
     df_flux = pd.read_csv(FLUXES_DAILY_CSV)
     df_metrics = pd.read_csv(METRICS_CSV)
     df_low = pd.read_csv(LOWFLOWS_CSV)
+
+    if len(sys.argv) > 1 and sys.argv[1] == "--f3-only":
+        print("Executing only plot_f3 as requested...")
+        plot_f3(df_flux, df_q)
+        print("\nFigure F3 generated successfully!")
+        return
 
     if len(sys.argv) > 1 and sys.argv[1] == "--f4-only":
         print("Executing only plot_f4 as requested...")

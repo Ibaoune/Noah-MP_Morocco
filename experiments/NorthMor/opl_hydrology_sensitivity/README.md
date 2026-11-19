@@ -251,7 +251,7 @@ Fichier de référence : `postproc/tables/station_inventory_2018.csv` et `statio
   - `f1a_hydrographs_bouregreg_daily_2018.png` : Hydrogrammes journaliers du Bouregreg (4 panneaux).
   - `f1b_hydrographs_sebou_monthly_2018.png` : Hydrogrammes mensuels du Sebou (6 panneaux).
   - `f2_precip_and_flood_response_2018.png` : Précipitations et réponses en crue (événements de mars et nov. 2018).
-  - `f3_daily_qs_qsb_hydrographs_2018.png` : Séries journalières $P, Q_s, Q_{sb}$ et débits routés vs observés.
+  - `f3_daily_qs_qsb_hydrographs_2018_en.png` (et `.pdf`) : Flux journaliers bassinés (précipitation, Qs, Qsb) et débits routés vs observés avec encarts zoomés (événements de mars–mai et étiages de juin–septembre 2018).
   - `f4_lowflow_diagnostic_summer2018_en.png` (et `.pdf`) : Diagnostic estival des débits et occurrence des débits nuls (juin–septembre 2018, Sidi Jabeur et Lalla Chafia, débits totaux observés et routés, tableau récapitulatif compact).
   - `f5_discontinuity_and_continuity_check.png` : Contrôle des raccords et continuité temporelle HyMAP-2.
   - `f6_multistation_synthesis_performance.png` : Synthèse globale comparative KGE, $\Delta\text{KGE}$, PBIAS et $r$.
@@ -285,3 +285,37 @@ Fichier de référence : `postproc/tables/station_inventory_2018.csv` et `statio
   Les sorties sont générées simultanément en PNG 300 DPI et en PDF vectoriel sous `postproc/multistation/figures/` et `postproc/figures/` :
   - `f4_lowflow_diagnostic_summer2018_en.png`
   - `f4_lowflow_diagnostic_summer2018_en.pdf`
+
+### 10.8 Focus Figure F3 — Flux Journaliers Bassinés (P, Qs, Qsb) et Débit Routé (2018)
+
+- **Objectif scientifique :** F3 répond directement au diagnostic demandé par Augusto Getirana : déterminer si l'excès de débit estival simulé par HyMAP-2 est attribuable au forçage de précipitation, au ruissellement de surface $Q_s$, ou à la persistance continue de l'apport de subsurface $Q_{sb}$ généré par Noah-MP.
+- **Périmètre et bassins versants :**
+  - **Lalla Chafia** (`b_l_chafia`, Haut Bouregreg, 3 333,35 km² (D8), exutoire HyMAP-2 `[75, 71]`, 133 mailles actives) : régime pérenne subhumide.
+  - **Sidi Jabeur** (`b_s_jabeur`, Oued Grou, 3 130,55 km² (D8), exutoire HyMAP-2 `[71, 71]`, 121 mailles actives) : régime semi-aride intermittent avec assecs estivaux marqués.
+- **Configurations physiques Noah-MP 4.0.1 évaluées :**
+  - `SIMGM` (`opt_run=1`, bleu `#1f77b4`) : nappe explicite 1D et modèle de réservoir d'équilibre.
+  - `SIMTOP` (`opt_run=2`, orange `#ff7f0e`) : nappe d'équilibre et modèle TOPMODEL.
+  - `Schaake96` (`opt_run=3`, vert `#2ca02c`, tireté) : capacité d'infiltration selon Schaake et drainage libre gravitationnel.
+  - `BATS` (`opt_run=4`, violet `#9467bd`, pointillé) : infiltration BATS et drainage libre.
+  - Observations ABH en trait noir continu (`#000000`, `lw=2.2`).
+- **Structure 4 lignes × 2 colonnes et encarts zoomés :**
+  - **Ligne 1 :** Précipitation journalière moyenne sur bassin (GPM IMERG V07B, mm/jour, axe inversé).
+  - **Ligne 2 :** Ruissellement de surface $Q_s$ (Noah-MP, mm/jour) avec encart zoomé sur les **événements printaniers (1er mars – 31 mai 2018)** pour discriminer les réponses rapides inter-schémas.
+  - **Ligne 3 :** Écoulement de subsurface $Q_{sb}$ (Noah-MP, mm/jour), illustrant la récession printanière et la persistance du flux estival.
+  - **Ligne 4 :** Débit routé HyMAP-2 vs Débit observé ABH (m³/s) avec encart zoomé sur la **période des bas débits estivaux (1er juin – 30 septembre 2018)**, mettant en évidence les 47 jours consécutifs d'assec observé à Sidi Jabeur (18 juillet – 2 septembre) et l'excès de débit simulé par les modèles.
+- **Définition physique neutre de $Q_{sb}$ :**
+  - Dans Noah-MP, $Q_{sb}$ désigne le **ruissellement de subsurface** (*subsurface runoff*). Sa signification physique exacte dépend de l'option `opt_run` :
+    - Pour SIMGM (`opt_run=1`), $Q_{sb}$ est le drainage latéral sortant du réservoir aquifère non confiné ($Q_{d,sub} \propto \text{slope} \cdot e^{-\omega z_{wt}}$).
+    - Pour SIMTOP (`opt_run=2`), $Q_{sb}$ combine le drainage de subsurface sous la nappe dynamique et la percolation matricielle.
+    - Pour Schaake96 (`opt_run=3`) et BATS (`opt_run=4`), $Q_{sb}$ représente un drainage libre gravitaire sous la 4e couche de sol ($Q_{sb} = K_{sat} \cdot (\theta_4/\theta_{sat})^{2b+3}$).
+  - $Q_{sb}$ est un flux interne simulé à la base de la zone vadose et **ne constitue pas une mesure directe du débit de base (baseflow) in situ observé en rivière**.
+- **Fichiers sources nécessaires :**
+  - `postproc/tables/catchment_fluxes_multistation_daily_2018.csv` (chemin relatif au projet : `postproc/tables/catchment_fluxes_multistation_daily_2018.csv` ; chemin relatif au dépôt : `experiments/NorthMor/opl_hydrology_sensitivity/postproc/tables/catchment_fluxes_multistation_daily_2018.csv` ; flux journaliers bassinés P, Qs, Qsb pour l'ensemble des configurations Noah-MP).
+  - `postproc/tables/streamflow_all_stations_2018.csv` (débits journaliers simulés HyMAP-2 et observés ABH).
+- **Commande exacte de régénération autonome (F3 seule) :**
+  ```bash
+  python experiments/NorthMor/opl_hydrology_sensitivity/postproc/multistation/scripts/generate_multistation_figures.py --f3-only
+  ```
+  Les sorties sont générées simultanément en PNG 300 DPI et en PDF vectoriel sous `postproc/multistation/figures/` et `postproc/figures/` :
+  - `f3_daily_qs_qsb_hydrographs_2018_en.png`
+  - `f3_daily_qs_qsb_hydrographs_2018_en.pdf`
