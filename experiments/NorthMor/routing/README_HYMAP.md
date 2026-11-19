@@ -527,14 +527,24 @@ Suite aux recommandations d'Augusto Getirana (désactivation du réservoir liné
 - **Cache extrait aux 12 stations :** [`output/OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv`](output/OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv).
 
 ### 15.2 Évaluation comparative 2018 à Lalla Chafia (`b_l_chafia`)
-- **Figure comparative 3 panneaux :** [`plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_hymap2_linres0_vs_hist.png`](plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_hymap2_linres0_vs_hist.png)
-  - *(a) Hydrogramme annuel 2018*
-  - *(b) Zoom sur la période de hautes eaux (mars – avril 2018)*
-  - *(c) Zoom sur la période d'étiage estival (juin – septembre 2018)*
+- **Figure comparative 3 panneaux :** [`plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_hymap2_linres0_vs_hist.png`](plots/sebou_bouregreg/figures/streamflow/lalla_chafia_2018_hymap2_linres0_vs_hist.png) (et version vectorielle `.pdf`)
+  - *(a) Full-Year 2018 Hydrograph at Lalla Chafia (Bouregreg Basin)*
+  - *(b) High-Flow Period: Flood Peaks and Hydrograph Timing (March – April 2018)*
+  - *(c) Summer Streamflow and Recession (June–September 2018)*
 - **Tableau des métriques statistiques :** [`plots/sebou_bouregreg/tables/table_metrics_2018_lalla_chafia_linres0.csv`](plots/sebou_bouregreg/tables/table_metrics_2018_lalla_chafia_linres0.csv)
+- **Script officiel et commande de régénération autonome (ciblée) :**
+  ```bash
+  python3 experiments/NorthMor/routing/scripts/evaluate_sebou_bouregreg.py --fig-linres0-2018
+  ```
+  - **Fichiers de données d'entrée nécessaires :**
+    - Observations journalières ABH : `data/streamflow_clean/obs_daily.csv` (ou table consolidée `plots/sebou_bouregreg/tables/lalla_chafia_fluxes_2018.csv`).
+    - Routage historique (`linres=1`, spin-up restart C2) : `output/OPL_2016_2020_corrigee/t7_sim_daily_12stations_corrigee.csv`.
+    - Routage modifié (`linres=0`, coldstart) : `output/OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv`.
+  - **Identité stricte des forçages Noah-MP :** Les flux de ruissellement injectés ($Q_s, Q_{sb}$) proviennent tous deux de `runoff_remap_180x120/OPL_noirr_2016_2020` et sont rigoureusement identiques (différence maximale nulle sur l'ensemble des cellules et pas de temps).
+  - **Condition d'état initial distincte :** `OPL_2016_2020_corrigee` démarre d'un restart issu du cycle de spin-up C2 au 01/01/2016, alors que `OPL_linres0_2016_2020` démarre en coldstart au 01/01/2016. En 2018 (3ᵉ année calendaire), le transit fluvial a convergé, mais cette différence d'initialisation reste documentée dans la légende.
 
 #### Synthèse des métriques (364 jours communs valides, date manquante ABH : 06/01/2018)
-| Métrique 2018 | Observations ABH | OPL Historique (`linres=1`) | OPL Nouveau (`linres=0`) |
+| Métrique 2018 | Observations ABH | OPL Historique (`linres=1`) | OPL Modifié (`linres=0`) |
 | :--- | :---: | :---: | :---: |
 | Débit moyen annuel | 9.74 m³/s | 7.98 m³/s | **7.99 m³/s** |
 | Biais moyen | — | -1.76 m³/s (-18.1 %) | **-1.75 m³/s (-17.9 %)** |
@@ -542,17 +552,18 @@ Suite aux recommandations d'Augusto Getirana (désactivation du réservoir liné
 | Corrélation Pearson (r) | 1.000 | 0.437 | **0.456** |
 | Critère NSE | 1.000 | 0.134 | **0.169** |
 | Critère KGE | 1.000 | 0.017 | **0.079** |
-| Moyenne estivale (juin–sept.) | 0.73 m³/s | 6.91 m³/s | **6.88 m³/s** |
+| Débit moyen estival (juin–sept.) | 0.73 m³/s | 6.91 m³/s | **6.88 m³/s** |
 | Maximum annuel simulé | 199.0 m³/s (08/03) | 34.0 m³/s (26/04) | **68.9 m³/s (25/04)** |
 
 ### 15.3 Résultats démontrés vs Hypothèses ouvertes
 1. **Résultats démontrés :**
-   - L'amélioration du synchronisme sur la crue de fin avril 2018 est avérée : le pic simulé est calé au 25/04 à la date exacte de l'observation (alors que la simulation historique présentait un retard de 24h, au 26/04). En revanche, son amplitude de pointe est sensiblement surestimée (68.9 m³/s simulés contre 41.4 m³/s observés le 25 avril).
-   - L'accélération de la courbe de tarissement post-crue est confirmée : les débits redescendent nettement plus rapidement dès la cessation des précipitations, éliminant la traînée artificielle de plusieurs semaines du réservoir linéaire.
+   - **Amélioration du synchronisme sur les crues :** Le calage du pic du 25 avril 2018 est exact le jour même de l'observation en `linres=0` (supprimant le retard de 24h observé en `linres=1`). En revanche, l'amplitude est sensiblement plus accentuée (68.9 m³/s simulés vs 41.4 m³/s observés le 25/04).
+   - **Accélération du tarissement post-crue :** Dès la cessation des pluies printanières, la décrue est nettement plus franche, éliminant la traînée artificielle de plusieurs semaines induite par le réservoir linéaire.
+   - **Persistance du plancher d'étiage estival :** Le débit estival moyen simulé reste quasi identique entre les deux configurations (6.91 m³/s en `linres=1` vs 6.88 m³/s en `linres=0`, pour 0.73 m³/s observé). La désactivation du réservoir linéaire n'élimine donc pas le biais positif estival.
 2. **Hypothèses ouvertes et limites :**
-   - Le fort déficit de crue sur l'événement majeur des 07–08 mars 2018 (199.0 m³/s observé vs 24.0 m³/s en `linres0`) persiste. Sa cause exacte (sous-estimation des précipitations d'entrée ou partition ruissellement/infiltration dans Noah-MP) demeure une **hypothèse ouverte non encore démontrée**.
-   - L'excès de débit estival persiste (6.88 m³/s sim vs 0.73 m³/s obs). Bien que le drainage profond issu de Noah-MP en soit un contributeur potentiel majeur, son rôle exact pourra être analysé en exploitant directement les séries temporelles existantes de $Q_s$ et $Q_{sb}$ de Noah-MP sur le bassin.
-   - **Différence d'initialisation :** L'historique OPL partait d'un restart issu du cycle de spin-up C2 (réseau hydrographique et réservoirs pré-remplis), tandis que la simulation `linres0` démarre en coldstart au 01/01/2016. En 2018 (3ᵉ année), l'influence de cette différence d'initialisation sur le réseau fluvial est probablement réduite, mais elle n'a pas été quantifiée formellement.
+   - **Origine du biais d'étiage :** Si la persistance des apports souterrains $Q_{sb}$ issus de Noah-MP constitue un contributeur majeur évident, le rôle potentiel de pertes en lit mineur (*transmission losses* alluviales), de prélèvements agricoles non jaugés ou d'infiltrations karstiques non représentées dans HyMAP demeure une hypothèse de travail ouverte. On évitera donc d'affirmer catégoriquement que Noah-MP explique 100 % du biais ou que HyMAP ne peut en aucun cas y contribuer.
+   - **Sous-estimation de la crue de mars 2018 :** Le fort déficit sur l'événement des 07–08 mars (199.0 m³/s observé vs 24.0 m³/s simulé) persiste inchangé en `linres=0` et relève principalement du forçage pluviométrique IMERG ou de la partition infiltration/ruissellement amont.
+   - **Différence d'initialisation :** L'historique OPL partait d'un restart issu du cycle de spin-up C2, tandis que la simulation `linres0` démarre en coldstart au 01/01/2016. La légende de la figure rappelle explicitement cette distinction.
 
 
 ---

@@ -155,16 +155,24 @@ def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_cs
       (c) Zoom sur étiages juin-septembre
     et sauvegarde le tableau des métriques d'évaluation dans table_out_path.
     """
-    df_obs = pd.read_csv(os.path.join(clean_dir, "obs_daily.csv"))
-    sub_obs = df_obs[(df_obs["station_id"] == "b_l_chafia") & (df_obs["date"].str.startswith("2018"))][["date", "q_m3s"]].rename(columns={"q_m3s": "q_obs"})
+    # Chargement prioritaire depuis la table dédiée si disponible, sinon extraction brute
+    flux_csv = os.path.join(os.path.dirname(table_out_path), "lalla_chafia_fluxes_2018.csv")
+    if os.path.exists(flux_csv):
+        df_flux = pd.read_csv(flux_csv)
+        m = df_flux[["date", "q_obs_m3s", "q_sim_hist_m3s", "q_sim_linres0_m3s"]].rename(
+            columns={"q_obs_m3s": "q_obs", "q_sim_hist_m3s": "q_hist", "q_sim_linres0_m3s": "q_lr0"}
+        ).dropna().sort_values("date").reset_index(drop=True)
+    else:
+        df_obs = pd.read_csv(os.path.join(clean_dir, "obs_daily.csv"))
+        sub_obs = df_obs[(df_obs["station_id"] == "b_l_chafia") & (df_obs["date"].str.startswith("2018"))][["date", "q_m3s"]].rename(columns={"q_m3s": "q_obs"})
 
-    df_hist = pd.read_csv(os.path.join(opl_out_dir, "t7_sim_daily_12stations_corrigee.csv"))
-    sub_hist = df_hist[df_hist["date"].str.startswith("2018")][["date", "b_l_chafia"]].rename(columns={"b_l_chafia": "q_hist"})
+        df_hist = pd.read_csv(os.path.join(opl_out_dir, "t7_sim_daily_12stations_corrigee.csv"))
+        sub_hist = df_hist[df_hist["date"].str.startswith("2018")][["date", "b_l_chafia"]].rename(columns={"b_l_chafia": "q_hist"})
 
-    df_lr0 = pd.read_csv(linres0_csv)
-    sub_lr0 = df_lr0[df_lr0["date"].str.startswith("2018")][["date", "b_l_chafia"]].rename(columns={"b_l_chafia": "q_lr0"})
+        df_lr0 = pd.read_csv(linres0_csv)
+        sub_lr0 = df_lr0[df_lr0["date"].str.startswith("2018")][["date", "b_l_chafia"]].rename(columns={"b_l_chafia": "q_lr0"})
 
-    m = pd.merge(sub_obs, sub_hist, on="date").merge(sub_lr0, on="date").dropna().sort_values("date").reset_index(drop=True)
+        m = pd.merge(sub_obs, sub_hist, on="date").merge(sub_lr0, on="date").dropna().sort_values("date").reset_index(drop=True)
     n_days = len(m)
 
     o = m["q_obs"].to_numpy()
@@ -269,10 +277,10 @@ def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_cs
     # Panel (a) Annual Hydrograph
     l1, = ax1.plot(dates, o, color=c_obs, lw=1.6, label="Observed (ABH)", alpha=0.95, zorder=4)
     l2, = ax1.plot(dates, qh, color=c_hist, lw=1.3, ls="--", label="HyMAP-2 Historical (linres=1, spinup restart)", alpha=0.9, zorder=3)
-    l3, = ax1.plot(dates, ql, color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 New (linres=0, coldstart)", alpha=0.9, zorder=3)
+    l3, = ax1.plot(dates, ql, color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 Modified (linres=0, coldstart)", alpha=0.9, zorder=3)
 
     ax1.set_title("(a) Full-Year 2018 Hydrograph at Lalla Chafia (Bouregreg Basin)", fontsize=11, fontweight="bold", pad=10)
-    ax1.set_ylabel("Daily streamflow (m³/s)", fontsize=10, fontweight="medium")
+    ax1.set_ylabel("Daily Streamflow (m³/s)", fontsize=10, fontweight="medium")
     ax1.set_xlim(pd.Timestamp("2018-01-01"), pd.Timestamp("2018-12-31"))
     ax1.set_ylim(-3, 215)
     ax1.grid(True, which="major", ls=":", color="#cccccc", alpha=0.7)
@@ -286,10 +294,10 @@ def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_cs
 
     ax2.plot(dates_ma, o[mask_ma], color=c_obs, lw=1.6, label="Observed (ABH)", alpha=0.95, zorder=4)
     ax2.plot(dates_ma, qh[mask_ma], color=c_hist, lw=1.3, ls="--", label="HyMAP-2 Historical (linres=1, spinup restart)", alpha=0.9, zorder=3)
-    ax2.plot(dates_ma, ql[mask_ma], color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 New (linres=0, coldstart)", alpha=0.9, zorder=3)
+    ax2.plot(dates_ma, ql[mask_ma], color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 Modified (linres=0, coldstart)", alpha=0.9, zorder=3)
 
     ax2.set_title("(b) High-Flow Period: Flood Peaks and Hydrograph Timing (March – April 2018)", fontsize=11, fontweight="bold", pad=8)
-    ax2.set_ylabel("Daily streamflow (m³/s)", fontsize=10, fontweight="medium")
+    ax2.set_ylabel("Daily Streamflow (m³/s)", fontsize=10, fontweight="medium")
     ax2.set_xlim(pd.Timestamp("2018-03-01"), pd.Timestamp("2018-04-30"))
     ax2.set_ylim(-3, 215)
     ax2.grid(True, which="major", ls=":", color="#cccccc", alpha=0.7)
@@ -303,10 +311,10 @@ def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_cs
 
     ax3.plot(dates_sum, o[mask_sum], color=c_obs, lw=1.6, label="Observed (ABH)", alpha=0.95, zorder=4)
     ax3.plot(dates_sum, qh[mask_sum], color=c_hist, lw=1.3, ls="--", label="HyMAP-2 Historical (linres=1, spinup restart)", alpha=0.9, zorder=3)
-    ax3.plot(dates_sum, ql[mask_sum], color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 New (linres=0, coldstart)", alpha=0.9, zorder=3)
+    ax3.plot(dates_sum, ql[mask_sum], color=c_lr0, lw=1.4, ls="-", label="HyMAP-2 Modified (linres=0, coldstart)", alpha=0.9, zorder=3)
 
-    ax3.set_title("(c) Low-Flow Period: Summer Recession and Baseflow Floor (June – September 2018)", fontsize=11, fontweight="bold", pad=8)
-    ax3.set_ylabel("Daily streamflow (m³/s)", fontsize=10, fontweight="medium")
+    ax3.set_title("(c) Summer Streamflow and Recession (June–September 2018)", fontsize=11, fontweight="bold", pad=8)
+    ax3.set_ylabel("Daily Streamflow (m³/s)", fontsize=10, fontweight="medium")
     ax3.set_xlabel("Date (2018)", fontsize=10, fontweight="medium")
     ax3.set_xlim(pd.Timestamp("2018-06-01"), pd.Timestamp("2018-09-30"))
     ax3.set_ylim(-0.5, 15)
@@ -318,7 +326,7 @@ def plot_lalla_chafia_2018_linres0_comparison(clean_dir, opl_out_dir, linres0_cs
     # Shared Legend
     fig.legend(
         [l1, l2, l3],
-        ["Observed (ABH)", "HyMAP-2 Historical (linres=1, spinup restart)", "HyMAP-2 New (linres=0, coldstart)"],
+        ["Observed (ABH)", "HyMAP-2 Historical (linres=1, spinup restart)", "HyMAP-2 Modified (linres=0, coldstart)"],
         loc="upper center",
         bbox_to_anchor=(0.5, 0.985),
         ncol=3,
