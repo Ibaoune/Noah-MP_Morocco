@@ -252,7 +252,7 @@ Fichier de référence : `postproc/tables/station_inventory_2018.csv` et `statio
   - `f1b_hydrographs_sebou_monthly_2018.png` : Hydrogrammes mensuels du Sebou (6 panneaux).
   - `f2_precip_and_flood_response_2018.png` : Précipitations et réponses en crue (événements de mars et nov. 2018).
   - `f3_daily_qs_qsb_hydrographs_2018.png` : Séries journalières $P, Q_s, Q_{sb}$ et débits routés vs observés.
-  - `f4_lowflow_diagnostic_summer2018.png` : Diagnostic d'étiage estival (seuils $\le 0.1$ et $\le 0.5\text{ m}^3\text{/s}$, zéros, $Q_{50}$).
+  - `f4_lowflow_diagnostic_summer2018_en.png` (et `.pdf`) : Diagnostic estival des débits et occurrence des débits nuls (juin–septembre 2018, Sidi Jabeur et Lalla Chafia, débits totaux observés et routés, tableau récapitulatif compact).
   - `f5_discontinuity_and_continuity_check.png` : Contrôle des raccords et continuité temporelle HyMAP-2.
   - `f6_multistation_synthesis_performance.png` : Synthèse globale comparative KGE, $\Delta\text{KGE}$, PBIAS et $r$.
 - **Tables de synthèse :**
@@ -261,3 +261,27 @@ Fichier de référence : `postproc/tables/station_inventory_2018.csv` et `statio
   - `postproc/tables/table_multistation_lowflows_2018.csv`
   - `postproc/tables/table_multistation_floods_2018.csv`
   - `postproc/tables/catchment_fluxes_multistation_summary_2018.csv` & `.md`
+
+### 10.7 Focus Figure F4 — Diagnostic Estival des Débits et Fréquence des Débits Nuls
+
+- **Rôle de la figure F4 :** F4 fournit une comparaison strictement descriptive et factuelle du régime d'étiage estival entre les observations de l'Agence de Bassin Hydraulique (ABH) et les quatre configurations physiques Noah-MP routées avec HyMAP-2 (`SIMGM (Ref)`, `SIMTOP`, `Schaake96`, `BATS`).
+- **Périmètre et stations analysées :**
+  - **Sidi Jabeur** (`b_s_jabeur`, Oued Grou, bassin versant 3 131 km²) : régime intermittent, avec 47 jours consécutifs à débit nul observés (du 18 juillet au 2 septembre 2018 inclus) et 60 jours avec $Q \le 0.1\text{ m}^3/\text{s}$. Un axe Y interrompu ($8.0–62.0\text{ m}^3/\text{s}$ en haut, $-0.15–7.5\text{ m}^3/\text{s}$ en bas) préserve la lisibilité des faibles débits tout en restituant les pics de crue de septembre (pic observé à $50.1\text{ m}^3/\text{s}$ le 17/09).
+  - **Lalla Chafia** (`b_l_chafia`, Haut Bouregreg, bassin versant 3 333 km²) : régime pérenne, aucun jour à débit nul ou $\le 0.1\text{ m}^3/\text{s}$ observé ou simulé (minimum observé de $0.13\text{ m}^3/\text{s}$).
+- **Période d'évaluation :** Juin à septembre 2018 (122 jours calendaires).
+- **Indicateurs présentés dans le tableau synthétique compact :**
+  - Nombre de jours avec $Q = 0\text{ m}^3/\text{s}$ (47 jours observés à Sidi Jabeur vs 0 pour l'ensemble des simulations).
+  - Nombre de jours avec $Q \le 0.1\text{ m}^3/\text{s}$ (60 jours observés à Sidi Jabeur vs 0 pour l'ensemble des simulations).
+  - Débit médian estival $Q_{50}$ en $\text{m}^3/\text{s}$ (Sidi Jabeur : Obs = 0.17, SIMGM = 3.10, SIMTOP = 2.32, Schaake96 = 1.27, BATS = 3.01 ; Lalla Chafia : Obs = 0.32, SIMGM = 6.66, SIMTOP = 2.25, Schaake96 = 1.66, BATS = 3.39).
+- **Précision hydrologique fondamentale :** Les courbes de F4 comparent exclusivement les **débits totaux à la station (streamflow)**, mesurés par l'ABH ou routés dans le réseau hydrographique par HyMAP-2. La figure ne constitue en aucun cas une décomposition du baseflow ou du drainage souterrain $Q_{sb}$, et ne comporte aucune spéculation sur l'origine physique des écarts observés.
+- **Sources des données :**
+  - Observations nettoyées : `data/streamflow_clean/obs_daily.csv`.
+  - Table consolidée des débits journaliers 2018 : `postproc/tables/streamflow_all_stations_2018.csv`.
+  - Table des métriques d'étiage : `postproc/tables/table_multistation_lowflows_2018.csv`.
+- **Commande exacte de régénération autonome (F4 seule) :**
+  ```bash
+  python experiments/NorthMor/opl_hydrology_sensitivity/postproc/multistation/scripts/generate_multistation_figures.py --f4-only
+  ```
+  Les sorties sont générées simultanément en PNG 300 DPI et en PDF vectoriel sous `postproc/multistation/figures/` et `postproc/figures/` :
+  - `f4_lowflow_diagnostic_summer2018_en.png`
+  - `f4_lowflow_diagnostic_summer2018_en.pdf`

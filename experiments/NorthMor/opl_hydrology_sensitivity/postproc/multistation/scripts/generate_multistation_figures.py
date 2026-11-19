@@ -26,7 +26,8 @@ ROUTING_DIR = os.path.join(SENS_DIR, "routing")
 TABLES_DIR = os.path.join(POSTPROC_DIR, "tables")
 FIG_DIR = os.path.join(POSTPROC_DIR, "multistation/figures")
 FIG_MAIN_DIR = os.path.join(POSTPROC_DIR, "figures")
-ARTIFACT_DIR = "/home/mohammad.elaabaribao/.gemini/antigravity-ide/brain/f3772236-acd2-402d-bb10-a9a2613cf75f"
+ARTIFACT_DIR = "/home/mohammad.elaabaribao/.gemini/antigravity-ide/brain/8bcb0dc0-2d9f-4159-9391-a47e04a3c44e"
+LEGACY_ARTIFACT_DIR = "/home/mohammad.elaabaribao/.gemini/antigravity-ide/brain/f3772236-acd2-402d-bb10-a9a2613cf75f"
 
 os.makedirs(FIG_DIR, exist_ok=True)
 os.makedirs(FIG_MAIN_DIR, exist_ok=True)
@@ -66,11 +67,18 @@ def save_fig(fig, base_name):
         p_multi = os.path.join(FIG_DIR, base_name + ext)
         p_main = os.path.join(FIG_MAIN_DIR, base_name + ext)
         p_art = os.path.join(ARTIFACT_DIR, base_name + ext)
-        
+
         dpi_val = 300 if ext == ".png" else None
         fig.savefig(p_multi, dpi=dpi_val, bbox_inches='tight')
         fig.savefig(p_main, dpi=dpi_val, bbox_inches='tight')
-        fig.savefig(p_art, dpi=dpi_val, bbox_inches='tight')
+        if os.path.exists(ARTIFACT_DIR):
+            fig.savefig(p_art, dpi=dpi_val, bbox_inches='tight')
+        p_leg = os.path.join(LEGACY_ARTIFACT_DIR, base_name + ext)
+        if os.path.exists(LEGACY_ARTIFACT_DIR):
+            try:
+                fig.savefig(p_leg, dpi=dpi_val, bbox_inches='tight')
+            except Exception:
+                pass
     print(f"  -> Saved: {base_name}.png and .pdf")
     plt.close(fig)
 
@@ -91,14 +99,14 @@ def plot_f1a(df_q):
 
     for ax, (sid, st_name, y_lim_max) in zip(axes, stations_bouregreg):
         sub = df_q[df_q['station_id'] == sid].sort_values('date_dt')
-        
+
         # Observed discharge
         ax.plot(sub['date_dt'].values, sub['q_obs_m3s'].values, color=COLOR_OBS, lw=2.2, label='ABH Observed', zorder=5)
-        
+
         # Simulated discharges
         for exp_id, label, color, ls in SCHEMES:
             ax.plot(sub['date_dt'].values, sub[f'q_sim_{exp_id}'].values, color=color, lw=1.3, ls=ls, label=label, alpha=0.9, zorder=3)
-        
+
         ax.set_ylabel('Streamflow (m³/s)', fontsize=9.5, fontweight='bold')
         ax.set_title(st_name, fontsize=10.5, fontweight='bold', loc='left', pad=4)
         ax.grid(axis='y', linestyle=':', alpha=0.5)
@@ -197,7 +205,7 @@ def plot_f2(df_q, df_flux):
     def plot_event_panel(ax, sid, d_start, d_end, title, q_ylim_max, p_ylim_max):
         sub_q = df_q[(df_q['station_id'] == sid) & (df_q['date_dt'] >= d_start) & (df_q['date_dt'] <= d_end)]
         sub_p = df_flux[(df_flux['station_id'] == sid) & (df_flux['experiment'] == 'OL_R1_SIMGM') & (df_flux['date_dt'] >= d_start) & (df_flux['date_dt'] <= d_end)]
-        
+
         ax_p = ax.twinx()
         ax_p.bar(sub_p['date_dt'].values, sub_p['P_mm_day'].values, color=COLOR_PRECIP, alpha=0.35, width=0.6, label='Catchment Precip. (IMERG)', zorder=1)
         ax_p.set_ylabel('Precipitation (mm/day)', color='#08519c', fontsize=9, fontweight='bold')
@@ -208,7 +216,7 @@ def plot_f2(df_q, df_flux):
         ax.plot(sub_q['date_dt'].values, sub_q['q_obs_m3s'].values, color=COLOR_OBS, lw=2.2, marker='o', ms=3.5, label='ABH Observed', zorder=5)
         for exp_id, label, color, ls in SCHEMES:
             ax.plot(sub_q['date_dt'].values, sub_q[f'q_sim_{exp_id}'].values, color=color, lw=1.4, ls=ls, label=label, zorder=4)
-        
+
         ax.set_ylabel('Streamflow (m³/s)', fontsize=9.5, fontweight='bold')
         ax.set_title(title, fontsize=10.5, fontweight='bold', loc='left', pad=4)
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
@@ -220,7 +228,7 @@ def plot_f2(df_q, df_flux):
 
     # Panel A: March 2018 Flood — Lalla Chafia
     ax1, ax1_p = plot_event_panel(axes[0, 0], 'b_l_chafia', '2018-03-01', '2018-03-20', '(a) March 2018 Flood Event — Lalla Chafia (Bouregreg)', q_ylim_max=340.0, p_ylim_max=125.0)
-    
+
     # Panel B: March 2018 Flash Flood — Sidi Jabeur
     ax2, ax2_p = plot_event_panel(axes[0, 1], 'b_s_jabeur', '2018-03-01', '2018-03-20', '(b) March 2018 Flash Flood Event — Sidi Jabeur (Grou)', q_ylim_max=400.0, p_ylim_max=125.0)
 
@@ -333,34 +341,36 @@ def plot_f3(df_flux, df_q):
 # =============================================================================
 # F4 — Summer Low-flow and Intermittency Diagnostic
 # =============================================================================
-def plot_f4(df_q, df_low):
-    print("Generating F4 — Summer low-flow and intermittency diagnostic...")
+def plot_f4(df_q, df_low=None):
+    print("Generating F4 — Summer Streamflow and Zero-Flow Occurrence (June–September 2018)...")
     df_q['date_dt'] = pd.to_datetime(df_q['date'])
-    sub_sum = df_q[(df_q['date_dt'] >= '2018-06-01') & (df_q['date_dt'] <= '2018-09-30')]
+    sub_sum = df_q[(df_q['date_dt'] >= '2018-06-01') & (df_q['date_dt'] <= '2018-09-30')].copy()
 
-    fig = plt.figure(figsize=(16, 12.5))
-    gs = fig.add_gridspec(2, 2, hspace=0.28, wspace=0.20)
+    fig = plt.figure(figsize=(15, 9.2))
+    gs = fig.add_gridspec(2, 2, height_ratios=[2.3, 1.05], hspace=0.32, wspace=0.18)
 
-    # Panel A: Summer Hydrograph at Sidi Jabeur with Broken Axis to show 50.1 m3/s storm without squashing low flows
-    gs_a = gs[0, 0].subgridspec(2, 1, height_ratios=[1, 3.2], hspace=0.07)
+    # -------------------------------------------------------------------------
+    # Panel A: Sidi Jabeur (Broken Y-axis)
+    # -------------------------------------------------------------------------
+    gs_a = gs[0, 0].subgridspec(2, 1, height_ratios=[1, 3.2], hspace=0.08)
     ax_top = fig.add_subplot(gs_a[0])
     ax_bot = fig.add_subplot(gs_a[1], sharex=ax_top)
 
     sub_sj = sub_sum[sub_sum['station_id'] == 'b_s_jabeur'].sort_values('date_dt')
 
     for ax_cur in [ax_top, ax_bot]:
-        ax_cur.plot(sub_sj['date_dt'].values, sub_sj['q_obs_m3s'].values, color=COLOR_OBS, lw=2.2, label='ABH Observed (47 dry days)', zorder=5)
+        ax_cur.plot(sub_sj['date_dt'].values, sub_sj['q_obs_m3s'].values,
+                    color=COLOR_OBS, lw=2.0, label='Observed (ABH)', zorder=5)
         for exp_id, label, color, ls in SCHEMES:
-            ax_cur.plot(sub_sj['date_dt'].values, sub_sj[f'q_sim_{exp_id}'].values, color=color, lw=1.3, ls=ls, label=label, alpha=0.9, zorder=3)
+            ax_cur.plot(sub_sj['date_dt'].values, sub_sj[f'q_sim_{exp_id}'].values,
+                        color=color, lw=1.35, ls=ls, label=label, alpha=0.9, zorder=3)
         ax_cur.grid(axis='y', linestyle=':', alpha=0.5)
 
-    # Thresholds only in lower axis
-    ax_bot.axhline(0.1, color='#e41a1c', ls=':', lw=1.3, label='Threshold ≤ 0.1 m³/s', zorder=4)
-    ax_bot.axhline(0.5, color='#ff7f00', ls='--', lw=1.1, label='Threshold ≤ 0.5 m³/s', zorder=4)
-
     # Spines and broken axis limits
-    ax_top.set_ylim(8.0, 56.0)
-    ax_bot.set_ylim(-0.1, 7.2)
+    ax_top.set_ylim(8.0, 62.0)
+    ax_top.set_yticks([20, 40, 60])
+    ax_bot.set_ylim(-0.15, 7.5)
+    ax_bot.set_yticks([0, 1, 2, 3, 4, 5, 6, 7])
     ax_top.spines['bottom'].set_visible(False)
     ax_bot.spines['top'].set_visible(False)
     ax_top.tick_params(bottom=False, labelbottom=False)
@@ -371,105 +381,116 @@ def plot_f4(df_q, df_low):
     ax_top.plot([0, 1], [0, 0], transform=ax_top.transAxes, **kwargs)
     ax_bot.plot([0, 1], [1, 1], transform=ax_bot.transAxes, **kwargs)
 
-    ax_top.set_title('(a) Summer Low-flow Hydrograph — Sidi Jabeur (Oued Grou)', fontsize=10.5, fontweight='bold', loc='left', pad=4)
-    ax_bot.set_ylabel('Streamflow (m³/s)', fontsize=9.5, fontweight='bold')
-    ax_bot.yaxis.set_label_coords(-0.08, 0.65)
+    ax_top.set_title('(a) Sidi Jabeur (Oued Grou)', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax_bot.set_ylabel('Streamflow (m³/s)', fontsize=10, fontweight='bold')
+    ax_bot.yaxis.set_label_coords(-0.09, 0.65)
     ax_bot.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
 
-    # Annotate peak and dry period
-    ax_top.annotate('Flash storm peak: 50.1 m³/s (17 Sep)', xy=(pd.to_datetime('2018-09-17'), 50.1),
-                    xytext=(-120, -5), textcoords='offset points',
+    # Annotate peak on upper axis: placed with ample clearance in whitespace to the left
+    ax_top.annotate('Observed peak: 50.1 m³/s (17 Sep)',
+                    xy=(pd.to_datetime('2018-09-17'), 50.1),
+                    xytext=(-175, -28), textcoords='offset points',
                     arrowprops=dict(arrowstyle="->", color='#333333', lw=1.0),
-                    fontsize=8, fontweight='bold', bbox=dict(boxstyle="round,pad=0.2", fc="white", ec="#888888", alpha=0.85))
-    ax_bot.text(0.32, 0.16, '47 consecutive zero-flow days (16 Jul – 31 Aug)', transform=ax_bot.transAxes,
-                fontsize=8, fontweight='bold', color='#b30000', bbox=dict(boxstyle="round,pad=0.25", fc="#fff5f0", ec="#b30000", lw=0.8))
+                    fontsize=8.5, fontweight='bold',
+                    bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="#888888", lw=0.8, alpha=0.95))
 
-    # Panel B: Summer Hydrograph at Lalla Chafia (Perennial river)
-    ax2 = fig.add_subplot(gs[0, 1])
+    # Discreet signaling of the 47 consecutive zero-flow days
+    d_start = pd.to_datetime('2018-07-18')
+    d_end = pd.to_datetime('2018-09-02')
+
+    # Subtle shaded vertical band for the zero-flow window
+    ax_bot.axvspan(d_start, d_end, color='#f2f4f7', alpha=0.85, zorder=1)
+
+    # Discreet callout in the clear space below simulated curves (Schaake96 is >= 1.2 m3/s)
+    ax_bot.annotate('Observed zero flow: 18 Jul – 2 Sep\n(47 consecutive days)',
+                    xy=(pd.to_datetime('2018-08-10'), 0.0),
+                    xytext=(pd.to_datetime('2018-08-10'), 0.62),
+                    ha='center', va='center',
+                    arrowprops=dict(arrowstyle="->", color='#444444', lw=0.9),
+                    fontsize=8, fontweight='bold', color='#222222',
+                    bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="#7f8c8d", lw=0.8, alpha=0.95),
+                    zorder=7)
+
+    # -------------------------------------------------------------------------
+    # Panel B: Lalla Chafia
+    # -------------------------------------------------------------------------
+    ax_b = fig.add_subplot(gs[0, 1])
     sub_lc = sub_sum[sub_sum['station_id'] == 'b_l_chafia'].sort_values('date_dt')
-    ax2.plot(sub_lc['date_dt'].values, sub_lc['q_obs_m3s'].values, color=COLOR_OBS, lw=2.2, label='ABH Observed', zorder=5)
+
+    ax_b.plot(sub_lc['date_dt'].values, sub_lc['q_obs_m3s'].values,
+              color=COLOR_OBS, lw=2.0, label='Observed (ABH)', zorder=5)
     for exp_id, label, color, ls in SCHEMES:
-        ax2.plot(sub_lc['date_dt'].values, sub_lc[f'q_sim_{exp_id}'].values, color=color, lw=1.3, ls=ls, label=label, alpha=0.9, zorder=3)
-    ax2.axhline(0.5, color='#ff7f00', ls='--', lw=1.1, label='Threshold ≤ 0.5 m³/s', zorder=4)
-    ax2.set_ylabel('Streamflow (m³/s)', fontsize=9.5, fontweight='bold')
-    ax2.set_title('(b) Summer Low-flow Hydrograph — Lalla Chafia (Bouregreg)', fontsize=10.5, fontweight='bold', loc='left', pad=4)
-    ax2.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax2.grid(axis='y', linestyle=':', alpha=0.5)
-    ax2.set_ylim(0, 14.5)
+        ax_b.plot(sub_lc['date_dt'].values, sub_lc[f'q_sim_{exp_id}'].values,
+                  color=color, lw=1.35, ls=ls, label=label, alpha=0.9, zorder=3)
 
-    # Panel C: Number of Low-flow Days (<= 0.1 m3/s)
-    ax3 = fig.add_subplot(gs[1, 0])
-    st_compare = ['b_s_jabeur', 'b_a_loudah', 'b_s_cherif']
-    st_names_c = ['Sidi Jabeur', 'Ain Loudah*', 'S.M. Cherif*']
-    x = np.arange(len(st_compare))
-    width = 0.16
-    
-    # Obs <= 0.1
-    obs_01 = [df_low[(df_low['station_id'] == sid) & (df_low['experiment'] == 'OL_R1_SIMGM')]['n_days_le_01_obs'].values[0] for sid in st_compare]
-    rects0 = ax3.bar(x - 2*width, obs_01, width, label='Observed ≤ 0.1 m³/s', color=COLOR_OBS, alpha=0.9)
-    for rect in rects0:
-        h = rect.get_height()
-        if h > 0:
-            ax3.annotate(f'{int(h)}', xy=(rect.get_x() + rect.get_width()/2, h), xytext=(0, 3),
-                         textcoords="offset points", ha='center', va='bottom', fontsize=8, fontweight='bold')
+    ax_b.set_ylabel('Streamflow (m³/s)', fontsize=10, fontweight='bold')
+    ax_b.set_title('(b) Lalla Chafia (Upper Bouregreg)', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax_b.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
+    ax_b.grid(axis='y', linestyle=':', alpha=0.5)
+    ax_b.set_ylim(-0.15, 14.5)
 
-    for idx, (exp_id, label, color, _) in enumerate(SCHEMES):
-        sim_01 = [df_low[(df_low['station_id'] == sid) & (df_low['experiment'] == exp_id)]['n_days_le_01_sim'].values[0] for sid in st_compare]
-        rects = ax3.bar(x + (idx - 1)*width, sim_01, width, label=f'{label} ≤ 0.1', color=color, alpha=0.85)
-        for rect in rects:
-            h = rect.get_height()
-            if h > 0:
-                ax3.annotate(f'{int(h)}', xy=(rect.get_x() + rect.get_width()/2, h), xytext=(0, 3),
-                             textcoords="offset points", ha='center', va='bottom', fontsize=8)
+    # -------------------------------------------------------------------------
+    # Global Legend (Top)
+    # -------------------------------------------------------------------------
+    handles_a, labels_a = ax_b.get_legend_handles_labels()
+    fig.legend(handles_a, labels_a, loc='upper center', bbox_to_anchor=(0.5, 0.985),
+               ncol=5, frameon=True, framealpha=0.95, fontsize=9.5)
+
+    # -------------------------------------------------------------------------
+    # Bottom Tables: Sidi Jabeur (left) & Lalla Chafia (right)
+    # -------------------------------------------------------------------------
+    def create_summary_table(ax_tbl, sub_st, st_title):
+        ax_tbl.axis('off')
+
+        col_labels = ['Series', 'Days with\nQ = 0 m³/s', 'Days with\nQ ≤ 0.1 m³/s', 'Median streamflow\n(Q50) [m³/s]']
+
+        rows = []
+        # Observed
+        q_obs = sub_st['q_obs_m3s'].values
+        d_zero_obs = int(np.sum(q_obs == 0))
+        d_01_obs = int(np.sum(q_obs <= 0.1))
+        med_obs = np.median(q_obs)
+        rows.append(['Observed (ABH)', f"{d_zero_obs}", f"{d_01_obs}", f"{med_obs:.2f}"])
+
+        # Schemes
+        for exp_id, label, _, _ in SCHEMES:
+            q_sim = sub_st[f'q_sim_{exp_id}'].values
+            d_zero_sim = int(np.sum(q_sim == 0))
+            d_01_sim = int(np.sum(q_sim <= 0.1))
+            med_sim = np.median(q_sim)
+            rows.append([label, f"{d_zero_sim}", f"{d_01_sim}", f"{med_sim:.2f}"])
+
+        table = ax_tbl.table(cellText=rows, colLabels=col_labels, loc='center', cellLoc='center',
+                             colWidths=[0.28, 0.22, 0.22, 0.28])
+        table.auto_set_font_size(False)
+        table.set_fontsize(8.5)
+        table.scale(1.0, 1.45)
+
+        # Style header and rows
+        for (r, c), cell in table.get_celld().items():
+            cell.set_edgecolor('#d0d0d0')
+            if r == 0:
+                cell.set_facecolor('#eaecef')
+                cell.set_text_props(weight='bold', color='#111111')
             else:
-                ax3.annotate('0', xy=(rect.get_x() + rect.get_width()/2, 0), xytext=(0, 2),
-                             textcoords="offset points", ha='center', va='bottom', fontsize=7, color='#777777')
+                if c == 0:
+                    cell.set_text_props(weight='bold' if r == 1 else 'normal', ha='left')
+                    cell.set_facecolor('#f8f9fa' if r == 1 else '#ffffff')
+                else:
+                    cell.set_text_props(weight='bold' if r == 1 else 'normal')
+                    cell.set_facecolor('#f8f9fa' if r == 1 else '#ffffff')
 
-    ax3.set_xticks(x)
-    ax3.set_xticklabels(st_names_c, fontweight='bold', fontsize=9.5)
-    ax3.set_ylabel('Number of Days (out of 122)', fontsize=9.5, fontweight='bold')
-    ax3.set_title('(c) Low-flow Days (≤ 0.1 m³/s) : Observed vs 4 Schemes', fontsize=10.5, fontweight='bold', loc='left', pad=4)
-    ax3.grid(axis='y', linestyle=':', alpha=0.5)
-    ax3.set_ylim(0, 140)
+        ax_tbl.set_title(st_title, fontsize=10, fontweight='bold', pad=8, loc='center')
 
-    # Panel D: Summer Median Discharge Q50
-    ax4 = fig.add_subplot(gs[1, 1])
-    st_med = ['b_s_jabeur', 'b_l_chafia', 'b_a_loudah']
-    st_names_d = ['Sidi Jabeur', 'Lalla Chafia', 'Ain Loudah*']
-    x_m = np.arange(len(st_med))
-    
-    obs_med = [df_low[(df_low['station_id'] == sid) & (df_low['experiment'] == 'OL_R1_SIMGM')]['q_median_obs_m3s'].values[0] for sid in st_med]
-    rects_m0 = ax4.bar(x_m - 2*width, obs_med, width, label='Observed Median', color=COLOR_OBS, alpha=0.9)
-    for rect in rects_m0:
-        h = rect.get_height()
-        ax4.annotate(f'{h:.2f}', xy=(rect.get_x() + rect.get_width()/2, h), xytext=(0, 3),
-                     textcoords="offset points", ha='center', va='bottom', fontsize=8, fontweight='bold')
+    ax_tbl_sj = fig.add_subplot(gs[1, 0])
+    create_summary_table(ax_tbl_sj, sub_sj, 'Summary Metrics — Sidi Jabeur (June–September 2018, 122 days)')
 
-    for idx, (exp_id, label, color, _) in enumerate(SCHEMES):
-        sim_med = [df_low[(df_low['station_id'] == sid) & (df_low['experiment'] == exp_id)]['q_median_sim_m3s'].values[0] for sid in st_med]
-        rects_m = ax4.bar(x_m + (idx - 1)*width, sim_med, width, label=f'{label} Median', color=color, alpha=0.85)
-        for rect in rects_m:
-            h = rect.get_height()
-            ax4.annotate(f'{h:.2f}', xy=(rect.get_x() + rect.get_width()/2, h), xytext=(0, 3),
-                         textcoords="offset points", ha='center', va='bottom', fontsize=8)
+    ax_tbl_lc = fig.add_subplot(gs[1, 1])
+    create_summary_table(ax_tbl_lc, sub_lc, 'Summary Metrics — Lalla Chafia (June–September 2018, 122 days)')
 
-    ax4.set_xticks(x_m)
-    ax4.set_xticklabels(st_names_d, fontweight='bold', fontsize=9.5)
-    ax4.set_ylabel('Summer Median Streamflow Q50 (m³/s)', fontsize=9.5, fontweight='bold')
-    ax4.set_title('(d) Summer Median Streamflow Q50 (June–September 2018)', fontsize=10.5, fontweight='bold', loc='left', pad=4)
-    ax4.grid(axis='y', linestyle=':', alpha=0.5)
-    ax4.set_ylim(0, 8.0)
+    fig.suptitle('F4 — Summer Streamflow and Zero-Flow Occurrence (June–September 2018)',
+                 fontsize=12.5, fontweight='bold', y=1.015)
 
-    # Global legend for F4 at top
-    handles_a, labels_a = ax_bot.get_legend_handles_labels()
-    fig.legend(handles_a, labels_a, loc='upper center', bbox_to_anchor=(0.5, 0.985), ncol=7, frameon=True, framealpha=0.95, fontsize=9.5)
-
-    fig.text(0.08, 0.015,
-             '* Note: SIMGM, SIMTOP & BATS simulate 0 low-flow days (≤ 0.1 m³/s) at all stations (chronic baseflow persistence). Ain Loudah/S.M. Cherif are duplicate ABH records.',
-             fontsize=8.5, style='italic', color='#444444')
-
-    fig.suptitle('F4 — Summer Low-flow and Intermittency Diagnostic (June–September 2018)', fontsize=13, fontweight='bold', y=1.01)
-    plt.subplots_adjust(top=0.935, bottom=0.065)
     save_fig(fig, "f4_lowflow_diagnostic_summer2018_en")
 
 # =============================================================================
@@ -688,7 +709,7 @@ def generate_contact_sheet():
         ("f1b_hydrographs_sebou_monthly_2018_en.png", "F1B — Monthly Streamflow Hydrographs : Sebou Basin"),
         ("f2_precip_and_flood_response_2018_en.png", "F2 — Precipitation Forcing & Flood Hydrodynamics"),
         ("f3_daily_qs_qsb_hydrographs_2018_en.png", "F3 — Catchment Fluxes (P, Qs, Qsb) & Routed Streamflow"),
-        ("f4_lowflow_diagnostic_summer2018_en.png", "F4 — Summer Low-flow & Intermittency Diagnostic"),
+        ("f4_lowflow_diagnostic_summer2018_en.png", "F4 — Summer Streamflow and Zero-Flow Occurrence"),
         ("f5_discontinuity_and_continuity_check_en.png", "F5 — Temporal Continuity & Transition Checks"),
         ("f6_multistation_synthesis_performance_en.png", "F6 — Multi-Station Performance Synthesis")
     ]
@@ -737,11 +758,18 @@ def generate_contact_sheet():
     save_fig(fig, "multistation_figures_contact_sheet")
 
 def main():
+    import sys
     print("Loading post-processing tables...")
     df_q = pd.read_csv(STREAMFLOW_CSV)
     df_flux = pd.read_csv(FLUXES_DAILY_CSV)
     df_metrics = pd.read_csv(METRICS_CSV)
     df_low = pd.read_csv(LOWFLOWS_CSV)
+
+    if len(sys.argv) > 1 and sys.argv[1] == "--f4-only":
+        print("Executing only plot_f4 as requested...")
+        plot_f4(df_q, df_low)
+        print("\nFigure F4 generated successfully!")
+        return
 
     plot_f1a(df_q)
     plot_f1b(df_q)
