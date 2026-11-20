@@ -246,15 +246,26 @@ Fichier de référence : `postproc/tables/station_inventory_2018.csv` et `statio
 4. **Problème de l'intermittence des oueds :**
    - Aucun schéma physique 1D de surface ne peut reproduire les 47 à 60 jours de tarissement complet observés à Sidi Jabeur car HyMAP-2 ne modélise pas les pertes par infiltration dans le lit vif de l'oued (*transmission losses*) ni les prélèvements alluviaux.
 
-### 10.6 Livrables Générés
-- **Figures Multi-Stations (dans `postproc/multistation/figures/` et `postproc/figures/`) :**
-  - `f1a_hydrographs_bouregreg_daily_2018.png` : Hydrogrammes journaliers du Bouregreg (4 panneaux).
-  - `f1b_hydrographs_sebou_monthly_2018.png` : Hydrogrammes mensuels du Sebou (6 panneaux).
-  - `f2_precip_and_flood_response_2018.png` : Précipitations et réponses en crue (événements de mars et nov. 2018).
-  - `f3_daily_qs_qsb_hydrographs_2018_en.png` (et `.pdf`) : Flux journaliers bassinés (précipitation, Qs, Qsb) et débits routés vs observés avec encarts zoomés (événements de mars–mai et étiages de juin–septembre 2018).
-  - `f4_lowflow_diagnostic_summer2018_en.png` (et `.pdf`) : Diagnostic estival des débits et occurrence des débits nuls (juin–septembre 2018, Sidi Jabeur et Lalla Chafia, débits totaux observés et routés, tableau récapitulatif compact).
-  - `f5_discontinuity_and_continuity_check.png` : Contrôle des raccords et continuité temporelle HyMAP-2.
-  - `f6_multistation_synthesis_performance.png` : Synthèse globale comparative KGE, $\Delta\text{KGE}$, PBIAS et $r$.
+### 10.6 Livrables Générés et Inventaire des Figures Conservées
+
+Le répertoire canonique officiel pour les livrables graphiques multi-stations est **`postproc/multistation/figures/`**. Par conception des scripts, une copie miroir identique est automatiquement synchronisée dans `postproc/figures/`.
+
+| Figure | Objet scientifique | Script générateur | Commande de génération | Chemin final (PNG & PDF) |
+| :--- | :--- | :--- | :--- | :--- |
+| **F1A** | Hydrogrammes journaliers 2018 du Bouregreg (4 stations) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f1a-only` | `postproc/multistation/figures/f1a_hydrographs_bouregreg_daily_2018_en.png` (.pdf) |
+| **F1B** | Hydrogrammes mensuels 2018 du Sebou (6 stations) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f1b-only` | `postproc/multistation/figures/f1b_hydrographs_sebou_monthly_2018_en.png` (.pdf) |
+| **F2** | Forçage pluie IMERG et réponses hydrodynamiques de crue | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f2-only` | `postproc/multistation/figures/f2_precip_and_flood_response_2018_en.png` (.pdf) |
+| **F3** | Flux amont (P, Qs, Qsb) et débits routés vs observés (Lalla Chafia & Sidi Jabeur) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f3-only` | `postproc/multistation/figures/f3_daily_qs_qsb_hydrographs_2018_en.png` (.pdf) |
+| **F4** | Diagnostic d'étiage estival et occurrence des assecs (Sidi Jabeur & Lalla Chafia) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f4-only` | `postproc/multistation/figures/f4_lowflow_diagnostic_summer2018_en.png` (.pdf) |
+| **F5** | Contrôle des transitions temporelles inter-cycles et continuité HyMAP-2 | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py` | `postproc/multistation/figures/f5_discontinuity_and_continuity_check_en.png` (.pdf) |
+| **F5b** | Confrontation temporelle historique vs simulations et audit de continuité | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only` | `postproc/multistation/figures/f5b_legacy_vs_current_continuity_2018_en.png` (.pdf) |
+| **F6** | Synthèse multi-stations des performances (KGE-2009, ΔKGE, PBIAS, r) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f6-only` | `postproc/multistation/figures/f6_multistation_synthesis_performance_en.png` (.pdf) |
+| **F7** | Chroniques journalières et synthèses sur 4 stations représentatives | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py` | `postproc/multistation/figures/f7_four_representative_stations_2018_en.png` (.pdf) |
+| **Contact** | Planche contact multi-panneaux de l'ensemble des figures F1–F6 | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py` | `postproc/multistation/figures/multistation_figures_contact_sheet.pdf` (.png) |
+| **Fig5 (ET)** | Évaluation mensuelle ET vs produits satellites GLEAM v3.8a et WaPOR v3 | `compare_opl_physics_et_sm_wb_2018.py` | `python postproc/scripts/compare_opl_physics_et_sm_wb_2018.py` | `postproc/figures/fig5_et_monthly_comparison_gleam_wapor.png` (.pdf) |
+| **Fig6 (SMAP)** | Évaluation mensuelle humidité du sol de surface vs observation satellite SMAP | `compare_opl_physics_et_sm_wb_2018.py` | `python postproc/scripts/compare_opl_physics_et_sm_wb_2018.py` | `postproc/figures/fig6_surface_soil_moisture_smap_comparison.png` (.pdf) |
+| **Fig1–Fig4** | Diagnostics hydrologiques pilotes 2-stations (Lalla Chafia & Sidi Jabeur) | `compare_opl_hydrology_2018.py` | `python postproc/scripts/compare_opl_hydrology_2018.py` | `postproc/figures/fig[1-4]_*.png` (.pdf) |
+
 - **Tables de synthèse :**
   - `postproc/tables/station_inventory_2018.csv` & `.md`
   - `postproc/tables/table_multistation_metrics_2018.csv` & `.md`

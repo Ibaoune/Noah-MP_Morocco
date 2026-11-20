@@ -1,0 +1,22 @@
+# Ignore large binary, restart, and simulation NetCDF files
+*.nc
+*.bin
+*.d01.nc
+
+# Ignore HPC execution logs and diagnostic rank files
+*.log
+*.err
+lislog_*
+
+# Ignore simulation outputs and temporary files
+**/output/
+**/test_short/output/
+**/test_short/logs/
+**/logs/
+**/runs/remap_180x120/
+**/outputs/**/ROUTING/
+**/__pycache__/
+*.tmp
+
+# Ignore Python serialization caches
+*.pkl
