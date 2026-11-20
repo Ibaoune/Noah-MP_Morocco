@@ -248,9 +248,9 @@ def plot_f2(df_q, df_flux):
     all_labels = labels_q + labels_p
     fig.legend(all_handles, all_labels, loc='upper center', bbox_to_anchor=(0.5, 0.985), ncol=6, frameon=True, framealpha=0.95, fontsize=9.5)
 
-    fig.suptitle('F2 — Precipitation Forcing and Flood Event Hydrodynamics (2018)', fontsize=13, fontweight='bold', y=1.01)
+    fig.suptitle('Precipitation and Flood Events (2018)', fontsize=13, fontweight='bold', y=1.01)
     plt.subplots_adjust(top=0.94, bottom=0.045, hspace=0.24, wspace=0.20)
-    save_fig(fig, "f2_precip_and_flood_response_2018_en")
+    save_fig(fig, "precipitation_and_flood_events_2018")
 
 # =============================================================================
 # F3 — Daily Precipitation, Qs, Qsb and Routed Discharge

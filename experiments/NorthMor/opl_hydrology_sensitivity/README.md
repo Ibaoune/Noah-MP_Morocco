@@ -254,13 +254,13 @@ Le répertoire canonique officiel pour les livrables graphiques multi-stations e
 | :--- | :--- | :--- | :--- | :--- |
 | **F1A** | Hydrogrammes journaliers 2018 du Bouregreg (4 stations) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f1a-only` | `postproc/multistation/figures/f1a_hydrographs_bouregreg_daily_2018_en.png` (.pdf) |
 | **F1B** | Hydrogrammes mensuels 2018 du Sebou (6 stations) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f1b-only` | `postproc/multistation/figures/f1b_hydrographs_sebou_monthly_2018_en.png` (.pdf) |
-| **F2** | Forçage pluie IMERG et réponses hydrodynamiques de crue | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f2-only` | `postproc/multistation/figures/f2_precip_and_flood_response_2018_en.png` (.pdf) |
-| **F3** | Flux amont (P, Qs, Qsb) et débits routés vs observés (Lalla Chafia & Sidi Jabeur) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f3-only` | `postproc/multistation/figures/f3_daily_qs_qsb_hydrographs_2018_en.png` (.pdf) |
+| **F2** (*precipitation_and_flood_events_2018*) | Forçage pluie IMERG et réponses hydrodynamiques de crue | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f2-only` | `postproc/multistation/figures/precipitation_and_flood_events_2018.png` (.pdf) |
+| **F3** (*catchment_precipitation_runoff_streamflow_2018*) | Flux amont (P, Qs, Qsb) et débits routés vs observés (Lalla Chafia & Sidi Jabeur) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f3-only` | `postproc/multistation/figures/catchment_precipitation_runoff_streamflow_2018.png` (.pdf) |
 | **F4** | Diagnostic d'étiage estival et occurrence des assecs (Sidi Jabeur & Lalla Chafia) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f4-only` | `postproc/multistation/figures/f4_lowflow_diagnostic_summer2018_en.png` (.pdf) |
 | **F5** | Contrôle des transitions temporelles inter-cycles et continuité HyMAP-2 | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5-only` | `postproc/multistation/figures/f5_discontinuity_and_continuity_check_en.png` (.pdf) |
-| **F5b** | Contrôle de continuité temporelle Open-Loop : routage historique (linres=1, spinup restart) vs actuel (linres=0, coldstart) | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only` | `postproc/multistation/figures/f5b_legacy_vs_current_continuity_2018_en.png` (.pdf) |
+| **F5b** (*open_loop_streamflow_continuity_2017_2018*) | Contrôle de continuité temporelle Open-Loop : routage historique (linres=1, spinup restart) vs actuel (linres=0, coldstart) | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only` | `postproc/multistation/figures/open_loop_streamflow_continuity_2017_2018.png` (.pdf) |
 | **F6** | Synthèse multi-stations des performances (KGE-2009, ΔKGE, PBIAS, r) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f6-only` | `postproc/multistation/figures/f6_multistation_synthesis_performance_en.png` (.pdf) |
-| **F7** | Sensibilité des formulations de ruissellement Noah-MP sur 4 stations représentatives (2018) | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f7-only` | `postproc/multistation/figures/f7_four_representative_stations_2018_en.png` (.pdf) |
+| **F7** (*noahmp_runoff_formulation_sensitivity_2018*) | Sensibilité des formulations de ruissellement Noah-MP sur 4 stations représentatives (2018) | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f7-only` | `postproc/multistation/figures/noahmp_runoff_formulation_sensitivity_2018.png` (.pdf) |
 | **Contact** | Planche contact multi-panneaux de l'ensemble des figures F1–F6 | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py` | `postproc/multistation/figures/multistation_figures_contact_sheet.pdf` (.png) |
 | **Fig5 (ET)** | Évaluation mensuelle ET vs produits satellites GLEAM v3.8a et WaPOR v3 | `compare_opl_physics_et_sm_wb_2018.py` | `python postproc/scripts/compare_opl_physics_et_sm_wb_2018.py` | `postproc/figures/fig5_et_monthly_comparison_gleam_wapor.png` (.pdf) |
 | **Fig6 (SMAP)** | Évaluation mensuelle humidité du sol de surface vs observation satellite SMAP | `compare_opl_physics_et_sm_wb_2018.py` | `python postproc/scripts/compare_opl_physics_et_sm_wb_2018.py` | `postproc/figures/fig6_surface_soil_moisture_smap_comparison.png` (.pdf) |
@@ -328,8 +328,8 @@ Le répertoire canonique officiel pour les livrables graphiques multi-stations e
   python experiments/NorthMor/opl_hydrology_sensitivity/postproc/multistation/scripts/generate_multistation_figures.py --f3-only
   ```
   Les sorties sont générées simultanément en PNG 300 DPI et en PDF vectoriel sous `postproc/multistation/figures/` et `postproc/figures/` :
-  - `f3_daily_qs_qsb_hydrographs_2018_en.png`
-  - `f3_daily_qs_qsb_hydrographs_2018_en.pdf`
+  - `catchment_precipitation_runoff_streamflow_2018.png` (300 DPI)
+  - `catchment_precipitation_runoff_streamflow_2018.pdf` (vectoriel)
 
 ### 10.9 Focus Figure F5b — Contrôle de Continuité Temporelle Open-Loop (2017–2018)
 
@@ -358,8 +358,8 @@ Le répertoire canonique officiel pour les livrables graphiques multi-stations e
   python experiments/NorthMor/opl_hydrology_sensitivity/postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only
   ```
   Sorties générées sous `postproc/multistation/figures/` et `postproc/figures/` :
-  - `f5b_legacy_vs_current_continuity_2018_en.png` (300 DPI)
-  - `f5b_legacy_vs_current_continuity_2018_en.pdf`
+  - `open_loop_streamflow_continuity_2017_2018.png` (300 DPI)
+  - `open_loop_streamflow_continuity_2017_2018.pdf` (vectoriel)
 
 ### 10.10 Focus Figure F7 — Sensibilité des Formulations de Ruissellement Noah-MP sur Quatre Stations Représentatives (2018)
 
@@ -384,5 +384,5 @@ Le répertoire canonique officiel pour les livrables graphiques multi-stations e
   python experiments/NorthMor/opl_hydrology_sensitivity/postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f7-only
   ```
   Sorties générées sous `postproc/multistation/figures/` et `postproc/figures/` :
-  - `f7_four_representative_stations_2018_en.png` (300 DPI)
-  - `f7_four_representative_stations_2018_en.pdf`
+  - `noahmp_runoff_formulation_sensitivity_2018.png` (300 DPI)
+  - `noahmp_runoff_formulation_sensitivity_2018.pdf` (vectoriel)

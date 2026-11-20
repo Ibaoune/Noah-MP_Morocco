@@ -257,9 +257,9 @@ def plot_f2(df_q, df_flux):
     all_labels = labels_q + labels_p
     fig.legend(all_handles, all_labels, loc='upper center', bbox_to_anchor=(0.5, 0.985), ncol=6, frameon=True, framealpha=0.95, fontsize=9.5)
 
-    fig.suptitle('F2 — Precipitation Forcing and Flood Event Hydrodynamics (2018)', fontsize=13, fontweight='bold', y=1.01)
+    fig.suptitle('Precipitation and Flood Events (2018)', fontsize=13, fontweight='bold', y=1.01)
     plt.subplots_adjust(top=0.94, bottom=0.045, hspace=0.24, wspace=0.20)
-    save_fig(fig, "f2_precip_and_flood_response_2018_en")
+    save_fig(fig, "precipitation_and_flood_events_2018")
 
 # =============================================================================
 # F3 — Daily Catchment Fluxes (Precipitation, Qs, Qsb) and Routed Discharge
@@ -432,11 +432,11 @@ def plot_f3(df_flux, df_q):
 
     fig.legend(all_handles, all_labels, loc='upper center', bbox_to_anchor=(0.5, 0.955), ncol=6, frameon=True, framealpha=0.95, fontsize=10)
 
-    fig.suptitle('F3 — Daily Catchment Fluxes (Precipitation, Qs, Qsb) and Routed Discharge (2018)', fontsize=13, fontweight='bold', y=0.985)
+    fig.suptitle('Daily Catchment Precipitation, Qs, Qsb and Routed Streamflow (2018)', fontsize=13, fontweight='bold', y=0.985)
 
     # Layout adjustments without bottom note
     plt.subplots_adjust(top=0.895, bottom=0.045, left=0.065, right=0.975, hspace=0.22, wspace=0.18)
-    save_fig(fig, "f3_daily_qs_qsb_hydrographs_2018_en")
+    save_fig(fig, "catchment_precipitation_runoff_streamflow_2018")
 
 # =============================================================================
 # F4 — Summer Low-flow and Intermittency Diagnostic
@@ -804,8 +804,8 @@ def generate_contact_sheet():
     fig_names = [
         ("f1a_hydrographs_bouregreg_daily_2018_en.png", "F1A — Daily Streamflow Hydrographs : Bouregreg Basin"),
         ("f1b_hydrographs_sebou_monthly_2018_en.png", "F1B — Monthly Streamflow Hydrographs : Sebou Basin"),
-        ("f2_precip_and_flood_response_2018_en.png", "F2 — Precipitation Forcing & Flood Hydrodynamics"),
-        ("f3_daily_qs_qsb_hydrographs_2018_en.png", "F3 — Catchment Fluxes (P, Qs, Qsb) & Routed Streamflow"),
+        ("precipitation_and_flood_events_2018.png", "Precipitation Forcing & Flood Hydrodynamics"),
+        ("catchment_precipitation_runoff_streamflow_2018.png", "Catchment Fluxes (P, Qs, Qsb) & Routed Streamflow"),
         ("f4_lowflow_diagnostic_summer2018_en.png", "F4 — Summer Streamflow and Zero-Flow Occurrence"),
         ("f5_discontinuity_and_continuity_check_en.png", "F5 — Temporal Continuity & Transition Checks"),
         ("f6_multistation_synthesis_performance_en.png", "F6 — Multi-Station Performance Synthesis")

@@ -112,6 +112,7 @@ def save_plot(fig, filename_base):
     # Mirroring to artifact directory (safe against NFS errors)
     try:
         shutil.copyfile(png_path, os.path.join(ARTIFACT_DIR, f"{filename_base}.png"))
+        shutil.copyfile(pdf_path, os.path.join(ARTIFACT_DIR, f"{filename_base}.pdf"))
     except Exception as e:
         print(f"Warning: could not copy to artifact dir: {e}")
 
@@ -374,11 +375,11 @@ def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
     fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.940), ncol=4,
                frameon=True, framealpha=0.95, facecolor='white', edgecolor='#cccccc', fontsize=9.5)
 
-    fig.suptitle("F5b — Open-Loop Streamflow Continuity and Year-End Transition Checks (2017–2018)",
+    fig.suptitle("Open-Loop Streamflow Continuity and Year-End Transitions (2017–2018)",
                  fontsize=13, fontweight="bold", y=0.985)
 
     plt.subplots_adjust(top=0.875, bottom=0.065, hspace=0.28, left=0.07, right=0.96)
-    save_plot(fig, "f5b_legacy_vs_current_continuity_2018_en")
+    save_plot(fig, "open_loop_streamflow_continuity_2017_2018")
 
 
 def plot_f7_four_representative_stations(sim_dfs, df_obs_daily, df_obs_monthly):
@@ -489,11 +490,11 @@ def plot_f7_four_representative_stations(sim_dfs, df_obs_daily, df_obs_monthly):
     fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.945), ncol=5,
                frameon=True, framealpha=0.95, facecolor='white', edgecolor='#cccccc', fontsize=10.0)
 
-    fig.suptitle("F7 — Noah-MP Runoff Formulation Sensitivity: Four Representative Stations (2018)",
+    fig.suptitle("Streamflow Sensitivity to Noah-MP Runoff Formulations (2018)",
                  fontsize=13, fontweight="bold", y=0.985)
 
     plt.subplots_adjust(top=0.880, bottom=0.065, hspace=0.28, wspace=0.18, left=0.065, right=0.965)
-    save_plot(fig, "f7_four_representative_stations_2018_en")
+    save_plot(fig, "noahmp_runoff_formulation_sensitivity_2018")
 
 def build_four_representative_stations_table():
     print("Building four representative stations metrics table (CSV and MD)...")
