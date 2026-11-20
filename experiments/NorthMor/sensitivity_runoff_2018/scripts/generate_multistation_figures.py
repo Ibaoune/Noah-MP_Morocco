@@ -248,12 +248,8 @@ def plot_f2(df_q, df_flux):
     all_labels = labels_q + labels_p
     fig.legend(all_handles, all_labels, loc='upper center', bbox_to_anchor=(0.5, 0.985), ncol=6, frameon=True, framealpha=0.95, fontsize=9.5)
 
-    fig.text(0.08, 0.015,
-             'Note: Precipitation comparisons represent catchment-averaged consistency diagnostics across satellite and reanalysis products, not in-situ gauge validation.',
-             fontsize=8.5, style='italic', color='#444444')
-
     fig.suptitle('F2 — Precipitation Forcing and Flood Event Hydrodynamics (2018)', fontsize=13, fontweight='bold', y=1.01)
-    plt.subplots_adjust(top=0.94, bottom=0.065, hspace=0.24, wspace=0.20)
+    plt.subplots_adjust(top=0.94, bottom=0.045, hspace=0.24, wspace=0.20)
     save_fig(fig, "f2_precip_and_flood_response_2018_en")
 
 # =============================================================================
@@ -503,8 +499,7 @@ def plot_f5(df_q):
     ax2.xaxis.set_major_formatter(mdates.DateFormatter('%d %b %Y'))
     ax2.grid(axis='y', linestyle=':', alpha=0.5)
     ax2.set_ylim(0, 75.0)
-    ax2.text(0.98, 0.88, 'Smooth baseflow stabilization (~3.8 m³/s) with no abrupt drop to zero', transform=ax2.transAxes,
-             fontsize=8.5, ha='right', style='italic', color='#1b7837', bbox=dict(boxstyle="round,pad=0.25", fc="#f7fcf5", ec="#1b7837", lw=0.8))
+
 
     # Panel C: Transition 2017 -> 2018 at Sidi Jabeur
     ax3 = axes[2]
@@ -523,9 +518,7 @@ def plot_f5(df_q):
     handles, labels = ax1.get_legend_handles_labels()
     fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(0.5, 0.985), ncol=5, frameon=True, framealpha=0.95, fontsize=10)
 
-    fig.text(0.08, 0.015,
-             'Note: Verified temporal continuity across 2017–2018 confirms absence of restart or remapping discontinuities in production simulations. The legacy single-day artifact was retrospectively linked to prototype test scripts.',
-             fontsize=8.5, style='italic', color='#444444')
+
 
     fig.suptitle('F5 — Verification of Temporal Continuity and Absence of Simulation Discontinuities (2017–2018)', fontsize=13, fontweight='bold', y=1.01)
     plt.subplots_adjust(top=0.94, bottom=0.065, hspace=0.26)
@@ -737,11 +730,18 @@ def generate_contact_sheet():
     save_fig(fig, "multistation_figures_contact_sheet")
 
 def main():
+    import sys
     print("Loading post-processing tables...")
     df_q = pd.read_csv(STREAMFLOW_CSV)
     df_flux = pd.read_csv(FLUXES_DAILY_CSV)
     df_metrics = pd.read_csv(METRICS_CSV)
     df_low = pd.read_csv(LOWFLOWS_CSV)
+
+    if len(sys.argv) > 1 and sys.argv[1] == "--f2-only":
+        print("Executing only plot_f2 as requested...")
+        plot_f2(df_q, df_flux)
+        print("\nFigure F2 generated successfully!")
+        return
 
     plot_f1a(df_q)
     plot_f1b(df_q)
