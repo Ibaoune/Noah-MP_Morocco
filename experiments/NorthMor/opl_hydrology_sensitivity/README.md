@@ -257,10 +257,10 @@ Le répertoire canonique officiel pour les livrables graphiques multi-stations e
 | **F2** | Forçage pluie IMERG et réponses hydrodynamiques de crue | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f2-only` | `postproc/multistation/figures/f2_precip_and_flood_response_2018_en.png` (.pdf) |
 | **F3** | Flux amont (P, Qs, Qsb) et débits routés vs observés (Lalla Chafia & Sidi Jabeur) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f3-only` | `postproc/multistation/figures/f3_daily_qs_qsb_hydrographs_2018_en.png` (.pdf) |
 | **F4** | Diagnostic d'étiage estival et occurrence des assecs (Sidi Jabeur & Lalla Chafia) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f4-only` | `postproc/multistation/figures/f4_lowflow_diagnostic_summer2018_en.png` (.pdf) |
-| **F5** | Contrôle des transitions temporelles inter-cycles et continuité HyMAP-2 | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py` | `postproc/multistation/figures/f5_discontinuity_and_continuity_check_en.png` (.pdf) |
+| **F5** | Contrôle des transitions temporelles inter-cycles et continuité HyMAP-2 | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5-only` | `postproc/multistation/figures/f5_discontinuity_and_continuity_check_en.png` (.pdf) |
 | **F5b** | Confrontation temporelle historique vs simulations et audit de continuité | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only` | `postproc/multistation/figures/f5b_legacy_vs_current_continuity_2018_en.png` (.pdf) |
 | **F6** | Synthèse multi-stations des performances (KGE-2009, ΔKGE, PBIAS, r) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f6-only` | `postproc/multistation/figures/f6_multistation_synthesis_performance_en.png` (.pdf) |
-| **F7** | Chroniques journalières et synthèses sur 4 stations représentatives | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py` | `postproc/multistation/figures/f7_four_representative_stations_2018_en.png` (.pdf) |
+| **F7** | Sensibilité des formulations de ruissellement Noah-MP sur 4 stations représentatives (2018) | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f7-only` | `postproc/multistation/figures/f7_four_representative_stations_2018_en.png` (.pdf) |
 | **Contact** | Planche contact multi-panneaux de l'ensemble des figures F1–F6 | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py` | `postproc/multistation/figures/multistation_figures_contact_sheet.pdf` (.png) |
 | **Fig5 (ET)** | Évaluation mensuelle ET vs produits satellites GLEAM v3.8a et WaPOR v3 | `compare_opl_physics_et_sm_wb_2018.py` | `python postproc/scripts/compare_opl_physics_et_sm_wb_2018.py` | `postproc/figures/fig5_et_monthly_comparison_gleam_wapor.png` (.pdf) |
 | **Fig6 (SMAP)** | Évaluation mensuelle humidité du sol de surface vs observation satellite SMAP | `compare_opl_physics_et_sm_wb_2018.py` | `python postproc/scripts/compare_opl_physics_et_sm_wb_2018.py` | `postproc/figures/fig6_surface_soil_moisture_smap_comparison.png` (.pdf) |
@@ -330,3 +330,51 @@ Le répertoire canonique officiel pour les livrables graphiques multi-stations e
   Les sorties sont générées simultanément en PNG 300 DPI et en PDF vectoriel sous `postproc/multistation/figures/` et `postproc/figures/` :
   - `f3_daily_qs_qsb_hydrographs_2018_en.png`
   - `f3_daily_qs_qsb_hydrographs_2018_en.pdf`
+
+### 10.9 Focus Figure F5b — Contrôle de Continuité Temporelle et Confrontation Historique (2017–2018)
+
+- **Objectif scientifique :** Répondre aux interrogations relatives à la continuité des hydrogrammes simulés lors des transitions inter-cycles et documenter la confrontation entre les sorties de référence actuelles (`SIMGM, linres=0, coldstart`) et les séries historiques (`OL, linres=1`, `DA-NoCDF, linres=1`, `DA-CDF, linres=1`) à la station de Lalla Chafia (Haut Bouregreg).
+- **Structure descriptive en deux panneaux :**
+  - **Panneau (a) — Transition interannuelle (15 déc 2017 – 15 jan 2018) :** Examen de la continuité au franchissement de la frontière d'année civile (repère vertical neutre au 1er janvier 2018).
+  - **Panneau (b) — Fin d'automne et récession (nov–déc 2018) :** Confrontation des trajectoires de décrue et observation de l'écart DA-NoCDF par rapport aux configurations OL et DA-CDF.
+- **Résultats de l'audit de continuité :**
+  - Les séries temporelles de production journalières disponibles (fichiers sources `streamflow_daily_stations.csv` et tables historiques `t7_sim_daily_12stations_corrigee.csv`, `t8_*`, `t9_*`) sont mathématiquement continues au pas de temps journalier.
+  - Aucune chute brutale artificielle à débit nul n'apparaît dans les données sources de ces simulations lors des transitions temporelles.
+- **Limites méthodologiques de la vérification :**
+  - L'audit a porté exclusivement sur les séries temporelles consolidées issues des fichiers numériques de production archivés dans le projet. Il n'exclut pas qu'un tracé graphique antérieur ou une troncature d'affichage dans des versions préliminaires ait pu susciter des doutes visuels.
+- **Position neutre sur l'anomalie DA-NoCDF :**
+  - La figure F5b restitue factuellement l'élévation des débits simulés en novembre–décembre 2018 pour la variante DA-NoCDF sans intégrer d'hypothèse explicative ou de jugement de valeur à l'intérieur du graphique.
+  - Conformément aux exigences de rigueur scientifique, aucune attribution causale définitive (rôle des incréments d'assimilation SMAP vs dynamique propre du réservoir linéaire HyMAP) n'est affirmée en l'absence d'un diagnostic d'assimilation formellement instrumenté.
+- **Commande exacte de régénération autonome (F5b seule) :**
+  ```bash
+  python experiments/NorthMor/opl_hydrology_sensitivity/postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only
+  ```
+  Sorties générées sous `postproc/multistation/figures/` et `postproc/figures/` :
+  - `f5b_legacy_vs_current_continuity_2018_en.png` (300 DPI)
+  - `f5b_legacy_vs_current_continuity_2018_en.pdf`
+
+### 10.10 Focus Figure F7 — Sensibilité des Formulations de Ruissellement Noah-MP sur Quatre Stations Représentatives (2018)
+
+- **Objectif scientifique :** Synthétiser la sensibilité des hydrogrammes aux quatre options de paramétrisation du ruissellement Noah-MP 4.0.1 (`opt_run=1` SIMGM, `opt_run=2` SIMTOP, `opt_run=3` Schaake96, `opt_run=4` BATS) routées avec HyMAP-2 en désactivant le réservoir linéaire (`linres=0`), sur quatre bassins versants représentatifs de la diversité hydroclimatique du Maroc septentrional.
+- **Organisation en quatre panneaux (2 × 2) :**
+  - **(a) Sidi Jabeur — Daily Streamflow** (Oued Grou, 3 131 km²) : régime semi-aride intermittent avec 47 jours d'assec estival observé.
+  - **(b) Lalla Chafia — Daily Streamflow** (Haut Bouregreg, 3 333 km²) : régime subhumide pérenne avec crue printanière majeure (pic BATS à 293,45 m³/s le 7 mars 2018 ; pic observé à 199,0 m³/s).
+  - **(c) Aïn Timedrine — Monthly Streamflow** (Haut Sebou, 4 438 km²) : exutoire régional karstique avec alimentation souterraine continue (pic mensuel observé de 25,89 m³/s en mars 2018).
+  - **(d) Dar El Hamra — Monthly Streamflow** (Oued Zloul, 655 km²) : affluent montagnard du Moyen Atlas (pic mensuel observé de 11,65 m³/s en mars 2018).
+- **Règles de respect des fréquences temporelles :**
+  - Fréquence journalière stricte pour Sidi Jabeur et Lalla Chafia (observations ABH et simulations HyMAP-2).
+  - Fréquence mensuelle stricte pour Aïn Timedrine et Dar El Hamra, où les données ABH validées sont disponibles uniquement sous forme de moyennes mensuelles.
+  - Les moyennes mensuelles simulées correspondent rigoureusement aux mois civils effectivement couverts par les observations ABH (les 12 mois de 2018).
+  - Aucune interpolation artificielle n'a été effectuée pour transformer les séries mensuelles en hydrogrammes journaliers synthétiques.
+  - Aucune observation manquante n'a été convertie en débit nul.
+- **Conformité graphique descriptive :**
+  - Échelles adaptées à chaque station sans aucun pic coupé (`ylim` calés sur le pic BATS à Lalla Chafia et le pic observé à Sidi Jabeur).
+  - Axe Y standardisé : `Streamflow (m³/s)` sur l'ensemble des quatre panneaux.
+  - Suppression intégrale de toute boîte d'interprétation ("takeaways"), flèche, tableau de performance ou note méthodologique à l'intérieur de la figure.
+- **Commande exacte de régénération autonome (F7 seule) :**
+  ```bash
+  python experiments/NorthMor/opl_hydrology_sensitivity/postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f7-only
+  ```
+  Sorties générées sous `postproc/multistation/figures/` et `postproc/figures/` :
+  - `f7_four_representative_stations_2018_en.png` (300 DPI)
+  - `f7_four_representative_stations_2018_en.pdf`

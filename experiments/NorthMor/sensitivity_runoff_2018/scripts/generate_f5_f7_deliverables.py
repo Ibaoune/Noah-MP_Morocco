@@ -12,6 +12,7 @@ Date: Novembre 2026
 import os
 import sys
 import shutil
+import argparse
 import numpy as np
 import pandas as pd
 
@@ -27,7 +28,7 @@ MULTISTATION_DIR = os.path.join(REPO_ROOT, "experiments/NorthMor/opl_hydrology_s
 FIG_DIR = os.path.join(MULTISTATION_DIR, "figures")
 TABLE_DIR = os.path.join(MULTISTATION_DIR, "tables")
 POSTPROC_FIG_DIR = os.path.join(REPO_ROOT, "experiments/NorthMor/opl_hydrology_sensitivity/postproc/figures")
-ARTIFACT_DIR = "/home/mohammad.elaabaribao/.gemini/antigravity-ide/brain/f3772236-acd2-402d-bb10-a9a2613cf75f"
+ARTIFACT_DIR = os.environ.get("ANTIGRAVITY_ARTIFACT_DIR", "/home/mohammad.elaabaribao/.gemini/antigravity-ide/brain/8bcb0dc0-2d9f-4159-9391-a47e04a3c44e")
 
 os.makedirs(FIG_DIR, exist_ok=True)
 os.makedirs(TABLE_DIR, exist_ok=True)
@@ -223,13 +224,13 @@ def plot_f5(sim_dfs, df_obs_daily):
 
     # ------------------ PANEL A : Lalla Chafia Year Transition ------------------
     ax1 = axes[0]
-    l_obs, = ax1.plot(obs_lc_trans['date_dt'], obs_lc_trans['q_m3s'], color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
+    l_obs, = ax1.plot(obs_lc_trans['date_dt'].dt.to_pydatetime(), obs_lc_trans['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
 
     sim_lines = []
     for exp_id, label, color, ls, marker in SCHEMES:
         df = sim_dfs[exp_id]
         sub = df[(df['date_dt'] >= dt_start_trans) & (df['date_dt'] <= dt_end_trans)].sort_values('date_dt')
-        l_sim, = ax1.plot(sub['date_dt'], sub['b_l_chafia'], color=color, lw=1.5, ls=ls, label=label, alpha=0.9, zorder=3)
+        l_sim, = ax1.plot(sub['date_dt'].dt.to_pydatetime(), sub['b_l_chafia'].to_numpy(), color=color, lw=1.5, ls=ls, label=label, alpha=0.9, zorder=3)
         if len(sim_lines) < 4:
             sim_lines.append(l_sim)
 
@@ -246,12 +247,12 @@ def plot_f5(sim_dfs, df_obs_daily):
 
     # ------------------ PANEL B : Sidi Jabeur Year Transition ------------------
     ax2 = axes[1]
-    ax2.plot(obs_sj_trans['date_dt'], obs_sj_trans['q_m3s'], color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
+    ax2.plot(obs_sj_trans['date_dt'].dt.to_pydatetime(), obs_sj_trans['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
 
     for exp_id, label, color, ls, marker in SCHEMES:
         df = sim_dfs[exp_id]
         sub = df[(df['date_dt'] >= dt_start_trans) & (df['date_dt'] <= dt_end_trans)].sort_values('date_dt')
-        ax2.plot(sub['date_dt'], sub['b_s_jabeur'], color=color, lw=1.5, ls=ls, label=label, alpha=0.9, zorder=3)
+        ax2.plot(sub['date_dt'].dt.to_pydatetime(), sub['b_s_jabeur'].to_numpy(), color=color, lw=1.5, ls=ls, label=label, alpha=0.9, zorder=3)
 
     ax2.axvline(dt_boundary, color='#d95f02', ls='--', lw=1.4, zorder=2)
 
@@ -266,12 +267,12 @@ def plot_f5(sim_dfs, df_obs_daily):
 
     # ------------------ PANEL C : Late-Year Recession at Lalla Chafia ------------------
     ax3 = axes[2]
-    ax3.plot(obs_lc_rec['date_dt'], obs_lc_rec['q_m3s'], color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
+    ax3.plot(obs_lc_rec['date_dt'].dt.to_pydatetime(), obs_lc_rec['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
 
     for exp_id, label, color, ls, marker in SCHEMES:
         df = sim_dfs[exp_id]
         sub = df[(df['date_dt'] >= dt_start_rec) & (df['date_dt'] <= dt_end_rec)].sort_values('date_dt')
-        ax3.plot(sub['date_dt'], sub['b_l_chafia'], color=color, lw=1.5, ls=ls, label=label, alpha=0.9, zorder=3)
+        ax3.plot(sub['date_dt'].dt.to_pydatetime(), sub['b_l_chafia'].to_numpy(), color=color, lw=1.5, ls=ls, label=label, alpha=0.9, zorder=3)
 
     ax3.set_xlim(dt_start_rec, dt_end_rec)
     ax3.set_ylim(-1.0, 108.0)  # Fits the 99.6 m3/s observed flood peak on Nov 01 without cutting
@@ -289,19 +290,13 @@ def plot_f5(sim_dfs, df_obs_daily):
     fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.988), ncol=6,
                frameon=True, framealpha=0.95, facecolor='white', edgecolor='#cccccc', fontsize=9.5)
 
-    # Methodological note at the bottom
-    fig.text(0.06, 0.012,
-             'Note: Panels (a) and (b) show strict temporal continuity across the 2017–2018 year boundary for all four schemes, ruling out remapping shocks or restart offsets.\n'
-             'Panel (c) displays smooth late-year recessions (ending at 0.9–5.3 m³/s on Dec 31, 2018) with no sudden drop to zero in the production simulation datasets.',
-             fontsize=8.5, style='italic', color='#333333', va='bottom')
-
-    plt.subplots_adjust(top=0.94, bottom=0.07, hspace=0.32, left=0.08, right=0.96)
+    plt.subplots_adjust(top=0.94, bottom=0.055, hspace=0.32, left=0.08, right=0.96)
     save_plot(fig, "f5_discontinuity_and_continuity_check_en")
 
 
 def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
     print("Generating F5b — Legacy vs Current Continuity Comparison...")
-    fig, axes = plt.subplots(2, 1, figsize=(14.5, 10.0), dpi=300)
+    fig, axes = plt.subplots(2, 1, figsize=(14.5, 9.5), dpi=300)
 
     # Date ranges
     dt_start_trans = pd.to_datetime('2017-12-15')
@@ -335,17 +330,17 @@ def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
 
     # ------------------ PANEL A : 2017-2018 Transition ------------------
     ax1 = axes[0]
-    l1, = ax1.plot(obs_lc_trans['date_dt'], obs_lc_trans['q_m3s'], color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
-    l2, = ax1.plot(simgm_trans['date_dt'], simgm_trans['b_l_chafia'], color='#1f77b4', lw=1.8, label='Current SIMGM (Ref, linres=0)', zorder=4)
-    l3, = ax1.plot(leg_ol_trans['date_dt'], leg_ol_trans['b_l_chafia'], color='#7f7f7f', lw=1.4, ls=':', label='Legacy OL (linres=1)', zorder=3)
-    l4, = ax1.plot(leg_nocdf_trans['date_dt'], leg_nocdf_trans['b_l_chafia'], color='#d62728', lw=1.3, ls='--', label='Legacy DA-NoCDF', zorder=3)
-    l5, = ax1.plot(leg_cdf_trans['date_dt'], leg_cdf_trans['b_l_chafia'], color='#2ca02c', lw=1.3, ls='-.', label='Legacy DA-CDF', zorder=3)
-    lb, = [ax1.axvline(dt_boundary, color='#d95f02', ls='--', lw=1.4, label='Year Boundary (01 Jan 2018)', zorder=2)]
+    l1, = ax1.plot(obs_lc_trans['date_dt'].dt.to_pydatetime(), obs_lc_trans['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
+    l2, = ax1.plot(simgm_trans['date_dt'].dt.to_pydatetime(), simgm_trans['b_l_chafia'].to_numpy(), color='#1f77b4', lw=1.8, label='Current SIMGM (linres=0, coldstart)', zorder=4)
+    l3, = ax1.plot(leg_ol_trans['date_dt'].dt.to_pydatetime(), leg_ol_trans['b_l_chafia'].to_numpy(), color='#7f7f7f', lw=1.4, ls='--', label='Historical OL (linres=1, spinup restart)', zorder=3)
+    l4, = ax1.plot(leg_nocdf_trans['date_dt'].dt.to_pydatetime(), leg_nocdf_trans['b_l_chafia'].to_numpy(), color='#d62728', lw=1.3, ls=':', label='Historical DA-NoCDF (linres=1)', zorder=3)
+    l5, = ax1.plot(leg_cdf_trans['date_dt'].dt.to_pydatetime(), leg_cdf_trans['b_l_chafia'].to_numpy(), color='#2ca02c', lw=1.3, ls='-.', label='Historical DA-CDF (linres=1)', zorder=3)
+    lb, = [ax1.axvline(dt_boundary, color='#444444', ls='-', lw=1.2, alpha=0.75, label='Year Boundary (01 Jan 2018)', zorder=2)]
 
     ax1.set_xlim(dt_start_trans, dt_end_trans)
     ax1.set_ylim(-0.5, 55.0)  # Fits the 51.5 m3/s observed flood peak on Jan 09 without cutting
-    ax1.set_ylabel('Streamflow (m³/s)', fontsize=10, fontweight='bold')
-    ax1.set_title('(a) Temporal Continuity Across 2017–2018 Boundary — Legacy Routing vs Current SIMGM (Lalla Chafia)', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax1.set_ylabel('Streamflow (m³/s)', fontsize=10.5, fontweight='bold')
+    ax1.set_title('(a) Year-End Boundary Continuity Check (15 Dec 2017 – 15 Jan 2018) — Lalla Chafia', fontsize=11, fontweight='bold', loc='left', pad=6)
     ax1.xaxis.set_major_locator(mdates.DayLocator(interval=3))
     ax1.xaxis.set_major_formatter(mdates.DateFormatter('%d %b %Y'))
     ax1.grid(True, linestyle=':', alpha=0.55, color='#888888')
@@ -353,17 +348,17 @@ def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
 
     # ------------------ PANEL B : Late-Year 2018 Recession ------------------
     ax2 = axes[1]
-    ax2.plot(obs_lc_rec['date_dt'], obs_lc_rec['q_m3s'], color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
-    ax2.plot(simgm_rec['date_dt'], simgm_rec['b_l_chafia'], color='#1f77b4', lw=1.8, label='Current SIMGM (Ref, linres=0)', zorder=4)
-    ax2.plot(leg_ol_rec['date_dt'], leg_ol_rec['b_l_chafia'], color='#7f7f7f', lw=1.4, ls=':', label='Legacy OL (linres=1)', zorder=3)
-    ax2.plot(leg_nocdf_rec['date_dt'], leg_nocdf_rec['b_l_chafia'], color='#d62728', lw=1.3, ls='--', label='Legacy DA-NoCDF', zorder=3)
-    ax2.plot(leg_cdf_rec['date_dt'], leg_cdf_rec['b_l_chafia'], color='#2ca02c', lw=1.3, ls='-.', label='Legacy DA-CDF', zorder=3)
+    ax2.plot(obs_lc_rec['date_dt'].dt.to_pydatetime(), obs_lc_rec['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
+    ax2.plot(simgm_rec['date_dt'].dt.to_pydatetime(), simgm_rec['b_l_chafia'].to_numpy(), color='#1f77b4', lw=1.8, label='Current SIMGM (linres=0, coldstart)', zorder=4)
+    ax2.plot(leg_ol_rec['date_dt'].dt.to_pydatetime(), leg_ol_rec['b_l_chafia'].to_numpy(), color='#7f7f7f', lw=1.4, ls='--', label='Historical OL (linres=1, spinup restart)', zorder=3)
+    ax2.plot(leg_nocdf_rec['date_dt'].dt.to_pydatetime(), leg_nocdf_rec['b_l_chafia'].to_numpy(), color='#d62728', lw=1.3, ls=':', label='Historical DA-NoCDF (linres=1)', zorder=3)
+    ax2.plot(leg_cdf_rec['date_dt'].dt.to_pydatetime(), leg_cdf_rec['b_l_chafia'].to_numpy(), color='#2ca02c', lw=1.3, ls='-.', label='Historical DA-CDF (linres=1)', zorder=3)
 
     ax2.set_xlim(dt_start_rec, dt_end_rec)
     ax2.set_ylim(-1.0, 108.0)  # Fits the 99.6 m3/s observed flood peak on Nov 01 without cutting
-    ax2.set_ylabel('Streamflow (m³/s)', fontsize=10, fontweight='bold')
-    ax2.set_title('(b) Late-Year Streamflow Recession (Nov–Dec 2018) — Legacy Routing vs Current SIMGM (Lalla Chafia)', fontsize=11, fontweight='bold', loc='left', pad=6)
-    ax2.set_xlabel('Simulation Date', fontsize=10.5, fontweight='bold', labelpad=6)
+    ax2.set_ylabel('Streamflow (m³/s)', fontsize=10.5, fontweight='bold')
+    ax2.set_title('(b) Late Autumn Transition and Anomaly Check (Nov–Dec 2018) — Lalla Chafia', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax2.set_xlabel('Simulation Date', fontsize=10.5, fontweight='bold', labelpad=4)
     ax2.xaxis.set_major_locator(mdates.DayLocator(interval=5))
     ax2.xaxis.set_major_formatter(mdates.DateFormatter('%d %b %Y'))
     ax2.grid(True, linestyle=':', alpha=0.55, color='#888888')
@@ -371,167 +366,130 @@ def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
 
     # Shared legend outside plot area
     legend_handles = [l1, l2, l3, l4, l5, lb]
-    legend_labels = ['Observed (ABH)', 'Current SIMGM (Ref)', 'Legacy Open-Loop (OL)', 'Legacy DA-NoCDF', 'Legacy DA-CDF', 'Year Boundary (01 Jan 2018)']
-    fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.985), ncol=6,
+    legend_labels = ['Observed (ABH)', 'Current SIMGM (linres=0, coldstart)', 'Historical OL (linres=1, spinup restart)', 'Historical DA-NoCDF (linres=1)', 'Historical DA-CDF (linres=1)', 'Year Boundary (01 Jan 2018)']
+    fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.940), ncol=3,
                frameon=True, framealpha=0.95, facecolor='white', edgecolor='#cccccc', fontsize=9.2)
 
-    # Methodological note
-    fig.text(0.06, 0.015,
-             'Note: Direct comparison shows that continuous production datasets in both legacy (2016–2020) and sensitivity (2017–2018) simulations are strictly continuous.\n'
-             'Neither legacy runs nor current SIMGM exhibit an abrupt drop to zero in late 2018. The suspected legacy zero-flow drop was an artifact of prototype plotting scripts.',
-             fontsize=8.5, style='italic', color='#333333', va='bottom')
+    fig.suptitle("F5b — Streamflow Continuity and Year-End Transition Checks (2017–2018)",
+                 fontsize=13, fontweight="bold", y=0.985)
 
-    plt.subplots_adjust(top=0.92, bottom=0.08, hspace=0.30, left=0.08, right=0.96)
+    plt.subplots_adjust(top=0.820, bottom=0.065, hspace=0.28, left=0.07, right=0.96)
     save_plot(fig, "f5b_legacy_vs_current_continuity_2018_en")
 
 
 def plot_f7_four_representative_stations(sim_dfs, df_obs_daily, df_obs_monthly):
     print("Generating F7 — Four Representative Stations (2018)...")
-    fig, axes = plt.subplots(2, 2, figsize=(15.5, 12.5), dpi=300)
+    fig, axes = plt.subplots(2, 2, figsize=(15.5, 11.5), dpi=300)
 
     # Date ranges
+    dt_start = pd.to_datetime('2018-01-01')
+    dt_end = pd.to_datetime('2018-12-31')
     months_2018 = pd.date_range("2018-01-01", "2018-12-01", freq="MS")
     month_labels = [m.strftime('%b') for m in months_2018]
+    m_x = np.arange(1, 13)
 
-    # ------------------ PANEL A : Lalla Chafia (Daily) ------------------
+    configs = [
+        ('OL_R1_SIMGM', 'SIMGM (opt_run=1)', '#1f77b4', '-', 's'),
+        ('OL_R2_SIMTOP', 'SIMTOP (opt_run=2)', '#ff7f0e', '--', 'D'),
+        ('OL_R3_SCHAAKE96', 'Schaake96 (opt_run=3)', '#2ca02c', '-.', '^'),
+        ('OL_R4_BATS', 'BATS (opt_run=4)', '#9467bd', ':', '*')
+    ]
+
+    # ------------------ PANEL A : Sidi Jabeur (Daily) ------------------
     ax_a = axes[0, 0]
-    sub_obs_lc = df_obs_daily[(df_obs_daily['station_id'] == 'b_l_chafia') & (df_obs_daily['date'].str.startswith('2018'))].sort_values('date_dt')
-    l_obs, = ax_a.plot(sub_obs_lc['date_dt'], sub_obs_lc['q_m3s'], color=COLOR_OBS, lw=1.6, label='Observed (ABH)', zorder=5)
+    sub_obs_sj = df_obs_daily[(df_obs_daily['station_id'] == 'b_s_jabeur') & (df_obs_daily['date'].str.startswith('2018'))].sort_values('date_dt')
+    l_obs, = ax_a.plot(sub_obs_sj['date_dt'].dt.to_pydatetime(), sub_obs_sj['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.6, label='Observed (ABH)', zorder=5)
 
     l_sims = []
-    for exp_id, label, color, ls, marker in SCHEMES:
+    for exp_id, label, color, ls, marker in configs:
         df = sim_dfs[exp_id]
         sub = df[df['date'].str.startswith('2018')].sort_values('date_dt')
-        l_s, = ax_a.plot(sub['date_dt'], sub['b_l_chafia'], color=color, lw=1.35, ls=ls, label=label, alpha=0.9, zorder=3)
-        if len(l_sims) < 4:
-            l_sims.append(l_s)
+        line, = ax_a.plot(sub['date_dt'].dt.to_pydatetime(), sub['b_s_jabeur'].to_numpy(), color=color, lw=1.35, ls=ls, label=label, alpha=0.9, zorder=3)
+        l_sims.append(line)
 
-    ax_a.set_xlim(pd.Timestamp('2018-01-01'), pd.Timestamp('2018-12-31'))
-    ax_a.set_ylim(-5.0, 325.0)  # Fully accommodates the 212 m3/s BATS peak on Mar 8 without touching border
-    ax_a.set_ylabel('Streamflow (m³/s)', fontsize=10, fontweight='bold')
-    ax_a.set_title('(a) Lalla Chafia — Bouregreg (3,333 km²) [Daily]', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax_a.set_xlim(dt_start, dt_end)
+    ax_a.set_ylim(-5.0, 385.0)  # Accommodates 349.0 m3/s observed flood peak on Mar 7
     ax_a.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
     ax_a.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
+    ax_a.set_ylabel('Streamflow (m³/s)', fontsize=10.5, fontweight='bold')
+    ax_a.set_title('(a) Sidi Jabeur — Daily Streamflow (Oued Grou, 3,131 km²)', fontsize=11, fontweight='bold', loc='left', pad=6)
     ax_a.grid(True, linestyle=':', alpha=0.55, color='#888888')
     ax_a.tick_params(axis='both', labelsize=9)
 
-    box_a = (
-        "Key Takeaway (Bouregreg Mainstem):\n"
-        "• SIMTOP improves flood dynamics (NSE = 0.59 vs 0.17 in SIMGM)\n"
-        "• Substantial flood timing improvement, but positive summer bias persists"
-    )
-    ax_a.text(0.98, 0.95, box_a, transform=ax_a.transAxes, fontsize=8.2, ha='right', va='top',
-              bbox=dict(boxstyle="round,pad=0.35", fc="#ffffff", ec="#b0b0b0", lw=0.8, alpha=0.94))
-
-    # ------------------ PANEL B : Sidi Jabeur (Daily) ------------------
+    # ------------------ PANEL B : Lalla Chafia (Daily) ------------------
     ax_b = axes[0, 1]
-    sub_obs_sj = df_obs_daily[(df_obs_daily['station_id'] == 'b_s_jabeur') & (df_obs_daily['date'].str.startswith('2018'))].sort_values('date_dt')
-    ax_b.plot(sub_obs_sj['date_dt'], sub_obs_sj['q_m3s'], color=COLOR_OBS, lw=1.6, label='Observed (ABH)', zorder=5)
+    sub_obs_lc = df_obs_daily[(df_obs_daily['station_id'] == 'b_l_chafia') & (df_obs_daily['date'].str.startswith('2018'))].sort_values('date_dt')
+    ax_b.plot(sub_obs_lc['date_dt'].dt.to_pydatetime(), sub_obs_lc['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.6, label='Observed (ABH)', zorder=5)
 
-    for exp_id, label, color, ls, marker in SCHEMES:
+    for exp_id, label, color, ls, marker in configs:
         df = sim_dfs[exp_id]
         sub = df[df['date'].str.startswith('2018')].sort_values('date_dt')
-        ax_b.plot(sub['date_dt'], sub['b_s_jabeur'], color=color, lw=1.35, ls=ls, label=label, alpha=0.9, zorder=3)
+        ax_b.plot(sub['date_dt'].dt.to_pydatetime(), sub['b_l_chafia'].to_numpy(), color=color, lw=1.35, ls=ls, label=label, alpha=0.9, zorder=3)
 
-    # Rug mark for 47 observed zero flow days (June 28 to Aug 13)
-    zeros_mask = (sub_obs_sj['q_m3s'] == 0.0)
-    dates_zeros = sub_obs_sj.loc[zeros_mask, 'date_dt']
-    l_zero = ax_b.scatter(dates_zeros, [0.0]*len(dates_zeros), color='#e7298a', marker='|', s=55, lw=1.5,
-                          label='Observed Zero Flow (47 d)', zorder=6)
-
-    ax_b.set_xlim(pd.Timestamp('2018-01-01'), pd.Timestamp('2018-12-31'))
-    ax_b.set_ylim(-5.0, 385.0)  # Fully accommodates the 349.0 m3/s observed flood peak on Mar 7
-    ax_b.set_ylabel('Streamflow (m³/s)', fontsize=10, fontweight='bold')
-    ax_b.set_title('(b) Sidi Jabeur — Oued Grou (3,131 km²) [Daily]', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax_b.set_xlim(dt_start, dt_end)
+    ax_b.set_ylim(-5.0, 320.0)  # Accommodates ~238 m3/s BATS flood peak on Mar 8 with clean headroom
     ax_b.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
     ax_b.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
+    ax_b.set_ylabel('Streamflow (m³/s)', fontsize=10.5, fontweight='bold')
+    ax_b.set_title('(b) Lalla Chafia — Daily Streamflow (Haut Bouregreg, 3,333 km²)', fontsize=11, fontweight='bold', loc='left', pad=6)
     ax_b.grid(True, linestyle=':', alpha=0.55, color='#888888')
     ax_b.tick_params(axis='both', labelsize=9)
-
-    box_b = (
-        "Key Takeaway (Semi-Arid Intermittent):\n"
-        "• BATS best captures flood volumes (NSE = 0.42, PBIAS = -10.1%)\n"
-        "• Critical limitation: all schemes fail to simulate observed summer drying"
-    )
-    ax_b.text(0.98, 0.95, box_b, transform=ax_b.transAxes, fontsize=8.2, ha='right', va='top',
-              bbox=dict(boxstyle="round,pad=0.35", fc="#ffffff", ec="#b0b0b0", lw=0.8, alpha=0.94))
 
     # ------------------ PANEL C : Ain Timedrine (Monthly) ------------------
     ax_c = axes[1, 0]
     obs_m_at = df_obs_monthly[(df_obs_monthly['station_id'] == 'ain_timedrine') & (df_obs_monthly['annee'] == 2018)].sort_values('mois')
-    m_x = np.arange(1, 13)
-    ax_c.plot(m_x, obs_m_at['q_m3s'], color=COLOR_OBS, lw=1.8, marker='o', ms=6, label='Observed (ABH)', zorder=5)
+    ax_c.plot(m_x, obs_m_at['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, marker='o', ms=6, label='Observed (ABH)', zorder=5)
 
-    for exp_id, label, color, ls, marker in SCHEMES:
+    for exp_id, label, color, ls, marker in configs:
         df = sim_dfs[exp_id]
         sub = df[df['date'].str.startswith('2018')].copy()
         sub['month'] = sub['date_dt'].dt.month
         monthly_sim = sub.groupby('month')['ain_timedrine'].mean().reindex(m_x).values
-        ax_c.plot(m_x, monthly_sim, color=color, lw=1.5, marker=marker, ms=6, ls=ls, label=label, alpha=0.9, zorder=3)
+        ax_c.plot(m_x, monthly_sim, color=color, lw=1.5, marker=marker, ms=5.5, ls=ls, label=label, alpha=0.9, zorder=3)
 
     ax_c.set_xlim(0.5, 12.5)
-    ax_c.set_ylim(-0.5, 30.0)
+    ax_c.set_ylim(-0.5, 30.0)  # Accommodates 25.89 m3/s observed peak in Mar
     ax_c.set_xticks(m_x)
     ax_c.set_xticklabels(month_labels)
-    ax_c.set_ylabel('Monthly Streamflow (m³/s)', fontsize=10, fontweight='bold')
-    ax_c.set_title('(c) Aïn Timedrine — Upper Sebou (4,438 km²) [Monthly]', fontsize=11, fontweight='bold', loc='left', pad=6)
-    ax_c.set_xlabel('Month (2018)', fontsize=10.5, fontweight='bold', labelpad=6)
+    ax_c.set_ylabel('Streamflow (m³/s)', fontsize=10.5, fontweight='bold')
+    ax_c.set_title('(c) Aïn Timedrine — Monthly Streamflow (Haut Sebou, 4,438 km²)', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax_c.set_xlabel('Month (2018)', fontsize=10.5, fontweight='bold', labelpad=5)
     ax_c.grid(True, linestyle=':', alpha=0.55, color='#888888')
     ax_c.tick_params(axis='both', labelsize=9)
-
-    box_c = (
-        "Key Takeaway (Regional Karstic Outlet):\n"
-        "• Severe baseline volume deficit in SIMGM (NSE = -2.01, PBIAS = -79.8%)\n"
-        "• BATS strongly mitigates volume deficit (NSE = +0.33, PBIAS = -36.8%)"
-    )
-    ax_c.text(0.98, 0.95, box_c, transform=ax_c.transAxes, fontsize=8.2, ha='right', va='top',
-              bbox=dict(boxstyle="round,pad=0.35", fc="#ffffff", ec="#b0b0b0", lw=0.8, alpha=0.94))
 
     # ------------------ PANEL D : Dar El Hamra (Monthly) ------------------
     ax_d = axes[1, 1]
     obs_m_dh = df_obs_monthly[(df_obs_monthly['station_id'] == 'dar_el_hamra') & (df_obs_monthly['annee'] == 2018)].sort_values('mois')
-    ax_d.plot(m_x, obs_m_dh['q_m3s'], color=COLOR_OBS, lw=1.8, marker='o', ms=6, label='Observed (ABH)', zorder=5)
+    ax_d.plot(m_x, obs_m_dh['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, marker='o', ms=6, label='Observed (ABH)', zorder=5)
 
-    for exp_id, label, color, ls, marker in SCHEMES:
+    for exp_id, label, color, ls, marker in configs:
         df = sim_dfs[exp_id]
         sub = df[df['date'].str.startswith('2018')].copy()
         sub['month'] = sub['date_dt'].dt.month
         monthly_sim = sub.groupby('month')['dar_el_hamra'].mean().reindex(m_x).values
-        ax_d.plot(m_x, monthly_sim, color=color, lw=1.5, marker=marker, ms=6, ls=ls, label=label, alpha=0.9, zorder=3)
+        ax_d.plot(m_x, monthly_sim, color=color, lw=1.5, marker=marker, ms=5.5, ls=ls, label=label, alpha=0.9, zorder=3)
 
     ax_d.set_xlim(0.5, 12.5)
-    ax_d.set_ylim(-0.2, 13.5)
+    ax_d.set_ylim(-0.2, 14.0)  # Accommodates 11.65 m3/s observed peak in Mar
     ax_d.set_xticks(m_x)
     ax_d.set_xticklabels(month_labels)
-    ax_d.set_ylabel('Monthly Streamflow (m³/s)', fontsize=10, fontweight='bold')
-    ax_d.set_title('(d) Dar El Hamra — Oued Zloul (655 km²) [Monthly]', fontsize=11, fontweight='bold', loc='left', pad=6)
-    ax_d.set_xlabel('Month (2018)', fontsize=10.5, fontweight='bold', labelpad=6)
+    ax_d.set_ylabel('Streamflow (m³/s)', fontsize=10.5, fontweight='bold')
+    ax_d.set_title('(d) Dar El Hamra — Monthly Streamflow (Oued Zloul, 655 km²)', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax_d.set_xlabel('Month (2018)', fontsize=10.5, fontweight='bold', labelpad=5)
     ax_d.grid(True, linestyle=':', alpha=0.55, color='#888888')
     ax_d.tick_params(axis='both', labelsize=9)
 
-    box_d = (
-        "Key Takeaway (Mountain Headwater Tributary):\n"
-        "• High seasonal correlation across all schemes (r = 0.77 to 0.96)\n"
-        "• Persistent volume underestimation across all schemes (PBIAS = -54% to -85%)"
-    )
-    ax_d.text(0.98, 0.95, box_d, transform=ax_d.transAxes, fontsize=8.2, ha='right', va='top',
-              bbox=dict(boxstyle="round,pad=0.35", fc="#ffffff", ec="#b0b0b0", lw=0.8, alpha=0.94))
-
     # Shared legend outside plot area
-    legend_handles = [l_obs] + l_sims + [l_zero]
-    legend_labels = ['Observed (ABH)', 'SIMGM (Reference)', 'SIMTOP', 'Schaake96', 'BATS', 'Observed Zero Flow (47 d)']
-    fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.988), ncol=6,
-               frameon=True, framealpha=0.95, facecolor='white', edgecolor='#cccccc', fontsize=9.5)
+    legend_handles = [l_obs] + l_sims
+    legend_labels = ['Observed (ABH)', 'SIMGM (opt_run=1)', 'SIMTOP (opt_run=2)', 'Schaake96 (opt_run=3)', 'BATS (opt_run=4)']
+    fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.945), ncol=5,
+               frameon=True, framealpha=0.95, facecolor='white', edgecolor='#cccccc', fontsize=10.0)
 
-    # Dedicated methodological notes at the bottom with proper margin
-    fig.text(0.06, 0.015,
-             'Notes: Daily metrics (Panels a, b) and monthly metrics (Panels c, d) evaluate different aggregation levels and are not directly cross-comparable.\n'
-             'Catchment areas are derived from HyMAP-2 D8 drainage networks (0.05°). Hydrometric observations provided by ABH Bouregreg-Chaouia and ABH Sebou.',
-             fontsize=8.5, style='italic', color='#333333', va='bottom')
+    fig.suptitle("F7 — Noah-MP Runoff Formulation Sensitivity: Four Representative Stations (2018)",
+                 fontsize=13, fontweight="bold", y=0.985)
 
-    plt.subplots_adjust(top=0.93, bottom=0.08, hspace=0.30, wspace=0.18, left=0.07, right=0.96)
+    plt.subplots_adjust(top=0.880, bottom=0.065, hspace=0.28, wspace=0.18, left=0.065, right=0.965)
     save_plot(fig, "f7_four_representative_stations_2018_en")
-
 
 def build_four_representative_stations_table():
     print("Building four representative stations metrics table (CSV and MD)...")
@@ -646,9 +604,79 @@ def build_four_representative_stations_table():
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description="Générateur de livrables F5, F5b et F7 pour Augusto Getirana"
+    )
+    parser.add_argument(
+        "--fig-f5-only",
+        action="store_true",
+        help="Générer uniquement la figure F5 (continuité temporelle et récessions 4 schémas OPL)"
+    )
+    parser.add_argument(
+        "--fig-f5b-only",
+        action="store_true",
+        help="Générer uniquement la figure F5b (continuité historique vs actuelle)"
+    )
+    parser.add_argument(
+        "--fig-f7-only",
+        action="store_true",
+        help="Générer uniquement la figure F7 (quatre stations représentatives)"
+    )
+    args = parser.parse_args()
+
     print("=" * 85)
     print("GÉNÉRATEUR DE LIVRABLES F5, F5b ET F7 POUR AUGUSTO GETIRANA (RÉVISION FINALE)")
     print("=" * 85)
+
+    if args.fig_f5_only:
+        print("Mode exclusif: génération ciblée de la figure F5...")
+        sim_dfs = {}
+        for exp_id, label, color, ls, marker in SCHEMES:
+            csv_path = os.path.join(ROUTING_OUT_DIR, exp_id, "streamflow_daily_stations.csv")
+            df = pd.read_csv(csv_path)
+            df['date_dt'] = pd.to_datetime(df['date'])
+            sim_dfs[exp_id] = df
+
+        df_obs_daily = pd.read_csv(OBS_DAILY_CSV)
+        df_obs_daily['date_dt'] = pd.to_datetime(df_obs_daily['date'])
+
+        plot_f5(sim_dfs, df_obs_daily)
+        print("Fin de la génération ciblée de F5.")
+        return
+
+    if args.fig_f5b_only:
+        print("Mode exclusif: génération ciblée de la figure F5b...")
+        # Chargement rapide des séries nécessaires pour F5b
+        simgm_csv = os.path.join(ROUTING_OUT_DIR, "OL_R1_SIMGM/streamflow_daily_stations.csv")
+        df_simgm = pd.read_csv(simgm_csv)
+        df_simgm['date_dt'] = pd.to_datetime(df_simgm['date'])
+        sim_dfs = {'OL_R1_SIMGM': df_simgm}
+
+        df_obs_daily = pd.read_csv(OBS_DAILY_CSV)
+        df_obs_daily['date_dt'] = pd.to_datetime(df_obs_daily['date'])
+
+        df_legacy_ol = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "OPL_2016_2020_corrigee/t7_sim_daily_12stations_corrigee.csv"))
+        df_legacy_ol['date_dt'] = pd.to_datetime(df_legacy_ol['date'])
+        df_legacy_nocdf = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv"))
+        df_legacy_nocdf['date_dt'] = pd.to_datetime(df_legacy_nocdf['date'])
+        df_legacy_cdf = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "DA_cdf_2016_2020/t9_sim_daily_12stations_da_cdf.csv"))
+        df_legacy_cdf['date_dt'] = pd.to_datetime(df_legacy_cdf['date'])
+
+        legacy_dfs = {
+            'legacy_ol': df_legacy_ol,
+            'legacy_nocdf': df_legacy_nocdf,
+            'legacy_cdf': df_legacy_cdf
+        }
+        plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily)
+        print("Fin de la génération ciblée de F5b.")
+        return
+
+    if args.fig_f7_only:
+        print("Mode exclusif: génération ciblée de la figure F7...")
+        sim_dfs, df_obs_daily, df_obs_monthly, _ = load_all_data()
+        plot_f7_four_representative_stations(sim_dfs, df_obs_daily, df_obs_monthly)
+        print("Fin de la génération ciblée de F7.")
+        return
 
     sim_dfs, df_obs_daily, df_obs_monthly, legacy_dfs = load_all_data()
 
