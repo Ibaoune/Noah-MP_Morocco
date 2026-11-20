@@ -258,7 +258,7 @@ Le répertoire canonique officiel pour les livrables graphiques multi-stations e
 | **F3** | Flux amont (P, Qs, Qsb) et débits routés vs observés (Lalla Chafia & Sidi Jabeur) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f3-only` | `postproc/multistation/figures/f3_daily_qs_qsb_hydrographs_2018_en.png` (.pdf) |
 | **F4** | Diagnostic d'étiage estival et occurrence des assecs (Sidi Jabeur & Lalla Chafia) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f4-only` | `postproc/multistation/figures/f4_lowflow_diagnostic_summer2018_en.png` (.pdf) |
 | **F5** | Contrôle des transitions temporelles inter-cycles et continuité HyMAP-2 | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5-only` | `postproc/multistation/figures/f5_discontinuity_and_continuity_check_en.png` (.pdf) |
-| **F5b** | Confrontation temporelle historique vs simulations et audit de continuité | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only` | `postproc/multistation/figures/f5b_legacy_vs_current_continuity_2018_en.png` (.pdf) |
+| **F5b** | Contrôle de continuité temporelle Open-Loop : routage historique (linres=1, spinup restart) vs actuel (linres=0, coldstart) | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only` | `postproc/multistation/figures/f5b_legacy_vs_current_continuity_2018_en.png` (.pdf) |
 | **F6** | Synthèse multi-stations des performances (KGE-2009, ΔKGE, PBIAS, r) | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py --f6-only` | `postproc/multistation/figures/f6_multistation_synthesis_performance_en.png` (.pdf) |
 | **F7** | Sensibilité des formulations de ruissellement Noah-MP sur 4 stations représentatives (2018) | `generate_f5_f7_deliverables.py` | `python postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f7-only` | `postproc/multistation/figures/f7_four_representative_stations_2018_en.png` (.pdf) |
 | **Contact** | Planche contact multi-panneaux de l'ensemble des figures F1–F6 | `generate_multistation_figures.py` | `python postproc/multistation/scripts/generate_multistation_figures.py` | `postproc/multistation/figures/multistation_figures_contact_sheet.pdf` (.png) |
@@ -331,20 +331,28 @@ Le répertoire canonique officiel pour les livrables graphiques multi-stations e
   - `f3_daily_qs_qsb_hydrographs_2018_en.png`
   - `f3_daily_qs_qsb_hydrographs_2018_en.pdf`
 
-### 10.9 Focus Figure F5b — Contrôle de Continuité Temporelle et Confrontation Historique (2017–2018)
+### 10.9 Focus Figure F5b — Contrôle de Continuité Temporelle Open-Loop (2017–2018)
 
-- **Objectif scientifique :** Répondre aux interrogations relatives à la continuité des hydrogrammes simulés lors des transitions inter-cycles et documenter la confrontation entre les sorties de référence actuelles (`SIMGM, linres=0, coldstart`) et les séries historiques (`OL, linres=1`, `DA-NoCDF, linres=1`, `DA-CDF, linres=1`) à la station de Lalla Chafia (Haut Bouregreg).
-- **Structure descriptive en deux panneaux :**
-  - **Panneau (a) — Transition interannuelle (15 déc 2017 – 15 jan 2018) :** Examen de la continuité au franchissement de la frontière d'année civile (repère vertical neutre au 1er janvier 2018).
-  - **Panneau (b) — Fin d'automne et récession (nov–déc 2018) :** Confrontation des trajectoires de décrue et observation de l'écart DA-NoCDF par rapport aux configurations OL et DA-CDF.
-- **Résultats de l'audit de continuité :**
-  - Les séries temporelles de production journalières disponibles (fichiers sources `streamflow_daily_stations.csv` et tables historiques `t7_sim_daily_12stations_corrigee.csv`, `t8_*`, `t9_*`) sont mathématiquement continues au pas de temps journalier.
-  - Aucune chute brutale artificielle à débit nul n'apparaît dans les données sources de ces simulations lors des transitions temporelles.
-- **Limites méthodologiques de la vérification :**
-  - L'audit a porté exclusivement sur les séries temporelles consolidées issues des fichiers numériques de production archivés dans le projet. Il n'exclut pas qu'un tracé graphique antérieur ou une troncature d'affichage dans des versions préliminaires ait pu susciter des doutes visuels.
-- **Position neutre sur l'anomalie DA-NoCDF :**
-  - La figure F5b restitue factuellement l'élévation des débits simulés en novembre–décembre 2018 pour la variante DA-NoCDF sans intégrer d'hypothèse explicative ou de jugement de valeur à l'intérieur du graphique.
-  - Conformément aux exigences de rigueur scientifique, aucune attribution causale définitive (rôle des incréments d'assimilation SMAP vs dynamique propre du réservoir linéaire HyMAP) n'est affirmée en l'absence d'un diagnostic d'assimilation formellement instrumenté.
+- **Objectif scientifique :** Évaluer l'impact de la recommandation d'Augusto Getirana (désactivation du réservoir linéaire HyMAP-2, `linres=0`) et contrôler la continuité temporelle des hydrogrammes simulés aux frontières inter-cycles, sur une comparaison **strictement Open-Loop (OPL)** à la station de Lalla Chafia (Haut Bouregreg). Les expériences d'assimilation de données (DA-NoCDF et DA-CDF) ont été totalement retirées de cette figure pour isoler le comportement hydrodynamique propre au routage.
+- **Séries représentées :**
+  1. **Observed (ABH)** : débit journalier observé (noir continu).
+  2. **Historical OPL (`linres=1`, spinup restart)** : routage historique avec réservoir linéaire actif et réinitialisation après spinup (bleu pointillé, issu de `routing/output/OPL_2016_2020_corrigee/t7_sim_daily_12stations_corrigee.csv`).
+  3. **Updated OPL (`linres=0`, coldstart)** : routage avec réservoir linéaire désactivé et démarrage à froid en 2016 (rouge continu, issu de `routing/output/OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv`).
+- **Apports Noah-MP et comparabilité physique stricte :**
+  - Les deux simulations de routage utilisent rigoureusement les **mêmes flux d'entrée de ruissellement et de drainage souterrain Noah-MP** (`OPL_noirr_2016_2020` archivé sous `routing/runoff_remap_180x120/`).
+  - La différence observée provient exclusivement de l'activation/désactivation du réservoir linéaire HyMAP-2 (`linres=1` vs `linres=0`) et des conditions initiales de routage (restart spinup cycle 2 vs coldstart 2016 avec 2 ans de stabilisation préalable avant 2018).
+- **Structure graphique en deux panneaux descriptifs :**
+  - **(a) Streamflow Across the 2017–2018 Year Boundary — Lalla Chafia (15 déc 2017 – 15 jan 2018) :**
+    - Vérification de la continuité temporelle au passage de la frontière civile du 1er janvier 2018 (marquée par un repère vertical neutre).
+    - Les deux simulations OPL sont parfaitement continues (passage de 1,75 à 1,73 m³/s pour l'historique et de 1,70 à 1,65 m³/s pour `linres=0`), sans chute artificielle ni saut numérique.
+    - Échelle d'axe adaptée (`[-0.5, 55.0]` m³/s) englobant la pointe observée du 9 janvier 2018 (51,0 m³/s) sans coupure.
+  - **(b) Streamflow in November–December 2018 — Lalla Chafia (1er nov – 31 déc 2018) :**
+    - Examen des dynamiques de crue automnale et de la récession tardive.
+    - Avec `linres=0`, la dynamique de pointe est plus nerveuse (pic à 28,9 m³/s le 21 novembre contre 20,7 m³/s pour `linres=1`), conformément à la réponse physique attendue sans amortissement linéaire.
+    - La récession de fin d'année se stabilise progressivement autour de 3,8 m³/s pour les deux simulations, confirmant l'absence totale de décrochage à zéro.
+    - Échelle d'axe adaptée (`[-1.0, 108.0]` m³/s) englobant la crue majeure observée du 1er novembre 2018 (99,6 m³/s) sans coupure.
+- **Règle de neutralité graphique :**
+  - Figure strictement descriptive : zéro encadré de conclusion, zéro note méthodologique interne, zéro message d'interprétation.
 - **Commande exacte de régénération autonome (F5b seule) :**
   ```bash
   python experiments/NorthMor/opl_hydrology_sensitivity/postproc/multistation/scripts/generate_f5_f7_deliverables.py --fig-f5b-only

@@ -83,11 +83,15 @@ def load_all_data():
     df_legacy_nocdf = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv"))
     df_legacy_nocdf['date_dt'] = pd.to_datetime(df_legacy_nocdf['date'])
 
+    df_opl_linres0 = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv"))
+    df_opl_linres0['date_dt'] = pd.to_datetime(df_opl_linres0['date'])
+
     df_legacy_cdf = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "DA_cdf_2016_2020/t9_sim_daily_12stations_da_cdf.csv"))
     df_legacy_cdf['date_dt'] = pd.to_datetime(df_legacy_cdf['date'])
 
     legacy_dfs = {
         'legacy_ol': df_legacy_ol,
+        'opl_linres0': df_opl_linres0,
         'legacy_nocdf': df_legacy_nocdf,
         'legacy_cdf': df_legacy_cdf
     }
@@ -295,7 +299,7 @@ def plot_f5(sim_dfs, df_obs_daily):
 
 
 def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
-    print("Generating F5b — Legacy vs Current Continuity Comparison...")
+    print("Generating F5b — Open-Loop Continuity Comparison (linres=1 vs linres=0)...")
     fig, axes = plt.subplots(2, 1, figsize=(14.5, 9.5), dpi=300)
 
     # Date ranges
@@ -306,41 +310,40 @@ def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
     dt_start_rec = pd.to_datetime('2018-11-01')
     dt_end_rec = pd.to_datetime('2018-12-31')
 
-    # Observations
+    # Observations at Lalla Chafia
     obs_lc_trans = df_obs_daily[(df_obs_daily['station_id'] == 'b_l_chafia') & (df_obs_daily['date_dt'] >= dt_start_trans) & (df_obs_daily['date_dt'] <= dt_end_trans)].sort_values('date_dt')
     obs_lc_rec = df_obs_daily[(df_obs_daily['station_id'] == 'b_l_chafia') & (df_obs_daily['date_dt'] >= dt_start_rec) & (df_obs_daily['date_dt'] <= dt_end_rec)].sort_values('date_dt')
 
-    # Current SIMGM
-    simgm_df = sim_dfs['OL_R1_SIMGM']
-    simgm_trans = simgm_df[(simgm_df['date_dt'] >= dt_start_trans) & (simgm_df['date_dt'] <= dt_end_trans)].sort_values('date_dt')
-    simgm_rec = simgm_df[(simgm_df['date_dt'] >= dt_start_rec) & (simgm_df['date_dt'] <= dt_end_rec)].sort_values('date_dt')
+    # Historical OPL (linres=1, spinup restart)
+    hist_ol_df = legacy_dfs['legacy_ol']
+    hist_ol_trans = hist_ol_df[(hist_ol_df['date_dt'] >= dt_start_trans) & (hist_ol_df['date_dt'] <= dt_end_trans)].sort_values('date_dt')
+    hist_ol_rec = hist_ol_df[(hist_ol_df['date_dt'] >= dt_start_rec) & (hist_ol_df['date_dt'] <= dt_end_rec)].sort_values('date_dt')
 
-    # Legacy datasets
-    leg_ol_df = legacy_dfs['legacy_ol']
-    leg_nocdf_df = legacy_dfs['legacy_nocdf']
-    leg_cdf_df = legacy_dfs['legacy_cdf']
+    # Updated OPL (linres=0, coldstart)
+    if 'opl_linres0' in legacy_dfs:
+        lin0_df = legacy_dfs['opl_linres0']
+    else:
+        lin0_csv = os.path.join(LEGACY_ROUTING_DIR, "OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv")
+        lin0_df = pd.read_csv(lin0_csv)
+        lin0_df['date_dt'] = pd.to_datetime(lin0_df['date'])
 
-    leg_ol_trans = leg_ol_df[(leg_ol_df['date_dt'] >= dt_start_trans) & (leg_ol_df['date_dt'] <= dt_end_trans)].sort_values('date_dt')
-    leg_nocdf_trans = leg_nocdf_df[(leg_nocdf_df['date_dt'] >= dt_start_trans) & (leg_nocdf_df['date_dt'] <= dt_end_trans)].sort_values('date_dt')
-    leg_cdf_trans = leg_cdf_df[(leg_cdf_df['date_dt'] >= dt_start_trans) & (leg_cdf_df['date_dt'] <= dt_end_trans)].sort_values('date_dt')
-
-    leg_ol_rec = leg_ol_df[(leg_ol_df['date_dt'] >= dt_start_rec) & (leg_ol_df['date_dt'] <= dt_end_rec)].sort_values('date_dt')
-    leg_nocdf_rec = leg_nocdf_df[(leg_nocdf_df['date_dt'] >= dt_start_rec) & (leg_nocdf_df['date_dt'] <= dt_end_rec)].sort_values('date_dt')
-    leg_cdf_rec = leg_cdf_df[(leg_cdf_df['date_dt'] >= dt_start_rec) & (leg_cdf_df['date_dt'] <= dt_end_rec)].sort_values('date_dt')
+    lin0_trans = lin0_df[(lin0_df['date_dt'] >= dt_start_trans) & (lin0_df['date_dt'] <= dt_end_trans)].sort_values('date_dt')
+    lin0_rec = lin0_df[(lin0_df['date_dt'] >= dt_start_rec) & (lin0_df['date_dt'] <= dt_end_rec)].sort_values('date_dt')
 
     # ------------------ PANEL A : 2017-2018 Transition ------------------
     ax1 = axes[0]
-    l1, = ax1.plot(obs_lc_trans['date_dt'].dt.to_pydatetime(), obs_lc_trans['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
-    l2, = ax1.plot(simgm_trans['date_dt'].dt.to_pydatetime(), simgm_trans['b_l_chafia'].to_numpy(), color='#1f77b4', lw=1.8, label='Current SIMGM (linres=0, coldstart)', zorder=4)
-    l3, = ax1.plot(leg_ol_trans['date_dt'].dt.to_pydatetime(), leg_ol_trans['b_l_chafia'].to_numpy(), color='#7f7f7f', lw=1.4, ls='--', label='Historical OL (linres=1, spinup restart)', zorder=3)
-    l4, = ax1.plot(leg_nocdf_trans['date_dt'].dt.to_pydatetime(), leg_nocdf_trans['b_l_chafia'].to_numpy(), color='#d62728', lw=1.3, ls=':', label='Historical DA-NoCDF (linres=1)', zorder=3)
-    l5, = ax1.plot(leg_cdf_trans['date_dt'].dt.to_pydatetime(), leg_cdf_trans['b_l_chafia'].to_numpy(), color='#2ca02c', lw=1.3, ls='-.', label='Historical DA-CDF (linres=1)', zorder=3)
-    lb, = [ax1.axvline(dt_boundary, color='#444444', ls='-', lw=1.2, alpha=0.75, label='Year Boundary (01 Jan 2018)', zorder=2)]
+    l1, = ax1.plot(obs_lc_trans['date_dt'].dt.to_pydatetime(), obs_lc_trans['q_m3s'].to_numpy(),
+                   color='#111111', lw=1.8, ls='-', label='Observed (ABH)', zorder=5)
+    l2, = ax1.plot(hist_ol_trans['date_dt'].dt.to_pydatetime(), hist_ol_trans['b_l_chafia'].to_numpy(),
+                   color='#1f77b4', lw=1.6, ls=':', label='Historical OPL (linres=1, spinup restart)', zorder=3)
+    l3, = ax1.plot(lin0_trans['date_dt'].dt.to_pydatetime(), lin0_trans['b_l_chafia'].to_numpy(),
+                   color='#d62728', lw=1.6, ls='-', label='Updated OPL (linres=0, coldstart)', zorder=4)
+    lb = ax1.axvline(dt_boundary, color='#555555', ls='--', lw=1.2, label='Year Boundary (01 Jan 2018)', zorder=2)
 
     ax1.set_xlim(dt_start_trans, dt_end_trans)
-    ax1.set_ylim(-0.5, 55.0)  # Fits the 51.5 m3/s observed flood peak on Jan 09 without cutting
+    ax1.set_ylim(-0.5, 55.0)  # Fits the 51.0 m3/s observed flood peak on Jan 09 without cutting
     ax1.set_ylabel('Streamflow (m³/s)', fontsize=10.5, fontweight='bold')
-    ax1.set_title('(a) Year-End Boundary Continuity Check (15 Dec 2017 – 15 Jan 2018) — Lalla Chafia', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax1.set_title('(a) Streamflow Across the 2017–2018 Year Boundary — Lalla Chafia', fontsize=11, fontweight='bold', loc='left', pad=6)
     ax1.xaxis.set_major_locator(mdates.DayLocator(interval=3))
     ax1.xaxis.set_major_formatter(mdates.DateFormatter('%d %b %Y'))
     ax1.grid(True, linestyle=':', alpha=0.55, color='#888888')
@@ -348,16 +351,17 @@ def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
 
     # ------------------ PANEL B : Late-Year 2018 Recession ------------------
     ax2 = axes[1]
-    ax2.plot(obs_lc_rec['date_dt'].dt.to_pydatetime(), obs_lc_rec['q_m3s'].to_numpy(), color=COLOR_OBS, lw=1.8, label='Observed (ABH)', zorder=5)
-    ax2.plot(simgm_rec['date_dt'].dt.to_pydatetime(), simgm_rec['b_l_chafia'].to_numpy(), color='#1f77b4', lw=1.8, label='Current SIMGM (linres=0, coldstart)', zorder=4)
-    ax2.plot(leg_ol_rec['date_dt'].dt.to_pydatetime(), leg_ol_rec['b_l_chafia'].to_numpy(), color='#7f7f7f', lw=1.4, ls='--', label='Historical OL (linres=1, spinup restart)', zorder=3)
-    ax2.plot(leg_nocdf_rec['date_dt'].dt.to_pydatetime(), leg_nocdf_rec['b_l_chafia'].to_numpy(), color='#d62728', lw=1.3, ls=':', label='Historical DA-NoCDF (linres=1)', zorder=3)
-    ax2.plot(leg_cdf_rec['date_dt'].dt.to_pydatetime(), leg_cdf_rec['b_l_chafia'].to_numpy(), color='#2ca02c', lw=1.3, ls='-.', label='Historical DA-CDF (linres=1)', zorder=3)
+    ax2.plot(obs_lc_rec['date_dt'].dt.to_pydatetime(), obs_lc_rec['q_m3s'].to_numpy(),
+             color='#111111', lw=1.8, ls='-', label='Observed (ABH)', zorder=5)
+    ax2.plot(hist_ol_rec['date_dt'].dt.to_pydatetime(), hist_ol_rec['b_l_chafia'].to_numpy(),
+             color='#1f77b4', lw=1.6, ls=':', label='Historical OPL (linres=1, spinup restart)', zorder=3)
+    ax2.plot(lin0_rec['date_dt'].dt.to_pydatetime(), lin0_rec['b_l_chafia'].to_numpy(),
+             color='#d62728', lw=1.6, ls='-', label='Updated OPL (linres=0, coldstart)', zorder=4)
 
     ax2.set_xlim(dt_start_rec, dt_end_rec)
     ax2.set_ylim(-1.0, 108.0)  # Fits the 99.6 m3/s observed flood peak on Nov 01 without cutting
     ax2.set_ylabel('Streamflow (m³/s)', fontsize=10.5, fontweight='bold')
-    ax2.set_title('(b) Late Autumn Transition and Anomaly Check (Nov–Dec 2018) — Lalla Chafia', fontsize=11, fontweight='bold', loc='left', pad=6)
+    ax2.set_title('(b) Streamflow in November–December 2018 — Lalla Chafia', fontsize=11, fontweight='bold', loc='left', pad=6)
     ax2.set_xlabel('Simulation Date', fontsize=10.5, fontweight='bold', labelpad=4)
     ax2.xaxis.set_major_locator(mdates.DayLocator(interval=5))
     ax2.xaxis.set_major_formatter(mdates.DateFormatter('%d %b %Y'))
@@ -365,15 +369,15 @@ def plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily):
     ax2.tick_params(axis='both', labelsize=9)
 
     # Shared legend outside plot area
-    legend_handles = [l1, l2, l3, l4, l5, lb]
-    legend_labels = ['Observed (ABH)', 'Current SIMGM (linres=0, coldstart)', 'Historical OL (linres=1, spinup restart)', 'Historical DA-NoCDF (linres=1)', 'Historical DA-CDF (linres=1)', 'Year Boundary (01 Jan 2018)']
-    fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.940), ncol=3,
-               frameon=True, framealpha=0.95, facecolor='white', edgecolor='#cccccc', fontsize=9.2)
+    legend_handles = [l1, l2, l3, lb]
+    legend_labels = ['Observed (ABH)', 'Historical OPL (linres=1, spinup restart)', 'Updated OPL (linres=0, coldstart)', 'Year Boundary (01 Jan 2018)']
+    fig.legend(legend_handles, legend_labels, loc='upper center', bbox_to_anchor=(0.5, 0.940), ncol=4,
+               frameon=True, framealpha=0.95, facecolor='white', edgecolor='#cccccc', fontsize=9.5)
 
-    fig.suptitle("F5b — Streamflow Continuity and Year-End Transition Checks (2017–2018)",
+    fig.suptitle("F5b — Open-Loop Streamflow Continuity and Year-End Transition Checks (2017–2018)",
                  fontsize=13, fontweight="bold", y=0.985)
 
-    plt.subplots_adjust(top=0.820, bottom=0.065, hspace=0.28, left=0.07, right=0.96)
+    plt.subplots_adjust(top=0.875, bottom=0.065, hspace=0.28, left=0.07, right=0.96)
     save_plot(fig, "f5b_legacy_vs_current_continuity_2018_en")
 
 
@@ -645,29 +649,21 @@ def main():
         return
 
     if args.fig_f5b_only:
-        print("Mode exclusif: génération ciblée de la figure F5b...")
-        # Chargement rapide des séries nécessaires pour F5b
-        simgm_csv = os.path.join(ROUTING_OUT_DIR, "OL_R1_SIMGM/streamflow_daily_stations.csv")
-        df_simgm = pd.read_csv(simgm_csv)
-        df_simgm['date_dt'] = pd.to_datetime(df_simgm['date'])
-        sim_dfs = {'OL_R1_SIMGM': df_simgm}
-
+        print("Mode exclusif: génération ciblée de la figure F5b (Open-Loop uniquement)...")
         df_obs_daily = pd.read_csv(OBS_DAILY_CSV)
         df_obs_daily['date_dt'] = pd.to_datetime(df_obs_daily['date'])
 
         df_legacy_ol = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "OPL_2016_2020_corrigee/t7_sim_daily_12stations_corrigee.csv"))
         df_legacy_ol['date_dt'] = pd.to_datetime(df_legacy_ol['date'])
-        df_legacy_nocdf = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "DA_nocdf_2016_2020/t8_sim_daily_12stations_da_nocdf.csv"))
-        df_legacy_nocdf['date_dt'] = pd.to_datetime(df_legacy_nocdf['date'])
-        df_legacy_cdf = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "DA_cdf_2016_2020/t9_sim_daily_12stations_da_cdf.csv"))
-        df_legacy_cdf['date_dt'] = pd.to_datetime(df_legacy_cdf['date'])
+
+        df_opl_linres0 = pd.read_csv(os.path.join(LEGACY_ROUTING_DIR, "OPL_linres0_2016_2020/t_sim_daily_12stations_opl_linres0.csv"))
+        df_opl_linres0['date_dt'] = pd.to_datetime(df_opl_linres0['date'])
 
         legacy_dfs = {
             'legacy_ol': df_legacy_ol,
-            'legacy_nocdf': df_legacy_nocdf,
-            'legacy_cdf': df_legacy_cdf
+            'opl_linres0': df_opl_linres0
         }
-        plot_f5b_legacy_vs_current(sim_dfs, legacy_dfs, df_obs_daily)
+        plot_f5b_legacy_vs_current(None, legacy_dfs, df_obs_daily)
         print("Fin de la génération ciblée de F5b.")
         return
 
