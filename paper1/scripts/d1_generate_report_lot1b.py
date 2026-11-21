@@ -34,8 +34,25 @@ def get_git_branch(cwd):
         return "N/A"
 
 def to_markdown_table(df):
-    return df.to_markdown(index=False)
-
+    import numpy as np
+    cols = list(df.columns)
+    res = []
+    res.append('| ' + ' | '.join(str(c) for c in cols) + ' |')
+    res.append('| ' + ' | '.join([':---'] * len(cols)) + ' |')
+    for _, row in df.iterrows():
+        vals = []
+        for v in row:
+            if pd.isna(v):
+                vals.append('')
+            elif isinstance(v, (float, np.floating)):
+                if abs(v) > 0 and (abs(v) < 1e-3 or abs(v) >= 1e4):
+                    vals.append(f'{v:.4e}')
+                else:
+                    vals.append(f'{v:.4f}')
+            else:
+                vals.append(str(v))
+        res.append('| ' + ' | '.join(vals) + ' |')
+    return chr(10).join(res)
 def main():
     head_commit = get_git_commit(BASE_DIR)
     branch = get_git_branch(BASE_DIR)
