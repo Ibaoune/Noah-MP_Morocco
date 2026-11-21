@@ -2,8 +2,8 @@
 
 **Dépôt Git :** `Ibaoune/Noah-MP_Morocco`  
 **Branche :** `paper1-closure`  
-**Commit HEAD :** `799e3fadbddedc28a1e08f4a908f005867405a8d`  
-**Date de génération :** 2026-11-21 22:51:29  
+**Commit HEAD :** `9030369df9f09c87928e1450bf9320414da9505e`  
+**Date de génération :** 2026-11-21 22:52:09  
 **Règle méthodologique :** Rapport factuel et descriptif, aucune conclusion scientifique.
 
 ---
