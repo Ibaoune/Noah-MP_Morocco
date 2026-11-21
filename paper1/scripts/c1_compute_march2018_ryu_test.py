@@ -2,22 +2,14 @@
 """
 c1_compute_march2018_ryu_test.py
 
-Génère la table comparative march2018_ryu_test.csv pour les 7 runs :
-- OL_DAIC
-- NOSTATE
-- FORC
-- STATE
-- ENS
-- STATE_noRyu
-- FORC_noRyu
+Calcule et assemble la table de comparaison pour le test Ryu mars 2018 :
+- Runs existants (OL_DAIC, NOSTATE, FORC, STATE, ENS)
+- Nouveaux runs avec pert_bias_corr=0 (STATE_noRyu, FORC_noRyu)
 
-Pour chaque run :
-- Bilan interne de mars 2018 : P_mm, ET_mm, Qs_mm, Qsb_mm, dStock_mm, Residu_mm
-- Écart entre moyenne d'ensemble et membre 20 au 31 mars 2018 (SH2O couches 1-4, WA)
-- Dispersion de SH2O par couche au 31 mars 2018 (écart-type moyen et étendue moyenne)
+Ajouts LOT 1c :
+- Stock_end_minus_ol_daic_mm : stock total moyen d'ensemble au 31-03 moins celui d'OL_DAIC
+- ET_minus_ol_daic_mm : ET cumulée du run moins ET d'OL_DAIC
 
-Règle : Les anciennes lignes sont relues depuis les CSV existants (sensitivity_internal_water_balance_201803.csv)
-sans recalcul des flux 201803 existants.
 Sortie : paper1/tables/march2018_ryu_test.csv
 """
 
@@ -122,7 +114,6 @@ def read_restart_dispersion(rst_fp, is_1m=False):
         return res
 
 def main():
-    # Read existing baseline from CSV
     df_old = pd.read_csv(AUDIT_CSV)
     old_wb_dict = {}
     for _, row in df_old.iterrows():
@@ -160,7 +151,6 @@ def main():
             row['Stock_end_mm']   = wb['Stock_end_mm']
             row['wb_status']  = "LOADED_FROM_CSV"
         else:
-            # Need to compute if run finished
             if os.path.exists(rst_fp):
                 fluxes = get_monthly_fluxes(out_dir)
                 if fluxes is not None:
@@ -201,11 +191,29 @@ def main():
         rows.append(row)
         
     df_out = pd.DataFrame(rows)
+    
+    # Add differences relative to OL_DAIC
+    ol_mask = df_out['run'] == 'OL_DAIC'
+    if ol_mask.any():
+        ol_row = df_out[ol_mask].iloc[0]
+        ol_stock_end = ol_row['Stock_end_mm']
+        ol_et = ol_row['ET_mm']
+        
+        df_out['Stock_end_minus_ol_daic_mm'] = df_out['Stock_end_mm'].apply(
+            lambda x: round(x - ol_stock_end, 2) if pd.notnull(x) and pd.notnull(ol_stock_end) else np.nan
+        )
+        df_out['ET_minus_ol_daic_mm'] = df_out['ET_mm'].apply(
+            lambda x: round(x - ol_et, 2) if pd.notnull(x) and pd.notnull(ol_et) else np.nan
+        )
+    else:
+        df_out['Stock_end_minus_ol_daic_mm'] = np.nan
+        df_out['ET_minus_ol_daic_mm'] = np.nan
+        
     os.makedirs(os.path.dirname(OUT_CSV), exist_ok=True)
     df_out.to_csv(OUT_CSV, index=False)
     print(f"[OK] Table générée : {OUT_CSV}")
-    print(df_out[['run', 'P_mm', 'ET_mm', 'Qs_mm', 'Qsb_mm', 'dStock_mm', 'Residu_mm', 
-                  'sh2o_l1_ens_minus_m20_mean', 'sh2o_l2_ens_minus_m20_mean', 'sh2o_l1_std_mean']].to_string(index=False))
+    print(df_out[['run', 'P_mm', 'ET_mm', 'ET_minus_ol_daic_mm', 'dStock_mm', 'Stock_end_mm', 'Stock_end_minus_ol_daic_mm', 'Residu_mm', 
+                  'sh2o_l1_ens_minus_m20_mean', 'sh2o_l1_std_mean']].to_string(index=False))
 
 if __name__ == "__main__":
     main()

@@ -25,6 +25,7 @@
 # --- Large Simulation Outputs, Restarts & CDF Outputs ---
 experiments/**/output/
 experiments/**/restarts/
+experiments/**/restart/
 experiments/**/logs/
 experiments/NorthMor/matrix_2016_2020/CDF/OUTPUT_*/
 experiments/NorthMor/matrix_2016_2020/CDF/combined_OPL_noirr/

@@ -1,0 +1,2 @@
+comparison,variable,date,m20_withRyu_mean,m20_noRyu_mean,mean_diff,mean_abs_diff,max_abs_diff,n_tiles_total,n_tiles_different,are_different
+ENS_STATE_201803_noRyu_m20 vs ENS_STATE_201803_m20,SH2O_layer_1,2018-03-31 23:45,0.17891503870487213,0.17566286027431488,-0.0032521733082830906,0.06316366879849306,0.3186149299144745,16030,15982,True
