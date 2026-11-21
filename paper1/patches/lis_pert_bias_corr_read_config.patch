@@ -1,0 +1,16 @@
+--- src/lisf/lis/core/LIS_readConfig.F90	2026-05-19 23:47:00.000000000 +0100
++++ src/lisf_ryu/lis/core/LIS_readConfig.F90	2026-11-21 22:38:56.000000000 +0100
+@@ -791,11 +791,8 @@
+   call LIS_parseTimeString(time,LIS_rc%pertrestartInterval)
+ 
+   LIS_rc%pert_bias_corr = 1
+-!  if(npert_forc.ne.0.or.npert_state.ne.0) then 
+-!     call ESMF_ConfigGetAttribute(LIS_config,LIS_rc%pert_bias_corr,&
+-!          label="Apply perturbation bias correction:",rc=rc)
+-!     call LIS_verify(rc,'Apply perturbation bias correction: not specified')
+-!  endif
++  call ESMF_ConfigGetAttribute(LIS_config,LIS_rc%pert_bias_corr,&
++       label="Apply perturbation bias correction:",default=1,rc=rc)
+ 
+ !  if(npert_forc.ne.0.or.npert_state.ne.0.or.npert_obs.ne.0) then 
+   call ESMF_ConfigFindLabel(LIS_config,"Perturbations restart filename:",rc=rc)

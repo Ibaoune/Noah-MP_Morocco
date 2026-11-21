@@ -1,0 +1,21 @@
+id,nom,bassin,sous_bassin,lon_obs,lat_obs,lon_hymap,lat_hymap,dist_km,aire_officielle_km2,aire_hymap_km2,ecart_aire_pct,pas_temps,n_obs_2018,n_obs_2017,statut,usage_papier,motif_usage
+b_l_chafia,Lalla Chafia,Bouregreg,Bouregreg,-6.38,33.7,-6.425,33.775,9.72,,3341.6,,journalier,364,365,Retenue — Évaluation principale,journalier,"Bassin autonome Bouregreg, régime amont naturel non régulé, observation complète (364-365 j/an)."
+b_s_jabeur,Sidi Jabeur,Bouregreg,Bouregreg,-6.43,33.58,-6.425,33.575,0.78,,3138.5,,journalier,365,365,Retenue — Évaluation principale,journalier,"Bassin autonome Bouregreg, régime amont naturel non régulé, observation complète (364-365 j/an)."
+ain_timedrine,Ain Timedrine,Sebou,Sebou,-4.5486,33.7475,-4.575,33.725,3.86,4387.0,4448.6,1.15,mensuel,12,12,Retenue — Évaluation principale,mensuel,"Sous-bassin Sebou amont, appariement HyMAP Niveau A (<10% écart d'aire), 12/12 mois complets."
+ait_khabbach,Ait Khabbach,Sebou,Guigou,-4.786,33.4306,-4.825,33.425,4.38,1240.0,1343.0,8.03,mensuel,12,12,Retenue — Évaluation principale,mensuel,"Sous-bassin Sebou amont, appariement HyMAP Niveau A (<10% écart d'aire), 12/12 mois complets."
+azzaba,Azzaba,Sebou,Sebou,-4.6475,33.835,-4.575,33.775,10.46,4640.0,4660.7,0.2,mensuel,12,12,Retenue — Évaluation principale,mensuel,"Sous-bassin Sebou amont, appariement HyMAP Niveau A (<10% écart d'aire), 12/12 mois complets."
+dar_el_hamra,Dar El Hamra,Sebou,Zloul,-4.412,33.7673,-4.375,33.775,4.2,670.0,656.3,-2.28,mensuel,12,12,Retenue — Évaluation principale,mensuel,"Sous-bassin Sebou amont, appariement HyMAP Niveau A (<10% écart d'aire), 12/12 mois complets."
+pont_de_mdez,Pont de Mdez,Sebou,Sebou,-4.5224,33.6748,-4.525,33.625,5.55,3435.0,3429.1,-0.42,mensuel,12,12,Retenue — Évaluation principale,mensuel,"Sous-bassin Sebou amont, appariement HyMAP Niveau A (<10% écart d'aire), 12/12 mois complets."
+b_a_loudah,Ain Loudah,Bouregreg,Bouregreg,-6.76,33.55,-6.775,33.525,3.24,,697.5,,journalier,365,365,Retenue — Avec réserves,exclu,Doublon d'observation ABH : séries de débits mesurés identiques à 96.3% (r = 1.000).
+b_s_cherif,S.M. Cherif,Bouregreg,Bouregreg,-6.63,33.55,-6.625,33.525,2.83,,649.5,,journalier,365,365,Retenue — Avec réserves,exclu,Doublon d'observation ABH : séries de débits mesurés identiques à 96.3% (r = 1.000).
+pont_ait_aissa,Pont Ait Aissa,Sebou,Guiguou,-5.0695,33.167,-5.075,33.125,4.7,205.0,253.7,23.46,mensuel,12,12,Retenue — Avec réserves,mensuel (sensibilité),"Tête de bassin karstique du Guigou (205 km²), apparié Niveau A mais écart d'aire (+23.8%) dû à la résolution 0.05°."
+b_a_ziar,Ain Ziar,Bouregreg,Bouregreg,,,,,,,,,journalier,365,365,Exclue,exclu,"Coordonnées géographiques manquantes dans toutes les archives ABH, non positionnable sur HyMAP."
+b_r_fathia,Ras Fathia,Bouregreg,Bouregreg,,,,,,,,,journalier,365,365,Exclue,exclu,"Coordonnées géographiques manquantes dans toutes les archives ABH, non positionnable sur HyMAP."
+adamna,Adamna,Ksob,Ksob,-9.6847,31.4595,-9.675,31.475,2.03,,1617.0,,mensuel,0,8,Exclue,exclu,"Enregistrement arrêté en août 2017 (0 obs en 2018, 8 obs en 2017)."
+igrounzar,Igrounzar,Ksob,Igrounzar,-9.5685,31.3486,,,,,,,mensuel,0,0,Exclue,exclu,Station historique fermée avant la période simulée (arrêt en août 2013).
+zelten,Zelten,Ksob,Igrounzar,-9.5687,31.3402,,,,,,,mensuel,0,0,Exclue,exclu,Station historique fermée avant la période simulée (arrêt en août 2013).
+ain_aicha,Ain Aicha,Sebou,Ouergha,-4.6957,34.4602,,,,2420.0,,,mensuel,0,0,Exclue,exclu,Station fermée avant la période simulée (arrêt en août 2015).
+ain_al_ouali,Ain Al Ouali,Sebou,Lyhoudi,-4.7977,33.9932,,,,408.0,,,mensuel,0,0,Exclue,exclu,Station fermée avant la période simulée (arrêt en août 2015).
+azib_soltane,Azib Soltane,Sebou,Sebou,-5.4866,34.3269,,,,16150.0,,,mensuel,0,0,Exclue,exclu,Station fermée avant la période simulée (arrêt en août 2015).
+el_mers,El Mers,Sebou,Masser,-4.3983,33.4641,-4.375,33.425,5.06,1004.0,972.2,-3.41,mensuel,0,8,Exclue,exclu,Données incomplètes sur la période (arrêt avant 2018 : 0 obs en 2018).
+allal_tazi,Sidi Allal Tazi,Sebou,SEBOU,-6.3283,34.5213,,,,26600.0,,,mensuel,0,0,Exclue,exclu,Station historique fermée en septembre 1991.

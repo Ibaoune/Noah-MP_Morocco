@@ -1,0 +1,2 @@
+selected_year,P_annual_mm_landmean,rule,status
+2017,177.03,"min P among 2017,2019,2020 with complete days and DA_nocdf restarts at 01-01",OK

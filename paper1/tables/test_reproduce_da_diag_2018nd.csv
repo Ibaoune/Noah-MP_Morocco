@@ -1,0 +1,6 @@
+variable,test_date,max_abs_diff,mean_abs_diff,threshold,status
+SoilMoist_tavg,2018-11-01,0.0,0.0,1e-06,PASSED
+Evap_tavg,2018-11-01,0.0,0.0,1e-06,PASSED
+Qs_tavg,2018-11-01,0.0,0.0,1e-06,PASSED
+Qsb_tavg,2018-11-01,0.0,0.0,1e-06,PASSED
+TotalPrecip_tavg,2018-11-01,0.0,0.0,1e-06,PASSED

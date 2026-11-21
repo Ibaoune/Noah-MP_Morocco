@@ -1,0 +1,6 @@
+year,n_days_expected,n_days_found,P_annual_mm_landmean,P_sum_found_days_mm_landmean,n_land_cells_landmask,n_land_cells_valid_min,source_variable,source_run,missing_days,is_candidate,da_nocdf_surf_restart_0101_exists,da_nocdf_pert_restart_0101_exists
+2016,366,366,281.65,281.65,16030,16030,TotalPrecip_tavg,OPL_noirr_2016_2020,,False,False,False
+2017,365,365,177.03,177.03,16030,16030,TotalPrecip_tavg,OPL_noirr_2016_2020,,True,True,True
+2018,365,365,379.39,379.39,16030,16030,TotalPrecip_tavg,OPL_noirr_2016_2020,,False,True,True
+2019,365,365,184.13,184.13,16030,16030,TotalPrecip_tavg,OPL_noirr_2016_2020,,True,True,True
+2020,366,366,192.3,192.3,16030,16030,TotalPrecip_tavg,OPL_noirr_2016_2020,,True,True,True
