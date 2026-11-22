@@ -1,16 +1,16 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-22 04:57:59  
-**Étape atteinte :** Étape 6
+**Dernière mise à jour :** 2026-11-22 05:09:15  
+**Étape atteinte :** Étape 7
 
 ## 1. Statut des Jobs en Cours et Historiques
 
 | Job ID | Nom | État | Date Simulée Actuelle | Vitesse (dernière heure, j/h) | Fin Estimée | Limite `--time` | Risque Dépassement |
 |---|---|---|---|---|---|---|---|
 | 8360343 | RegCM_Morocco | RUNNING | Production externe | N/A | Indeterminee | 1-12:00:00 | non |
-| 8360359 | ENS_OPL_2017 | RUNNING | 2017-05-10 00:00 | 20.71 | 2026-11-22 16:21:36 | 16:00:00 | oui |
+| 8360359 | ENS_OPL_2017 | RUNNING | 2017-05-14 00:00 | 21.00 | 2026-11-22 16:12:07 | 16:00:00 | oui |
 | 8360360 | OL_DAIC_2017 | COMPLETED | 2018-01-01 | 0.00 | 2026-11-22T00:54:33 | 03:30:00 | non |
-| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-05-07 00:00 | 20.14 | 2026-11-22 16:49:57 | 16:00:00 | oui |
+| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-05-11 00:00 | 20.00 | 2026-11-22 16:54:15 | 16:00:00 | oui |
 | 8360362 | DA_nocdf_nostate_2018MAM | COMPLETED | 2018-06-01 | 0.00 | 2026-11-22T03:10:46 | 06:00:00 | non |
 | 8360363 | DA_nocdf_diag_2018ND | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T01:45:10 | 04:30:00 | non |
 | 8360364 | ENS_STATE_201803_noRyu | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T00:18:54 | 04:00:00 | non |
@@ -21,6 +21,12 @@
 | 8360678 | hm2_ol_daic_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:36 | 00:30:00 | non |
 | 8360679 | hm2_ens_opl_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:33 | 00:30:00 | non |
 | 8360680 | hm2_da_nocdf_nowilt_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:34 | 00:30:00 | non |
+| 8361185 | ENS_corr_2018 | RUNNING | 2018-02-12 00:00 | 21.00 | 2026-11-22 20:32:07 | 1-00:00:00 | non |
+| 8361186 | DA_corr_2018 | RUNNING | 2018-02-11 00:00 | 20.00 | 2026-11-22 21:21:15 | 1-00:00:00 | non |
+| 8361362 | ENS_STATE_201803_diag | RUNNING | 2018-03-26 00:00 | 21.00 | 2026-11-22 05:26:24 | 03:30:00 | non |
+| 8361363 | ENS_STATE_201803_noRyu_diag | RUNNING | 2018-03-26 00:00 | 21.00 | 2026-11-22 05:26:24 | 03:30:00 | non |
+| 8361364 | ENS_FORC_201803_diag | RUNNING | 2018-03-26 00:00 | 21.00 | 2026-11-22 05:26:24 | 03:30:00 | non |
+| 8361365 | ENS_FORC_201803_noRyu_diag | RUNNING | 2018-03-26 00:00 | 21.00 | 2026-11-22 05:26:24 | 03:30:00 | non |
 
 ## 2. Rapports Produits
 - [REPORT_LOT1.md](paper1/REPORT_LOT1.md)
@@ -42,11 +48,13 @@
 - [applied_vs_archived_increments_summary_v2.csv](paper1/tables/applied_vs_archived_increments_summary_v2.csv)
 - [applied_vs_archived_increments_v2.csv](paper1/tables/applied_vs_archived_increments_v2.csv)
 - [comparison_da_nocdf_vs_nostate_mam2018.csv](paper1/tables/comparison_da_nocdf_vs_nostate_mam2018.csv)
+- [corrected_runs_jan2018_water_balance.csv](paper1/tables/corrected_runs_jan2018_water_balance.csv)
 - [da_15min_applied_vs_archived_increments.csv](paper1/tables/da_15min_applied_vs_archived_increments.csv)
 - [da_diagnostics_inventory.md](paper1/tables/da_diagnostics_inventory.md)
 - [da_nocdf_annual_runoff_catchment_2016_2020.csv](paper1/tables/da_nocdf_annual_runoff_catchment_2016_2020.csv)
 - [daic_2017_stock_gap.csv](paper1/tables/daic_2017_stock_gap.csv)
 - [daily_streamflow_lalla_chafia_sidi_jabeur_2018.csv](paper1/tables/daily_streamflow_lalla_chafia_sidi_jabeur_2018.csv)
+- [diff_da_corr_minus_ens_corr_jan2018.csv](paper1/tables/diff_da_corr_minus_ens_corr_jan2018.csv)
 - [dry_year_selection.csv](paper1/tables/dry_year_selection.csv)
 - [et_direction_of_change.csv](paper1/tables/et_direction_of_change.csv)
 - [et_evaluation.csv](paper1/tables/et_evaluation.csv)
@@ -111,4 +119,4 @@
 Aucun probleme bloquant.
 
 ## 6. Résultat des Tentatives de Git Push
-`Succes: git push origin paper1-closure au 2026-11-22 04:31:32`
+`Succes: git push origin paper1-closure au 2026-11-22 04:57:59`

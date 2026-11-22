@@ -1,0 +1,40 @@
+--- /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_nocdf_nowilt_2018/config/lis_DA_nocdf_nowilt_2018.config	2026-11-17 23:49:12.000000000 +0100
++++ /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_corr_2018/config/lis_DA_corr_2018.config	2026-11-22 02:56:48.000000000 +0100
+@@ -38,8 +38,8 @@
+ Ending minute:                          00
+ Ending second:                          00
+ Undefined value:                       -9999
+-Output directory:                       "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_nocdf_nowilt_2018/output"
+-Diagnostic output file:                 "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_nocdf_nowilt_2018/logs/lislog_DA_nocdf_nowilt_2018"
++Output directory:                       "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_corr_2018/output"
++Diagnostic output file:                 "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_corr_2018/logs/lislog_DA_corr_2018"
+ Number of ensembles per tile:           20
+ 
+ #The following options are used for subgrid tiling based on vegetation
+@@ -70,14 +70,14 @@
+ Number of data assimilation instances:                1
+ Data assimilation algorithm:                          "EnKF"
+ Data assimilation set:                                "SMAP(NASA) soil moisture"
+-Data assimilation exclude analysis increments:        0 
++Data assimilation exclude analysis increments:        0
+ Data assimilation output interval for diagnostics:    "1da"
+ Data assimilation number of observation types:        1
+ Data assimilation output ensemble spread:             1
+ Data assimilation scaling strategy:                   "none"
+ Data assimilation observation domain file:            ./data/lis_input/lis_input_NorthMor_5km.nc
+-Data assimilation output processed observations:      1 
+-Data assimilation output innovations:                 1 
++Data assimilation output processed observations:      1
++Data assimilation output innovations:                 1
+ Number of state variables:                            4
+ 
+ SMAP(NASA) soil moisture data designation:        SPL3SMP_E
+@@ -165,7 +165,7 @@
+ Emissivity data source:                 none
+ 
+ Forcing perturbation algorithm:           "GMAO scheme"
+-State perturbation algorithm:             "GMAO scheme"
++State perturbation algorithm:             "none"
+ Observation perturbation algorithm:       "GMAO scheme"
+ 
+ Perturbations start mode:                 "restart"

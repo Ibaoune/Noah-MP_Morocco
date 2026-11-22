@@ -15,7 +15,13 @@ jobs_info = [
     {"id": "8360646", "name": "hm2_5y_lr0_da_cdf", "type": "routing", "out": "experiments/NorthMor/routing/output/DA_cdf_linres0_2016_2020", "period": "2016-01-01 to 2021-01-01"},
     {"id": "8360678", "name": "hm2_ol_daic_2018_linres0", "type": "routing", "out": "experiments/NorthMor/routing/output/OL_DAIC_linres0_2018", "period": "2018-01-01 to 2019-01-01"},
     {"id": "8360679", "name": "hm2_ens_opl_2018_linres0", "type": "routing", "out": "experiments/NorthMor/routing/output/ENS_OPL_linres0_2018", "period": "2018-01-01 to 2019-01-01"},
-    {"id": "8360680", "name": "hm2_da_nocdf_nowilt_2018_linres0", "type": "routing", "out": "experiments/NorthMor/routing/output/DA_nocdf_nowilt_linres0_2018", "period": "2018-01-01 to 2019-01-01"}
+    {"id": "8360680", "name": "hm2_da_nocdf_nowilt_2018_linres0", "type": "routing", "out": "experiments/NorthMor/routing/output/DA_nocdf_nowilt_linres0_2018", "period": "2018-01-01 to 2019-01-01"},
+    {"id": "8361185", "name": "ENS_corr_2018", "type": "lis", "out": "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/ENS_corr_2018/output", "period": "2018-01-01 to 2019-01-01"},
+    {"id": "8361186", "name": "DA_corr_2018", "type": "lis", "out": "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_corr_2018/output", "period": "2018-01-01 to 2019-01-01"},
+    {"id": "8361362", "name": "ENS_STATE_201803_diag", "type": "lis", "out": "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/diag_mech/ENS_STATE_201803/output", "period": "2018-03-01 to 2018-04-01"},
+    {"id": "8361363", "name": "ENS_STATE_201803_noRyu_diag", "type": "lis", "out": "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/diag_mech/ENS_STATE_201803_noRyu/output", "period": "2018-03-01 to 2018-04-01"},
+    {"id": "8361364", "name": "ENS_FORC_201803_diag", "type": "lis", "out": "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/diag_mech/ENS_FORC_201803/output", "period": "2018-03-01 to 2018-04-01"},
+    {"id": "8361365", "name": "ENS_FORC_201803_noRyu_diag", "type": "lis", "out": "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/diag_mech/ENS_FORC_201803_noRyu/output", "period": "2018-03-01 to 2018-04-01"}
 ]
 
 # Query sacct
@@ -48,82 +54,119 @@ for j in jobs_info:
     elapsed = s.get("elapsed", "UNKNOWN")
     
     cur_date = "N/A"
-    speed_1h = "N/A"
-    est_end = end if state == "COMPLETED" else "N/A"
+    speed = 0.0
+    est_end = "N/A"
     risk = "non"
     
-    if j["type"] == "lis" and j["out"] and os.path.exists(j["out"]):
-        nc_files = sorted(glob.glob(os.path.join(j["out"], "SURFACEMODEL/**/*.nc"), recursive=True))
-        hist_files = [f for f in nc_files if "LIS_HIST" in f]
-        rst_files = [f for f in nc_files if "LIS_RST" in f]
-        if hist_files:
-            last_hist = os.path.basename(hist_files[-1])
-            dstr = last_hist.replace("LIS_HIST_", "").split(".")[0]
-            cur_date = f"{dstr[:4]}-{dstr[4:6]}-{dstr[6:8]} {dstr[8:10]}:{dstr[10:12]}"
+    if j["type"] == "regcm":
+        cur_date = "Production externe"
+        speed = "N/A"
+        est_end = "Indeterminee"
+        risk = "non"
+    elif j["type"] == "lis":
         if state == "COMPLETED":
             cur_date = j["period"].split(" to ")[1]
-            speed_1h = "0.00"
+            speed = 0.0
+            est_end = end
             risk = "non"
         elif state == "RUNNING":
-            recent = [f for f in hist_files if datetime.datetime.fromtimestamp(os.path.getmtime(f)) >= one_hour_ago]
-            if len(recent) >= 2:
-                t0 = os.path.getmtime(recent[0])
-                t1 = os.path.getmtime(recent[-1])
-                dt = (t1 - t0) / 3600.0
-                spd = (len(recent) - 1) / dt if dt > 0 else 0
-                speed_1h = f"{spd:.2f}"
-                target_dt = datetime.datetime.strptime(j["period"].split(" to ")[1].strip(), "%Y-%m-%d")
-                curr_dt = datetime.datetime.strptime(dstr[:8], "%Y%m%d")
-                rem_days = (target_dt - curr_dt).days
-                if spd > 0:
-                    rem_hours = rem_days / spd
-                    est_finish = now + datetime.timedelta(hours=rem_hours)
-                    est_end = est_finish.strftime("%Y-%m-%d %H:%M:%S")
+            # Check latest file in output
+            out_dir = j["out"]
+            files = sorted(glob.glob(os.path.join(out_dir, "SURFACEMODEL", "*", "LIS_HIST_*.d01.nc")))
+            if not files:
+                files = sorted(glob.glob(os.path.join(out_dir, "**", "LIS_HIST_*.d01.nc"), recursive=True))
+            if files:
+                latest = files[-1]
+                bname = os.path.basename(latest)
+                # LIS_HIST_YYYYMMDDHHMM.d01.nc
+                dt_str = bname.replace("LIS_HIST_", "").replace(".d01.nc", "")
+                try:
+                    f_dt = datetime.datetime.strptime(dt_str, "%Y%m%d%H%M")
+                    cur_date = f_dt.strftime("%Y-%m-%d %H:%M")
+                except:
+                    cur_date = dt_str
+                
+                # Count files created in last hour
+                recent_files = [f for f in files if datetime.datetime.fromtimestamp(os.path.getmtime(f)) >= one_hour_ago]
+                speed = len(recent_files) * 1.0 # 1 daily file = 1 day
+                
+                # Estimate end date
+                target_dt = datetime.datetime.strptime(j["period"].split(" to ")[1], "%Y-%m-%d")
+                curr_dt = datetime.datetime.strptime(cur_date.split()[0], "%Y-%m-%d")
+                remaining_days = (target_dt - curr_dt).days
+                if speed > 0:
+                    hours_needed = remaining_days / speed
+                    est_end_dt = now + datetime.timedelta(hours=hours_needed)
+                    est_end = est_end_dt.strftime("%Y-%m-%d %H:%M:%S")
                     
-                    # check timelimit
-                    tl_parts = tlimit.split(":")
-                    tl_hours = float(tl_parts[0]) + float(tl_parts[1])/60.0
-                    el_parts = elapsed.split(":")
-                    el_hours = float(el_parts[0]) + float(el_parts[1])/60.0
-                    if (el_hours + rem_hours) > tl_hours:
+                    # Risk of exceeding limit
+                    # parse tlimit (format D-HH:MM:SS or HH:MM:SS)
+                    parts_tl = tlimit.split("-")
+                    if len(parts_tl) == 2:
+                        days_tl = int(parts_tl[0])
+                        hms = parts_tl[1].split(":")
+                    else:
+                        days_tl = 0
+                        hms = parts_tl[0].split(":")
+                    tot_tl_hours = days_tl * 24 + int(hms[0]) + int(hms[1])/60.0
+                    
+                    # parse elapsed
+                    parts_el = elapsed.split("-")
+                    if len(parts_el) == 2:
+                        days_el = int(parts_el[0])
+                        hms_el = parts_el[1].split(":")
+                    else:
+                        days_el = 0
+                        hms_el = parts_el[0].split(":")
+                    tot_el_hours = days_el * 24 + int(hms_el[0]) + int(hms_el[1])/60.0
+                    
+                    rem_tl_hours = tot_tl_hours - tot_el_hours
+                    if hours_needed > rem_tl_hours:
                         risk = "oui"
+                else:
+                    est_end = "Inconnue (vitesse=0)"
             else:
-                speed_1h = "calcul en cours"
+                cur_date = "Initialisation"
+                est_end = "Indeterminee"
+        else:
+            cur_date = "Non demarre / En attente"
+            est_end = "N/A"
     elif j["type"] == "routing":
         if state == "COMPLETED":
             cur_date = j["period"].split(" to ")[1]
-            speed_1h = "0.00"
+            speed = 0.0
+            est_end = end
             risk = "non"
-    elif j["type"] == "regcm":
-        cur_date = "Production externe"
-        speed_1h = "N/A"
-        risk = "non"
-        est_end = "Indeterminee"
-        
-    row = {
+        elif state == "RUNNING":
+            cur_date = "En cours"
+            speed = "N/A"
+            est_end = "Imminente"
+            risk = "non"
+        else:
+            cur_date = "En attente"
+            est_end = "N/A"
+
+    rows.append({
         "job_id": j["id"],
         "job_name": j["name"],
         "state": state,
         "current_simulated_date": cur_date,
-        "speed_last_hour_days_per_hour": speed_1h,
+        "speed_last_hour_days_per_hour": f"{speed:.2f}" if isinstance(speed, float) else speed,
         "estimated_end": est_end,
         "time_limit": tlimit,
         "risk_of_exceeding_limit": risk
-    }
-    rows.append(row)
+    })
 
-# Save to CSV
 os.makedirs("paper1/tables", exist_ok=True)
-csv_path = "paper1/tables/jobs_status_night.csv"
-fieldnames = ["job_id", "job_name", "state", "current_simulated_date", "speed_last_hour_days_per_hour", "estimated_end", "time_limit", "risk_of_exceeding_limit"]
-with open(csv_path, "w", newline="") as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames)
+with open("paper1/tables/jobs_status_night.csv", "w", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=[
+        "job_id", "job_name", "state", "current_simulated_date",
+        "speed_last_hour_days_per_hour", "estimated_end", "time_limit", "risk_of_exceeding_limit"
+    ])
     writer.writeheader()
     writer.writerows(rows)
 
-print(f"Saved {csv_path}")
-
-# Print markdown table
+print("Saved paper1/tables/jobs_status_night.csv")
 print("| job_id | job_name | state | current_simulated_date | speed_last_hour_days_per_hour | estimated_end | time_limit | risk_of_exceeding_limit |")
 print("|---|---|---|---|---|---|---|---|")
 for r in rows:

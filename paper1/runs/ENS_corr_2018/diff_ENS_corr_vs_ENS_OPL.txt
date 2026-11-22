@@ -1,0 +1,22 @@
+--- /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/ENS_OPL_2018/config/lis_ENS_OPL_2018.config	2026-11-18 12:27:35.000000000 +0100
++++ /home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/ENS_corr_2018/config/lis_ENS_corr_2018.config	2026-11-22 02:56:48.000000000 +0100
+@@ -38,8 +38,8 @@
+ Ending minute:                          00
+ Ending second:                          00
+ Undefined value:                       -9999
+-Output directory:                       "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/ENS_OPL_2018/output"
+-Diagnostic output file:                 "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/ENS_OPL_2018/logs/lislog_ENS_OPL_2018"
++Output directory:                       "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/ENS_corr_2018/output"
++Diagnostic output file:                 "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco/experiments/NorthMor/matrix_2016_2020/sensitivity_2018/ENS_corr_2018/logs/lislog_ENS_corr_2018"
+ Number of ensembles per tile:           20
+ 
+ #The following options are used for subgrid tiling based on vegetation
+@@ -165,7 +165,7 @@
+ Emissivity data source:                 none
+ 
+ Forcing perturbation algorithm:           "GMAO scheme"
+-State perturbation algorithm:             "GMAO scheme"
++State perturbation algorithm:             "none"
+ Observation perturbation algorithm:       "GMAO scheme"
+ 
+ Perturbations start mode:                 "restart"
