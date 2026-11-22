@@ -1,7 +1,7 @@
 # Rapport d'Exécution — LOT 2/4 : Routage HyMAP-2 (linres = 0) et Évaluations Débits & ET (RQ3)
 
-**Date de génération :** 2026-11-22 01:46:30  
-**Dépôt principal :** `paper1-closure` (`ec79869c041b50fab16b9c6e57ce09898ad2ac8c`)  
+**Date de génération :** 2026-11-22 04:06:18  
+**Dépôt principal :** `paper1-closure` (`dba4d5ee52a189f4a78221cd28044faef76d2894`)  
 **Dépôt smap-xai-audit :** `elaabar` (`18d694ecd3d29477133b95e68875a8735644c198`)  
 
 Ce rapport technique consigne l'exécution intégrale du **Lot 2/4** conformément au cahier des charges :

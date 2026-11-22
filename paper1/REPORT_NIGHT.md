@@ -1,16 +1,16 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-22 03:58:09  
-**Étape atteinte :** Étape 2
+**Dernière mise à jour :** 2026-11-22 04:07:59  
+**Étape atteinte :** Étape 3
 
 ## 1. Statut des Jobs en Cours et Historiques
 
 | Job ID | Nom | État | Date Simulée Actuelle | Vitesse (dernière heure, j/h) | Fin Estimée | Limite `--time` | Risque Dépassement |
 |---|---|---|---|---|---|---|---|
 | 8360343 | RegCM_Morocco | RUNNING | Production externe | N/A | Indeterminee | 1-12:00:00 | non |
-| 8360359 | ENS_OPL_2017 | RUNNING | 2017-04-19 00:00 | 20.65 | 2026-11-22 16:24:57 | 16:00:00 | oui |
+| 8360359 | ENS_OPL_2017 | RUNNING | 2017-04-22 00:00 | 20.66 | 2026-11-22 16:25:28 | 16:00:00 | oui |
 | 8360360 | OL_DAIC_2017 | COMPLETED | 2018-01-01 | 0.00 | 2026-11-22T00:54:33 | 03:30:00 | non |
-| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-04-17 00:00 | 20.06 | 2026-11-22 16:52:39 | 16:00:00 | oui |
+| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-04-20 00:00 | 20.07 | 2026-11-22 16:53:17 | 16:00:00 | oui |
 | 8360362 | DA_nocdf_nostate_2018MAM | COMPLETED | 2018-06-01 | 0.00 | 2026-11-22T03:10:46 | 06:00:00 | non |
 | 8360363 | DA_nocdf_diag_2018ND | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T01:45:10 | 04:30:00 | non |
 | 8360364 | ENS_STATE_201803_noRyu | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T00:18:54 | 04:00:00 | non |
@@ -32,6 +32,7 @@
 - [REPORT_NIGHT_0.md](paper1/REPORT_NIGHT_0.md)
 - [REPORT_NIGHT_1.md](paper1/REPORT_NIGHT_1.md)
 - [REPORT_NIGHT_2.md](paper1/REPORT_NIGHT_2.md)
+- [REPORT_NIGHT_3.md](paper1/REPORT_NIGHT_3.md)
 
 ## 3. Tables Produites
 - [annual_precip_2016_2020.csv](paper1/tables/annual_precip_2016_2020.csv)
@@ -45,6 +46,8 @@
 - [et_evaluation.csv](paper1/tables/et_evaluation.csv)
 - [et_evaluation_by_texture.csv](paper1/tables/et_evaluation_by_texture.csv)
 - [jobs_status_night.csv](paper1/tables/jobs_status_night.csv)
+- [lalla_chafia_linres_comparison_summary_2018.csv](paper1/tables/lalla_chafia_linres_comparison_summary_2018.csv)
+- [lalla_chafia_streamflow_linres1_vs_linres0_2018.csv](paper1/tables/lalla_chafia_streamflow_linres1_vs_linres0_2018.csv)
 - [m20_noryu_comparison.csv](paper1/tables/m20_noryu_comparison.csv)
 - [march2018_mechanism_budget.csv](paper1/tables/march2018_mechanism_budget.csv)
 - [march2018_mechanism_by_texture.csv](paper1/tables/march2018_mechanism_by_texture.csv)
@@ -75,4 +78,4 @@
 Aucun probleme bloquant.
 
 ## 6. Résultat des Tentatives de Git Push
-`Succes: git push origin paper1-closure au 2026-11-22 03:08:38`
+`Succes: git push origin paper1-closure au 2026-11-22 03:58:09`

@@ -96,7 +96,7 @@ def main():
         "### b) Preuve que l'option `pert_bias_corr = 0` a bien été lue",
         "",
         "1. **Comparaison du membre 20 au 31-03-2018 23:45** :",
-        "Dans la production et le code d'origine (`pert_bias_corr=1`), le membre 20 est verrouillé sur l'état non perturbé (`OL_DAIC`). Avec `pert_bias_corr=0`, le membre 20 reçoit les perturbations comme l'ensemble des membres et évolue librement.",
+        "Dans la production et le code d'origine (`pert_bias_corr=1`), le membre 20 est le membre non perturbé de l'ensemble (distinct d'`OL_DAIC` en raison de conditions initiales différentes). Avec `pert_bias_corr=0`, le membre 20 reçoit les perturbations comme l'ensemble des membres et évolue librement.",
         "",
         table_m20_md,
         "",
