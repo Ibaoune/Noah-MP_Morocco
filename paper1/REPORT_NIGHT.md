@@ -1,6 +1,6 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-22 23:23:35  
+**Dernière mise à jour :** 2026-11-22 23:43:31  
 **Étape atteinte :** Étape jour1
 
 ## 1. Statut des Jobs en Cours et Historiques
@@ -48,6 +48,8 @@
 - [annual_precip_2016_2020.csv](paper1/tables/annual_precip_2016_2020.csv)
 - [applied_vs_archived_increments_summary_v2.csv](paper1/tables/applied_vs_archived_increments_summary_v2.csv)
 - [applied_vs_archived_increments_v2.csv](paper1/tables/applied_vs_archived_increments_v2.csv)
+- [cache_et_2017](paper1/tables/cache_et_2017)
+- [clean_differences_2017.csv](paper1/tables/clean_differences_2017.csv)
 - [clean_differences_2018.csv](paper1/tables/clean_differences_2018.csv)
 - [comparison_da_nocdf_vs_nostate_mam2018.csv](paper1/tables/comparison_da_nocdf_vs_nostate_mam2018.csv)
 - [corrected_runs_jan2018_water_balance.csv](paper1/tables/corrected_runs_jan2018_water_balance.csv)
@@ -60,9 +62,11 @@
 - [daily_streamflow_lalla_chafia_sidi_jabeur_2018.csv](paper1/tables/daily_streamflow_lalla_chafia_sidi_jabeur_2018.csv)
 - [diff_da_corr_minus_ens_corr_jan2018.csv](paper1/tables/diff_da_corr_minus_ens_corr_jan2018.csv)
 - [dry_year_selection.csv](paper1/tables/dry_year_selection.csv)
+- [e5_2017_by_texture.csv](paper1/tables/e5_2017_by_texture.csv)
 - [et_direction_of_change.csv](paper1/tables/et_direction_of_change.csv)
 - [et_direction_of_change_corrected_2018.csv](paper1/tables/et_direction_of_change_corrected_2018.csv)
 - [et_evaluation.csv](paper1/tables/et_evaluation.csv)
+- [et_evaluation_2017.csv](paper1/tables/et_evaluation_2017.csv)
 - [et_evaluation_by_texture.csv](paper1/tables/et_evaluation_by_texture.csv)
 - [et_evaluation_corrected_2018.csv](paper1/tables/et_evaluation_corrected_2018.csv)
 - [innovations_and_spread_by_month_and_texture.csv](paper1/tables/innovations_and_spread_by_month_and_texture.csv)
@@ -89,14 +93,19 @@
 - [runs_status.csv](paper1/tables/runs_status.csv)
 - [status_long_runs_step5.csv](paper1/tables/status_long_runs_step5.csv)
 - [streamflow_metrics.csv](paper1/tables/streamflow_metrics.csv)
+- [streamflow_metrics_2017.csv](paper1/tables/streamflow_metrics_2017.csv)
 - [streamflow_metrics_corrected_2018.csv](paper1/tables/streamflow_metrics_corrected_2018.csv)
 - [streamflow_nic.csv](paper1/tables/streamflow_nic.csv)
+- [streamflow_nic_2017.csv](paper1/tables/streamflow_nic_2017.csv)
 - [streamflow_nic_corrected_2018.csv](paper1/tables/streamflow_nic_corrected_2018.csv)
 - [table2_stations.csv](paper1/tables/table2_stations.csv)
 - [table2_stations.md](paper1/tables/table2_stations.md)
 - [test_reproduce_da_diag_2018nd.csv](paper1/tables/test_reproduce_da_diag_2018nd.csv)
 - [top20_cells_innovations_and_increments.csv](paper1/tables/top20_cells_innovations_and_increments.csv)
 - [top20_cells_qsb_difference.csv](paper1/tables/top20_cells_qsb_difference.csv)
+- [water_balance_2017_annual.csv](paper1/tables/water_balance_2017_annual.csv)
+- [water_balance_2017_monthly.csv](paper1/tables/water_balance_2017_monthly.csv)
+- [water_balance_2018_vs_2017.csv](paper1/tables/water_balance_2018_vs_2017.csv)
 - [water_balance_corrected_2018_annual.csv](paper1/tables/water_balance_corrected_2018_annual.csv)
 - [water_balance_corrected_2018_monthly.csv](paper1/tables/water_balance_corrected_2018_monthly.csv)
 - [water_balance_upstream_catchments_2018.csv](paper1/tables/water_balance_upstream_catchments_2018.csv)
@@ -135,7 +144,7 @@
 Aucun probleme bloquant.
 
 ## 6. Résultat des Tentatives de Git Push
-`Succes: git push origin paper1-closure au 2026-11-22 13:43:56`
+`Succes: git push origin paper1-closure au 2026-11-22 23:23:35`
 
 ## 7. Corrections Factuelles Apportées aux Analyses de la Nuit
 
