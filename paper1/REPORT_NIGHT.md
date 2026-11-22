@@ -1,6 +1,6 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-22 13:43:56  
+**Dernière mise à jour :** 2026-11-22 23:23:35  
 **Étape atteinte :** Étape jour1
 
 ## 1. Statut des Jobs en Cours et Historiques
@@ -8,9 +8,9 @@
 | Job ID | Nom | État | Date Simulée Actuelle | Vitesse (dernière heure, j/h) | Fin Estimée | Limite `--time` | Risque Dépassement |
 |---|---|---|---|---|---|---|---|
 | 8360343 | RegCM_Morocco | COMPLETED | Production externe | N/A | Indeterminee | 1-12:00:00 | non |
-| 8360359 | ENS_OPL_2017 | RUNNING | 2017-11-06 00:00 | 21.00 | 2026-11-22 16:23:56 | 16:00:00 | oui |
+| 8360359 | ENS_OPL_2017 | TIMEOUT | Non demarre / En attente | 0.00 | N/A | 16:00:00 | non |
 | 8360360 | OL_DAIC_2017 | COMPLETED | 2018-01-01 | 0.00 | 2026-11-22T00:54:33 | 03:30:00 | non |
-| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-10-30 00:00 | 20.00 | 2026-11-22 16:52:56 | 16:00:00 | oui |
+| 8360361 | DA_nocdf_nowilt_2017 | TIMEOUT | Non demarre / En attente | 0.00 | N/A | 16:00:00 | non |
 | 8360362 | DA_nocdf_nostate_2018MAM | COMPLETED | 2018-06-01 | 0.00 | 2026-11-22T03:10:46 | 06:00:00 | non |
 | 8360363 | DA_nocdf_diag_2018ND | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T01:45:10 | 04:30:00 | non |
 | 8360364 | ENS_STATE_201803_noRyu | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T00:18:54 | 04:00:00 | non |
@@ -21,8 +21,8 @@
 | 8360678 | hm2_ol_daic_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:36 | 00:30:00 | non |
 | 8360679 | hm2_ens_opl_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:33 | 00:30:00 | non |
 | 8360680 | hm2_da_nocdf_nowilt_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:34 | 00:30:00 | non |
-| 8361185 | ENS_corr_2018 | RUNNING | 2018-08-08 00:00 | 21.00 | 2026-11-22 20:41:05 | 1-00:00:00 | non |
-| 8361186 | DA_corr_2018 | RUNNING | 2018-08-03 00:00 | 20.00 | 2026-11-22 21:16:56 | 1-00:00:00 | non |
+| 8361185 | ENS_corr_2018 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T20:48:54 | 1-00:00:00 | non |
+| 8361186 | DA_corr_2018 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T21:09:17 | 1-00:00:00 | non |
 | 8361362 | ENS_STATE_201803_diag | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T05:26:06 | 03:30:00 | non |
 | 8361363 | ENS_STATE_201803_noRyu_diag | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T05:26:16 | 03:30:00 | non |
 | 8361364 | ENS_FORC_201803_diag | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T05:26:17 | 03:30:00 | non |
@@ -48,10 +48,12 @@
 - [annual_precip_2016_2020.csv](paper1/tables/annual_precip_2016_2020.csv)
 - [applied_vs_archived_increments_summary_v2.csv](paper1/tables/applied_vs_archived_increments_summary_v2.csv)
 - [applied_vs_archived_increments_v2.csv](paper1/tables/applied_vs_archived_increments_v2.csv)
+- [clean_differences_2018.csv](paper1/tables/clean_differences_2018.csv)
 - [comparison_da_nocdf_vs_nostate_mam2018.csv](paper1/tables/comparison_da_nocdf_vs_nostate_mam2018.csv)
 - [corrected_runs_jan2018_water_balance.csv](paper1/tables/corrected_runs_jan2018_water_balance.csv)
 - [da_15min_applied_vs_archived_increments.csv](paper1/tables/da_15min_applied_vs_archived_increments.csv)
 - [da_cdf_annual_runoff_catchment_2016_2020.csv](paper1/tables/da_cdf_annual_runoff_catchment_2016_2020.csv)
+- [da_corr_diagnostics_2018.csv](paper1/tables/da_corr_diagnostics_2018.csv)
 - [da_diagnostics_inventory.md](paper1/tables/da_diagnostics_inventory.md)
 - [da_nocdf_annual_runoff_catchment_2016_2020.csv](paper1/tables/da_nocdf_annual_runoff_catchment_2016_2020.csv)
 - [daic_2017_stock_gap.csv](paper1/tables/daic_2017_stock_gap.csv)
@@ -59,9 +61,12 @@
 - [diff_da_corr_minus_ens_corr_jan2018.csv](paper1/tables/diff_da_corr_minus_ens_corr_jan2018.csv)
 - [dry_year_selection.csv](paper1/tables/dry_year_selection.csv)
 - [et_direction_of_change.csv](paper1/tables/et_direction_of_change.csv)
+- [et_direction_of_change_corrected_2018.csv](paper1/tables/et_direction_of_change_corrected_2018.csv)
 - [et_evaluation.csv](paper1/tables/et_evaluation.csv)
 - [et_evaluation_by_texture.csv](paper1/tables/et_evaluation_by_texture.csv)
+- [et_evaluation_corrected_2018.csv](paper1/tables/et_evaluation_corrected_2018.csv)
 - [innovations_and_spread_by_month_and_texture.csv](paper1/tables/innovations_and_spread_by_month_and_texture.csv)
+- [jobs_status_final.csv](paper1/tables/jobs_status_final.csv)
 - [jobs_status_night.csv](paper1/tables/jobs_status_night.csv)
 - [lalla_chafia_innovations_and_increments.csv](paper1/tables/lalla_chafia_innovations_and_increments.csv)
 - [lalla_chafia_linres_comparison_summary_2018.csv](paper1/tables/lalla_chafia_linres_comparison_summary_2018.csv)
@@ -84,12 +89,16 @@
 - [runs_status.csv](paper1/tables/runs_status.csv)
 - [status_long_runs_step5.csv](paper1/tables/status_long_runs_step5.csv)
 - [streamflow_metrics.csv](paper1/tables/streamflow_metrics.csv)
+- [streamflow_metrics_corrected_2018.csv](paper1/tables/streamflow_metrics_corrected_2018.csv)
 - [streamflow_nic.csv](paper1/tables/streamflow_nic.csv)
+- [streamflow_nic_corrected_2018.csv](paper1/tables/streamflow_nic_corrected_2018.csv)
 - [table2_stations.csv](paper1/tables/table2_stations.csv)
 - [table2_stations.md](paper1/tables/table2_stations.md)
 - [test_reproduce_da_diag_2018nd.csv](paper1/tables/test_reproduce_da_diag_2018nd.csv)
 - [top20_cells_innovations_and_increments.csv](paper1/tables/top20_cells_innovations_and_increments.csv)
 - [top20_cells_qsb_difference.csv](paper1/tables/top20_cells_qsb_difference.csv)
+- [water_balance_corrected_2018_annual.csv](paper1/tables/water_balance_corrected_2018_annual.csv)
+- [water_balance_corrected_2018_monthly.csv](paper1/tables/water_balance_corrected_2018_monthly.csv)
 - [water_balance_upstream_catchments_2018.csv](paper1/tables/water_balance_upstream_catchments_2018.csv)
 - [water_balance_upstream_catchments_annual_summary_2018.csv](paper1/tables/water_balance_upstream_catchments_annual_summary_2018.csv)
 
