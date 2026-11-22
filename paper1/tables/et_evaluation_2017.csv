@@ -1,0 +1,96 @@
+experiment,period,reference,stratum_type,stratum,season,n_cells,et_obs_mean_mm,et_sim_mean_mm,bias_mm,rel_bias_pct,rmsd_mm,ubrmsd_mm,r_spatial,note
+OPL,2017,GLEAM_v4.3a,Geographic,Domaine,Annual,3965,182.3,215.9,33.6,18.43,78.23,70.65,0.8678,OK
+OPL,2017,GLEAM_v4.3a,Geographic,Domaine,MAM,3965,65.62,95.84,30.22,46.05,41.97,29.13,0.9127,OK
+OPL,2017,GLEAM_v4.3a,Geographic,Domaine,JJA,3965,39.82,37.19,-2.64,-6.62,31.77,31.66,0.663,OK
+OPL,2017,GLEAM_v4.3a,Geographic,Sebou,Annual,316,347.76,420.68,72.93,20.97,105.79,76.63,0.0109,OK
+OPL,2017,GLEAM_v4.3a,Geographic,Sebou,MAM,316,157.04,207.91,50.87,32.39,59.29,30.46,0.4089,OK
+OPL,2017,GLEAM_v4.3a,Geographic,Sebou,JJA,316,67.78,61.34,-6.43,-9.49,36.27,35.7,0.2952,OK
+OPL,2017,GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,301.36,381.22,79.86,26.5,85.14,29.51,0.4615,OK
+OPL,2017,GLEAM_v4.3a,Geographic,Bouregreg,MAM,66,141.26,190.72,49.46,35.01,56.8,27.93,0.0335,OK
+OPL,2017,GLEAM_v4.3a,Geographic,Bouregreg,JJA,66,50.87,58.64,7.76,15.26,15.91,13.89,0.6662,OK
+OPL,2017,GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,2.32,32.09,29.76,1280.68,30.64,7.28,0.6837,OK
+OPL,2017,GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,213.76,227.52,13.76,6.44,130.62,129.89,0.5834,OK
+OPL,2017,GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,281.19,269.56,-11.63,-4.14,15.39,10.07,0.9173,OK
+OPL,2017,GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,161.51,193.19,31.68,19.62,72.45,65.15,0.8813,OK
+OPL,2017,GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,270.48,318.92,48.44,17.91,69.76,50.2,0.8868,OK
+OPL,2017,GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,302.55,345.24,42.69,14.11,83.98,72.32,0.4519,OK
+OPL,2017,GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,358.72,426.92,68.2,19.01,123.04,102.41,0.4071,OK
+OPL,2017,WaPOR_v3,Geographic,Domaine,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+OPL,2017,WaPOR_v3,Geographic,Sebou,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+OPL,2017,WaPOR_v3,Geographic,Bouregreg,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Domaine,Annual,3965,182.3,198.31,16.01,8.78,76.02,74.31,0.858,OK
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Domaine,MAM,3965,65.62,88.46,22.84,34.81,39.49,32.22,0.9073,OK
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Domaine,JJA,3965,39.82,36.05,-3.77,-9.46,31.79,31.56,0.6646,OK
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Sebou,Annual,316,347.76,420.17,72.41,20.82,102.89,73.09,0.1378,OK
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Sebou,MAM,316,157.04,209.96,52.92,33.7,61.08,30.5,0.4854,OK
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Sebou,JJA,316,67.78,63.63,-4.14,-6.11,36.05,35.81,0.3069,OK
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,301.36,401.25,99.89,33.15,102.87,24.57,0.7084,OK
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Bouregreg,MAM,66,141.26,200.61,59.35,42.02,64.68,25.71,0.1959,OK
+OL_DAIC,2017,GLEAM_v4.3a,Geographic,Bouregreg,JJA,66,50.87,61.98,11.11,21.83,18.2,14.42,0.652,OK
+OL_DAIC,2017,GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,2.32,26.13,23.81,1024.44,24.95,7.47,0.6234,OK
+OL_DAIC,2017,GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,213.76,220.15,6.39,2.99,129.63,129.48,0.6028,OK
+OL_DAIC,2017,GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,281.19,233.51,-47.68,-16.96,51.74,20.09,0.6829,OK
+OL_DAIC,2017,GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,161.51,174.13,12.62,7.81,65.82,64.6,0.8803,OK
+OL_DAIC,2017,GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,270.48,325.15,54.67,20.21,90.22,71.77,0.894,OK
+OL_DAIC,2017,GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,302.55,311.93,9.37,3.1,99.03,98.59,0.3916,OK
+OL_DAIC,2017,GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,358.72,423.17,64.45,17.97,123.35,105.17,0.4385,OK
+OL_DAIC,2017,WaPOR_v3,Geographic,Domaine,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+OL_DAIC,2017,WaPOR_v3,Geographic,Sebou,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+OL_DAIC,2017,WaPOR_v3,Geographic,Bouregreg,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Domaine,Annual,3965,182.3,257.01,74.71,40.98,111.46,82.71,0.8436,OK
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Domaine,MAM,3965,65.62,107.85,42.23,64.35,54.05,33.73,0.9122,OK
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Domaine,JJA,3965,39.82,51.97,12.15,30.5,35.96,33.85,0.6233,OK
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Sebou,Annual,316,347.76,519.32,171.56,49.33,202.01,106.65,0.0783,OK
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Sebou,MAM,316,157.04,236.91,79.87,50.86,85.96,31.78,0.515,OK
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Sebou,JJA,316,67.78,101.77,33.99,50.16,59.81,49.21,-0.0478,OK
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,301.36,482.88,181.52,60.23,186.14,41.22,0.3746,OK
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Bouregreg,MAM,66,141.26,225.99,84.73,59.98,88.23,24.59,0.2422,OK
+ENS_OPL,2017,GLEAM_v4.3a,Geographic,Bouregreg,JJA,66,50.87,86.42,35.54,69.87,40.86,20.15,0.296,OK
+ENS_OPL,2017,GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,2.32,49.77,47.44,2041.48,47.95,6.99,0.6691,OK
+ENS_OPL,2017,GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,213.76,260.91,47.15,22.06,142.43,134.4,0.5655,OK
+ENS_OPL,2017,GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,281.19,287.61,6.42,2.28,23.11,22.2,0.6894,OK
+ENS_OPL,2017,GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,161.51,224.43,62.92,38.96,90.18,64.59,0.8804,OK
+ENS_OPL,2017,GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,270.48,394.71,124.23,45.93,144.51,73.82,0.8964,OK
+ENS_OPL,2017,GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,302.55,413.51,110.96,36.67,144.08,91.91,0.4064,OK
+ENS_OPL,2017,GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,358.72,603.04,244.32,68.11,269.65,114.1,0.3381,OK
+ENS_OPL,2017,WaPOR_v3,Geographic,Domaine,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+ENS_OPL,2017,WaPOR_v3,Geographic,Sebou,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+ENS_OPL,2017,WaPOR_v3,Geographic,Bouregreg,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Domaine,Annual,3965,182.3,198.83,16.53,9.07,87.8,86.23,0.8035,OK
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Domaine,MAM,3965,65.62,70.91,5.29,8.05,35.11,34.71,0.8462,OK
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Domaine,JJA,3965,39.82,51.28,11.46,28.78,35.49,33.59,0.6085,OK
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Sebou,Annual,316,347.76,400.07,52.31,15.04,103.88,89.74,0.4757,OK
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Sebou,MAM,316,157.04,157.55,0.51,0.32,39.49,39.49,0.5692,OK
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Sebou,JJA,316,67.78,89.17,21.4,31.57,47.49,42.39,0.1911,OK
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,301.36,398.94,97.59,32.38,106.75,43.27,0.6443,OK
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Bouregreg,MAM,66,141.26,171.72,30.46,21.56,43.95,31.68,0.3719,OK
+DA_nocdf,2017,GLEAM_v4.3a,Geographic,Bouregreg,JJA,66,50.87,74.12,23.25,45.7,28.98,17.3,0.4315,OK
+DA_nocdf,2017,GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,2.32,62.66,60.33,2596.22,60.82,7.69,0.5093,OK
+DA_nocdf,2017,GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,213.76,219.68,5.93,2.77,132.29,132.16,0.5897,OK
+DA_nocdf,2017,GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,281.19,151.53,-129.66,-46.11,132.44,27.0,0.5896,OK
+DA_nocdf,2017,GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,161.51,172.1,10.6,6.56,78.74,78.02,0.8199,OK
+DA_nocdf,2017,GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,270.48,328.09,57.61,21.3,84.89,62.35,0.8508,OK
+DA_nocdf,2017,GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,302.55,293.51,-9.04,-2.99,94.09,93.66,0.3427,OK
+DA_nocdf,2017,GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,358.72,490.04,131.32,36.61,164.89,99.71,0.5337,OK
+DA_nocdf,2017,WaPOR_v3,Geographic,Domaine,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+DA_nocdf,2017,WaPOR_v3,Geographic,Sebou,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+DA_nocdf,2017,WaPOR_v3,Geographic,Bouregreg,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Domaine,Annual,3965,182.3,176.4,-5.9,-3.24,94.53,94.35,0.7717,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Domaine,MAM,3965,65.62,64.38,-1.25,-1.9,40.44,40.42,0.8079,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Domaine,JJA,3965,39.82,44.62,4.8,12.06,35.0,34.67,0.5782,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Sebou,Annual,316,347.76,340.52,-7.24,-2.08,96.29,96.02,0.5253,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Sebou,MAM,316,157.04,146.24,-10.8,-6.88,50.12,48.94,0.4752,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Sebou,JJA,316,67.78,58.57,-9.21,-13.59,35.73,34.53,0.5143,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,301.36,377.79,76.43,25.36,106.48,74.14,0.6828,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Bouregreg,MAM,66,141.26,168.1,26.84,19.0,49.8,41.94,0.3855,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Geographic,Bouregreg,JJA,66,50.87,61.93,11.06,21.74,21.09,17.95,0.7532,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,2.32,60.27,57.95,2493.49,58.73,9.56,0.3667,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,213.76,205.47,-8.29,-3.88,135.4,135.15,0.61,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,281.19,110.12,-171.07,-60.84,172.72,23.89,0.3426,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,161.51,157.29,-4.22,-2.61,80.19,80.08,0.8135,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,270.48,328.34,57.86,21.39,89.99,68.93,0.826,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,302.55,222.19,-80.36,-26.56,150.89,127.71,0.289,OK
+DA_nocdf_nowilt,2017,GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,358.72,362.78,4.06,1.13,151.02,150.97,0.5151,OK
+DA_nocdf_nowilt,2017,WaPOR_v3,Geographic,Domaine,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+DA_nocdf_nowilt,2017,WaPOR_v3,Geographic,Sebou,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
+DA_nocdf_nowilt,2017,WaPOR_v3,Geographic,Bouregreg,Annual,0,,,,,,,,DONNEE_MANQUANTE : Produit WaPOR v3 AETI non disponible pour l'annee 2017 dans data/validation/evapotranspiration/WaPOR/
