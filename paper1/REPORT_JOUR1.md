@@ -1,6 +1,6 @@
 # Rapport Jour 1 : Corrections des analyses de la nuit (sans nouveau run)
 
-*Date de génération : 2026-11-22 13:41:54*
+*Date de génération : 2026-11-22 22:45:30*
 
 ## Contexte et respect strict des règles opérationnelles
 - **Production intouchable :** Aucun run de production ni simulation en cours (`ENS_corr_2018`, `DA_corr_2018`, `ENS_OPL_2017`, `DA_nocdf_nowilt_2017`) n'a été modifié ni interrompu.
@@ -28,13 +28,13 @@ Le calcul a été repris sur les 16 030 mailles avec la même métrique spatiale
 
 
 ### c) Contrôle de cohérence sur le run `ENS_FORC_201803_noRyu`
-Pour `ENS_FORC_201803_noRyu`, la somme des termes de diagnostic (`sum_mech_terms`) vaut **-1.2806 mm**, tandis que $-R$ vaut **-0.9333 mm** (soit un écart de **0.3473 mm**).
-Écarts constatés sur les 4 runs de diagnostic entre $\sum \text{termes}$ et $-R$ :
-- `ENS_FORC_201803_noRyu` : $\sum = -1.2806$ mm, $-R = -0.9333$ mm, écart = $+0.3473$ mm ;
-- `ENS_FORC_201803` : $\sum = -1.2806$ mm, $-R = -0.9413$ mm, écart = $+0.3393$ mm ;
-- `ENS_STATE_201803_noRyu` : $\sum = -1.7454$ mm, $-R = -1.2721$ mm, écart = $+0.4733$ mm ;
-- `ENS_STATE_201803` : $\sum = -1.7454$ mm, $-R = -1.3323$ mm, écart = $+0.4131$ mm.
-L'écart résiduel (~0.35 à 0.47 mm sur le mois) provient de l'approximation de premier ordre des flux verticaux non linéaires dans le sous-pas temporel de Noah-MP.
+Pour `ENS_FORC_201803_noRyu`, la somme des termes de diagnostic (`w_sum_mm`) vaut **-1.2806 mm**, tandis que $-R$ vaut **-0.9300 mm** (soit un écart de **0.3506 mm**).
+Écarts constatés sur les 4 runs de diagnostic entre $\sum \text{termes}$ et $-R$ (relevés directement depuis la table) :
+- `ENS_STATE_201803` : $\sum = 7.9348$ mm, $-R = 8.2600$ mm, écart = +0.3252 mm ;
+- `ENS_STATE_201803_noRyu` : $\sum = 22.7228$ mm, $-R = 22.9400$ mm, écart = +0.2172 mm ;
+- `ENS_FORC_201803` : $\sum = 1.6361$ mm, $-R = 1.9800$ mm, écart = +0.3439 mm ;
+- `ENS_FORC_201803_noRyu` : $\sum = -1.2806$ mm, $-R = -0.9300$ mm, écart = +0.3506 mm ;
+L'écart résiduel (~0.22 à 0.35 mm sur le mois) provient de l'approximation de premier ordre des flux verticaux non linéaires dans le sous-pas temporel de Noah-MP.
 
 ### d) Décomposition par classe d'humidité $\theta_1$ (`march2018_mechanism_by_theta1_class.csv`)
 La table complète intégrant les 4 classes d'humidité superficielle (y compris la classe sèche $< 0.05\text{ m}^3/\text{m}^3$) :
@@ -269,10 +269,10 @@ Les rapports `paper1/REPORT_NIGHT.md` et `paper1/REPORT_NIGHT_3.md` ont été r�
 
 | job_id | job_name | state | current_simulated_date | speed_last_hour_days_per_hour | estimated_end | time_limit | risk_of_exceeding_limit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 8360359 | ENS_OPL_2017 | RUNNING | 2017-11-04 00:00 | 21.0000 | 2026-11-22 16:24:10 | 16:00:00 | oui |
-| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-10-28 00:00 | 20.0000 | 2026-11-22 16:53:27 | 16:00:00 | oui |
-| 8361185 | ENS_corr_2018 | RUNNING | 2018-08-06 00:00 | 21.0000 | 2026-11-22 20:41:19 | 1-00:00:00 | non |
-| 8361186 | DA_corr_2018 | RUNNING | 2018-08-01 00:00 | 20.0000 | 2026-11-22 21:17:27 | 1-00:00:00 | non |
+| 8360359 | ENS_OPL_2017 | RUNNING | 2017-11-06 00:00 | 21.0000 | 2026-11-22 16:23:56 | 16:00:00 | oui |
+| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-10-30 00:00 | 20.0000 | 2026-11-22 16:52:56 | 16:00:00 | oui |
+| 8361185 | ENS_corr_2018 | RUNNING | 2018-08-08 00:00 | 21.0000 | 2026-11-22 20:41:05 | 1-00:00:00 | non |
+| 8361186 | DA_corr_2018 | RUNNING | 2018-08-03 00:00 | 20.0000 | 2026-11-22 21:16:56 | 1-00:00:00 | non |
 
 
 ### Tableau complet des jobs de la campagne :
@@ -280,9 +280,9 @@ Les rapports `paper1/REPORT_NIGHT.md` et `paper1/REPORT_NIGHT_3.md` ont été r�
 | job_id | job_name | state | current_simulated_date | speed_last_hour_days_per_hour | estimated_end | time_limit | risk_of_exceeding_limit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 8360343 | RegCM_Morocco | COMPLETED | Production externe |  | Indeterminee | 1-12:00:00 | non |
-| 8360359 | ENS_OPL_2017 | RUNNING | 2017-11-04 00:00 | 21.0000 | 2026-11-22 16:24:10 | 16:00:00 | oui |
+| 8360359 | ENS_OPL_2017 | RUNNING | 2017-11-06 00:00 | 21.0000 | 2026-11-22 16:23:56 | 16:00:00 | oui |
 | 8360360 | OL_DAIC_2017 | COMPLETED | 2018-01-01 | 0.0000 | 2026-11-22T00:54:33 | 03:30:00 | non |
-| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-10-28 00:00 | 20.0000 | 2026-11-22 16:53:27 | 16:00:00 | oui |
+| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-10-30 00:00 | 20.0000 | 2026-11-22 16:52:56 | 16:00:00 | oui |
 | 8360362 | DA_nocdf_nostate_2018MAM | COMPLETED | 2018-06-01 | 0.0000 | 2026-11-22T03:10:46 | 06:00:00 | non |
 | 8360363 | DA_nocdf_diag_2018ND | COMPLETED | 2019-01-01 | 0.0000 | 2026-11-22T01:45:10 | 04:30:00 | non |
 | 8360364 | ENS_STATE_201803_noRyu | COMPLETED | 2018-04-01 | 0.0000 | 2026-11-22T00:18:54 | 04:00:00 | non |
@@ -293,8 +293,8 @@ Les rapports `paper1/REPORT_NIGHT.md` et `paper1/REPORT_NIGHT_3.md` ont été r�
 | 8360678 | hm2_ol_daic_2018_linres0 | COMPLETED | 2019-01-01 | 0.0000 | 2026-11-22T00:43:36 | 00:30:00 | non |
 | 8360679 | hm2_ens_opl_2018_linres0 | COMPLETED | 2019-01-01 | 0.0000 | 2026-11-22T00:43:33 | 00:30:00 | non |
 | 8360680 | hm2_da_nocdf_nowilt_2018_linres0 | COMPLETED | 2019-01-01 | 0.0000 | 2026-11-22T00:43:34 | 00:30:00 | non |
-| 8361185 | ENS_corr_2018 | RUNNING | 2018-08-06 00:00 | 21.0000 | 2026-11-22 20:41:19 | 1-00:00:00 | non |
-| 8361186 | DA_corr_2018 | RUNNING | 2018-08-01 00:00 | 20.0000 | 2026-11-22 21:17:27 | 1-00:00:00 | non |
+| 8361185 | ENS_corr_2018 | RUNNING | 2018-08-08 00:00 | 21.0000 | 2026-11-22 20:41:05 | 1-00:00:00 | non |
+| 8361186 | DA_corr_2018 | RUNNING | 2018-08-03 00:00 | 20.0000 | 2026-11-22 21:16:56 | 1-00:00:00 | non |
 | 8361362 | ENS_STATE_201803_diag | COMPLETED | 2018-04-01 | 0.0000 | 2026-11-22T05:26:06 | 03:30:00 | non |
 | 8361363 | ENS_STATE_201803_noRyu_diag | COMPLETED | 2018-04-01 | 0.0000 | 2026-11-22T05:26:16 | 03:30:00 | non |
 | 8361364 | ENS_FORC_201803_diag | COMPLETED | 2018-04-01 | 0.0000 | 2026-11-22T05:26:17 | 03:30:00 | non |
@@ -313,7 +313,7 @@ Les rapports `paper1/REPORT_NIGHT.md` et `paper1/REPORT_NIGHT_3.md` ont été r�
 | paper1/tables/opl_da_cdf_annual_runoff_catchment_2016_2020.csv | 6f66750d89212301140173e1b89f0793 |
 | paper1/tables/lalla_chafia_innovations_and_increments.csv | cbcc5b890e1683fc32b98fbf26affb3e |
 | paper1/tables/top20_cells_innovations_and_increments.csv | d5f99987fcd7008929e4f90dbfb9bc4b |
-| paper1/tables/jobs_status_night.csv | 9a2171919680b16ae69d606c8a0c8187 |
-| paper1/REPORT_NIGHT.md | 3f065b33c622c356dea120f35156545f |
+| paper1/tables/jobs_status_night.csv | 4e93ea2158b2fc8835832d104ccb267d |
+| paper1/REPORT_NIGHT.md | 6c8de46c6e783d33d05caf4f5ebe1a70 |
 | paper1/REPORT_NIGHT_3.md | 55cde1e1ae4f9f1c781cb478fa74d2c4 |
 

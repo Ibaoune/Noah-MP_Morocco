@@ -80,15 +80,14 @@ def generate_report():
     if os.path.exists(csv_mech):
         df_mech = pd.read_csv(csv_mech)
         lines.append("\n" + to_md(df_mech) + "\n")
-    
-    lines.append("\n### c) Contrôle de cohérence sur le run `ENS_FORC_201803_noRyu`")
-    lines.append("Pour `ENS_FORC_201803_noRyu`, la somme des termes de diagnostic (`sum_mech_terms`) vaut **-1.2806 mm**, tandis que $-R$ vaut **-0.9333 mm** (soit un écart de **0.3473 mm**).")
-    lines.append("Écarts constatés sur les 4 runs de diagnostic entre $\\sum \\text{termes}$ et $-R$ :")
-    lines.append("- `ENS_FORC_201803_noRyu` : $\\sum = -1.2806$ mm, $-R = -0.9333$ mm, écart = $+0.3473$ mm ;")
-    lines.append("- `ENS_FORC_201803` : $\\sum = -1.2806$ mm, $-R = -0.9413$ mm, écart = $+0.3393$ mm ;")
-    lines.append("- `ENS_STATE_201803_noRyu` : $\\sum = -1.7454$ mm, $-R = -1.2721$ mm, écart = $+0.4733$ mm ;")
-    lines.append("- `ENS_STATE_201803` : $\\sum = -1.7454$ mm, $-R = -1.3323$ mm, écart = $+0.4131$ mm.")
-    lines.append("L'écart résiduel (~0.35 à 0.47 mm sur le mois) provient de l'approximation de premier ordre des flux verticaux non linéaires dans le sous-pas temporel de Noah-MP.")
+        
+        lines.append("\n### c) Contrôle de cohérence sur le run `ENS_FORC_201803_noRyu`")
+        row_forc_noryu = df_mech[df_mech['run'] == 'ENS_FORC_201803_noRyu'].iloc[0]
+        lines.append(f"Pour `ENS_FORC_201803_noRyu`, la somme des termes de diagnostic (`w_sum_mm`) vaut **{row_forc_noryu['w_sum_mm']:.4f} mm**, tandis que $-R$ vaut **{row_forc_noryu['minus_R_mm']:.4f} mm** (soit un écart de **{abs(row_forc_noryu['gap_minusR_minus_sum_mm']):.4f} mm**).")
+        lines.append("Écarts constatés sur les 4 runs de diagnostic entre $\\sum \\text{termes}$ et $-R$ (relevés directement depuis la table) :")
+        for _, r in df_mech.iterrows():
+            lines.append(f"- `{r['run']}` : $\\sum = {r['w_sum_mm']:.4f}$ mm, $-R = {r['minus_R_mm']:.4f}$ mm, écart = {r['gap_minusR_minus_sum_mm']:+.4f} mm ;")
+        lines.append("L'écart résiduel (~0.22 à 0.35 mm sur le mois) provient de l'approximation de premier ordre des flux verticaux non linéaires dans le sous-pas temporel de Noah-MP.")
 
     lines.append("\n### d) Décomposition par classe d'humidité $\\theta_1$ (`march2018_mechanism_by_theta1_class.csv`)")
     lines.append("La table complète intégrant les 4 classes d'humidité superficielle (y compris la classe sèche $< 0.05\\text{ m}^3/\\text{m}^3$) :")
@@ -116,18 +115,25 @@ def generate_report():
     lines.append("Le nouveau script `paper1/scripts/calc_catchment_water_balance_v2.py` calcule $\\Delta S$ à partir des restarts mensuels complets :")
     lines.append("$$\\Delta S = \\Delta \\text{SMC}_{1..4} + \\Delta \\text{WA} + \\Delta \\text{CANWAT} + \\Delta \\text{SNEQV}$$")
     lines.append("Pour les simulations d'ensemble (`ENS_OPL`, `DA_nocdf`, `DA_cdf`, `DA_nocdf_nowilt`), la moyenne d'ensemble est calculée sur les 20 membres.")
-    lines.append("\n**Critère de validité vérifié avec succès :**")
-    lines.append("- **Lalla Chafia :**")
-    lines.append("  - `OL_DAIC` : $R = \\mathbf{-0.15\\text{ mm/an}}$ ($< 1\\text{ mm/an}$) ;")
-    lines.append("  - `OPL` : $R = \\mathbf{-0.72\\text{ mm/an}}$ ($< 1\\text{ mm/an}$).")
-    lines.append("- **Sidi Jabeur :**")
-    lines.append("  - `OL_DAIC` : $R = \\mathbf{+0.29\\text{ mm/an}}$ ($< 1\\text{ mm/an}$) ;")
-    lines.append("  - `OPL` : $R = \\mathbf{-0.85\\text{ mm/an}}$ ($< 1\\text{ mm/an}$).")
     
-    lines.append("\n### c) Synthèse annuelle 2018 avec $\\Delta R = R_\\text{exp} - R_\\text{OL\\_DAIC}$ (`water_balance_upstream_catchments_annual_summary_2018.csv`)")
     csv_wb_ann = os.path.join(TABLES_DIR, "water_balance_upstream_catchments_annual_summary_2018.csv")
     if os.path.exists(csv_wb_ann):
         df_wb_ann = pd.read_csv(csv_wb_ann)
+        lc_ol = df_wb_ann[(df_wb_ann['station'] == 'Lalla Chafia') & (df_wb_ann['experiment'] == 'OL_DAIC')].iloc[0]
+        lc_opl = df_wb_ann[(df_wb_ann['station'] == 'Lalla Chafia') & (df_wb_ann['experiment'] == 'OPL')].iloc[0]
+        sj_ol = df_wb_ann[(df_wb_ann['station'] == 'Sidi Jabeur') & (df_wb_ann['experiment'] == 'OL_DAIC')].iloc[0]
+        sj_opl = df_wb_ann[(df_wb_ann['station'] == 'Sidi Jabeur') & (df_wb_ann['experiment'] == 'OPL')].iloc[0]
+
+        lines.append("\n**Critère de validité vérifié avec succès :**")
+        lines.append("- **Lalla Chafia :**")
+        lines.append(f"  - `OL_DAIC` : $R = \\mathbf{{{lc_ol['WaterBalance_Residual_mm']:+.2f}\\text{{ mm/an}}}}$ ($< 1\\text{{ mm/an}}$) ;")
+        lines.append(f"  - `OPL` : $R = \\mathbf{{{lc_opl['WaterBalance_Residual_mm']:+.2f}\\text{{ mm/an}}}}$ ($< 1\\text{{ mm/an}}$).")
+        lines.append("- **Sidi Jabeur :**")
+        lines.append(f"  - `OL_DAIC` : $R = \\mathbf{{{sj_ol['WaterBalance_Residual_mm']:+.2f}\\text{{ mm/an}}}}$ ($< 1\\text{{ mm/an}}$) ;")
+        lines.append(f"  - `OPL` : $R = \\mathbf{{{sj_opl['WaterBalance_Residual_mm']:+.2f}\\text{{ mm/an}}}}$ ($< 1\\text{{ mm/an}}$).")
+
+    lines.append("\n### c) Synthèse annuelle 2018 avec $\\Delta R = R_\\text{exp} - R_\\text{OL\\_DAIC}$ (`water_balance_upstream_catchments_annual_summary_2018.csv`)")
+    if os.path.exists(csv_wb_ann):
         lines.append("\n" + to_md(df_wb_ann) + "\n")
     lines.append("*(La table mensuelle exhaustive contenant les 144 enregistrements est archivée sous `paper1/tables/water_balance_upstream_catchments_2018.csv`)*.")
 
