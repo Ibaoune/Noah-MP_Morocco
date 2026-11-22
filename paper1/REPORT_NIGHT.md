@@ -1,16 +1,16 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-22 05:09:15  
-**Étape atteinte :** Étape 7
+**Dernière mise à jour :** 2026-11-22 13:43:32  
+**Étape atteinte :** Étape jour1
 
 ## 1. Statut des Jobs en Cours et Historiques
 
 | Job ID | Nom | État | Date Simulée Actuelle | Vitesse (dernière heure, j/h) | Fin Estimée | Limite `--time` | Risque Dépassement |
 |---|---|---|---|---|---|---|---|
-| 8360343 | RegCM_Morocco | RUNNING | Production externe | N/A | Indeterminee | 1-12:00:00 | non |
-| 8360359 | ENS_OPL_2017 | RUNNING | 2017-05-14 00:00 | 21.00 | 2026-11-22 16:12:07 | 16:00:00 | oui |
+| 8360343 | RegCM_Morocco | COMPLETED | Production externe | N/A | Indeterminee | 1-12:00:00 | non |
+| 8360359 | ENS_OPL_2017 | RUNNING | 2017-11-06 00:00 | 21.00 | 2026-11-22 16:23:31 | 16:00:00 | oui |
 | 8360360 | OL_DAIC_2017 | COMPLETED | 2018-01-01 | 0.00 | 2026-11-22T00:54:33 | 03:30:00 | non |
-| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-05-11 00:00 | 20.00 | 2026-11-22 16:54:15 | 16:00:00 | oui |
+| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-10-30 00:00 | 20.00 | 2026-11-22 16:52:31 | 16:00:00 | oui |
 | 8360362 | DA_nocdf_nostate_2018MAM | COMPLETED | 2018-06-01 | 0.00 | 2026-11-22T03:10:46 | 06:00:00 | non |
 | 8360363 | DA_nocdf_diag_2018ND | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T01:45:10 | 04:30:00 | non |
 | 8360364 | ENS_STATE_201803_noRyu | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T00:18:54 | 04:00:00 | non |
@@ -21,14 +21,15 @@
 | 8360678 | hm2_ol_daic_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:36 | 00:30:00 | non |
 | 8360679 | hm2_ens_opl_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:33 | 00:30:00 | non |
 | 8360680 | hm2_da_nocdf_nowilt_2018_linres0 | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T00:43:34 | 00:30:00 | non |
-| 8361185 | ENS_corr_2018 | RUNNING | 2018-02-12 00:00 | 21.00 | 2026-11-22 20:32:07 | 1-00:00:00 | non |
-| 8361186 | DA_corr_2018 | RUNNING | 2018-02-11 00:00 | 20.00 | 2026-11-22 21:21:15 | 1-00:00:00 | non |
-| 8361362 | ENS_STATE_201803_diag | RUNNING | 2018-03-26 00:00 | 21.00 | 2026-11-22 05:26:24 | 03:30:00 | non |
-| 8361363 | ENS_STATE_201803_noRyu_diag | RUNNING | 2018-03-26 00:00 | 21.00 | 2026-11-22 05:26:24 | 03:30:00 | non |
-| 8361364 | ENS_FORC_201803_diag | RUNNING | 2018-03-26 00:00 | 21.00 | 2026-11-22 05:26:24 | 03:30:00 | non |
-| 8361365 | ENS_FORC_201803_noRyu_diag | RUNNING | 2018-03-26 00:00 | 21.00 | 2026-11-22 05:26:24 | 03:30:00 | non |
+| 8361185 | ENS_corr_2018 | RUNNING | 2018-08-07 00:00 | 20.00 | 2026-11-22 21:04:31 | 1-00:00:00 | non |
+| 8361186 | DA_corr_2018 | RUNNING | 2018-08-03 00:00 | 20.00 | 2026-11-22 21:16:31 | 1-00:00:00 | non |
+| 8361362 | ENS_STATE_201803_diag | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T05:26:06 | 03:30:00 | non |
+| 8361363 | ENS_STATE_201803_noRyu_diag | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T05:26:16 | 03:30:00 | non |
+| 8361364 | ENS_FORC_201803_diag | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T05:26:17 | 03:30:00 | non |
+| 8361365 | ENS_FORC_201803_noRyu_diag | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T05:26:04 | 03:30:00 | non |
 
 ## 2. Rapports Produits
+- [REPORT_JOUR1.md](paper1/REPORT_JOUR1.md)
 - [REPORT_LOT1.md](paper1/REPORT_LOT1.md)
 - [REPORT_LOT1b.md](paper1/REPORT_LOT1b.md)
 - [REPORT_LOT1c.md](paper1/REPORT_LOT1c.md)
@@ -50,6 +51,7 @@
 - [comparison_da_nocdf_vs_nostate_mam2018.csv](paper1/tables/comparison_da_nocdf_vs_nostate_mam2018.csv)
 - [corrected_runs_jan2018_water_balance.csv](paper1/tables/corrected_runs_jan2018_water_balance.csv)
 - [da_15min_applied_vs_archived_increments.csv](paper1/tables/da_15min_applied_vs_archived_increments.csv)
+- [da_cdf_annual_runoff_catchment_2016_2020.csv](paper1/tables/da_cdf_annual_runoff_catchment_2016_2020.csv)
 - [da_diagnostics_inventory.md](paper1/tables/da_diagnostics_inventory.md)
 - [da_nocdf_annual_runoff_catchment_2016_2020.csv](paper1/tables/da_nocdf_annual_runoff_catchment_2016_2020.csv)
 - [daic_2017_stock_gap.csv](paper1/tables/daic_2017_stock_gap.csv)
@@ -61,6 +63,7 @@
 - [et_evaluation_by_texture.csv](paper1/tables/et_evaluation_by_texture.csv)
 - [innovations_and_spread_by_month_and_texture.csv](paper1/tables/innovations_and_spread_by_month_and_texture.csv)
 - [jobs_status_night.csv](paper1/tables/jobs_status_night.csv)
+- [lalla_chafia_innovations_and_increments.csv](paper1/tables/lalla_chafia_innovations_and_increments.csv)
 - [lalla_chafia_linres_comparison_summary_2018.csv](paper1/tables/lalla_chafia_linres_comparison_summary_2018.csv)
 - [lalla_chafia_streamflow_linres1_vs_linres0_2018.csv](paper1/tables/lalla_chafia_streamflow_linres1_vs_linres0_2018.csv)
 - [m20_noryu_comparison.csv](paper1/tables/m20_noryu_comparison.csv)
@@ -71,6 +74,8 @@
 - [monthly_streamflow_lalla_chafia_sidi_jabeur_2018.csv](paper1/tables/monthly_streamflow_lalla_chafia_sidi_jabeur_2018.csv)
 - [nov_dec_2018_water_balance_gap.csv](paper1/tables/nov_dec_2018_water_balance_gap.csv)
 - [nowilt_gap_monthly_distribution_2018.csv](paper1/tables/nowilt_gap_monthly_distribution_2018.csv)
+- [opl_annual_runoff_catchment_2016_2020.csv](paper1/tables/opl_annual_runoff_catchment_2016_2020.csv)
+- [opl_da_cdf_annual_runoff_catchment_2016_2020.csv](paper1/tables/opl_da_cdf_annual_runoff_catchment_2016_2020.csv)
 - [recentering_check_noRyu_restarts.csv](paper1/tables/recentering_check_noRyu_restarts.csv)
 - [recentering_check_restarts.csv](paper1/tables/recentering_check_restarts.csv)
 - [regr_lisf_corr_201801.csv](paper1/tables/regr_lisf_corr_201801.csv)
@@ -83,8 +88,10 @@
 - [table2_stations.csv](paper1/tables/table2_stations.csv)
 - [table2_stations.md](paper1/tables/table2_stations.md)
 - [test_reproduce_da_diag_2018nd.csv](paper1/tables/test_reproduce_da_diag_2018nd.csv)
+- [top20_cells_innovations_and_increments.csv](paper1/tables/top20_cells_innovations_and_increments.csv)
 - [top20_cells_qsb_difference.csv](paper1/tables/top20_cells_qsb_difference.csv)
 - [water_balance_upstream_catchments_2018.csv](paper1/tables/water_balance_upstream_catchments_2018.csv)
+- [water_balance_upstream_catchments_annual_summary_2018.csv](paper1/tables/water_balance_upstream_catchments_annual_summary_2018.csv)
 
 ## 4. Figures Disponibles
 - [FIGURES_STATUS.md](paper1/figures/FIGURES_STATUS.md)
@@ -119,4 +126,25 @@
 Aucun probleme bloquant.
 
 ## 6. Résultat des Tentatives de Git Push
-`Succes: git push origin paper1-closure au 2026-11-22 04:57:59`
+`Succes: git push origin paper1-closure au 2026-11-22 05:09:15`
+
+## 7. Corrections Factuelles Apportées aux Analyses de la Nuit
+
+### a) Top 20 des mailles de divergence Qsb (`top20_cells_qsb_difference.csv`)
+- **Texture de sol :** Toutes les 20 mailles relèvent de la texture **Loam** (classe 6).
+- **Écart maximal :** +441,50 mm/an (maille rank 1 à lon −5,625°, lat 35,275°), et +384,06 mm/an pour le rank 20.
+- **Absence dans Lalla Chafia :** **Aucune maille** du Top 20 n'est située à l'intérieur du bassin versant amont de Lalla Chafia (`inside_lalla_chafia = False` pour les 20 mailles) ni de Sidi Jabeur (`inside_sidi_jabeur = False`).
+- **Localisation réelle :** Longitudes −5,7° à −5,1°, Latitudes 34,8° à 35,3° (région Rif / Loukkos, dont 7 mailles situées dans le bassin du Sebou : ranks 8, 9, 11, 12, 17, 19, 20).
+
+### b) Description et statut d'indépendance de GLEAM v4.3a
+- **Référence bibliographique officielle :**
+  > Miralles, D.G. et al. 2025: Global land evaporation and soil moisture dataset at 0.1° resolution from 1980 to near present, *Scientific Data*, 12, 416, doi: [10.1038/s41597-025-04610-y](https://doi.org/10.1038/s41597-025-04610-y).
+- **Schéma d'assimilation :** GLEAM v4 assimile l'humidité du sol satellitaire multi-capteurs **ESA CCI Soil Moisture** par un schéma de **nudging newtonien** dans la couche superficielle du sol.
+- **Lien avec SMAP :** L'archive ESA CCI intègre directement les radiomètres micro-ondes bande L de **SMAP** (depuis avril 2015), ainsi que SMOS et ASCAT. De plus, GLEAM v4 ingère la profondeur optique de la végétation (VODCA L issue de SMAP/SMOS).
+- **Statut formel :** GLEAM v4.3a est **méthodologiquement non indépendant de SMAP**.
+
+### c) Statut de DA_nocdf_nostate_2018MAM
+- **Constat log et sorties :** `DA_nocdf_nostate_2018MAM` (Job 8360362) a enregistré **0 instance d'assimilation** (aucune analyse EnKF exécutée).
+- **Cause de configuration :** Dans `experiments/NorthMor/matrix_2016_2020/sensitivity_diag/DA_nocdf_nostate_2018MAM/config/lis_DA_nocdf_nostate_2018MAM.config`, `Number of data assimilation instances: 0`. Dans LIS, cela désactive complètement le framework DA.
+- **Comparaison avec DA_corr_2018 :** `DA_corr_2018` configure `Number of data assimilation instances: 1` avec `State perturbation algorithm: "none"`, activant ainsi l'analyse EnKF et produisant des incréments d'assimilation valides.
+- **Statut formel :** `DA_nocdf_nostate_2018MAM` est **non valide pour l'assimilation** (simple ensemble open-loop sans assimilation).

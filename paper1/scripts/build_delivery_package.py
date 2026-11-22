@@ -6,7 +6,7 @@ def run_cmd(cmd):
     out, err = p.communicate()
     return p.returncode, out.decode().strip(), err.decode().strip()
 
-def build_package(step_reached, issues_encountered="Aucun probleme bloquant."):
+def build_package(step_reached="jour1", issues_encountered="Aucun probleme bloquant."):
     bundle_dir = os.path.expanduser("~/paper1_bundle")
     os.makedirs(bundle_dir, exist_ok=True)
     tar_path = os.path.join(bundle_dir, "paper1_bundle_latest.tar.gz")
@@ -30,6 +30,14 @@ def build_package(step_reached, issues_encountered="Aucun probleme bloquant."):
     tables = sorted(glob.glob("paper1/tables/*"))
     figures = sorted(glob.glob("paper1/figures/*"))
     scripts = sorted(glob.glob("paper1/scripts/*"))
+    
+    # Preserve section 7 of REPORT_NIGHT.md if present
+    section_7 = ""
+    if os.path.exists("paper1/REPORT_NIGHT.md"):
+        with open("paper1/REPORT_NIGHT.md", "r") as f:
+            old_night = f.read()
+            if "## 7. Corrections Factuelles Apportées aux Analyses de la Nuit" in old_night:
+                section_7 = old_night[old_night.index("## 7. Corrections Factuelles Apportées aux Analyses de la Nuit"):]
     
     # Git push attempt log holder
     push_result = "Non tente (initial)"
@@ -64,13 +72,15 @@ def build_package(step_reached, issues_encountered="Aucun probleme bloquant."):
 
 ## 6. Résultat des Tentatives de Git Push
 `{push_result}`
-"""
+
+""" + (section_7 if section_7 else "")
+
     with open("paper1/REPORT_NIGHT.md", "w") as f:
         f.write(report_content)
     print("Generated paper1/REPORT_NIGHT.md")
 
     # 2. Gather allowed files
-    allowed_extensions = ('.md', '.csv', '.py', '.sh', '.config', '.patch', '.txt', '.png')
+    allowed_extensions = ('.md', '.csv', '.py', '.sh', '.config', '.patch', '.txt', '.png', '.pdf')
     all_files = []
     for root, dirs, files in os.walk("paper1"):
         for file in files:
@@ -109,8 +119,8 @@ def build_package(step_reached, issues_encountered="Aucun probleme bloquant."):
     print(f"Generated {contents_path}")
 
     # 5. Git commit and push attempt
-    run_cmd("git add paper1/ tables/ scripts/ patches/ 2>/dev/null || true")
-    run_cmd("git add paper1/*.md paper1/tables/* paper1/scripts/* paper1/patches/* paper1/figures/* 2>/dev/null || true")
+    run_cmd("git add paper1/ 2>/dev/null || true")
+    run_cmd("git add paper1/*.md paper1/tables/* paper1/scripts/* paper1/figures/* 2>/dev/null || true")
     run_cmd(f'git commit -m "[paper1-closure] Step {step_reached} completed" || true')
     
     code, out, err = run_cmd("git push origin paper1-closure")
@@ -132,5 +142,5 @@ def build_package(step_reached, issues_encountered="Aucun probleme bloquant."):
     print(f"Git push result: {push_msg}")
 
 if __name__ == "__main__":
-    step = sys.argv[1] if len(sys.argv) > 1 else "0"
+    step = sys.argv[1] if len(sys.argv) > 1 else "jour1"
     build_package(step)

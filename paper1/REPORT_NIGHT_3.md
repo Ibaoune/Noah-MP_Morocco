@@ -1,6 +1,6 @@
 # Rapport d'Étape 3 — Diagnostic du Débit DA_nocdf (Lalla Chafia) et Corrections
 
-**Date d'exécution :** 2026-11-22 04:07:43  
+**Date d'exécution :** 2026-11-22 13:36:03  
 **Auteur :** Antigravity (mode autonome)  
 **Branche Git :** `paper1-closure`  
 
@@ -64,8 +64,10 @@ L'objectif de cette étape est d'établir de manière strictement factuelle, chi
 - **Algorithme :** Remontée récursive de la matrice de direction de drainage D8 (`HYMAP_flow_direction_x`, `HYMAP_flow_direction_y`) depuis les exutoires des stations dans `experiments/NorthMor/routing/ldt_hymap/lis_input_corrigee.d01.nc`.
 - **Lalla Chafia (Bouregreg) :**
   - Maille exutoire : ligne 75, colonne 71 (grille 180×120).
-  - Nombre de mailles amont : **70 mailles**.
-  - Aire cumulée HyMAP : **3 333,35 km²** (contre 3 341,60 km² dans l'inventaire officiel des stations, écart = −0,25 %).
+  - Nombre de mailles amont D8 : **133 mailles** (grille 180×120).
+  - Aire cumulée HyMAP D8 : **3 333,35 km²** (utilisée dans toutes les tables de calcul : `remap_runoff_check`, `water_balance_upstream_catchments`, `da_nocdf_annual_runoff`).
+  - Comparaison ABH : 3 341,60 km² dans l'inventaire officiel (`table2_stations.csv`), soit un écart topologique de seulement −0,25 %.
+  - **Clarification sur l'aire de 5 502 km² (189 mailles) :** cette valeur citée dans certains textes descriptifs correspondait à la délimitation globale du bassin du Bouregreg jusqu'à la retenue aval du barrage SMBA ou l'embouchure, et non au bassin amont spécifique contrôlé à la station hydrométrique de Lalla Chafia. La valeur rigoureuse et cohérente utilisée dans tous les calculs est 3 333,35 km².
 - **Sidi Jabeur (Grou) :**
   - Maille exutoire : ligne 71, colonne 71 (grille 180×120).
   - Nombre de mailles amont : **66 mailles**.
@@ -75,32 +77,32 @@ L'objectif de cette étape est d'établir de manière strictement factuelle, chi
 
 Extrait du bilan d'eau ($P$, $ET$, $Q_s$, $Q_{sb}$, Ruissellement total, $\Delta S$, Incréments totaux DA, Résidu $R$) :
 
-| station | station_id | experiment | year_month | P_mm | ET_mm | Qs_mm | Qsb_mm | TotalRunoff_mm | Delta_S_mm | Incr_Layer1_mm | Incr_Layer2_mm | Incr_Layer3_mm | Incr_Layer4_mm | Incr_Total_mm | WaterBalance_Residual_mm |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Lalla Chafia | b_l_chafia | OPL | 2018-01 | 94.1775 | 28.4423 | 2.0248 | 1.1776 | 3.2025 | 63.3889 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -0.8562 |
-| Sidi Jabeur | b_s_jabeur | OPL | 2018-01 | 57.2349 | 21.5608 | 1.1883 | 1.1309 | 2.3192 | 34.0324 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -0.6775 |
-| Lalla Chafia | b_l_chafia | OL_DAIC | 2018-01 | 94.1775 | 33.7706 | 3.2611 | 3.6449 | 6.9060 | 53.3772 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.1236 |
-| Sidi Jabeur | b_s_jabeur | OL_DAIC | 2018-01 | 57.2349 | 24.0727 | 1.7774 | 2.5462 | 4.3236 | 31.8226 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -2.9840 |
-| Lalla Chafia | b_l_chafia | ENS_OPL | 2018-01 | 94.1775 | 37.2751 | 3.5333 | 5.5158 | 9.0491 | 82.1837 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -34.3304 |
-| Sidi Jabeur | b_s_jabeur | ENS_OPL | 2018-01 | 57.2349 | 28.9714 | 1.8500 | 2.9458 | 4.7957 | 40.1958 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -16.7280 |
-| Lalla Chafia | b_l_chafia | DA_nocdf | 2018-01 | 94.1775 | 40.1127 | 4.0214 | 13.7300 | 17.7514 | 86.5224 | 11.0035 | 12.3184 | 19.1640 | 18.6430 | 61.1289 | 10.9199 |
-| Sidi Jabeur | b_s_jabeur | DA_nocdf | 2018-01 | 57.2349 | 30.5663 | 1.9408 | 5.2461 | 7.1868 | 61.6932 | 8.3148 | 8.0888 | 16.9723 | 6.0357 | 39.4115 | -2.7999 |
-| Lalla Chafia | b_l_chafia | DA_cdf | 2018-01 | 94.1775 | 29.2235 | 3.2523 | 4.8807 | 8.1330 | 6.8925 | -0.4169 | -3.0629 | -6.0210 | -8.4469 | -17.9477 | 31.9809 |
-| Sidi Jabeur | b_s_jabeur | DA_cdf | 2018-01 | 57.2349 | 24.2823 | 1.7183 | 4.0217 | 5.7399 | 6.6705 | -1.2212 | -2.8081 | -6.7345 | -3.9395 | -14.7034 | 5.8388 |
-| Lalla Chafia | b_l_chafia | DA_nocdf_nowilt | 2018-01 | 94.1775 | 41.2359 | 4.0145 | 13.5559 | 17.5704 | 86.8412 | 11.0035 | 12.3184 | 19.1640 | 18.6430 | 61.1289 | 9.6588 |
-| Sidi Jabeur | b_s_jabeur | DA_nocdf_nowilt | 2018-01 | 57.2349 | 31.3497 | 1.9353 | 5.1484 | 7.0837 | 61.7740 | 8.3148 | 8.0888 | 16.9723 | 6.0357 | 39.4115 | -3.5610 |
-| Lalla Chafia | b_l_chafia | OPL | 2018-02 | 55.7613 | 35.2088 | 1.7195 | 1.0885 | 2.8080 | 23.5554 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -5.8109 |
-| Sidi Jabeur | b_s_jabeur | OPL | 2018-02 | 52.3637 | 25.3798 | 1.5030 | 1.0331 | 2.5360 | 27.9838 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -3.5359 |
-| Lalla Chafia | b_l_chafia | OL_DAIC | 2018-02 | 55.7613 | 41.2526 | 3.1606 | 4.3860 | 7.5467 | 15.2893 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -8.3272 |
-| Sidi Jabeur | b_s_jabeur | OL_DAIC | 2018-02 | 52.3637 | 30.0028 | 2.1612 | 2.2699 | 4.4311 | 27.2949 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -9.3651 |
-| Lalla Chafia | b_l_chafia | ENS_OPL | 2018-02 | 55.7613 | 44.5048 | 3.5132 | 5.9823 | 9.4956 | 14.4829 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -12.7219 |
-| Sidi Jabeur | b_s_jabeur | ENS_OPL | 2018-02 | 52.3637 | 35.4117 | 2.2965 | 2.6761 | 4.9726 | 26.9904 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -15.0110 |
-| Lalla Chafia | b_l_chafia | DA_nocdf | 2018-02 | 55.7613 | 41.5553 | 6.8466 | 28.0760 | 34.9226 | -3.7296 | 1.1741 | 4.0475 | 3.9612 | 4.0406 | 13.2234 | -3.7636 |
-| Sidi Jabeur | b_s_jabeur | DA_nocdf | 2018-02 | 52.3637 | 33.6502 | 3.5577 | 12.8197 | 16.3774 | 25.4615 | -0.5359 | 3.1714 | 7.2804 | 5.4102 | 15.3261 | -7.7993 |
-| Lalla Chafia | b_l_chafia | DA_cdf | 2018-02 | 55.7613 | 34.8114 | 3.1534 | 7.2071 | 10.3605 | 34.0014 | 1.8556 | 1.5915 | 3.2056 | 0.7771 | 7.4298 | -15.9821 |
-| Sidi Jabeur | b_s_jabeur | DA_cdf | 2018-02 | 52.3637 | 29.9022 | 2.4320 | 6.5287 | 8.9607 | 40.1167 | 2.5219 | 1.5557 | 4.3845 | -2.7057 | 5.7564 | -20.8594 |
-| Lalla Chafia | b_l_chafia | DA_nocdf_nowilt | 2018-02 | 55.7613 | 45.8426 | 6.8466 | 28.0760 | 34.9226 | -2.1517 | 1.1675 | 4.0537 | 3.9914 | 4.0345 | 13.2471 | -9.6052 |
-| Sidi Jabeur | b_s_jabeur | DA_nocdf_nowilt | 2018-02 | 52.3637 | 36.8224 | 3.5577 | 12.8197 | 16.3774 | 26.7131 | -0.5359 | 3.1714 | 7.2804 | 5.4102 | 15.3261 | -12.2231 |
+| station | station_id | experiment | year_month | P_mm | ET_mm | Qs_mm | Qsb_mm | TotalRunoff_mm | Delta_S_mm | Incr_Layer1_mm | Incr_Layer2_mm | Incr_Layer3_mm | Incr_Layer4_mm | Incr_Total_mm | WaterBalance_Residual_mm | Delta_R_vs_OL_DAIC_mm |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Lalla Chafia | b_l_chafia | OPL | 2018-01 | 101.8796 | 29.7646 | 2.0208 | 1.1405 | 3.1613 | 69.0775 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -0.1238 | -0.9404 |
+| Sidi Jabeur | b_s_jabeur | OPL | 2018-01 | 60.6342 | 22.2239 | 1.1847 | 1.0957 | 2.2804 | 36.5726 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -0.4428 | -1.0559 |
+| Lalla Chafia | b_l_chafia | OL_DAIC | 2018-01 | 101.8796 | 33.2635 | 3.2611 | 3.6449 | 6.9060 | 60.8936 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.8166 | 0.0000 |
+| Sidi Jabeur | b_s_jabeur | OL_DAIC | 2018-01 | 60.6342 | 23.5743 | 1.7774 | 2.5462 | 4.3236 | 32.1231 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.6131 | 0.0000 |
+| Lalla Chafia | b_l_chafia | ENS_OPL | 2018-01 | 101.8796 | 36.5715 | 3.5333 | 5.5158 | 9.0491 | 62.5295 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -6.2705 | -7.0871 |
+| Sidi Jabeur | b_s_jabeur | ENS_OPL | 2018-01 | 60.6342 | 28.4487 | 1.8500 | 2.9458 | 4.7957 | 32.3513 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -4.9616 | -5.5747 |
+| Lalla Chafia | b_l_chafia | DA_nocdf | 2018-01 | 101.8796 | 41.6968 | 4.0145 | 13.5559 | 17.5704 | 122.8849 | 11.0380 | 12.4609 | 19.9714 | 18.7446 | 62.2149 | -18.0575 | -18.8741 |
+| Sidi Jabeur | b_s_jabeur | DA_nocdf | 2018-01 | 60.6342 | 31.6785 | 1.9353 | 5.1484 | 7.0837 | 70.7046 | 8.6469 | 8.2150 | 16.8840 | 6.1924 | 39.9383 | -8.8943 | -9.5074 |
+| Lalla Chafia | b_l_chafia | DA_cdf | 2018-01 | 101.8796 | 30.4322 | 3.2460 | 4.7459 | 7.9919 | 60.5451 | -0.2503 | -2.9806 | -5.8904 | -7.9557 | -17.0769 | -14.1664 | -14.9830 |
+| Sidi Jabeur | b_s_jabeur | DA_cdf | 2018-01 | 60.6342 | 25.0223 | 1.7133 | 3.9065 | 5.6198 | 30.2177 | -1.1878 | -2.8488 | -6.8946 | -4.0895 | -15.0206 | -15.2462 | -15.8593 |
+| Lalla Chafia | b_l_chafia | DA_nocdf_nowilt | 2018-01 | 101.8796 | 40.4989 | 4.0145 | 13.5559 | 17.5704 | 122.8849 | 11.0380 | 12.4609 | 19.9714 | 18.7446 | 62.2149 | -16.8596 | -17.6762 |
+| Sidi Jabeur | b_s_jabeur | DA_nocdf_nowilt | 2018-01 | 60.6342 | 30.8752 | 1.9353 | 5.1484 | 7.0837 | 70.7046 | 8.6469 | 8.2150 | 16.8840 | 6.1924 | 39.9383 | -8.0910 | -8.7041 |
+| Lalla Chafia | b_l_chafia | OPL | 2018-02 | 79.2278 | 38.6482 | 1.5935 | 1.0517 | 2.6452 | 37.7832 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.1512 | -0.1108 |
+| Sidi Jabeur | b_s_jabeur | OPL | 2018-02 | 73.1487 | 27.6011 | 1.4519 | 0.9976 | 2.4494 | 43.3052 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -0.2070 | -0.4161 |
+| Lalla Chafia | b_l_chafia | OL_DAIC | 2018-02 | 79.2278 | 40.7229 | 2.9393 | 4.2490 | 7.1883 | 31.0546 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.2620 | 0.0000 |
+| Sidi Jabeur | b_s_jabeur | OL_DAIC | 2018-02 | 73.1487 | 29.5957 | 2.0838 | 2.1899 | 4.2738 | 39.0700 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.2091 | 0.0000 |
+| Lalla Chafia | b_l_chafia | ENS_OPL | 2018-02 | 79.2278 | 44.0195 | 3.2637 | 5.7832 | 9.0469 | 31.2344 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -5.0730 | -5.3350 |
+| Sidi Jabeur | b_s_jabeur | ENS_OPL | 2018-02 | 73.1487 | 34.9138 | 2.2137 | 2.5826 | 4.7963 | 39.7095 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | -6.2710 | -6.4801 |
+| Lalla Chafia | b_l_chafia | DA_nocdf | 2018-02 | 79.2278 | 45.5114 | 6.3896 | 27.2427 | 33.6323 | 24.1119 | 0.7637 | 3.5394 | 3.3605 | 3.5823 | 11.2460 | -12.7818 | -13.0438 |
+| Sidi Jabeur | b_s_jabeur | DA_nocdf | 2018-02 | 73.1487 | 36.4280 | 3.4357 | 12.5102 | 15.9459 | 53.1370 | -0.2444 | 3.5809 | 8.3264 | 6.4812 | 18.1441 | -14.2182 | -14.4273 |
+| Lalla Chafia | b_l_chafia | DA_cdf | 2018-02 | 79.2278 | 38.0270 | 2.9281 | 7.0005 | 9.9286 | 49.4872 | 1.6791 | 1.5010 | 3.0471 | 0.9440 | 7.1712 | -11.0437 | -11.3057 |
+| Sidi Jabeur | b_s_jabeur | DA_cdf | 2018-02 | 73.1487 | 32.2837 | 2.3512 | 6.3682 | 8.7194 | 55.7677 | 2.6500 | 1.7387 | 4.9781 | -2.5202 | 6.8467 | -16.7754 | -16.9845 |
+| Lalla Chafia | b_l_chafia | DA_nocdf_nowilt | 2018-02 | 79.2278 | 45.5060 | 6.3897 | 27.2427 | 33.6323 | 24.1254 | 0.7655 | 3.5511 | 3.3968 | 3.5797 | 11.2931 | -12.7428 | -13.0048 |
+| Sidi Jabeur | b_s_jabeur | DA_nocdf_nowilt | 2018-02 | 73.1487 | 36.4280 | 3.4357 | 12.5102 | 15.9459 | 53.1370 | -0.2444 | 3.5809 | 8.3264 | 6.4812 | 18.1441 | -14.2182 | -14.4273 |
 
 *(Table complète de 144 enregistrements disponible dans `paper1/tables/water_balance_upstream_catchments_2018.csv`)*
 
@@ -184,9 +186,11 @@ Comparaison des débits simulés par HyMAP-2 en configuration historique (`linre
 | 19 | 95 | 98 | -5.0750 | 34.7750 | 6 | Loam | 770.6555 | 386.2187 | 384.4368 | False | False | False | True |
 | 20 | 95 | 97 | -5.1250 | 34.7750 | 6 | Loam | 773.5102 | 389.4517 | 384.0584 | False | False | False | True |
 
-Sur les 20 mailles les plus émettrices d'écart $Q_{sb}$ sur le domaine :
-- **18 mailles sur 20** sont situées précisément à l'intérieur du bassin versant amont de Lalla Chafia ;
-- La texture de sol dominante sur l'ensemble de ces mailles est la classe 8 (**Clay Loam**), caractérisée par une forte rétention et une conductivité hydraulique intermédiaire propice au drainage gravitaire profond lorsque l'humidité du sol est artificiellement surélevée par les incréments SMAP.
+Sur les 20 mailles les plus émettrices d'écart $Q_{sb}$ sur le domaine (`top20_cells_qsb_difference.csv`) :
+- **Texture de sol :** Toutes les 20 mailles ont pour texture **Loam** (classe 6).
+- **Écart maximal :** +441,50 mm/an (maille rank 1 à lon −5,625°, lat 35,275°), et +384,06 mm/an pour le rank 20.
+- **Absence dans Lalla Chafia :** **Aucune maille** n'est située à l'intérieur du bassin versant amont de Lalla Chafia (`inside_lalla_chafia = False` pour les 20 mailles) ni de Sidi Jabeur (`inside_sidi_jabeur = False`).
+- **Localisation réelle :** Longitude −5,7° à −5,1°, Latitude 34,8° à 35,3° (région Rif / Loukkos, dont 7 mailles situées dans le bassin du Sebou : ranks 8, 9, 11, 12, 17, 19, 20).
 
 ---
 
@@ -208,6 +212,12 @@ Sur les 20 mailles les plus émettrices d'écart $Q_{sb}$ sur le domaine :
 4. **Configurations de routage DA basculées en coldstart :**
    - Le passage en coldstart (`Routing restart mode: 0` au 01-01-2016) pour `DA_nocdf_linres0_2016_2020` et `DA_cdf_linres0_2016_2020` est strictement conforme à la configuration de référence `OPL_linres0_2016_2020` (également en coldstart au 01-01-2016).
    - Aucune sortie préexistante n'a été altérée ni écrasée (création de répertoires de sortie vierges dédiés).
+
+### c) Diagnostic et Statut de DA_nocdf_nostate_2018MAM
+- **Constat log et sorties :** `DA_nocdf_nostate_2018MAM` (Job Slurm 8360362) a réalisé **0 instance d'assimilation** (aucune analyse EnKF effectuée, aucun fichier d'incrément généré).
+- **Cause dans la configuration :** Dans `experiments/NorthMor/matrix_2016_2020/sensitivity_diag/DA_nocdf_nostate_2018MAM/config/lis_DA_nocdf_nostate_2018MAM.config`, la ligne de configuration porte `Number of data assimilation instances: 0`. Dans LIS, cette valeur désactive l'ensemble du sous-système d'assimilation, faisant tourner le run en simple ensemble open-loop.
+- **Comparaison avec DA_corr_2018 :** Dans `DA_corr_2018/config/lis_DA_corr_2018.config`, `Number of data assimilation instances: 1` est actif, avec `State perturbation algorithm: 'none'`. Cette configuration active bien l'algorithme EnKF et assimile les observations SMAP à chaque passage satellite, produisant les incréments attendus.
+- **Statut formel :** `DA_nocdf_nostate_2018MAM` est marqué comme **NON VALIDE pour l'évaluation de l'assimilation**.
 
 ### b) Correction de `paper1/REPORT_LOT1c.md`
 - Le membre 20 de l'ensemble n'est pas `OL_DAIC`. Il s'agit du **membre non perturbé de l'ensemble**, dont les conditions initiales diffèrent de celles d'`OL_DAIC`. Le script `paper1/scripts/generate_report_lot1c.py` a été corrigé et `paper1/REPORT_LOT1c.md` a été régénéré.
@@ -240,12 +250,12 @@ Sur les 20 mailles les plus émettrices d'écart $Q_{sb}$ sur le domaine :
 | Fichier Produit | Rôle | Somme de Contrôle MD5 |
 |---|---|---|
 | `paper1/scripts/c1_verify_lalla_chafia_streamflow.py` | Script | `4b4608c8413083488303ce0cde03012e` |
-| `paper1/scripts/step3_generate_report_night_3.py` | Script | `0e9e072afef10d15a35f5341f8ced259` |
+| `paper1/scripts/step3_generate_report_night_3.py` | Script | `bc30e2d8621b993937fa86c5762f6f77` |
 | `paper1/scripts/generate_report_lot2.py` | Script | `40805abe5a46d044b330b375bc5c9677` |
 | `paper1/scripts/generate_report_lot1c.py` | Script | `2f61292aeeca0d47131112012843a9cd` |
 | `paper1/tables/daily_streamflow_lalla_chafia_sidi_jabeur_2018.csv` | Table | `8e2fec42bbd8c38cf3a56d3e275733fd` |
 | `paper1/tables/monthly_streamflow_lalla_chafia_sidi_jabeur_2018.csv` | Table | `bef059a5dc21d5bfcfc1741c18d3f0b6` |
-| `paper1/tables/water_balance_upstream_catchments_2018.csv` | Table | `ba320a476a0cbe7d548fe83f303fbeb3` |
+| `paper1/tables/water_balance_upstream_catchments_2018.csv` | Table | `558aee41de7474a4dea0e198ccf69a22` |
 | `paper1/tables/da_nocdf_annual_runoff_catchment_2016_2020.csv` | Table | `4c3e684a0895db46f8dbf46ce99aa7d0` |
 | `paper1/tables/remap_runoff_check_lalla_chafia_2018.csv` | Table | `81f2beb44fddfd40ec4666adab509de0` |
 | `paper1/tables/lalla_chafia_streamflow_linres1_vs_linres0_2018.csv` | Table | `844710518cfd1d3bbe9ac31aa213a817` |

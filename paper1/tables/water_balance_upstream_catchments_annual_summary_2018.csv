@@ -1,0 +1,13 @@
+station,experiment,P_mm,ET_mm,TotalRunoff_mm,Delta_S_mm,Incr_Total_mm,WaterBalance_Residual_mm,Delta_R_vs_OL_DAIC_mm,valid_closure_lt_1mm
+Lalla Chafia,OPL,762.54,607.86,75.65,79.77,0.0,-0.72,-0.58,True
+Lalla Chafia,OL_DAIC,762.54,609.71,126.87,26.12,0.0,-0.15,0.0,True
+Lalla Chafia,ENS_OPL,762.54,666.56,148.26,27.76,0.0,-80.03,-79.89,False
+Lalla Chafia,DA_nocdf,762.54,650.19,340.13,83.63,208.92,-102.49,-102.35,False
+Lalla Chafia,DA_cdf,762.54,586.31,149.73,52.09,-107.09,-132.67,-132.52,False
+Lalla Chafia,DA_nocdf_nowilt,762.54,626.11,341.43,81.5,178.57,-107.93,-107.78,False
+Sidi Jabeur,OPL,637.39,533.55,39.72,64.98,0.0,-0.85,-1.15,True
+Sidi Jabeur,OL_DAIC,637.39,535.18,61.37,40.55,0.0,0.29,0.0,True
+Sidi Jabeur,ENS_OPL,637.39,601.47,76.96,43.06,0.0,-84.09,-84.38,False
+Sidi Jabeur,DA_nocdf,637.39,568.22,189.9,95.04,62.28,-153.48,-153.77,False
+Sidi Jabeur,DA_cdf,637.39,543.05,122.75,49.9,-113.22,-191.52,-191.81,False
+Sidi Jabeur,DA_nocdf_nowilt,637.39,553.61,189.44,95.07,33.69,-167.03,-167.32,False
