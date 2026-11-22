@@ -1,7 +1,7 @@
 # Rapport d'Exécution — LOT 2/4 : Routage HyMAP-2 (linres = 0) et Évaluations Débits & ET (RQ3)
 
-**Date de génération :** 2026-11-22 01:00:15  
-**Dépôt principal :** `paper1-closure` (`1d4efc3151504c9b1d914a56a28e91f2cccb1be1`)  
+**Date de génération :** 2026-11-22 01:46:30  
+**Dépôt principal :** `paper1-closure` (`ec79869c041b50fab16b9c6e57ce09898ad2ac8c`)  
 **Dépôt smap-xai-audit :** `elaabar` (`18d694ecd3d29477133b95e68875a8735644c198`)  
 
 Ce rapport technique consigne l'exécution intégrale du **Lot 2/4** conformément au cahier des charges :
@@ -21,14 +21,19 @@ Toutes les simulations de routage ont été exécutées avec la physique HyMAP-2
 | Expérience | Rôle | Job ID | Nœud Slurm | Durée | Statut | Code Sortie | Emplacement Sorties |
 |---|---|---|---|---|---|---|---|
 | **`OL_DAIC_2018_linres0`** | Sensibilité condition initiale DAIC | `8360678` | `slurm-compute-h21a5-u12-svn1` | 00:06:03 | **COMPLETED** | `0:0` | `experiments/NorthMor/routing/output/OL_DAIC_2018_linres0/` |
-| **`ENS_OPL_2018_linres0`** | Contrôle ensemble 12 membres | `8360679` | `slurm-compute-h22b8-u9-svn2` | 00:06:00 | **COMPLETED** | `0:0` | `experiments/NorthMor/routing/output/ENS_OPL_2018_linres0/` |
+| **`ENS_OPL_2018_linres0`** | Contrôle ensemble 20 membres | `8360679` | `slurm-compute-h22b8-u9-svn2` | 00:06:00 | **COMPLETED** | `0:0` | `experiments/NorthMor/routing/output/ENS_OPL_2018_linres0/` |
 | **`DA_nocdf_nowilt_2018_linres0`** | DA sans filtre flétrissement | `8360680` | `slurm-compute-h24d8-u8-svn1` | 00:06:01 | **COMPLETED** | `0:0` | `experiments/NorthMor/routing/output/DA_nocdf_nowilt_2018_linres0/` |
 | **`DA_nocdf_linres0_2016_2020`** | Référence DA-NoCDF 5 ans | `8360645` | `slurm-compute-h21a5-u12-svn1` | 00:29:30 | **COMPLETED** | `0:0` | `experiments/NorthMor/routing/output/DA_nocdf_linres0_2016_2020/` |
 | **`DA_cdf_linres0_2016_2020`** | Référence DA-CDF 5 ans | `8360646` | `slurm-compute-h22b8-u9-svn2` | 00:29:11 | **COMPLETED** | `0:0` | `experiments/NorthMor/routing/output/DA_cdf_linres0_2016_2020/` |
 | **`OPL_linres0_2016_2020`** | Référence Open-Loop 5 ans | `8272794` | Toubkal Cluster | ~00:28:00 | **COMPLETED** | `0:0` | `experiments/NorthMor/routing/output/OPL_linres0_2016_2020/` |
 
-### Note sur les simulations YYYY (2017) de Lot 1
-Les simulations Noah-MP de robustesse sur l'année 2017 lancées lors du Lot 1 (`ENS_OPL_2017` Job 8360359, `OL_DAIC_2017` Job 8360360, `DA_nowilt_2017` Job 8360361, `DA_nostate_2017` Job 8360362, `DA_diag_2017` Job 8360363) sont toujours en cours d'exécution sur le cluster Toubkal (~2h20 écoulées). Comme prescrit par la consigne du Lot 2, elles seront routées et évaluées dès la fin de leur exécution dans le cadre du Lot 3.
+### Note sur les simulations de Lot 1
+Les simulations Noah-MP de robustesse lancées lors du Lot 1 comprennent :
+- Simulations sur 2017 : `ENS_OPL_2017` (Job 8360359), `OL_DAIC_2017` (Job 8360360, terminé), `DA_nocdf_nowilt_2017` (Job 8360361) ;
+- Simulations de diagnostic sur 2018 : `DA_nocdf_nostate_2018MAM` (Job 8360362, diagnostic blocage état MAM 2018) et `DA_nocdf_diag_2018ND` (Job 8360363, diagnostic incréments ND 2018) ;
+- Simulation pas fin : `DA_nocdf_diag_15min_2018Nov` (diagnostic pas fin 15 min novembre 2018).
+Ces runs ne sont pas dénommés « DA_nostate_2017 » ou « DA_diag_2017 » mais portent explicitement sur l'année 2018 pour les diagnostics d'état et d'incréments.
+Comme prescrit par la consigne du Lot 2, elles seront routées et évaluées dès la fin de leur exécution dans le cadre du Lot 3.
 
 ---
 
@@ -37,6 +42,7 @@ Les simulations Noah-MP de robustesse sur l'année 2017 lancées lors du Lot 1 (
 - **Fichier de Restart Initial HyMAP :** `experiments/NorthMor/routing/output/DA_nocdf_linres0_2016_2020/ROUTING/201712/LIS_RST_HYMAP2_router_201712312345.d01.nc`
   - Vérification de cohérence : `BSFSTO = 0.0`, `RNFSTO = 0.0` (linres = 0 strictement respecté) ; `RIVSTO_max = 7.38 × 10⁶ m³`.
   - Appliqué comme condition initiale au 2018-01-01 00:00 pour `OL_DAIC_2018`, `ENS_OPL_2018` et `DA_nocdf_nowilt_2018`.
+- **Routage de référence 2016–2020 (coldstart) :** Les configurations de routage pour `DA_nocdf_linres0_2016_2020` et `DA_cdf_linres0_2016_2020` ont été basculées en coldstart (`Routing restart mode: 0`) au 01-01-2016, de manière strictement identique à `OPL_linres0_2016_2020` (également en coldstart 01-01-2016), assurant une parfaite comparabilité méthodologique entre les 3 runs de référence 5 ans. Aucune sortie préalable n'a été écrasée (les dossiers de sortie étaient neufs). Le diff est consigné dans `paper1/runs/routing/README.md`.
 - **Remapping du ruissellement :** script unifié `paper1/scripts/remap_runoff_2018_experiments.py` (application de la formule validée dans `routing/checks/03_remapping_ruissellement.md`).
   - Grille source : 181×121 (Noah-MP) $\to$ Grille cible : 180×120 (HyMAP-2).
   - Fichiers régularisés : 365 pas de temps journaliers 2018 + pas de raccordement frontière `201901020000.d01.nc`.
@@ -202,7 +208,7 @@ Changement de la valeur absolue du biais ($\Delta |\text{Biais}| = |\text{Biais}
 1. **Composantes de l'ET GLEAM (Et, Eb, Ei) :** non présentes dans l'archive téléchargée `data/validation/evapotranspiration/GLEAM/raw/` (seules les variables globales `E` et `Ep` sont présentes). L'évaluation a donc été menée sur l'ET totale.
 2. **WaPOR v2 AETI en 2018 :** seule l'année 2016 est disponible dans `data/validation/evapotranspiration/WaPOR/WaPOR_v2_AETI/`. L'évaluation 2018 a été réalisée avec WaPOR v3 AETI (couverture complète du Nord Marocain).
 3. **Masque d'irrigation :** `IRRIGFRAC` est égal à 0,0 sur 100% des mailles du domaine dans `data/lis_input/lis_input_NorthMor_5km.nc`. En l'absence de masque d'irrigation externe téléchargeable, la stratification irrigué/pluvial a été omise et documentée.
-4. **Pas de temps 2018-05-31 Noah-MP :** segment historique 1 des runs `ENS_OPL_2018` et `DA_nocdf_nowilt_2018` arrêté le 2018-05-31 avant minuit. Le fichier de ruissellement a été régularisé pour assurer la stricte continuité temporelle de HyMAP-2 sans fausser les bilans annuels.
+4. **Fichier de raccordement du 31-05-2018 (ENS_OPL, DA_nocdf_nowilt) :** Lors du redémarrage du segment 2 au 01-06-2018, le fichier de flux du 31 mai (`LIS_HIST_201806010000.d01.nc`) n'avait pas été transféré dans l'arborescence standard mais restait archivé dans `output/_partial_201806_hang/SURFACEMODEL_201806/`. Pour le remapping de ruissellement, le flux du 30 mai 2018 (`LIS_HIST_201805310000.d01.nc`) a été dupliqué pour combler ce pas de temps. Les scripts d'audit antérieurs (`smap-xai-audit`) ont fait face au même trou en lisant directement le dossier standard sans inclure le sous-dossier partiel. L'ordre de grandeur de cet écart sur le bilan annuel moyen sur le domaine est strictement inférieur à 0,11 mm sur l'ET (−0,094 mm pour ENS_OPL, −0,105 mm pour DA_nowilt), inférieur à 0,012 mm sur Qs, et inférieur à 0,001 mm sur Qsb (+0,0007 mm pour ENS_OPL, +0,0010 mm pour DA_nowilt), soit un impact relatif < 0,03% sur l'ET et totalement négligeable sur le ruissellement.
 5. **Runs YYYY (2017) de robustesse :** toujours en cours d'exécution sur le cluster Toubkal (Jobs Slurm 8360359 à 8360363). Ils seront routés et évalués au Lot 3.
 
 ---
@@ -214,7 +220,7 @@ Changement de la valeur absolue du biais ($\Delta |\text{Biais}| = |\text{Biais}
 | `paper1/scripts/remap_runoff_2018_experiments.py` | Livrable Lot 2 | `87f9f168e94fb8271d5b71b640e13768` |
 | `paper1/scripts/c1_evaluate_streamflow.py` | Livrable Lot 2 | `34bdafaf80da1da3b70a6ee35e1e5776` |
 | `paper1/scripts/c2_evaluate_et.py` | Livrable Lot 2 | `5fc2091d1b14e01d407e2d33bb33cd0d` |
-| `paper1/scripts/generate_report_lot2.py` | Livrable Lot 2 | `30317c075192d2a0863a9e61eb83b263` |
+| `paper1/scripts/generate_report_lot2.py` | Livrable Lot 2 | `40805abe5a46d044b330b375bc5c9677` |
 | `paper1/tables/streamflow_metrics.csv` | Livrable Lot 2 | `afa26a1f4af9aa87785342435d5d417c` |
 | `paper1/tables/streamflow_nic.csv` | Livrable Lot 2 | `8351c2bc33c15384003cbda5a42bdd58` |
 | `paper1/tables/et_evaluation.csv` | Livrable Lot 2 | `428ee6111e04a4f6e0551b19fe5dc082` |
