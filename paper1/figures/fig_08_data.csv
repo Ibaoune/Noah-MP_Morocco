@@ -1,0 +1,35 @@
+# PANEL_A_MONTHLY_ET_CYCLE_BY_BASIN_2018
+month,GLEAM_Sebou,GLEAM_Bouregreg,GLEAM_Domain,OPL_Sebou,OPL_Bouregreg,OPL_Domain,OL_DAIC_Sebou,OL_DAIC_Bouregreg,OL_DAIC_Domain,ENS_OPL_Sebou,ENS_OPL_Bouregreg,ENS_OPL_Domain,DA_nocdf_Sebou,DA_nocdf_Bouregreg,DA_nocdf_Domain,DA_cdf_Sebou,DA_cdf_Bouregreg,DA_cdf_Domain,DA_nocdf_nowilt_Sebou,DA_nocdf_nowilt_Bouregreg,DA_nocdf_nowilt_Domain
+1,23.92664909362793,24.789451599121094,17.485504150390625,,,,,,,,,,,,,,,,,,
+2,29.4677791595459,28.490081787109375,20.581199645996094,,,,,,,,,,,,,,,,,,
+3,49.97785568237305,47.46456527709961,29.99066925048828,,,,,,,,,,,,,,,,,,
+4,61.58283615112305,62.480892181396484,34.0523796081543,,,,,,,,,,,,,,,,,,
+5,69.11212921142578,65.77272033691406,32.99691390991211,,,,,,,,,,,,,,,,,,
+6,46.85624313354492,48.56280517578125,17.313613891601562,,,,,,,,,,,,,,,,,,
+7,28.825368881225586,21.480932235717773,11.151971817016602,,,,,,,,,,,,,,,,,,
+8,26.7578182220459,21.17007827758789,23.083866119384766,,,,,,,,,,,,,,,,,,
+9,34.194847106933594,38.04362869262695,27.883153915405273,,,,,,,,,,,,,,,,,,
+10,34.51181411743164,40.77762985229492,23.707605361938477,,,,,,,,,,,,,,,,,,
+11,25.81452178955078,27.39370346069336,20.721134185791016,,,,,,,,,,,,,,,,,,
+12,19.122270584106445,20.091259002685547,9.785862922668457,,,,,,,,,,,,,,,,,,
+
+# PANEL_B_DIRECTION_OF_CHANGE_EVALUATION
+pair,pair_description,reference,period,stratum,season,n_cells,mean_diff_mm,bias_x_mm,bias_y_mm,delta_abs_bias_mm,frac_closer_pct,direction
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),GLEAM_v4.3a,2018,Domain,Annual,3965,-111.33,1.75,113.08,-111.33,62.22,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),GLEAM_v4.3a,2018,Sebou,Annual,316,-151.85,94.56,246.41,-151.85,79.11,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),GLEAM_v4.3a,2018,Bouregreg,Annual,66,-40.18,153.68,193.86,-40.18,66.67,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),WaPOR_v3,2018,Domain,Annual,1410,-121.07,62.64,183.71,-121.07,75.04,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),WaPOR_v3,2018,Sebou,Annual,317,-151.37,74.72,226.09,-151.37,80.13,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),WaPOR_v3,2018,Bouregreg,Annual,67,-39.58,145.99,185.56,-39.58,67.16,Rapprochement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),GLEAM_v4.3a,2018,Domain,Annual,3965,67.19,113.08,45.89,67.19,22.65,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),GLEAM_v4.3a,2018,Sebou,Annual,316,65.63,246.41,180.78,65.63,2.53,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),GLEAM_v4.3a,2018,Bouregreg,Annual,66,66.24,193.86,127.62,66.24,0.0,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),WaPOR_v3,2018,Domain,Annual,1410,61.83,183.71,121.88,61.83,8.87,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),WaPOR_v3,2018,Sebou,Annual,317,65.59,226.09,160.5,65.59,3.79,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),WaPOR_v3,2018,Bouregreg,Annual,67,65.25,185.56,120.31,65.25,4.48,Éloignement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),GLEAM_v4.3a,2018,Domain,Annual,3965,-31.05,-29.3,1.75,27.54,43.13,Éloignement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),GLEAM_v4.3a,2018,Sebou,Annual,316,-46.25,48.31,94.56,-46.25,62.66,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),GLEAM_v4.3a,2018,Bouregreg,Annual,66,-21.82,131.86,153.68,-21.82,80.3,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),WaPOR_v3,2018,Domain,Annual,1410,-21.07,41.57,62.64,-21.07,54.61,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),WaPOR_v3,2018,Sebou,Annual,317,-46.1,28.62,74.72,-46.1,59.31,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),WaPOR_v3,2018,Bouregreg,Annual,67,-21.49,124.5,145.99,-21.49,77.61,Rapprochement

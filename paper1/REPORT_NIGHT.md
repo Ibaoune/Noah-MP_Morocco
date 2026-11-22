@@ -1,16 +1,16 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-22 04:31:32  
-**Étape atteinte :** Étape 5
+**Dernière mise à jour :** 2026-11-22 04:57:59  
+**Étape atteinte :** Étape 6
 
 ## 1. Statut des Jobs en Cours et Historiques
 
 | Job ID | Nom | État | Date Simulée Actuelle | Vitesse (dernière heure, j/h) | Fin Estimée | Limite `--time` | Risque Dépassement |
 |---|---|---|---|---|---|---|---|
 | 8360343 | RegCM_Morocco | RUNNING | Production externe | N/A | Indeterminee | 1-12:00:00 | non |
-| 8360359 | ENS_OPL_2017 | RUNNING | 2017-04-30 00:00 | 20.68 | 2026-11-22 16:25:22 | 16:00:00 | oui |
+| 8360359 | ENS_OPL_2017 | RUNNING | 2017-05-10 00:00 | 20.71 | 2026-11-22 16:21:36 | 16:00:00 | oui |
 | 8360360 | OL_DAIC_2017 | COMPLETED | 2018-01-01 | 0.00 | 2026-11-22T00:54:33 | 03:30:00 | non |
-| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-04-28 00:00 | 20.10 | 2026-11-22 16:51:50 | 16:00:00 | oui |
+| 8360361 | DA_nocdf_nowilt_2017 | RUNNING | 2017-05-07 00:00 | 20.14 | 2026-11-22 16:49:57 | 16:00:00 | oui |
 | 8360362 | DA_nocdf_nostate_2018MAM | COMPLETED | 2018-06-01 | 0.00 | 2026-11-22T03:10:46 | 06:00:00 | non |
 | 8360363 | DA_nocdf_diag_2018ND | COMPLETED | 2019-01-01 | 0.00 | 2026-11-22T01:45:10 | 04:30:00 | non |
 | 8360364 | ENS_STATE_201803_noRyu | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T00:18:54 | 04:00:00 | non |
@@ -35,6 +35,7 @@
 - [REPORT_NIGHT_3.md](paper1/REPORT_NIGHT_3.md)
 - [REPORT_NIGHT_4.md](paper1/REPORT_NIGHT_4.md)
 - [REPORT_NIGHT_5.md](paper1/REPORT_NIGHT_5.md)
+- [REPORT_NIGHT_6.md](paper1/REPORT_NIGHT_6.md)
 
 ## 3. Tables Produites
 - [annual_precip_2016_2020.csv](paper1/tables/annual_precip_2016_2020.csv)
@@ -78,6 +79,29 @@
 - [water_balance_upstream_catchments_2018.csv](paper1/tables/water_balance_upstream_catchments_2018.csv)
 
 ## 4. Figures Disponibles
+- [FIGURES_STATUS.md](paper1/figures/FIGURES_STATUS.md)
+- [fig_02.png](paper1/figures/fig_02.png)
+- [fig_02_data.csv](paper1/figures/fig_02_data.csv)
+- [fig_03.png](paper1/figures/fig_03.png)
+- [fig_03_data.csv](paper1/figures/fig_03_data.csv)
+- [fig_04.png](paper1/figures/fig_04.png)
+- [fig_04_data.csv](paper1/figures/fig_04_data.csv)
+- [fig_05.png](paper1/figures/fig_05.png)
+- [fig_05_data.csv](paper1/figures/fig_05_data.csv)
+- [fig_06.png](paper1/figures/fig_06.png)
+- [fig_06_data.csv](paper1/figures/fig_06_data.csv)
+- [fig_07.png](paper1/figures/fig_07.png)
+- [fig_07_data.csv](paper1/figures/fig_07_data.csv)
+- [fig_08.png](paper1/figures/fig_08.png)
+- [fig_08_data.csv](paper1/figures/fig_08_data.csv)
+- [fig_09.png](paper1/figures/fig_09.png)
+- [fig_09_data.csv](paper1/figures/fig_09_data.csv)
+- [fig_Sa.png](paper1/figures/fig_Sa.png)
+- [fig_Sa_data.csv](paper1/figures/fig_Sa_data.csv)
+- [fig_Sb.png](paper1/figures/fig_Sb.png)
+- [fig_Sb_data.csv](paper1/figures/fig_Sb_data.csv)
+- [fig_Sc.png](paper1/figures/fig_Sc.png)
+- [fig_Sc_data.csv](paper1/figures/fig_Sc_data.csv)
 - [fig_control_daily_streamflow_log.pdf](paper1/figures/fig_control_daily_streamflow_log.pdf)
 - [fig_control_daily_streamflow_log.png](paper1/figures/fig_control_daily_streamflow_log.png)
 - [fig_map_qsb_difference_da_minus_ens.pdf](paper1/figures/fig_map_qsb_difference_da_minus_ens.pdf)
@@ -87,4 +111,4 @@
 Aucun probleme bloquant.
 
 ## 6. Résultat des Tentatives de Git Push
-`Succes: git push origin paper1-closure au 2026-11-22 04:15:38`
+`Succes: git push origin paper1-closure au 2026-11-22 04:31:32`
