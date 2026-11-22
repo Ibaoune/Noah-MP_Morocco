@@ -1,0 +1,5 @@
+metric,DA_nocdf_MAM2018,DA_nocdf_nostate_2018MAM,difference,note
+Spread moyen theta_1 (m3/m3),0.04396,0.0125,-0.03146,Réduction drastique du spread en l'absence de perturbation d'état
+Variance des innovations normalisées,1.2446,,,Non applicable (0 instance DA dans nostate_2018MAM)
+Incréments d'analyse cumulés (mm),-65.6,0.0,65.6,Aucun incrément en l'absence d'assimilation
+Bilan interne R cumulé (mm),39.36,-0.07,-39.43,Bilan quasi parfait (R = -0.07 mm) sans perturbation d'état ni DA

@@ -1,0 +1,6 @@
+run,job_id,status,simulated_date,progress_pct,note
+ENS_OPL_2017,8360359,RUNNING,2017-04-25,31.2,En cours sur Toubkal (traitement Étape 5a différé après achèvement)
+DA_nocdf_nowilt_2017,8360361,RUNNING,2017-04-23,30.7,En cours sur Toubkal (traitement Étape 5a différé après achèvement)
+OL_DAIC_2017,8360360,COMPLETED,2018-01-01,100.0,Terminé (restart 201801010000 disponible)
+ENS_corr_2018,8361185,RUNNING,2018-01-25,6.6,En cours sur Toubkal (mois 1 janvier non terminé)
+DA_corr_2018,8361186,RUNNING,2018-01-24,6.3,En cours sur Toubkal (mois 1 janvier non terminé)
