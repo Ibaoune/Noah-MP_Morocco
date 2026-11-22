@@ -6,7 +6,7 @@ Ce fichier consigne l'ensemble des dépôts, commits, patchs et binaires utilis�
 
 | Dépôt | Branche | Commit Hash (HEAD) | Dernier Message de Commit |
 |---|---|---|---|
-| **`Ibaoune/Noah-MP_Morocco`** | `paper1-closure` | `48dc170fd16c1f90a9445b538bb8b30fbad205e1` | 2026-11-22 00:23:41 +0100 (paper1: execute Lot 1c (noRyu completion, EnKF 15min analysis check, spread audit)) |
+| **`Ibaoune/Noah-MP_Morocco`** | `paper1-closure` | `1d4efc3151504c9b1d914a56a28e91f2cccb1be1` | 2026-11-22 01:00:02 +0100 (paper1: execute Lot 2 (HyMAP-2 linres=0 routing, streamflow metrics & NIC, ET evaluation GLEAM/WaPOR, REPORT_LOT2)) |
 | **`Ibaoune/smap-xai-audit`** | `elaabar` | `18d694ecd3d29477133b95e68875a8735644c198` | 2026-11-20 00:19:52 +0100 (audit(diag2018): extension annuelle 2018 et totaux JJA des bilans hydriques et de censure) |
 
 ## 2. Binaires et Exécutables LISF 7.5
