@@ -1,0 +1,9 @@
+day_file,variable,max_abs_diff,mean_diff,status
+LIS_HIST_201801020000.d01.nc,SoilMoist_tavg,0.0,0.0,PASS
+LIS_HIST_201801020000.d01.nc,Evap_tavg,0.0,0.0,PASS
+LIS_HIST_201801020000.d01.nc,Qs_tavg,0.0,0.0,PASS
+LIS_HIST_201801020000.d01.nc,Qsb_tavg,0.0,0.0,PASS
+LIS_HIST_201801030000.d01.nc,SoilMoist_tavg,0.0,0.0,PASS
+LIS_HIST_201801030000.d01.nc,Evap_tavg,0.0,0.0,PASS
+LIS_HIST_201801030000.d01.nc,Qs_tavg,0.0,0.0,PASS
+LIS_HIST_201801030000.d01.nc,Qsb_tavg,0.0,0.0,PASS
