@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_sources_md.py -- Traçabilité des sources (paper1, lot 1).
+generate_sources_md.py -- Traçabilité des sources (paper1, lots 1 et 2).
 
 Génère `paper1/SOURCES.md` avec les hashes de commit exacts de chaque
 dépôt et fichier source utilisé.
@@ -47,7 +47,7 @@ def main():
 
     out_file = os.path.join(BASE_DIR, "paper1/SOURCES.md")
     with open(out_file, "w") as f:
-        f.write("# Sources et Hashes de Commit — Papier 1 (Lot 1)\n\n")
+        f.write("# Sources et Hashes de Commit — Papier 1 (Lots 1 et 2)\n\n")
         f.write("Ce fichier consigne l'ensemble des dépôts, commits, patchs et binaires utilisés pour garantir la reproductibilité intégrale des résultats du papier 1.\n\n")
 
         f.write("## 1. Dépôts Git\n\n")
@@ -59,7 +59,7 @@ def main():
         f.write("## 2. Binaires et Exécutables LISF 7.5\n\n")
         f.write("| Binaire | Usage | Chemin Relatif | Somme de Contrôle MD5 |\n")
         f.write("|---|---|---|---|\n")
-        f.write(f"| **LIS Production** | Runs standard (OPL, DA, Sensibilité) | `src/lisf/lis/make/LIS` | `{md5_prod}` |\n")
+        f.write(f"| **LIS Production** | Runs standard (OPL, DA, Sensibilité, Routage HyMAP) | `src/lisf/lis/make/LIS` | `{md5_prod}` |\n")
         f.write(f"| **LIS NoWilt** | Runs audit sans filtre flétrissement | `src/lisf_nowilt/lis/LIS` | `{md5_nowilt}` |\n\n")
 
         f.write("## 3. Fichiers de Données Clés et Paramètres\n\n")
@@ -69,14 +69,24 @@ def main():
         f.write(f"| `patches/lisf_nowilt_qc_wilting.patch` | Patch Fortran supprimant le filtre QC flétrissement | `{get_md5(os.path.join(BASE_DIR, 'patches/lisf_nowilt_qc_wilting.patch'))}` |\n")
         f.write(f"| `patches/lisf_hymap1_fixes.patch` | Patch correctifs routage HyMAP v1 | `{get_md5(os.path.join(BASE_DIR, 'patches/lisf_hymap1_fixes.patch'))}` |\n\n")
 
-        f.write("## 4. Fichiers d'Entrée des Stations et Forçages\n\n")
+        f.write("## 4. Fichiers et Configurations du Bloc B (Routage HyMAP-2 linres = 0)\n\n")
+        f.write("| Fichier | Rôle | MD5 |\n")
+        f.write("|---|---|---|\n")
+        f.write(f"| `paper1/runs/routing/configs/lis_hymap2_ol_daic_2018_linres0.config` | Config HyMAP-2 linres=0 OL_DAIC | `{get_md5(os.path.join(BASE_DIR, 'paper1/runs/routing/configs/lis_hymap2_ol_daic_2018_linres0.config'))}` |\n")
+        f.write(f"| `paper1/runs/routing/configs/lis_hymap2_ens_opl_2018_linres0.config` | Config HyMAP-2 linres=0 ENS_OPL | `{get_md5(os.path.join(BASE_DIR, 'paper1/runs/routing/configs/lis_hymap2_ens_opl_2018_linres0.config'))}` |\n")
+        f.write(f"| `paper1/runs/routing/configs/lis_hymap2_da_nocdf_nowilt_2018_linres0.config` | Config HyMAP-2 linres=0 NoWilt | `{get_md5(os.path.join(BASE_DIR, 'paper1/runs/routing/configs/lis_hymap2_da_nocdf_nowilt_2018_linres0.config'))}` |\n")
+        f.write(f"| `experiments/NorthMor/routing/output/DA_nocdf_linres0_2016_2020/ROUTING/201712/LIS_RST_HYMAP2_router_201712312345.d01.nc` | Restart HyMAP linres0 01-01-2018 | `{get_md5(os.path.join(BASE_DIR, 'experiments/NorthMor/routing/output/DA_nocdf_linres0_2016_2020/ROUTING/201712/LIS_RST_HYMAP2_router_201712312345.d01.nc'))}` |\n\n")
+
+        f.write("## 5. Données d'Observation pour l'Évaluation (Blocs C1 et C2)\n\n")
         f.write("- **Inventaire 2018 des stations** : `experiments/NorthMor/opl_hydrology_sensitivity/postproc/tables/station_inventory_2018.csv`\n")
         f.write("- **Appariement HyMAP des stations** : `experiments/NorthMor/routing/stations/hymap_stations_pairing.csv`\n")
-        f.write("- **Données débit nettoyées** : `data/streamflow_clean/obs_daily.csv`, `obs_monthly.csv`, `stations.csv`\n")
+        f.write("- **Données débit nettoyées** : `data/streamflow_clean/obs_daily.csv` (Bouregreg), `obs_monthly.csv` (Sebou)\n")
+        f.write("- **Évapotranspiration GLEAM v4.3a** : `data/validation/evapotranspiration/GLEAM/raw/` (0,10° natif, journalier mm/jour, variables `E` et `Ep`)\n")
+        f.write("- **Évapotranspiration WaPOR v3 AETI** : `data/validation/evapotranspiration/WaPOR/WaPOR_v3_AETI/` (~250m natif, annuel mm/an 2018-2020)\n")
         f.write("- **Forçages météorologiques** : MERRA-2 (NASA GMAO) + GPM IMERG Final Run v07B (`data/forcing/`)\n")
         f.write("- **Observations satellitaires** : SMAP L3 Enhanced 9 km `SPL3SMP_E` (`data/observations/SMAP_SPL3SMP_E/`)\n")
 
-    print(f"[OK] Fichier SOURCES.md généré : {out_file}")
+    print(f"[OK] Fichier SOURCES.md régénéré : {out_file}")
 
 
 if __name__ == "__main__":
