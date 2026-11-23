@@ -1,0 +1,13 @@
+component,year,status,filepath,resolution_deg,resolution_nominal,lon_min,lon_max,lat_min,lat_max,crs,shape
+AETI,2018,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_AETI/WaPOR_v3_AETI_2018.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+AETI,2019,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_AETI/WaPOR_v3_AETI_2019.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+AETI,2020,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_AETI/WaPOR_v3_AETI_2020.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+E,2018,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_E/WaPOR_v3_E_2018.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+E,2019,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_E/WaPOR_v3_E_2019.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+E,2020,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_E/WaPOR_v3_E_2020.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+T,2018,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_T/WaPOR_v3_T_2018.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+T,2019,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_T/WaPOR_v3_T_2019.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+T,2020,present,data/validation/evapotranspiration/WaPOR/WaPOR_v3_T/WaPOR_v3_T_2020.tif,0.002246,~250m (0.002246°),-7.5009,-2.9981,31.9980,36.0224,EPSG:4326 (WGS84),2005x1792
+I,2018,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
+I,2019,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent
+I,2020,absent,absent,absent,absent,absent,absent,absent,absent,absent,absent

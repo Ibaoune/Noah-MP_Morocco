@@ -138,10 +138,13 @@ Un jour est considere comme disposant d au moins une observation acceptee si au 
 #### Constats essentiels sur l assimilation SMAP en 2018 :
 1. **Couverture temporelle :** Sur le domaine complet, des observations SMAP valides sont acceptees quasiment tous les jours de l annee (entre 28 et 31 jours par mois).
 2. **Representativite par bassin :**
-   - **Lalla Chafia :** environ 14 a 18 jours par mois disposent d au moins une observation acceptee (total cumule de 191 jours sur l annee).
-   - **Sidi Jabeur :** environ 13 a 18 jours par mois disposent d au moins une observation acceptee (total cumule de 186 jours sur l annee).
-   - **Sebou amont (Azzaba) :** environ 17 a 22 jours par mois disposent d au moins une observation acceptee (total cumule de 227 jours sur l annee).
-3. **Concordance stricte DA_nocdf vs DA_corr :** Le nombre de jours d observation acceptee et le nombre total d observations assimilees sont **strictement identiques** entre `DA_nocdf` et `DA_corr` (ecart nul partout). Cela confirme rigoureusement que la correction physique appliquee (dans le mecanisme E6) n altere en rien le controle qualite ni le filtrage initial des observations SMAP.
+   - **Lalla Chafia :** 220 jours sur l annee disposent d au moins une observation SMAP acceptee (30 168 obs en DA_nocdf vs 36 274 en DA_corr).
+   - **Sidi Jabeur :** 217 jours en DA_nocdf vs 220 jours en DA_corr (27 986 obs en DA_nocdf vs 34 995 en DA_corr).
+   - **Sebou amont (Azzaba) :** 260 jours sur l annee disposent d au moins une observation SMAP acceptee (33 175 obs en DA_nocdf vs 37 570 en DA_corr).
+3. **Comparaison DA_nocdf vs DA_corr (chiffres 2018, même définition d'observation acceptée) :**
+   - **Jours avec au moins une observation acceptée :** 357 j pour DA_nocdf et 357 j pour DA_corr sur le domaine complet (écart : 0 j) ; 220 j vs 220 j à Lalla Chafia (écart : 0 j) ; 260 j vs 260 j au Sebou amont (écart : 0 j) ; 217 j vs 220 j à Sidi Jabeur (écart : +3 j pour DA_corr).
+   - **Nombre total d'observations acceptées :** 1 611 015 pour DA_nocdf contre 2 806 399 pour DA_corr sur le domaine complet (écart : +1 195 384 obs, soit +74,2 % pour DA_corr) ; 30 168 vs 36 274 à Lalla Chafia (+6 106 obs) ; 33 175 vs 37 570 au Sebou amont (+4 395 obs) ; 27 986 vs 34 995 à Sidi Jabeur (+7 009 obs).
+   - **Causes confirmées par les configurations et les logs :** Deux différences documentées existent entre les deux runs : (1) perturbation d'état activée via `State perturbation algorithm: "GMAO scheme"` (avec `noahmp_sm_pertattribs.txt`) dans DA_nocdf alors qu'elle est désactivée (`none`) dans DA_corr ; (2) binaire exécutable différent (`./src/lisf/lis/LIS` avec troncature LIS standard dans DA_nocdf vs `./src/lisf_corr/lis/LIS` avec mise à jour physique continue dans DA_corr). Aucune cause supplémentaire ne peut être affirmée sans logs de diagnostic EnKF détaillés.
 4. **Distribution par occupation du sol :** Les classes dominantes en surface (`Open Shrublands` avec 5 636 mailles, `Barren / Sparsely Vegetated` avec 8 350 mailles, et `Croplands` avec 1 127 mailles) concentrent l ecrasante majorite des observations acceptees.
 
 ## 4. Fichiers Produits et Tracabilite

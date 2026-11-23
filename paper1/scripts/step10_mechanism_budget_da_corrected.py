@@ -142,6 +142,17 @@ R_jabeur_raw = {
     "DA_cdf_201803_diag": -32.90
 }
 
+# Bornes des 32 rangs MPI pour retrouver les coordonnees globales
+ranks_bounds = {}
+for i in range(32):
+    f = os.path.join(DIAG_BASE, f"ENS_STATE_201803/logs/lislog_ENS_STATE_201803.{i:04d}")
+    with open(f) as fp:
+        for l in fp:
+            if "local domain   " in l:
+                p = l.split()
+                ranks_bounds[i] = (float(p[3]), float(p[5]))
+                break
+
 RUNS = [
     "ENS_STATE_201803",
     "ENS_STATE_201803_noRyu",
@@ -174,22 +185,36 @@ for rname in RUNS:
     # Ensemble des mailles vues pour le comptage
     cells_seen = set()
 
+    # Compter mailles par classe theta1 pour ce run
+    for ck, th_c in cell_theta1.items():
+        theta_count[th_c] += 1
+
     for f in files:
         if os.path.getsize(f) == 0:
             continue
+        rk = int(os.path.basename(f).split(".")[1])
+        minlat, minlon = ranks_bounds[rk]
+        
         with open(f, "r") as fp:
             for line in fp:
                 p = line.split()
                 if len(p) < 8:
                     continue
                 rtype = p[6]
-                col = int(p[8]) # 1 to 181
-                row = int(p[9]) # 1 to 121
+                col = int(p[8])
+                row = int(p[9])
+                lat = minlat + (row - 1) * 0.05
+                lon = minlon + (col - 1) * 0.05
+                gc = int(round((lon - (-10.0)) / 0.05)) + 1
+                gr = int(round((lat - 30.0) / 0.05)) + 1
+                ck = (gc, gr)
+                if ck not in cell_theta1:
+                    continue
                 
-                wl = catchment_weights_181["Lalla_Chafia"][row - 1, col - 1]
-                wj = catchment_weights_181["Sidi_Jabeur"][row - 1, col - 1]
+                wl = catchment_weights_181["Lalla_Chafia"][gr - 1, gc - 1]
+                wj = catchment_weights_181["Sidi_Jabeur"][gr - 1, gc - 1]
                 wd = 1.0 / n_domain
-                th_c = cell_theta1.get((col, row), None)
+                th_c = cell_theta1[ck]
 
                 if rtype == "PERT":
                     wp = sum(float(p[10 + j]) for j in range(4)) * 0.5
@@ -226,9 +251,7 @@ for rname in RUNS:
                         theta_acc[th_c][4] += wm
                         theta_acc[th_c][6] += wi
 
-    # Compter mailles par classe theta1
-    for (col, row), th_c in cell_theta1.items():
-        theta_count[th_c] += 1
+    # (Comptage deja effectue en amont)
 
     regions_data = [
         ("Domain", R_domain_raw[rname], acc_domain),

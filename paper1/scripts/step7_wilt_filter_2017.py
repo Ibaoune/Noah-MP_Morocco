@@ -13,6 +13,7 @@ import glob
 import numpy as np
 import pandas as pd
 import netCDF4 as nc
+from datetime import datetime, timedelta
 
 BASE_DIR = "/home/mohammad.elaabaribao/lustre/empowermed-ahl6xm8o7mg/users/mohammad.elaabaribao/NoahMP_Morocco"
 PARAM_NC = os.path.join(BASE_DIR, "data/lis_input/lis_input_NorthMor_5km.nc")
@@ -117,12 +118,20 @@ def main():
     et_jja_nocdf = np.zeros_like(dom_tex, dtype=np.float64)
     et_jja_nowilt = np.zeros_like(dom_tex, dtype=np.float64)
     
+    # Mapper les fichiers NOWILT par mois calendaire (date_fichier - 1j)
+    nw_by_month = {m: [] for m in range(1, 13)}
+    for fp in sorted(glob.glob(os.path.join(DIR_NOWILT, "SURFACEMODEL/*/LIS_HIST_*.d01.nc"))):
+        dstr = os.path.basename(fp).split("_")[2][:8]
+        dt = datetime.strptime(dstr, "%Y%m%d") - timedelta(days=1)
+        if dt.year == 2017:
+            nw_by_month[dt.month].append(fp)
+    
     for m in range(1, 13):
         m_str = f"2017-{m:02d}"
         ym = f"2017{m:02d}"
         
-        hist_nc = sorted(glob.glob(os.path.join(DIR_NOCDF, f"{m_str}/SURFACEMODEL/{ym}/LIS_HIST_*.nc")))
-        hist_nw = sorted(glob.glob(os.path.join(DIR_NOWILT, f"SURFACEMODEL/{ym}/LIS_HIST_*.nc")))
+        hist_nc = sorted(glob.glob(os.path.join(DIR_NOCDF, f"{m_str}/SURFACEMODEL/*/LIS_HIST_*.d01.nc")))
+        hist_nw = nw_by_month[m]
         
         # Accumulate daily Evap (kg m-2 s-1 * 86400 = mm/day)
         for fn in hist_nc:
