@@ -141,10 +141,23 @@ Un jour est considere comme disposant d au moins une observation acceptee si au 
    - **Lalla Chafia :** 220 jours sur l annee disposent d au moins une observation SMAP acceptee (30 168 obs en DA_nocdf vs 36 274 en DA_corr).
    - **Sidi Jabeur :** 217 jours en DA_nocdf vs 220 jours en DA_corr (27 986 obs en DA_nocdf vs 34 995 en DA_corr).
    - **Sebou amont (Azzaba) :** 260 jours sur l annee disposent d au moins une observation SMAP acceptee (33 175 obs en DA_nocdf vs 37 570 en DA_corr).
-3. **Comparaison DA_nocdf vs DA_corr (chiffres 2018, même définition d'observation acceptée) :**
-   - **Jours avec au moins une observation acceptée :** 357 j pour DA_nocdf et 357 j pour DA_corr sur le domaine complet (écart : 0 j) ; 220 j vs 220 j à Lalla Chafia (écart : 0 j) ; 260 j vs 260 j au Sebou amont (écart : 0 j) ; 217 j vs 220 j à Sidi Jabeur (écart : +3 j pour DA_corr).
-   - **Nombre total d'observations acceptées :** 1 611 015 pour DA_nocdf contre 2 806 399 pour DA_corr sur le domaine complet (écart : +1 195 384 obs, soit +74,2 % pour DA_corr) ; 30 168 vs 36 274 à Lalla Chafia (+6 106 obs) ; 33 175 vs 37 570 au Sebou amont (+4 395 obs) ; 27 986 vs 34 995 à Sidi Jabeur (+7 009 obs).
-   - **Causes confirmées par les configurations et les logs :** Deux différences documentées existent entre les deux runs : (1) perturbation d'état activée via `State perturbation algorithm: "GMAO scheme"` (avec `noahmp_sm_pertattribs.txt`) dans DA_nocdf alors qu'elle est désactivée (`none`) dans DA_corr ; (2) binaire exécutable différent (`./src/lisf/lis/LIS` avec troncature LIS standard dans DA_nocdf vs `./src/lisf_corr/lis/LIS` avec mise à jour physique continue dans DA_corr). Aucune cause supplémentaire ne peut être affirmée sans logs de diagnostic EnKF détaillés.
+3. **Comparaison des observations assimilées (chiffres 2018, Domaine et 3 bassins) :**
+
+### Comparaison des observations assimilées en 2018 : DA_nocdf, DA_nocdf_nowilt et DA_corr
+
+| Région / Bassin | Jours DA_nocdf | Obs DA_nocdf | Jours DA_nocdf_nowilt | Obs DA_nocdf_nowilt | Jours DA_corr | Obs DA_corr | Écart nowilt - nocdf | Écart corr - nocdf | Écart corr - nowilt |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Domaine complet** | 357 | 1611015 | 357 | 2789143 | 357 | 2806399 | +1178128 (+73.1 %) | +1195384 (+74.2 %) | +17256 (+0.6 %) |
+| **Lalla Chafia** | 220 | 30168 | 220 | 36252 | 220 | 36274 | +6084 (+20.2 %) | +6106 (+20.2 %) | +22 (+0.1 %) |
+| **Sidi Jabeur** | 217 | 27986 | 220 | 34965 | 220 | 34995 | +6979 (+24.9 %) | +7009 (+25.0 %) | +30 (+0.1 %) |
+| **Sebou amont** | 260 | 33175 | 260 | 37405 | 260 | 37570 | +4230 (+12.8 %) | +4395 (+13.2 %) | +165 (+0.4 %) |
+
+**Différences de configuration (contrôle wilting et perturbations) :**
+
+- **DA_nocdf :** contrôle wilting actif (`smobs(t) - smcwlt_obs(t) < 0.02` actif à la ligne 272 de `src/lisf/lis/surfacemodels/land/noahmp.4.0.1/da_soilm/noahmp401_qc_soilmobs.F90`) ; perturbations d'état actives (`State perturbation algorithm: "GMAO scheme"`).
+- **DA_nocdf_nowilt :** contrôle wilting désactivé (ligne 273 commentée dans `src/lisf_nowilt/lis/surfacemodels/land/noahmp.4.0.1/da_soilm/noahmp401_qc_soilmobs.F90`) ; perturbations d'état actives (`State perturbation algorithm: "GMAO scheme"`).
+- **DA_corr :** contrôle wilting désactivé (ligne 273 commentée dans `src/lisf_corr/lis/surfacemodels/land/noahmp.4.0.1/da_soilm/noahmp401_qc_soilmobs.F90`) ; perturbations d'état désactivées (`State perturbation algorithm: "none"`).
+
 4. **Distribution par occupation du sol :** Les classes dominantes en surface (`Open Shrublands` avec 5 636 mailles, `Barren / Sparsely Vegetated` avec 8 350 mailles, et `Croplands` avec 1 127 mailles) concentrent l ecrasante majorite des observations acceptees.
 
 ## 4. Fichiers Produits et Tracabilite
