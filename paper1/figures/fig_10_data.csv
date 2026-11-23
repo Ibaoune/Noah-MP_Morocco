@@ -1,0 +1,96 @@
+# PANEL_A_RESIDU_MENSUEL_2018
+experiment,month,WaterBalance_Residual_mm,Incr_Total_mm
+DA_corr,1,14.1228,-22.2339
+DA_corr,2,24.6847,-46.8255
+DA_corr,3,21.904,-51.9213
+DA_corr,4,16.6608,-54.4712
+DA_corr,5,21.349,-55.8985
+DA_corr,6,-3.6243,-20.0583
+DA_corr,7,-28.0997,18.6792
+DA_corr,8,8.0673,-23.1264
+DA_corr,9,24.5061,-61.7594
+DA_corr,10,18.7972,-60.9731
+DA_corr,11,8.3302,-35.9925
+DA_corr,12,25.6919,-68.8943
+DA_nocdf,1,1.9543,-8.6954
+DA_nocdf,2,6.4812,-12.8994
+DA_nocdf,3,15.6701,-25.5658
+DA_nocdf,4,14.6316,-22.4786
+DA_nocdf,5,9.0907,-17.5535
+DA_nocdf,6,-4.6883,-2.2094
+DA_nocdf,7,-9.1317,2.1562
+DA_nocdf,8,-2.6558,-5.4847
+DA_nocdf,9,6.968,-16.2468
+DA_nocdf,10,11.2478,-20.9195
+DA_nocdf,11,9.0005,-19.7899
+DA_nocdf,12,4.4795,-15.6788
+ENS_OPL,1,-3.6101,0.0
+ENS_OPL,2,-4.8949,0.0
+ENS_OPL,3,-7.8488,0.0
+ENS_OPL,4,-6.7327,0.0
+ENS_OPL,5,-8.4615,0.0
+ENS_OPL,6,-6.657,0.0
+ENS_OPL,7,-4.7506,0.0
+ENS_OPL,8,-7.417,0.0
+ENS_OPL,9,-7.5001,0.0
+ENS_OPL,10,-6.7981,0.0
+ENS_OPL,11,-5.1701,0.0
+ENS_OPL,12,-6.5177,0.0
+ENS_corr,1,-0.3597,0.0
+ENS_corr,2,-0.283,0.0
+ENS_corr,3,-0.3995,0.0
+ENS_corr,4,-0.3441,0.0
+ENS_corr,5,-0.3508,0.0
+ENS_corr,6,-0.3809,0.0
+ENS_corr,7,-0.3969,0.0
+ENS_corr,8,-0.4167,0.0
+ENS_corr,9,-0.4018,0.0
+ENS_corr,10,-0.3998,0.0
+ENS_corr,11,-0.4411,0.0
+ENS_corr,12,-0.3931,0.0
+
+# PANEL_B_DELTA_ET_OBS_EFFECT_MONTHLY
+pair,period,delta_ET_mm,delta_P_mm,delta_Residual_mm
+DA_corr - ENS_corr,2018-01,-1.0437,0.0,14.4825
+DA_corr - ENS_corr,2018-02,-3.3596,0.0,24.9677
+DA_corr - ENS_corr,2018-03,-7.1406,0.0,22.3035
+DA_corr - ENS_corr,2018-04,-8.9444,0.0,17.0049
+DA_corr - ENS_corr,2018-05,-12.2774,0.0,21.6998
+DA_corr - ENS_corr,2018-06,-9.4751,0.0,-3.2434
+DA_corr - ENS_corr,2018-07,-2.813,0.0,-27.7028
+DA_corr - ENS_corr,2018-08,-1.3672,0.0,8.484
+DA_corr - ENS_corr,2018-09,-3.6115,0.0,24.9079
+DA_corr - ENS_corr,2018-10,-3.8694,0.0,19.197
+DA_corr - ENS_corr,2018-11,-4.8564,0.0,8.7713
+DA_corr - ENS_corr,2018-12,-6.4797,0.0,26.085
+DA_nocdf - ENS_OPL,2018-01,-1.8213,0.0,5.5644
+DA_nocdf - ENS_OPL,2018-02,-6.5582,-0.0001,11.3761
+DA_nocdf - ENS_OPL,2018-03,-10.8672,0.0004,23.5189
+DA_nocdf - ENS_OPL,2018-04,-13.6172,0.0005,21.3643
+DA_nocdf - ENS_OPL,2018-05,-18.161,-0.0007,17.5522
+DA_nocdf - ENS_OPL,2018-06,-11.0114,0.0001,1.9687
+DA_nocdf - ENS_OPL,2018-07,-1.1556,0.0,-4.3811
+DA_nocdf - ENS_OPL,2018-08,-4.0878,0.0,4.7612
+DA_nocdf - ENS_OPL,2018-09,-10.1119,0.0002,14.4681
+DA_nocdf - ENS_OPL,2018-10,-12.1067,-0.0005,18.0459
+DA_nocdf - ENS_OPL,2018-11,-9.2021,-0.0005,14.1706
+DA_nocdf - ENS_OPL,2018-12,-11.856,0.0,10.9972
+
+# PANEL_C_WAPOR_IMPACT_STRATA
+pair,stratum_type,stratum,delta_abs_bias_mm,frac_closer_pct,direction
+DA_corr - ENS_corr,Geographic,Domain,-72.51,65.89,Rapprochement
+DA_corr - ENS_corr,Geographic,Sebou,-125.0,71.61,Rapprochement
+DA_corr - ENS_corr,Geographic,Bouregreg,-54.75,65.67,Rapprochement
+DA_corr - ENS_corr,Texture,Texture_3_Sandy Loam,-45.03,63.79,Rapprochement
+DA_corr - ENS_corr,Texture,Texture_6_Loam,-47.5,64.06,Rapprochement
+DA_corr - ENS_corr,Texture,Texture_7_Sandy Clay Loam,-38.82,61.02,Rapprochement
+DA_corr - ENS_corr,Texture,Texture_9_Clay Loam,-10.1,60.32,Rapprochement
+DA_corr - ENS_corr,Texture,Texture_12_Clay,-168.95,93.55,Rapprochement
+DA_nocdf - ENS_OPL,Geographic,Domain,-120.95,73.97,Rapprochement
+DA_nocdf - ENS_OPL,Geographic,Sebou,-151.34,79.81,Rapprochement
+DA_nocdf - ENS_OPL,Geographic,Bouregreg,-39.07,62.69,Rapprochement
+DA_nocdf - ENS_OPL,Texture,Texture_3_Sandy Loam,-65.79,62.07,Rapprochement
+DA_nocdf - ENS_OPL,Texture,Texture_6_Loam,-119.21,75.14,Rapprochement
+DA_nocdf - ENS_OPL,Texture,Texture_7_Sandy Clay Loam,-28.93,65.25,Rapprochement
+DA_nocdf - ENS_OPL,Texture,Texture_9_Clay Loam,-131.36,68.25,Rapprochement
+DA_nocdf - ENS_OPL,Texture,Texture_12_Clay,-138.14,87.9,Rapprochement

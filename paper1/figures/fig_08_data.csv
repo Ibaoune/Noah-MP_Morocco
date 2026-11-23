@@ -1,35 +1,112 @@
 # PANEL_A_MONTHLY_ET_CYCLE_BY_BASIN_2018
-month,GLEAM_Sebou,GLEAM_Bouregreg,GLEAM_Domain,OPL_Sebou,OPL_Bouregreg,OPL_Domain,OL_DAIC_Sebou,OL_DAIC_Bouregreg,OL_DAIC_Domain,ENS_OPL_Sebou,ENS_OPL_Bouregreg,ENS_OPL_Domain,DA_nocdf_Sebou,DA_nocdf_Bouregreg,DA_nocdf_Domain,DA_cdf_Sebou,DA_cdf_Bouregreg,DA_cdf_Domain,DA_nocdf_nowilt_Sebou,DA_nocdf_nowilt_Bouregreg,DA_nocdf_nowilt_Domain
-1,23.92664909362793,24.789451599121094,17.485504150390625,,,,,,,,,,,,,,,,,,
-2,29.4677791595459,28.490081787109375,20.581199645996094,,,,,,,,,,,,,,,,,,
-3,49.97785568237305,47.46456527709961,29.99066925048828,,,,,,,,,,,,,,,,,,
-4,61.58283615112305,62.480892181396484,34.0523796081543,,,,,,,,,,,,,,,,,,
-5,69.11212921142578,65.77272033691406,32.99691390991211,,,,,,,,,,,,,,,,,,
-6,46.85624313354492,48.56280517578125,17.313613891601562,,,,,,,,,,,,,,,,,,
-7,28.825368881225586,21.480932235717773,11.151971817016602,,,,,,,,,,,,,,,,,,
-8,26.7578182220459,21.17007827758789,23.083866119384766,,,,,,,,,,,,,,,,,,
-9,34.194847106933594,38.04362869262695,27.883153915405273,,,,,,,,,,,,,,,,,,
-10,34.51181411743164,40.77762985229492,23.707605361938477,,,,,,,,,,,,,,,,,,
-11,25.81452178955078,27.39370346069336,20.721134185791016,,,,,,,,,,,,,,,,,,
-12,19.122270584106445,20.091259002685547,9.785862922668457,,,,,,,,,,,,,,,,,,
+month,GLEAM_Sebou,GLEAM_Bouregreg,GLEAM_Domain,OL_DAIC_Sebou,OL_DAIC_Bouregreg,OL_DAIC_Domain,ENS_OPL_Sebou,ENS_OPL_Bouregreg,ENS_OPL_Domain,ENS_corr_Sebou,ENS_corr_Bouregreg,ENS_corr_Domain,DA_nocdf_Sebou,DA_nocdf_Bouregreg,DA_nocdf_Domain,DA_corr_Sebou,DA_corr_Bouregreg,DA_corr_Domain,DA_nocdf_nowilt_Sebou,DA_nocdf_nowilt_Bouregreg,DA_nocdf_nowilt_Domain
+1,23.92664909362793,24.789451599121094,17.485504150390625,30.588163375854492,34.79206848144531,13.150415420532227,32.48236083984375,37.82624435424805,16.109813690185547,30.773942947387695,34.94401168823242,13.5382080078125,31.50739288330078,39.61173629760742,14.419297218322754,30.909404754638672,37.152462005615234,12.700395584106445,31.504087448120117,39.61173629760742,13.494404792785645
+2,29.4677791595459,28.490081787109375,20.581199645996094,28.775146484375,29.55692481994629,15.512120246887207,30.892799377441406,32.37339401245117,18.9433536529541,28.575143814086914,29.13907814025879,15.419567108154297,31.829442977905273,38.09260940551758,15.82199764251709,26.40154457092285,30.3277645111084,12.752087593078613,26.99745750427246,32.295780181884766,12.225428581237793
+3,49.97785568237305,47.46456527709961,29.99066925048828,78.23209381103516,67.05193328857422,33.367523193359375,79.94055938720703,71.1895980834961,39.79402542114258,77.46937561035156,66.13146209716797,33.11705017089844,80.42768859863281,77.79596710205078,30.279748916625977,65.78315734863281,60.78889083862305,26.041839599609375,69.19820404052734,68.45288848876953,25.68185806274414
+4,61.58283615112305,62.480892181396484,34.0523796081543,92.2010498046875,84.45165252685547,37.0047721862793,95.6413803100586,90.6967544555664,42.75041580200195,91.33002471923828,83.34136199951172,36.66936111450195,81.10115051269531,88.49390411376953,32.8948860168457,74.78771209716797,75.88368225097656,28.759990692138672,76.79740142822266,87.0672607421875,28.20749855041504
+5,69.11212921142578,65.77272033691406,32.99691390991211,98.80950164794922,96.01204681396484,46.167724609375,105.99230194091797,103.45999908447266,53.882381439208984,98.16167449951172,95.2757339477539,45.79428482055664,72.52203369140625,83.96196746826172,35.17122268676758,67.93844604492188,70.24371337890625,33.094356536865234,65.33760833740234,75.39962005615234,30.171958923339844
+6,46.85624313354492,48.56280517578125,17.313613891601562,68.1942367553711,59.8997688293457,28.89397621154785,77.20378112792969,66.33037567138672,35.012542724609375,67.92984008789062,59.84762954711914,28.768001556396484,48.483924865722656,47.024200439453125,22.539512634277344,40.08941650390625,36.48820877075195,18.99483871459961,42.51227569580078,44.6518669128418,19.11504364013672
+7,28.825368881225586,21.480932235717773,11.151971817016602,32.74626922607422,28.689680099487305,13.319812774658203,42.536949157714844,34.044071197509766,17.584577560424805,32.844215393066406,28.878311157226562,13.355892181396484,34.701847076416016,30.748498916625977,16.471603393554688,22.051382064819336,18.91693687438965,10.26177978515625,24.609512329101562,25.854326248168945,14.899142265319824
+8,26.7578182220459,21.17007827758789,23.083866119384766,17.425540924072266,15.584197998046875,18.896055221557617,28.547616958618164,22.093420028686523,25.92399024963379,17.51616096496582,15.699763298034668,18.89336395263672,29.097719192504883,23.265287399291992,23.097333908081055,19.22039794921875,14.274868965148926,17.815532684326172,17.683155059814453,18.22203826904297,18.20894432067871
+9,34.194847106933594,38.04362869262695,27.883153915405273,24.6622371673584,19.510541915893555,26.259761810302734,33.261260986328125,26.856176376342773,34.082237243652344,24.651275634765625,19.505901336669922,26.235626220703125,30.68598175048828,33.298641204833984,25.173429489135742,29.52239227294922,21.775604248046875,23.03278350830078,21.507402420043945,20.82264518737793,19.0017147064209
+10,34.51181411743164,40.77762985229492,23.707605361938477,43.99624252319336,43.475040435791016,28.554841995239258,48.555259704589844,49.13448715209961,35.35750961303711,43.84532165527344,43.315155029296875,28.484806060791016,35.580570220947266,40.87868118286133,23.044591903686523,45.3265495300293,45.484683990478516,24.221359252929688,37.51176834106445,43.0709228515625,19.954675674438477
+11,25.81452178955078,27.39370346069336,20.721134185791016,47.68327713012695,34.73945236206055,24.130321502685547,48.41798782348633,37.65022277832031,28.277799606323242,47.37485122680664,34.632164001464844,24.04069709777832,37.11881637573242,36.22825622558594,18.711023330688477,42.22579574584961,35.49349594116211,19.286218643188477,41.660186767578125,39.37534713745117,18.59205436706543
+12,19.122270584106445,20.091259002685547,9.785862922668457,41.69722366333008,37.03781509399414,20.090343475341797,45.39208221435547,43.96046829223633,25.174903869628906,41.36919403076172,36.73533630371094,20.002016067504883,30.640344619750977,39.78953170776367,13.637704849243164,29.884450912475586,34.60835266113281,13.561885833740234,29.945144653320312,40.92536926269531,12.572454452514648
 
 # PANEL_B_DIRECTION_OF_CHANGE_EVALUATION
-pair,pair_description,reference,period,stratum,season,n_cells,mean_diff_mm,bias_x_mm,bias_y_mm,delta_abs_bias_mm,frac_closer_pct,direction
-DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),GLEAM_v4.3a,2018,Domain,Annual,3965,-111.33,1.75,113.08,-111.33,62.22,Rapprochement
-DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),GLEAM_v4.3a,2018,Sebou,Annual,316,-151.85,94.56,246.41,-151.85,79.11,Rapprochement
-DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),GLEAM_v4.3a,2018,Bouregreg,Annual,66,-40.18,153.68,193.86,-40.18,66.67,Rapprochement
-DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),WaPOR_v3,2018,Domain,Annual,1410,-121.07,62.64,183.71,-121.07,75.04,Rapprochement
-DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),WaPOR_v3,2018,Sebou,Annual,317,-151.37,74.72,226.09,-151.37,80.13,Rapprochement
-DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet des observations),WaPOR_v3,2018,Bouregreg,Annual,67,-39.58,145.99,185.56,-39.58,67.16,Rapprochement
-ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),GLEAM_v4.3a,2018,Domain,Annual,3965,67.19,113.08,45.89,67.19,22.65,Éloignement
-ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),GLEAM_v4.3a,2018,Sebou,Annual,316,65.63,246.41,180.78,65.63,2.53,Éloignement
-ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),GLEAM_v4.3a,2018,Bouregreg,Annual,66,66.24,193.86,127.62,66.24,0.0,Éloignement
-ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),WaPOR_v3,2018,Domain,Annual,1410,61.83,183.71,121.88,61.83,8.87,Éloignement
-ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),WaPOR_v3,2018,Sebou,Annual,317,65.59,226.09,160.5,65.59,3.79,Éloignement
-ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet de l'ensemble),WaPOR_v3,2018,Bouregreg,Annual,67,65.25,185.56,120.31,65.25,4.48,Éloignement
-DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),GLEAM_v4.3a,2018,Domain,Annual,3965,-31.05,-29.3,1.75,27.54,43.13,Éloignement
-DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),GLEAM_v4.3a,2018,Sebou,Annual,316,-46.25,48.31,94.56,-46.25,62.66,Rapprochement
-DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),GLEAM_v4.3a,2018,Bouregreg,Annual,66,-21.82,131.86,153.68,-21.82,80.3,Rapprochement
-DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),WaPOR_v3,2018,Domain,Annual,1410,-21.07,41.57,62.64,-21.07,54.61,Rapprochement
-DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),WaPOR_v3,2018,Sebou,Annual,317,-46.1,28.62,74.72,-46.1,59.31,Rapprochement
-DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet du filtre flétrissement),WaPOR_v3,2018,Bouregreg,Annual,67,-21.49,124.5,145.99,-21.49,77.61,Rapprochement
+pair,pair_description,reference,stratum_type,stratum,season,n_cells,mean_diff_mm,bias_x_mm,bias_y_mm,delta_abs_bias_mm,frac_closer_pct,direction
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),WaPOR_v3,Geographic,Domain,Annual,1410,-2.23,119.65,121.88,-2.23,85.6,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),WaPOR_v3,Geographic,Sebou,Annual,317,-3.35,157.16,160.5,-3.35,93.06,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),WaPOR_v3,Geographic,Bouregreg,Annual,67,-3.51,116.81,120.31,-3.51,89.55,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),WaPOR_v3,Texture,Texture_3_Sandy Loam,Annual,58,-3.04,152.22,155.26,-3.04,87.93,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),WaPOR_v3,Texture,Texture_6_Loam,Annual,921,-1.75,112.53,114.28,-1.75,85.12,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),WaPOR_v3,Texture,Texture_7_Sandy Clay Loam,Annual,118,-3.13,99.28,102.41,-3.13,86.44,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),WaPOR_v3,Texture,Texture_9_Clay Loam,Annual,189,-3.13,85.35,88.48,-3.13,79.37,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),WaPOR_v3,Texture,Texture_12_Clay,Annual,124,-3.2,228.94,232.14,-3.2,96.77,Rapprochement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),WaPOR_v3,Geographic,Domain,Annual,1410,61.71,183.59,121.88,61.71,8.87,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),WaPOR_v3,Geographic,Sebou,Annual,317,65.56,226.06,160.5,65.56,3.79,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),WaPOR_v3,Geographic,Bouregreg,Annual,67,64.74,185.06,120.31,64.74,4.48,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),WaPOR_v3,Texture,Texture_3_Sandy Loam,Annual,58,30.53,185.79,155.26,30.53,6.9,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),WaPOR_v3,Texture,Texture_6_Loam,Annual,921,54.79,169.07,114.28,54.79,8.79,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),WaPOR_v3,Texture,Texture_7_Sandy Clay Loam,Annual,118,63.28,165.7,102.41,63.28,5.93,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),WaPOR_v3,Texture,Texture_9_Clay Loam,Annual,189,73.48,161.96,88.48,73.48,15.87,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),WaPOR_v3,Texture,Texture_12_Clay,Annual,124,108.28,340.42,232.14,108.28,2.42,Éloignement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),WaPOR_v3,Geographic,Domain,Annual,1410,-72.51,47.14,119.65,-72.51,65.89,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),WaPOR_v3,Geographic,Sebou,Annual,317,-125.0,32.16,157.16,-125.0,71.61,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),WaPOR_v3,Geographic,Bouregreg,Annual,67,-54.75,62.05,116.81,-54.75,65.67,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),WaPOR_v3,Texture,Texture_3_Sandy Loam,Annual,58,-45.03,107.19,152.22,-45.03,63.79,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),WaPOR_v3,Texture,Texture_6_Loam,Annual,921,-47.5,65.03,112.53,-47.5,64.06,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),WaPOR_v3,Texture,Texture_7_Sandy Clay Loam,Annual,118,-38.82,60.46,99.28,-38.82,61.02,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),WaPOR_v3,Texture,Texture_9_Clay Loam,Annual,189,-160.6,-75.25,85.35,-10.1,60.32,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),WaPOR_v3,Texture,Texture_12_Clay,Annual,124,-168.95,59.99,228.94,-168.95,93.55,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),WaPOR_v3,Geographic,Domain,Annual,1410,-120.95,62.64,183.59,-120.95,73.97,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),WaPOR_v3,Geographic,Sebou,Annual,317,-151.34,74.72,226.06,-151.34,79.81,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),WaPOR_v3,Geographic,Bouregreg,Annual,67,-39.07,145.99,185.06,-39.07,62.69,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),WaPOR_v3,Texture,Texture_3_Sandy Loam,Annual,58,-65.79,120.01,185.79,-65.79,62.07,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),WaPOR_v3,Texture,Texture_6_Loam,Annual,921,-119.21,49.86,169.07,-119.21,75.14,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),WaPOR_v3,Texture,Texture_7_Sandy Clay Loam,Annual,118,-28.93,136.76,165.7,-28.93,65.25,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),WaPOR_v3,Texture,Texture_9_Clay Loam,Annual,189,-192.56,-30.6,161.96,-131.36,68.25,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),WaPOR_v3,Texture,Texture_12_Clay,Annual,124,-138.14,202.29,340.42,-138.14,87.9,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),WaPOR_v3,Geographic,Domain,Annual,1410,-21.23,41.41,62.64,-21.23,56.24,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),WaPOR_v3,Geographic,Sebou,Annual,317,-46.24,28.48,74.72,-46.24,58.99,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),WaPOR_v3,Geographic,Bouregreg,Annual,67,-22.08,123.91,145.99,-22.08,85.07,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),WaPOR_v3,Texture,Texture_3_Sandy Loam,Annual,58,-10.08,109.93,120.01,-10.08,60.34,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),WaPOR_v3,Texture,Texture_6_Loam,Annual,921,-7.67,42.18,49.86,-7.67,55.7,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),WaPOR_v3,Texture,Texture_7_Sandy Clay Loam,Annual,118,-9.19,127.57,136.76,-9.19,83.05,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),WaPOR_v3,Texture,Texture_9_Clay Loam,Annual,189,-50.83,-81.43,-30.6,50.83,24.34,Éloignement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),WaPOR_v3,Texture,Texture_12_Clay,Annual,124,-93.46,108.83,202.29,-93.46,81.45,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Geographic,Domain,Annual,3965,-1.2,44.69,45.89,-1.2,65.2,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Geographic,Sebou,Annual,316,-3.34,177.44,180.78,-3.34,92.72,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,-3.56,124.06,127.62,-3.56,98.48,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,-0.2,57.04,57.24,-0.2,83.46,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,-1.41,-0.44,0.96,-0.52,53.3,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,0.3,-40.34,-40.64,-0.3,46.67,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,-1.01,35.62,36.63,-1.01,61.75,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,-1.79,43.28,45.07,-1.79,81.25,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,-2.24,75.88,78.12,-2.24,74.12,Rapprochement
+ENS_corr - OL_DAIC,ENS_corr vs OL_DAIC (Effet residuel ensemble corrige),GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,-3.02,218.3,221.32,-3.02,97.28,Rapprochement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Geographic,Domain,Annual,3965,67.07,112.96,45.89,67.07,22.62,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Geographic,Sebou,Annual,316,65.6,246.38,180.78,65.6,2.53,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,65.72,193.34,127.62,65.72,0.0,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,23.97,81.21,57.24,23.97,0.0,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,54.96,55.92,0.96,54.96,29.12,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,54.47,13.83,-40.64,-26.81,73.33,Rapprochement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,65.43,102.06,36.63,65.43,24.51,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,68.95,114.02,45.07,68.95,21.59,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,86.3,164.42,78.12,86.3,18.53,Éloignement
+ENS_OPL - OL_DAIC,ENS_OPL vs OL_DAIC (Effet ensemble production),GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,112.65,333.97,221.32,112.65,1.36,Éloignement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Geographic,Domain,Annual,3965,-65.47,-20.78,44.69,-23.9,47.84,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Geographic,Sebou,Annual,316,-125.39,52.05,177.44,-125.39,69.62,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,-55.58,68.47,124.06,-55.58,65.15,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,13.33,70.36,57.04,13.33,13.53,Éloignement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,-51.69,-52.13,-0.44,51.69,23.63,Éloignement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,-191.28,-231.63,-40.34,191.28,0.0,Éloignement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,-58.23,-22.61,35.62,-13.01,49.78,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,-31.14,12.14,43.28,-31.14,43.18,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,-143.53,-67.65,75.88,-8.23,46.65,Rapprochement
+DA_corr - ENS_corr,DA_corr vs ENS_corr (Effet observations systeme corrige),GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,-163.59,54.71,218.3,-163.59,82.31,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Geographic,Domain,Annual,3965,-111.21,1.75,112.96,-111.21,61.31,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Geographic,Sebou,Annual,316,-151.82,94.56,246.38,-151.82,78.8,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,-39.66,153.68,193.34,-39.66,62.12,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,-5.84,75.36,81.21,-5.84,74.44,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,-88.5,-32.58,55.92,-23.34,41.21,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,-197.17,-183.34,13.83,169.51,0.0,Éloignement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,-111.33,-9.27,102.06,-92.79,60.72,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,-38.54,75.48,114.02,-38.54,55.11,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,-191.78,-27.36,164.42,-137.06,65.18,Rapprochement
+DA_nocdf - ENS_OPL,DA_nocdf vs ENS_OPL (Effet observations systeme production),GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,-138.9,195.07,333.97,-138.9,91.84,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Geographic,Domain,Annual,3965,-31.2,-29.45,1.75,27.7,44.24,Éloignement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Geographic,Sebou,Annual,316,-46.39,48.18,94.56,-46.39,62.34,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Geographic,Bouregreg,Annual,66,-22.41,131.27,153.68,-22.41,87.88,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Texture,Texture_1_Sand,Annual,133,-10.8,64.56,75.36,-10.8,94.74,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Texture,Texture_3_Sandy Loam,Annual,182,-16.48,-49.06,-32.58,16.48,29.67,Éloignement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Texture,Texture_4_Silt Loam,Annual,15,-78.52,-261.86,-183.34,78.52,0.0,Éloignement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Texture,Texture_6_Loam,Annual,2999,-27.38,-36.65,-9.27,27.38,42.15,Éloignement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Texture,Texture_7_Sandy Clay Loam,Annual,176,-7.6,67.89,75.48,-7.6,64.2,Rapprochement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Texture,Texture_9_Clay Loam,Annual,313,-62.08,-89.44,-27.36,62.08,26.2,Éloignement
+DA_nocdf_nowilt - DA_nocdf,DA_nocdf_nowilt vs DA_nocdf (Effet filtre fletrissement),GLEAM_v4.3a,Texture,Texture_12_Clay,Annual,147,-103.63,91.44,195.07,-103.63,78.23,Rapprochement
+
+# ANNUAL_WAPOR_V3_BENCHMARKS
+Domain_WaPOR_v3_Annual_mm,353.42
+Sebou_WaPOR_v3_Annual_mm,470.67
+Bouregreg_WaPOR_v3_Annual_mm,445.26
