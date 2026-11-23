@@ -1,103 +1,109 @@
 period,contrast_id,contrast_name,component,stratification_type,region_or_class,n_cells_valid,delta_abs_bias_mm,pct_cells_closer,pct_cells_farther,pct_cells_neutral
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),region,Domaine complet,5379,-72.16,78.04,21.9,0.06
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),region,Domaine complet,5379,-72.14,77.91,22.01,0.07
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),region,Domaine hors classes 13 et 16,4229,-46.5,73.49,26.51,0.0
 2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),region,Lalla Chafia,180,-18.71,51.67,48.33,0.0
 2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),region,Sidi Jabeur,170,-39.52,81.76,18.24,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),region,Sebou amont,227,-53.69,81.5,18.5,0.0
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),region,Sebou amont,227,-53.49,81.06,18.94,0.0
 2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 1 - Evergreen Needleleaf Forest,15,-0.56,53.33,46.67,0.0
 2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.38,25.0,75.0,0.0
 2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.17,50.0,50.0,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 5 - Mixed Forests,35,-19.44,57.14,42.86,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 6 - Closed Shrublands,14,-14.98,78.57,21.43,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 7 - Open Shrublands,2786,-45.6,74.69,25.31,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 8 - Woody Savannas,89,-17.95,53.93,46.07,0.0
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 5 - Mixed Forest,35,-19.8,57.14,42.86,0.0
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 6 - Closed Shrublands,14,-15.37,78.57,21.43,0.0
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 7 - Open Shrublands,2786,-45.56,74.41,25.59,0.0
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 8 - Woody Savannas,89,-17.98,53.93,46.07,0.0
 2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 9 - Savannas,13,-16.5,30.77,69.23,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 10 - Grasslands,331,-57.28,80.97,19.03,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 12 - Croplands,935,-51.27,71.87,28.13,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 13 - Urban and Built-Up,50,0.06,30.0,64.0,6.0
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 10 - Grasslands,331,-57.39,81.27,18.73,0.0
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 12 - Croplands,935,-51.29,71.87,28.13,0.0
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 13 - Urban and Built-Up,50,0.06,30.0,62.0,8.0
 2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.37,0.0,100.0,0.0
-2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,-174.06,97.09,2.91,0.0
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Domaine complet,5379,16.78,31.86,46.76,21.38
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Lalla Chafia,180,17.04,45.56,54.44,0.0
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Sidi Jabeur,170,6.41,45.29,50.0,4.71
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Sebou amont,227,12.86,44.93,49.34,5.73
+2018,C2,DA_nocdf − ENS_OPL,E (ESoil vs WaPOR E),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,-174.01,97.09,2.91,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Domaine complet,5379,16.76,31.68,46.94,21.38
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Domaine hors classes 13 et 16,4229,21.32,40.29,59.71,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Lalla Chafia,180,16.75,45.0,55.0,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Sidi Jabeur,170,5.83,44.71,50.59,4.71
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),region,Sebou amont,227,13.14,44.93,49.34,5.73
 2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 1 - Evergreen Needleleaf Forest,15,0.06,26.67,73.33,0.0
 2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 2 - Evergreen Broadleaf Forest,8,2.41,12.5,87.5,0.0
 2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.28,50.0,50.0,0.0
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 5 - Mixed Forests,35,16.54,34.29,65.71,0.0
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 6 - Closed Shrublands,14,0.38,50.0,50.0,0.0
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 7 - Open Shrublands,2786,15.2,43.36,56.64,0.0
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 8 - Woody Savannas,89,21.72,37.08,62.92,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 5 - Mixed Forest,35,16.05,37.14,62.86,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 6 - Closed Shrublands,14,0.26,50.0,50.0,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 7 - Open Shrublands,2786,15.11,43.07,56.93,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 8 - Woody Savannas,89,21.68,37.08,62.92,0.0
 2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 9 - Savannas,13,19.2,38.46,61.54,0.0
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 10 - Grasslands,331,20.19,46.83,53.17,0.0
-2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 12 - Croplands,935,41.1,30.8,69.2,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 10 - Grasslands,331,20.47,46.53,53.47,0.0
+2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 12 - Croplands,935,41.19,30.59,69.41,0.0
 2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 13 - Urban and Built-Up,50,0.0,0.0,0.0,100.0
 2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.05,0.0,100.0,0.0
 2018,C2,DA_nocdf − ENS_OPL,T (TVeg vs WaPOR T),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,0.0,0.0,0.0,100.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Domaine complet,5379,-65.16,68.43,31.42,0.15
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Lalla Chafia,180,-18.26,46.11,53.89,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Sidi Jabeur,170,-29.8,68.82,31.18,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Sebou amont,227,-49.67,72.69,27.31,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Domaine complet,5379,-65.08,68.34,31.51,0.15
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Domaine hors classes 13 et 16,4229,-45.36,62.8,37.2,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Lalla Chafia,180,-18.57,45.56,54.44,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Sidi Jabeur,170,-30.02,68.24,31.76,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),region,Sebou amont,227,-48.44,72.25,27.75,0.0
 2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 1 - Evergreen Needleleaf Forest,15,0.49,53.33,46.67,0.0
 2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 2 - Evergreen Broadleaf Forest,8,2.84,37.5,62.5,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 3 - Deciduous Needleleaf Forest,2,1.5,0.0,100.0,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 5 - Mixed Forests,35,37.85,22.86,77.14,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 6 - Closed Shrublands,14,-18.1,57.14,42.86,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 7 - Open Shrublands,2786,-41.32,61.84,38.16,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 8 - Woody Savannas,89,25.67,41.57,58.43,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 9 - Savannas,13,-14.58,38.46,61.54,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 10 - Grasslands,331,-79.81,78.55,21.45,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 12 - Croplands,935,-57.07,64.6,35.4,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 3 - Deciduous Needleleaf Forest,2,1.14,0.0,100.0,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 5 - Mixed Forest,35,37.89,22.86,77.14,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 6 - Closed Shrublands,14,-17.98,57.14,42.86,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 7 - Open Shrublands,2786,-41.34,61.77,38.23,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 8 - Woody Savannas,89,25.64,40.45,59.55,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 9 - Savannas,13,-13.75,38.46,61.54,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 10 - Grasslands,331,-79.48,77.95,22.05,0.0
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 12 - Croplands,935,-57.25,65.13,34.87,0.0
 2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 13 - Urban and Built-Up,50,0.06,24.0,60.0,16.0
 2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.42,0.0,100.0,0.0
-2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,-144.35,92.09,7.91,0.0
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),region,Domaine complet,5379,-23.53,64.79,27.61,7.6
+2018,C2,DA_nocdf − ENS_OPL,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,-143.89,91.64,8.36,0.0
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),region,Domaine complet,5379,-23.5,64.64,27.76,7.6
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),region,Domaine hors classes 13 et 16,4229,-9.34,56.99,34.83,8.18
 2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),region,Lalla Chafia,180,8.82,25.0,75.0,0.0
 2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),region,Sidi Jabeur,170,4.0,33.53,66.47,0.0
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),region,Sebou amont,227,-0.36,44.93,55.07,0.0
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),region,Sebou amont,227,-0.3,44.93,55.07,0.0
 2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 1 - Evergreen Needleleaf Forest,15,-0.46,53.33,26.67,20.0
 2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.13,12.5,50.0,37.5
 2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.94,50.0,50.0,0.0
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 5 - Mixed Forests,35,-1.88,65.71,31.43,2.86
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 6 - Closed Shrublands,14,-1.08,35.71,28.57,35.71
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 7 - Open Shrublands,2786,-4.94,55.81,37.4,6.78
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 8 - Woody Savannas,89,1.5,43.82,50.56,5.62
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 5 - Mixed Forest,35,-1.83,65.71,31.43,2.86
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 6 - Closed Shrublands,14,-1.29,35.71,28.57,35.71
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 7 - Open Shrublands,2786,-4.93,55.67,37.54,6.78
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 8 - Woody Savannas,89,1.52,43.82,50.56,5.62
 2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 9 - Savannas,13,-8.0,38.46,15.38,46.15
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 10 - Grasslands,331,-16.89,58.91,35.65,5.44
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 12 - Croplands,935,-21.64,62.46,25.13,12.41
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 10 - Grasslands,331,-16.91,58.31,36.25,5.44
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 12 - Croplands,935,-21.48,62.35,25.24,12.41
 2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 13 - Urban and Built-Up,50,0.04,2.0,32.0,66.0
 2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.16,100.0,0.0,0.0
-2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,-79.04,97.0,0.27,2.73
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Domaine complet,5379,36.74,24.02,48.17,27.81
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Lalla Chafia,180,44.79,28.89,71.11,0.0
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Sidi Jabeur,170,24.04,40.0,55.29,4.71
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Sebou amont,227,32.84,34.8,59.47,5.73
+2018,C3,DA_corr − ENS_corr,E (ESoil vs WaPOR E),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,-79.04,96.91,0.36,2.73
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Domaine complet,5379,36.73,24.0,48.19,27.81
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Domaine hors classes 13 et 16,4229,46.72,30.53,61.29,8.18
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Lalla Chafia,180,44.46,29.44,70.56,0.0
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Sidi Jabeur,170,23.8,39.41,55.88,4.71
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),region,Sebou amont,227,32.82,36.56,57.71,5.73
 2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 1 - Evergreen Needleleaf Forest,15,0.05,26.67,53.33,20.0
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.91,62.5,0.0,37.5
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.84,50.0,12.5,37.5
 2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 3 - Deciduous Needleleaf Forest,2,-1.09,50.0,50.0,0.0
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 5 - Mixed Forests,35,35.6,25.71,71.43,2.86
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 6 - Closed Shrublands,14,6.51,35.71,28.57,35.71
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 7 - Open Shrublands,2786,38.43,33.31,59.91,6.78
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 8 - Woody Savannas,89,17.82,41.57,52.81,5.62
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 5 - Mixed Forest,35,35.25,25.71,71.43,2.86
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 6 - Closed Shrublands,14,6.21,35.71,28.57,35.71
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 7 - Open Shrublands,2786,38.39,33.24,59.98,6.78
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 8 - Woody Savannas,89,18.12,42.7,51.69,5.62
 2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 9 - Savannas,13,21.75,23.08,30.77,46.15
 2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 10 - Grasslands,331,43.07,34.44,60.12,5.44
-2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 12 - Croplands,935,78.19,19.79,67.81,12.41
+2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 12 - Croplands,935,78.25,19.89,67.7,12.41
 2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 13 - Urban and Built-Up,50,0.0,0.0,0.0,100.0
 2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.02,100.0,0.0,0.0
 2018,C3,DA_corr − ENS_corr,T (TVeg vs WaPOR T),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,0.0,0.0,0.0,100.0
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Domaine complet,5379,-18.29,58.51,33.87,7.62
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Lalla Chafia,180,-5.46,43.89,56.11,0.0
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Sidi Jabeur,170,-23.76,61.76,38.24,0.0
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Sebou amont,227,-1.76,55.07,44.93,0.0
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Domaine complet,5379,-18.15,58.47,33.91,7.62
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Domaine hors classes 13 et 16,4229,-7.16,51.22,40.58,8.21
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Lalla Chafia,180,-5.94,45.0,55.0,0.0
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Sidi Jabeur,170,-24.25,61.18,38.82,0.0
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),region,Sebou amont,227,-1.25,55.07,44.93,0.0
 2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 1 - Evergreen Needleleaf Forest,15,0.74,20.0,60.0,20.0
 2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 2 - Evergreen Broadleaf Forest,8,-1.05,62.5,0.0,37.5
 2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 3 - Deciduous Needleleaf Forest,2,-2.04,50.0,50.0,0.0
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 5 - Mixed Forests,35,30.84,34.29,62.86,2.86
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 6 - Closed Shrublands,14,3.51,28.57,35.71,35.71
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 7 - Open Shrublands,2786,-0.5,48.53,44.69,6.78
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 8 - Woody Savannas,89,30.37,39.33,55.06,5.62
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 9 - Savannas,13,-15.19,38.46,15.38,46.15
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 10 - Grasslands,331,-36.94,61.93,32.63,5.44
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 12 - Croplands,935,-22.19,58.4,29.09,12.51
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 5 - Mixed Forest,35,30.98,34.29,62.86,2.86
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 6 - Closed Shrublands,14,2.98,28.57,35.71,35.71
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 7 - Open Shrublands,2786,-0.47,48.31,44.9,6.78
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 8 - Woody Savannas,89,30.03,39.33,55.06,5.62
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 9 - Savannas,13,-14.21,38.46,15.38,46.15
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 10 - Grasslands,331,-36.75,62.54,32.02,5.44
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 12 - Croplands,935,-21.86,58.5,28.98,12.51
 2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 13 - Urban and Built-Up,50,0.04,2.0,32.0,66.0
 2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.18,100.0,0.0,0.0
-2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,-61.53,88.82,8.45,2.73
+2018,C3,DA_corr − ENS_corr,E+T (ESoil+TVeg vs WaPOR E+T),landcover,Classe 16 - Barren or Sparsely Vegetated,1100,-61.24,88.91,8.36,2.73

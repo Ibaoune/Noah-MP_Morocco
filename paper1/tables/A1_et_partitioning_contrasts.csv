@@ -1,29 +1,31 @@
-period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_cells_valid,delta_ESoil_mm,delta_TVeg_mm,delta_ECanop_mm,delta_ET_total_mm
-2018,C1,ENS_OPL − OL_DAIC,DJF,region,Domaine complet,16030,12.19,0.08,-0.02,12.25
-2018,C1,ENS_OPL − OL_DAIC,DJF,region,Lalla Chafia,180,14.71,-1.5,-0.15,13.06
-2018,C1,ENS_OPL − OL_DAIC,DJF,region,Sidi Jabeur,170,17.52,-0.29,-0.08,17.15
-2018,C1,ENS_OPL − OL_DAIC,DJF,region,Sebou amont,227,6.08,-0.42,-0.05,5.61
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 1 - Evergreen Needleleaf Forest,22,4.81,-0.31,-0.26,4.24
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 2 - Evergreen Broadleaf Forest,8,3.1,-1.3,-0.55,1.25
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 3 - Deciduous Needleleaf Forest,2,7.66,0.22,-0.13,7.75
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 5 - Mixed Forests,37,3.87,-0.73,-0.19,2.95
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 6 - Closed Shrublands,54,9.28,0.02,-0.13,9.17
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 7 - Open Shrublands,5636,11.57,0.58,-0.01,12.14
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 8 - Woody Savannas,89,4.11,-1.21,-0.32,2.58
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 9 - Savannas,13,6.05,-0.79,-0.07,5.19
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 10 - Grasslands,574,8.52,-0.1,-0.01,8.4
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 12 - Croplands,1127,11.71,-1.52,-0.18,10.0
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 13 - Urban and Built-Up,117,-0.01,0.0,0.0,-0.01
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,11.47,-2.64,-0.2,8.63
-2018,C1,ENS_OPL − OL_DAIC,DJF,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,13.28,0.0,0.0,13.28
+period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_cells,delta_ESoil_mm,delta_TVeg_mm,delta_ECanop_mm,delta_ET_total_mm
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,region,Domaine complet,16030,12.19,0.08,-0.02,12.25
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,region,Domaine hors classes 13 et 16,7563,11.18,0.17,-0.04,11.31
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,region,Lalla Chafia,180,14.71,-1.5,-0.15,13.06
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,region,Sidi Jabeur,170,17.52,-0.29,-0.08,17.15
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,region,Sebou amont,227,6.08,-0.42,-0.05,5.61
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 1 - Evergreen Needleleaf Forest,22,4.81,-0.31,-0.26,4.24
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 2 - Evergreen Broadleaf Forest,8,3.1,-1.3,-0.55,1.25
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 3 - Deciduous Needleleaf Forest,2,7.66,0.22,-0.13,7.75
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 5 - Mixed Forest,37,3.87,-0.73,-0.19,2.95
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 6 - Closed Shrublands,54,9.28,0.02,-0.13,9.17
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 7 - Open Shrublands,5636,11.57,0.58,-0.01,12.14
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 8 - Woody Savannas,89,4.11,-1.21,-0.32,2.58
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 9 - Savannas,13,6.05,-0.79,-0.07,5.19
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 10 - Grasslands,574,8.52,-0.1,-0.01,8.4
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 12 - Croplands,1127,11.71,-1.52,-0.18,10.0
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 13 - Urban and Built-Up,117,-0.01,0.0,0.0,-0.01
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,11.47,-2.64,-0.2,8.63
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,13.28,0.0,0.0,13.28
 2018,C1,ENS_OPL − OL_DAIC,MAM,region,Domaine complet,16030,20.17,-0.83,-0.2,19.14
+2018,C1,ENS_OPL − OL_DAIC,MAM,region,Domaine hors classes 13 et 16,7563,18.84,-1.76,-0.43,16.66
 2018,C1,ENS_OPL − OL_DAIC,MAM,region,Lalla Chafia,180,18.86,-4.27,-0.75,13.84
 2018,C1,ENS_OPL − OL_DAIC,MAM,region,Sidi Jabeur,170,22.2,-3.98,-0.56,17.66
 2018,C1,ENS_OPL − OL_DAIC,MAM,region,Sebou amont,227,17.68,-1.29,-0.75,15.64
 2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 1 - Evergreen Needleleaf Forest,22,7.77,-0.49,-0.58,6.7
 2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 2 - Evergreen Broadleaf Forest,8,1.24,-0.14,-0.87,0.23
 2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 3 - Deciduous Needleleaf Forest,2,5.18,1.54,-0.4,6.32
-2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 5 - Mixed Forests,37,5.66,-2.08,-0.6,2.98
+2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 5 - Mixed Forest,37,5.66,-2.08,-0.6,2.98
 2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 6 - Closed Shrublands,54,19.69,-1.37,-0.68,17.64
 2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 7 - Open Shrublands,5636,19.64,-1.05,-0.38,18.21
 2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 8 - Woody Savannas,89,6.59,-2.13,-0.59,3.87
@@ -34,13 +36,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,17.64,-3.64,-0.46,13.54
 2018,C1,ENS_OPL − OL_DAIC,MAM,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,21.66,0.0,0.0,21.66
 2018,C1,ENS_OPL − OL_DAIC,JJA,region,Domaine complet,16030,16.93,0.58,-0.01,17.5
+2018,C1,ENS_OPL − OL_DAIC,JJA,region,Domaine hors classes 13 et 16,7563,18.14,1.22,-0.02,19.35
 2018,C1,ENS_OPL − OL_DAIC,JJA,region,Lalla Chafia,180,17.66,1.17,-0.03,18.8
 2018,C1,ENS_OPL − OL_DAIC,JJA,region,Sidi Jabeur,170,16.02,1.27,-0.03,17.25
 2018,C1,ENS_OPL − OL_DAIC,JJA,region,Sebou amont,227,20.81,-0.77,-0.24,19.8
 2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 1 - Evergreen Needleleaf Forest,22,19.97,-0.14,-0.03,19.79
 2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 2 - Evergreen Broadleaf Forest,8,5.74,-2.21,-0.01,3.52
 2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 3 - Deciduous Needleleaf Forest,2,15.3,0.87,-0.07,16.1
-2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 5 - Mixed Forests,37,13.33,-1.63,-0.04,11.67
+2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 5 - Mixed Forest,37,13.33,-1.63,-0.04,11.67
 2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 6 - Closed Shrublands,54,9.76,-1.27,-0.09,8.41
 2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 7 - Open Shrublands,5636,15.27,1.78,-0.01,17.04
 2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 8 - Woody Savannas,89,16.88,0.02,-0.04,16.85
@@ -51,13 +54,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,21.87,2.74,-0.01,24.6
 2018,C1,ENS_OPL − OL_DAIC,JJA,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,16.07,0.0,0.0,16.07
 2018,C1,ENS_OPL − OL_DAIC,SON,region,Domaine complet,16030,17.14,0.89,0.06,18.08
+2018,C1,ENS_OPL − OL_DAIC,SON,region,Domaine hors classes 13 et 16,7563,12.65,1.88,0.12,14.65
 2018,C1,ENS_OPL − OL_DAIC,SON,region,Lalla Chafia,180,14.05,1.47,0.02,15.54
 2018,C1,ENS_OPL − OL_DAIC,SON,region,Sidi Jabeur,170,14.57,1.39,0.02,15.99
 2018,C1,ENS_OPL − OL_DAIC,SON,region,Sebou amont,227,11.96,0.57,-0.71,11.81
 2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 1 - Evergreen Needleleaf Forest,22,8.22,-0.13,-0.48,7.61
 2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 2 - Evergreen Broadleaf Forest,8,1.43,-0.22,-0.33,0.88
 2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 3 - Deciduous Needleleaf Forest,2,9.88,0.22,-0.35,9.75
-2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 5 - Mixed Forests,37,5.34,-0.35,-0.46,4.53
+2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 5 - Mixed Forest,37,5.34,-0.35,-0.46,4.53
 2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 6 - Closed Shrublands,54,11.1,0.42,-0.51,11.01
 2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 7 - Open Shrublands,5636,12.64,2.15,0.14,14.93
 2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 8 - Woody Savannas,89,7.3,0.51,-0.28,7.53
@@ -68,13 +72,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,11.16,1.16,0.43,12.75
 2018,C1,ENS_OPL − OL_DAIC,SON,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,21.44,0.0,0.0,21.44
 2018,C1,ENS_OPL − OL_DAIC,Annuel,region,Domaine complet,16030,66.42,0.72,-0.17,66.97
+2018,C1,ENS_OPL − OL_DAIC,Annuel,region,Domaine hors classes 13 et 16,7563,60.81,1.52,-0.37,61.96
 2018,C1,ENS_OPL − OL_DAIC,Annuel,region,Lalla Chafia,180,65.28,-3.13,-0.91,61.23
 2018,C1,ENS_OPL − OL_DAIC,Annuel,region,Sidi Jabeur,170,70.31,-1.61,-0.65,68.05
 2018,C1,ENS_OPL − OL_DAIC,Annuel,region,Sebou amont,227,56.53,-1.91,-1.75,52.87
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 1 - Evergreen Needleleaf Forest,22,40.76,-1.07,-1.34,38.35
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 2 - Evergreen Broadleaf Forest,8,11.51,-3.88,-1.76,5.87
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 3 - Deciduous Needleleaf Forest,2,38.02,2.85,-0.96,39.91
-2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 5 - Mixed Forests,37,28.21,-4.79,-1.29,22.13
+2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 5 - Mixed Forest,37,28.21,-4.79,-1.29,22.13
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 6 - Closed Shrublands,54,49.83,-2.2,-1.4,46.24
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 7 - Open Shrublands,5636,59.11,3.45,-0.25,62.31
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 8 - Woody Savannas,89,34.88,-2.81,-1.22,30.84
@@ -84,31 +89,33 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 13 - Urban and Built-Up,117,-0.05,0.0,0.0,-0.05
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,62.13,-2.38,-0.24,59.52
 2018,C1,ENS_OPL − OL_DAIC,Annuel,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,72.44,0.0,0.0,72.44
-2018,C2,DA_nocdf − ENS_OPL,DJF,region,Domaine complet,16030,-18.26,-1.91,-0.04,-20.21
-2018,C2,DA_nocdf − ENS_OPL,DJF,region,Lalla Chafia,180,2.57,2.66,0.2,5.43
-2018,C2,DA_nocdf − ENS_OPL,DJF,region,Sidi Jabeur,170,-2.85,4.11,0.3,1.57
-2018,C2,DA_nocdf − ENS_OPL,DJF,region,Sebou amont,227,-10.89,-5.08,-0.12,-16.09
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.14,0.01,0.0,-0.13
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.01,-0.27,-0.01,-0.29
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.02,-0.0,0.0,-0.02
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 5 - Mixed Forests,37,-2.39,0.77,-0.02,-1.64
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 6 - Closed Shrublands,54,-9.92,-0.23,-0.05,-10.19
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 7 - Open Shrublands,5636,-12.79,-4.34,-0.08,-17.21
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 8 - Woody Savannas,89,-2.35,0.34,0.04,-1.97
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 9 - Savannas,13,-5.84,-1.27,-0.07,-7.17
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 10 - Grasslands,574,-11.46,-2.74,-0.04,-14.23
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 12 - Croplands,1127,-12.28,-4.12,-0.1,-16.5
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 13 - Urban and Built-Up,117,-0.0,0.0,0.0,-0.0
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.02,0.03,-0.0,0.01
-2018,C2,DA_nocdf − ENS_OPL,DJF,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-23.87,0.0,0.0,-23.87
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,region,Domaine complet,16030,-18.26,-1.91,-0.04,-20.21
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,region,Domaine hors classes 13 et 16,7563,-12.35,-4.06,-0.08,-16.48
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,region,Lalla Chafia,180,2.57,2.66,0.2,5.43
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,region,Sidi Jabeur,170,-2.85,4.11,0.3,1.57
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,region,Sebou amont,227,-10.89,-5.08,-0.12,-16.09
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.14,0.01,0.0,-0.13
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.01,-0.27,-0.01,-0.29
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.02,-0.0,0.0,-0.02
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 5 - Mixed Forest,37,-2.39,0.77,-0.02,-1.64
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 6 - Closed Shrublands,54,-9.92,-0.23,-0.05,-10.19
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 7 - Open Shrublands,5636,-12.79,-4.34,-0.08,-17.21
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 8 - Woody Savannas,89,-2.35,0.34,0.04,-1.97
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 9 - Savannas,13,-5.84,-1.27,-0.07,-7.17
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 10 - Grasslands,574,-11.46,-2.74,-0.04,-14.23
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 12 - Croplands,1127,-12.28,-4.12,-0.1,-16.5
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 13 - Urban and Built-Up,117,-0.0,0.0,0.0,-0.0
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.02,0.03,-0.0,0.01
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-23.87,0.0,0.0,-23.87
 2018,C2,DA_nocdf − ENS_OPL,MAM,region,Domaine complet,16030,-32.61,-9.46,-0.57,-42.64
+2018,C2,DA_nocdf − ENS_OPL,MAM,region,Domaine hors classes 13 et 16,7563,-30.64,-20.06,-1.21,-51.91
 2018,C2,DA_nocdf − ENS_OPL,MAM,region,Lalla Chafia,180,-17.57,-4.74,0.38,-21.93
 2018,C2,DA_nocdf − ENS_OPL,MAM,region,Sidi Jabeur,170,-25.91,-0.12,0.9,-25.12
 2018,C2,DA_nocdf − ENS_OPL,MAM,region,Sebou amont,227,-35.87,-15.72,-1.88,-53.46
 2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.54,0.02,0.02,-0.5
 2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.21,-0.47,-0.08,-0.75
 2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.12,-0.14,0.01,-0.25
-2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 5 - Mixed Forests,37,-15.31,-5.5,0.07,-20.74
+2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 5 - Mixed Forest,37,-15.31,-5.5,0.07,-20.74
 2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 6 - Closed Shrublands,54,-28.17,-12.46,-1.07,-41.7
 2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 7 - Open Shrublands,5636,-30.82,-20.69,-1.39,-52.9
 2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 8 - Woody Savannas,89,-20.22,-8.04,0.01,-28.25
@@ -119,13 +126,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.22,0.04,-0.0,0.26
 2018,C2,DA_nocdf − ENS_OPL,MAM,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-34.85,0.0,0.0,-34.85
 2018,C2,DA_nocdf − ENS_OPL,JJA,region,Domaine complet,16030,-4.19,-11.63,-0.43,-16.25
+2018,C2,DA_nocdf − ENS_OPL,JJA,region,Domaine hors classes 13 et 16,7563,-0.11,-24.65,-0.92,-25.68
 2018,C2,DA_nocdf − ENS_OPL,JJA,region,Lalla Chafia,180,-3.07,-15.45,-0.07,-18.58
 2018,C2,DA_nocdf − ENS_OPL,JJA,region,Sidi Jabeur,170,-6.47,-11.94,-0.12,-18.52
 2018,C2,DA_nocdf − ENS_OPL,JJA,region,Sebou amont,227,-10.11,-36.13,-2.33,-48.57
 2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.05,0.14,0.02,0.11
 2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.09,-1.12,0.0,-1.21
 2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.05,-0.11,-0.0,-0.06
-2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 5 - Mixed Forests,37,-5.75,-21.1,-0.14,-27.0
+2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 5 - Mixed Forest,37,-5.75,-21.1,-0.14,-27.0
 2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 6 - Closed Shrublands,54,5.85,-17.04,-0.64,-11.82
 2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 7 - Open Shrublands,5636,-0.13,-24.94,-1.11,-26.19
 2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 8 - Woody Savannas,89,-1.57,-18.27,-0.22,-20.06
@@ -136,13 +144,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.22,-0.08,0.0,-0.3
 2018,C2,DA_nocdf − ENS_OPL,JJA,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-7.95,0.0,0.0,-7.95
 2018,C2,DA_nocdf − ENS_OPL,SON,region,Domaine complet,16030,-27.03,-3.12,-1.26,-31.41
+2018,C2,DA_nocdf − ENS_OPL,SON,region,Domaine hors classes 13 et 16,7563,-8.46,-6.62,-2.67,-17.75
 2018,C2,DA_nocdf − ENS_OPL,SON,region,Lalla Chafia,180,-0.64,4.23,0.6,4.19
 2018,C2,DA_nocdf − ENS_OPL,SON,region,Sidi Jabeur,170,-4.29,1.56,-0.26,-3.0
 2018,C2,DA_nocdf − ENS_OPL,SON,region,Sebou amont,227,-12.94,-12.02,-5.82,-30.78
 2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.25,0.07,0.09,-0.09
 2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.07,-0.48,-0.08,-0.63
 2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.08,-0.04,-0.01,-0.13
-2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 5 - Mixed Forests,37,-0.04,-2.45,-1.33,-3.82
+2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 5 - Mixed Forest,37,-0.04,-2.45,-1.33,-3.82
 2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 6 - Closed Shrublands,54,-0.75,-0.83,-1.72,-3.29
 2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 7 - Open Shrublands,5636,-9.08,-8.03,-3.23,-20.34
 2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 8 - Woody Savannas,89,3.79,1.3,-0.56,4.53
@@ -153,13 +162,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.38,0.07,0.01,0.46
 2018,C2,DA_nocdf − ENS_OPL,SON,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-44.22,0.0,0.0,-44.22
 2018,C2,DA_nocdf − ENS_OPL,Annuel,region,Domaine complet,16030,-82.08,-26.13,-2.3,-110.51
+2018,C2,DA_nocdf − ENS_OPL,Annuel,region,Domaine hors classes 13 et 16,7563,-51.55,-55.39,-4.88,-111.82
 2018,C2,DA_nocdf − ENS_OPL,Annuel,region,Lalla Chafia,180,-18.71,-13.3,1.12,-30.89
 2018,C2,DA_nocdf − ENS_OPL,Annuel,region,Sidi Jabeur,170,-39.52,-6.38,0.82,-45.07
 2018,C2,DA_nocdf − ENS_OPL,Annuel,region,Sebou amont,227,-69.81,-68.95,-10.15,-148.9
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.98,0.23,0.13,-0.62
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.38,-2.33,-0.17,-2.88
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.17,-0.28,-0.01,-0.46
-2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 5 - Mixed Forests,37,-23.49,-28.29,-1.43,-53.21
+2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 5 - Mixed Forest,37,-23.49,-28.29,-1.43,-53.21
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 6 - Closed Shrublands,54,-32.98,-30.56,-3.47,-67.01
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 7 - Open Shrublands,5636,-52.82,-58.01,-5.81,-116.63
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 8 - Woody Savannas,89,-20.35,-24.66,-0.74,-45.75
@@ -169,31 +179,33 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 13 - Urban and Built-Up,117,-0.04,0.0,0.0,-0.04
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.37,0.05,0.01,0.43
 2018,C2,DA_nocdf − ENS_OPL,Annuel,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-110.88,0.0,0.0,-110.88
-2018,C3,DA_corr − ENS_corr,DJF,region,Domaine complet,16030,-8.19,-2.59,-0.08,-10.87
-2018,C3,DA_corr − ENS_corr,DJF,region,Lalla Chafia,180,9.06,-2.15,-0.0,6.91
-2018,C3,DA_corr − ENS_corr,DJF,region,Sidi Jabeur,170,7.15,-3.09,0.14,4.2
-2018,C3,DA_corr − ENS_corr,DJF,region,Sebou amont,227,-3.75,-6.62,-0.18,-10.55
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.18,-0.01,0.0,-0.19
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.0,0.15,0.02,0.16
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.03,0.03,0.0,0.01
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 5 - Mixed Forests,37,1.72,-0.32,-0.02,1.39
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 6 - Closed Shrublands,54,-2.01,-0.72,-0.04,-2.76
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 7 - Open Shrublands,5636,-2.85,-5.52,-0.16,-8.53
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 8 - Woody Savannas,89,-0.68,-2.42,-0.08,-3.18
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 9 - Savannas,13,-3.15,-1.72,-0.12,-5.0
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 10 - Grasslands,574,-3.43,-4.22,-0.12,-7.78
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 12 - Croplands,1127,-4.82,-6.9,-0.33,-12.05
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 13 - Urban and Built-Up,117,-0.0,0.0,0.0,-0.0
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.0,0.0,0.0,0.01
-2018,C3,DA_corr − ENS_corr,DJF,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-12.9,0.0,0.0,-12.9
+2018,C3,DA_corr − ENS_corr,JF+D_2018,region,Domaine complet,16030,-8.19,-2.59,-0.08,-10.87
+2018,C3,DA_corr − ENS_corr,JF+D_2018,region,Domaine hors classes 13 et 16,7563,-3.12,-5.5,-0.18,-8.8
+2018,C3,DA_corr − ENS_corr,JF+D_2018,region,Lalla Chafia,180,9.06,-2.15,-0.0,6.91
+2018,C3,DA_corr − ENS_corr,JF+D_2018,region,Sidi Jabeur,170,7.15,-3.09,0.14,4.2
+2018,C3,DA_corr − ENS_corr,JF+D_2018,region,Sebou amont,227,-3.75,-6.62,-0.18,-10.55
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.18,-0.01,0.0,-0.19
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.0,0.15,0.02,0.16
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.03,0.03,0.0,0.01
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 5 - Mixed Forest,37,1.72,-0.32,-0.02,1.39
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 6 - Closed Shrublands,54,-2.01,-0.72,-0.04,-2.76
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 7 - Open Shrublands,5636,-2.85,-5.52,-0.16,-8.53
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 8 - Woody Savannas,89,-0.68,-2.42,-0.08,-3.18
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 9 - Savannas,13,-3.15,-1.72,-0.12,-5.0
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 10 - Grasslands,574,-3.43,-4.22,-0.12,-7.78
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 12 - Croplands,1127,-4.82,-6.9,-0.33,-12.05
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 13 - Urban and Built-Up,117,-0.0,0.0,0.0,-0.0
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.0,0.0,0.0,0.01
+2018,C3,DA_corr − ENS_corr,JF+D_2018,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-12.9,0.0,0.0,-12.9
 2018,C3,DA_corr − ENS_corr,MAM,region,Domaine complet,16030,-14.42,-13.04,-0.9,-28.36
+2018,C3,DA_corr − ENS_corr,MAM,region,Domaine hors classes 13 et 16,7563,-10.71,-27.64,-1.91,-40.26
 2018,C3,DA_corr − ENS_corr,MAM,region,Lalla Chafia,180,-8.99,-21.37,-0.84,-31.2
 2018,C3,DA_corr − ENS_corr,MAM,region,Sidi Jabeur,170,-8.34,-24.49,-0.32,-33.16
 2018,C3,DA_corr − ENS_corr,MAM,region,Sebou amont,227,-6.22,-12.56,-1.64,-20.41
 2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.5,-0.08,0.01,-0.58
 2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.07,0.21,0.13,0.41
 2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.56,0.52,0.0,1.08
-2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 5 - Mixed Forests,37,-2.42,-7.81,-0.11,-10.33
+2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 5 - Mixed Forest,37,-2.42,-7.81,-0.11,-10.33
 2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 6 - Closed Shrublands,54,-4.16,-11.62,-0.64,-16.42
 2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 7 - Open Shrublands,5636,-9.72,-26.45,-1.96,-38.14
 2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 8 - Woody Savannas,89,-7.85,-11.32,-0.56,-19.73
@@ -204,13 +216,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.19,-0.0,0.0,-0.19
 2018,C3,DA_corr − ENS_corr,MAM,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-17.98,0.0,0.0,-17.98
 2018,C3,DA_corr − ENS_corr,JJA,region,Domaine complet,16030,-2.09,-11.15,-0.41,-13.66
+2018,C3,DA_corr − ENS_corr,JJA,region,Domaine hors classes 13 et 16,7563,1.35,-23.64,-0.87,-23.16
 2018,C3,DA_corr − ENS_corr,JJA,region,Lalla Chafia,180,-0.39,-26.87,-0.32,-27.58
 2018,C3,DA_corr − ENS_corr,JJA,region,Sidi Jabeur,170,-1.21,-36.44,-0.6,-38.25
 2018,C3,DA_corr − ENS_corr,JJA,region,Sebou amont,227,0.72,-28.86,-1.96,-30.09
 2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.14,-0.07,0.01,-0.2
 2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.07,0.36,0.0,0.43
 2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.22,0.38,-0.0,0.6
-2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 5 - Mixed Forests,37,-0.5,-14.42,-0.29,-15.21
+2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 5 - Mixed Forest,37,-0.5,-14.42,-0.29,-15.21
 2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 6 - Closed Shrublands,54,5.48,-9.55,-0.5,-4.56
 2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 7 - Open Shrublands,5636,1.2,-24.25,-1.08,-24.13
 2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 8 - Woody Savannas,89,0.87,-17.66,-0.53,-17.32
@@ -221,13 +234,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.01,-0.02,-0.0,-0.02
 2018,C3,DA_corr − ENS_corr,JJA,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-5.24,0.0,0.0,-5.24
 2018,C3,DA_corr − ENS_corr,SON,region,Domaine complet,16030,-11.17,-0.2,-0.96,-12.33
+2018,C3,DA_corr − ENS_corr,SON,region,Domaine hors classes 13 et 16,7563,2.92,-0.43,-2.04,0.46
 2018,C3,DA_corr − ENS_corr,SON,region,Lalla Chafia,180,9.14,9.51,0.42,19.07
 2018,C3,DA_corr − ENS_corr,SON,region,Sidi Jabeur,170,6.4,-3.39,-2.93,0.09
 2018,C3,DA_corr − ENS_corr,SON,region,Sebou amont,227,5.83,-7.84,-5.43,-7.45
 2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.12,-0.04,0.01,-0.15
 2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 2 - Evergreen Broadleaf Forest,8,-0.01,0.12,0.01,0.12
 2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.19,0.16,-0.01,0.34
-2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 5 - Mixed Forests,37,6.69,7.23,-2.35,11.57
+2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 5 - Mixed Forest,37,6.69,7.23,-2.35,11.57
 2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 6 - Closed Shrublands,54,5.75,13.15,1.21,20.1
 2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 7 - Open Shrublands,5636,3.43,-2.42,-2.7,-1.68
 2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 8 - Woody Savannas,89,9.96,16.41,-0.43,25.94
@@ -238,13 +252,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.03,0.0,0.0,0.03
 2018,C3,DA_corr − ENS_corr,SON,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-24.09,0.0,0.0,-24.09
 2018,C3,DA_corr − ENS_corr,Annuel,region,Domaine complet,16030,-35.87,-26.99,-2.36,-65.22
+2018,C3,DA_corr − ENS_corr,Annuel,region,Domaine hors classes 13 et 16,7563,-9.56,-57.2,-5.0,-71.76
 2018,C3,DA_corr − ENS_corr,Annuel,region,Lalla Chafia,180,8.82,-40.88,-0.74,-32.8
 2018,C3,DA_corr − ENS_corr,Annuel,region,Sidi Jabeur,170,4.0,-67.4,-3.71,-67.11
 2018,C3,DA_corr − ENS_corr,Annuel,region,Sebou amont,227,-3.41,-55.88,-9.21,-68.5
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.93,-0.21,0.03,-1.11
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.13,0.84,0.17,1.13
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.94,1.09,-0.01,2.02
-2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 5 - Mixed Forests,37,5.49,-15.31,-2.77,-12.59
+2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 5 - Mixed Forest,37,5.49,-15.31,-2.77,-12.59
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 6 - Closed Shrublands,54,5.06,-8.74,0.03,-3.65
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 7 - Open Shrublands,5636,-7.94,-58.64,-5.9,-72.48
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 8 - Woody Savannas,89,2.3,-15.0,-1.6,-14.29
@@ -254,31 +269,33 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 13 - Urban and Built-Up,117,-0.06,0.0,0.0,-0.06
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.16,-0.02,0.0,-0.17
 2018,C3,DA_corr − ENS_corr,Annuel,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-60.21,0.0,0.0,-60.21
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,region,Domaine complet,16030,-3.58,-0.07,-0.0,-3.65
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,region,Lalla Chafia,180,-0.12,-0.07,-0.0,-0.19
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,region,Sidi Jabeur,170,0.01,0.04,0.0,0.05
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,region,Sebou amont,227,0.01,-0.09,-0.0,-0.08
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.05,0.01,-0.0,-0.04
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.02,0.19,0.0,0.21
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.0,0.0,-0.0,0.0
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 5 - Mixed Forests,37,-0.13,0.24,0.0,0.11
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 6 - Closed Shrublands,54,-0.07,-0.19,-0.01,-0.27
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 7 - Open Shrublands,5636,-0.88,-0.15,-0.0,-1.04
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 8 - Woody Savannas,89,0.02,-0.17,-0.01,-0.16
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 9 - Savannas,13,-0.06,-0.09,-0.0,-0.15
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 10 - Grasslands,574,-0.62,-0.07,-0.0,-0.69
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 12 - Croplands,1127,-0.78,-0.23,-0.0,-1.02
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 13 - Urban and Built-Up,117,-0.0,0.0,0.0,-0.0
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.06,-0.06,-0.0,-0.01
-2018,C4,DA_nocdf_nowilt − DA_nocdf,DJF,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-6.12,0.0,0.0,-6.12
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,region,Domaine complet,16030,-3.58,-0.07,-0.0,-3.65
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,region,Domaine hors classes 13 et 16,7563,-0.82,-0.15,-0.0,-0.98
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,region,Lalla Chafia,180,-0.12,-0.07,-0.0,-0.19
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,region,Sidi Jabeur,170,0.01,0.04,0.0,0.05
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,region,Sebou amont,227,0.01,-0.09,-0.0,-0.08
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.05,0.01,-0.0,-0.04
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.02,0.19,0.0,0.21
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.0,0.0,-0.0,0.0
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 5 - Mixed Forest,37,-0.13,0.24,0.0,0.11
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 6 - Closed Shrublands,54,-0.07,-0.19,-0.01,-0.27
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 7 - Open Shrublands,5636,-0.88,-0.15,-0.0,-1.04
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 8 - Woody Savannas,89,0.02,-0.17,-0.01,-0.16
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 9 - Savannas,13,-0.06,-0.09,-0.0,-0.15
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 10 - Grasslands,574,-0.62,-0.07,-0.0,-0.69
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 12 - Croplands,1127,-0.78,-0.23,-0.0,-1.02
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 13 - Urban and Built-Up,117,-0.0,0.0,0.0,-0.0
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.06,-0.06,-0.0,-0.01
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-6.12,0.0,0.0,-6.12
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,region,Domaine complet,16030,-9.66,-0.35,-0.01,-10.03
+2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,region,Domaine hors classes 13 et 16,7563,-5.63,-0.74,-0.02,-6.4
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,region,Lalla Chafia,180,-2.62,-0.37,0.0,-2.99
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,region,Sidi Jabeur,170,-1.43,-0.2,0.01,-1.63
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,region,Sebou amont,227,-0.44,-0.09,-0.01,-0.53
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.08,0.0,0.0,-0.07
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.21,0.42,0.03,0.66
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 3 - Deciduous Needleleaf Forest,2,0.0,-0.0,0.0,0.0
-2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 5 - Mixed Forests,37,-0.34,-0.09,-0.01,-0.44
+2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 5 - Mixed Forest,37,-0.34,-0.09,-0.01,-0.44
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 6 - Closed Shrublands,54,-1.42,-0.17,-0.02,-1.61
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 7 - Open Shrublands,5636,-5.78,-0.62,-0.03,-6.43
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 8 - Woody Savannas,89,-0.6,-0.16,0.0,-0.76
@@ -286,16 +303,17 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 10 - Grasslands,574,-4.6,-0.37,0.01,-4.96
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 12 - Croplands,1127,-6.42,-1.68,-0.02,-8.11
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 13 - Urban and Built-Up,117,-0.01,0.0,0.0,-0.01
-2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.0,-0.0,-0.0,0.0
+2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.0,0.0,0.0,0.0
 2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-13.45,0.0,0.0,-13.45
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,region,Domaine complet,16030,-8.12,-0.86,-0.02,-9.01
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,region,Domaine hors classes 13 et 16,7563,-11.11,-1.83,-0.05,-12.98
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,region,Lalla Chafia,180,-10.23,-2.13,-0.02,-12.38
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,region,Sidi Jabeur,170,-7.17,-1.35,-0.0,-8.53
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,region,Sebou amont,227,-10.05,-1.52,-0.11,-11.67
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.17,0.0,-0.01,-0.17
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.07,1.02,-0.0,1.09
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.14,0.0,0.0,-0.14
-2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 5 - Mixed Forests,37,-6.54,-1.11,-0.02,-7.67
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 5 - Mixed Forest,37,-6.54,-1.11,-0.02,-7.67
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 6 - Closed Shrublands,54,-1.76,-0.83,-0.03,-2.61
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 7 - Open Shrublands,5636,-9.17,-1.39,-0.06,-10.61
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 8 - Woody Savannas,89,-10.61,-2.34,-0.05,-13.0
@@ -306,13 +324,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,0.84,0.26,0.0,1.1
 2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-5.54,0.0,0.0,-5.54
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,region,Domaine complet,16030,-8.25,-0.21,-0.08,-8.54
+2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,region,Domaine hors classes 13 et 16,7563,-5.34,-0.45,-0.17,-5.97
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,region,Lalla Chafia,180,-6.28,-0.37,-0.16,-6.81
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,region,Sidi Jabeur,170,-2.74,-0.3,-0.1,-3.15
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,region,Sebou amont,227,-0.23,-0.43,-0.29,-0.95
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 1 - Evergreen Needleleaf Forest,22,0.08,0.01,-0.0,0.08
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.09,0.45,0.08,0.62
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.05,-0.01,0.02,-0.04
-2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 5 - Mixed Forests,37,-0.53,0.08,0.01,-0.43
+2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 5 - Mixed Forest,37,-0.53,0.08,0.01,-0.43
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 6 - Closed Shrublands,54,-0.44,-0.3,-0.2,-0.95
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 7 - Open Shrublands,5636,-4.33,-0.48,-0.2,-5.01
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 8 - Woody Savannas,89,-1.93,-0.95,-0.41,-3.29
@@ -323,13 +342,14 @@ period,contrast_id,contrast_name,season,stratification_type,region_or_class,n_ce
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 14 - Cropland/Natural Vegetation Mosaic,1,-0.1,0.15,0.08,0.13
 2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,landcover,Classe 16 - Barren or Sparsely Vegetated,8350,-11.0,0.0,0.0,-11.0
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,region,Domaine complet,16030,-29.61,-1.5,-0.12,-31.23
+2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,region,Domaine hors classes 13 et 16,7563,-22.91,-3.17,-0.25,-26.33
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,region,Lalla Chafia,180,-19.25,-2.94,-0.18,-22.37
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,region,Sidi Jabeur,170,-11.33,-1.82,-0.1,-13.25
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,region,Sebou amont,227,-10.71,-2.12,-0.41,-13.25
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,landcover,Classe 1 - Evergreen Needleleaf Forest,22,-0.22,0.02,-0.01,-0.2
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,landcover,Classe 2 - Evergreen Broadleaf Forest,8,0.4,2.08,0.11,2.59
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,landcover,Classe 3 - Deciduous Needleleaf Forest,2,-0.19,-0.0,0.02,-0.18
-2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,landcover,Classe 5 - Mixed Forests,37,-7.54,-0.87,-0.02,-8.43
+2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,landcover,Classe 5 - Mixed Forest,37,-7.54,-0.87,-0.02,-8.43
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,landcover,Classe 6 - Closed Shrublands,54,-3.69,-1.49,-0.26,-5.44
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,landcover,Classe 7 - Open Shrublands,5636,-20.16,-2.64,-0.28,-23.09
 2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,landcover,Classe 8 - Woody Savannas,89,-13.13,-3.63,-0.46,-17.21

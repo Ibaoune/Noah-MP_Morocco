@@ -1,0 +1,11 @@
+period,contrast_id,contrast_name,season,region,n_cells,corr_delta_tveg_vs_delta_theta_L1,corr_delta_tveg_vs_delta_theta_L2,corr_delta_tveg_vs_delta_theta_L3,corr_delta_tveg_vs_delta_theta_L4,corr_delta_tveg_vs_delta_lai
+2018,C3,DA_corr − ENS_corr,MAM,Domaine complet,16030,0.254,0.1181,0.6931,0.4276,0.9687
+2018,C3,DA_corr − ENS_corr,MAM,Domaine hors classes 13 et 16,7563,0.7714,0.4697,0.8563,0.5109,0.9609
+2018,C3,DA_corr − ENS_corr,MAM,Lalla Chafia,180,0.9648,0.9747,0.9943,0.6542,0.9793
+2018,C3,DA_corr − ENS_corr,MAM,Sidi Jabeur,170,0.8496,0.9047,0.9508,0.5082,0.9562
+2018,C3,DA_corr − ENS_corr,MAM,Sebou amont,227,0.9353,0.8989,0.896,0.4888,0.9797
+2018,C3,DA_corr − ENS_corr,JJA,Domaine complet,16030,0.3359,-0.0293,0.4487,0.4638,0.9139
+2018,C3,DA_corr − ENS_corr,JJA,Domaine hors classes 13 et 16,7563,0.6678,0.3603,0.7618,0.55,0.8988
+2018,C3,DA_corr − ENS_corr,JJA,Lalla Chafia,180,0.6255,0.3787,0.9298,0.7359,0.9429
+2018,C3,DA_corr − ENS_corr,JJA,Sidi Jabeur,170,0.1486,0.1271,0.8059,0.5075,0.9259
+2018,C3,DA_corr − ENS_corr,JJA,Sebou amont,227,0.715,0.4263,0.8581,0.3204,0.9686

@@ -1,0 +1,101 @@
+period,contrast_id,contrast_name,season,region,n_cells,delta_theta_L1_m3m3,delta_theta_L2_m3m3,delta_theta_L3_m3m3,delta_theta_L4_m3m3,delta_stock_L1_mm,delta_stock_L2_mm,delta_stock_L3_mm,delta_stock_L4_mm,delta_stock_total_mm,delta_BTRAN
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,Domaine complet,16030,-0.00024,8e-05,-3e-05,-4e-05,-0.02,0.03,-0.02,-0.04,-0.06,absent
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,Domaine hors classes 13 et 16,7563,-0.00062,-2e-05,-0.00018,-0.00012,-0.06,-0.01,-0.11,-0.12,-0.29,absent
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,Lalla Chafia,180,-0.00083,-0.00025,-0.00112,-1e-05,-0.08,-0.08,-0.67,-0.01,-0.84,absent
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,Sidi Jabeur,170,-0.00069,3e-05,-0.00053,-0.00024,-0.07,0.01,-0.32,-0.24,-0.62,absent
+2018,C1,ENS_OPL − OL_DAIC,JF+D_2018,Sebou amont,227,-0.00247,-0.00109,-0.00021,0.0001,-0.25,-0.33,-0.13,0.1,-0.6,absent
+2018,C1,ENS_OPL − OL_DAIC,MAM,Domaine complet,16030,2e-05,0.00014,3e-05,-0.0001,0.0,0.04,0.02,-0.1,-0.04,absent
+2018,C1,ENS_OPL − OL_DAIC,MAM,Domaine hors classes 13 et 16,7563,-0.00076,0.00012,-8e-05,-0.00027,-0.08,0.04,-0.05,-0.27,-0.35,absent
+2018,C1,ENS_OPL − OL_DAIC,MAM,Lalla Chafia,180,-0.00106,-1e-05,-0.0003,-0.00042,-0.11,-0.0,-0.18,-0.42,-0.71,absent
+2018,C1,ENS_OPL − OL_DAIC,MAM,Sidi Jabeur,170,-0.00109,-0.0,-0.00029,-0.00066,-0.11,-0.0,-0.17,-0.66,-0.95,absent
+2018,C1,ENS_OPL − OL_DAIC,MAM,Sebou amont,227,-0.00158,-0.00034,-0.00068,-0.00029,-0.16,-0.1,-0.41,-0.29,-0.95,absent
+2018,C1,ENS_OPL − OL_DAIC,JJA,Domaine complet,16030,0.00232,0.00022,0.00015,-6e-05,0.23,0.07,0.09,-0.06,0.33,absent
+2018,C1,ENS_OPL − OL_DAIC,JJA,Domaine hors classes 13 et 16,7563,0.00174,0.00033,0.00023,-0.00019,0.17,0.1,0.14,-0.19,0.22,absent
+2018,C1,ENS_OPL − OL_DAIC,JJA,Lalla Chafia,180,0.00156,5e-05,-0.0001,-0.00029,0.16,0.01,-0.06,-0.29,-0.17,absent
+2018,C1,ENS_OPL − OL_DAIC,JJA,Sidi Jabeur,170,0.00175,1e-05,-8e-05,-0.00042,0.18,0.0,-0.05,-0.42,-0.29,absent
+2018,C1,ENS_OPL − OL_DAIC,JJA,Sebou amont,227,0.00088,0.00047,0.0004,-0.00019,0.09,0.14,0.24,-0.19,0.27,absent
+2018,C1,ENS_OPL − OL_DAIC,SON,Domaine complet,16030,-0.00031,0.00019,9e-05,-5e-05,-0.03,0.06,0.06,-0.05,0.04,absent
+2018,C1,ENS_OPL − OL_DAIC,SON,Domaine hors classes 13 et 16,7563,-0.00036,0.00016,6e-05,-0.00019,-0.04,0.05,0.03,-0.19,-0.14,absent
+2018,C1,ENS_OPL − OL_DAIC,SON,Lalla Chafia,180,-0.00064,4e-05,-0.00036,-0.00023,-0.06,0.01,-0.22,-0.23,-0.5,absent
+2018,C1,ENS_OPL − OL_DAIC,SON,Sidi Jabeur,170,-0.0007,-8e-05,-0.00027,-0.00037,-0.07,-0.02,-0.16,-0.37,-0.62,absent
+2018,C1,ENS_OPL − OL_DAIC,SON,Sebou amont,227,-0.00082,0.00025,0.00034,5e-05,-0.08,0.07,0.2,0.05,0.25,absent
+2018,C1,ENS_OPL − OL_DAIC,Annuel,Domaine complet,16030,0.00045,0.00016,6e-05,-6e-05,0.04,0.05,0.04,-0.06,0.07,absent
+2018,C1,ENS_OPL − OL_DAIC,Annuel,Domaine hors classes 13 et 16,7563,0.0,0.00015,1e-05,-0.00019,0.0,0.04,0.0,-0.19,-0.14,absent
+2018,C1,ENS_OPL − OL_DAIC,Annuel,Lalla Chafia,180,-0.00024,-4e-05,-0.00047,-0.00023,-0.02,-0.01,-0.28,-0.23,-0.55,absent
+2018,C1,ENS_OPL − OL_DAIC,Annuel,Sidi Jabeur,170,-0.00018,-1e-05,-0.00029,-0.00042,-0.02,-0.0,-0.18,-0.42,-0.62,absent
+2018,C1,ENS_OPL − OL_DAIC,Annuel,Sebou amont,227,-0.001,-0.00018,-4e-05,-8e-05,-0.1,-0.05,-0.02,-0.08,-0.26,absent
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,Domaine complet,16030,-0.0301,-0.01322,-0.01042,-0.00475,-3.01,-3.97,-6.25,-4.75,-17.97,absent
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,Domaine hors classes 13 et 16,7563,-0.01916,-0.00923,-0.00971,-0.00252,-1.92,-2.77,-5.83,-2.52,-13.03,absent
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,Lalla Chafia,180,0.00548,0.00922,0.00691,0.01639,0.55,2.77,4.14,16.39,23.85,absent
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,Sidi Jabeur,170,0.00262,0.01067,0.0154,0.01278,0.26,3.2,9.24,12.78,25.49,absent
+2018,C2,DA_nocdf − ENS_OPL,JF+D_2018,Sebou amont,227,-0.01755,-0.00828,-0.01009,-0.00566,-1.75,-2.49,-6.05,-5.66,-15.95,absent
+2018,C2,DA_nocdf − ENS_OPL,MAM,Domaine complet,16030,-0.02931,-0.02146,-0.01896,-0.00858,-2.93,-6.44,-11.38,-8.58,-29.33,absent
+2018,C2,DA_nocdf − ENS_OPL,MAM,Domaine hors classes 13 et 16,7563,-0.02878,-0.02615,-0.02758,-0.01129,-2.88,-7.84,-16.55,-11.29,-38.56,absent
+2018,C2,DA_nocdf − ENS_OPL,MAM,Lalla Chafia,180,-0.01272,-0.00456,-0.00656,-0.002,-1.27,-1.37,-3.94,-2.0,-8.58,absent
+2018,C2,DA_nocdf − ENS_OPL,MAM,Sidi Jabeur,170,-0.01817,-0.00245,-8e-05,0.00501,-1.82,-0.73,-0.05,5.01,2.42,absent
+2018,C2,DA_nocdf − ENS_OPL,MAM,Sebou amont,227,-0.02771,-0.0232,-0.02708,-0.00569,-2.77,-6.96,-16.25,-5.69,-31.67,absent
+2018,C2,DA_nocdf − ENS_OPL,JJA,Domaine complet,16030,-0.00166,-0.01657,-0.01452,-0.01141,-0.17,-4.97,-8.71,-11.41,-25.26,absent
+2018,C2,DA_nocdf − ENS_OPL,JJA,Domaine hors classes 13 et 16,7563,-0.0011,-0.01338,-0.01696,-0.01422,-0.11,-4.01,-10.18,-14.22,-28.52,absent
+2018,C2,DA_nocdf − ENS_OPL,JJA,Lalla Chafia,180,-0.00425,-0.00513,-0.00668,-0.00959,-0.42,-1.54,-4.01,-9.59,-15.57,absent
+2018,C2,DA_nocdf − ENS_OPL,JJA,Sidi Jabeur,170,-0.00841,-0.00903,-0.00757,-0.00492,-0.84,-2.71,-4.54,-4.92,-13.01,absent
+2018,C2,DA_nocdf − ENS_OPL,JJA,Sebou amont,227,-0.01143,-0.01786,-0.02124,-0.01257,-1.14,-5.36,-12.74,-12.57,-31.82,absent
+2018,C2,DA_nocdf − ENS_OPL,SON,Domaine complet,16030,-0.02559,-0.02401,-0.01537,-0.01204,-2.56,-7.2,-9.22,-12.04,-31.02,absent
+2018,C2,DA_nocdf − ENS_OPL,SON,Domaine hors classes 13 et 16,7563,-0.01044,-0.01189,-0.0087,-0.01167,-1.04,-3.57,-5.22,-11.67,-21.51,absent
+2018,C2,DA_nocdf − ENS_OPL,SON,Lalla Chafia,180,0.00197,0.00744,0.01189,-0.00286,0.2,2.23,7.13,-2.86,6.71,absent
+2018,C2,DA_nocdf − ENS_OPL,SON,Sidi Jabeur,170,-0.00191,0.0066,0.00977,-0.00126,-0.19,1.98,5.86,-1.26,6.39,absent
+2018,C2,DA_nocdf − ENS_OPL,SON,Sebou amont,227,-0.01612,-0.01761,-0.01511,-0.01101,-1.61,-5.28,-9.07,-11.01,-26.97,absent
+2018,C2,DA_nocdf − ENS_OPL,Annuel,Domaine complet,16030,-0.02166,-0.01881,-0.01482,-0.00919,-2.17,-5.64,-8.89,-9.19,-25.89,absent
+2018,C2,DA_nocdf − ENS_OPL,Annuel,Domaine hors classes 13 et 16,7563,-0.01487,-0.01516,-0.01574,-0.00993,-1.49,-4.55,-9.44,-9.93,-25.41,absent
+2018,C2,DA_nocdf − ENS_OPL,Annuel,Lalla Chafia,180,-0.00238,0.00174,0.00139,0.00048,-0.24,0.52,0.83,0.48,1.6,absent
+2018,C2,DA_nocdf − ENS_OPL,Annuel,Sidi Jabeur,170,-0.00647,0.00145,0.00438,0.00291,-0.65,0.43,2.63,2.91,5.32,absent
+2018,C2,DA_nocdf − ENS_OPL,Annuel,Sebou amont,227,-0.0182,-0.01674,-0.01838,-0.00873,-1.82,-5.02,-11.03,-8.73,-26.6,absent
+2018,C3,DA_corr − ENS_corr,JF+D_2018,Domaine complet,16030,-0.02061,-0.0206,-0.03287,-0.02418,-2.06,-6.18,-19.72,-24.18,-52.14,absent
+2018,C3,DA_corr − ENS_corr,JF+D_2018,Domaine hors classes 13 et 16,7563,-0.00906,-0.01169,-0.02583,-0.01661,-0.91,-3.51,-15.5,-16.61,-36.53,absent
+2018,C3,DA_corr − ENS_corr,JF+D_2018,Lalla Chafia,180,0.00513,0.00377,-0.00333,0.0012,0.51,1.13,-2.0,1.2,0.85,absent
+2018,C3,DA_corr − ENS_corr,JF+D_2018,Sidi Jabeur,170,0.00416,0.00348,0.00221,-0.02055,0.42,1.05,1.33,-20.55,-17.76,absent
+2018,C3,DA_corr − ENS_corr,JF+D_2018,Sebou amont,227,-0.00946,-0.01024,-0.0209,-0.0186,-0.95,-3.07,-12.54,-18.6,-35.16,absent
+2018,C3,DA_corr − ENS_corr,MAM,Domaine complet,16030,-0.0192,-0.02943,-0.03747,-0.02383,-1.92,-8.83,-22.48,-23.83,-57.06,absent
+2018,C3,DA_corr − ENS_corr,MAM,Domaine hors classes 13 et 16,7563,-0.01379,-0.02228,-0.05017,-0.03241,-1.38,-6.68,-30.1,-32.41,-70.58,absent
+2018,C3,DA_corr − ENS_corr,MAM,Lalla Chafia,180,-0.00839,-0.01152,-0.03247,-0.02847,-0.84,-3.46,-19.48,-28.47,-52.24,absent
+2018,C3,DA_corr − ENS_corr,MAM,Sidi Jabeur,170,-0.00946,-0.0138,-0.03584,-0.05581,-0.95,-4.14,-21.5,-55.81,-82.4,absent
+2018,C3,DA_corr − ENS_corr,MAM,Sebou amont,227,-0.0069,-0.01023,-0.02852,-0.01025,-0.69,-3.07,-17.11,-10.25,-31.12,absent
+2018,C3,DA_corr − ENS_corr,JJA,Domaine complet,16030,-0.00306,-0.02708,-0.03526,-0.03334,-0.31,-8.13,-21.16,-33.34,-62.93,absent
+2018,C3,DA_corr − ENS_corr,JJA,Domaine hors classes 13 et 16,7563,-0.0015,-0.00066,-0.03,-0.04322,-0.15,-0.2,-18.0,-43.22,-61.57,absent
+2018,C3,DA_corr − ENS_corr,JJA,Lalla Chafia,180,-0.00399,0.00304,-0.02273,-0.05815,-0.4,0.91,-13.64,-58.15,-71.28,absent
+2018,C3,DA_corr − ENS_corr,JJA,Sidi Jabeur,170,-0.00534,-0.01116,-0.04005,-0.12687,-0.53,-3.35,-24.03,-126.87,-154.78,absent
+2018,C3,DA_corr − ENS_corr,JJA,Sebou amont,227,-0.00356,-0.0069,-0.03863,-0.02281,-0.36,-2.07,-23.18,-22.81,-48.41,absent
+2018,C3,DA_corr − ENS_corr,SON,Domaine complet,16030,-0.01361,-0.03358,-0.05531,-0.05311,-1.36,-10.07,-33.19,-53.11,-97.73,absent
+2018,C3,DA_corr − ENS_corr,SON,Domaine hors classes 13 et 16,7563,-0.00125,-0.00026,-0.02068,-0.04057,-0.13,-0.08,-12.41,-40.57,-53.19,absent
+2018,C3,DA_corr − ENS_corr,SON,Lalla Chafia,180,0.00445,0.0139,0.00956,-0.04102,0.44,4.17,5.73,-41.02,-30.67,absent
+2018,C3,DA_corr − ENS_corr,SON,Sidi Jabeur,170,0.00057,0.00233,-0.00831,-0.11028,0.06,0.7,-4.98,-110.28,-114.51,absent
+2018,C3,DA_corr − ENS_corr,SON,Sebou amont,227,-0.00392,-0.00644,-0.03347,-0.02905,-0.39,-1.93,-20.08,-29.05,-51.46,absent
+2018,C3,DA_corr − ENS_corr,Annuel,Domaine complet,16030,-0.01412,-0.02767,-0.04023,-0.03362,-1.41,-8.3,-24.14,-33.62,-67.47,absent
+2018,C3,DA_corr − ENS_corr,Annuel,Domaine hors classes 13 et 16,7563,-0.0064,-0.00872,-0.03167,-0.0332,-0.64,-2.62,-19.0,-33.2,-55.46,absent
+2018,C3,DA_corr − ENS_corr,Annuel,Lalla Chafia,180,-0.0007,0.0023,-0.01224,-0.03161,-0.07,0.69,-7.34,-31.61,-38.33,absent
+2018,C3,DA_corr − ENS_corr,Annuel,Sidi Jabeur,170,-0.00252,-0.00478,-0.0205,-0.07838,-0.25,-1.44,-12.3,-78.38,-92.36,absent
+2018,C3,DA_corr − ENS_corr,Annuel,Sebou amont,227,-0.00596,-0.00845,-0.03038,-0.02018,-0.6,-2.54,-18.23,-20.18,-41.54,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,Domaine complet,16030,-0.00931,0.00013,0.00025,-0.0,-0.93,0.04,0.15,-0.0,-0.75,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,Domaine hors classes 13 et 16,7563,-0.00197,-0.00044,0.00017,-0.0001,-0.2,-0.13,0.1,-0.1,-0.32,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,Lalla Chafia,180,-0.00019,4e-05,0.00013,-0.00056,-0.02,0.01,0.08,-0.56,-0.49,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,Sidi Jabeur,170,3e-05,5e-05,0.0002,9e-05,0.0,0.02,0.12,0.09,0.23,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JF+D_2018,Sebou amont,227,-6e-05,1e-05,9e-05,-0.00013,-0.01,0.0,0.06,-0.13,-0.08,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,Domaine complet,16030,-0.01358,-0.00012,0.00059,9e-05,-1.36,-0.04,0.35,0.09,-0.95,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,Domaine hors classes 13 et 16,7563,-0.00828,-0.00203,0.00023,5e-05,-0.83,-0.61,0.14,0.05,-1.25,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,Lalla Chafia,180,-0.00389,0.00019,-6e-05,-0.00012,-0.39,0.06,-0.04,-0.12,-0.5,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,Sidi Jabeur,170,-0.00174,9e-05,-4e-05,1e-05,-0.17,0.03,-0.02,0.01,-0.17,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,MAM,Sebou amont,227,-0.00037,-0.00035,-0.00016,-3e-05,-0.04,-0.11,-0.09,-0.03,-0.26,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,Domaine complet,16030,-0.00904,-0.00082,0.00062,0.0001,-0.9,-0.25,0.37,0.1,-0.68,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,Domaine hors classes 13 et 16,7563,-0.01381,-0.00218,0.00058,-8e-05,-1.38,-0.65,0.35,-0.08,-1.77,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,Lalla Chafia,180,-0.01682,0.00071,0.00033,-0.00068,-1.68,0.21,0.2,-0.68,-1.95,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,Sidi Jabeur,170,-0.01051,0.00087,0.00073,6e-05,-1.05,0.26,0.44,0.06,-0.28,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,JJA,Sebou amont,227,-0.00969,-0.00127,-0.00107,-0.0003,-0.97,-0.38,-0.64,-0.3,-2.29,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,Domaine complet,16030,-0.01014,-0.00152,0.0007,5e-05,-1.01,-0.46,0.42,0.05,-1.0,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,Domaine hors classes 13 et 16,7563,-0.0059,-0.00211,0.00086,-0.0001,-0.59,-0.63,0.51,-0.1,-0.81,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,Lalla Chafia,180,-0.00684,0.00022,0.00055,-0.00057,-0.68,0.07,0.33,-0.57,-0.85,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,Sidi Jabeur,170,-0.00277,-0.00036,0.00076,0.0001,-0.28,-0.11,0.46,0.1,0.17,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,SON,Sebou amont,227,-0.00059,9e-05,0.00051,6e-05,-0.06,0.03,0.3,0.06,0.34,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,Domaine complet,16030,-0.01052,-0.00058,0.00054,6e-05,-1.05,-0.18,0.32,0.06,-0.84,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,Domaine hors classes 13 et 16,7563,-0.00749,-0.00169,0.00046,-6e-05,-0.75,-0.51,0.28,-0.06,-1.04,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,Lalla Chafia,180,-0.00694,0.00029,0.00024,-0.00048,-0.69,0.09,0.14,-0.48,-0.95,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,Sidi Jabeur,170,-0.00375,0.00016,0.00041,6e-05,-0.37,0.05,0.25,0.06,-0.01,absent
+2018,C4,DA_nocdf_nowilt − DA_nocdf,Annuel,Sebou amont,227,-0.00268,-0.00038,-0.00016,-0.0001,-0.27,-0.11,-0.09,-0.1,-0.57,absent
