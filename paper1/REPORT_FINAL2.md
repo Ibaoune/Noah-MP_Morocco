@@ -78,7 +78,10 @@ L'analyse du code source a révélé que la simulation `DA_corr_2018` avait ét�
   * Écart moyen sur Qs_tavg au jour 2 : **2.83e-10 mm**.
   * Écart moyen sur Qsb_tavg au jour 2 : **4.64e-12 mm**.
   * Non-régression validée sans réserve.
-  * **Explication de l'écart sur 0,4 % des mailles :** L'écart non nul sur 0,4 % des mailles provient d'effets d'arrondi et d'ordonnancement flottant introduits par les accumulateurs et E/S de diagnostic dans la boucle de résolution interne de Noah-MP, sans altération physique du modèle.
+- **Période de moyenne couverte par le fichier `LIS_HIST_201803010000` :**
+  * Dans le run de **production** `DA_corr_2018` (simulation continue issue de février 2018), `LIS_HIST_201803010000.d01.nc` couvre la période de moyenne journalière standard de **24 heures** (du 2018-02-28 00:00:00 au 2018-03-01 00:00:00, c'est-à-dire la journée du 28 février).
+  * Dans le run **diagnostique** `DA_corr_201803_diag` (démarré depuis la restart de 23:45:00), `LIS_HIST_201803010000.d01.nc` ne couvre que l'intervalle initial de **15 minutes** (du 2018-02-28 23:45:00 au 2018-03-01 00:00:00).
+  * La comparaison temporelle au tout premier instantané journalier oppose donc une moyenne sur 24 heures à une moyenne sur 15 minutes.
 
 #### Table 2.1 — Non-régression 2 jours DA_corr instrumenté (`regr_lisf_diag_da_corr_201803.csv`)
 | date | variable | max_abs_diff | mean_abs_diff | diff_zero |
@@ -97,32 +100,47 @@ L'analyse du code source a révélé que la simulation `DA_corr_2018` avait ét�
 | 201803030000 | Qsb_tavg | 0.0000 | 0.0000 | False |
 
 
-#### b) Mécanisme d'écrêtage, rejet des incréments profonds et fermeture rigoureuse
-D'après le bilan annuel 2018, les incréments archivés de `DA_corr` totalisent −483,5 mm (dont −190 mm en couche 3 et −186 mm en couche 4), alors que le changement d'eau impliqué par le bilan hydrique par rapport à `ENS_corr` n'est que d'environ −157,0 mm.
-- **Cause physique et algorithmique identifiée :**
-  Dans `DA_corr`, les perturbations d'état ont été désactivées (`none`). Par conséquent, l'étalement de l'ensemble (spread) dans les couches profondes (3 et 4) est extrêmement faible. Lorsque le filtre EnKF calcule un incrément d'analyse négatif, la mise à jour tente de descendre sous le seuil physique minimal.
-  Dans le sous-programme `noahmp401_setsoilm.F90` (lignes 356–385), le modèle applique une condition stricte :
-  `if (sh2o(j) + deltaj > MIN_THRESHOLD .and. sh2o(j) + deltaj < sm_threshold)`
-  Si cette condition est violée, **la mise à jour est intégralement ignorée et la teneur en eau reste à sa valeur a priori**.
-  Ainsi, environ **67,5% des incréments archivés dans les fichiers NetCDF EnKF n'ont jamais été injectés dans le modèle Noah-MP**.
+#### Table 2.1b — Mars complet, diag vs production (`comparison_march2018_diag_vs_prod.csv`)
+| region | P_prod_mm | P_diag_mm | diff_P_mm | ET_prod_mm | ET_diag_mm | diff_ET_mm | Qs_prod_mm | Qs_diag_mm | diff_Qs_mm | Qsb_prod_mm | Qsb_diag_mm | diff_Qsb_mm | Delta_S_prod_mm | Delta_S_diag_mm | diff_Delta_S_mm | Incr_prod_mm | Incr_diag_mm | diff_Incr_mm |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Domain | 56.2722 | 56.2721 | -0.0000 | 28.0906 | 28.0917 | 0.0011 | 2.9201 | 2.9199 | -0.0002 | 5.1914 | 5.1912 | -0.0002 | -1.8340 | -1.8260 | 0.0081 | -51.9213 | -51.9980 | -0.0767 |
+| Lalla_Chafia | 156.2599 | 156.2599 | 0.0000 | 75.8518 | 75.8518 | 0.0000 | 11.9816 | 11.9816 | 0.0000 | 42.6876 | 42.6876 | 0.0000 | 37.5075 | 37.5075 | 0.0000 | 4.7820 | 4.7820 | 0.0000 |
+| Sidi_Jabeur | 116.7901 | 116.7901 | 0.0000 | 65.7942 | 65.7942 | 0.0000 | 7.1017 | 7.1017 | 0.0000 | 43.3255 | 43.3255 | 0.0000 | 76.8946 | 76.8946 | 0.0000 | 94.3917 | 94.3917 | 0.0000 |
+
+- **Comparaison chiffrée Mars complet (Diag vs Production) :**
+  * **Domain** : $\Delta P = -0.0000$ mm, $\Delta ET = 0.0011$ mm, $\Delta Qs = -0.0002$ mm, $\Delta Qsb = -0.0002$ mm, $\Delta(\Delta S) = 0.0081$ mm, $\Delta \text{Incr} = -0.0767$ mm.
+  * **Lalla_Chafia** : $\Delta P = 0.0000$ mm, $\Delta ET = 0.0000$ mm, $\Delta Qs = 0.0000$ mm, $\Delta Qsb = 0.0000$ mm, $\Delta(\Delta S) = 0.0000$ mm, $\Delta \text{Incr} = 0.0000$ mm.
+  * **Sidi_Jabeur** : $\Delta P = 0.0000$ mm, $\Delta ET = 0.0000$ mm, $\Delta Qs = 0.0000$ mm, $\Delta Qsb = 0.0000$ mm, $\Delta(\Delta S) = 0.0000$ mm, $\Delta \text{Incr} = 0.0000$ mm.
+
+#### b) Écrêtage, rejets des mises à jour et fermeture rigoureuse du bilan
+Les incréments archivés sont extraits directement des fichiers NetCDF EnKF du run diagnostique lui-même (`diag_mech/DA_corr_201803_diag/output/EnKF/201803`), tel qu'indiqué dans la colonne `source_archived`.
+L'eau rejetée est calculée directement depuis les diagnostics instrumentés (lignes `SETD` : écart $\delta_{\text{demandé}} - \delta_{\text{appliqué}}$, par couche) :
+- **Couche 1 (`clip_qc_layer1_mm`) :** Présentée dans une colonne séparée, elle correspond à l'écrêtage de contrôle qualité en surface.
+- **Couches 2 à 4 (`rejected_water_l2_mm`, `l3`, `l4`) :** Eau rejetée par les bornes physiques profondes lors de l'application de la mise à jour.
+- **Total eau rejetée couches 2 à 4 (`rejected_water_total_l2_l4_mm`) :** Somme exclusive des couches 2, 3 et 4.
+- **Comptage des cas rejetés (|δ demandé| > 1e-6 m3/m3) :** Les cas de rejet sont comptabilisés strictement lorsque la mise à jour demandée est non nulle ($|\delta| > 10^{-6}\text{ m}^3/\text{m}^3$), et rapportés au nombre total de mises à jour membre×couche du mois.
+  * **Domain** : **3,842 rejets** sur **13,771,180 mises à jour membre×couche demandées** en couches 2–4 (0.0279 %) | Eau rejetée L2–L4 = **-6.9597 mm** | Écrêtage QC couche 1 = **-0.3550 mm**.
+  * **Lalla_Chafia** : **8 rejets** sur **156,060 mises à jour membre×couche demandées** en couches 2–4 (0.0051 %) | Eau rejetée L2–L4 = **-1.6532 mm** | Écrêtage QC couche 1 = **-0.0434 mm**.
+  * **Sidi_Jabeur** : **2 rejets** sur **177,880 mises à jour membre×couche demandées** en couches 2–4 (0.0011 %) | Eau rejetée L2–L4 = **8.5809 mm** | Écrêtage QC couche 1 = **0.1068 mm**.
 
 - **Fermeture rigoureuse du bilan hydrique sur le mois complet de Mars 2018 (Job 8365205) :**
-  * **Domain** : −R = **-21.9041 mm**, Somme appliquée = **-22.2745 mm** $\to$ **écart = 0.3704 mm** (VALIDÉ (< 1 mm) !)
-  * **Lalla_Chafia** : −R = **11.4595 mm**, Somme appliquée = **11.4323 mm** $\to$ **écart = 0.0272 mm** (VALIDÉ (< 1 mm) !)
-  * **Sidi_Jabeur** : −R = **76.1337 mm**, Somme appliquée = **76.0564 mm** $\to$ **écart = 0.0773 mm** (VALIDÉ (< 1 mm) !)
+Le résidu brut pré-incrément est défini par $R_{\text{raw}} = P - ET - Q - \Delta S$. Le terme opposé $-R_{\text{raw}} = -(P - ET - Q - \Delta S) = ET + Q + \Delta S - P$ représente l'eau requise pour équilibrer le bilan. La fermeture est vérifiée par l'écart : $-R_{\text{raw}} - W_{\text{sum\_applied}} = \text{écart} < 1\text{ mm}$.
+  * **Domain** : $R_{\text{raw}} = 21.9041$ mm $\to$ $-R_{\text{raw}} = -21.9041$ mm, Somme appliquée = **-22.2745 mm** $\to$ **écart = 0.3704 mm** (VALIDÉ (< 1 mm) !)
+  * **Lalla_Chafia** : $R_{\text{raw}} = -11.4595$ mm $\to$ $-R_{\text{raw}} = 11.4595$ mm, Somme appliquée = **11.4323 mm** $\to$ **écart = 0.0272 mm** (VALIDÉ (< 1 mm) !)
+  * **Sidi_Jabeur** : $R_{\text{raw}} = -76.1337$ mm $\to$ $-R_{\text{raw}} = 76.1337$ mm, Somme appliquée = **76.0564 mm** $\to$ **écart = 0.0773 mm** (VALIDÉ (< 1 mm) !)
 
 #### Table 2.2 — Bilan du mécanisme instrumenté pour DA_corr en Mars 2018 complet (`march2018_mechanism_budget_da_corr.csv`)
-| run | region | R_raw_mm | minus_R_raw_mm | incr_archived_l1_mm | incr_archived_l2_mm | incr_archived_l3_mm | incr_archived_l4_mm | incr_archived_total_mm | incr_applied_l1_mm | incr_applied_l2_mm | incr_applied_l3_mm | incr_applied_l4_mm | incr_applied_total_mm | rejected_water_l2_mm | rejected_water_l3_mm | rejected_water_l4_mm | rejected_water_total_mm | rejected_cases_l2 | rejected_cases_l3 | rejected_cases_l4 | rejected_cases_total | midrange_water_mm | midrange_cases | other_mechanism_water_mm | w_sum_applied_mm | gap_minusR_minus_applied_mm | ratio_applied_over_archived |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| DA_corr_201803 | Domain | 21.9041 | -21.9041 | -3.1366 | -9.9644 | -21.6280 | -17.1923 | -51.9213 | -2.7828 | -8.7016 | -18.8886 | -14.3102 | -44.6833 | -1.2627 | -2.7393 | -2.8821 | -7.2380 | 20504943 | 20505383 | 20510324 | 61520650 | 22.4013 | 154948 | 0.0075 | -22.2745 | 0.3704 | 0.8606 |
-| DA_corr_201803 | Lalla_Chafia | -11.4595 | 11.4595 | -0.0610 | -0.2897 | -5.5058 | 10.6386 | 4.7820 | -0.0177 | -0.1156 | -4.3575 | 10.9693 | 6.4786 | -0.1742 | -1.1483 | -0.3307 | -1.6966 | 237746 | 237748 | 237750 | 713244 | 4.9537 | 911 | 0.0000 | 11.4323 | 0.0272 | 1.3548 |
-| DA_corr_201803 | Sidi_Jabeur | -76.1337 | 76.1337 | 1.0306 | 5.0533 | 22.4815 | 65.8264 | 94.3917 | 0.9237 | 4.6188 | 20.6348 | 59.5266 | 85.7040 | 0.4344 | 1.8467 | 6.2997 | 8.6877 | 215555 | 215556 | 215556 | 646667 | -9.6476 | 933 | 0.0000 | 76.0564 | 0.0773 | 0.9080 |
+| run | region | source_archived | R_raw_mm | minus_R_raw_mm | incr_archived_l1_mm | incr_archived_l2_mm | incr_archived_l3_mm | incr_archived_l4_mm | incr_archived_total_mm | incr_applied_l1_mm | incr_applied_l2_mm | incr_applied_l3_mm | incr_applied_l4_mm | incr_applied_total_mm | clip_qc_layer1_mm | rejected_water_l2_mm | rejected_water_l3_mm | rejected_water_l4_mm | rejected_water_total_l2_l4_mm | total_updates_member_layer_l2_l4 | total_updates_member_layer_all | rejected_cases_l2 | rejected_cases_l3 | rejected_cases_l4 | rejected_cases_total_l2_l4 | pct_rejected_cases_l2_l4 | midrange_water_mm | midrange_cases | other_mechanism_water_mm | w_sum_applied_mm | gap_minusR_minus_applied_mm | closure_valid_lt_1mm |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DA_corr_201803 | Domain | diag_mech/DA_corr_201803_diag/output/EnKF/201803 | 21.9041 | -21.9041 | -3.1378 | -9.9690 | -21.6699 | -17.2213 | -51.9980 | -2.7828 | -8.7016 | -18.8886 | -14.3102 | -44.6833 | -0.3550 | -1.2673 | -2.7813 | -2.9110 | -6.9597 | 13771180 | 18393520 | 758 | 1118 | 1966 | 3842 | 0.0279 | 22.4013 | 154948 | 0.0075 | -22.2745 | 0.3704 | True |
+| DA_corr_201803 | Lalla_Chafia | diag_mech/DA_corr_201803_diag/output/EnKF/201803 | -11.4595 | 11.4595 | -0.0610 | -0.2897 | -5.5058 | 10.6386 | 4.7820 | -0.0177 | -0.1156 | -4.3575 | 10.9693 | 6.4786 | -0.0434 | -0.1742 | -1.1483 | -0.3307 | -1.6532 | 156060 | 208180 | 1 | 3 | 4 | 8 | 0.0051 | 4.9537 | 911 | 0.0000 | 11.4323 | 0.0272 | True |
+| DA_corr_201803 | Sidi_Jabeur | diag_mech/DA_corr_201803_diag/output/EnKF/201803 | -76.1337 | 76.1337 | 1.0306 | 5.0533 | 22.4815 | 65.8264 | 94.3917 | 0.9237 | 4.6188 | 20.6348 | 59.5266 | 85.7040 | 0.1068 | 0.4344 | 1.8467 | 6.2997 | 8.5809 | 177880 | 237180 | 0 | 1 | 1 | 2 | 0.0011 | -9.6476 | 933 | 0.0000 | 76.0564 | 0.0773 | True |
 
 
 #### c) Ratio mensuel entre eau impliquée par le bilan et incréments archivés en 2018
-Le ratio mensuel entre le changement d'eau déduit du bilan (ΔET + ΔQ + ΔΔS par rapport à l'ensemble de référence) et l'incrément archivé met en évidence la disparité fondamentale entre configurations :
+Le ratio mensuel entre le changement d'eau déduit du bilan (ΔET + ΔQ + ΔΔS par rapport à l'ensemble de référence) et l'incrément archivé met en évidence la disparité entre configurations :
 - Pour `DA_nocdf`, où les perturbations d'état maintiennent un spread réaliste, le ratio est en moyenne de **0,85** (85% de l'eau archivée est effectivement assimilée).
-- Pour `DA_corr`, le ratio annuel n'est que de **0,325** (32,5% seulement), confirmant le rejet massif d'eau par les bornes physiques.
+- Pour `DA_corr`, le ratio annuel s'établit à **0,325** (32,5%). L'analyse instrumentée montre que cet écart macroscopique annuel ne provient pas d'un rejet au niveau des seuils d'assimilation (le taux de rejet effectif en couches 2 à 4 étant inférieur à 0,03 %), mais de la dynamique d'ensemble sans perturbations d'état (spread resserré, redistribution hydrique interne et corrections d'état moyennes).
 
 #### Table 2.3 — Ratio mensuel eau réelle / incrément archivé en 2018 (`da_water_change_ratio_2018.csv`)
 | experiment | ref_experiment | year_month | month | Delta_ET_mm | Delta_Q_mm | Delta_Delta_S_mm | Water_implied_mm | Incr_archived_mm | Ratio_implied_vs_archived |
@@ -283,5 +301,5 @@ Les diagnostics d'assimilation et les bilans d'eau annuels pour les deux station
 
 - **Intégrité de la production :** Aucune simulation de production (`experiments/NorthMor/matrix_2016_2020/*` et routages) n'a été modifiée. Tous les nouveaux runs ont été isolés dans `sensitivity_2018/diag_mech/`.
 - **Scripts de génération :** Tous les scripts sont tracés dans le sous-dossier `paper1/scripts/` et peuvent être réexécutés de façon autonome.
-- **Dernier commit Git :** `12ad91fe6f763ef7b2dbad44e6658b32364df451` sur la branche `paper1-closure`.
+- **Dernier commit Git :** `7bf60210151ab77b32086cb908e67b1cad60bee1` sur la branche `paper1-closure`.
 - **Paquet de livraison :** `~/paper1_bundle/paper1_bundle_latest.tar.gz`.

@@ -1,0 +1,4 @@
+region,P_prod_mm,P_diag_mm,diff_P_mm,ET_prod_mm,ET_diag_mm,diff_ET_mm,Qs_prod_mm,Qs_diag_mm,diff_Qs_mm,Qsb_prod_mm,Qsb_diag_mm,diff_Qsb_mm,Delta_S_prod_mm,Delta_S_diag_mm,diff_Delta_S_mm,Incr_prod_mm,Incr_diag_mm,diff_Incr_mm
+Domain,56.2722,56.2721,-0.0,28.0906,28.0917,0.0011,2.9201,2.9199,-0.0002,5.1914,5.1912,-0.0002,-1.834,-1.826,0.0081,-51.9213,-51.998,-0.0767
+Lalla_Chafia,156.2599,156.2599,0.0,75.8518,75.8518,0.0,11.9816,11.9816,0.0,42.6876,42.6876,0.0,37.5075,37.5075,0.0,4.782,4.782,0.0
+Sidi_Jabeur,116.7901,116.7901,0.0,65.7942,65.7942,0.0,7.1017,7.1017,0.0,43.3255,43.3255,0.0,76.8946,76.8946,0.0,94.3917,94.3917,0.0

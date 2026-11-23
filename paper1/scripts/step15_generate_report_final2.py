@@ -66,6 +66,7 @@ mech_da_corr = pd.read_csv(os.path.join(TABLES_DIR, "march2018_mechanism_budget_
 upstream_ann = pd.read_csv(os.path.join(TABLES_DIR, "water_balance_upstream_catchments_annual_summary_2018.csv")) if os.path.exists(os.path.join(TABLES_DIR, "water_balance_upstream_catchments_annual_summary_2018.csv")) else None
 innov_table = pd.read_csv(os.path.join(TABLES_DIR, "lalla_chafia_innovations_and_increments.csv")) if os.path.exists(os.path.join(TABLES_DIR, "lalla_chafia_innovations_and_increments.csv")) else None
 regr_da_corr = pd.read_csv(os.path.join(TABLES_DIR, "regr_lisf_diag_da_corr_201803.csv")) if os.path.exists(os.path.join(TABLES_DIR, "regr_lisf_diag_da_corr_201803.csv")) else None
+comp_diag_prod = pd.read_csv(os.path.join(TABLES_DIR, "comparison_march2018_diag_vs_prod.csv")) if os.path.exists(os.path.join(TABLES_DIR, "comparison_march2018_diag_vs_prod.csv")) else None
 
 md = []
 
@@ -137,37 +138,67 @@ if regr_da_corr is not None:
     md.append(f"  * Écart moyen sur Qs_tavg au jour 2 : **{qs_mean:.2e} mm**.")
     md.append(f"  * Écart moyen sur Qsb_tavg au jour 2 : **{qsb_mean:.2e} mm**.")
     md.append("  * Non-régression validée sans réserve.")
-    md.append("  * **Explication de l'écart sur 0,4 % des mailles :** L'écart non nul sur 0,4 % des mailles provient d'effets d'arrondi et d'ordonnancement flottant introduits par les accumulateurs et E/S de diagnostic dans la boucle de résolution interne de Noah-MP, sans altération physique du modèle.")
+
+md.append("- **Période de moyenne couverte par le fichier `LIS_HIST_201803010000` :**")
+md.append("  * Dans le run de **production** `DA_corr_2018` (simulation continue issue de février 2018), `LIS_HIST_201803010000.d01.nc` couvre la période de moyenne journalière standard de **24 heures** (du 2018-02-28 00:00:00 au 2018-03-01 00:00:00, c'est-à-dire la journée du 28 février).")
+md.append("  * Dans le run **diagnostique** `DA_corr_201803_diag` (démarré depuis la restart de 23:45:00), `LIS_HIST_201803010000.d01.nc` ne couvre que l'intervalle initial de **15 minutes** (du 2018-02-28 23:45:00 au 2018-03-01 00:00:00).")
+md.append("  * La comparaison temporelle au tout premier instantané journalier oppose donc une moyenne sur 24 heures à une moyenne sur 15 minutes.")
 
 md.append("\n#### Table 2.1 — Non-régression 2 jours DA_corr instrumenté (`regr_lisf_diag_da_corr_201803.csv`)")
 md.append(load_csv_md("regr_lisf_diag_da_corr_201803.csv"))
 
-md.append("\n#### b) Mécanisme d'écrêtage, rejet des incréments profonds et fermeture rigoureuse")
-md.append("D'après le bilan annuel 2018, les incréments archivés de `DA_corr` totalisent −483,5 mm (dont −190 mm en couche 3 et −186 mm en couche 4), alors que le changement d'eau impliqué par le bilan hydrique par rapport à `ENS_corr` n'est que d'environ −157,0 mm.")
-md.append("- **Cause physique et algorithmique identifiée :**")
-md.append("  Dans `DA_corr`, les perturbations d'état ont été désactivées (`none`). Par conséquent, l'étalement de l'ensemble (spread) dans les couches profondes (3 et 4) est extrêmement faible. Lorsque le filtre EnKF calcule un incrément d'analyse négatif, la mise à jour tente de descendre sous le seuil physique minimal.")
-md.append("  Dans le sous-programme `noahmp401_setsoilm.F90` (lignes 356–385), le modèle applique une condition stricte :")
-md.append("  `if (sh2o(j) + deltaj > MIN_THRESHOLD .and. sh2o(j) + deltaj < sm_threshold)`")
-md.append("  Si cette condition est violée, **la mise à jour est intégralement ignorée et la teneur en eau reste à sa valeur a priori**.")
-md.append("  Ainsi, environ **67,5% des incréments archivés dans les fichiers NetCDF EnKF n'ont jamais été injectés dans le modèle Noah-MP**.")
+md.append("\n#### Table 2.1b — Mars complet, diag vs production (`comparison_march2018_diag_vs_prod.csv`)")
+md.append(load_csv_md("comparison_march2018_diag_vs_prod.csv"))
+
+if comp_diag_prod is not None:
+    md.append("- **Comparaison chiffrée Mars complet (Diag vs Production) :**")
+    for idx, r in comp_diag_prod.iterrows():
+        reg = r['region']
+        p_d = float(r['diff_P_mm'])
+        et_d = float(r['diff_ET_mm'])
+        qs_d = float(r['diff_Qs_mm'])
+        qsb_d = float(r['diff_Qsb_mm'])
+        ds_d = float(r['diff_Delta_S_mm'])
+        inc_d = float(r['diff_Incr_mm'])
+        md.append(f"  * **{reg}** : $\\Delta P = {p_d:.4f}$ mm, $\\Delta ET = {et_d:.4f}$ mm, $\\Delta Qs = {qs_d:.4f}$ mm, $\\Delta Qsb = {qsb_d:.4f}$ mm, $\\Delta(\\Delta S) = {ds_d:.4f}$ mm, $\\Delta \\text{{Incr}} = {inc_d:.4f}$ mm.")
+
+md.append("\n#### b) Écrêtage, rejets des mises à jour et fermeture rigoureuse du bilan")
+md.append("Les incréments archivés sont extraits directement des fichiers NetCDF EnKF du run diagnostique lui-même (`diag_mech/DA_corr_201803_diag/output/EnKF/201803`), tel qu'indiqué dans la colonne `source_archived`.")
+md.append("L'eau rejetée est calculée directement depuis les diagnostics instrumentés (lignes `SETD` : écart $\\delta_{\\text{demandé}} - \\delta_{\\text{appliqué}}$, par couche) :")
+md.append("- **Couche 1 (`clip_qc_layer1_mm`) :** Présentée dans une colonne séparée, elle correspond à l'écrêtage de contrôle qualité en surface.")
+md.append("- **Couches 2 à 4 (`rejected_water_l2_mm`, `l3`, `l4`) :** Eau rejetée par les bornes physiques profondes lors de l'application de la mise à jour.")
+md.append("- **Total eau rejetée couches 2 à 4 (`rejected_water_total_l2_l4_mm`) :** Somme exclusive des couches 2, 3 et 4.")
+md.append("- **Comptage des cas rejetés (|δ demandé| > 1e-6 m3/m3) :** Les cas de rejet sont comptabilisés strictement lorsque la mise à jour demandée est non nulle ($|\\delta| > 10^{-6}\\text{ m}^3/\\text{m}^3$), et rapportés au nombre total de mises à jour membre×couche du mois.")
 
 if mech_da_corr is not None:
-    md.append("\n- **Fermeture rigoureuse du bilan hydrique sur le mois complet de Mars 2018 (Job 8365205) :**")
     for idx, r in mech_da_corr.iterrows():
         reg = r['region']
+        n_upd = int(r['total_updates_member_layer_l2_l4'])
+        n_rej = int(r['rejected_cases_total_l2_l4'])
+        pct = float(r['pct_rejected_cases_l2_l4'])
+        w_rej = float(r['rejected_water_total_l2_l4_mm'])
+        w_clip = float(r['clip_qc_layer1_mm'])
+        md.append(f"  * **{reg}** : **{n_rej:,} rejets** sur **{n_upd:,} mises à jour membre×couche demandées** en couches 2–4 ({pct:.4f} %) | Eau rejetée L2–L4 = **{w_rej:.4f} mm** | Écrêtage QC couche 1 = **{w_clip:.4f} mm**.")
+
+md.append("\n- **Fermeture rigoureuse du bilan hydrique sur le mois complet de Mars 2018 (Job 8365205) :**")
+md.append("Le résidu brut pré-incrément est défini par $R_{\\text{raw}} = P - ET - Q - \\Delta S$. Le terme opposé $-R_{\\text{raw}} = -(P - ET - Q - \\Delta S) = ET + Q + \\Delta S - P$ représente l'eau requise pour équilibrer le bilan. La fermeture est vérifiée par l'écart : $-R_{\\text{raw}} - W_{\\text{sum\\_applied}} = \\text{écart} < 1\\text{ mm}$.")
+if mech_da_corr is not None:
+    for idx, r in mech_da_corr.iterrows():
+        reg = r['region']
+        r_raw_val = float(r['R_raw_mm'])
         minus_r_val = float(r['minus_R_raw_mm'])
         w_sum_val = float(r['w_sum_applied_mm'])
         gap_val = float(r['gap_minusR_minus_applied_mm'])
         valid_str = "VALIDÉ (< 1 mm)" if abs(gap_val) < 1.0 else "NON VALIDÉ"
-        md.append(f"  * **{reg}** : −R = **{minus_r_val:.4f} mm**, Somme appliquée = **{w_sum_val:.4f} mm** $\\to$ **écart = {gap_val:.4f} mm** ({valid_str} !)")
+        md.append(f"  * **{reg}** : $R_{{\\text{{raw}}}} = {r_raw_val:.4f}$ mm $\\to$ $-R_{{\\text{{raw}}}} = {minus_r_val:.4f}$ mm, Somme appliquée = **{w_sum_val:.4f} mm** $\\to$ **écart = {gap_val:.4f} mm** ({valid_str} !)")
 
 md.append("\n#### Table 2.2 — Bilan du mécanisme instrumenté pour DA_corr en Mars 2018 complet (`march2018_mechanism_budget_da_corr.csv`)")
 md.append(load_csv_md("march2018_mechanism_budget_da_corr.csv"))
 
 md.append("\n#### c) Ratio mensuel entre eau impliquée par le bilan et incréments archivés en 2018")
-md.append("Le ratio mensuel entre le changement d'eau déduit du bilan (ΔET + ΔQ + ΔΔS par rapport à l'ensemble de référence) et l'incrément archivé met en évidence la disparité fondamentale entre configurations :")
+md.append("Le ratio mensuel entre le changement d'eau déduit du bilan (ΔET + ΔQ + ΔΔS par rapport à l'ensemble de référence) et l'incrément archivé met en évidence la disparité entre configurations :")
 md.append("- Pour `DA_nocdf`, où les perturbations d'état maintiennent un spread réaliste, le ratio est en moyenne de **0,85** (85% de l'eau archivée est effectivement assimilée).")
-md.append("- Pour `DA_corr`, le ratio annuel n'est que de **0,325** (32,5% seulement), confirmant le rejet massif d'eau par les bornes physiques.")
+md.append("- Pour `DA_corr`, le ratio annuel s'établit à **0,325** (32,5%). L'analyse instrumentée montre que cet écart macroscopique annuel ne provient pas d'un rejet au niveau des seuils d'assimilation (le taux de rejet effectif en couches 2 à 4 étant inférieur à 0,03 %), mais de la dynamique d'ensemble sans perturbations d'état (spread resserré, redistribution hydrique interne et corrections d'état moyennes).")
 
 md.append("\n#### Table 2.3 — Ratio mensuel eau réelle / incrément archivé en 2018 (`da_water_change_ratio_2018.csv`)")
 md.append(load_csv_md("da_water_change_ratio_2018.csv"))

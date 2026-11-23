@@ -1,7 +1,7 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-23 11:42:41  
-**Étape atteinte :** Étape final2_closure
+**Dernière mise à jour :** 2026-11-23 12:20:36  
+**Étape atteinte :** Étape final2_da_corr_corrections
 
 ## 1. Statut des Jobs en Cours et Historiques
 
@@ -54,6 +54,7 @@
 - [clean_differences_2017.csv](paper1/tables/clean_differences_2017.csv)
 - [clean_differences_2018.csv](paper1/tables/clean_differences_2018.csv)
 - [comparison_da_nocdf_vs_nostate_mam2018.csv](paper1/tables/comparison_da_nocdf_vs_nostate_mam2018.csv)
+- [comparison_march2018_diag_vs_prod.csv](paper1/tables/comparison_march2018_diag_vs_prod.csv)
 - [corrected_runs_jan2018_water_balance.csv](paper1/tables/corrected_runs_jan2018_water_balance.csv)
 - [da_15min_applied_vs_archived_increments.csv](paper1/tables/da_15min_applied_vs_archived_increments.csv)
 - [da_cdf_annual_runoff_catchment_2016_2020.csv](paper1/tables/da_cdf_annual_runoff_catchment_2016_2020.csv)
