@@ -283,5 +283,5 @@ Les diagnostics d'assimilation et les bilans d'eau annuels pour les deux station
 
 - **Intégrité de la production :** Aucune simulation de production (`experiments/NorthMor/matrix_2016_2020/*` et routages) n'a été modifiée. Tous les nouveaux runs ont été isolés dans `sensitivity_2018/diag_mech/`.
 - **Scripts de génération :** Tous les scripts sont tracés dans le sous-dossier `paper1/scripts/` et peuvent être réexécutés de façon autonome.
-- **Dernier commit Git :** `b49f4f1417e3f5b23c9cc596499eba8e2e311817` sur la branche `paper1-closure`.
+- **Dernier commit Git :** `12ad91fe6f763ef7b2dbad44e6658b32364df451` sur la branche `paper1-closure`.
 - **Paquet de livraison :** `~/paper1_bundle/paper1_bundle_latest.tar.gz`.
