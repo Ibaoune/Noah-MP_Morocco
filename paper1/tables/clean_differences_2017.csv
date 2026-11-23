@@ -1,7 +1,7 @@
 period,pair,pair_description,Delta_P_mm,Delta_ET_mm,Delta_Qs_mm,Delta_Qsb_mm,Delta_TotalRunoff_mm,Delta_Delta_S_mm,Delta_Incr_EnKF_mm,Delta_Residu_mm
-ANNUAL_2017,ENS_OPL - OL_DAIC,Effet ensemble production 2017,14.33,58.61,0.28,2.84,3.13,0.22,0.0,-47.63
-ANNUAL_2017,DA_nocdf - ENS_OPL,Effet observations production 2017,-13.92,-57.67,-0.16,3.78,3.61,-12.91,-78.64,53.03
-ANNUAL_2017,DA_nocdf_nowilt - DA_nocdf,Effet filtre fletrissement 2017,13.92,-22.46,0.42,0.63,1.05,-1.46,-58.28,36.79
-JJA_2017,ENS_OPL - OL_DAIC,Effet ensemble production 2017,0.61,15.9,0.02,0.43,0.45,-0.45,0.0,-15.31
-JJA_2017,DA_nocdf - ENS_OPL,Effet observations production 2017,-0.56,-0.64,-0.01,0.22,0.21,7.68,3.77,-7.8
-JJA_2017,DA_nocdf_nowilt - DA_nocdf,Effet filtre fletrissement 2017,0.56,-6.66,0.02,0.17,0.18,0.27,-14.11,6.75
+ANNUAL_2017,ENS_OPL - OL_DAIC,Effet ensemble production 2017,0.44,58.75,0.28,2.85,3.12,0.22,0.0,-61.65
+ANNUAL_2017,DA_nocdf - ENS_OPL,Effet observations production 2017,0.0,-50.63,0.24,4.45,4.71,-12.91,-78.64,-19.81
+ANNUAL_2017,DA_nocdf_nowilt - DA_nocdf,Effet filtre fletrissement 2017,0.0,-29.75,0.02,-0.02,-0.02,-1.46,-58.28,-27.05
+JJA_2017,ENS_OPL - OL_DAIC,Effet ensemble production 2017,0.05,15.92,0.02,0.43,0.45,-0.45,0.0,-15.86
+JJA_2017,DA_nocdf - ENS_OPL,Effet observations production 2017,0.0,1.25,0.0,0.35,0.35,7.68,3.77,-5.52
+JJA_2017,DA_nocdf_nowilt - DA_nocdf,Effet filtre fletrissement 2017,0.0,-8.26,0.01,0.04,0.05,0.27,-14.11,-6.16

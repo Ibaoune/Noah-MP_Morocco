@@ -1,7 +1,7 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-22 23:43:42  
-**Étape atteinte :** Étape jour1
+**Dernière mise à jour :** 2026-11-23 06:14:36  
+**Étape atteinte :** Étape final2
 
 ## 1. Statut des Jobs en Cours et Historiques
 
@@ -29,6 +29,8 @@
 | 8361365 | ENS_FORC_201803_noRyu_diag | COMPLETED | 2018-04-01 | 0.00 | 2026-11-22T05:26:04 | 03:30:00 | non |
 
 ## 2. Rapports Produits
+- [REPORT_FINAL.md](paper1/REPORT_FINAL.md)
+- [REPORT_FINAL2.md](paper1/REPORT_FINAL2.md)
 - [REPORT_JOUR1.md](paper1/REPORT_JOUR1.md)
 - [REPORT_LOT1.md](paper1/REPORT_LOT1.md)
 - [REPORT_LOT1b.md](paper1/REPORT_LOT1b.md)
@@ -58,6 +60,7 @@
 - [da_corr_diagnostics_2018.csv](paper1/tables/da_corr_diagnostics_2018.csv)
 - [da_diagnostics_inventory.md](paper1/tables/da_diagnostics_inventory.md)
 - [da_nocdf_annual_runoff_catchment_2016_2020.csv](paper1/tables/da_nocdf_annual_runoff_catchment_2016_2020.csv)
+- [da_water_change_ratio_2018.csv](paper1/tables/da_water_change_ratio_2018.csv)
 - [daic_2017_stock_gap.csv](paper1/tables/daic_2017_stock_gap.csv)
 - [daily_streamflow_lalla_chafia_sidi_jabeur_2018.csv](paper1/tables/daily_streamflow_lalla_chafia_sidi_jabeur_2018.csv)
 - [diff_da_corr_minus_ens_corr_jan2018.csv](paper1/tables/diff_da_corr_minus_ens_corr_jan2018.csv)
@@ -77,6 +80,9 @@
 - [lalla_chafia_streamflow_linres1_vs_linres0_2018.csv](paper1/tables/lalla_chafia_streamflow_linres1_vs_linres0_2018.csv)
 - [m20_noryu_comparison.csv](paper1/tables/m20_noryu_comparison.csv)
 - [march2018_mechanism_budget.csv](paper1/tables/march2018_mechanism_budget.csv)
+- [march2018_mechanism_budget_da.csv](paper1/tables/march2018_mechanism_budget_da.csv)
+- [march2018_mechanism_budget_da_by_theta1.csv](paper1/tables/march2018_mechanism_budget_da_by_theta1.csv)
+- [march2018_mechanism_budget_da_corr.csv](paper1/tables/march2018_mechanism_budget_da_corr.csv)
 - [march2018_mechanism_by_texture.csv](paper1/tables/march2018_mechanism_by_texture.csv)
 - [march2018_mechanism_by_theta1_class.csv](paper1/tables/march2018_mechanism_by_theta1_class.csv)
 - [march2018_ryu_test.csv](paper1/tables/march2018_ryu_test.csv)
@@ -89,6 +95,8 @@
 - [recentering_check_restarts.csv](paper1/tables/recentering_check_restarts.csv)
 - [regr_lisf_corr_201801.csv](paper1/tables/regr_lisf_corr_201801.csv)
 - [regr_lisf_diag_201803.csv](paper1/tables/regr_lisf_diag_201803.csv)
+- [regr_lisf_diag_da_201803.csv](paper1/tables/regr_lisf_diag_da_201803.csv)
+- [regr_lisf_diag_da_corr_201803.csv](paper1/tables/regr_lisf_diag_da_corr_201803.csv)
 - [remap_runoff_check_lalla_chafia_2018.csv](paper1/tables/remap_runoff_check_lalla_chafia_2018.csv)
 - [runs_status.csv](paper1/tables/runs_status.csv)
 - [status_long_runs_step5.csv](paper1/tables/status_long_runs_step5.csv)
@@ -129,12 +137,16 @@
 - [fig_08_data.csv](paper1/figures/fig_08_data.csv)
 - [fig_09.png](paper1/figures/fig_09.png)
 - [fig_09_data.csv](paper1/figures/fig_09_data.csv)
+- [fig_10.png](paper1/figures/fig_10.png)
+- [fig_10_data.csv](paper1/figures/fig_10_data.csv)
 - [fig_Sa.png](paper1/figures/fig_Sa.png)
 - [fig_Sa_data.csv](paper1/figures/fig_Sa_data.csv)
 - [fig_Sb.png](paper1/figures/fig_Sb.png)
 - [fig_Sb_data.csv](paper1/figures/fig_Sb_data.csv)
 - [fig_Sc.png](paper1/figures/fig_Sc.png)
 - [fig_Sc_data.csv](paper1/figures/fig_Sc_data.csv)
+- [fig_Sd.png](paper1/figures/fig_Sd.png)
+- [fig_Sd_data.csv](paper1/figures/fig_Sd_data.csv)
 - [fig_control_daily_streamflow_log.pdf](paper1/figures/fig_control_daily_streamflow_log.pdf)
 - [fig_control_daily_streamflow_log.png](paper1/figures/fig_control_daily_streamflow_log.png)
 - [fig_map_qsb_difference_da_minus_ens.pdf](paper1/figures/fig_map_qsb_difference_da_minus_ens.pdf)
@@ -144,7 +156,7 @@
 Aucun probleme bloquant.
 
 ## 6. Résultat des Tentatives de Git Push
-`Succes: git push origin paper1-closure au 2026-11-22 23:43:31`
+`Succes: git push origin paper1-closure au 2026-11-22 23:43:42`
 
 ## 7. Corrections Factuelles Apportées aux Analyses de la Nuit
 
