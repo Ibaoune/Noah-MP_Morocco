@@ -25,8 +25,21 @@ TABLES_DIR = os.path.join(BASE_DIR, "paper1/tables")
 EXP_DIAG_DIR = os.path.join(BASE_DIR, "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/diag_mech/DA_corr_201803_diag")
 EXP_PROD_DIR = os.path.join(BASE_DIR, "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_corr_2018")
 LDT_FILE = os.path.join(BASE_DIR, "experiments/NorthMor/routing/ldt_hymap/lis_input_corrigee.d01.nc")
+RST_PATH = os.path.join(BASE_DIR, "experiments/NorthMor/matrix_2016_2020/sensitivity_2018/ENS_OPL_2018/output/SURFACEMODEL/201802/LIS_RST_NOAHMP401_201802282345.d01.nc")
+
+with nc.Dataset(RST_PATH) as ds:
+    lats = ds.variables["lat"][::20]
+    lons = ds.variables["lon"][::20]
+landmask = np.zeros((121, 181), dtype=bool)
+for lat, lon in zip(lats, lons):
+    c0 = int(round((lon - (-10.0)) / 0.05))
+    r0 = int(round((lat - 30.0) / 0.05))
+    landmask[r0, c0] = True
+
+n_domain = int(np.sum(landmask)) # 16030
 
 with nc.Dataset(LDT_FILE) as ds:
+    area_180 = ds["HYMAP_grid_area"][:].filled(0.0)
     flow_x = ds["HYMAP_flow_direction_x"][:]
     flow_y = ds["HYMAP_flow_direction_y"][:]
 
@@ -64,17 +77,18 @@ cells_jabeur = get_catchment(71, 71)
 
 catchment_weights_181 = {}
 for cname, ccells in [("Lalla_Chafia", cells_lalla), ("Sidi_Jabeur", cells_jabeur)]:
-    w = np.zeros((121, 181), dtype=float)
+    w181 = np.zeros((121, 181), dtype=float)
     for r, c in ccells:
-        w[r, c] += 0.25
-        w[r, c+1] += 0.25
-        w[r+1, c] += 0.25
-        w[r+1, c+1] += 0.25
-    w /= np.sum(w)
-    catchment_weights_181[cname] = w
+        w181[r, c] += 0.25 * area_180[r, c]
+        w181[r, c+1] += 0.25 * area_180[r, c]
+        w181[r+1, c] += 0.25 * area_180[r, c]
+        w181[r+1, c+1] += 0.25 * area_180[r, c]
+    tot_w = np.sum(w181)
+    if tot_w > 0:
+        w181 /= tot_w
+    catchment_weights_181[cname] = w181
 
 dz = np.array([0.1, 0.3, 0.6, 1.0], dtype=np.float32)
-n_domain = 16030
 
 # 1. Bornes géographiques des 32 rangs MPI
 ranks_bounds = {}
@@ -177,16 +191,17 @@ for f in mech_files:
                 other_rec[r0, c0] += sum(float(p[17 + j]) for j in range(4))
 
 # 4. Synthèse par région
+# Résidus bruts R = P - ET - Q - Delta_S (mm)
 R_raw_dict = {
-    "Domain": 21.90,
-    "Lalla_Chafia": -11.46,
-    "Sidi_Jabeur": -76.13
+    "Domain": 21.9041,
+    "Lalla_Chafia": -11.4595,
+    "Sidi_Jabeur": -76.1337
 }
 
 records = []
 
 for reg_name, w_map in [
-    ("Domain", np.where((arch_l1 != 0) | (applied_l1 != 0), 1.0 / n_domain, 0.0)),
+    ("Domain", np.where(landmask, 1.0 / n_domain, 0.0)),
     ("Lalla_Chafia", catchment_weights_181["Lalla_Chafia"]),
     ("Sidi_Jabeur", catchment_weights_181["Sidi_Jabeur"])
 ]:
@@ -226,9 +241,10 @@ for reg_name, w_map in [
     w_r = float(np.sum(other_ryu * w_map))
     w_q = float(np.sum(other_qc * w_map))
     w_rc = float(np.sum(other_rec * w_map))
+    other_tot = w_p + w_r + w_q + w_rc
 
     # Somme réelle appliquée au modèle
-    w_sum_applied = ap_tot + w_mid + w_p + w_r + w_q + w_rc
+    w_sum_applied = ap_tot + w_mid + other_tot
     r_raw = R_raw_dict[reg_name]
     minus_r = -r_raw
     gap = minus_r - w_sum_applied
@@ -239,8 +255,8 @@ for reg_name, w_map in [
     records.append({
         "run": "DA_corr_201803",
         "region": reg_name,
-        "R_raw_mm": round(r_raw, 2),
-        "minus_R_raw_mm": round(minus_r, 2),
+        "R_raw_mm": round(r_raw, 4),
+        "minus_R_raw_mm": round(minus_r, 4),
         "incr_archived_l1_mm": round(ai_l1, 4),
         "incr_archived_l2_mm": round(ai_l2, 4),
         "incr_archived_l3_mm": round(ai_l3, 4),
@@ -261,6 +277,7 @@ for reg_name, w_map in [
         "rejected_cases_total": n_rej_tot,
         "midrange_water_mm": round(w_mid, 4),
         "midrange_cases": n_mid,
+        "other_mechanism_water_mm": round(other_tot, 4),
         "w_sum_applied_mm": round(w_sum_applied, 4),
         "gap_minusR_minus_applied_mm": round(gap, 4),
         "ratio_applied_over_archived": round(ratio_applied, 4) if not np.isnan(ratio_applied) else np.nan
@@ -270,4 +287,6 @@ df_out = pd.DataFrame(records)
 out_csv = os.path.join(TABLES_DIR, "march2018_mechanism_budget_da_corr.csv")
 df_out.to_csv(out_csv, index=False)
 print(f"[OK] Sauvegardé {out_csv}")
-print(df_out[["region", "minus_R_raw_mm", "incr_archived_total_mm", "incr_applied_total_mm", "rejected_water_total_mm", "gap_minusR_minus_applied_mm", "ratio_applied_over_archived"]])
+print("\n=== Synthèse Fermeture DA_corr Mars 2018 complet ===")
+for r in records:
+    print(f"Région: {r['region']:12s} | -R = {r['minus_R_raw_mm']:8.4f} mm | Appliqué = {r['w_sum_applied_mm']:8.4f} mm | Écart = {r['gap_minusR_minus_applied_mm']:7.4f} mm | < 1 mm : {abs(r['gap_minusR_minus_applied_mm']) < 1.0}")
