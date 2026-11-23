@@ -1,0 +1,183 @@
+month,class_id,class_name,n_cells_dominant,n_obs_days_DA_nocdf,n_obs_days_DA_corr,ecart_days,n_total_obs_DA_nocdf,n_total_obs_DA_corr,ecart_total_obs
+2018-01,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-01,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-01,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-01,5,Mixed Forests,37,21,23,2,339,341,2
+2018-01,6,Closed Shrublands,54,22,22,0,302,307,5
+2018-01,7,Open Shrublands,5636,29,29,0,52185,56093,3908
+2018-01,8,Woody Savannas,89,20,20,0,1022,1028,6
+2018-01,9,Savannas,13,17,17,0,34,34,0
+2018-01,10,Grasslands,574,25,25,0,4247,4350,103
+2018-01,12,Croplands,1127,26,26,0,10862,10968,106
+2018-01,13,Urban and Built-Up,117,25,25,0,587,671,84
+2018-01,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-01,16,Barren / Sparsely Vegetated,8350,29,29,0,51812,112928,61116
+2018-01,17,Water Bodies,5871,0,0,0,0,0,0
+2018-02,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-02,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-02,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-02,5,Mixed Forests,37,20,21,1,277,282,5
+2018-02,6,Closed Shrublands,54,18,18,0,231,240,9
+2018-02,7,Open Shrublands,5636,27,27,0,43885,48478,4593
+2018-02,8,Woody Savannas,89,20,20,0,974,979,5
+2018-02,9,Savannas,13,17,17,0,32,33,1
+2018-02,10,Grasslands,574,23,23,0,3946,4134,188
+2018-02,12,Croplands,1127,23,23,0,10796,11161,365
+2018-02,13,Urban and Built-Up,117,23,23,0,497,608,111
+2018-02,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-02,16,Barren / Sparsely Vegetated,8350,27,27,0,44235,100235,56000
+2018-02,17,Water Bodies,5871,0,0,0,0,0,0
+2018-03,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-03,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-03,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-03,5,Mixed Forests,37,23,25,2,312,318,6
+2018-03,6,Closed Shrublands,54,27,27,0,557,588,31
+2018-03,7,Open Shrublands,5636,31,31,0,58626,68298,9672
+2018-03,8,Woody Savannas,89,23,23,0,986,986,0
+2018-03,9,Savannas,13,19,19,0,36,36,0
+2018-03,10,Grasslands,574,27,27,0,5342,5741,399
+2018-03,12,Croplands,1127,27,27,0,10998,11360,362
+2018-03,13,Urban and Built-Up,117,27,27,0,502,731,229
+2018-03,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-03,16,Barren / Sparsely Vegetated,8350,31,31,0,48023,143144,95121
+2018-03,17,Water Bodies,5871,0,0,0,0,0,0
+2018-04,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-04,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-04,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-04,5,Mixed Forests,37,23,27,4,514,529,15
+2018-04,6,Closed Shrublands,54,27,27,0,740,801,61
+2018-04,7,Open Shrublands,5636,30,30,0,64801,81788,16987
+2018-04,8,Woody Savannas,89,23,23,0,1356,1360,4
+2018-04,9,Savannas,13,17,18,1,33,36,3
+2018-04,10,Grasslands,574,27,27,0,6780,7696,916
+2018-04,12,Croplands,1127,27,27,0,10961,12682,1721
+2018-04,13,Urban and Built-Up,117,27,27,0,420,754,334
+2018-04,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-04,16,Barren / Sparsely Vegetated,8350,30,30,0,52576,151392,98816
+2018-04,17,Water Bodies,5871,0,0,0,0,0,0
+2018-05,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-05,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-05,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-05,5,Mixed Forests,37,19,21,2,502,521,19
+2018-05,6,Closed Shrublands,54,24,24,0,740,806,66
+2018-05,7,Open Shrublands,5636,28,28,0,50334,73832,23498
+2018-05,8,Woody Savannas,89,20,20,0,1244,1343,99
+2018-05,9,Savannas,13,2,17,15,3,34,31
+2018-05,10,Grasslands,574,24,24,0,6098,8044,1946
+2018-05,12,Croplands,1127,24,24,0,5743,11616,5873
+2018-05,13,Urban and Built-Up,117,24,24,0,322,671,349
+2018-05,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-05,16,Barren / Sparsely Vegetated,8350,28,28,0,52559,132099,79540
+2018-05,17,Water Bodies,5871,0,0,0,0,0,0
+2018-06,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-06,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-06,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-06,5,Mixed Forests,37,18,19,1,344,534,190
+2018-06,6,Closed Shrublands,54,24,24,0,564,769,205
+2018-06,7,Open Shrublands,5636,27,28,1,32139,73722,41583
+2018-06,8,Woody Savannas,89,20,21,1,845,1404,559
+2018-06,9,Savannas,13,1,18,17,1,36,35
+2018-06,10,Grasslands,574,24,24,0,5251,8695,3444
+2018-06,12,Croplands,1127,20,24,4,2609,11651,9042
+2018-06,13,Urban and Built-Up,117,24,24,0,122,637,515
+2018-06,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-06,16,Barren / Sparsely Vegetated,8350,28,28,0,36389,136597,100208
+2018-06,17,Water Bodies,5871,0,0,0,0,0,0
+2018-07,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-07,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-07,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-07,5,Mixed Forests,37,20,21,1,377,607,230
+2018-07,6,Closed Shrublands,54,27,27,0,774,949,175
+2018-07,7,Open Shrublands,5636,31,31,0,41503,88612,47109
+2018-07,8,Woody Savannas,89,20,20,0,955,1579,624
+2018-07,9,Savannas,13,1,20,19,1,40,39
+2018-07,10,Grasslands,574,27,27,0,6543,10357,3814
+2018-07,12,Croplands,1127,24,27,3,2870,13053,10183
+2018-07,13,Urban and Built-Up,117,27,27,0,208,777,569
+2018-07,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-07,16,Barren / Sparsely Vegetated,8350,31,31,0,53850,157185,103335
+2018-07,17,Water Bodies,5871,0,0,0,0,0,0
+2018-08,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-08,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-08,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-08,5,Mixed Forests,37,20,22,2,413,580,167
+2018-08,6,Closed Shrublands,54,27,27,0,773,877,104
+2018-08,7,Open Shrublands,5636,31,31,0,50567,85539,34972
+2018-08,8,Woody Savannas,89,22,23,1,1027,1492,465
+2018-08,9,Savannas,13,2,19,17,2,38,36
+2018-08,10,Grasslands,574,27,27,0,6631,9579,2948
+2018-08,12,Croplands,1127,24,27,3,3374,12678,9304
+2018-08,13,Urban and Built-Up,117,27,27,0,330,749,419
+2018-08,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-08,16,Barren / Sparsely Vegetated,8350,31,31,0,92212,155762,63550
+2018-08,17,Water Bodies,5871,0,0,0,0,0,0
+2018-09,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-09,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-09,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-09,5,Mixed Forests,37,22,27,5,526,564,38
+2018-09,6,Closed Shrublands,54,27,27,0,810,840,30
+2018-09,7,Open Shrublands,5636,30,30,0,59103,78933,19830
+2018-09,8,Woody Savannas,89,23,23,0,1265,1469,204
+2018-09,9,Savannas,13,4,19,15,5,38,33
+2018-09,10,Grasslands,574,27,27,0,7023,8956,1933
+2018-09,12,Croplands,1127,26,27,1,5508,12437,6929
+2018-09,13,Urban and Built-Up,117,27,27,0,464,736,272
+2018-09,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-09,16,Barren / Sparsely Vegetated,8350,30,30,0,90439,142344,51905
+2018-09,17,Water Bodies,5871,0,0,0,0,0,0
+2018-10,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-10,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-10,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-10,5,Mixed Forests,37,24,26,2,458,471,13
+2018-10,6,Closed Shrublands,54,27,27,0,707,719,12
+2018-10,7,Open Shrublands,5636,31,31,0,59873,70751,10878
+2018-10,8,Woody Savannas,89,23,23,0,1271,1318,47
+2018-10,9,Savannas,13,14,19,5,25,38,13
+2018-10,10,Grasslands,574,27,27,0,6645,7511,866
+2018-10,12,Croplands,1127,27,27,0,8083,11234,3151
+2018-10,13,Urban and Built-Up,117,27,27,0,520,699,179
+2018-10,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-10,16,Barren / Sparsely Vegetated,8350,31,31,0,82585,148137,65552
+2018-10,17,Water Bodies,5871,0,0,0,0,0,0
+2018-11,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-11,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-11,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-11,5,Mixed Forests,37,24,26,2,462,462,0
+2018-11,6,Closed Shrublands,54,26,26,0,652,654,2
+2018-11,7,Open Shrublands,5636,30,30,0,66211,68203,1992
+2018-11,8,Woody Savannas,89,23,23,0,1232,1230,-2
+2018-11,9,Savannas,13,19,19,0,37,37,0
+2018-11,10,Grasslands,574,26,26,0,5545,5659,114
+2018-11,12,Croplands,1127,26,26,0,11102,11306,204
+2018-11,13,Urban and Built-Up,117,26,26,0,649,727,78
+2018-11,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-11,16,Barren / Sparsely Vegetated,8350,30,30,0,87730,143138,55408
+2018-11,17,Water Bodies,5871,0,0,0,0,0,0
+2018-12,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+2018-12,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+2018-12,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+2018-12,5,Mixed Forests,37,24,27,3,566,573,7
+2018-12,6,Closed Shrublands,54,26,26,0,706,744,38
+2018-12,7,Open Shrublands,5636,31,31,0,69396,78864,9468
+2018-12,8,Woody Savannas,89,23,23,0,1469,1470,1
+2018-12,9,Savannas,13,19,19,0,38,38,0
+2018-12,10,Grasslands,574,27,27,0,6135,6709,574
+2018-12,12,Croplands,1127,27,27,0,12181,13481,1300
+2018-12,13,Urban and Built-Up,117,27,27,0,586,777,191
+2018-12,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+2018-12,16,Barren / Sparsely Vegetated,8350,31,31,0,72963,140558,67595
+2018-12,17,Water Bodies,5871,0,0,0,0,0,0
+Total_2018,1,Evergreen Needleleaf Forest,22,0,0,0,0,0,0
+Total_2018,2,Evergreen Broadleaf Forest,8,0,0,0,0,0,0
+Total_2018,3,Deciduous Needleleaf Forest,2,0,0,0,0,0,0
+Total_2018,5,Mixed Forests,37,258,285,27,5090,5782,692
+Total_2018,6,Closed Shrublands,54,302,302,0,7556,8294,738
+Total_2018,7,Open Shrublands,5636,356,357,1,648623,873113,224490
+Total_2018,8,Woody Savannas,89,260,262,2,13646,15658,2012
+Total_2018,9,Savannas,13,132,221,89,247,438,191
+Total_2018,10,Grasslands,574,311,311,0,70186,87431,17245
+Total_2018,12,Croplands,1127,301,312,11,95087,143627,48540
+Total_2018,13,Urban and Built-Up,117,311,311,0,5207,8537,3330
+Total_2018,14,Cropland/Natural Mosaic,1,0,0,0,0,0,0
+Total_2018,16,Barren / Sparsely Vegetated,8350,357,357,0,765373,1663519,898146
+Total_2018,17,Water Bodies,5871,0,0,0,0,0,0
