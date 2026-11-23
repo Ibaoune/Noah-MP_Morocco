@@ -1,7 +1,7 @@
 # Rapport Global d'Exécution — Papier 1
 
-**Dernière mise à jour :** 2026-11-23 12:20:36  
-**Étape atteinte :** Étape final2_da_corr_corrections
+**Dernière mise à jour :** 2026-11-23 18:25:18  
+**Étape atteinte :** Étape paper1_inventory
 
 ## 1. Statut des Jobs en Cours et Historiques
 
@@ -74,6 +74,8 @@
 - [et_evaluation_by_texture.csv](paper1/tables/et_evaluation_by_texture.csv)
 - [et_evaluation_corrected_2018.csv](paper1/tables/et_evaluation_corrected_2018.csv)
 - [innovations_and_spread_by_month_and_texture.csv](paper1/tables/innovations_and_spread_by_month_and_texture.csv)
+- [inventory_datasets_available.csv](paper1/tables/inventory_datasets_available.csv)
+- [inventory_experiments_output_vars.csv](paper1/tables/inventory_experiments_output_vars.csv)
 - [jobs_status_final.csv](paper1/tables/jobs_status_final.csv)
 - [jobs_status_night.csv](paper1/tables/jobs_status_night.csv)
 - [lalla_chafia_innovations_and_increments.csv](paper1/tables/lalla_chafia_innovations_and_increments.csv)
@@ -100,6 +102,9 @@
 - [regr_lisf_diag_da_corr_201803.csv](paper1/tables/regr_lisf_diag_da_corr_201803.csv)
 - [remap_runoff_check_lalla_chafia_2018.csv](paper1/tables/remap_runoff_check_lalla_chafia_2018.csv)
 - [runs_status.csv](paper1/tables/runs_status.csv)
+- [smap_obs_days_monthly_by_basin_2018.csv](paper1/tables/smap_obs_days_monthly_by_basin_2018.csv)
+- [smap_obs_days_monthly_by_landcover_2018.csv](paper1/tables/smap_obs_days_monthly_by_landcover_2018.csv)
+- [stations_inventory.csv](paper1/tables/stations_inventory.csv)
 - [status_long_runs_step5.csv](paper1/tables/status_long_runs_step5.csv)
 - [streamflow_metrics.csv](paper1/tables/streamflow_metrics.csv)
 - [streamflow_metrics_2017.csv](paper1/tables/streamflow_metrics_2017.csv)
