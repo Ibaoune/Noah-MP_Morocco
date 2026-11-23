@@ -1,0 +1,9 @@
+date,variable,max_abs_diff,mean_abs_diff,diff_zero
+201803020000,SoilMoist_tavg,0.0,0.0,True
+201803020000,Evap_tavg,0.0,0.0,True
+201803020000,Qs_tavg,0.0,0.0,True
+201803020000,Qsb_tavg,0.0,0.0,True
+201803030000,SoilMoist_tavg,0.0,0.0,True
+201803030000,Evap_tavg,0.0,0.0,True
+201803030000,Qs_tavg,0.0,0.0,True
+201803030000,Qsb_tavg,0.0,0.0,True
