@@ -1,0 +1,97 @@
+region,period,soil_layer_variable,soil_moisture_class,n_cell_months,sum_inc_written_mm,mean_inc_written_mm,sum_inc_applied_mm,mean_inc_applied_mm,sum_gap_written_minus_applied_mm,mean_gap_written_minus_applied_mm,frac_written_neg_applied_pos_pct
+Domaine complet,Annuel,theta1,"< 0,03",134,265.5,1.981,884.79,6.603,-619.29,-4.622,17.16
+Domaine complet,Annuel,theta1,"0,03–0,05",2649,-68321.52,-25.791,6987.17,2.638,-75308.69,-28.429,22.61
+Domaine complet,Annuel,theta1,"0,05–SMCWLT",13536,-82089.16,-6.065,134196.75,9.914,-216285.91,-15.979,23.71
+Domaine complet,Annuel,theta1,SMCWLT–SMCREF,176041,-7599962.83,-43.172,-2584877.33,-14.683,-5015085.49,-28.488,7.34
+Domaine complet,Annuel,theta1,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Domaine complet,Annuel,theta1,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Domaine complet,Annuel,theta4,"< 0,03",97,-1822.36,-18.787,-993.52,-10.243,-828.83,-8.545,13.4
+Domaine complet,Annuel,theta4,"0,03–0,05",4675,-143672.44,-30.732,-57200.57,-12.235,-86471.87,-18.497,11.94
+Domaine complet,Annuel,theta4,"0,05–SMCWLT",9103,-445901.13,-48.984,-150091.91,-16.488,-295809.22,-32.496,10.34
+Domaine complet,Annuel,theta4,SMCWLT–SMCREF,178144,-7172085.07,-40.26,-2246349.4,-12.61,-4925735.67,-27.65,8.56
+Domaine complet,Annuel,theta4,"SMCREF–(SMCMAX − 0,05)",341,13372.99,39.217,11826.78,34.683,1546.21,4.534,0.0
+Domaine complet,Annuel,theta4,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Domaine complet,JJA,theta1,"< 0,03",101,263.32,2.607,816.13,8.08,-552.81,-5.473,6.93
+Domaine complet,JJA,theta1,"0,03–0,05",1741,-59651.68,-34.263,439.18,0.252,-60090.86,-34.515,8.85
+Domaine complet,JJA,theta1,"0,05–SMCWLT",9629,-4025.81,-0.418,103106.2,10.708,-107132.0,-11.126,17.01
+Domaine complet,JJA,theta1,SMCWLT–SMCREF,36619,-329409.75,-8.996,274860.27,7.506,-604270.01,-16.502,13.24
+Domaine complet,JJA,theta1,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Domaine complet,JJA,theta1,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Domaine complet,JJA,theta4,"< 0,03",47,-217.52,-4.628,-126.85,-2.699,-90.67,-1.929,17.02
+Domaine complet,JJA,theta4,"0,03–0,05",1494,-9365.09,-6.268,-3052.26,-2.043,-6312.82,-4.225,26.51
+Domaine complet,JJA,theta4,"0,05–SMCWLT",2661,-30931.79,-11.624,-9151.53,-3.439,-21780.26,-8.185,18.79
+Domaine complet,JJA,theta4,SMCWLT–SMCREF,43862,-359532.36,-8.197,385187.36,8.782,-744719.72,-16.979,13.1
+Domaine complet,JJA,theta4,"SMCREF–(SMCMAX − 0,05)",26,7222.85,277.802,6365.06,244.81,857.79,32.992,0.0
+Domaine complet,JJA,theta4,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,Annuel,theta1,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,Annuel,theta1,"0,03–0,05",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,Annuel,theta1,"0,05–SMCWLT",7,2.65,0.378,3.15,0.45,-0.5,-0.072,0.0
+Lalla Chafia,Annuel,theta1,SMCWLT–SMCREF,1589,-4975.08,-3.131,23937.9,15.065,-28912.98,-18.196,4.85
+Lalla Chafia,Annuel,theta1,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,Annuel,theta1,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,Annuel,theta4,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,Annuel,theta4,"0,03–0,05",7,-31.76,-4.538,-3.35,-0.478,-28.42,-4.06,28.57
+Lalla Chafia,Annuel,theta4,"0,05–SMCWLT",54,-1637.06,-30.316,-535.78,-9.922,-1101.28,-20.394,9.26
+Lalla Chafia,Annuel,theta4,SMCWLT–SMCREF,1535,-3303.61,-2.152,24480.17,15.948,-27783.78,-18.1,4.56
+Lalla Chafia,Annuel,theta4,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,Annuel,theta4,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,JJA,theta1,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,JJA,theta1,"0,03–0,05",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,JJA,theta1,"0,05–SMCWLT",7,2.65,0.378,3.15,0.45,-0.5,-0.072,0.0
+Lalla Chafia,JJA,theta1,SMCWLT–SMCREF,392,-1569.7,-4.004,7828.15,19.97,-9397.85,-23.974,9.18
+Lalla Chafia,JJA,theta1,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,JJA,theta1,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,JJA,theta4,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,JJA,theta4,"0,03–0,05",5,-35.69,-7.137,-12.71,-2.542,-22.98,-4.595,20.0
+Lalla Chafia,JJA,theta4,"0,05–SMCWLT",26,-244.72,-9.412,-45.35,-1.744,-199.37,-7.668,15.38
+Lalla Chafia,JJA,theta4,SMCWLT–SMCREF,368,-1286.65,-3.496,7889.36,21.438,-9176.01,-24.935,8.42
+Lalla Chafia,JJA,theta4,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Lalla Chafia,JJA,theta4,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,Annuel,theta1,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,Annuel,theta1,"0,03–0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,Annuel,theta1,"0,05–SMCWLT",3,3.05,1.015,3.19,1.063,-0.14,-0.048,0.0
+Sidi Jabeur,Annuel,theta1,SMCWLT–SMCREF,1449,-60392.69,-41.679,-4521.53,-3.12,-55871.16,-38.558,11.11
+Sidi Jabeur,Annuel,theta1,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,Annuel,theta1,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,Annuel,theta4,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,Annuel,theta4,"0,03–0,05",14,-205.09,-14.649,-53.14,-3.796,-151.94,-10.853,50.0
+Sidi Jabeur,Annuel,theta4,"0,05–SMCWLT",116,-1529.04,-13.181,-466.83,-4.024,-1062.22,-9.157,18.97
+Sidi Jabeur,Annuel,theta4,SMCWLT–SMCREF,1322,-58655.51,-44.369,-3998.37,-3.024,-54657.14,-41.344,9.98
+Sidi Jabeur,Annuel,theta4,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,Annuel,theta4,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,JJA,theta1,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,JJA,theta1,"0,03–0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,JJA,theta1,"0,05–SMCWLT",3,3.05,1.015,3.19,1.063,-0.14,-0.048,0.0
+Sidi Jabeur,JJA,theta1,SMCWLT–SMCREF,360,-10686.79,-29.686,677.09,1.881,-11363.88,-31.566,15.56
+Sidi Jabeur,JJA,theta1,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,JJA,theta1,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,JJA,theta4,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,JJA,theta4,"0,03–0,05",9,-126.23,-14.026,-41.3,-4.589,-84.94,-9.437,66.67
+Sidi Jabeur,JJA,theta4,"0,05–SMCWLT",58,-587.69,-10.133,-176.39,-3.041,-411.3,-7.091,22.41
+Sidi Jabeur,JJA,theta4,SMCWLT–SMCREF,296,-9969.83,-33.682,897.97,3.034,-10867.79,-36.716,12.5
+Sidi Jabeur,JJA,theta4,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Sidi Jabeur,JJA,theta4,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta1,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta1,"0,03–0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta1,"0,05–SMCWLT",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta1,SMCWLT–SMCREF,2184,-96943.02,-44.388,-25885.12,-11.852,-71057.9,-32.536,7.33
+Sebou amont,Annuel,theta1,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta1,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta4,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta4,"0,03–0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta4,"0,05–SMCWLT",16,-854.11,-53.382,-117.73,-7.358,-736.38,-46.024,31.25
+Sebou amont,Annuel,theta4,SMCWLT–SMCREF,2168,-96088.91,-44.321,-25767.39,-11.885,-70321.52,-32.436,7.15
+Sebou amont,Annuel,theta4,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,Annuel,theta4,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta1,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta1,"0,03–0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta1,"0,05–SMCWLT",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta1,SMCWLT–SMCREF,546,-10668.94,-19.54,3045.06,5.577,-13714.0,-25.117,6.78
+Sebou amont,JJA,theta1,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta1,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta4,"< 0,03",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta4,"0,03–0,05",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta4,"0,05–SMCWLT",7,-459.83,-65.689,-101.45,-14.492,-358.38,-51.197,14.29
+Sebou amont,JJA,theta4,SMCWLT–SMCREF,539,-10209.11,-18.941,3146.51,5.838,-13355.62,-24.779,6.68
+Sebou amont,JJA,theta4,"SMCREF–(SMCMAX − 0,05)",0,absent,absent,absent,absent,absent,absent,absent
+Sebou amont,JJA,theta4,"≥ SMCMAX − 0,05",0,absent,absent,absent,absent,absent,absent,absent

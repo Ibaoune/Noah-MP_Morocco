@@ -1,0 +1,21 @@
+element,description,valeur_ou_statut,reference_code
+Fichiers DAOBS 2018,Total des fichiers DAOBS générés en 2018,934,write_NASASMAPsmobs.F90:67-77 (NASASMAP_smobsname)
+Heure de passage DAOBS 06h00 UTC,Nombre de fichiers DAOBS écrits à 06h00 UTC en 2018,264,"read_NASASMAPsm.F90:381,391 (lhour 6h local->06/07z, 18h local->18/19z)"
+Heure de passage DAOBS 07h00 UTC,Nombre de fichiers DAOBS écrits à 07h00 UTC en 2018,220,"read_NASASMAPsm.F90:381,391 (lhour 6h local->06/07z, 18h local->18/19z)"
+Heure de passage DAOBS 18h00 UTC,Nombre de fichiers DAOBS écrits à 18h00 UTC en 2018,263,"read_NASASMAPsm.F90:381,391 (lhour 6h local->06/07z, 18h local->18/19z)"
+Heure de passage DAOBS 19h00 UTC,Nombre de fichiers DAOBS écrits à 19h00 UTC en 2018,187,"read_NASASMAPsm.F90:381,391 (lhour 6h local->06/07z, 18h local->18/19z)"
+Jours avec fichiers DAOBS,Nombre de jours calendaires en 2018 avec au moins un fichier DAOBS,357,experiments/NorthMor/matrix_2016_2020/sensitivity_2018/DA_corr_2018/output/DAOBS
+Jours sans fichier DAOBS,Jours calendaires sans aucun fichier DAOBS (365 - 357),8,absence de survol SMAP ou rejet complet au stade lecture
+Distribution fichiers/jour (1 fichier),Nombre de jours avec exactement 1 fichier DAOBS,79,combinaison AM (06/07 UTC) et PM (18/19 UTC)
+Distribution fichiers/jour (2 fichiers),Nombre de jours avec exactement 2 fichiers DAOBS,63,combinaison AM (06/07 UTC) et PM (18/19 UTC)
+Distribution fichiers/jour (3 fichiers),Nombre de jours avec exactement 3 fichiers DAOBS,131,combinaison AM (06/07 UTC) et PM (18/19 UTC)
+Distribution fichiers/jour (4 fichiers),Nombre de jours avec exactement 4 fichiers DAOBS,84,combinaison AM (06/07 UTC) et PM (18/19 UTC)
+Enregistrement R1 DAOBS,"smobs_unsc ('Unscaled Obs') : observations après lecture, reprojection EASE2 et filtres de lecture (missing, qual_flag, VWC>5), avant QC modèle",R1 (taille 87604 octets par fichier = 121x181 float32),"write_NASASMAPsmobs.F90:56-58,72"
+Enregistrement R2 DAOBS,smobs : observations après contrôle qualité modèle (noahmp401_qc_soilmobs.F90) et mise à l'échelle (non transformée en NoCDF) = observations réellement assimilées,R2 (taille 87604 octets par fichier = 121x181 float32),"write_NASASMAPsmobs.F90:53-54,73"
+Sélection passage AM vs PM,Passage descendant AM ('D') lu en premier. Passage ascendant PM ('A') lu uniquement là où le passage AM est manquant ou invalide,Strictement au plus 1 observation par cellule et par jour,read_NASASMAPsm.F90:373-393
+Double compte intra-journalier R1,Nombre de cellules comptées plus d'une fois le même jour dans R1,0,contrôle unilatéral DAOBS R1 (strictement 0)
+Double compte intra-journalier R2,Nombre de cellules comptées plus d'une fois le même jour dans R2,0,contrôle unilatéral DAOBS R2 (strictement 0)
+Réconciliation R2 vs Référence — Domaine complet,DA_corr R2: 2806399 obs sur 357 j ; Table réf: 2806399 obs sur 357 j,Écart observations: 0 ; Écart jours: 0,paper1/tables/smap_assimilated_obs_comparison_2018.csv
+Réconciliation R2 vs Référence — Lalla Chafia,DA_corr R2: 26890 obs sur 220 j ; Table réf: 36274 obs sur 220 j,Écart observations: -9384 ; Écart jours: 0,paper1/tables/smap_assimilated_obs_comparison_2018.csv
+Réconciliation R2 vs Référence — Sidi Jabeur,DA_corr R2: 24907 obs sur 220 j ; Table réf: 34995 obs sur 220 j,Écart observations: -10088 ; Écart jours: 0,paper1/tables/smap_assimilated_obs_comparison_2018.csv
+Réconciliation R2 vs Référence — Sebou amont,DA_corr R2: 30216 obs sur 255 j ; Table réf: 37570 obs sur 260 j,Écart observations: -7354 ; Écart jours: -5,paper1/tables/smap_assimilated_obs_comparison_2018.csv
