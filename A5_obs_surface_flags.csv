@@ -1,0 +1,49 @@
+region,bit_index,bit_mask,flag_meaning,meaning_fr,n_obs_flag_set,fraction_obs_flag_set_pct,omf_mean_with_flag,omf_std_with_flag,omf_mean_without_flag,omf_std_without_flag,n_cells_frequent_gt_50pct,inc_applied_mean_in_frequent_cells_mm
+Domaine complet,0,1,9_km_static_water_body,Eau statique,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,1,2,9_km_radar_water_body_detection,Détection eau radar,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,2,4,9_km_coastal_proximity,Proximité côtière,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,3,8,9_km_urban_area,Zone urbaine,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,4,16,9_km_precipitation,Précipitation,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,5,32,9_km_snow_or_ice,Neige ou glace,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,6,64,9_km_permanent_snow_or_ice,Neige ou glace permanente,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,7,128,9_km_radiometer_frozen_ground,Gel sol radiomètre,957160,34.11,-0.0449,0.0494,-0.0441,0.0586,4175,-164.353
+Domaine complet,8,256,9_km_model_frozen_ground,Gel sol modèle,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,9,512,9_km_mountainous_terrain,Relief montagneux,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,10,1024,9_km_dense_vegetation,Végétation dense,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Domaine complet,11,2048,9_km_nadir_region,Région nadir,0,0.0,absent,absent,-0.0444,0.0556,0,absent
+Lalla Chafia,0,1,9_km_static_water_body,Eau statique,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,1,2,9_km_radar_water_body_detection,Détection eau radar,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,2,4,9_km_coastal_proximity,Proximité côtière,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,3,8,9_km_urban_area,Zone urbaine,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,4,16,9_km_precipitation,Précipitation,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,5,32,9_km_snow_or_ice,Neige ou glace,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,6,64,9_km_permanent_snow_or_ice,Neige ou glace permanente,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,7,128,9_km_radiometer_frozen_ground,Gel sol radiomètre,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,8,256,9_km_model_frozen_ground,Gel sol modèle,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,9,512,9_km_mountainous_terrain,Relief montagneux,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,10,1024,9_km_dense_vegetation,Végétation dense,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Lalla Chafia,11,2048,9_km_nadir_region,Région nadir,0,0.0,absent,absent,-0.0055,0.059,0,absent
+Sidi Jabeur,0,1,9_km_static_water_body,Eau statique,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,1,2,9_km_radar_water_body_detection,Détection eau radar,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,2,4,9_km_coastal_proximity,Proximité côtière,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,3,8,9_km_urban_area,Zone urbaine,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,4,16,9_km_precipitation,Précipitation,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,5,32,9_km_snow_or_ice,Neige ou glace,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,6,64,9_km_permanent_snow_or_ice,Neige ou glace permanente,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,7,128,9_km_radiometer_frozen_ground,Gel sol radiomètre,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,8,256,9_km_model_frozen_ground,Gel sol modèle,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,9,512,9_km_mountainous_terrain,Relief montagneux,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,10,1024,9_km_dense_vegetation,Végétation dense,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sidi Jabeur,11,2048,9_km_nadir_region,Région nadir,0,0.0,absent,absent,-0.0093,0.0491,0,absent
+Sebou amont,0,1,9_km_static_water_body,Eau statique,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,1,2,9_km_radar_water_body_detection,Détection eau radar,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,2,4,9_km_coastal_proximity,Proximité côtière,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,3,8,9_km_urban_area,Zone urbaine,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,4,16,9_km_precipitation,Précipitation,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,5,32,9_km_snow_or_ice,Neige ou glace,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,6,64,9_km_permanent_snow_or_ice,Neige ou glace permanente,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,7,128,9_km_radiometer_frozen_ground,Gel sol radiomètre,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,8,256,9_km_model_frozen_ground,Gel sol modèle,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,9,512,9_km_mountainous_terrain,Relief montagneux,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,10,1024,9_km_dense_vegetation,Végétation dense,0,0.0,absent,absent,-0.031,0.0485,0,absent
+Sebou amont,11,2048,9_km_nadir_region,Région nadir,0,0.0,absent,absent,-0.031,0.0485,0,absent
