@@ -1,0 +1,6 @@
+model_component,file,lines,code_statement,physical_meaning
+Noah-MP 4.0.1 / SIMGM,src/lisf/lis/surfacemodels/land/noahmp.4.0.1/phys/module_sf_noahmplsm_401.F90,6584-6590,IF(OPT_RUN == 1) CALL GROUNDWATER (...) RUNSUB = QDIS,Activation schéma SIMGM nappe et drainage de baseflow
+Noah-MP 4.0.1 / SIMGM,src/lisf/lis/surfacemodels/land/noahmp.4.0.1/phys/module_sf_noahmplsm_401.F90,8448-8454,QIN = - KA * (WH_ZWT-WH) / ((ZWT-ZNODE(IWT))*1.E3),Flux de recharge Darcy entre le bas du sol et la nappe phréatique
+Noah-MP 4.0.1 / SIMGM,src/lisf/lis/surfacemodels/land/noahmp.4.0.1/phys/module_sf_noahmplsm_401.F90,8458,IF(IWT.EQ.NSOIL) WA = WA + (QIN - QDIS) * DT,Stock aquifère WA alimenté par QIN lorsque la nappe est sous la couche 4
+Noah-MP 4.0.1 / SIMGM,src/lisf/lis/surfacemodels/land/noahmp.4.0.1/phys/module_sf_noahmplsm_401.F90,8460,MLIQ(NSOIL) = MLIQ(NSOIL) - QIN * DT,L'eau entrant dans la nappe (QIN) est prélevée directement dans la couche 4
+Noah-MP 4.0.1 / SIMGM,src/lisf/lis/surfacemodels/land/noahmp.4.0.1/phys/module_sf_noahmplsm_401.F90,8506-8515,MLIQ(IZ) = MLIQ(IZ) + XS; WA = WA - XS; WT = WT - XS,Remontée capillaire / rééquilibrage de déficit puisé dans la nappe WA

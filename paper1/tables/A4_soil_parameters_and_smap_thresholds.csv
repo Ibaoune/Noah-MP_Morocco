@@ -1,0 +1,13 @@
+texture_id,texture_name,BEXP,SMCMAX,SMCREF,SMCWLT,DKSAT,PSISAT,domain_pixel_count,domain_pixel_fraction_pct,smap_retrievals_total_2018,smap_fraction_below_smcwlt_pct,smap_fraction_below_smcwlt_plus_002_pct,smap_fraction_above_smcmax_pct,evidence
+1,SAND,2.79,0.339,0.192,0.01,4.66e-05,0.069,539,3.36,130763,0.0,11.83,0.0,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+2,LOAMY SAND,4.26,0.421,0.283,0.028,1.41e-05,0.036,0,0.0,absent,absent,absent,absent,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+3,SANDY LOAM,4.74,0.434,0.312,0.047,5.23e-06,0.141,748,4.67,84750,19.33,42.67,0.0,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+4,SILT LOAM,5.33,0.476,0.36,0.084,2.81e-06,0.759,56,0.35,11506,49.89,54.08,0.0,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+5,SILT,3.86,0.484,0.347,0.061,2.18e-06,0.955,0,0.0,absent,absent,absent,absent,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+6,LOAM,5.25,0.439,0.329,0.066,3.38e-06,0.355,12047,75.15,2150488,25.86,45.77,0.0,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+7,SANDY CLAY LOAM,6.77,0.404,0.315,0.069,4.45e-06,0.135,723,4.51,133975,4.61,15.39,0.0,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+8,SILTY CLAY LOAM,8.72,0.464,0.387,0.12,2.03e-06,0.617,0,0.0,absent,absent,absent,absent,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+9,CLAY LOAM,8.17,0.465,0.382,0.103,2.45e-06,0.263,1305,8.14,219064,36.03,47.08,0.0,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+10,SANDY CLAY,10.73,0.406,0.338,0.1,7.22e-06,0.098,0,0.0,absent,absent,absent,absent,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+11,SILTY CLAY,10.39,0.468,0.404,0.126,1.34e-06,0.324,0,0.0,absent,absent,absent,absent,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
+12,CLAY,11.55,0.468,0.412,0.138,9.74e-07,0.468,612,3.82,89684,41.68,48.25,0.0,data/land_params/noahmp401_parms/SOILPARM.TBL:STAS
