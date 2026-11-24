@@ -1,59 +1,59 @@
 # Rapport d'Étape A2 — Du sol au débit (H6/H7)
 
-Ce rapport présente strictement les tableaux générés par script depuis les sorties brutes et les tables de l'étape A2.
+Ce rapport présente strictement les tableaux générés par script depuis les sorties brutes et les tables de l'étape A2 (mis à jour en étape A2b).
 Conformément aux consignes, aucun chiffre n'est tapé à la main et le rapport ne comporte aucune phrase d'interprétation.
 
 ## 1. Partition Annuelle des Écoulements et Bilan Hydrique (2018)
 
 ### 1.1 Totaux Annuels par Expérience et par Région
 
-| experiment | region | n_cells | P_mm | Qs_mm | Qsb_mm | TotalRunoff_mm | ET_mm | coeff_TotalRunoff_over_P | Delta_S_total_mm | Delta_GWS_mm | water_balance_check_P_minus_ET_minus_Q_minus_DS_mm | diff_TotalRunoff_vs_upstream_cb_mm | diff_ET_vs_upstream_cb_mm |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| OL_DAIC | Domaine complet | 16030 | absent | 12.46 | 18.67 | 31.13 | 313.35 | absent | 39.24 | absent | absent | absent | absent |
-| OL_DAIC | Lalla Chafia | 180 | absent | 30.97 | 87.06 | 118.03 | 608.16 | absent | 25.98 | absent | absent | -8.84 | -1.55 |
-| OL_DAIC | Sidi Jabeur | 170 | absent | 20.0 | 42.64 | 62.64 | 533.45 | absent | 35.56 | absent | absent | 1.27 | -1.73 |
-| OL_DAIC | Sebou amont | 227 | absent | 9.35 | 10.63 | 19.98 | 463.03 | absent | 100.74 | absent | absent | absent | absent |
-| ENS_OPL | Domaine complet | 16030 | 380.33 | 12.96 | 22.07 | 35.03 | 380.36 | 0.0921 | 20.37 | 3.56 | -55.43 | absent | absent |
-| ENS_OPL | Lalla Chafia | 180 | 758.79 | 33.26 | 103.6 | 136.87 | 669.4 | 0.1804 | 49.09 | 37.18 | -96.57 | -11.39 | 2.84 |
-| ENS_OPL | Sidi Jabeur | 170 | 637.5 | 21.82 | 55.13 | 76.95 | 601.5 | 0.1207 | 44.64 | 31.95 | -85.6 | -0.01 | 0.03 |
-| ENS_OPL | Sebou amont | 227 | 580.99 | 9.46 | 11.45 | 20.9 | 516.15 | 0.036 | 90.31 | -0.22 | -46.37 | absent | absent |
-| ENS_corr | Domaine complet | 16030 | 378.65 | 12.56 | 19.39 | 31.95 | 312.15 | 0.0844 | 38.99 | 0.43 | -4.44 | absent | absent |
-| ENS_corr | Lalla Chafia | 180 | 755.58 | 31.53 | 90.1 | 121.63 | 604.66 | 0.161 | 25.78 | 4.83 | 3.52 | -9.14 | -1.41 |
-| ENS_corr | Sidi Jabeur | 170 | 634.8 | 20.64 | 46.34 | 66.97 | 529.77 | 0.1055 | 35.08 | 3.71 | 2.98 | 1.1 | -1.61 |
-| ENS_corr | Sebou amont | 227 | 578.31 | 9.31 | 10.68 | 19.99 | 461.28 | 0.0346 | 101.03 | -0.48 | -3.99 | absent | absent |
-| DA_nocdf | Domaine complet | 16030 | 380.33 | 13.99 | 33.9 | 47.89 | 269.8 | 0.1259 | -4.72 | 4.55 | 67.37 | absent | absent |
-| DA_nocdf | Lalla Chafia | 180 | 758.78 | 49.56 | 262.48 | 312.03 | 638.61 | 0.4112 | 38.19 | 46.8 | -230.06 | -28.1 | -11.58 |
-| DA_nocdf | Sidi Jabeur | 170 | 637.5 | 31.55 | 155.9 | 187.45 | 556.47 | 0.294 | 48.47 | 39.15 | -154.89 | -2.44 | -11.75 |
-| DA_nocdf | Sebou amont | 227 | 580.99 | 10.21 | 20.21 | 30.42 | 367.01 | 0.0524 | 50.91 | 5.82 | 132.64 | absent | absent |
-| DA_nocdf_nowilt | Domaine complet | 16030 | 380.33 | 14.0 | 33.9 | 47.9 | 238.57 | 0.126 | -5.14 | 4.55 | 99.0 | absent | absent |
-| DA_nocdf_nowilt | Lalla Chafia | 180 | 758.79 | 49.62 | 262.99 | 312.61 | 616.24 | 0.412 | 36.31 | 46.98 | -206.37 | -28.82 | -9.87 |
-| DA_nocdf_nowilt | Sidi Jabeur | 170 | 637.5 | 31.54 | 155.66 | 187.2 | 543.22 | 0.2936 | 49.35 | 38.86 | -142.27 | -2.24 | -10.39 |
-| DA_nocdf_nowilt | Sebou amont | 227 | 580.99 | 10.25 | 20.35 | 30.61 | 353.76 | 0.0527 | 50.85 | 6.16 | 145.77 | absent | absent |
-| DA_corr | Domaine complet | 16030 | 378.65 | 14.48 | 48.59 | 63.08 | 246.91 | 0.1666 | -98.49 | 15.01 | 167.15 | absent | absent |
-| DA_corr | Lalla Chafia | 180 | 755.58 | 46.6 | 253.67 | 300.27 | 571.93 | 0.3974 | -11.94 | 42.2 | -104.68 | -15.76 | -9.51 |
-| DA_corr | Sidi Jabeur | 170 | 634.8 | 33.41 | 186.32 | 219.73 | 462.7 | 0.3461 | -63.77 | 26.05 | 16.14 | -1.11 | -3.13 |
-| DA_corr | Sebou amont | 227 | 578.31 | 11.94 | 35.54 | 47.48 | 392.73 | 0.0821 | -25.59 | 18.4 | 163.69 | absent | absent |
+| experiment | region | n_cells | P_mm | Qs_mm | Qsb_mm | TotalRunoff_mm | ET_mm | coeff_TotalRunoff_over_P | Delta_S_sol_mm | Delta_GWS_mm | Delta_S_total_mm | WaterBalance_Residual_mm | ctrl_validated_domain_residual_mm | diff_validated_domain_residual_mm | ctrl_TotalRunoff_upstream_cb_mm | diff_TotalRunoff_vs_upstream_cb_mm | ctrl_ET_upstream_cb_mm | diff_ET_vs_upstream_cb_mm |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| OL_DAIC | Domaine complet | 16030 | 379.39 | 12.46 | 18.67 | 31.13 | 313.35 | 0.082 | 39.06 | 0.5 | 39.49 | -4.576 | -4.5755 | -0.0005 | absent | absent | absent | absent |
+| OL_DAIC | Lalla Chafia | 133 | 762.54 | 32.52 | 94.35 | 126.87 | 610.61 | 0.1664 | 20.99 | 5.13 | 26.12 | -1.0459 | N/A | N/A | 126.8704 | -0.0001 | 609.7064 | 0.8988 |
+| OL_DAIC | Sidi Jabeur | 121 | 637.39 | 20.02 | 41.35 | 61.37 | 535.83 | 0.0963 | 35.58 | 4.98 | 40.55 | -0.3565 | N/A | N/A | 61.3692 | -0.0 | 535.1805 | 0.6476 |
+| OL_DAIC | Sebou amont | 182 | 576.56 | 8.65 | 8.95 | 17.6 | 462.85 | 0.0305 | 101.27 | -1.67 | 99.6 | -3.4891 | N/A | N/A | absent | absent | absent | absent |
+| ENS_OPL | Domaine complet | 16030 | 380.33 | 12.96 | 22.07 | 35.03 | 380.36 | 0.0921 | 38.94 | 2.43 | 41.3 | -76.3593 | -76.3588 | -0.0005 | absent | absent | absent | absent |
+| ENS_OPL | Lalla Chafia | 133 | 764.31 | 35.08 | 113.18 | 148.26 | 670.61 | 0.194 | 20.02 | 7.75 | 27.76 | -82.3119 | N/A | N/A | 148.2559 | 0.0001 | 666.5632 | 4.0424 |
+| ENS_OPL | Sidi Jabeur | 121 | 639.25 | 22.03 | 54.93 | 76.96 | 605.0 | 0.1204 | 35.02 | 8.05 | 43.06 | -85.7594 | N/A | N/A | 76.9612 | 0.0001 | 601.4656 | 3.5299 |
+| ENS_OPL | Sebou amont | 182 | 577.97 | 8.67 | 9.73 | 18.4 | 518.43 | 0.0318 | 101.62 | 1.67 | 103.29 | -62.1451 | N/A | N/A | absent | absent | absent | absent |
+| ENS_corr | Domaine complet | 16030 | 378.65 | 12.56 | 19.39 | 31.95 | 312.15 | 0.0844 | 38.77 | 0.41 | 39.12 | -4.5672 | -4.5673 | 0.0001 | absent | absent | absent | absent |
+| ENS_corr | Lalla Chafia | 133 | 761.15 | 33.12 | 97.64 | 130.77 | 607.06 | 0.1718 | 20.55 | 3.69 | 24.23 | -0.8985 | N/A | N/A | 130.7679 | 0.0001 | 606.0714 | 0.9864 |
+| ENS_corr | Sidi Jabeur | 121 | 636.24 | 20.67 | 45.2 | 65.88 | 532.06 | 0.1035 | 34.89 | 3.93 | 38.81 | -0.5036 | N/A | N/A | 65.8756 | -0.0001 | 531.3764 | 0.6798 |
+| ENS_corr | Sebou amont | 182 | 575.31 | 8.58 | 8.86 | 17.44 | 461.08 | 0.0303 | 101.5 | -1.29 | 100.2 | -3.4097 | N/A | N/A | absent | absent | absent | absent |
+| DA_nocdf | Domaine complet | 16030 | 380.33 | 13.99 | 33.9 | 47.89 | 269.8 | 0.1259 | -4.85 | 4.51 | -0.4 | 63.0477 | 63.0479 | -0.0002 | absent | absent | absent | absent |
+| DA_nocdf | Lalla Chafia | 133 | 764.3 | 53.5 | 286.64 | 340.13 | 650.19 | 0.445 | 36.43 | 47.21 | 83.63 | -309.6549 | N/A | N/A | 340.1337 | -0.0001 | 650.186 | -0.0001 |
+| DA_nocdf | Sidi Jabeur | 121 | 639.25 | 32.19 | 157.71 | 189.9 | 568.22 | 0.2971 | 54.89 | 40.16 | 95.04 | -213.9095 | N/A | N/A | 189.8978 | -0.0 | 568.2169 | -0.0001 |
+| DA_nocdf | Sebou amont | 182 | 577.97 | 9.84 | 22.3 | 32.14 | 365.01 | 0.0556 | 46.33 | 6.77 | 53.1 | 127.7172 | N/A | N/A | absent | absent | absent | absent |
+| DA_nocdf_nowilt | Domaine complet | 16030 | 380.33 | 14.0 | 33.9 | 47.9 | 238.57 | 0.126 | -5.2 | 4.51 | -0.74 | 94.6059 | 94.6055 | 0.0004 | absent | absent | absent | absent |
+| DA_nocdf_nowilt | Lalla Chafia | 133 | 764.31 | 53.58 | 287.85 | 341.43 | 629.44 | 0.4467 | 34.09 | 47.42 | 81.5 | -288.0576 | N/A | N/A | 341.4325 | 0.0001 | 626.1118 | 3.325 |
+| DA_nocdf_nowilt | Sidi Jabeur | 121 | 639.25 | 32.16 | 157.28 | 189.44 | 556.34 | 0.2963 | 55.49 | 39.58 | 95.07 | -201.5907 | N/A | N/A | 189.4387 | 0.0 | 553.6078 | 2.7327 |
+| DA_nocdf_nowilt | Sebou amont | 182 | 577.97 | 9.83 | 22.71 | 32.54 | 351.48 | 0.0563 | 46.26 | 6.89 | 53.14 | 140.8077 | N/A | N/A | absent | absent | absent | absent |
+| DA_corr | Domaine complet | 16030 | 378.65 | 14.48 | 48.59 | 63.08 | 246.91 | 0.1666 | -98.63 | 14.96 | -83.73 | 152.3898 | 152.3902 | -0.0004 | absent | absent | absent | absent |
+| DA_corr | Lalla Chafia | 133 | 761.15 | 49.1 | 266.92 | 316.03 | 582.56 | 0.4152 | -10.91 | 41.69 | 30.76 | -168.1924 | N/A | N/A | 316.0256 | 0.0001 | 581.4484 | 1.108 |
+| DA_corr | Sidi Jabeur | 121 | 636.24 | 33.93 | 186.91 | 220.84 | 466.53 | 0.3471 | -63.89 | 23.95 | -39.95 | -11.1787 | N/A | N/A | 220.8369 | -0.0001 | 465.8293 | 0.7054 |
+| DA_corr | Sebou amont | 182 | 575.31 | 11.73 | 39.67 | 51.4 | 385.95 | 0.0893 | -28.64 | 19.62 | -9.02 | 146.978 | N/A | N/A | absent | absent | absent | absent |
 
 ### 1.2 Contrastes Annuels C1, C2, C3, C4 de Partition des Écoulements
 
-| contrast_id | contrast_name | region | delta_P_mm | delta_Qs_mm | delta_Qsb_mm | delta_TotalRunoff_mm | delta_ET_mm | delta_Delta_S_total_mm | delta_Delta_GWS_mm | delta_coeff_TotalRunoff_over_P |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| C1 | ENS_OPL − OL_DAIC | Domaine complet | absent | 0.5 | 3.4 | 3.9 | 67.01 | -18.87 | absent | absent |
-| C1 | ENS_OPL − OL_DAIC | Lalla Chafia | absent | 2.29 | 16.54 | 18.84 | 61.24 | 23.11 | absent | absent |
-| C1 | ENS_OPL − OL_DAIC | Sidi Jabeur | absent | 1.82 | 12.49 | 14.31 | 68.05 | 9.08 | absent | absent |
-| C1 | ENS_OPL − OL_DAIC | Sebou amont | absent | 0.11 | 0.82 | 0.92 | 53.12 | -10.43 | absent | absent |
-| C2 | DA_nocdf − ENS_OPL | Domaine complet | 0.0 | 1.03 | 11.83 | 12.86 | -110.56 | -25.09 | 0.99 | 0.0338 |
-| C2 | DA_nocdf − ENS_OPL | Lalla Chafia | -0.01 | 16.3 | 158.88 | 175.16 | -30.79 | -10.9 | 9.62 | 0.2308 |
-| C2 | DA_nocdf − ENS_OPL | Sidi Jabeur | 0.0 | 9.73 | 100.77 | 110.5 | -45.03 | 3.83 | 7.2 | 0.1733 |
-| C2 | DA_nocdf − ENS_OPL | Sebou amont | 0.0 | 0.75 | 8.76 | 9.52 | -149.14 | -39.4 | 6.04 | 0.0164 |
-| C3 | DA_corr − ENS_corr | Domaine complet | 0.0 | 1.92 | 29.2 | 31.13 | -65.24 | -137.48 | 14.58 | 0.0822 |
-| C3 | DA_corr − ENS_corr | Lalla Chafia | 0.0 | 15.07 | 163.57 | 178.64 | -32.73 | -37.72 | 37.37 | 0.2364 |
-| C3 | DA_corr − ENS_corr | Sidi Jabeur | 0.0 | 12.77 | 139.98 | 152.76 | -67.07 | -98.85 | 22.34 | 0.2406 |
-| C3 | DA_corr − ENS_corr | Sebou amont | 0.0 | 2.63 | 24.86 | 27.49 | -68.55 | -126.62 | 18.88 | 0.0475 |
-| C4 | DA_nocdf_nowilt − DA_nocdf | Domaine complet | 0.0 | 0.01 | 0.0 | 0.01 | -31.23 | -0.42 | 0.0 | 0.0001 |
-| C4 | DA_nocdf_nowilt − DA_nocdf | Lalla Chafia | 0.01 | 0.06 | 0.51 | 0.58 | -22.37 | -1.88 | 0.18 | 0.0008 |
-| C4 | DA_nocdf_nowilt − DA_nocdf | Sidi Jabeur | 0.0 | -0.01 | -0.24 | -0.25 | -13.25 | 0.88 | -0.29 | -0.0004 |
-| C4 | DA_nocdf_nowilt − DA_nocdf | Sebou amont | 0.0 | 0.04 | 0.14 | 0.19 | -13.25 | -0.06 | 0.34 | 0.0003 |
+| contrast_id | contrast_name | region | delta_P_mm | delta_Qs_mm | delta_Qsb_mm | delta_TotalRunoff_mm | delta_ET_mm | delta_Delta_S_sol_mm | delta_Delta_GWS_mm | delta_Delta_S_total_mm | delta_coeff_TotalRunoff_over_P |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| C1 | ENS_OPL − OL_DAIC | Domaine complet | 0.94 | 0.5 | 3.4 | 3.9 | 67.01 | -0.12 | 1.93 | 1.81 | 0.0101 |
+| C1 | ENS_OPL − OL_DAIC | Lalla Chafia | 1.77 | 2.56 | 18.83 | 21.39 | 60.0 | -0.97 | 2.62 | 1.64 | 0.0276 |
+| C1 | ENS_OPL − OL_DAIC | Sidi Jabeur | 1.86 | 2.01 | 13.58 | 15.59 | 69.17 | -0.56 | 3.07 | 2.51 | 0.0241 |
+| C1 | ENS_OPL − OL_DAIC | Sebou amont | 1.41 | 0.02 | 0.78 | 0.8 | 55.58 | 0.35 | 3.34 | 3.69 | 0.0013 |
+| C2 | DA_nocdf − ENS_OPL | Domaine complet | 0.0 | 1.03 | 11.83 | 12.86 | -110.56 | -43.79 | 2.08 | -41.7 | 0.0338 |
+| C2 | DA_nocdf − ENS_OPL | Lalla Chafia | -0.01 | 18.42 | 173.46 | 191.87 | -20.42 | 16.41 | 39.46 | 55.87 | 0.251 |
+| C2 | DA_nocdf − ENS_OPL | Sidi Jabeur | 0.0 | 10.16 | 102.78 | 112.94 | -36.78 | 19.87 | 32.11 | 51.98 | 0.1767 |
+| C2 | DA_nocdf − ENS_OPL | Sebou amont | 0.0 | 1.17 | 12.57 | 13.74 | -153.42 | -55.29 | 5.1 | -50.19 | 0.0238 |
+| C3 | DA_corr − ENS_corr | Domaine complet | 0.0 | 1.92 | 29.2 | 31.13 | -65.24 | -137.4 | 14.55 | -122.85 | 0.0822 |
+| C3 | DA_corr − ENS_corr | Lalla Chafia | 0.0 | 15.98 | 169.28 | 185.26 | -24.5 | -31.46 | 38.0 | 6.53 | 0.2434 |
+| C3 | DA_corr − ENS_corr | Sidi Jabeur | 0.0 | 13.26 | 141.71 | 154.96 | -65.53 | -98.78 | 20.02 | -78.76 | 0.2436 |
+| C3 | DA_corr − ENS_corr | Sebou amont | 0.0 | 3.15 | 30.81 | 33.96 | -75.13 | -130.14 | 20.91 | -109.22 | 0.059 |
+| C4 | DA_nocdf_nowilt − DA_nocdf | Domaine complet | 0.0 | 0.01 | 0.0 | 0.01 | -31.23 | -0.35 | 0.0 | -0.34 | 0.0001 |
+| C4 | DA_nocdf_nowilt − DA_nocdf | Lalla Chafia | 0.01 | 0.08 | 1.21 | 1.3 | -20.75 | -2.34 | 0.21 | -2.13 | 0.0017 |
+| C4 | DA_nocdf_nowilt − DA_nocdf | Sidi Jabeur | 0.0 | -0.03 | -0.43 | -0.46 | -11.88 | 0.6 | -0.58 | 0.03 | -0.0008 |
+| C4 | DA_nocdf_nowilt − DA_nocdf | Sebou amont | 0.0 | -0.01 | 0.41 | 0.4 | -13.53 | -0.07 | 0.12 | 0.04 | 0.0007 |
 
 ---
 
@@ -261,6 +261,65 @@ Conformément aux consignes, aucun chiffre n'est tapé à la main et le rapport 
 | Sidi Jabeur | C3 | monthly | 2018-11 | 31473547.5 | 10.05 | 42951202.9 | 13.72 | 0.7328 |
 | Sidi Jabeur | C3 | monthly | 2018-12 | 51626563.2 | 16.49 | 56694335.6 | 18.11 | 0.9106 |
 
+### 3.3 Timing et Ampleur des 3 Plus Grands Pics de Débit (Observés et Simulés)
+
+| station | series_type | experiment | peak_rank | peak_date | peak_flow_m3s | precip_basin_j_minus_3_mm | precip_basin_j_minus_2_mm | precip_basin_j_minus_1_mm | precip_basin_j0_mm | precip_basin_cum_10d_prior_mm | precip_basin_cum_11d_inc_j0_mm |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Lalla Chafia | observed | OBS | 1 | 2018-03-08 | 199.0 | 12.21 | 41.09 | 21.82 | 0.1 | 170.56 | 170.66 |
+| Lalla Chafia | observed | OBS | 2 | 2018-11-01 | 99.6 | 0.34 | 17.58 | 25.86 | 1.41 | 103.36 | 104.77 |
+| Lalla Chafia | observed | OBS | 3 | 2018-11-08 | 98.2 | 0.04 | 0.0 | 0.0 | 0.03 | 45.24 | 45.27 |
+| Lalla Chafia | simulated | OL_DAIC | 1 | 2018-04-25 | 109.38 | 0.0 | 0.3 | 57.29 | 2.61 | 61.42 | 64.03 |
+| Lalla Chafia | simulated | OL_DAIC | 2 | 2018-04-13 | 68.54 | 1.55 | 2.32 | 18.9 | 6.96 | 30.27 | 37.23 |
+| Lalla Chafia | simulated | OL_DAIC | 3 | 2018-03-07 | 55.99 | 2.16 | 12.21 | 41.09 | 21.82 | 148.74 | 170.56 |
+| Lalla Chafia | simulated | ENS_OPL | 1 | 2018-04-25 | 116.68 | 0.0 | 0.3 | 57.29 | 2.61 | 61.42 | 64.03 |
+| Lalla Chafia | simulated | ENS_OPL | 2 | 2018-04-13 | 76.02 | 1.55 | 2.32 | 18.9 | 6.96 | 30.27 | 37.23 |
+| Lalla Chafia | simulated | ENS_OPL | 3 | 2018-03-07 | 68.5 | 2.16 | 12.21 | 41.09 | 21.82 | 148.74 | 170.56 |
+| Lalla Chafia | simulated | ENS_corr | 1 | 2018-04-25 | 108.18 | 0.0 | 0.3 | 57.29 | 2.61 | 61.42 | 64.03 |
+| Lalla Chafia | simulated | ENS_corr | 2 | 2018-04-13 | 67.6 | 1.55 | 2.32 | 18.9 | 6.96 | 30.27 | 37.23 |
+| Lalla Chafia | simulated | ENS_corr | 3 | 2018-03-07 | 59.91 | 2.16 | 12.21 | 41.09 | 21.82 | 148.74 | 170.56 |
+| Lalla Chafia | simulated | DA_nocdf | 1 | 2018-04-25 | 180.62 | 0.0 | 0.3 | 57.29 | 2.61 | 61.42 | 64.03 |
+| Lalla Chafia | simulated | DA_nocdf | 2 | 2018-03-07 | 173.82 | 2.16 | 12.21 | 41.09 | 21.82 | 148.74 | 170.56 |
+| Lalla Chafia | simulated | DA_nocdf | 3 | 2018-03-16 | 149.44 | 0.4 | 1.4 | 9.25 | 2.56 | 79.82 | 82.38 |
+| Lalla Chafia | simulated | DA_nocdf_nowilt | 1 | 2018-04-25 | 180.6 | 0.0 | 0.3 | 57.29 | 2.61 | 61.42 | 64.03 |
+| Lalla Chafia | simulated | DA_nocdf_nowilt | 2 | 2018-03-07 | 173.82 | 2.16 | 12.21 | 41.09 | 21.82 | 148.74 | 170.56 |
+| Lalla Chafia | simulated | DA_nocdf_nowilt | 3 | 2018-03-16 | 149.44 | 0.4 | 1.4 | 9.25 | 2.56 | 79.82 | 82.38 |
+| Lalla Chafia | simulated | DA_corr | 1 | 2018-04-25 | 142.42 | 0.0 | 0.3 | 57.29 | 2.61 | 61.42 | 64.03 |
+| Lalla Chafia | simulated | DA_corr | 2 | 2018-03-07 | 121.47 | 2.16 | 12.21 | 41.09 | 21.82 | 148.74 | 170.56 |
+| Lalla Chafia | simulated | DA_corr | 3 | 2018-03-16 | 97.79 | 0.4 | 1.4 | 9.25 | 2.56 | 79.82 | 82.38 |
+| Lalla Chafia | simulated | OPL | 1 | 2018-04-25 | 68.9 | 0.0 | 0.3 | 57.29 | 2.61 | 61.42 | 64.03 |
+| Lalla Chafia | simulated | OPL | 2 | 2018-04-13 | 35.58 | 1.55 | 2.32 | 18.9 | 6.96 | 30.27 | 37.23 |
+| Lalla Chafia | simulated | OPL | 3 | 2018-11-01 | 28.86 | 0.34 | 17.58 | 25.86 | 1.41 | 103.36 | 104.77 |
+| Lalla Chafia | simulated | DA_cdf | 1 | 2018-04-25 | 111.48 | 0.0 | 0.3 | 57.29 | 2.61 | 61.42 | 64.03 |
+| Lalla Chafia | simulated | DA_cdf | 2 | 2018-04-13 | 67.04 | 1.55 | 2.32 | 18.9 | 6.96 | 30.27 | 37.23 |
+| Lalla Chafia | simulated | DA_cdf | 3 | 2018-03-07 | 66.11 | 2.16 | 12.21 | 41.09 | 21.82 | 148.74 | 170.56 |
+| Sidi Jabeur | observed | OBS | 1 | 2018-03-07 | 349.0 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+| Sidi Jabeur | observed | OBS | 2 | 2018-04-25 | 180.0 | 0.03 | 2.24 | 57.96 | 3.75 | 62.26 | 66.01 |
+| Sidi Jabeur | observed | OBS | 3 | 2018-01-09 | 133.0 | 13.58 | 6.27 | 17.97 | 1.04 | 37.98 | 39.02 |
+| Sidi Jabeur | simulated | OL_DAIC | 1 | 2018-04-25 | 43.28 | 0.03 | 2.24 | 57.96 | 3.75 | 62.26 | 66.01 |
+| Sidi Jabeur | simulated | OL_DAIC | 2 | 2018-03-07 | 23.39 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+| Sidi Jabeur | simulated | OL_DAIC | 3 | 2018-11-01 | 19.55 | 0.31 | 16.99 | 22.34 | 1.2 | 84.57 | 85.77 |
+| Sidi Jabeur | simulated | ENS_OPL | 1 | 2018-04-25 | 53.25 | 0.03 | 2.24 | 57.96 | 3.75 | 62.26 | 66.01 |
+| Sidi Jabeur | simulated | ENS_OPL | 2 | 2018-03-07 | 25.69 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+| Sidi Jabeur | simulated | ENS_OPL | 3 | 2018-04-13 | 22.2 | 0.33 | 2.56 | 14.25 | 4.79 | 24.14 | 28.93 |
+| Sidi Jabeur | simulated | ENS_corr | 1 | 2018-04-25 | 45.71 | 0.03 | 2.24 | 57.96 | 3.75 | 62.26 | 66.01 |
+| Sidi Jabeur | simulated | ENS_corr | 2 | 2018-03-07 | 24.88 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+| Sidi Jabeur | simulated | ENS_corr | 3 | 2018-11-01 | 19.74 | 0.31 | 16.99 | 22.34 | 1.2 | 84.57 | 85.77 |
+| Sidi Jabeur | simulated | DA_nocdf | 1 | 2018-04-24 | 117.61 | 0.5 | 0.03 | 2.24 | 57.96 | 4.63 | 62.59 |
+| Sidi Jabeur | simulated | DA_nocdf | 2 | 2018-04-13 | 56.98 | 0.33 | 2.56 | 14.25 | 4.79 | 24.14 | 28.93 |
+| Sidi Jabeur | simulated | DA_nocdf | 3 | 2018-03-07 | 56.45 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+| Sidi Jabeur | simulated | DA_nocdf_nowilt | 1 | 2018-04-24 | 117.56 | 0.5 | 0.03 | 2.24 | 57.96 | 4.63 | 62.59 |
+| Sidi Jabeur | simulated | DA_nocdf_nowilt | 2 | 2018-04-13 | 56.98 | 0.33 | 2.56 | 14.25 | 4.79 | 24.14 | 28.93 |
+| Sidi Jabeur | simulated | DA_nocdf_nowilt | 3 | 2018-03-07 | 56.45 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+| Sidi Jabeur | simulated | DA_corr | 1 | 2018-04-24 | 145.97 | 0.5 | 0.03 | 2.24 | 57.96 | 4.63 | 62.59 |
+| Sidi Jabeur | simulated | DA_corr | 2 | 2018-03-24 | 75.59 | 0.0 | 0.0 | 0.0 | 0.04 | 9.99 | 10.03 |
+| Sidi Jabeur | simulated | DA_corr | 3 | 2018-03-07 | 73.96 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+| Sidi Jabeur | simulated | OPL | 1 | 2018-04-25 | 31.77 | 0.03 | 2.24 | 57.96 | 3.75 | 62.26 | 66.01 |
+| Sidi Jabeur | simulated | OPL | 2 | 2018-11-01 | 16.04 | 0.31 | 16.99 | 22.34 | 1.2 | 84.57 | 85.77 |
+| Sidi Jabeur | simulated | OPL | 3 | 2018-03-07 | 15.43 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+| Sidi Jabeur | simulated | DA_cdf | 1 | 2018-04-24 | 85.05 | 0.5 | 0.03 | 2.24 | 57.96 | 4.63 | 62.59 |
+| Sidi Jabeur | simulated | DA_cdf | 2 | 2018-04-13 | 36.3 | 0.33 | 2.56 | 14.25 | 4.79 | 24.14 | 28.93 |
+| Sidi Jabeur | simulated | DA_cdf | 3 | 2018-03-07 | 33.4 | 3.85 | 10.06 | 28.65 | 22.75 | 113.48 | 136.23 |
+
 ---
 
 ## 4. Liste des Fichiers Produits
@@ -272,6 +331,7 @@ Conformément aux consignes, aucun chiffre n'est tapé à la main et le rapport 
 - `paper1/tables/A2_rainfall_events_contrasts_regression.csv`
 - `paper1/tables/A2_streamflow_metrics_stations.csv`
 - `paper1/tables/A2_streamflow_vs_runoff_contrasts.csv`
+- `paper1/tables/A2_peak_timing.csv`
 
 ### Figures PNG :
 - `paper1/figures/A2_streamflow_hydrographs_2018.png`
