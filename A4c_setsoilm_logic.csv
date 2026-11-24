@@ -1,0 +1,113 @@
+element,subroutine_compiled,preprocessor_guard,line_numbers,quoted_code
+Version compilée et garde de préprocesseur,Première sous-routine (l. 44 à 532),"#ifndef USAF_LIS75_SMDA (ligne 42), avec #undef USAF_LIS75_SMDA dans src/lisf_corr/lis/make/LIS_misc.h:13",42-44,"#ifndef USAF_LIS75_SMDA
+
+subroutine NoahMP401_setsoilm(n, LSM_State)"
+"Test des bornes (MIN_THRESHOLD, sm_threshold)",Première sous-routine (l. 44 à 532),#ifndef USAF_LIS75_SMDA,153-190,"if(noahmp401_struc(n)%noahmp401(t)%sh2o(1)+delta1.gt.MIN_THRESHOLD .and.&
+          noahmp401_struc(n)%noahmp401(t)%sh2o(1)+delta1.lt.&
+          sm_threshold .and.&
+         noahmp401_struc(n)%noahmp401(t)%tslb(1) .gt. LIS_CONST_TKFRZ) then 
+        update_flag(gid) = update_flag(gid).and.(.true.)
+        ! MN save the flag for each tile (col*row*ens)   (64*44)*20
+        update_flag_tile(t) = update_flag_tile(t).and.(.true.)
+     else
+        update_flag(gid) = update_flag(gid).and.(.false.)
+        update_flag_tile(t) = update_flag_tile(t).and.(.false.)
+     endif
+     if(noahmp401_struc(n)%noahmp401(t)%sh2o(2)+delta2.gt.MIN_THRESHOLD .and.&
+          noahmp401_struc(n)%noahmp401(t)%sh2o(2)+delta2.lt.sm_threshold .and.&
+          noahmp401_struc(n)%noahmp401(t)%tslb(2) .gt. LIS_CONST_TKFRZ) then 
+        update_flag(gid) = update_flag(gid).and.(.true.)
+        update_flag_tile(t) = update_flag_tile(t).and.(.true.)
+     else
+        update_flag(gid) = update_flag(gid).and.(.false.)
+        update_flag_tile(t) = update_flag_tile(t).and.(.false.)
+     endif
+     if(noahmp401_struc(n)%noahmp401(t)%sh2o(3)+delta3.gt.MIN_THRESHOLD .and.&
+          noahmp401_struc(n)%noahmp401(t)%sh2o(3)+delta3.lt.sm_threshold .and.&
+          noahmp401_struc(n)%noahmp401(t)%tslb(3) .gt. LIS_CONST_TKFRZ) then 
+        update_flag(gid) = update_flag(gid).and.(.true.)
+        update_flag_tile(t) = update_flag_tile(t).and.(.true.)
+     else
+        update_flag(gid) = update_flag(gid).and.(.false.)
+        update_flag_tile(t) = update_flag_tile(t).and.(.false.)
+     endif
+     if(noahmp401_struc(n)%noahmp401(t)%sh2o(4)+delta4.gt.MIN_THRESHOLD .and.&
+          noahmp401_struc(n)%noahmp401(t)%sh2o(4)+delta4.lt.sm_threshold .and.&
+          noahmp401_struc(n)%noahmp401(t)%tslb(4) .gt. LIS_CONST_TKFRZ) then 
+        update_flag(gid) = update_flag(gid).and.(.true.)
+        update_flag_tile(t) = update_flag_tile(t).and.(.true.)
+     else
+        update_flag(gid) = update_flag(gid).and.(.false.)
+        update_flag_tile(t) = update_flag_tile(t).and.(.false.)
+     endif"
+Règle des 50 % des membres,Première sous-routine (l. 44 à 532),#ifndef USAF_LIS75_SMDA,197-209,"update_flag_ens = .True.
+  do i=1,LIS_rc%npatch(n,LIS_rc%lsm_index),LIS_rc%nensem(n)
+     gid = LIS_domain(n)%gindex(&
+          LIS_surface(n,LIS_rc%lsm_index)%tile(i)%col,&
+          LIS_surface(n,LIS_rc%lsm_index)%tile(i)%row) 
+      flag_tmp=update_flag_tile(i:i+LIS_rc%nensem(n)-1)
+      !flag_tmp=update_flag_tile((i-1)*LIS_rc%nensem(n)+1:(i)*LIS_rc%nensem(n))
+      pcount = COUNT(flag_tmp) ! Counts the number of .TRUE. elements
+      if (pcount.lt.LIS_rc%nensem(n)*0.5) then   ! 50%
+         update_flag_ens(gid)= .False.
+      endif
+      update_flag_new(gid)= update_flag(gid).or.update_flag_ens(gid)  ! new flag
+  enddo"
+Remplacement des membres hors bornes par (Max+Min)/2,Première sous-routine (l. 44 à 532),#ifndef USAF_LIS75_SMDA,340-355,"smc_tmp = (MaxEnsSM1 - MinEnsSM1)/2 + MinEnsSM1
+              noahmp401_struc(n)%noahmp401(t)%sh2o(1) = smc_tmp 
+              noahmp401_struc(n)%noahmp401(t)%smc(1) = smc_tmp
+                          
+              smc_tmp = (MaxEnsSM2 - MinEnsSM2)/2 + MinEnsSM2            
+              noahmp401_struc(n)%noahmp401(t)%sh2o(2) = smc_tmp
+              noahmp401_struc(n)%noahmp401(t)%smc(2) = smc_tmp
+               
+              smc_tmp = (MaxEnsSM3 - MinEnsSM3)/2 + MinEnsSM3
+              noahmp401_struc(n)%noahmp401(t)%sh2o(3) = smc_tmp
+              noahmp401_struc(n)%noahmp401(t)%smc(3) = smc_tmp
+              
+              smc_tmp = (MaxEnsSM4 - MinEnsSM4)/2 + MinEnsSM4
+              noahmp401_struc(n)%noahmp401(t)%sh2o(4) = smc_tmp
+              noahmp401_struc(n)%noahmp401(t)%smc(4) = smc_tmp"
+Saut d'une mise à jour couche par couche,Première sous-routine (l. 44 à 532),#ifndef USAF_LIS75_SMDA,295-327,"if(noahmp401_struc(n)%noahmp401(t)%sh2o(2)+delta2.gt.MIN_THRESHOLD .and.&
+                   noahmp401_struc(n)%noahmp401(t)%sh2o(2)+delta2.lt.sm_threshold) then 
+                 noahmp401_struc(n)%noahmp401(t)%sh2o(2) = noahmp401_struc(n)%noahmp401(t)%sh2o(2)+&
+                      soilm2(t)-noahmp401_struc(n)%noahmp401(t)%smc(2)
+                 noahmp401_struc(n)%noahmp401(t)%smc(2) = soilm2(t)
+                 if(soilm2(t).lt.0) then 
+                    print*, 'setsoilm2 ',t,soilm2(t)
+                    stop
+                 endif
+              endif
+  
+              if(noahmp401_struc(n)%noahmp401(t)%sh2o(3)+delta3.gt.MIN_THRESHOLD .and.&
+                   noahmp401_struc(n)%noahmp401(t)%sh2o(3)+delta3.lt.sm_threshold) then 
+                 noahmp401_struc(n)%noahmp401(t)%sh2o(3) = noahmp401_struc(n)%noahmp401(t)%sh2o(3)+&
+                      soilm3(t)-noahmp401_struc(n)%noahmp401(t)%smc(3)
+                 noahmp401_struc(n)%noahmp401(t)%smc(3) = soilm3(t)
+                 if(soilm3(t).lt.0) then 
+                    print*, 'setsoilm3 ',t,soilm3(t)
+                    stop
+                 endif
+              endif
+
+              if(noahmp401_struc(n)%noahmp401(t)%sh2o(4)+delta4.gt.MIN_THRESHOLD .and.&
+                   noahmp401_struc(n)%noahmp401(t)%sh2o(4)+delta4.lt.sm_threshold) then 
+                 noahmp401_struc(n)%noahmp401(t)%sh2o(4) = noahmp401_struc(n)%noahmp401(t)%sh2o(4)+&
+                      soilm4(t)-noahmp401_struc(n)%noahmp401(t)%smc(4)
+                 noahmp401_struc(n)%noahmp401(t)%smc(4) = soilm4(t)
+
+                 if(soilm4(t).lt.0) then 
+                    print*, 'setsoilm4 ',t,soilm4(t)
+                    stop
+                 endif
+              endif"
+Branche sans mise à jour,Première sous-routine (l. 44 à 532),#ifndef USAF_LIS75_SMDA,360-370,"else ! if update_flag_new(gid) is FALSE   
+        if(LIS_rc%pert_bias_corr.eq.1) then           
+           !--------------------------------------------------------------------------
+           ! if no update is made, then we need to readjust the ensemble if pert bias
+           ! correction is turned on because the forcing perturbations may cause 
+           ! biases to persist. 
+           !--------------------------------------------------------------------------
+           bounds_violation = .true. 
+           nIter = 0
+           ens_flag = .true."
