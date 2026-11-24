@@ -1,0 +1,10 @@
+year,run,region,ET_bias_mm,E_bias_vs_WaPOR_E_mm,T_bias_vs_WaPOR_T_mm,variation_abs_bias_ET_vs_OPL_mm,n_cells
+2018,OPL,Zone WaPOR (5 379 mailles),55.65,111.73,-59.45,-,5379
+2018,DA_nocdf,Zone WaPOR (5 379 mailles),41.65,102.18,-63.27,-14.01,5379
+2018,DA_cdf,Zone WaPOR (5 379 mailles),93.87,149.47,-58.91,38.22,5379
+2019,OPL,Zone WaPOR (5 379 mailles),6.44,63.85,-60.12,-,5379
+2019,DA_nocdf,Zone WaPOR (5 379 mailles),9.14,72.92,-65.68,2.7,5379
+2019,DA_cdf,Zone WaPOR (5 379 mailles),64.62,123.91,-61.66,58.19,5379
+2020,OPL,Zone WaPOR (5 379 mailles),-40.87,42.55,-84.4,-,5379
+2020,DA_nocdf,Zone WaPOR (5 379 mailles),-13.97,69.8,-84.58,-26.9,5379
+2020,DA_cdf,Zone WaPOR (5 379 mailles),42.34,121.88,-80.8,1.47,5379
